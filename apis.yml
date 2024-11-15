@@ -86,8 +86,14 @@ apis:
     name: Visa Supplier Matching Service
     tags: []
     humanURL: https://developer.visa.com/capabilities/suppliermatchingservice
-    properties: []
-    description: ''
+    properties:
+      - type: OpenAPI
+        url: properties/visa-supplier-matching-service.yml
+    description: >-
+      The Visa Supplier Matching Service is the fast, efficient way to identify
+      suppliers that accept Visa Commercial payment products, so you can reduce
+      time-consuming and labor-intensive paper-based invoice processing and
+      check writing.null
   - aid: visa:visa-consent-management-service
     name: Visa Consent Management Service
     tags: []

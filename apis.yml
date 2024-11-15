@@ -22,9 +22,9 @@ apis:
         description: >-
           Visa Government Insights Hub enable tailored, efficient, and agile
           decision-making with a differentiated payments insights solution.
-      - name: Visa Government Insights Hub
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-government-insights-hub/docs
+        name: Visa Government Insights Hub
         type: Documentation
     description: >-
       Visa Government Insights Hub enable tailored, efficient, and agile
@@ -33,8 +33,8 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-par-inquiry
     properties:
-      - name: Visa Payment Account Reference Inquiry
-        url: https://developer.visa.com/capabilities/visa-par-inquiry/docs
+      - url: https://developer.visa.com/capabilities/visa-par-inquiry/docs
+        name: Visa Payment Account Reference Inquiry
         type: Documentation
     description: >-
       PAR Inquiry delivers the capability to retrieve the PAR numeric linked to
@@ -44,9 +44,9 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/vdp-pilot-program
     properties:
-      - name: Getting Started
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/vdp-pilot-program/docs-getting-started
+        name: Getting Started
         type: Documentation
     description: ''
   - name: Visa Underwriting Intelligence Solutions
@@ -54,67 +54,70 @@ apis:
     humanURL: >-
       https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions
     properties:
-      - name: Visa Underwriting Intelligence Solutions
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions/docs
+        name: Visa Underwriting Intelligence Solutions
         type: Documentation
     description: ''
   - name: VCA Data Exchange
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vca-data-exchange
+    properties:
+      - url: https://developer.visa.com/capabilities/vca-data-exchange/docs
+        name: VCA Data Exchange
+        type: Documentation
     description: >-
       The VCA Data Exchange API allows clients to access VCA data solutions and
       insights powered by Visa data
-    humanURL: https://developer.visa.com/capabilities/vca-data-exchange
-    tags: []
-    properties:
-      - name: VCA Data Exchange
-        url: https://developer.visa.com/capabilities/vca-data-exchange/docs
-        type: Documentation
   - name: Payment Account Validation
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/pav
-    tags: []
     properties: []
+    description: ''
   - name: Visa Supplier Matching Service
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/suppliermatchingservice
-    tags: []
     properties: []
+    description: ''
   - name: Visa Consent Management Service
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/vcms
-    tags: []
     properties: []
+    description: ''
   - name: Card-On-File Data Inquiry
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
-    tags: []
     properties: []
+    description: ''
   - name: Foreign Exchange
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
-    tags: []
     properties: []
+    description: ''
   - name: Payment Account Attributes Inquiry
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/paai
-    tags: []
     properties: []
+    description: ''
   - name: Visa Account Updater
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/vau
-    tags: []
     properties: []
+    description: ''
   - name: Visa BIN Attribute Sharing
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
-    tags: []
     properties: []
-  - name: Visa Business Data Solutions
     description: ''
-    humanURL: https://developer.visa.com/capabilities/vbds
+  - name: Visa Business Data Solutions
     tags: []
+    humanURL: https://developer.visa.com/capabilities/vbds
     properties: []
+    description: ''
   - name: Visa Data Tokens
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-data-tokens
+    properties: []
     description: >-
       Visa Data Tokens offer useful and relevant consumer level insights
       (signals) derived from consumers historical transactions. Visa Data Tokens
@@ -122,20 +125,20 @@ apis:
       consumer interactions. Signals could include consumer spend metrics,
       behavioral insights (personas),  predictive insights based on AI models
       (future) and/or product recommendations for consumers who opt in.
-    humanURL: https://developer.visa.com/capabilities/visa-data-tokens
-    tags: []
-    properties: []
   - name: Visa Practical Money Skills Financial Education Platform
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/practical-money-skills
+    properties: []
     description: >-
       Visas Practical Money Skills APIs deliver a robust Learning Management
       System (LMS) that allows users to create accounts, enroll in financial
       education courses, track their progress via badges and streaks, and obtain
       certificates of completion. The APIs integrate into existing mobile apps,
       support single sign-on and offer immediate access to the LMS for users. 
-    humanURL: https://developer.visa.com/capabilities/practical-money-skills
-    tags: []
-    properties: []
   - name: Visa Card Program Management
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vcpm
+    properties: []
     description: >-
       Visa Card Program Management is a suite of APIs that enable issuers,
       processors, and issuer partners to manage card programs in a modern
@@ -143,36 +146,82 @@ apis:
       through the Visa Card Program Enrollment (VCPE) API, and inquiry, which is
       done through the Visa Credential Data Inquiry (VCDI) API (currently in
       restricted mode).
-    humanURL: https://developer.visa.com/capabilities/vcpm
-    tags: []
-    properties: []
   - name: Visa Click to Pay
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
+    properties: []
     description: >-
       Visa Click to Pay is Visas solution for e-commerce payments based upon
       the EMV® Secure Remote Commerce (SRC) standards and specifications. It
       helps enable frictionless online checkout using a single payment profile
       across a variety of consumer devices and participating online merchants.
-    humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
-    tags: []
-    properties: []
   - name: Visa Digital Enablement
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
-    tags: []
     properties: []
+    description: ''
   - name: Visa Digital Enablement
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-sdk
-    tags: []
     properties: []
+    description: ''
   - name: Visa Merchant Screening
-    description: ''
+    tags: []
     humanURL: https://developer.visa.com/capabilities/visa-merchant-screening-service
+    properties: []
+    description: ''
+  - name: B2B Virtual Account Payment Method
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vpa
+    properties: []
+    description: ''
+  - name: Visa In-App Provisioning
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/visa-in-app-provisioning
     tags: []
     properties: []
-  - name: B2B Virtual Account Payment Method
-    description: ''
-    humanURL: https://developer.visa.com/capabilities/vpa
+  - name: Visa Resolve Online
+    description: >-
+      Visa Resolve Online (VROL) is a dispute resolution platform that helps
+      issuers and acquirers manage the dispute life cycle. Users of VROL may
+      retrieve transaction information online, receive financial information
+      related to disputes, exchange information and documentation
+      electronically, submit pre-filing and case filings electronically, receive
+      financial messages, report fraud, and manage Exception File Listings.
+    humanURL: https://developer.visa.com/capabilities/visa-resolve-online
+    tags: []
+    properties: []
+  - name: Visa Europe Payment Stop Service
+    description: >-
+      The Visa Stop Payment Service (VSPS) enables Visa card issuers to stop
+      card-on-file payments (including recurring and installment payments) from
+      being authorized, cleared, and settled through VisaNet. The service can
+      help to provide Visa issuers with a method for handling cardholder stop
+      payment requests.
+    humanURL: https://developer.visa.com/capabilities/visa-stop-payment-service
+    tags: []
+    properties: []
+  - name: Visa Subscription Manager
+    description: >-
+      Visa Subscription Manager (VSM) enables Visa card issuers to provide their
+      cardholders a comprehensive view of participating merchants where their
+      card is stored and stop card-on-file recurring payments from being
+      authorized, cleared, or settled through VisaNet
+    humanURL: https://developer.visa.com/capabilities/visa-subscription-manager
+    tags: []
+    properties: []
+  - name: Order Insight Digital
+    description: >-
+      When cardholders are reviewing their card statement, confusion over if a
+      purchase is legitimate is one of the most common occurrances. A
+      cardholders first reaction when this occurs is typically to pick up the
+      phone to contact the issuing bank, tying up valuable issuer resources in
+      an attempt to identify this purchase and/or pursue a dispute. With digital
+      goods purchases on the rise and currently representing almost 20% of all
+      disputes Visa sees, the potential to see an increase in dispute volume is
+      likely. This can be expensive, as the cost of fielding the telephone calls
+      and working a dispute can be far greater than the purchase amount itself.
+    humanURL: https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry
     tags: []
     properties: []
 name: Visa
@@ -182,8 +231,8 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-  - name: Getting Started
-    url: https://developer.visa.com/capabilities/vdp-pilot-program/docs
+  - url: https://developer.visa.com/capabilities/vdp-pilot-program/docs
+    name: Getting Started
     type: GettingStarted
 created: '2024-11-15T00:00:00.000Z'
 modified: '2024-11-15'

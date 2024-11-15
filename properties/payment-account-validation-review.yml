@@ -1,0 +1,5558 @@
+executed: '2024-11-15T22:54:42.008Z'
+results:
+  - code: openapi-external-docs-error
+    message: OpenAPI MUST Have External Documentation
+    path: []
+    severity: 0
+    range:
+      start:
+        line: 0
+        character: 0
+      end:
+        line: 822
+        character: 38
+  - code: openapi-info-contact-error
+    message: Info MUST Have Contact Object
+    path:
+      - info
+    severity: 0
+    range:
+      start:
+        line: 1
+        character: 5
+      end:
+        line: 4
+        character: 14
+  - code: openapi-info-license-error
+    message: Info MUST Have License
+    path:
+      - info
+    severity: 0
+    range:
+      start:
+        line: 1
+        character: 5
+      end:
+        line: 4
+        character: 14
+  - code: openapi-info-terms-of-service-error
+    message: Info MUST Have Terms of Service
+    path:
+      - info
+    severity: 0
+    range:
+      start:
+        line: 1
+        character: 5
+      end:
+        line: 4
+        character: 14
+  - code: openapi-info-title-info
+    message: Info Has Title
+    path:
+      - info
+      - title
+    severity: 2
+    range:
+      start:
+        line: 2
+        character: 9
+      end:
+        line: 2
+        character: 35
+  - code: openapi-info-title-upper-case-info
+    message: Info Title MUST Have First Characters Capitalized
+    path:
+      - info
+      - title
+    severity: 2
+    range:
+      start:
+        line: 2
+        character: 9
+      end:
+        line: 2
+        character: 35
+  - code: openapi-info-description-error
+    message: Info MUST Have Description
+    path:
+      - info
+      - description
+    severity: 0
+    range:
+      start:
+        line: 3
+        character: 15
+      end:
+        line: 3
+        character: 17
+  - code: openapi-info-version-info
+    message: Info Has Version
+    path:
+      - info
+      - version
+    severity: 2
+    range:
+      start:
+        line: 4
+        character: 11
+      end:
+        line: 4
+        character: 14
+  - code: openapi-tags-object-info
+    message: OpenAPIs Have a Tag Object
+    path:
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 9
+        character: 5
+      end:
+        line: 14
+        character: 79
+  - code: openapi-tags-name-info
+    message: Tags Have a Name
+    path:
+      - tags
+      - '0'
+      - name
+    severity: 2
+    range:
+      start:
+        line: 10
+        character: 10
+      end:
+        line: 10
+        character: 40
+  - code: openapi-tags-description-info
+    message: Tags Have a Description
+    path:
+      - tags
+      - '0'
+      - description
+    severity: 2
+    range:
+      start:
+        line: 11
+        character: 17
+      end:
+        line: 14
+        character: 79
+  - code: openapi-no-api-in-path-error
+    message: No API in Path
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+    severity: 0
+    range:
+      start:
+        line: 16
+        character: 25
+      end:
+        line: 175
+        character: 24
+  - code: openapi-no-path-trailing-slash-info
+    message: Path Trailing Slash
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+    severity: 2
+    range:
+      start:
+        line: 16
+        character: 25
+      end:
+        line: 175
+        character: 24
+  - code: openapi-version-in-path-error
+    message: Version in Path
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+    severity: 0
+    range:
+      start:
+        line: 16
+        character: 25
+      end:
+        line: 175
+        character: 24
+  - code: openapi-operation-security-definitions-error
+    message: Operations MUST Have a Security Definition
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+    severity: 0
+    range:
+      start:
+        line: 17
+        character: 9
+      end:
+        line: 175
+        character: 24
+  - code: openapi-operations-tags-info
+    message: Operations Has Tags
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - tags
+    severity: 2
+    range:
+      start:
+        line: 18
+        character: 11
+      end:
+        line: 19
+        character: 40
+  - code: openapi-operations-tags-upper-case-info
+    message: Operation Tag Names Have First Letter in Each Word Capitalized
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - tags
+      - '0'
+    severity: 2
+    range:
+      start:
+        line: 19
+        character: 10
+      end:
+        line: 19
+        character: 40
+  - code: openapi-operations-summary-info
+    message: Operation Has a Summary
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 20
+        character: 15
+      end:
+        line: 20
+        character: 30
+  - code: openapi-operations-summary-period-none-info
+    message: Operation Has a Period.
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - summary
+    severity: 2
+    range:
+      start:
+        line: 20
+        character: 15
+      end:
+        line: 20
+        character: 30
+  - code: openapi-operations-description-info
+    message: Operation Has Description
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - description
+    severity: 2
+    range:
+      start:
+        line: 21
+        character: 19
+      end:
+        line: 21
+        character: 61
+  - code: openapi-operations-operation-ids-camel-case-error
+    message: Operation Identifier MUST Be camelCase
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - operationId
+    severity: 0
+    range:
+      start:
+        line: 22
+        character: 19
+      end:
+        line: 22
+        character: 34
+  - code: openapi-operations-operation-ids-camel-case-info
+    message: Operation Identifier Is camelCase
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - operationId
+    severity: 2
+    range:
+      start:
+        line: 22
+        character: 19
+      end:
+        line: 22
+        character: 34
+  - code: openapi-operations-operation-ids-info
+    message: Operation Has Identifier
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - operationId
+    severity: 2
+    range:
+      start:
+        line: 22
+        character: 19
+      end:
+        line: 22
+        character: 34
+  - code: openapi-request-body-on-post-info
+    message: POST Requests Has a Body
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+    severity: 2
+    range:
+      start:
+        line: 23
+        character: 18
+      end:
+        line: 127
+        character: 22
+  - code: openapi-request-body-content-on-post-info
+    message: Request Body Content POST
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+    severity: 2
+    range:
+      start:
+        line: 25
+        character: 16
+      end:
+        line: 126
+        character: 235
+  - code: openapi-request-body-have-application-json-info
+    message: Request Body Application JSON
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/json
+    severity: 2
+    range:
+      start:
+        line: 26
+        character: 27
+      end:
+        line: 95
+        character: 39
+  - code: openapi-request-body-have-schema-info
+    message: Request Body Schema
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 27
+        character: 19
+      end:
+        line: 28
+        character: 64
+  - code: openapi-request-body-have-schema-ref-info
+    message: Request Bodies Use Schema Reference
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/json
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 27
+        character: 19
+      end:
+        line: 28
+        character: 64
+  - code: openapi-request-body-have-examples-info
+    message: Request Bodies Have Examples
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/json
+      - examples
+    severity: 2
+    range:
+      start:
+        line: 29
+        character: 21
+      end:
+        line: 95
+        character: 39
+  - code: openapi-request-body-have-examples-ref-info
+    message: Request Bodies Use Examples Reference
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/json
+      - examples
+    severity: 2
+    range:
+      start:
+        line: 29
+        character: 21
+      end:
+        line: 95
+        character: 39
+  - code: openapi-request-body-have-schema-info
+    message: Request Body Schema
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/xml
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 97
+        character: 19
+      end:
+        line: 98
+        character: 64
+  - code: openapi-request-body-have-schema-ref-info
+    message: Request Bodies Use Schema Reference
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/xml
+      - schema
+    severity: 2
+    range:
+      start:
+        line: 97
+        character: 19
+      end:
+        line: 98
+        character: 64
+  - code: openapi-request-body-have-examples-info
+    message: Request Bodies Have Examples
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/xml
+      - examples
+    severity: 2
+    range:
+      start:
+        line: 99
+        character: 21
+      end:
+        line: 126
+        character: 235
+  - code: openapi-request-body-have-examples-ref-info
+    message: Request Bodies Use Examples Reference
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - requestBody
+      - content
+      - application/xml
+      - examples
+    severity: 2
+    range:
+      start:
+        line: 99
+        character: 21
+      end:
+        line: 126
+        character: 235
+  - code: openapi-response-post-201-status-code-error
+    message: POST Responses MUST Have 201 Status Codes
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 128
+        character: 16
+      end:
+        line: 137
+        character: 67
+  - code: openapi-response-post-400-status-code-error
+    message: POST Responses Has 400 Status Codes
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 128
+        character: 16
+      end:
+        line: 137
+        character: 67
+  - code: openapi-response-post-401-status-code-error
+    message: POST Responses Has 401 Status Codes
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 128
+        character: 16
+      end:
+        line: 137
+        character: 67
+  - code: openapi-response-post-403-status-code-error
+    message: POST Responses Has 403 Status Codes
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 128
+        character: 16
+      end:
+        line: 137
+        character: 67
+  - code: openapi-response-post-404-status-code-error
+    message: POST Responses Has 404 Status Codes
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 128
+        character: 16
+      end:
+        line: 137
+        character: 67
+  - code: openapi-response-post-429-status-code-error
+    message: POST Responses MUST Have 429 Status Codes
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 128
+        character: 16
+      end:
+        line: 137
+        character: 67
+  - code: openapi-response-post-500-status-code-error
+    message: POST Responses MUST Have 500 Status Codes
+    path:
+      - paths
+      - /pav/v1/cardvalidation
+      - post
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 128
+        character: 16
+      end:
+        line: 137
+        character: 67
+  - code: openapi-security-schemes-error
+    message: Components MUST Have a Security Schemes
+    path:
+      - components
+    severity: 0
+    range:
+      start:
+        line: 176
+        character: 11
+      end:
+        line: 818
+        character: 15
+  - code: openapi-components-schemas-info
+    message: Components Have a Schema Property
+    path:
+      - components
+      - schemas
+    severity: 2
+    range:
+      start:
+        line: 177
+        character: 10
+      end:
+        line: 812
+        character: 72
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+    severity: 2
+    range:
+      start:
+        line: 178
+        character: 30
+      end:
+        line: 247
+        character: 14
+  - code: openapi-schema-required-info
+    message: Schema Has Required Property
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - required
+    severity: 2
+    range:
+      start:
+        line: 179
+        character: 15
+      end:
+        line: 182
+        character: 26
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - type
+    severity: 2
+    range:
+      start:
+        line: 183
+        character: 12
+      end:
+        line: 183
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 184
+        character: 17
+      end:
+        line: 239
+        character: 38
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - panEntryMode
+    severity: 2
+    range:
+      start:
+        line: 185
+        character: 21
+      end:
+        line: 195
+        character: 21
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - posEnvironment
+    severity: 2
+    range:
+      start:
+        line: 196
+        character: 23
+      end:
+        line: 204
+        character: 21
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - posEnvironment
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 197
+        character: 21
+      end:
+        line: 197
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - posEnvironment
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 198
+        character: 21
+      end:
+        line: 198
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - posEnvironment
+      - description
+    severity: 2
+    range:
+      start:
+        line: 200
+        character: 23
+      end:
+        line: 204
+        character: 21
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - motoECIIndicator
+    severity: 2
+    range:
+      start:
+        line: 205
+        character: 25
+      end:
+        line: 221
+        character: 80
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - motoECIIndicator
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 206
+        character: 21
+      end:
+        line: 206
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - motoECIIndicator
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 207
+        character: 21
+      end:
+        line: 207
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - motoECIIndicator
+      - description
+    severity: 2
+    range:
+      start:
+        line: 209
+        character: 23
+      end:
+        line: 221
+        character: 80
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - motoECIIndicator
+      - description
+    severity: 0
+    range:
+      start:
+        line: 209
+        character: 23
+      end:
+        line: 221
+        character: 80
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - posConditionCode
+    severity: 2
+    range:
+      start:
+        line: 222
+        character: 25
+      end:
+        line: 231
+        character: 21
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - specialConditionIndicatorMerchant
+    severity: 2
+    range:
+      start:
+        line: 232
+        character: 42
+      end:
+        line: 239
+        character: 38
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - specialConditionIndicatorMerchant
+    severity: 0
+    range:
+      start:
+        line: 232
+        character: 42
+      end:
+        line: 239
+        character: 38
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - specialConditionIndicatorMerchant
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 233
+        character: 21
+      end:
+        line: 233
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - specialConditionIndicatorMerchant
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 234
+        character: 21
+      end:
+        line: 234
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - properties
+      - specialConditionIndicatorMerchant
+      - description
+    severity: 2
+    range:
+      start:
+        line: 236
+        character: 23
+      end:
+        line: 239
+        character: 38
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - description
+    severity: 2
+    range:
+      start:
+        line: 240
+        character: 19
+      end:
+        line: 247
+        character: 14
+  - code: openapi-schema-description-length-error
+    message: Schema Description MUST be Less Than 250 Characters
+    path:
+      - components
+      - schemas
+      - PointOfServiceDataRequest
+      - description
+    severity: 0
+    range:
+      start:
+        line: 240
+        character: 19
+      end:
+        line: 247
+        character: 14
+  - code: openapi-schema-names-length-error
+    message: Schema Names MUST Be Less Than 25 Characters
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+    severity: 0
+    range:
+      start:
+        line: 248
+        character: 39
+      end:
+        line: 307
+        character: 63
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+    severity: 2
+    range:
+      start:
+        line: 248
+        character: 39
+      end:
+        line: 307
+        character: 63
+  - code: openapi-schema-required-error
+    message: Schema MUST Have Required Property
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+    severity: 0
+    range:
+      start:
+        line: 248
+        character: 39
+      end:
+        line: 307
+        character: 63
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - type
+    severity: 2
+    range:
+      start:
+        line: 249
+        character: 12
+      end:
+        line: 249
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 250
+        character: 17
+      end:
+        line: 304
+        character: 25
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameResult
+    severity: 2
+    range:
+      start:
+        line: 251
+        character: 19
+      end:
+        line: 260
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameResult
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 252
+        character: 21
+      end:
+        line: 252
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameResult
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 253
+        character: 21
+      end:
+        line: 253
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameResult
+      - description
+    severity: 2
+    range:
+      start:
+        line: 255
+        character: 23
+      end:
+        line: 259
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameMatchDecision
+    severity: 2
+    range:
+      start:
+        line: 261
+        character: 26
+      end:
+        line: 271
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameMatchDecision
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 262
+        character: 21
+      end:
+        line: 262
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameMatchDecision
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 263
+        character: 21
+      end:
+        line: 263
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameMatchDecision
+      - description
+    severity: 2
+    range:
+      start:
+        line: 265
+        character: 23
+      end:
+        line: 270
+        character: 30
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - nameMatchDecision
+      - description
+    severity: 0
+    range:
+      start:
+        line: 265
+        character: 23
+      end:
+        line: 270
+        character: 30
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - lastNameAccountMatchDecision
+    severity: 2
+    range:
+      start:
+        line: 272
+        character: 37
+      end:
+        line: 282
+        character: 25
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - lastNameAccountMatchDecision
+    severity: 0
+    range:
+      start:
+        line: 272
+        character: 37
+      end:
+        line: 282
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - lastNameAccountMatchDecision
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 273
+        character: 21
+      end:
+        line: 273
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - lastNameAccountMatchDecision
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 274
+        character: 21
+      end:
+        line: 274
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - lastNameAccountMatchDecision
+      - description
+    severity: 2
+    range:
+      start:
+        line: 276
+        character: 23
+      end:
+        line: 281
+        character: 30
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - lastNameAccountMatchDecision
+      - description
+    severity: 0
+    range:
+      start:
+        line: 276
+        character: 23
+      end:
+        line: 281
+        character: 30
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - firstNameAccountMatchDecision
+    severity: 2
+    range:
+      start:
+        line: 283
+        character: 38
+      end:
+        line: 293
+        character: 25
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - firstNameAccountMatchDecision
+    severity: 0
+    range:
+      start:
+        line: 283
+        character: 38
+      end:
+        line: 293
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - firstNameAccountMatchDecision
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 284
+        character: 21
+      end:
+        line: 284
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - firstNameAccountMatchDecision
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 285
+        character: 21
+      end:
+        line: 285
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - firstNameAccountMatchDecision
+      - description
+    severity: 2
+    range:
+      start:
+        line: 287
+        character: 23
+      end:
+        line: 292
+        character: 30
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - firstNameAccountMatchDecision
+      - description
+    severity: 0
+    range:
+      start:
+        line: 287
+        character: 23
+      end:
+        line: 292
+        character: 30
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - middleNameAccountMatchDecision
+    severity: 2
+    range:
+      start:
+        line: 294
+        character: 39
+      end:
+        line: 304
+        character: 25
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - middleNameAccountMatchDecision
+    severity: 0
+    range:
+      start:
+        line: 294
+        character: 39
+      end:
+        line: 304
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - middleNameAccountMatchDecision
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 295
+        character: 21
+      end:
+        line: 295
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - middleNameAccountMatchDecision
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 296
+        character: 21
+      end:
+        line: 296
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - middleNameAccountMatchDecision
+      - description
+    severity: 2
+    range:
+      start:
+        line: 298
+        character: 23
+      end:
+        line: 303
+        character: 30
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - properties
+      - middleNameAccountMatchDecision
+      - description
+    severity: 0
+    range:
+      start:
+        line: 298
+        character: 23
+      end:
+        line: 303
+        character: 30
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationResponse
+      - description
+    severity: 2
+    range:
+      start:
+        line: 305
+        character: 19
+      end:
+        line: 307
+        character: 63
+  - code: openapi-schema-names-length-error
+    message: Schema Names MUST Be Less Than 25 Characters
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+    severity: 0
+    range:
+      start:
+        line: 308
+        character: 32
+      end:
+        line: 337
+        character: 18
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+    severity: 2
+    range:
+      start:
+        line: 308
+        character: 32
+      end:
+        line: 337
+        character: 18
+  - code: openapi-schema-required-error
+    message: Schema MUST Have Required Property
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+    severity: 0
+    range:
+      start:
+        line: 308
+        character: 32
+      end:
+        line: 337
+        character: 18
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - type
+    severity: 2
+    range:
+      start:
+        line: 309
+        character: 12
+      end:
+        line: 309
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 310
+        character: 17
+      end:
+        line: 332
+        character: 77
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - properties
+      - identities
+    severity: 0
+    range:
+      start:
+        line: 311
+        character: 19
+      end:
+        line: 332
+        character: 77
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - properties
+      - identities
+    severity: 2
+    range:
+      start:
+        line: 311
+        character: 19
+      end:
+        line: 332
+        character: 77
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - properties
+      - identities
+    severity: 0
+    range:
+      start:
+        line: 311
+        character: 19
+      end:
+        line: 332
+        character: 77
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - properties
+      - identities
+    severity: 2
+    range:
+      start:
+        line: 311
+        character: 19
+      end:
+        line: 332
+        character: 77
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - properties
+      - identities
+      - items
+    severity: 2
+    range:
+      start:
+        line: 313
+        character: 16
+      end:
+        line: 332
+        character: 77
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - IdentityVerificationRequest
+      - description
+    severity: 2
+    range:
+      start:
+        line: 333
+        character: 19
+      end:
+        line: 337
+        character: 18
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+    severity: 2
+    range:
+      start:
+        line: 338
+        character: 17
+      end:
+        line: 389
+        character: 70
+  - code: openapi-schema-required-info
+    message: Schema Has Required Property
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - required
+    severity: 2
+    range:
+      start:
+        line: 339
+        character: 15
+      end:
+        line: 341
+        character: 14
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - type
+    severity: 2
+    range:
+      start:
+        line: 342
+        character: 12
+      end:
+        line: 342
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 343
+        character: 17
+      end:
+        line: 384
+        character: 46
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - name
+    severity: 2
+    range:
+      start:
+        line: 344
+        character: 13
+      end:
+        line: 356
+        character: 60
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - name
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 345
+        character: 21
+      end:
+        line: 345
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - name
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 346
+        character: 21
+      end:
+        line: 346
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - name
+      - description
+    severity: 2
+    range:
+      start:
+        line: 348
+        character: 23
+      end:
+        line: 356
+        character: 60
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - name
+      - description
+    severity: 0
+    range:
+      start:
+        line: 348
+        character: 23
+      end:
+        line: 356
+        character: 60
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - idCode
+    severity: 2
+    range:
+      start:
+        line: 357
+        character: 15
+      end:
+        line: 374
+        character: 54
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - idCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 358
+        character: 21
+      end:
+        line: 358
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - idCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 359
+        character: 21
+      end:
+        line: 359
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - idCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 361
+        character: 23
+      end:
+        line: 374
+        character: 54
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - idCode
+      - description
+    severity: 0
+    range:
+      start:
+        line: 361
+        character: 23
+      end:
+        line: 374
+        character: 54
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - address
+    severity: 2
+    range:
+      start:
+        line: 375
+        character: 16
+      end:
+        line: 376
+        character: 58
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - terminalId
+    severity: 2
+    range:
+      start:
+        line: 377
+        character: 19
+      end:
+        line: 384
+        character: 46
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - terminalId
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 378
+        character: 21
+      end:
+        line: 378
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - terminalId
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 379
+        character: 21
+      end:
+        line: 379
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - properties
+      - terminalId
+      - description
+    severity: 2
+    range:
+      start:
+        line: 381
+        character: 23
+      end:
+        line: 384
+        character: 46
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - description
+    severity: 2
+    range:
+      start:
+        line: 385
+        character: 19
+      end:
+        line: 389
+        character: 70
+  - code: openapi-schema-description-length-error
+    message: Schema Description MUST be Less Than 250 Characters
+    path:
+      - components
+      - schemas
+      - CardAcceptor
+      - description
+    severity: 0
+    range:
+      start:
+        line: 385
+        character: 19
+      end:
+        line: 389
+        character: 70
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+    severity: 2
+    range:
+      start:
+        line: 390
+        character: 29
+      end:
+        line: 418
+        character: 52
+  - code: openapi-schema-required-error
+    message: Schema MUST Have Required Property
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+    severity: 0
+    range:
+      start:
+        line: 390
+        character: 29
+      end:
+        line: 418
+        character: 52
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+      - type
+    severity: 2
+    range:
+      start:
+        line: 391
+        character: 12
+      end:
+        line: 391
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 392
+        character: 17
+      end:
+        line: 412
+        character: 58
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+      - properties
+      - posTerminalType
+    severity: 2
+    range:
+      start:
+        line: 393
+        character: 24
+      end:
+        line: 406
+        character: 35
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+      - properties
+      - posTerminalEntryCapability
+    severity: 2
+    range:
+      start:
+        line: 407
+        character: 35
+      end:
+        line: 412
+        character: 58
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+      - properties
+      - posTerminalEntryCapability
+    severity: 0
+    range:
+      start:
+        line: 407
+        character: 35
+      end:
+        line: 412
+        character: 58
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+      - description
+    severity: 2
+    range:
+      start:
+        line: 413
+        character: 19
+      end:
+        line: 418
+        character: 52
+  - code: openapi-schema-description-length-error
+    message: Schema Description MUST be Less Than 250 Characters
+    path:
+      - components
+      - schemas
+      - PointOfServiceCapability
+      - description
+    severity: 0
+    range:
+      start:
+        line: 413
+        character: 19
+      end:
+        line: 418
+        character: 52
+  - code: openapi-schema-names-length-error
+    message: Schema Names MUST Be Less Than 25 Characters
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+    severity: 0
+    range:
+      start:
+        line: 419
+        character: 31
+      end:
+        line: 441
+        character: 15
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+    severity: 2
+    range:
+      start:
+        line: 419
+        character: 31
+      end:
+        line: 441
+        character: 15
+  - code: openapi-schema-required-info
+    message: Schema Has Required Property
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - required
+    severity: 2
+    range:
+      start:
+        line: 420
+        character: 15
+      end:
+        line: 421
+        character: 20
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - type
+    severity: 2
+    range:
+      start:
+        line: 422
+        character: 12
+      end:
+        line: 422
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 423
+        character: 17
+      end:
+        line: 438
+        character: 63
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - street
+    severity: 2
+    range:
+      start:
+        line: 424
+        character: 15
+      end:
+        line: 430
+        character: 27
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - street
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 425
+        character: 21
+      end:
+        line: 425
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - street
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 426
+        character: 21
+      end:
+        line: 426
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - street
+      - description
+    severity: 2
+    range:
+      start:
+        line: 428
+        character: 23
+      end:
+        line: 430
+        character: 27
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - postalCode
+    severity: 2
+    range:
+      start:
+        line: 431
+        character: 19
+      end:
+        line: 438
+        character: 63
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - postalCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 432
+        character: 21
+      end:
+        line: 432
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - postalCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 433
+        character: 21
+      end:
+        line: 433
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - properties
+      - postalCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 435
+        character: 23
+      end:
+        line: 438
+        character: 63
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - AddressVerificationResults
+      - description
+    severity: 2
+    range:
+      start:
+        line: 439
+        character: 19
+      end:
+        line: 441
+        character: 15
+  - code: openapi-schema-names-length-error
+    message: Schema Names MUST Be Less Than 25 Characters
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+    severity: 0
+    range:
+      start:
+        line: 442
+        character: 33
+      end:
+        line: 471
+        character: 53
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+    severity: 2
+    range:
+      start:
+        line: 442
+        character: 33
+      end:
+        line: 471
+        character: 53
+  - code: openapi-schema-required-error
+    message: Schema MUST Have Required Property
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+    severity: 0
+    range:
+      start:
+        line: 442
+        character: 33
+      end:
+        line: 471
+        character: 53
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - type
+    severity: 2
+    range:
+      start:
+        line: 443
+        character: 12
+      end:
+        line: 443
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 444
+        character: 17
+      end:
+        line: 468
+        character: 31
+  - code: openapi-schema-properties-array-maxitems-error
+    message: Schema Array Properties MUST Have Max Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - properties
+      - identities
+    severity: 0
+    range:
+      start:
+        line: 445
+        character: 19
+      end:
+        line: 468
+        character: 31
+  - code: openapi-schema-properties-array-maxitems-info
+    message: Schema Array Properties Have Max Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - properties
+      - identities
+    severity: 2
+    range:
+      start:
+        line: 445
+        character: 19
+      end:
+        line: 468
+        character: 31
+  - code: openapi-schema-properties-array-minitems-error
+    message: Schema Array Properties MUST Have Min Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - properties
+      - identities
+    severity: 0
+    range:
+      start:
+        line: 445
+        character: 19
+      end:
+        line: 468
+        character: 31
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - properties
+      - identities
+    severity: 2
+    range:
+      start:
+        line: 445
+        character: 19
+      end:
+        line: 468
+        character: 31
+  - code: openapi-schema-properties-array-items-info
+    message: Schema Array Properties Has Items
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - properties
+      - identities
+      - items
+    severity: 2
+    range:
+      start:
+        line: 447
+        character: 16
+      end:
+        line: 468
+        character: 31
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - IdentityVerificationResponse
+      - description
+    severity: 2
+    range:
+      start:
+        line: 469
+        character: 19
+      end:
+        line: 471
+        character: 53
+  - code: openapi-schema-names-length-error
+    message: Schema Names MUST Be Less Than 25 Characters
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+    severity: 0
+    range:
+      start:
+        line: 472
+        character: 38
+      end:
+        line: 515
+        character: 84
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+    severity: 2
+    range:
+      start:
+        line: 472
+        character: 38
+      end:
+        line: 515
+        character: 84
+  - code: openapi-schema-required-info
+    message: Schema Has Required Property
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - required
+    severity: 2
+    range:
+      start:
+        line: 473
+        character: 15
+      end:
+        line: 474
+        character: 18
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - type
+    severity: 2
+    range:
+      start:
+        line: 475
+        character: 12
+      end:
+        line: 475
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 476
+        character: 17
+      end:
+        line: 514
+        character: 25
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - lastName
+    severity: 2
+    range:
+      start:
+        line: 477
+        character: 17
+      end:
+        line: 486
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - lastName
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 478
+        character: 21
+      end:
+        line: 478
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - lastName
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 479
+        character: 21
+      end:
+        line: 479
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - lastName
+      - description
+    severity: 2
+    range:
+      start:
+        line: 481
+        character: 23
+      end:
+        line: 485
+        character: 58
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - firstName
+    severity: 2
+    range:
+      start:
+        line: 487
+        character: 18
+      end:
+        line: 495
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - firstName
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 488
+        character: 21
+      end:
+        line: 488
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - firstName
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 489
+        character: 21
+      end:
+        line: 489
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - firstName
+      - description
+    severity: 2
+    range:
+      start:
+        line: 491
+        character: 23
+      end:
+        line: 494
+        character: 29
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - ownerType
+    severity: 2
+    range:
+      start:
+        line: 496
+        character: 18
+      end:
+        line: 505
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - ownerType
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 497
+        character: 21
+      end:
+        line: 497
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - ownerType
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 498
+        character: 21
+      end:
+        line: 498
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - ownerType
+      - description
+    severity: 2
+    range:
+      start:
+        line: 500
+        character: 23
+      end:
+        line: 504
+        character: 35
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - middleName
+    severity: 2
+    range:
+      start:
+        line: 506
+        character: 19
+      end:
+        line: 514
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - middleName
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 507
+        character: 21
+      end:
+        line: 507
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - middleName
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 508
+        character: 21
+      end:
+        line: 508
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - properties
+      - middleName
+      - description
+    severity: 2
+    range:
+      start:
+        line: 510
+        character: 23
+      end:
+        line: 513
+        character: 29
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - CardHolderNameVerificationRequest
+      - description
+    severity: 2
+    range:
+      start:
+        line: 515
+        character: 19
+      end:
+        line: 515
+        character: 84
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+    severity: 2
+    range:
+      start:
+        line: 516
+        character: 24
+      end:
+        line: 559
+        character: 80
+  - code: openapi-schema-required-error
+    message: Schema MUST Have Required Property
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+    severity: 0
+    range:
+      start:
+        line: 516
+        character: 24
+      end:
+        line: 559
+        character: 80
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - type
+    severity: 2
+    range:
+      start:
+        line: 517
+        character: 12
+      end:
+        line: 517
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 518
+        character: 17
+      end:
+        line: 556
+        character: 25
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - city
+    severity: 2
+    range:
+      start:
+        line: 519
+        character: 13
+      end:
+        line: 524
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - city
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 520
+        character: 21
+      end:
+        line: 520
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - city
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 521
+        character: 21
+      end:
+        line: 521
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - city
+      - description
+    severity: 2
+    range:
+      start:
+        line: 523
+        character: 23
+      end:
+        line: 523
+        character: 85
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - state
+    severity: 2
+    range:
+      start:
+        line: 525
+        character: 14
+      end:
+        line: 532
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - state
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 526
+        character: 21
+      end:
+        line: 526
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - state
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 527
+        character: 21
+      end:
+        line: 527
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - state
+      - description
+    severity: 2
+    range:
+      start:
+        line: 529
+        character: 23
+      end:
+        line: 531
+        character: 80
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - county
+    severity: 2
+    range:
+      start:
+        line: 533
+        character: 15
+      end:
+        line: 538
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - county
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 534
+        character: 21
+      end:
+        line: 534
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - county
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 535
+        character: 21
+      end:
+        line: 535
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - county
+      - description
+    severity: 2
+    range:
+      start:
+        line: 537
+        character: 23
+      end:
+        line: 537
+        character: 71
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - country
+    severity: 2
+    range:
+      start:
+        line: 539
+        character: 16
+      end:
+        line: 548
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - country
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 540
+        character: 21
+      end:
+        line: 540
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - country
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 541
+        character: 21
+      end:
+        line: 541
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - country
+      - description
+    severity: 2
+    range:
+      start:
+        line: 543
+        character: 23
+      end:
+        line: 547
+        character: 61
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - zipCode
+    severity: 2
+    range:
+      start:
+        line: 549
+        character: 16
+      end:
+        line: 556
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - zipCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 550
+        character: 21
+      end:
+        line: 550
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - zipCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 551
+        character: 21
+      end:
+        line: 551
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - properties
+      - zipCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 553
+        character: 23
+      end:
+        line: 555
+        character: 32
+  - code: openapi-schema-description-info
+    message: Schemas Has a Description.
+    path:
+      - components
+      - schemas
+      - CardAcceptorAddress
+      - description
+    severity: 2
+    range:
+      start:
+        line: 557
+        character: 19
+      end:
+        line: 559
+        character: 80
+  - code: openapi-schema-description-error
+    message: Schema MUST Have a Description.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+    severity: 0
+    range:
+      start:
+        line: 560
+        character: 27
+      end:
+        line: 674
+        character: 25
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+    severity: 2
+    range:
+      start:
+        line: 560
+        character: 27
+      end:
+        line: 674
+        character: 25
+  - code: openapi-schema-required-info
+    message: Schema Has Required Property
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - required
+    severity: 2
+    range:
+      start:
+        line: 561
+        character: 15
+      end:
+        line: 564
+        character: 31
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - type
+    severity: 2
+    range:
+      start:
+        line: 565
+        character: 12
+      end:
+        line: 565
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 566
+        character: 17
+      end:
+        line: 674
+        character: 25
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - actionCode
+    severity: 2
+    range:
+      start:
+        line: 567
+        character: 19
+      end:
+        line: 575
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - actionCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 568
+        character: 21
+      end:
+        line: 568
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - actionCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 569
+        character: 21
+      end:
+        line: 569
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - actionCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 571
+        character: 23
+      end:
+        line: 574
+        character: 74
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - approvalCode
+    severity: 2
+    range:
+      start:
+        line: 576
+        character: 21
+      end:
+        line: 581
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - approvalCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 577
+        character: 21
+      end:
+        line: 577
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - approvalCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 578
+        character: 21
+      end:
+        line: 578
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - approvalCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 580
+        character: 23
+      end:
+        line: 580
+        character: 62
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - responseCode
+    severity: 2
+    range:
+      start:
+        line: 582
+        character: 21
+      end:
+        line: 590
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - responseCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 583
+        character: 21
+      end:
+        line: 583
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - responseCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 584
+        character: 21
+      end:
+        line: 584
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - responseCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 586
+        character: 23
+      end:
+        line: 589
+        character: 76
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cvv2ResultCode
+    severity: 2
+    range:
+      start:
+        line: 591
+        character: 23
+      end:
+        line: 601
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cvv2ResultCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 592
+        character: 21
+      end:
+        line: 592
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cvv2ResultCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 593
+        character: 21
+      end:
+        line: 593
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cvv2ResultCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 595
+        character: 23
+      end:
+        line: 600
+        character: 78
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cvv2ResultCode
+      - description
+    severity: 0
+    range:
+      start:
+        line: 595
+        character: 23
+      end:
+        line: 600
+        character: 78
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - identityVerification
+    severity: 2
+    range:
+      start:
+        line: 602
+        character: 29
+      end:
+        line: 603
+        character: 67
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - transactionIdentifier
+    severity: 2
+    range:
+      start:
+        line: 604
+        character: 30
+      end:
+        line: 609
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - transactionIdentifier
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 605
+        character: 21
+      end:
+        line: 605
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - transactionIdentifier
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 606
+        character: 21
+      end:
+        line: 606
+        character: 23
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - transactionIdentifier
+      - description
+    severity: 2
+    range:
+      start:
+        line: 608
+        character: 23
+      end:
+        line: 608
+        character: 72
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardVerificationResults
+    severity: 2
+    range:
+      start:
+        line: 610
+        character: 32
+      end:
+        line: 620
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardVerificationResults
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 611
+        character: 21
+      end:
+        line: 611
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardVerificationResults
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 612
+        character: 21
+      end:
+        line: 612
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardVerificationResults
+      - description
+    severity: 2
+    range:
+      start:
+        line: 614
+        character: 23
+      end:
+        line: 619
+        character: 62
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardVerificationResults
+      - description
+    severity: 0
+    range:
+      start:
+        line: 614
+        character: 23
+      end:
+        line: 619
+        character: 62
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardAuthenticationResults
+    severity: 2
+    range:
+      start:
+        line: 621
+        character: 34
+      end:
+        line: 630
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardAuthenticationResults
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 622
+        character: 21
+      end:
+        line: 622
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardAuthenticationResults
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 623
+        character: 21
+      end:
+        line: 623
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardAuthenticationResults
+      - description
+    severity: 2
+    range:
+      start:
+        line: 625
+        character: 23
+      end:
+        line: 629
+        character: 39
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - addressVerificationResults
+    severity: 2
+    range:
+      start:
+        line: 631
+        character: 35
+      end:
+        line: 639
+        character: 25
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - addressVerificationResults
+    severity: 0
+    range:
+      start:
+        line: 631
+        character: 35
+      end:
+        line: 639
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - addressVerificationResults
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 632
+        character: 21
+      end:
+        line: 632
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - addressVerificationResults
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 633
+        character: 21
+      end:
+        line: 633
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - addressVerificationResults
+      - description
+    severity: 2
+    range:
+      start:
+        line: 635
+        character: 23
+      end:
+        line: 638
+        character: 100
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderNameVerificationResult
+    severity: 2
+    range:
+      start:
+        line: 640
+        character: 41
+      end:
+        line: 641
+        character: 73
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderNameVerificationResult
+    severity: 0
+    range:
+      start:
+        line: 640
+        character: 41
+      end:
+        line: 641
+        character: 73
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderPhoneNumberVerificationResults
+    severity: 2
+    range:
+      start:
+        line: 642
+        character: 49
+      end:
+        line: 650
+        character: 25
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderPhoneNumberVerificationResults
+    severity: 0
+    range:
+      start:
+        line: 642
+        character: 49
+      end:
+        line: 650
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderPhoneNumberVerificationResults
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 643
+        character: 21
+      end:
+        line: 643
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderPhoneNumberVerificationResults
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 644
+        character: 21
+      end:
+        line: 644
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderPhoneNumberVerificationResults
+      - description
+    severity: 2
+    range:
+      start:
+        line: 646
+        character: 23
+      end:
+        line: 649
+        character: 34
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderEmailAddressVerificationResults
+    severity: 2
+    range:
+      start:
+        line: 651
+        character: 50
+      end:
+        line: 659
+        character: 25
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderEmailAddressVerificationResults
+    severity: 0
+    range:
+      start:
+        line: 651
+        character: 50
+      end:
+        line: 659
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderEmailAddressVerificationResults
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 652
+        character: 21
+      end:
+        line: 652
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderEmailAddressVerificationResults
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 653
+        character: 21
+      end:
+        line: 653
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardHolderEmailAddressVerificationResults
+      - description
+    severity: 2
+    range:
+      start:
+        line: 655
+        character: 23
+      end:
+        line: 658
+        character: 34
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardholderAuthenticationVerificationResults
+    severity: 2
+    range:
+      start:
+        line: 660
+        character: 52
+      end:
+        line: 674
+        character: 25
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardholderAuthenticationVerificationResults
+    severity: 0
+    range:
+      start:
+        line: 660
+        character: 52
+      end:
+        line: 674
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardholderAuthenticationVerificationResults
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 661
+        character: 21
+      end:
+        line: 661
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardholderAuthenticationVerificationResults
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 662
+        character: 21
+      end:
+        line: 662
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardholderAuthenticationVerificationResults
+      - description
+    severity: 2
+    range:
+      start:
+        line: 664
+        character: 23
+      end:
+        line: 673
+        character: 48
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationResponse
+      - properties
+      - cardholderAuthenticationVerificationResults
+      - description
+    severity: 0
+    range:
+      start:
+        line: 664
+        character: 23
+      end:
+        line: 673
+        character: 48
+  - code: openapi-schema-description-error
+    message: Schema MUST Have a Description.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+    severity: 0
+    range:
+      start:
+        line: 675
+        character: 26
+      end:
+        line: 812
+        character: 72
+  - code: openapi-schema-names-pascal-case-info
+    message: Schema Names Are PascalCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+    severity: 2
+    range:
+      start:
+        line: 675
+        character: 26
+      end:
+        line: 812
+        character: 72
+  - code: openapi-schema-required-info
+    message: Schema Has Required Property
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - required
+    severity: 2
+    range:
+      start:
+        line: 676
+        character: 15
+      end:
+        line: 679
+        character: 30
+  - code: openapi-schema-type-info
+    message: Schema Has Type Property
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - type
+    severity: 2
+    range:
+      start:
+        line: 680
+        character: 12
+      end:
+        line: 680
+        character: 18
+  - code: openapi-schema-properties-info
+    message: Schema Have Properties
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+    severity: 2
+    range:
+      start:
+        line: 681
+        character: 17
+      end:
+        line: 812
+        character: 72
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - tavv
+    severity: 2
+    range:
+      start:
+        line: 682
+        character: 13
+      end:
+        line: 692
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - tavv
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 683
+        character: 21
+      end:
+        line: 683
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - tavv
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 684
+        character: 21
+      end:
+        line: 684
+        character: 23
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - tavv
+      - description
+    severity: 2
+    range:
+      start:
+        line: 686
+        character: 23
+      end:
+        line: 691
+        character: 30
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - tavv
+      - description
+    severity: 0
+    range:
+      start:
+        line: 686
+        character: 23
+      end:
+        line: 691
+        character: 30
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - accountType
+    severity: 2
+    range:
+      start:
+        line: 693
+        character: 20
+      end:
+        line: 701
+        character: 34
+  - code: openapi-schema-properties-string-maxlength-error
+    message: Schema String Properties MUST Have Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - accountType
+    severity: 0
+    range:
+      start:
+        line: 693
+        character: 20
+      end:
+        line: 701
+        character: 34
+  - code: openapi-schema-properties-string-minlength-error
+    message: Schema String Properties MUST Have Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - accountType
+    severity: 0
+    range:
+      start:
+        line: 693
+        character: 20
+      end:
+        line: 701
+        character: 34
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - accountType
+      - description
+    severity: 2
+    range:
+      start:
+        line: 695
+        character: 23
+      end:
+        line: 700
+        character: 60
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - accountType
+      - description
+    severity: 0
+    range:
+      start:
+        line: 695
+        character: 23
+      end:
+        line: 700
+        character: 60
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquiringBin
+    severity: 2
+    range:
+      start:
+        line: 702
+        character: 21
+      end:
+        line: 713
+        character: 67
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquiringBin
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 703
+        character: 21
+      end:
+        line: 703
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquiringBin
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 704
+        character: 21
+      end:
+        line: 704
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquiringBin
+      - description
+    severity: 2
+    range:
+      start:
+        line: 706
+        character: 23
+      end:
+        line: 713
+        character: 67
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquiringBin
+      - description
+    severity: 0
+    range:
+      start:
+        line: 706
+        character: 23
+      end:
+        line: 713
+        character: 67
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardAcceptor
+    severity: 2
+    range:
+      start:
+        line: 714
+        character: 21
+      end:
+        line: 715
+        character: 51
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCvv2Value
+    severity: 2
+    range:
+      start:
+        line: 716
+        character: 22
+      end:
+        line: 724
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCvv2Value
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 717
+        character: 21
+      end:
+        line: 717
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCvv2Value
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 718
+        character: 21
+      end:
+        line: 718
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCvv2Value
+      - description
+    severity: 2
+    range:
+      start:
+        line: 720
+        character: 23
+      end:
+        line: 723
+        character: 69
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardExpiryDate
+    severity: 2
+    range:
+      start:
+        line: 725
+        character: 23
+      end:
+        line: 735
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardExpiryDate
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 726
+        character: 21
+      end:
+        line: 726
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardExpiryDate
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 727
+        character: 21
+      end:
+        line: 727
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardExpiryDate
+      - description
+    severity: 2
+    range:
+      start:
+        line: 729
+        character: 23
+      end:
+        line: 734
+        character: 59
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardExpiryDate
+      - description
+    severity: 0
+    range:
+      start:
+        line: 729
+        character: 23
+      end:
+        line: 734
+        character: 59
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCurrencyCode
+    severity: 2
+    range:
+      start:
+        line: 736
+        character: 25
+      end:
+        line: 745
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCurrencyCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 737
+        character: 21
+      end:
+        line: 737
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCurrencyCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 738
+        character: 21
+      end:
+        line: 738
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardCurrencyCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 740
+        character: 23
+      end:
+        line: 744
+        character: 22
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - pointOfServiceData
+    severity: 2
+    range:
+      start:
+        line: 746
+        character: 27
+      end:
+        line: 747
+        character: 64
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquirerCountryCode
+    severity: 2
+    range:
+      start:
+        line: 748
+        character: 28
+      end:
+        line: 755
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquirerCountryCode
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 749
+        character: 21
+      end:
+        line: 749
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquirerCountryCode
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 750
+        character: 21
+      end:
+        line: 750
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - acquirerCountryCode
+      - description
+    severity: 2
+    range:
+      start:
+        line: 752
+        character: 23
+      end:
+        line: 754
+        character: 17
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - identityVerification
+    severity: 2
+    range:
+      start:
+        line: 756
+        character: 29
+      end:
+        line: 757
+        character: 66
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - primaryAccountNumber
+    severity: 2
+    range:
+      start:
+        line: 758
+        character: 29
+      end:
+        line: 765
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - primaryAccountNumber
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 759
+        character: 21
+      end:
+        line: 759
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - primaryAccountNumber
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 760
+        character: 21
+      end:
+        line: 760
+        character: 23
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - primaryAccountNumber
+      - description
+    severity: 2
+    range:
+      start:
+        line: 762
+        character: 23
+      end:
+        line: 764
+        character: 21
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderPhoneNumber
+    severity: 2
+    range:
+      start:
+        line: 766
+        character: 30
+      end:
+        line: 775
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderPhoneNumber
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 767
+        character: 21
+      end:
+        line: 767
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderPhoneNumber
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 768
+        character: 21
+      end:
+        line: 768
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderPhoneNumber
+      - description
+    severity: 2
+    range:
+      start:
+        line: 770
+        character: 23
+      end:
+        line: 774
+        character: 39
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderEmailAddress
+    severity: 2
+    range:
+      start:
+        line: 776
+        character: 31
+      end:
+        line: 781
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderEmailAddress
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 777
+        character: 21
+      end:
+        line: 777
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderEmailAddress
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 778
+        character: 21
+      end:
+        line: 778
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderEmailAddress
+      - description
+    severity: 2
+    range:
+      start:
+        line: 780
+        character: 23
+      end:
+        line: 780
+        character: 74
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - systemsTraceAuditNumber
+    severity: 2
+    range:
+      start:
+        line: 782
+        character: 32
+      end:
+        line: 790
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - systemsTraceAuditNumber
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 783
+        character: 21
+      end:
+        line: 783
+        character: 22
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - systemsTraceAuditNumber
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 784
+        character: 21
+      end:
+        line: 784
+        character: 22
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - systemsTraceAuditNumber
+      - description
+    severity: 2
+    range:
+      start:
+        line: 786
+        character: 23
+      end:
+        line: 789
+        character: 59
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - pointOfServiceCapability
+    severity: 2
+    range:
+      start:
+        line: 791
+        character: 33
+      end:
+        line: 792
+        character: 63
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - retrievalReferenceNumber
+    severity: 2
+    range:
+      start:
+        line: 793
+        character: 33
+      end:
+        line: 808
+        character: 25
+  - code: openapi-schema-properties-string-maxlength-info
+    message: Schema String Properties Has Maximum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - retrievalReferenceNumber
+      - maxLength
+    severity: 2
+    range:
+      start:
+        line: 794
+        character: 21
+      end:
+        line: 794
+        character: 23
+  - code: openapi-schema-properties-string-minlength-info
+    message: Schema String Properties Has Minimum Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - retrievalReferenceNumber
+      - minLength
+    severity: 2
+    range:
+      start:
+        line: 795
+        character: 21
+      end:
+        line: 795
+        character: 23
+  - code: openapi-schema-properties-descriptions-info
+    message: Schema Properties Have Description
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - retrievalReferenceNumber
+      - description
+    severity: 2
+    range:
+      start:
+        line: 797
+        character: 23
+      end:
+        line: 807
+        character: 25
+  - code: openapi-schema-properties-descriptions-length-error
+    message: Schema Properties Description MUST Have 250 Characters
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - retrievalReferenceNumber
+      - description
+    severity: 0
+    range:
+      start:
+        line: 797
+        character: 23
+      end:
+        line: 807
+        character: 25
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - addressVerificationResults
+    severity: 2
+    range:
+      start:
+        line: 809
+        character: 35
+      end:
+        line: 810
+        character: 65
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - addressVerificationResults
+    severity: 0
+    range:
+      start:
+        line: 809
+        character: 35
+      end:
+        line: 810
+        character: 65
+  - code: openapi-schema-properties-names-camel-case-info
+    message: Schema Property Names Are camelCase.
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderNameVerification
+    severity: 2
+    range:
+      start:
+        line: 811
+        character: 35
+      end:
+        line: 812
+        character: 72
+  - code: openapi-schema-properties-names-length-error
+    message: Schema Properties Name Length
+    path:
+      - components
+      - schemas
+      - CardValidationRequest
+      - properties
+      - cardHolderNameVerification
+    severity: 0
+    range:
+      start:
+        line: 811
+        character: 35
+      end:
+        line: 812
+        character: 72
+  - code: openapi-components-responses-bad-request-error
+    message: Components MUST have a bad request response.
+    path:
+      - components
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-responses-conflict-error
+    message: Components MUST have a conflict response.
+    path:
+      - components
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-responses-forbidden-error
+    message: Components MUST have a forbidden response.
+    path:
+      - components
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-responses-info
+    message: Components has a responses property.
+    path:
+      - components
+      - responses
+    severity: 2
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-responses-internal-server-error-error
+    message: Components MUST have a internal server error response.
+    path:
+      - components
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-responses-not-found-error
+    message: Components MUST have a not found response.
+    path:
+      - components
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-responses-too-many-requests-error
+    message: Components MUST have a too many requests response.
+    path:
+      - components
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-responses-unauthorized-error
+    message: Components MUST have a unauthorized response.
+    path:
+      - components
+      - responses
+    severity: 0
+    range:
+      start:
+        line: 813
+        character: 12
+      end:
+        line: 813
+        character: 15
+  - code: openapi-components-parameters-info
+    message: Components Have a Parameters Property
+    path:
+      - components
+      - parameters
+    severity: 2
+    range:
+      start:
+        line: 814
+        character: 13
+      end:
+        line: 814
+        character: 16
+  - code: openapi-components-examples-info
+    message: Components Have a Examples Property
+    path:
+      - components
+      - examples
+    severity: 2
+    range:
+      start:
+        line: 815
+        character: 11
+      end:
+        line: 815
+        character: 14
+  - code: openapi-components-headers-info
+    message: Components Have a Headers Property
+    path:
+      - components
+      - headers
+    severity: 2
+    range:
+      start:
+        line: 817
+        character: 10
+      end:
+        line: 817
+        character: 13
+  - code: openapi-components-headers-rate-limit-error
+    message: Components MUST Have Rate Limit Headers
+    path:
+      - components
+      - headers
+    severity: 0
+    range:
+      start:
+        line: 817
+        character: 10
+      end:
+        line: 817
+        character: 13
+  - code: openapi-components-headers-retry-after-error
+    message: Components MUST have a retry after headers.
+    path:
+      - components
+      - headers
+    severity: 0
+    range:
+      start:
+        line: 817
+        character: 10
+      end:
+        line: 817
+        character: 13

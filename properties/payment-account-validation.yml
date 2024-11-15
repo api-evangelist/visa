@@ -1,1 +1,823 @@
-{}
+openapi: 3.0.1
+info:
+  title: Payment Account Validation
+  description: ''
+  version: '1'
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox server
+security: []
+tags:
+  - name: Payment Account Validation API
+    description: >-
+      The Payment Account Validation API allows applications to run validations
+      of the payment account before processing a transaction ensuring greater
+      probability of success and allowing for a more seamless transaction flow.
+paths:
+  /pav/v1/cardvalidation:
+    post:
+      tags:
+        - Payment Account Validation API
+      summary: Card Validation
+      description: Perform validations of the payment account
+      operationId: Card Validation
+      requestBody:
+        description: Request body for Card Validation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardValidationRequest'
+            examples:
+              Account Validation Unsuccessful:
+                summary: Account Validation Unsuccessful
+                value:
+                  systemsTraceAuditNumber: '743720'
+                  cardCvv2Value: '022'
+                  cardAcceptor:
+                    address:
+                      country: US
+                      zipCode: '94404'
+                      city: fostr city
+                      state: CA
+                    idCode: '111111'
+                    name: ABC Corp
+                    terminalId: '12345678'
+                  acquirerCountryCode: '840'
+                  primaryAccountNumber: '4957030420210462'
+                  acquiringBin: '408999'
+                  retrievalReferenceNumber: '015221743720'
+                  cardExpiryDate: 2020-10
+                  addressVerificationResults:
+                    street: 801 Metro Center Blv
+                    postalCode: '94404'
+              Account validation using Token Successful:
+                summary: Account validation using Token Successful
+                value:
+                  systemsTraceAuditNumber: '743720'
+                  cardAcceptor:
+                    address:
+                      country: US
+                      zipCode: '94404'
+                      city: fostr city
+                      state: CA
+                    idCode: '111111'
+                    name: ABC Corp
+                    terminalId: '12345678'
+                  acquirerCountryCode: '840'
+                  primaryAccountNumber: '4957030420210462'
+                  tavv: 0100000000000287A522DC5E26614C4005000000
+                  acquiringBin: '408999'
+                  retrievalReferenceNumber: '015221743720'
+                  cardExpiryDate: 2040-10
+                  addressVerificationResults:
+                    street: 801 Metro Center Blv
+                    postalCode: '94404'
+              Account Validation Successful:
+                summary: Account Validation Successful
+                value:
+                  systemsTraceAuditNumber: '743720'
+                  cardCvv2Value: '022'
+                  cardAcceptor:
+                    address:
+                      country: US
+                      zipCode: '94404'
+                      city: fostr city
+                      state: CA
+                    idCode: '111111'
+                    name: ABC Corp
+                    terminalId: '12345678'
+                  acquirerCountryCode: '840'
+                  primaryAccountNumber: '4957030420210462'
+                  acquiringBin: '408999'
+                  retrievalReferenceNumber: '015221743720'
+                  cardExpiryDate: 2040-10
+                  addressVerificationResults:
+                    street: 801 Metro Center Blv
+                    postalCode: '94404'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/CardValidationRequest'
+            examples:
+              Default:
+                summary: Default
+                value: >-
+                  <?xml version=\"1.0\"
+                  encoding=\"UTF-8\"?>\n<ns1:AcnvV2V2Request\n
+                  xmlns:ns1=\"http://www.visa.com/vpp/api/acnv\">\n\t<systemsTraceAuditNumber
+                  xmlns=\"\">743823</systemsTraceAuditNumber>\n\t<retrievalReferenceNumber
+                  xmlns=\"\">015221743823</retrievalReferenceNumber>\n\t<primaryAccountNumber
+                  xmlns=\"\">4895070000003551</primaryAccountNumber>\n\t<cardExpiryDate
+                  xmlns=\"\">2020-10</cardExpiryDate>\n\t<cardCvv2Value
+                  xmlns=\"\">022</cardCvv2Value>\n\t<addressVerificationResults
+                  xmlns=\"\">\n\t\t<ns2:street
+                  xmlns:ns2=\"http://www.visa.com/vpp/api/dd\">900 Metro Center
+                  Blv</ns2:street>\n\t\t<ns3:postalCode
+                  xmlns:ns3=\"http://www.visa.com/vpp/api/dd\">94404</ns3:postalCode>\n\t</addressVerificationResults>\n\t<cardAcceptor
+                  xmlns=\"\">\n\t\t<ns4:name
+                  xmlns:ns4=\"http://www.visa.com/vpp/api/dd\">Visa
+                  Inc</ns4:name>\n\t\t<ns5:terminalId
+                  xmlns:ns5=\"http://www.visa.com/vpp/api/dd\">1</ns5:terminalId>\n\t\t<ns6:idCode
+                  xmlns:ns6=\"http://www.visa.com/vpp/api/dd\">abcd</ns6:idCode>\n\t\t<ns7:address
+                  xmlns:ns7=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns7:city>San
+                  Francisco</ns7:city>\n\t\t\t<ns7:state>CA</ns7:state>\n\t\t\t<ns7:country>USA</ns7:country>\n\t\t\t<ns7:zipCode>94404</ns7:zipCode>\n\t\t\t</ns7:address>\n\t</cardAcceptor>\n\t<identityVerification
+                  xmlns=\"\">\n\t\t<ns8:identities
+                  xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>NATIONALIDENTITY</ns8:identityType>\n\t\t</ns8:identities>\n\t\t<ns8:identities
+                  xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>PASSPORT</ns8:identityType>\n\t\t</ns8:identities>\n\t\t<ns8:identities
+                  xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>DRIVERLICENSE</ns8:identityType>\n\t\t</ns8:identities>\n\t\t<ns8:identities
+                  xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>TAX</ns8:identityType>\n\t\t</ns8:identities>\n\t</identityVerification>\n</ns1:AcnvV2V2Request>
+        required: true
+      responses:
+        '200':
+          description: Card Validation Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardValidationResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CardValidationResponse'
+      x-samplePayload:
+        cardAcceptor:
+          name: rohan
+          idCode: '111111'
+          address:
+            city: fostr city
+            state: CA
+            county: CA
+            country: PAKISTAN
+            zipCode: '94404'
+          terminalId: '123'
+        cardCvv2Value: '672'
+        cardExpiryDate: 2018-06
+        identityVerification:
+          identities:
+            - identityType: PASSPORT
+              identityValue: '123'
+            - identityType: DRIVERLICENSE
+              identityValue: '123'
+            - identityType: TAX
+              identityValue: '123'
+            - identityType: NATIONALIDENTITY
+              identityValue: '123'
+        primaryAccountNumber: '4957030000313108'
+        systemsTraceAuditNumber: '743720'
+        retrievalReferenceNumber: '015221743720'
+        addressVerificationResults:
+          street: 2881 Main Street Sw
+          postalCode: T4B 3G5
+      x-name: Card Validation
+      x-notes: ''
+      x-internalUri: {}
+      x-codegen-request-body-name: cardValidationPayload
+      x-samplePayloadXML: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ns1:AcnvV2V2Request\n  xmlns:ns1=\"http://www.visa.com/vpp/api/acnv\">\n\t<systemsTraceAuditNumber xmlns=\"\">743823</systemsTraceAuditNumber>\n\t<retrievalReferenceNumber xmlns=\"\">015221743823</retrievalReferenceNumber>\n\t<primaryAccountNumber xmlns=\"\">4895070000003551</primaryAccountNumber>\n\t<cardExpiryDate xmlns=\"\">2020-10</cardExpiryDate>\n\t<cardCvv2Value xmlns=\"\">022</cardCvv2Value>\n\t<addressVerificationResults xmlns=\"\">\n\t\t<ns2:street xmlns:ns2=\"http://www.visa.com/vpp/api/dd\">900 Metro Center Blv</ns2:street>\n\t\t<ns3:postalCode xmlns:ns3=\"http://www.visa.com/vpp/api/dd\">94404</ns3:postalCode>\n\t</addressVerificationResults>\n\t<cardAcceptor xmlns=\"\">\n\t\t<ns4:name xmlns:ns4=\"http://www.visa.com/vpp/api/dd\">Visa Inc</ns4:name>\n\t\t<ns5:terminalId xmlns:ns5=\"http://www.visa.com/vpp/api/dd\">1</ns5:terminalId>\n\t\t<ns6:idCode xmlns:ns6=\"http://www.visa.com/vpp/api/dd\">abcd</ns6:idCode>\n\t\t<ns7:address xmlns:ns7=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns7:city>San Francisco</ns7:city>\n\t\t\t<ns7:state>CA</ns7:state>\n\t\t\t<ns7:country>USA</ns7:country>\n\t\t\t<ns7:zipCode>94404</ns7:zipCode>\n\t\t\t</ns7:address>\n\t</cardAcceptor>\n\t<identityVerification xmlns=\"\">\n\t\t<ns8:identities xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>NATIONALIDENTITY</ns8:identityType>\n\t\t</ns8:identities>\n\t\t<ns8:identities xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>PASSPORT</ns8:identityType>\n\t\t</ns8:identities>\n\t\t<ns8:identities xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>DRIVERLICENSE</ns8:identityType>\n\t\t</ns8:identities>\n\t\t<ns8:identities xmlns:ns8=\"http://www.visa.com/vpp/api/dd\">\n\t\t\t<ns8:identityValue>123</ns8:identityValue>\n\t\t\t<ns8:identityType>TAX</ns8:identityType>\n\t\t</ns8:identities>\n\t</identityVerification>\n</ns1:AcnvV2V2Request>"
+      x-operationVersions:
+        - label: v1 - Latest
+          operationPointer: '#/paths/~1pav~1v1~1cardvalidation/post'
+          default: false
+components:
+  schemas:
+    PointOfServiceDataRequest:
+      required:
+        - motoECIIndicator
+        - panEntryMode
+        - posConditionCode
+      type: object
+      properties:
+        panEntryMode:
+          type: integer
+          description: >-
+            A 2-digit code that identifies the method used to enter the
+            cardholder account number and card expiration date. This code
+            specifies whether the entire magnetic stripe is included in an
+            authorization or financial request. <br><br> Recommended value for
+            card/token verification for Card not present transactions is 01.
+            Default value is 01.<br><br>Refer to <a
+            href="/request_response_codes#pan_entry_mode_codes">PAN Entry Mode
+            Codes</a>
+        posEnvironment:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            <b>Conditional</b><br><br> This field is required to identify
+            whether a transaction is merchant-initiated. <br><br>Refer to <a
+            href="/request_response_codes#pos_env_codes">POS Environment
+            Codes</a>
+        motoECIIndicator:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            Identifies the level of security used in an electronic commerce
+            transaction over an open network (for example, the Internet) or the
+            type of mail or telephone order. Acquirers supply indicator values,
+            which V.I.P. forwards in requests and advices to issuers that have
+            successfully tested to receive them. The subfield is dropped if
+            issuers have not successfully completed testing or choose not to
+            receive it. <br><br> Required for Tokens with cryptograms.
+            Recommended values for Tokens are 05(Secure electronic commerce
+            transaction) or 07 (Non-Authenticated security transaction).
+            <br><br> Optional for Card verification without CAVV validation.
+            <br><br>Refer to <a
+            href="/request_response_codes#moto_eci_ind_codes">Moto ECI Codes</a>
+        posConditionCode:
+          type: integer
+          description: >-
+            Contains a code identifying transaction conditions at the point of
+            sale or point of service. For messages that follow an original
+            request, this code identifies the type of processing being
+            done.<br><br>For Address/cvv2/account verification without
+            authorization is 51. Default value is 51.<br><br>Refer to <a
+            href="/request_response_codes#pos_cond_code_codes">POS Condition
+            Codes</a>
+        specialConditionIndicatorMerchant:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            Cryptocurrency indicator with the value of 7 can be used to
+            identify the purchase of cryptocurrency, thereby providing greater
+            visibility to the issuers.
+      description: >-
+        Contains a code identifying transaction conditions at the point-of-sale
+        or point of service. For messages that follow an original request, this
+        code identifies the type of processing being done. <br> <b>Note:</b> For
+        a CardPresent or Token Transactions, this field is required. If this
+        Object is not passed in the request then API will default at following
+        values: "pointOfServiceData": { "panEntryMode": "01","posConditionCode":
+        "51"}"
+    CardHolderNameVerificationResponse:
+      type: object
+      properties:
+        nameResult:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            This field will contain the result of the Account Name Inquiry
+            request. Below are the possible values. <br><br>Refer to <a
+            href="/request_response_codes#account-name-inquiry-results">ANI name
+            Result</a>
+          example: string
+        nameMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            This field will contain the decision of the account name matching
+            performed by Account Name Inquiry if value in nameResult field
+            contains the value of 00.<br><br>Refer to <a
+            href="/request_response_codes#account-name-inquiry-results">ANI
+            match decision</a>
+          example: string
+        lastNameAccountMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            This field will contain the decision of the account Last name
+            matching performed by Account Name Inquiry if value in nameResult
+            field contains the value of 00.<br><br>Refer to <a
+            href="/request_response_codes#account-name-inquiry-results">ANI
+            match decision</a>
+          example: string
+        firstNameAccountMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            This field will contain the decision of the account First name
+            matching performed by Account Name Inquiry if value in nameResult
+            field contains the value of 00.<br><br>Refer to <a
+            href="/request_response_codes#account-name-inquiry-results">ANI
+            match decision</a>
+          example: string
+        middleNameAccountMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            This field will contain the decision of the account Middle name
+            matching performed by Account Name Inquiry if value in name Result
+            field contains the value of 00.<br><br>Refer to <a
+            href="/request_response_codes#account-name-inquiry-results">ANI
+            match decision</a>
+          example: string
+      description: >-
+        Optional Service enabling verification of the cardholder name.API calls
+        have to be MLE enabled to be able to send in this data.
+    IdentityVerificationRequest:
+      type: object
+      properties:
+        identities:
+          type: array
+          items:
+            required:
+              - identityType
+              - identityValue
+            type: object
+            properties:
+              identityType:
+                type: string
+                description: >-
+                  <b>Note: Required when IdentityVerificationRequest object is
+                  present in the request.</b><br><br>Type of identification.
+                  Below are the possible values.<br><br> NATIONALIDENTITY<br>
+                  PASSPORT<br> DRIVERLICENSE<br> TAX
+              identityValue:
+                maxLength: 35
+                minLength: 1
+                type: string
+                description: >-
+                  <b>Note: Required when IdentityVerificationRequest object is
+                  present in the request.</b><br><br>The identification value
+      description: >-
+        This is an optional field. This is used to validate the cardholder
+        identity of the primaryAccountNumber in the request.Supported only in
+        the LAC region. API calls have to be MLE enabled to be able to send in
+        this data.
+    CardAcceptor:
+      required:
+        - idCode
+        - name
+      type: object
+      properties:
+        name:
+          maxLength: 25
+          minLength: 1
+          type: string
+          description: >-
+            <b>Note: Required when CardAcceptor object is present in the
+            request.</b><br><br>Name of the cardAcceptor<ul><li>This field must
+            contain the name of the cardAcceptor (Funds Transfer Originator or
+            merchant) as known to the cardholder. </li><li>For requests
+            originated by Visa on behalf of clients, this field should contain
+            the name of the service as known to the client requesting the
+            service.</li></ul><br> Requests that do not contain a card acceptor
+            name will be rejected. beginning [1 April 2025] 
+        idCode:
+          maxLength: 15
+          minLength: 1
+          type: string
+          description: >-
+            <b>Note: Required when CardAcceptor object is present in the
+            request.</b><br><br>This field must contain an identifier for the
+            card acceptor (Funds Transfer Originator or merchant).<ul><li>This
+            value should be unique for each originator for whom you are sending
+            transactions and must not contain all zeros.</li><li>If the card
+            acceptor does not have an idCode, the clients 8 digit Business
+            Identifier (BID) + 3-digit numeric country code may be used in this
+            field.</li><li>For requests originated by Visa on behalf of clients
+            that use a Visa-owned Acquiring BIN, this field should contain the
+            business ID of the client requesting the service.</li><li>Clients
+            who are unsure of their BID should contact their Visa representative
+            for assistance.</li></ul><br>Requests that do not contain an idCode
+            will be rejected beginning [1 April 2025].
+        address:
+          $ref: '#/components/schemas/CardAcceptorAddress'
+        terminalId:
+          maxLength: 8
+          minLength: 1
+          type: string
+          description: >-
+            The identifier for the terminal at a card acceptor location. If
+            sending transactions from a card not present context, the same value
+            may be used for all transactions .
+      description: >-
+        The cardAcceptor is the merchant, funds transfer originator or Visa
+        internal application submitting the Payment Account Validation
+        request.<br><br>All users must provide card acceptor information for
+        reporting purposes At a minimum, idCode and name are required.
+    PointOfServiceCapability:
+      type: object
+      properties:
+        posTerminalType:
+          type: integer
+          description: >-
+            This 1-digit code identifies the basic POS electronic terminal
+            category.<br><br>Valid Values :<br>0-Unspecified<br>3-Unattended
+            cardholder-activated, authorized transaction Use to indicate that
+            the transaction has all following characteristics: Occurs in an
+            unattended cardholder-activated environment.Is authorized online or
+            approved offline. Examples are: Movie and game rentals and Automated
+            retail<br>4-Electronic cash register<br>5-Unattended customer
+            terminal (intended for use in the LAC region only)<br>7-Telephone
+            device (including Visa dial terminals)<br>8-Reserved<br>9-Use to
+            identify that an mPOS device is used to originate a transaction on
+            an open network<br><br>
+        posTerminalEntryCapability:
+          type: integer
+          description: >-
+            Recommended value for card not present is 5. Default value is 5.
+            <br><br>Note:Valid values if card is present include 0, 3 and 4. If
+            card is not present, valid value is 5.<br><br>
+      description: >-
+        <b>Note:</b> For a CardPresent Transactions, this field is required.
+        <br><br> If this object is not present API will default following values
+        "pointOfServiceCapability": {"posTerminalType":
+        "5","posTerminalEntryCapability":
+        "1","acceptsPartialAuthorizations":"false"}"
+    AddressVerificationResults:
+      required:
+        - postalCode
+      type: object
+      properties:
+        street:
+          maxLength: 20
+          minLength: 1
+          type: string
+          description: >-
+            Address provided by the account holder for the primaryAccountNumber
+            in the request.
+        postalCode:
+          maxLength: 9
+          minLength: 1
+          type: string
+          description: >-
+            <b>Note: Required when addressVerificationResults object is present
+            in the request.</b><br><br>Postal Code provided by the account
+            holder for the primaryAccountNumber in the request.
+      description: >-
+        Contains the address of the cardholder to be verified with the card
+        issuer.
+    IdentityVerificationResponse:
+      type: object
+      properties:
+        identities:
+          type: array
+          items:
+            required:
+              - identityType
+              - identityVerificationResult
+            type: object
+            properties:
+              identityType:
+                type: string
+                description: >-
+                  Type of identification result. Below are the possible
+                  values.<br><br> NATIONALIDENTITY<br> PASSPORT<br>
+                  DRIVERLICENSE<br> TAX
+                example: string
+              identityVerificationResult:
+                maxLength: 1
+                minLength: 1
+                type: string
+                description: >-
+                  Validation results. Below are the possible values.<br><br> 1 -
+                  Verified<br> 2 - Failed<br> 3 - Not performed<br> 4 - Issuer
+                  does not support id verification
+                example: string
+      description: >-
+        Cardholder identity validation results for the primaryAccountNumber in
+        the request.Supported only in the LAC region.
+    CardHolderNameVerificationRequest:
+      required:
+        - lastName
+      type: object
+      properties:
+        lastName:
+          maxLength: 35
+          minLength: 1
+          type: string
+          description: >-
+            <b>Note: Required when CardHolderNameVerificationRequest object is
+            present in the request.</b><br><br>This field identifies last name
+            of account or entity. Must not contain: <br><br> All spaces <br> All
+            zeros <br> All numerics <br> Any question mark
+          example: string
+        firstName:
+          maxLength: 35
+          minLength: 1
+          type: string
+          description: >-
+            This field identifies first name of account or entity. Must not
+            contain: <br><br> All spaces <br> All zeros <br> All numerics <br>
+            Any question mark
+          example: string
+        ownerType:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            This field will contain the account owner type to identify if the
+            name belongs to the primary or secondary account owner. Below are
+            the possible values. <br><br> 01 - Primary account owner <br> 02 -
+            Secondary account owner
+          example: string
+        middleName:
+          maxLength: 35
+          minLength: 1
+          type: string
+          description: >-
+            This field identifies middle name of account or entity. Must not
+            contain: <br><br> All spaces <br> All zeros <br> All numerics <br>
+            Any question mark
+          example: string
+      description: API calls have to be MLE enabled to be able to send in this data.
+    CardAcceptorAddress:
+      type: object
+      properties:
+        city:
+          maxLength: 13
+          minLength: 1
+          type: string
+          description: City of themerchant or the funds transfer originator/operator.
+          example: string
+        state:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            Use a 2-character abbreviated states code or territory code as the
+            state value. Make sure to give a valid state code for given country.
+          example: string
+        county:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: County of the funds transfer operator/originator
+          example: string
+        country:
+          maxLength: 3
+          minLength: 2
+          type: string
+          description: >-
+            This field must contain the 3-character alpha country code for the
+            country of the merchant or the originator or the funds transfer
+            operator. Refer to [ISO
+            Codes](/request_response_codes#iso_country_codes)
+          example: string
+        zipCode:
+          maxLength: 9
+          minLength: 5
+          type: string
+          description: >-
+            Zip/Postal code of the merchant or the funds transfer
+            operator/originator.
+          example: string
+      description: >-
+        Contains the physical address, URL or telephone number for the merchant
+        or funds transfer originator/operator requesting the Account Validation.
+    CardValidationResponse:
+      required:
+        - actionCode
+        - responseCode
+        - transactionIdentifier
+      type: object
+      properties:
+        actionCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: >-
+            The results of the transaction request.<br>Refer to <a
+            href="/request_response_codes#actionCode">ActionCode</a>
+            <br><b>Note: </b>The VisaNet Response Code for the transaction
+          example: string
+        approvalCode:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: The authorization code from the issuer.
+          example: string
+        responseCode:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            The source for the response; typically, either the recipient issuer
+            or a Visa system. <br>Refer to <a
+            href="/request_response_codes#responseSource">ResponseSource</a>
+          example: string
+        cvv2ResultCode:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            Results of the CVV2 validation for the primaryAccountNumber in the
+            request. When dtvv is provided in cardCvv2Value in the request,
+            cvv2ResultCode will be sent in response along with
+            tokenVerificationResult<br>Refer to <a
+            href="/request_response_codes#cvv2ResultsCode">cvv2ResultsCode</a>
+          example: string
+        identityVerification:
+          $ref: '#/components/schemas/IdentityVerificationResponse'
+        transactionIdentifier:
+          maxLength: 15
+          minLength: 15
+          type: string
+          description: The VisaNet reference number for the transaction.
+          example: string
+        cardVerificationResults:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            A Visa-defined code indicating Card Verification Value (CVV), iCVV
+            (Integrated Chip Card CVV) or dCVV (dynamic CVV) verification
+            results. <br>Refer to <a
+            href="/request_response_codes#cvvIcvvResultsCodes"> CVV/iCVV Results
+            Codes.</a><br><b>Note: </b>Reserved for future use
+          example: string
+        cardAuthenticationResults:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            A Visa-defined code indicating Online Card Authentication Method
+            results. <br>Refer to <a
+            href="/request_response_codes#cardAuthenticationResults">cardAuthenticationResults.</a><br><b>Note:
+            </b>Reserved for future use
+          example: string
+        addressVerificationResults:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            Results of the Address Verification Service (AVS) validation for the
+            PrimaryAccountNumber in the request. <br>Refer to <a
+            href="/request_response_codes#addressVerificationResults">addressVerificationResults</a>
+          example: string
+        cardHolderNameVerificationResult:
+          $ref: '#/components/schemas/CardHolderNameVerificationResponse'
+        cardHolderPhoneNumberVerificationResults:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            Card holder Phone Number Verification Results from the issuer. <br>
+            Possible Result sets include- <br><br> 1 - Verified <br> 2 - Failed
+            <br> 3 - Not performed
+          example: string
+        cardHolderEmailAddressVerificationResults:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            Card holder Email Address Verification Results from the issuer. <br>
+            Possible Result sets include- <br><br> 1 - Verified <br> 2 - Failed
+            <br> 3 - Not performed
+          example: string
+        cardholderAuthenticationVerificationResults:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: >-
+            If TAVV is provided in the request, its validation result will be
+            provided in this field. <br><br> For future: This field will be
+            extended to provide validation result for Cardholder Authentication
+            Verification Value (CAVV) if it appears in the request. <br>Refer to
+            <a href="/request_response_codes#cavvResultCode">CAVV Results
+            Codes.</a><br><b>Note: </b> For E-Commerce transactions containing
+            token data, this attribute must be present with a value of 0, 1, or
+            2.  If the TAVV fails validation, this attribute will have TAVV
+            validation result with a value of 1.
+          example: string
+    CardValidationRequest:
+      required:
+        - acquirerCountryCode
+        - acquiringBin
+        - primaryAccountNumber
+      type: object
+      properties:
+        tavv:
+          maxLength: 40
+          minLength: 40
+          type: string
+          description: >-
+            The token authentication verification  or token cryptogram value
+            provided by the token provider for the card token in the request.
+            dtvv in cardCvv2Value or tavv is required to be placed when Token is
+            entered in primary account number. This field should be in
+            hexabinary format.
+          example: string
+        accountType:
+          type: string
+          description: >-
+            This is used to identify the account type of the
+            primaryAccountNumber in the request. Below are the possible
+            values.<br>00-Not applicable<br>10-Savings Account<br> 20-Checking
+            account<br> 30-Credit card account<br>40-Universal
+            account<br>Default is set to 00 if not provided.
+          x-variant: '| Length: 2'
+        acquiringBin:
+          maxLength: 11
+          minLength: 6
+          type: string
+          description: >-
+            This field must contain an acquiring BIN.  This requirement applies
+            to all users of this API.<br><ul><li>Clients who are unsure of their
+            BIN should contact their Visa representative for
+            assistance.</li><li>Visa internal applications submitting the
+            requests in support of Visa services may contact the product office
+            for assistance.</li></ul><br>Requests that do not contain a valid
+            Acquirer BIN will be rejected beginning [1 April 2025] 
+        cardAcceptor:
+          $ref: '#/components/schemas/CardAcceptor'
+        cardCvv2Value:
+          maxLength: 4
+          minLength: 3
+          type: string
+          description: >-
+            The cvv2Value value provided by the account holder for the
+            primaryAccountNumber in the request.<br><b>Note</b>:dtvv as a token
+            cryptogram can be placed in the request in cardCvv2value.
+          example: string
+        cardExpiryDate:
+          maxLength: 7
+          minLength: 7
+          type: string
+          description: >-
+            This field must contain tThe expiration date for the
+            primaryAccountNumber in the request.  The date is in yymm numeric
+            format, where yy = year (00-99) and mm = month (01-12).  The date
+            should not be a past date.</br>Required for all Visa branded
+            transactions and when the cvv2Value is present.
+          example: string
+        cardCurrencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            Use a 3-character alpha or numeric currency code for the currency of
+            the card. <br><br>Refer to <a
+            href="/request_response_codes#iso_country_and_currency_codes">ISO
+            Codes</a> 
+          example: string
+        pointOfServiceData:
+          $ref: '#/components/schemas/PointOfServiceDataRequest'
+        acquirerCountryCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: >-
+            The clients must provide a 3-digit numeric ISO country code in this
+            field
+          example: string
+        identityVerification:
+          $ref: '#/components/schemas/IdentityVerificationRequest'
+        primaryAccountNumber:
+          maxLength: 19
+          minLength: 13
+          type: string
+          description: >-
+            The primary account number for which account validations are being
+            performed
+          example: string
+        cardHolderPhoneNumber:
+          maxLength: 16
+          minLength: 1
+          type: string
+          description: >-
+            Card holder Phone Number verified with the issuer.<br> First 3
+            numerics will be ISD code followed by up to 12 numerics for the
+            phone number eg. 0013031234567, where 001 is country code and
+            3031234567 is phone number.
+          example: string
+        cardHolderEmailAddress:
+          maxLength: 99
+          minLength: 1
+          type: string
+          description: Card holder Email Address verified with the issuer.
+          example: string
+        systemsTraceAuditNumber:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: >-
+            This is an optional field. It is recommended that the clients of
+            Funds Transfer APIs provide systemsTraceAuditNumber for tie the
+            calls with a single funds transfer transaction.
+          example: string
+        pointOfServiceCapability:
+          $ref: '#/components/schemas/PointOfServiceCapability'
+        retrievalReferenceNumber:
+          maxLength: 12
+          minLength: 12
+          type: string
+          description: >-
+            This is an optional field. It is recommended that the clients of
+            Funds Transfer APIs provide retrievalReferenceNumber for tie the
+            calls with a single funds transfer transaction.</br>Recommended
+            Format: ydddhhnnnnnn</br>The first fours digits must be a valid yddd
+            date in the Julian date format, where the first digit = 0-9 (last
+            digit of current year) and the next three digits = 001-366 (number
+            of the day in the year).</br>hh can be the two digit hour in a 24
+            hour clock (00-23) during which the transaction is
+            performed.</br>nnnnnn can be the SystemsTraceAuditNumber or any 6
+            digit number.
+          example: string
+        addressVerificationResults:
+          $ref: '#/components/schemas/AddressVerificationResults'
+        cardHolderNameVerification:
+          $ref: '#/components/schemas/CardHolderNameVerificationRequest'
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  callbacks: {}
+x-tagGroups:
+  - name: API Reference
+    tags:
+      - Payment Account Validation API

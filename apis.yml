@@ -12,10 +12,6 @@ apis:
         description: >-
           Visa Government Insights Hub enable tailored, efficient, and agile
           decision-making with a differentiated payments insights solution.
-      - url: >-
-          https://developer.visa.com/capabilities/visa-government-insights-hub/docs
-        name: Visa Government Insights Hub
-        type: Documentation
     description: >-
       Visa Government Insights Hub enable tailored, efficient, and agile
       decision-making with a differentiated payments insights solution.

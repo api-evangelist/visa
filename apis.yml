@@ -134,28 +134,24 @@ apis:
         type: TermsOfService
     description: ''
   - aid: visa:card-on-file-data-inquiry
-    name: Card-On-File Data Inquiry
+    name: Card on File Data Inquiry
     tags:
       - Credentials
       - Credit Cards
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
     properties:
-      - name: Getting Started with Card on File Data Inquiry
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-getting-started
-        type: GettingStarted
-      - name: Authentication
-        url: >-
+        name: Getting Started with Card on File Data Inquiry
+        type: OpenAPI
+      - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-authentication
-        type: Authentication
-      - name: Visa Developer Error Codes
-        url: https://developer.visa.com/pages/visa-developer-error-codes
-        type: Errors
-    description: >-
-      Consumers are storing their card credentials at more online retailers and
-      service providers, but often lack visibility into which merchants have
-      their card information and where the card information needs to be updated,
-      when the card is reissued.
+        name: Authentication
+        type: OpenAPI
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Visa Developer Error Codes
+        type: OpenAPI
+    description: ''
   - aid: visa:foreign-exchange
     name: Foreign Exchange
     tags: []

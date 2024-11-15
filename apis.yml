@@ -123,7 +123,9 @@ apis:
     description: ''
   - aid: visa:card-on-file-data-inquiry
     name: Card-On-File Data Inquiry
-    tags: []
+    tags:
+      - Credentials
+      - Credit Cards
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
     properties: []
     description: >-

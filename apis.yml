@@ -22,13 +22,20 @@ apis:
         description: >-
           Visa Government Insights Hub enable tailored, efficient, and agile
           decision-making with a differentiated payments insights solution.
+      - name: Visa Government Insights Hub
+        url: >-
+          https://developer.visa.com/capabilities/visa-government-insights-hub/docs
+        type: Documentation
     description: >-
       Visa Government Insights Hub enable tailored, efficient, and agile
       decision-making with a differentiated payments insights solution.
   - name: Visa Payment Account Reference Inquiry
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-par-inquiry
-    properties: []
+    properties:
+      - name: Visa Payment Account Reference Inquiry
+        url: https://developer.visa.com/capabilities/visa-par-inquiry/docs
+        type: Documentation
     description: >-
       PAR Inquiry delivers the capability to retrieve the PAR numeric linked to
       a Primary Account Number (PAN) in real time. The input to PAR Inquiry is
@@ -42,7 +49,11 @@ apis:
     tags: []
     humanURL: >-
       https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions
-    properties: []
+    properties:
+      - name: Visa Underwriting Intelligence Solutions
+        url: >-
+          https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions/docs
+        type: Documentation
     description: ''
   - name: VCA Data Exchange
     description: >-
@@ -50,14 +61,20 @@ apis:
       insights powered by Visa data
     humanURL: https://developer.visa.com/capabilities/vca-data-exchange
     tags: []
-    properties: []
+    properties:
+      - name: VCA Data Exchange
+        url: https://developer.visa.com/capabilities/vca-data-exchange/docs
+        type: Documentation
 name: Visa
 tags:
   - Credit Cards
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
-common: []
+common:
+  - name: Getting Started
+    url: https://developer.visa.com/capabilities/vdp-pilot-program/docs
+    type: GettingStarted
 created: '2024-11-15T00:00:00.000Z'
 modified: '2024-11-15'
 position: Consumer

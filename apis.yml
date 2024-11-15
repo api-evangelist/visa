@@ -12,6 +12,18 @@ apis:
     description: >-
       Here are a few ways to get started and learn about end-to-end process
       around engaging with our APIs and building a new project.
+  - name: Visa Government Insights Hub Overview
+    description: >-
+      Visa Government Insights Hub enable tailored, efficient, and agile
+      decision-making with a differentiated payments insights solution.
+    tags: []
+    properties:
+      - name: Visa Government Insights Hub Overview
+        description: >-
+          Visa Government Insights Hub enable tailored, efficient, and agile
+          decision-making with a differentiated payments insights solution.
+        url: https://developer.visa.com/capabilities/visa-government-insights-hub
+        type: Documentation
 name: Visa
 tags:
   - Credit Cards
@@ -28,3 +40,4 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
+common: []

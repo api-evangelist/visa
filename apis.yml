@@ -118,9 +118,17 @@ apis:
       - Consent
     humanURL: https://developer.visa.com/capabilities/vcms
     properties:
-      - type: OpenAPI
-        url: properties/visa-consent-management-service.yml
-    description: ''
+      - url: properties/visa-consent-management-service.yml
+        type: OpenAPI
+    description: >-
+      The Visa Consent Management Service (VCMS) is a solution that solicits
+      granular, explicit consent from consumers. This enables Visa and our
+      clients to collect user data in consistent, transparent, and intuitive
+      manner. It also helps to address changing regulatory requirements and
+      satisfies best practices using a set of technical APIs. The solution
+      allows clients to manage the lifecycle of a consent (active, paused,
+      revoked, expired) and provides ways to audit the changes made to the
+      consent through this lifecycle.
   - aid: visa:card-on-file-data-inquiry
     name: Card-On-File Data Inquiry
     tags: []

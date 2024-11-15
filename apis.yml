@@ -61,7 +61,9 @@ apis:
       data about credit applicants utilizing a Visa debit or credit card number:
   - aid: visa:vca-data-exchange
     name: VCA Data Exchange
-    tags: []
+    tags:
+      - Data
+      - Insights
     humanURL: https://developer.visa.com/capabilities/vca-data-exchange
     properties:
       - url: https://developer.visa.com/capabilities/vca-data-exchange/docs

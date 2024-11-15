@@ -63,12 +63,14 @@ apis:
       The VCA Data Exchange API allows clients to access VCA data solutions and
       insights powered by Visa data
     aid: visa:vca-data-exchange
-  - name: Payment Account Validation
-    tags: []
+  - aid: visa:payment-account-validation
+    name: Payment Account Validation
+    tags:
+      - Accounts
+      - Validation
     humanURL: https://developer.visa.com/capabilities/pav
     properties: []
     description: ''
-    aid: visa:payment-account-validation
   - name: Visa Supplier Matching Service
     tags: []
     humanURL: https://developer.visa.com/capabilities/suppliermatchingservice

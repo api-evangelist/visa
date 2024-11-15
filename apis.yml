@@ -20,7 +20,6 @@ apis:
   - aid: visa:visa-payment-account-reference-inquiry
     name: Visa Payment Account Reference Inquiry
     tags:
-      - Primary Account Number
       - Payment Account Reference
     humanURL: https://developer.visa.com/capabilities/visa-par-inquiry
     properties:

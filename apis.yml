@@ -18,6 +18,7 @@ apis:
     description: >-
       Visa Government Insights Hub enable tailored, efficient, and agile
       decision-making with a differentiated payments insights solution.
+    aid: visa:visa-government-insights-hub
   - name: Visa Payment Account Reference Inquiry
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-par-inquiry
@@ -29,6 +30,7 @@ apis:
       PAR Inquiry delivers the capability to retrieve the PAR numeric linked to
       a Primary Account Number (PAN) in real time. The input to PAR Inquiry is
       either one PAN or one affiliated Token to a PAN
+    aid: visa:visa-payment-account-reference-inquiry
   - name: Visa Pilot Program Enablement
     tags: []
     humanURL: https://developer.visa.com/capabilities/vdp-pilot-program
@@ -38,6 +40,7 @@ apis:
         name: Getting Started
         type: Documentation
     description: ''
+    aid: visa:visa-pilot-program-enablement
   - name: Visa Underwriting Intelligence Solutions
     tags: []
     humanURL: >-
@@ -48,6 +51,7 @@ apis:
         name: Visa Underwriting Intelligence Solutions
         type: Documentation
     description: ''
+    aid: visa:visa-underwriting-intelligence-solutions
   - name: VCA Data Exchange
     tags: []
     humanURL: https://developer.visa.com/capabilities/vca-data-exchange
@@ -58,51 +62,61 @@ apis:
     description: >-
       The VCA Data Exchange API allows clients to access VCA data solutions and
       insights powered by Visa data
+    aid: visa:vca-data-exchange
   - name: Payment Account Validation
     tags: []
     humanURL: https://developer.visa.com/capabilities/pav
     properties: []
     description: ''
+    aid: visa:payment-account-validation
   - name: Visa Supplier Matching Service
     tags: []
     humanURL: https://developer.visa.com/capabilities/suppliermatchingservice
     properties: []
     description: ''
+    aid: visa:visa-supplier-matching-service
   - name: Visa Consent Management Service
     tags: []
     humanURL: https://developer.visa.com/capabilities/vcms
     properties: []
     description: ''
+    aid: visa:visa-consent-management-service
   - name: Card-On-File Data Inquiry
     tags: []
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
     properties: []
     description: ''
+    aid: visa:card-on-file-data-inquiry
   - name: Foreign Exchange
     tags: []
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
     properties: []
     description: ''
+    aid: visa:foreign-exchange
   - name: Payment Account Attributes Inquiry
     tags: []
     humanURL: https://developer.visa.com/capabilities/paai
     properties: []
     description: ''
+    aid: visa:payment-account-attributes-inquiry
   - name: Visa Account Updater
     tags: []
     humanURL: https://developer.visa.com/capabilities/vau
     properties: []
     description: ''
+    aid: visa:visa-account-updater
   - name: Visa BIN Attribute Sharing
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
     properties: []
     description: ''
+    aid: visa:visa-bin-attribute-sharing
   - name: Visa Business Data Solutions
     tags: []
     humanURL: https://developer.visa.com/capabilities/vbds
     properties: []
     description: ''
+    aid: visa:visa-business-data-solutions
   - name: Visa Data Tokens
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-data-tokens
@@ -114,11 +128,13 @@ apis:
       consumer interactions. Signals could include consumer spend metrics,
       behavioral insights (personas),  predictive insights based on AI models
       (future) and/or product recommendations for consumers who opt in.
+    aid: visa:visa-data-tokens
   - name: Visa Practical Money Skills Financial Education Platform
     tags: []
     humanURL: https://developer.visa.com/capabilities/practical-money-skills
     properties: []
     description: "Visa\x19s Practical Money Skills APIs deliver a robust Learning Management System (LMS) that allows users to create accounts, enroll in financial education courses, track their progress via badges and streaks, and obtain certificates of completion. The APIs integrate into existing mobile apps, support single sign-on and offer immediate access to the LMS for users. "
+    aid: visa:visa-practical-money-skills-financial-education-platform
   - name: Visa Card Program Management
     tags: []
     humanURL: https://developer.visa.com/capabilities/vcpm
@@ -130,36 +146,43 @@ apis:
       through the Visa Card Program Enrollment (VCPE) API, and inquiry, which is
       done through the Visa Credential Data Inquiry (VCDI) API (currently in
       restricted mode).
+    aid: visa:visa-card-program-management
   - name: Visa Click to Pay
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
     properties: []
     description: "Visa Click to Pay is Visa\x19s solution for e-commerce payments based upon the EMV_ Secure Remote Commerce (SRC) standards and specifications. It helps enable frictionless online checkout using a single payment profile across a variety of consumer devices and participating online merchants."
+    aid: visa:visa-click-to-pay
   - name: Visa Digital Enablement
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
     properties: []
     description: ''
+    aid: visa:visa-digital-enablement
   - name: Visa Digital Enablement
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-sdk
     properties: []
     description: ''
+    aid: visa:visa-digital-enablement
   - name: Visa Merchant Screening
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-merchant-screening-service
     properties: []
     description: ''
+    aid: visa:visa-merchant-screening
   - name: B2B Virtual Account Payment Method
     tags: []
     humanURL: https://developer.visa.com/capabilities/vpa
     properties: []
     description: ''
+    aid: visa:b2b-virtual-account-payment-method
   - name: Visa In-App Provisioning
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-in-app-provisioning
     properties: []
     description: ''
+    aid: visa:visa-in-app-provisioning
   - name: Visa Resolve Online
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-resolve-online
@@ -171,6 +194,7 @@ apis:
       related to disputes, exchange information and documentation
       electronically, submit pre-filing and case filings electronically, receive
       financial messages, report fraud, and manage Exception File Listings.
+    aid: visa:visa-resolve-online
   - name: Visa Europe Payment Stop Service
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-stop-payment-service
@@ -181,6 +205,7 @@ apis:
       being authorized, cleared, and settled through VisaNet. The service can
       help to provide Visa issuers with a method for handling cardholder stop
       payment requests.
+    aid: visa:visa-europe-payment-stop-service
   - name: Visa Subscription Manager
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-subscription-manager
@@ -190,16 +215,19 @@ apis:
       cardholders a comprehensive view of participating merchants where their
       card is stored and stop card-on-file recurring payments from being
       authorized, cleared, or settled through VisaNet
+    aid: visa:visa-subscription-manager
   - name: Order Insight Digital
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry
     properties: []
     description: "When cardholders are reviewing their card statement, confusion over if a purchase is legitimate is one of the most common occurrances. A cardholders\x19 first reaction when this occurs is typically to pick up the phone to contact the issuing bank, tying up valuable issuer resources in an attempt to identify this purchase and/or pursue a dispute. With digital goods purchases on the rise and currently representing almost 20% of all disputes Visa sees, the potential to see an increase in dispute volume is likely. This can be expensive, as the cost of fielding the telephone calls and working a dispute can be far greater than the purchase amount itself."
+    aid: visa:order-insight-digital
   - name: Visa dCVV2 Generate
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-dcvv2-generate
     properties: []
     description: "The Visa dCVV2 Authenticate service checks the dCVV2 code during authorization processing, and forwards the result (pass/fail) to the issuer, or responds to the acquirer on the issuer\x19s behalf.  Visa dCVV2 Generate provides a cost effective way for issuers to make dCVV2 codes available to their cardholders via a mobile banking, SMS, or standalone mobile app.  "
+    aid: visa:visa-dcvv2-generate
   - name: Visa Risk Manager
     tags: []
     humanURL: https://developer.visa.com/capabilities/vrm
@@ -214,6 +242,7 @@ apis:
       rules to decline a transaction based on the potential for fraud, Visa Risk
       Manager enables intelligent decisioning throughout the entire transaction
       lifecycle.
+    aid: visa:visa-risk-manager
   - name: Visa Token Service
     tags: []
     humanURL: https://developer.visa.com/capabilities/vts
@@ -223,6 +252,7 @@ apis:
       replaces sensitive account information, such as the 16-digit primary
       account number, with a unique digital identifier called a token. The token
       allows payments to be processed without exposing actual account details.
+    aid: visa:visa-token-service
   - name: Visa Token Service Provisioning and Credential Management
     tags: []
     humanURL: https://developer.visa.com/capabilities/token-service-provisioning
@@ -231,6 +261,7 @@ apis:
       Issuer enables the Visa card to be securely and conveniently used in
       digital wallets in order to keep the card top-of-wallet and remove the
       need to re-issue a card when a device with a digital wallet is lost.
+    aid: visa:visa-token-service-provisioning-and-credential-management
   - name: Merchant Search
     tags: []
     humanURL: https://developer.visa.com/capabilities/merchant_search
@@ -245,6 +276,7 @@ apis:
       decision-making. Whether you're looking to simplify your transactions, or
       tap into the power of accurate data, Merchant Search can be the key to
       unlocking your business's full potential.
+    aid: visa:merchant-search
   - name: Visa B2B Connect
     tags: []
     humanURL: https://developer.visa.com/capabilities/vba
@@ -256,6 +288,7 @@ apis:
       financial institutions and their clients overcome costly processes and
       geographic barriers, which translates to an improved, seamless end-to-end
       experience.
+    aid: visa:visa-b2b-connect
   - name: >-
       Visa B2B Connect is built on Visa's capabilities and formidable core
       payments experience with distributed ledger technology to provide direct
@@ -271,6 +304,8 @@ apis:
       verification product enabling our issuers, merchants, partners, and
       developers to check eligibility/access rights to exclusive benefits,
       offers, and promotions, subject to terms and restrictions, in real-time.
+    aid: >-
+      visa:visa-b2b-connect-is-built-on-visa-s-capabilities-and-formidable-core-payments-experience-with-distributed-ledger-technology-to-provide-direct-settlements-of-large-value-transactions-visa-b2b-connect-can-help-financial-institutions-and-their-clients-overcome-costly-processes-and-geographic-barriers-which-translates-to-an-improved-seamless-end-to-end-experience-
   - name: Visa Merchant Offers
     tags: []
     humanURL: https://developer.visa.com/capabilities/vmorc
@@ -284,11 +319,13 @@ apis:
       offers to display on custom applications or pages. Since VMORC
       simultaneously manages the offer entry and distribution processes, users
       are provided access to the latest offers as soon as they become available.
+    aid: visa:visa-merchant-offers
   - name: Visa Offers Platform
     tags: []
     humanURL: https://developer.visa.com/capabilities/vop
     properties: []
     description: "Visa\x19s Customers can get access to near real-time transaction data via the Visa Offers Platform to execute and manage their card-linked programs. For cardholders who have consented to take part in the Customer\x19s program, VOP can access the VisaNet authorization and settlement stream to qualify transactions and send the relevant notifications to the Customer in near real-time. Using the VOP APIs, Customers can leverage capabilities to enhance their own web and mobile applications."
+    aid: visa:visa-offers-platform
   - name: Installment Transaction Service
     tags: []
     humanURL: https://developer.visa.com/capabilities/installment-transaction-service
@@ -302,6 +339,7 @@ apis:
       experience that is scalable and cost effective. For your customers, it
       means more flexibility and control over how and when they choose to pay
       for goods and services.
+    aid: visa:installment-transaction-service
   - name: Kernel in the Cloud
     tags: []
     humanURL: https://developer.visa.com/capabilities/kernel-in-the-cloud
@@ -312,6 +350,7 @@ apis:
       and service architecture-oriented solution to enable acceptance. This
       solution eliminates traditional hardware constraints and enables faster
       and easier deployment of value-added services at the point-of-sale.
+    aid: visa:kernel-in-the-cloud
   - name: Visa Direct Request to Pay
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-direct-request-to-pay
@@ -320,6 +359,7 @@ apis:
       Send and receive payment requests with Visa Direct request to payInnovate
       and simplify services for you and your clients with our secure, fast and
       convenient messaging framework.
+    aid: visa:visa-direct-request-to-pay
   - name: Visa Mobile
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-mobile
@@ -328,16 +368,19 @@ apis:
       Product integrates with a new e-commerce payment methodVisa Mobile is the
       new UX for cards e-commerce payments, that is mobile, quicker yet safe -
       builds on SRC and regular CNP transactions rails.
+    aid: visa:visa-mobile
   - name: Receiver Directed Payouts
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-receiver-directed-payouts
     properties: []
     description: "Securely capture, validate, verify and store a receiver\x19s payment credentials within the Alias Directory Service, without the burden of being PCI compliant"
+    aid: visa:receiver-directed-payouts
   - name: Visa Direct
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa_direct
     properties: []
     description: "\vHelp drive growth for you and your clients with fast, convenient and secure payments worldwide2."
+    aid: visa:visa-direct
   - name: Visa Direct Account and Wallet
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-direct-account-and-wallet
@@ -348,6 +391,7 @@ apis:
       networks1 via a single integration. Support your clients with a payment
       solution that can help meet their operational, commercial, and regulatory
       needs.
+    aid: visa:visa-direct-account-and-wallet
   - name: Visa Direct Connect
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-direct-connect
@@ -355,11 +399,13 @@ apis:
     description: >-
       Visa Direct Connect reduces the effort to integrate with money movement
       methods, routes and endpoints supported by Visa Direct.
+    aid: visa:visa-direct-connect
   - name: Visa Chip L3 Testing Report Upload
     tags: []
     humanURL: https://developer.visa.com/capabilities/l3-chip-compliance
     properties: []
     description: Streamline L3 testing through the use of these APIs.
+    aid: visa:visa-chip-l3-testing-report-upload
   - name: Visa Global ATM Locator
     tags: []
     humanURL: https://developer.visa.com/capabilities/atmlocator
@@ -372,6 +418,7 @@ apis:
       countries. The ATM Locator Service is a cost effective way to deliver user
       friendly, trusted information when users need cash while travelling or in
       emergencies.
+    aid: visa:visa-global-atm-locator
   - name: Visa Travel Notification
     tags: []
     humanURL: https://developer.visa.com/capabilities/tns
@@ -384,11 +431,13 @@ apis:
       is transacting during the travel dates and at the travel destination they
       reported, helping you more confidently approve transactions when your
       cardholders make purchases while travelling.
+    aid: visa:visa-travel-notification
   - name: DPS Card and Account
     tags: []
     humanURL: https://developer.visa.com/capabilities/dps-card-and-account-services
     properties: []
     description: "Enable issuers to manage their cardholder\x19s card and account informationDPS Card and Account Services supports a set of debit, credit, and prepaid card and account services. The_DPS Card and Account Services APIs can be used by any developer in the sandbox._"
+    aid: visa:dps-card-and-account
   - name: DPS Digital Services
     tags: []
     humanURL: https://developer.visa.com/capabilities/dps-digital-services
@@ -397,6 +446,7 @@ apis:
       DPS Digital Services partners with third-party service providers,
       integrating with their unique offerings to provide comprehensive business
       solutions and richer service offerings for issuers.
+    aid: visa:dps-digital-services
   - name: DPS Forward
     tags: []
     humanURL: https://developer.visa.com/capabilities/dps-forward-services
@@ -405,6 +455,7 @@ apis:
       The best of Visa DPS issuer processing capabilities are accessible through
       a suite of APIs designed for digital banking platforms. Use DPS Forward to
       create powerful card products and digital payment solutions._
+    aid: visa:dps-forward
   - name: Visa Tokenized Asset Platform (VTAP)
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-tokenized-asset-platform
@@ -416,6 +467,7 @@ apis:
       infrastructure and utilizes a Visa-developed standard for issuing
       fiat-backed tokens. Clients can access VTAP in a nonvalue Sandbox testing
       phase that can be used for different tokenization use cases._
+    aid: visa:visa-tokenized-asset-platform-vtap-
   - name: Visa B2B Payment Controls
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-b2b-payment-controls
@@ -426,6 +478,7 @@ apis:
       Commercial and Small Business. This service allows more security and
       safety for commercial payments and provides issuers and their third-party
       providers with spend protection mechanisms.
+    aid: visa:visa-b2b-payment-controls
   - name: Visa Flexible Credential (VFC)
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-flexible-credential
@@ -434,6 +487,7 @@ apis:
       Visa Flexible Credential (VFC) enables Issuers and Fintechs to broaden the
       services they can provide to new and existing cardholders by enabling easy
       access to multiple funding sources through a single Visa credential.
+    aid: visa:visa-flexible-credential-vfc-
   - name: Visa Transaction Controls
     tags: []
     humanURL: https://developer.visa.com/capabilities/vctc
@@ -444,6 +498,7 @@ apis:
       alert and decline settings can be_tailored to different_ transaction and
       merchant types (e.g. ATM,_Ecom, Gasoline, Gambling...)_or_can be
       applied_to all_payment account activity.
+    aid: visa:visa-transaction-controls
   - name: Visa Alias Directory
     tags: []
     humanURL: https://developer.visa.com/capabilities/alias-directory-service
@@ -455,6 +510,7 @@ apis:
       Aliases, such as mobile numbers or email addresses, to payment credentials
       such as cards or bank accounts. Clients can manage the lifecycle of an
       Alias and resolve an Alias to receive the associated payment credential.
+    aid: visa:visa-alias-directory
   - name: Visa Installment Management
     tags: []
     humanURL: https://developer.visa.com/capabilities/installment-management-service
@@ -463,6 +519,7 @@ apis:
       The Installment Management Service allows you to provide installment
       offers to all participating merchants at point-of-sale, online or
       in-store, giving your cardholders access to a new payment method._
+    aid: visa:visa-installment-management
   - name: Visa Faster Payments Gateway
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-faster-payments-gateway
@@ -473,16 +530,19 @@ apis:
       digital infrastructure - your participating account holders send and
       receive payments any time of day, every day, including holidays and
       weekends.
+    aid: visa:visa-faster-payments-gateway
   - name: VisaNet Connect
     tags: []
     humanURL: https://developer.visa.com/capabilities/visanet-connect-acceptance
     properties: []
     description: "VisaNet Connect APIs enable Visa clients -- such as acquirers, acquirer-processors, and approved technology partners -- to process in-store, in-app, and online payments through a direct interface to Visa\x19s global payment system. Clients can quickly and securely process these and other payments solutions over a simple internet connection to VisaNet, eliminating the need for installing hardware at the client\x19s site._"
+    aid: visa:visanet-connect
   - name: VisaNet Connect - Issuing
     tags: []
     humanURL: https://developer.visa.com/capabilities/visanet-connect-issuing
     properties: []
     description: "VisaNet Connect \x13 Issuing APIs are a portfolio of VisaNet Connect APIs that provide direct connectivity to VisaNet for issuers to approve and decline payments requested by their cardholders or process clearing requests submitted by acquirers. The VisaNet Connect \x13 Issuing APIs support a broad range of payment types, including point-of-sale, ecommerce, digital wallets, and ATMs. Connectivity to VisaNet is provided via a lightweight, easy-to-integrate set of RESTful APIs. Additionally, VisaNet Connect \x13 Issuing leverages Visa\x19s HSM-as-a-Service, performing PIN and cryptogram verifications on behalf of the issuer, thereby eliminating the need for the issuer to manage a payment Hardware Security Module (HSM)."
+    aid: visa:visanet-connect-issuing
 name: Visa
 tags:
   - Credit Cards

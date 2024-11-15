@@ -13,23 +13,25 @@ apis:
       Here are a few ways to get started and learn about end-to-end process
       around engaging with our APIs and building a new project.
   - name: Visa Government Insights Hub Overview
-    description: >-
-      Visa Government Insights Hub enable tailored, efficient, and agile
-      decision-making with a differentiated payments insights solution.
     tags: []
     properties:
-      - name: Visa Government Insights Hub Overview
+      - url: https://developer.visa.com/capabilities/visa-government-insights-hub
+        name: Visa Government Insights Hub Overview
+        type: Documentation
+        humanURL: https://developer.visa.com/capabilities/visa-government-insights-hub
         description: >-
           Visa Government Insights Hub enable tailored, efficient, and agile
           decision-making with a differentiated payments insights solution.
-        url: https://developer.visa.com/capabilities/visa-government-insights-hub
-        type: Documentation
+    description: >-
+      Visa Government Insights Hub enable tailored, efficient, and agile
+      decision-making with a differentiated payments insights solution.
 name: Visa
 tags:
   - Credit Cards
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
+common: []
 created: '2024-11-15'
 modified: '2024-11-15'
 position: Consumer
@@ -40,4 +42,3 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
-common: []

@@ -70,16 +70,26 @@ apis:
       - Validation
     humanURL: https://developer.visa.com/capabilities/pav
     properties:
-      - name: Getting Started
-        url: https://developer.visa.com/capabilities/pav/docs
-        type: GettingStarted
-      - name: Authentication
-        url: https://developer.visa.com/capabilities/pav/docs-authentication
-        type: Authentication
-      - name: Errors
-        url: https://developer.visa.com/pages/visa-developer-error-codes
-        type: Errors
-    description: ''
+      properties:
+        - url: properties/payment-account-validation.yml
+          type: OpenAPI
+        - name: Getting Started
+          url: https://developer.visa.com/capabilities/pav/docs
+          type: GettingStarted
+        - name: Authentication
+          url: https://developer.visa.com/capabilities/pav/docs-authentication
+          type: Authentication
+        - name: Errors
+          url: https://developer.visa.com/pages/visa-developer-error-codes
+          type: Errors
+    description: >-
+      The Payment Account Validation API offers several methods that you can use
+      to determine if a particular Visa account is valid and in good standing.
+      Before using the API, it is important to understand what the available
+      methods are and how they work. The API currently has four methods of
+      account validation: Account Verification, the Address Verification Service
+      (AVS), Card Verification Value (CVV2) Validation, and Account Name Inquiry
+      (ANI).
   - aid: visa:visa-supplier-matching-service
     name: Visa Supplier Matching Service
     tags: []

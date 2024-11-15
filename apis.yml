@@ -126,7 +126,11 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
     properties: []
-    description: ''
+    description: >-
+      Consumers are storing their card credentials at more online retailers and
+      service providers, but often lack visibility into which merchants have
+      their card information and where the card information needs to be updated,
+      when the card is reissued.
   - aid: visa:foreign-exchange
     name: Foreign Exchange
     tags: []

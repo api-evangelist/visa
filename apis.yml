@@ -43,7 +43,11 @@ apis:
   - name: Visa Pilot Program Enablement
     tags: []
     humanURL: https://developer.visa.com/capabilities/vdp-pilot-program
-    properties: []
+    properties:
+      - name: Getting Started
+        url: >-
+          https://developer.visa.com/capabilities/vdp-pilot-program/docs-getting-started
+        type: Documentation
     description: ''
   - name: Visa Underwriting Intelligence Solutions
     tags: []
@@ -65,6 +69,112 @@ apis:
       - name: VCA Data Exchange
         url: https://developer.visa.com/capabilities/vca-data-exchange/docs
         type: Documentation
+  - name: Payment Account Validation
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/pav
+    tags: []
+    properties: []
+  - name: Visa Supplier Matching Service
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/suppliermatchingservice
+    tags: []
+    properties: []
+  - name: Visa Consent Management Service
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/vcms
+    tags: []
+    properties: []
+  - name: Card-On-File Data Inquiry
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
+    tags: []
+    properties: []
+  - name: Foreign Exchange
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/foreign_exchange
+    tags: []
+    properties: []
+  - name: Payment Account Attributes Inquiry
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/paai
+    tags: []
+    properties: []
+  - name: Visa Account Updater
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/vau
+    tags: []
+    properties: []
+  - name: Visa BIN Attribute Sharing
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
+    tags: []
+    properties: []
+  - name: Visa Business Data Solutions
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/vbds
+    tags: []
+    properties: []
+  - name: Visa Data Tokens
+    description: >-
+      Visa Data Tokens offer useful and relevant consumer level insights
+      (signals) derived from consumers historical transactions. Visa Data Tokens
+      can help clients improve their personalization engines to deliver better
+      consumer interactions. Signals could include consumer spend metrics,
+      behavioral insights (personas),  predictive insights based on AI models
+      (future) and/or product recommendations for consumers who opt in.
+    humanURL: https://developer.visa.com/capabilities/visa-data-tokens
+    tags: []
+    properties: []
+  - name: Visa Practical Money Skills Financial Education Platform
+    description: >-
+      Visas Practical Money Skills APIs deliver a robust Learning Management
+      System (LMS) that allows users to create accounts, enroll in financial
+      education courses, track their progress via badges and streaks, and obtain
+      certificates of completion. The APIs integrate into existing mobile apps,
+      support single sign-on and offer immediate access to the LMS for users. 
+    humanURL: https://developer.visa.com/capabilities/practical-money-skills
+    tags: []
+    properties: []
+  - name: Visa Card Program Management
+    description: >-
+      Visa Card Program Management is a suite of APIs that enable issuers,
+      processors, and issuer partners to manage card programs in a modern
+      digital environment. There are two components: enrollment, which is done
+      through the Visa Card Program Enrollment (VCPE) API, and inquiry, which is
+      done through the Visa Credential Data Inquiry (VCDI) API (currently in
+      restricted mode).
+    humanURL: https://developer.visa.com/capabilities/vcpm
+    tags: []
+    properties: []
+  - name: Visa Click to Pay
+    description: >-
+      Visa Click to Pay is Visas solution for e-commerce payments based upon
+      the EMV® Secure Remote Commerce (SRC) standards and specifications. It
+      helps enable frictionless online checkout using a single payment profile
+      across a variety of consumer devices and participating online merchants.
+    humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
+    tags: []
+    properties: []
+  - name: Visa Digital Enablement
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
+    tags: []
+    properties: []
+  - name: Visa Digital Enablement
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-sdk
+    tags: []
+    properties: []
+  - name: Visa Merchant Screening
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/visa-merchant-screening-service
+    tags: []
+    properties: []
+  - name: B2B Virtual Account Payment Method
+    description: ''
+    humanURL: https://developer.visa.com/capabilities/vpa
+    tags: []
+    properties: []
 name: Visa
 tags:
   - Credit Cards

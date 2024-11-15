@@ -81,14 +81,14 @@ apis:
     properties:
       - url: properties/payment-account-validation.yml
         type: OpenAPI
-      - name: Getting Started
-        url: https://developer.visa.com/capabilities/pav/docs
+      - url: https://developer.visa.com/capabilities/pav/docs
+        name: Getting Started
         type: GettingStarted
-      - name: Authentication
-        url: https://developer.visa.com/capabilities/pav/docs-authentication
+      - url: https://developer.visa.com/capabilities/pav/docs-authentication
+        name: Authentication
         type: Authentication
-      - name: Errors
-        url: https://developer.visa.com/pages/visa-developer-error-codes
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Errors
         type: Errors
     description: ''
   - aid: visa:visa-supplier-matching-service
@@ -96,20 +96,20 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/suppliermatchingservice
     properties:
-      - name: Getting Started
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/suppliermatchingservice/docs-getting-started
+        name: Getting Started
         type: GettingStarted
-      - name: Authentication
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/suppliermatchingservice/docs-authentication
+        name: Authentication
         type: Authentication
-      - name: Errors
-        url: https://developer.visa.com/pages/visa-developer-error-codes
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Errors
         type: Errors
-      - name: TermsOfService
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/suppliermatchingservice/product-terms
+        name: TermsOfService
         type: TermsOfService
     description: ''
   - aid: visa:visa-consent-management-service
@@ -120,23 +120,42 @@ apis:
     properties:
       - url: properties/visa-consent-management-service.yml
         type: OpenAPI
+      - name: Getting Started
+        url: https://developer.visa.com/capabilities/vcms/docs-getting-started
+        type: GettingStarted
+      - name: Authentication
+        url: https://developer.visa.com/capabilities/vcms/docs-authentication
+        type: Authentication
+      - name: Visa Consent Management Service - Error Codes
+        url: https://developer.visa.com/capabilities/vcms/error-codes
+        type: Errors
+      - name: TermsOfService
+        url: https://developer.visa.com/capabilities/vcms/product-terms
+        type: TermsOfService
     description: ''
   - aid: visa:card-on-file-data-inquiry
-    name: Card on File Data Inquiry
+    name: Card-On-File Data Inquiry
     tags:
       - Credentials
       - Credit Cards
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
     properties:
-      - url: properties/card-on-file-data-inquiry.yml
-        type: OpenAPI
+      - name: Getting Started with Card on File Data Inquiry
+        url: >-
+          https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-getting-started
+        type: GettingStarted
+      - name: Authentication
+        url: >-
+          https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-authentication
+        type: Authentication
+      - name: Visa Developer Error Codes
+        url: https://developer.visa.com/pages/visa-developer-error-codes
+        type: Errors
     description: >-
-      Card-On-File Data API allows to enable digital control capabilities in
-      Issuers online mobile application or web application to provide
-      visibility to the consumers where their card (PAN)/token credentials are
-      stored to initiate Card-On-File Data API/e-commerce transactions and where
-      the credentials are updated in case of a card reissuance or token status
-      updates
+      Consumers are storing their card credentials at more online retailers and
+      service providers, but often lack visibility into which merchants have
+      their card information and where the card information needs to be updated,
+      when the card is reissued.
   - aid: visa:foreign-exchange
     name: Foreign Exchange
     tags: []

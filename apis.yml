@@ -3,7 +3,9 @@ url: https://raw.githubusercontent.com/api-search/visa/refs/heads/main/apis.yml
 apis:
   - aid: visa:visa-government-insights-hub
     name: Visa Government Insights Hub
-    tags: []
+    tags:
+      - Government
+      - Insights
     humanURL: https://developer.visa.com/capabilities/visa-government-insights-hub
     properties:
       - url: https://developer.visa.com/capabilities/visa-government-insights-hub

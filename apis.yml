@@ -69,7 +69,9 @@ apis:
       - Accounts
       - Validation
     humanURL: https://developer.visa.com/capabilities/pav
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/payment-account-validation.yml
     description: ''
   - name: Visa Supplier Matching Service
     tags: []

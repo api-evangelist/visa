@@ -1,1 +1,1574 @@
-{}
+openapi: 3.0.1
+info:
+  title: Card on File Data Inquiry
+  description: ''
+  version: '1'
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox server
+security: []
+tags:
+  - name: Card-On-File Data Service API
+    description: >-
+      Card-On-File Data API allows to enable digital control capabilities in
+      Issuers online mobile application or web application to provide
+      visibility to the consumers where their card (PAN)/token credentials are
+      stored to initiate Card-On-File Data API/e-commerce transactions and where
+      the credentials are updated in case of a card reissuance or token status
+      updates
+paths:
+  /cofds-web/v1/datainfo:
+    post:
+      tags:
+        - Card-On-File Data Service API
+      summary: Card-on-File Merchant Aggregation
+      description: >-
+        The API will return data layer aggregated at cleansed merchant name
+        level.
+      operationId: getMerchantData
+      requestBody:
+        description: Card-On-File Data request query for merchants
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MerchantDataRequest'
+            examples:
+              Matching Data Found:
+                summary: Matching Data Found
+                value:
+                  requestHeader:
+                    requestMessageId: 6da60e1b8b024532a2e0eacb1af5858132a2e0eacb1af58581
+                    messageDateTime: '2018-09-19 06:01:00.601'
+                  requestData:
+                    pANs:
+                      - '4072208010000000'
+                    group: STANDARD
+              No Matching Data:
+                summary: No Matching Data
+                value:
+                  requestHeader:
+                    requestMessageId: 6da60e1b8b024532a2e0eacb1af5858132a2e0eacb1af58581
+                    messageDateTime: '2018-09-19 06:01:00.601'
+                  requestData:
+                    pANs:
+                      - '4072208010000000'
+                    group: STANDARD
+        required: true
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantDataResponse'
+              examples:
+                Matching Data Found:
+                  summary: Matching Data Found
+                  value:
+                    responseHeader:
+                      numRecordsReturned: 1
+                      responseMessageId: 1_1694078434_702_53_-79559b6c64d4f_COFDS
+                      requestMessageId: '54675656776565467565677656546756567765654675656776'
+                      messageDateTime: '2019-02-25 05:25:12.327'
+                    responseData:
+                      panList:
+                        - panData:
+                            panResponseMsg: Success
+                            pAN: '4072208010000000'
+                            merchants:
+                              - mrchDbaName: ANYMERCHANT
+                                mrchName: ABC
+                                cardAcceptorId: '235251000762203'
+                                totalTranCount: '1'
+                                lastTranAmtUSD: '25.74'
+                                vAUUpdateStatus: 'Y'
+                                mCC: '5942'
+                                tokenPANReplacementStatus: 'N'
+                                lastTranAmt: '25.74'
+                                lastTranAmtBillCurrency: '25.74'
+                                tokenReqstrId: '00000000'
+                                vAULastUpdateDate: ''
+                                confidenceInd: C
+                                mrchRef: MTIzNDU2Nzg5MDEyMzQ1Njc4OTpBTUFaT04=
+                                lastTranDateTime: '2018-10-05 09:45:17.000'
+                                mrchPhoneNum: '5551212'
+                                lastTranBillCurrency: AUD
+                                mrchDbaId: '148'
+                                lastTranCurrency: USD
+                                lastMrchTranDt: '2018-10-05'
+                                acctNumOld4Digit: '0000'
+                                mrchAddr: 111 Any St AnyCity 90000 AnyState USA
+                                mrchURL: www.anymerchant.com
+                                tranTypeDetails:
+                                  - lastTranBillCurrency: AUD
+                                    lastTranCurrency: USD
+                                    lastTranAmt: '25.74'
+                                    lastTranAmtBillCurrency: '40.29'
+                                    lastTranAmtUSD: '25.74'
+                                    tranCount: 1
+                                    lastTranDateTime: '2018-10-05 09:45:17.000'
+                                    tranType: ECOM_OTHER
+                                tokenPANReplacementDate: ''
+                              - mrchDbaName: ANYMERCHANT 2
+                                mrchName: AnyMerchant 2
+                                cardAcceptorId: '000345523011889'
+                                totalTranCount: '9999'
+                                lastTranAmtUSD: '25.68'
+                                vAUUpdateStatus: 'N'
+                                mCC: '5691'
+                                tokenPANReplacementStatus: 'N'
+                                lastTranAmt: '22.34'
+                                lastTranAmtBillCurrency: '29.46'
+                                tokenReqstrId: '00000000'
+                                vAULastUpdateDate: ''
+                                confidenceInd: C
+                                mrchRef: MTIzNDU2Nzg5MDEyMzQ1Njc4OTpORVRGTElY
+                                lastTranDateTime: '2018-11-08 05:07:05.000'
+                                mrchPhoneNum: '0000000'
+                                lastTranBillCurrency: AUD
+                                mrchDbaId: '161'
+                                lastTranCurrency: SGD
+                                lastMrchTranDt: '2018-11-08'
+                                acctNumOld4Digit: '0000'
+                                mrchAddr: 333 Any St AnyCity 11111 AnyState USA
+                                mrchURL: www.anymerchant2.com
+                                tranTypeDetails:
+                                  - lastTranBillCurrency: AUD
+                                    lastTranCurrency: SGD
+                                    lastTranAmt: '25.68'
+                                    lastTranAmtBillCurrency: '29.46'
+                                    lastTranAmtUSD: '18.82'
+                                    tranCount: 9999
+                                    lastTranDateTime: '2018-11-08 05:07:05.000'
+                                    tranType: SCHEDULED_RECURRING
+                                tokenPANReplacementDate: ''
+                      group: STANDARD
+                    status:
+                      statusDescription: COF Service - Success
+                      statusCode: CDI000
+                No Matching Data:
+                  summary: No Matching Data
+                  value:
+                    responseHeader:
+                      numRecordsReturned: 0
+                      responseMessageId: 1_1694058177_057_52_-79559b6c64d4f_COFDS
+                      requestMessageId: '54675656776565467565677656546756567765654675656776'
+                      messageDateTime: '2023-09-07 03:42:57.835'
+                    responseData:
+                      panList:
+                        - panData:
+                            panResponseMsg: No matching data found
+                            pAN: '4072208011000000'
+                      group: STANDARD
+                    status:
+                      statusDescription: COF Service - Success
+                      statusCode: CDI000
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantDataResponse'
+              example:
+                status:
+                  statusCode: CDI071
+                  statusDescription: Invalid data
+                responseData:
+                  group: STANDARD
+                  panList:
+                    - panData:
+                        pAN: '5072208010000000'
+                        panResponseMsg: Invalid PAN
+                responseHeader:
+                  messageDateTime: '2020-04-17 14:08:45.546'
+                  requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                  responseMessageId: 1_1587132524_666_45_l73d001m_COFDS
+                  numRecordsReturned: 0
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantDataResponse'
+              example:
+                status:
+                  statusCode: CDI131
+                  statusDescription: Not entitled to perform the operation
+                responseData:
+                  group: STANDARD
+                  panList:
+                    - panData:
+                        pAN: '4000123456789010'
+                        panResponseMsg: PAN is not entitled
+                responseHeader:
+                  messageDateTime: '2020-04-17 14:08:45.546'
+                  requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                  responseMessageId: 1_1587132524_666_45_l73d001m_COFDS
+                  numRecordsReturned: 0
+        '500':
+          description: Internal service failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantDataResponse'
+              example:
+                status:
+                  statusCode: CDI001
+                  statusDescription: Internal service failure
+                responseHeader:
+                  messageDateTime: '2020-04-17 14:08:45.546'
+                  requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                  responseMessageId: 1_1587132524_666_45_l73d001m_COFDS
+                  numRecordsReturned: 0
+      x-operationVersions:
+        - label: v1 - Latest
+          operationPointer: '#/paths/~1cofds-web~1v1~1datainfo/post'
+          default: false
+      x-hideTryIt: true
+  /cofds-web/v1/datainfo/merchants:
+    post:
+      tags:
+        - Card-On-File Data Service API
+      summary: Card-on-File Raw Merchant Details
+      description: The API will return data layer aggregated at raw merchant name level.
+      operationId: getRawMerchantData
+      parameters:
+        - name: mrchRef
+          in: query
+          description: >-
+            Correlation ID to uniquely identify the merchant. The reference ID
+            is not static and may change.
+          required: true
+          explode: true
+          schema:
+            pattern: ^[A-Za-z0-9-_=]{1,512}$
+            type: string
+          example: MTIzOmV4YW1wbGU
+      requestBody:
+        description: Card-On-File Data request query for raw merchants
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RawMerchantDataRequest'
+            examples:
+              Matching Data Found:
+                summary: Matching Data Found
+                value:
+                  requestHeader:
+                    requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                    messageDateTime: '2023-08-07 09:29:06.140'
+                  requestData:
+                    pAN: '4072202010000000'
+              No Matching Data:
+                summary: No Matching Data
+                value:
+                  requestHeader:
+                    requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                    messageDateTime: '2023-08-07 09:29:06.140'
+                  requestData:
+                    pAN: '4072202010000000'
+        required: true
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMerchantDataResponse'
+              examples:
+                Matching Data Found:
+                  summary: Matching Data Found
+                  value:
+                    responseHeader:
+                      numRecordsReturned: 3
+                      responseMessageId: 1_1691400546_631_62_-7f78765d47s_COFDS
+                      requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                      messageDateTime: '2023-08-07 09:29:06.660'
+                    responseData:
+                      rawMerchants:
+                        - rawMrchName: Amazon Prime 1
+                          tranTypeDetails:
+                            - lastTranBillCurrency: AUD
+                              lastTranCurrency: AUD
+                              lastTranAmt: '22.72'
+                              lastTranAmtBillCurrency: '22.72'
+                              lastCardAcceptorId: '44186224'
+                              lastTranAmtUSD: '15.22'
+                              tranCount: 6
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: ECOM_OTHER
+                            - lastTranBillCurrency: USD
+                              lastTranCurrency: USD
+                              lastTranAmt: '2.52'
+                              lastTranAmtBillCurrency: '2.52'
+                              lastCardAcceptorId: '06116508'
+                              lastTranAmtUSD: '2.52'
+                              tranCount: 9
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: CUSTOMER_COF
+                            - lastTranBillCurrency: USD
+                              lastTranCurrency: USD
+                              lastTranAmt: '8.56'
+                              lastTranAmtBillCurrency: '8.56'
+                              lastCardAcceptorId: '43842635'
+                              lastTranAmtUSD: '8.56'
+                              tranCount: 3
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: UNKNOWN_COF
+                        - rawMrchName: Amazon Prime 2
+                          tranTypeDetails:
+                            - lastTranBillCurrency: USD
+                              lastTranCurrency: USD
+                              lastTranAmt: '4.33'
+                              lastTranAmtBillCurrency: '4.33'
+                              lastCardAcceptorId: '62718036'
+                              lastTranAmtUSD: '4.33'
+                              tranCount: 8
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: INSTALLMENT
+                            - lastTranBillCurrency: USD
+                              lastTranCurrency: USD
+                              lastTranAmt: '21.47'
+                              lastTranAmtBillCurrency: '21.47'
+                              lastCardAcceptorId: '15738126'
+                              lastTranAmtUSD: '21.47'
+                              tranCount: 4
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: UNSCHEDULED_RECURRING
+                            - lastTranBillCurrency: NZD
+                              lastTranCurrency: NZD
+                              lastTranAmt: '4.13'
+                              lastTranAmtBillCurrency: '4.13'
+                              lastCardAcceptorId: '10353883'
+                              lastTranAmtUSD: '2.6'
+                              tranCount: 5
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: UNKNOWN_COF
+                        - rawMrchName: Amazon Prime 3
+                          tranTypeDetails:
+                            - lastTranBillCurrency: AUD
+                              lastTranCurrency: AUD
+                              lastTranAmt: '12.27'
+                              lastTranAmtBillCurrency: '12.27'
+                              lastCardAcceptorId: '53570880'
+                              lastTranAmtUSD: '8.22'
+                              tranCount: 1
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: MERCHANT_COF
+                            - lastTranBillCurrency: USD
+                              lastTranCurrency: USD
+                              lastTranAmt: '7.22'
+                              lastTranAmtBillCurrency: '7.22'
+                              lastCardAcceptorId: '01764778'
+                              lastTranAmtUSD: '7.22'
+                              tranCount: 5
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: BILL_PAY
+                            - lastTranBillCurrency: NZD
+                              lastTranCurrency: NZD
+                              lastTranAmt: '14.5'
+                              lastTranAmtBillCurrency: '14.5'
+                              lastCardAcceptorId: '62852244'
+                              lastTranAmtUSD: '9.14'
+                              tranCount: 8
+                              lastTranDateTime: '2021-07-11 07:05:04.000'
+                              tranType: SCHEDULED_RECURRING
+                      mrchRef: MTIzNDU2Nzg5MDEyMzQ1Njc4OTpBTUFaT04=
+                      responseMsg: Success
+                    status:
+                      statusDescription: COF Service - Success
+                      statusCode: CDI000
+                No Matching Data:
+                  summary: No Matching Data
+                  value:
+                    responseHeader:
+                      numRecordsReturned: 0
+                      responseMessageId: 1_1694058678_113_61_f566f584k2m_COFDS
+                      requestMessageId: '54675656776565467565677'
+                      messageDateTime: '2023-09-07 03:51:18.426'
+                    responseData:
+                      mrchRef: MTIzNDU2Nzg5MDEyMzQ1Njc4OTpBTUFaT04=
+                      responseMsg: No matching data found
+                    status:
+                      statusDescription: COF Service - Success
+                      statusCode: CDI000
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMerchantDataResponse'
+              example:
+                status:
+                  statusCode: CDI071
+                  statusDescription: Invalid data
+                responseData:
+                  mrchRef: MTIzOmV4YW1wbGU
+                  responseMsg: Invalid PAN
+                responseHeader:
+                  messageDateTime: '2023-07-27 11:12:13.529'
+                  requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                  responseMessageId: 1_1689731688_690_56_d5b9b6v_COFDS
+                  numRecordsReturned: 0
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMerchantDataResponse'
+              example:
+                status:
+                  statusCode: CDI131
+                  statusDescription: Not entitled to perform the operation
+                responseData:
+                  mrchRef: MTIzOmV4YW1wbGU
+                  responseMsg: PAN is not entitled
+                responseHeader:
+                  messageDateTime: '2023-07-27 11:12:13.529'
+                  requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                  responseMessageId: 1_1689731688_690_56_d5b9b6v_COFDS
+                  numRecordsReturned: 0
+        '500':
+          description: Internal service failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RawMerchantDataResponse'
+              example:
+                status:
+                  statusCode: CDI001
+                  statusDescription: Internal service failure
+                responseHeader:
+                  messageDateTime: '2023-07-27 11:12:13.529'
+                  requestMessageId: 6da6b8b024532a2e0eacb1af58581
+                  responseMessageId: 1_1689731688_690_56_d5b9b6v_COFDS
+                  numRecordsReturned: 0
+      x-operationVersions:
+        - label: v1 - Latest
+          operationPointer: '#/paths/~1cofds-web~1v1~1datainfo~1merchants/post'
+          default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    TranType:
+      required:
+        - lastTranAmt
+        - tranCount
+        - tranType
+      type: object
+      properties:
+        tranType:
+          type: string
+          description: The transaction type code.
+          example: MERCHANT_COF
+          enum:
+            - >-
+              SCHEDULED_RECURRING, UNSCHEDULED_RECURRING, INSTALLMENT,
+              MERCHANT_COF, CUSTOMER_COF, UNKNOWN_COF, MAIL_TELEPHONE, BILL_PAY,
+              ECOM_OTHER, AUTH_VERIFICATION
+        tranCount:
+          minimum: 0
+          type: integer
+          description: Transaction count for the type.
+          format: int64
+          example: 10
+        lastTranAmt:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in currency used in transaction for the
+            type.
+          example: '22.72'
+        lastTranAmtUSD:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: Last transaction amount in USD.
+          example: '15.22'
+        lastTranCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: |-
+            Currency used in last transaction for the type.
+
+            Format: ISO 4217 standard
+          example: AUD
+        lastTranDateTime:
+          pattern: >-
+            ^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])$
+          type: string
+          description: >-
+            Date and time of last transaction timestamp for the type in UTC time
+            zone.
+
+
+            Format: yyyy-MM-dd HH:mm:ss.SSS (ISO 8601 standard)
+          example: '2021-07-11 07:05:04.000'
+        lastTranBillCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: |-
+            Billing currency of last transaction.
+
+            Format: ISO 4217 standard
+          example: AUD
+        lastTranAmtBillCurrency:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: Last transaction amount in billing currency.
+          example: '22.72'
+      description: >-
+        List of transaction details by transaction type. Each transaction type
+        can appear once and only if theres an associated transaction.
+    BaseResponseHeader:
+      required:
+        - messageDateTime
+        - requestMessageId
+        - responseMessageId
+      type: object
+      properties:
+        messageDateTime:
+          pattern: >-
+            ^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])$
+          type: string
+          description: |
+            Date and time at which response is sent (up to milliseconds in UTC).
+
+            Format: yyyy-MM-dd HH:mm:ss.SSS (ISO 8601 standard)
+          example: '2018-09-19 06:01:00.601'
+        requestMessageId:
+          maxLength: 50
+          minLength: 0
+          pattern: ^$|^[\w-._]+$
+          type: string
+          description: >-
+            A string that uniquely identifies the service request. Response will
+            contain the same message ID as received from requesting application.
+          example: 6da60e1b8b024532a2e0eacb1af5858132a2e0eacb1af58581
+        responseMessageId:
+          maxLength: 50
+          minLength: 0
+          type: string
+          description: >-
+            Correlation id which uniquely identifies the current
+            request-response processing
+          example: 1561737829_569_743208831_l55c014_VDP_WS
+    RMRequestData:
+      required:
+        - pAN
+      type: object
+      properties:
+        pAN:
+          type: string
+          description: >-
+            PAN for requesting raw merchant data. The PAN has a format of 1219
+            decimal digits starting with a "4" (indicating Visa accounts).
+          example: '4000123456789010'
+      description: Request body for querying Card-on-file raw merchant.
+    MResponseData:
+      required:
+        - group
+        - panList
+      type: object
+      properties:
+        group:
+          maxLength: 100
+          minLength: 0
+          pattern: STANDARD
+          type: string
+          description: >-
+            Identifies the set of response fields the customer is eligible to
+            receive.
+          example: STANDARD
+          enum:
+            - STANDARD
+        panList:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: An array of response objects for each PAN.
+          items:
+            $ref: '#/components/schemas/PANDataWrapper'
+      description: >-
+        Response data, which includes merchant information for the requested
+        PANs.
+    PANData:
+      required:
+        - pAN
+        - panResponseMsg
+      type: object
+      properties:
+        pAN:
+          type: string
+          description: The request account number (PAN value).
+          example: '4000123456789010'
+        merchants:
+          type: array
+          description: List of merchants who have Card-On-File Data for the requested PAN.
+          items:
+            $ref: '#/components/schemas/Merchant'
+        panResponseMsg:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: >-
+            Indicates whether data retrieval for a given PAN was successful;
+            field contains either "Success" or the reason for the error if data
+            retrieval was not successful.
+          example: Success
+      description: Response Object for a single PAN
+    RawMerchant:
+      required:
+        - rawMrchName
+      type: object
+      properties:
+        rawMrchName:
+          type: string
+          description: Raw Merchant Name.
+          example: AnyRawMerchant
+        tranTypeDetails:
+          type: array
+          description: >-
+            List of transaction details by transaction type. Each transaction
+            type can appear once and only if theres an associated transaction.
+          items:
+            $ref: '#/components/schemas/RawMerchantTranType'
+      description: >-
+        List of raw merchants who have Card-On-File Data for the requested PAN
+        and mrchRef.
+    MRequestData:
+      required:
+        - group
+        - pANs
+      type: object
+      properties:
+        pANs:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: >-
+            List of PANs for requesting merchant data. The PAN has a format of
+            1219 decimal digits starting with a "4" (indicating Visa accounts).
+          example:
+            - '4000123456789010'
+          items:
+            type: string
+            description: >-
+              List of PANs for requesting merchant data. The PAN has a format of
+              1219 decimal digits starting with a "4" (indicating Visa
+              accounts).
+            example: '["4000123456789010"]'
+        group:
+          pattern: STANDARD
+          type: string
+          description: >-
+            Identifies the set of response fields the customer is eligible to
+            receive. If the group name is "STANDARD", all available response
+            fields are included.
+          example: STANDARD
+          enum:
+            - STANDARD
+      description: Request body for querying Card-on-file merchant.
+    Merchant:
+      required:
+        - acctNumOld4Digit
+        - cardAcceptorId
+        - confidenceInd
+        - lastMrchTranDt
+        - lastTranAmt
+        - mCC
+        - mrchAddr
+        - mrchDbaId
+        - mrchDbaName
+        - mrchName
+        - mrchPhoneNum
+        - mrchRef
+        - mrchURL
+        - tokenPANReplacementDate
+        - tokenPANReplacementStatus
+        - tokenReqstrId
+        - totalTranCount
+        - vAULastUpdateDate
+        - vAUUpdateStatus
+      type: object
+      properties:
+        mCC:
+          pattern: ^$|^\d{4}$
+          type: string
+          description: |-
+            Merchant Category Code.
+
+            Note: This field may return an empty string.
+          example: '5942'
+        mrchRef:
+          pattern: ^[A-Za-z0-9-_=]{1,512}$
+          type: string
+          description: >-
+            Correlation ID to uniquely identify the merchant. The reference ID
+            is not static and may change.
+          example: MTIzNDU2Nzg5MDEyMzQ1Njc4OTpBTUFaT04=
+        mrchURL:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: |-
+            Merchant URL.
+
+            Note: This field may return an empty string.
+          example: www.anymerchant.com
+        mrchAddr:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: |-
+            Merchant address.
+
+            Note: This field may return an empty string.
+          example: 111 Any St AnyCity 90000 AnyState USA
+        mrchName:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: Cleansed Merchant Name.
+          example: ABC
+        mrchDbaId:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: >-
+            "Doing Business As" (DBA) ID of the merchant. Use mrchName instead;
+            this field may become deprecated.
+
+
+            Note: This field may return an empty string.
+          example: '148'
+        lastTranAmt:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in currency used in transaction; not
+            applicable for AUTH_VERIFICATION transaction type.
+          example: '22.34'
+        mrchDbaName:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: >-
+            Merchant "Doing Business As" name. Use mrchName instead; this field
+            may become deprecated.
+          example: ANYMERCHANT
+        mrchPhoneNum:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: |-
+            Merchant phone number.
+
+            Note: This field may return an empty string.
+          example: '5551212'
+        confidenceInd:
+          pattern: ^$|^[CEM]$
+          type: string
+          description: |-
+            Confidence indicator.
+
+            C - Highly likely a COF merchant
+
+            M - May be a COF merchant
+
+            E - Not a COF merchant
+          example: C
+        tokenReqstrId:
+          maxLength: 11
+          minLength: 0
+          type: string
+          description: >-
+            The token requestor ID of the merchant or payment facilitator, if
+            any, assigned by Visa Token Service.
+
+
+            Note: This field may return an empty string.
+          example: '00000000'
+        cardAcceptorId:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: >-
+            Card Acceptor ID (CAID) of the merchant. The value reflects the most
+            recent CAID included in the last transaction.
+
+
+            Note: This field may return an empty string.
+          example: '235251000762203'
+        lastMrchTranDt:
+          pattern: ^$|^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          type: string
+          description: >-
+            Date when the last transaction was made with the merchant in UTC
+            time zone; not applicable for AUTH_VERIFICATION transaction type.
+
+
+            Note: This field may return an empty string.
+
+
+            Format: yyyy-MM-dd
+          example: '2018-07-18'
+        lastTranAmtUSD:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in USD; not applicable for
+            AUTH_VERIFICATION transaction type.
+          example: '25.68'
+        totalTranCount:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: Total transaction count for all transaction type.
+          example: '3'
+        tranTypeDetails:
+          type: array
+          description: >-
+            List of transaction details by transaction type. Each transaction
+            type can appear once and only if theres an associated transaction.
+          items:
+            $ref: '#/components/schemas/TranType'
+        vAUUpdateStatus:
+          pattern: ^(Y|N|NA)?$
+          type: string
+          description: >-
+            Visa Account Updater (VAU) polling status.
+
+
+            Y - PAN update was polled by the merchant.
+
+
+            N - No PAN update was polled by the merchant.
+
+
+            NA - Issuer has not reissued a PAN nor updated expiry date.
+
+
+            Note: <li>Issuers must be subscribed to VAU to provide updates.
+            Merchants must be subscribed to VAU in order to receive
+            updates.<li>This field may return an empty string.
+          example: 'Y'
+        acctNumOld4Digit:
+          pattern: ^$|^[0-9]{4}$
+          type: string
+          description: >-
+            Last 4 digits of the old account number in Visa Account Updater
+            (VAU).
+
+
+            Note: This field may return an empty string.
+          example: '1234'
+        lastTranCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: >-
+            Currency used in last transaction; not applicable for
+            AUTH_VERIFICATION transaction type.
+
+
+            Format: ISO 4217 standard
+          example: AUD
+        lastTranDateTime:
+          pattern: >-
+            ^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])$
+          type: string
+          description: >-
+            Date and time of last transaction timestamp in UTC time zone; not
+            applicable for AUTH_VERIFICATION transaction type.
+
+
+            Format: yyyy-MM-dd HH:mm:ss.SSS (ISO 8601 standard)
+          example: '2018-10-05 09:45:17.000'
+        vAULastUpdateDate:
+          pattern: ^$|^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          type: string
+          description: >-
+            Date when merchant last polled Visa Account Updater (VAU) for new
+            PAN data in UTC time zone.
+
+
+            Note: <li>Issuers must be subscribed to VAU to provide updates.
+            Merchants must be subscribed to VAU in order to receive
+            updates.<li>This field may return an empty string.
+
+
+            Format: yyyy-MM-dd
+          example: '2018-07-18'
+        sponsoredMerchantId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: Sponsored Merchant ID.
+          example: '7494990'
+        lastTranBillCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: >-
+            Billing currency of last transaction; not applicable for
+            AUTH_VERIFICATION transaction type.
+
+
+            Format: ISO 4217 standard
+          example: AUD
+        paymentFacilitatorId:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: Payment Facilitator ID.
+          example: '10071854'
+        lastTranAmtBillCurrency:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in billing currency; not applicable for
+            AUTH_VERIFICATION transaction type.
+          example: '22.34'
+        tokenPANReplacementDate:
+          pattern: ^$|^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          type: string
+          description: |-
+            tokenPANReplacementStatus update date in UTC time zone.
+
+            Note: This field may return an empty string.
+
+            Format: yyyy-MM-dd
+          example: '2018-07-18'
+        tokenPANReplacementStatus:
+          pattern: ^$|^Y{1}$|^N{1}$
+          type: string
+          description: >-
+            Status of whether the tokens underlying PAN has been updated, based
+            on issuer updates sent to Visa.
+
+
+            Y - PAN was updated.
+
+
+            N - PAN was not updated.
+
+
+            Note: This field may return an empty string.
+          example: 'N'
+      description: List of merchants who have Card-On-File Data for the requested PAN.
+    PANDataWrapper-1:
+      type: object
+      properties:
+        panData:
+          $ref: '#/components/schemas/PANData-1'
+      description: An array of response objects for each PAN.
+    Status:
+      required:
+        - statusCode
+        - statusDescription
+      type: object
+      properties:
+        statusCode:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: Status Code of the Service Request.
+          example: CDI000
+        statusDescription:
+          type: string
+          description: >-
+            A string description of the statusCode element. A brief description
+            indicating the result of the service request.
+          example: COF Service - Success
+      description: >-
+        Status details, which include the application status code and
+        corresponding message.
+    PANData-1:
+      required:
+        - pAN
+        - panResponseMsg
+      type: object
+      properties:
+        pAN:
+          type: string
+          description: The request account number (PAN value).
+          example: '4000123456789010'
+        merchants:
+          type: array
+          description: List of merchants who have Card-On-File Data for the requested PAN.
+          items:
+            $ref: '#/components/schemas/Merchant-1'
+        panResponseMsg:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: >-
+            Indicates whether data retrieval for a given PAN was successful;
+            field contains either "Success" or the reason for the error if data
+            retrieval was not successful.
+          example: Success
+      description: Response Object for a single PAN
+    PANDataWrapper:
+      type: object
+      properties:
+        panData:
+          $ref: '#/components/schemas/PANData'
+      description: An array of response objects for each PAN.
+    ResponseHeader:
+      $ref: '#/components/schemas/RMResponseHeader'
+    Merchant-1:
+      required:
+        - acctNumOld4Digit
+        - cardAcceptorId
+        - confidenceInd
+        - lastMrchTranDt
+        - lastTranAmt
+        - mCC
+        - mrchAddr
+        - mrchDbaId
+        - mrchDbaName
+        - mrchName
+        - mrchPhoneNum
+        - mrchRef
+        - mrchURL
+        - tokenPANReplacementDate
+        - tokenPANReplacementStatus
+        - tokenReqstrId
+        - totalTranCount
+        - vAULastUpdateDate
+        - vAUUpdateStatus
+      type: object
+      properties:
+        mCC:
+          pattern: ^$|^\d{4}$
+          type: string
+          description: |-
+            Merchant Category Code.
+
+            Note: This field may return an empty string.
+          example: '5942'
+        mrchRef:
+          pattern: ^[A-Za-z0-9-_=]{1,512}$
+          type: string
+          description: >-
+            Correlation ID to uniquely identify the merchant. The reference ID
+            is not static and may change.
+          example: MTIzNDU2Nzg5MDEyMzQ1Njc4OTpBTUFaT04=
+        mrchURL:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: |-
+            Merchant URL.
+
+            Note: This field may return an empty string.
+          example: www.anymerchant.com
+        mrchAddr:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: |-
+            Merchant address.
+
+            Note: This field may return an empty string.
+          example: 111 Any St AnyCity 90000 AnyState USA
+        mrchName:
+          maxLength: 255
+          minLength: 0
+          type: string
+          description: Cleansed Merchant Name.
+          example: ABC
+        mrchDbaId:
+          maxLength: 6
+          minLength: 0
+          type: string
+          description: >-
+            "Doing Business As" (DBA) ID of the merchant. Use mrchName instead;
+            this field may become deprecated.
+
+
+            Note: This field may return an empty string.
+          example: '148'
+        lastTranAmt:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in currency used in transaction; not
+            applicable for AUTH_VERIFICATION transaction type.
+          example: '22.34'
+        mrchDbaName:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: >-
+            Merchant "Doing Business As" name. Use mrchName instead; this field
+            may become deprecated.
+          example: ANYMERCHANT
+        mrchPhoneNum:
+          maxLength: 40
+          minLength: 0
+          type: string
+          description: |-
+            Merchant phone number.
+
+            Note: This field may return an empty string.
+          example: '5551212'
+        confidenceInd:
+          pattern: ^$|^[CEM]$
+          type: string
+          description: |-
+            Confidence indicator.
+
+            C - Highly likely a COF merchant
+
+            M - May be a COF merchant
+
+            E - Not a COF merchant
+          example: C
+        tokenReqstrId:
+          maxLength: 11
+          minLength: 0
+          type: string
+          description: >-
+            The token requestor ID of the merchant or payment facilitator, if
+            any, assigned by Visa Token Service.
+
+
+            Note: This field may return an empty string.
+          example: '00000000'
+        cardAcceptorId:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: >-
+            Card Acceptor ID (CAID) of the merchant. The value reflects the most
+            recent CAID included in the last transaction.
+
+
+            Note: This field may return an empty string.
+          example: '235251000762203'
+        lastMrchTranDt:
+          pattern: ^$|^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          type: string
+          description: >-
+            Date when the last transaction was made with the merchant in UTC
+            time zone; not applicable for AUTH_VERIFICATION transaction type.
+
+
+            Note: This field may return an empty string.
+
+
+            Format: yyyy-MM-dd
+          example: '2018-07-18'
+        lastTranAmtUSD:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in USD; not applicable for
+            AUTH_VERIFICATION transaction type.
+          example: '25.68'
+        totalTranCount:
+          maxLength: 19
+          minLength: 0
+          type: string
+          description: Total transaction count for all transaction type.
+          example: '3'
+        tranTypeDetails:
+          type: array
+          description: >-
+            List of transaction details by transaction type. Each transaction
+            type can appear once and only if theres an associated transaction.
+          items:
+            $ref: '#/components/schemas/TranType'
+        vAUUpdateStatus:
+          pattern: ^$|^Y{1}$|^N{1}$
+          type: string
+          description: >-
+            Visa Account Updater (VAU) polling status.
+
+
+            Y - PAN update was polled by the merchant.
+
+
+            N - No PAN update was polled by the merchant.
+
+
+            Note: <li>Issuers must be subscribed to VAU to provide updates.
+            Merchants must be subscribed to VAU in order to receive
+            updates.<li>This field may return an empty string.
+          example: 'Y'
+        acctNumOld4Digit:
+          pattern: ^$|^[0-9]{4}$
+          type: string
+          description: >-
+            Last 4 digits of the old account number in Visa Account Updater
+            (VAU).
+
+
+            Note: This field may return an empty string.
+          example: '1234'
+        lastTranCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: >-
+            Currency used in last transaction; not applicable for
+            AUTH_VERIFICATION transaction type.
+
+
+            Format: ISO 4217 standard
+          example: AUD
+        lastTranDateTime:
+          pattern: >-
+            ^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])$
+          type: string
+          description: >-
+            Date and time of last transaction timestamp in UTC time zone; not
+            applicable for AUTH_VERIFICATION transaction type.
+
+
+            Format: yyyy-MM-dd HH:mm:ss.SSS (ISO 8601 standard)
+          example: '2018-10-05 09:45:17.000'
+        vAULastUpdateDate:
+          pattern: ^$|^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          type: string
+          description: >-
+            Date when merchant last polled Visa Account Updater (VAU) for new
+            PAN data in UTC time zone.
+
+
+            Note: <li>Issuers must be subscribed to VAU to provide updates.
+            Merchants must be subscribed to VAU in order to receive
+            updates.<li>This field may return an empty string.
+
+
+            Format: yyyy-MM-dd
+          example: '2018-07-18'
+        sponsoredMerchantId:
+          maxLength: 20
+          minLength: 0
+          type: string
+          description: Sponsored Merchant ID.
+          example: '7494990'
+        lastTranBillCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: >-
+            Billing currency of last transaction; not applicable for
+            AUTH_VERIFICATION transaction type.
+
+
+            Format: ISO 4217 standard
+          example: AUD
+        paymentFacilitatorId:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: Payment Facilitator ID.
+          example: '10071854'
+        lastTranAmtBillCurrency:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in billing currency; not applicable for
+            AUTH_VERIFICATION transaction type.
+          example: '22.34'
+        tokenPANReplacementDate:
+          pattern: ^$|^((19|2[0-9])[0-9]{2})-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$
+          type: string
+          description: |-
+            tokenPANReplacementStatus update date in UTC time zone.
+
+            Note: This field may return an empty string.
+
+            Format: yyyy-MM-dd
+          example: '2018-07-18'
+        tokenPANReplacementStatus:
+          pattern: ^$|^Y{1}$|^N{1}$
+          type: string
+          description: >-
+            Status of whether the tokens underlying PAN has been updated, based
+            on issuer updates sent to Visa.
+
+
+            Y - PAN was updated.
+
+
+            N - PAN was not updated.
+
+
+            Note: This field may return an empty string.
+          example: 'N'
+      description: List of merchants who have Card-On-File Data for the requested PAN.
+    RMResponseData:
+      required:
+        - mrchRef
+        - responseMsg
+      type: object
+      properties:
+        mrchRef:
+          pattern: ^[A-Za-z0-9-_=]{1,512}$
+          type: string
+          description: >-
+            Correlation ID to uniquely identify the merchant. The reference ID
+            is not static and may change.
+          example: MTIzNDU2Nzg5MDEyMzQ1Njc4OTpBTUFaT04=
+        responseMsg:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: >-
+            Indicates whether data retrieval for a given PAN and mrchRef was
+            successful; field contains either "Success" or the reason for the
+            error if data retrieval was not successful.
+          example: Success
+        rawMerchants:
+          type: array
+          description: >-
+            List of raw merchants who have Card-On-File Data for the requested
+            PAN and mrchRef.
+          items:
+            $ref: '#/components/schemas/RawMerchant'
+      description: >-
+        Response data, which includes raw merchant information for the requested
+        PAN and mrchRef.
+    RMResponseHeader:
+      description: Fields contained in the header of each response.
+      allOf:
+        - $ref: '#/components/schemas/BaseResponseHeader'
+        - required:
+            - numRecordsReturned
+          type: object
+          properties:
+            numRecordsReturned:
+              maximum: 2147483647
+              minimum: 0
+              type: integer
+              description: >-
+                Number of raw merchant data returned for the requested PAN and
+                mrchRef.
+              format: int32
+              example: 3
+    RawMerchantTranType:
+      required:
+        - lastTranAmt
+        - tranCount
+        - tranType
+      type: object
+      properties:
+        tranType:
+          type: string
+          description: The transaction type code.
+          example: MERCHANT_COF
+          enum:
+            - >-
+              SCHEDULED_RECURRING, UNSCHEDULED_RECURRING, INSTALLMENT,
+              MERCHANT_COF, CUSTOMER_COF, UNKNOWN_COF, MAIL_TELEPHONE, BILL_PAY,
+              ECOM_OTHER, AUTH_VERIFICATION
+        tranCount:
+          minimum: 0
+          type: integer
+          description: Transaction count for the type.
+          format: int64
+          example: 10
+        lastTranAmt:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: >-
+            Last transaction amount in currency used in transaction for the
+            type.
+          example: '22.72'
+        lastTranAmtUSD:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: Last transaction amount in USD.
+          example: '15.22'
+        lastTranCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: |-
+            Currency used in last transaction for the type.
+
+            Format: ISO 4217 standard
+          example: AUD
+        lastTranDateTime:
+          pattern: >-
+            ^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])$
+          type: string
+          description: >-
+            Date and time of last transaction timestamp for the type in UTC time
+            zone.
+
+
+            Format: yyyy-MM-dd HH:mm:ss.SSS (ISO 8601 standard)
+          example: '2021-07-11 07:05:04.000'
+        lastCardAcceptorId:
+          type: string
+          description: Card Acceptor ID of last transaction.
+          example: '44186224'
+        lastTranBillCurrency:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: |-
+            Billing currency of last transaction.
+
+            Format: ISO 4217 standard
+          example: AUD
+        lastTranAmtBillCurrency:
+          maxLength: 24
+          minLength: 0
+          type: string
+          description: Last transaction amount in billing currency.
+          example: '22.72'
+      description: >-
+        List of transaction details by transaction type. Each transaction type
+        can appear once and only if theres an associated transaction.
+    MerchantDataResponse:
+      required:
+        - responseHeader
+        - status
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        responseData:
+          $ref: '#/components/schemas/MResponseData'
+        responseHeader:
+          $ref: '#/components/schemas/MResponseHeader'
+    MResponseData-1:
+      required:
+        - group
+        - panList
+      type: object
+      properties:
+        group:
+          maxLength: 100
+          minLength: 0
+          pattern: STANDARD
+          type: string
+          description: >-
+            Identifies the set of response fields the customer is eligible to
+            receive.
+          example: STANDARD
+          enum:
+            - STANDARD
+        panList:
+          maxItems: 1
+          minItems: 1
+          type: array
+          description: An array of response objects for each PAN.
+          items:
+            $ref: '#/components/schemas/PANDataWrapper-1'
+      description: >-
+        Response data, which includes merchant information for the requested
+        PANs.
+    MResponseHeader:
+      description: Fields contained in the header of each response.
+      allOf:
+        - $ref: '#/components/schemas/BaseResponseHeader'
+        - required:
+            - numRecordsReturned
+          type: object
+          properties:
+            numRecordsReturned:
+              maximum: 2147483647
+              minimum: 0
+              type: integer
+              description: Number of successful PAN records returned.
+              format: int32
+              example: 3
+    RequestHeader:
+      required:
+        - messageDateTime
+        - requestMessageId
+      type: object
+      properties:
+        messageDateTime:
+          pattern: >-
+            ^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])$
+          type: string
+          description: |-
+            Date and time at which request is sent (up to milliseconds in UTC).
+
+            Format: yyyy-MM-dd HH:mm:ss.SSS (ISO 8601 standard)
+          example: '2018-09-19 06:01:00.601'
+        requestMessageId:
+          maxLength: 50
+          minLength: 0
+          pattern: ^[\w-._]+$
+          type: string
+          description: >-
+            A string that uniquely identifying the service request. The
+            requesting application creates this unique message ID.
+          example: 6da60e1b8b024532a2e0eacb1af5858132a2e0eacb1af58581
+      description: Fields contained in the header of each request.
+    MerchantDataResponse-1:
+      required:
+        - responseHeader
+        - status
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        responseData:
+          $ref: '#/components/schemas/MResponseData-1'
+        responseHeader:
+          $ref: '#/components/schemas/MResponseHeader'
+    RawMerchantDataRequest:
+      required:
+        - requestData
+        - requestHeader
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/RMRequestData'
+        requestHeader:
+          $ref: '#/components/schemas/RequestHeader'
+    RawMerchantDataResponse:
+      required:
+        - responseHeader
+        - status
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        responseData:
+          $ref: '#/components/schemas/RMResponseData'
+        responseHeader:
+          $ref: '#/components/schemas/RMResponseHeader'
+    MerchantDataRequest:
+      required:
+        - requestData
+        - requestHeader
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/MRequestData'
+        requestHeader:
+          $ref: '#/components/schemas/RequestHeader'
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  callbacks: {}
+x-tagGroups:
+  - name: API Reference
+    tags:
+      - Card-On-File Data Service API

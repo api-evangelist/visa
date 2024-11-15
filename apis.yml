@@ -250,23 +250,26 @@ apis:
       Manager enables intelligent decisioning throughout the entire transaction
       lifecycle.
   - name: Visa Token Service
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vts
+    properties: []
     description: >-
       The Visa Token Service (VTS), a new security technology from Visa,
       replaces sensitive account information, such as the 16-digit primary
       account number, with a unique digital identifier called a token. The token
       allows payments to be processed without exposing actual account details.
-    humanURL: https://developer.visa.com/capabilities/vts
-    tags: []
-    properties: []
   - name: Visa Token Service Provisioning and Credential Management
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/token-service-provisioning
+    properties: []
     description: >-
       Issuer enables the Visa card to be securely and conveniently used in
       digital wallets in order to keep the card top-of-wallet and remove the
       need to re-issue a card when a device with a digital wallet is lost.
-    humanURL: https://developer.visa.com/capabilities/token-service-provisioning
-    tags: []
-    properties: []
   - name: Merchant Search
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/merchant_search
+    properties: []
     description: >-
       Introducing Merchant Search, a cutting-edge API designed to elevate your
       transaction experience and enhance data quality. This innovative solution
@@ -277,10 +280,10 @@ apis:
       decision-making. Whether you're looking to simplify your transactions, or
       tap into the power of accurate data, Merchant Search can be the key to
       unlocking your business's full potential.
-    humanURL: https://developer.visa.com/capabilities/merchant_search
-    tags: []
-    properties: []
   - name: Visa B2B Connect
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vba
+    properties: []
     description: >-
       Visa B2B Connect is built on Visa's capabilities and formidable core
       payments experience with distributed ledger technology to provide direct
@@ -288,9 +291,6 @@ apis:
       financial institutions and their clients overcome costly processes and
       geographic barriers, which translates to an improved, seamless end-to-end
       experience.
-    humanURL: https://developer.visa.com/capabilities/vba
-    tags: []
-    properties: []
   - name: >-
       Visa B2B Connect is built on Visa's capabilities and formidable core
       payments experience with distributed ledger technology to provide direct
@@ -298,20 +298,23 @@ apis:
       financial institutions and their clients overcome costly processes and
       geographic barriers, which translates to an improved, seamless end-to-end
       experience.
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vces
+    properties: []
     description: >-
       Visa Card Eligibility Service (VCES) is an account eligibility
       verification product enabling our issuers, merchants, partners, and
       developers to check eligibility/access rights to exclusive benefits,
       offers, and promotions, subject to terms and restrictions, in real-time.
-    humanURL: https://developer.visa.com/capabilities/vces
-    tags: []
-    properties: []
   - name: Visa Merchant Offers
-    description: "The Visa Merchant Offers Resource Center (VMORC) is a central offer repository that gives an easy way to promote merchant offers to their cardholders.\_VMORC is a multilingual application used by various teams worldwide to store offers as they are procured. Additionally, VMORC provides an Application Programming Interface (API) for users to extract offers to display on custom applications or pages. Since VMORC simultaneously manages the offer entry and distribution processes, users are provided access to the latest offers as soon as they become available."
-    humanURL: https://developer.visa.com/capabilities/vmorc
     tags: []
+    humanURL: https://developer.visa.com/capabilities/vmorc
     properties: []
+    description: "The Visa Merchant Offers Resource Center (VMORC) is a central offer repository that gives an easy way to promote merchant offers to their cardholders.\_VMORC is a multilingual application used by various teams worldwide to store offers as they are procured. Additionally, VMORC provides an Application Programming Interface (API) for users to extract offers to display on custom applications or pages. Since VMORC simultaneously manages the offer entry and distribution processes, users are provided access to the latest offers as soon as they become available."
   - name: Visa Offers Platform
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vop
+    properties: []
     description: >-
       Visas Customers can get access to near real-time transaction data via the
       Visa Offers Platform to execute and manage their card-linked programs. For
@@ -320,10 +323,10 @@ apis:
       transactions and send the relevant notifications to the Customer in near
       real-time. Using the VOP APIs, Customers can leverage capabilities to
       enhance their own web and mobile applications.
-    humanURL: https://developer.visa.com/capabilities/vop
-    tags: []
-    properties: []
   - name: Installment Transaction Service
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/installment-transaction-service
+    properties: []
     description: >-
       The Installments Transaction Service allows you to offer Buy Now Pay Later
       (BNPL) plans to your customers through a set of APIs or on ISO. The plans
@@ -333,7 +336,132 @@ apis:
       experience that is scalable and cost effective. For your customers, it
       means more flexibility and control over how and when they choose to pay
       for goods and services.
-    humanURL: https://developer.visa.com/capabilities/installment-transaction-service
+  - name: Kernel in the Cloud
+    description: >-
+      Kernel in the Cloud is pioneering innovation via a software-based cloud
+      infrastructure to democratize acceptance. It provides a secure, modular
+      and service architecture-oriented solution to enable acceptance. This
+      solution eliminates traditional hardware constraints and enables faster
+      and easier deployment of value-added services at the point-of-sale.
+    humanURL: https://developer.visa.com/capabilities/kernel-in-the-cloud
+    tags: []
+    properties: []
+  - name: Visa Direct Request to Pay
+    description: >-
+      Send and receive payment requests with Visa Direct request to payInnovate
+      and simplify services for you and your clients with our secure, fast and
+      convenient messaging framework.
+    humanURL: https://developer.visa.com/capabilities/visa-direct-request-to-pay
+    tags: []
+    properties: []
+  - name: Visa Mobile
+    description: >-
+      Product integrates with a new e-commerce payment methodVisa Mobile is the
+      new UX for cards e-commerce payments, that is mobile, quicker yet safe -
+      builds on SRC and regular CNP transactions rails.
+    humanURL: https://developer.visa.com/capabilities/visa-mobile
+    tags: []
+    properties: []
+  - name: Receiver Directed Payouts
+    description: >-
+      Securely capture, validate, verify and store a receivers payment
+      credentials within the Alias Directory Service, without the burden of
+      being PCI compliant
+    humanURL: https://developer.visa.com/capabilities/visa-receiver-directed-payouts
+    tags: []
+    properties: []
+  - name: Visa Direct
+    description: >-
+      Help drive growth for you and your clients with fast, convenient and
+      secure payments worldwide².
+    humanURL: https://developer.visa.com/capabilities/visa_direct
+    tags: []
+    properties: []
+  - name: Visa Direct Account and Wallet
+    description: >-
+      Visa Direct Account and Wallet is built to help businesses deliver money
+      to billions of endpoints worldwide through ACH, and faster payment
+      networks1 via a single integration. Support your clients with a payment
+      solution that can help meet their operational, commercial, and regulatory
+      needs.
+    humanURL: https://developer.visa.com/capabilities/visa-direct-account-and-wallet
+    tags: []
+    properties: []
+  - name: Visa Direct Connect
+    description: >-
+      Visa Direct Connect reduces the effort to integrate with money movement
+      methods, routes and endpoints supported by Visa Direct.
+    humanURL: https://developer.visa.com/capabilities/visa-direct-connect
+    tags: []
+    properties: []
+  - name: Visa Chip L3 Testing Report Upload
+    description: Streamline L3 testing through the use of these APIs.
+    humanURL: https://developer.visa.com/capabilities/l3-chip-compliance
+    tags: []
+    properties: []
+  - name: Visa Global ATM Locator
+    description: >-
+      Visa Global ATM Locator enables cardholders to search for Visa/Plus ATM
+      locations around the world, via the Web or from their internet-enabled
+      mobile devices.The Visa Global ATM Locator service lets cardholders find a
+      convenient ATM when they need cash from over 1 million ATMs in over 200
+      countries. The ATM Locator Service is a cost effective way to deliver user
+      friendly, trusted information when users need cash while travelling or in
+      emergencies.
+    humanURL: https://developer.visa.com/capabilities/atmlocator
+    tags: []
+    properties: []
+  - name: Visa Travel Notification
+    description: >-
+      Visa Travel Notification Service helps you avoid mistaken purchase
+      declines while your cardholders are traveling by incorporating cardholder
+      self-reported travel plans into the VisaNet authorization message. With
+      Visa Travel Notification Service, Visa informs you whether your cardholder
+      is transacting during the travel dates and at the travel destination they
+      reported, helping you more confidently approve transactions when your
+      cardholders make purchases while travelling.
+    humanURL: https://developer.visa.com/capabilities/tns
+    tags: []
+    properties: []
+  - name: DPS Card and Account
+    description: "Enable issuers to manage their cardholders card and account informationDPS Card and Account Services supports a set of debit, credit, and prepaid card and account services. The\_DPS Card and Account Services APIs can be used by any developer in the sandbox.\_"
+    humanURL: https://developer.visa.com/capabilities/dps-card-and-account-services
+    tags: []
+    properties: []
+  - name: DPS Digital Services
+    description: >-
+      DPS Digital Services partners with third-party service providers,
+      integrating with their unique offerings to provide comprehensive business
+      solutions and richer service offerings for issuers.
+    humanURL: https://developer.visa.com/capabilities/dps-digital-services
+    tags: []
+    properties: []
+  - name: DPS Forward
+    description: "The best of Visa DPS issuer processing capabilities are accessible through a suite of APIs designed for digital banking platforms. Use DPS Forward to create powerful card products and digital payment solutions.\_"
+    humanURL: https://developer.visa.com/capabilities/dps-forward-services
+    tags: []
+    properties: []
+  - name: Visa Tokenized Asset Platform (VTAP)
+    description: "VTAP provides the tools and infrastructure for banks to tokenize fiat currencies on blockchain networks. Clients can access and test VTAP capabilities through an API layer that connects to blockchain infrastructure and utilizes a Visa-developed standard for issuing fiat-backed tokens. Clients can access VTAP in a nonvalue Sandbox testing phase that can be used for different tokenization use cases.\_"
+    humanURL: https://developer.visa.com/capabilities/visa-tokenized-asset-platform
+    tags: []
+    properties: []
+  - name: Visa B2B Payment Controls
+    description: >-
+      Visa B2B Payment Controls offers authorization-based payment controls
+      solutions for B2B market segments such as Government, Corporate,
+      Commercial and Small Business. This service allows more security and
+      safety for commercial payments and provides issuers and their third-party
+      providers with spend protection mechanisms.
+    humanURL: https://developer.visa.com/capabilities/visa-b2b-payment-controls
+    tags: []
+    properties: []
+  - name: Visa Flexible Credential (VFC)
+    description: >-
+      Visa Flexible Credential (VFC) enables Issuers and Fintechs to broaden the
+      services they can provide to new and existing cardholders by enabling easy
+      access to multiple funding sources through a single Visa credential.
+    humanURL: https://developer.visa.com/capabilities/visa-flexible-credential
     tags: []
     properties: []
 name: Visa

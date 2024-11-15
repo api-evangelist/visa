@@ -143,7 +143,7 @@ apis:
       - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-getting-started
         name: Getting Started with Card on File Data Inquiry
-        type: OpenAPI
+        type: GettingStarted
       - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-authentication
         name: Authentication

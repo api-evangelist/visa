@@ -176,11 +176,14 @@ apis:
     properties: []
     description: ''
   - name: Visa In-App Provisioning
-    description: ''
-    humanURL: https://developer.visa.com/capabilities/visa-in-app-provisioning
     tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-in-app-provisioning
     properties: []
+    description: ''
   - name: Visa Resolve Online
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-resolve-online
+    properties: []
     description: >-
       Visa Resolve Online (VROL) is a dispute resolution platform that helps
       issuers and acquirers manage the dispute life cycle. Users of VROL may
@@ -188,29 +191,29 @@ apis:
       related to disputes, exchange information and documentation
       electronically, submit pre-filing and case filings electronically, receive
       financial messages, report fraud, and manage Exception File Listings.
-    humanURL: https://developer.visa.com/capabilities/visa-resolve-online
-    tags: []
-    properties: []
   - name: Visa Europe Payment Stop Service
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-stop-payment-service
+    properties: []
     description: >-
       The Visa Stop Payment Service (VSPS) enables Visa card issuers to stop
       card-on-file payments (including recurring and installment payments) from
       being authorized, cleared, and settled through VisaNet. The service can
       help to provide Visa issuers with a method for handling cardholder stop
       payment requests.
-    humanURL: https://developer.visa.com/capabilities/visa-stop-payment-service
-    tags: []
-    properties: []
   - name: Visa Subscription Manager
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-subscription-manager
+    properties: []
     description: >-
       Visa Subscription Manager (VSM) enables Visa card issuers to provide their
       cardholders a comprehensive view of participating merchants where their
       card is stored and stop card-on-file recurring payments from being
       authorized, cleared, or settled through VisaNet
-    humanURL: https://developer.visa.com/capabilities/visa-subscription-manager
-    tags: []
-    properties: []
   - name: Order Insight Digital
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry
+    properties: []
     description: >-
       When cardholders are reviewing their card statement, confusion over if a
       purchase is legitimate is one of the most common occurrances. A
@@ -221,10 +224,10 @@ apis:
       disputes Visa sees, the potential to see an increase in dispute volume is
       likely. This can be expensive, as the cost of fielding the telephone calls
       and working a dispute can be far greater than the purchase amount itself.
-    humanURL: https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry
-    tags: []
-    properties: []
   - name: Visa dCVV2 Generate
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-dcvv2-generate
+    properties: []
     description: >-
       The Visa dCVV2 Authenticate service checks the dCVV2 code during
       authorization processing, and forwards the result (pass/fail) to the
@@ -232,10 +235,10 @@ apis:
       Generate provides a cost effective way for issuers to make dCVV2 codes
       available to their cardholders via a mobile banking, SMS, or standalone
       mobile app.  
-    humanURL: https://developer.visa.com/capabilities/visa-dcvv2-generate
-    tags: []
-    properties: []
   - name: Visa Risk Manager
+    tags: []
+    humanURL: https://developer.visa.com/capabilities/vrm
+    properties: []
     description: >-
       Visa Risk Manager is a web portal that provides a comprehensive suite of
       fraud and risk management tools that can be accessed through Visa Online
@@ -246,7 +249,91 @@ apis:
       rules to decline a transaction based on the potential for fraud, Visa Risk
       Manager enables intelligent decisioning throughout the entire transaction
       lifecycle.
-    humanURL: https://developer.visa.com/capabilities/vrm
+  - name: Visa Token Service
+    description: >-
+      The Visa Token Service (VTS), a new security technology from Visa,
+      replaces sensitive account information, such as the 16-digit primary
+      account number, with a unique digital identifier called a token. The token
+      allows payments to be processed without exposing actual account details.
+    humanURL: https://developer.visa.com/capabilities/vts
+    tags: []
+    properties: []
+  - name: Visa Token Service Provisioning and Credential Management
+    description: >-
+      Issuer enables the Visa card to be securely and conveniently used in
+      digital wallets in order to keep the card top-of-wallet and remove the
+      need to re-issue a card when a device with a digital wallet is lost.
+    humanURL: https://developer.visa.com/capabilities/token-service-provisioning
+    tags: []
+    properties: []
+  - name: Merchant Search
+    description: >-
+      Introducing Merchant Search, a cutting-edge API designed to elevate your
+      transaction experience and enhance data quality. This innovative solution
+      provides you with enriched and precise merchant data, creating a more
+      transparent and effective transaction process. Merchant Search is more
+      than just an API, it's a tool that empowers businesses by improving data
+      accuracy, streamlining operations, and providing insights for better
+      decision-making. Whether you're looking to simplify your transactions, or
+      tap into the power of accurate data, Merchant Search can be the key to
+      unlocking your business's full potential.
+    humanURL: https://developer.visa.com/capabilities/merchant_search
+    tags: []
+    properties: []
+  - name: Visa B2B Connect
+    description: >-
+      Visa B2B Connect is built on Visa's capabilities and formidable core
+      payments experience with distributed ledger technology to provide direct
+      settlements of large-value transactions. Visa B2B Connect can help
+      financial institutions and their clients overcome costly processes and
+      geographic barriers, which translates to an improved, seamless end-to-end
+      experience.
+    humanURL: https://developer.visa.com/capabilities/vba
+    tags: []
+    properties: []
+  - name: >-
+      Visa B2B Connect is built on Visa's capabilities and formidable core
+      payments experience with distributed ledger technology to provide direct
+      settlements of large-value transactions. Visa B2B Connect can help
+      financial institutions and their clients overcome costly processes and
+      geographic barriers, which translates to an improved, seamless end-to-end
+      experience.
+    description: >-
+      Visa Card Eligibility Service (VCES) is an account eligibility
+      verification product enabling our issuers, merchants, partners, and
+      developers to check eligibility/access rights to exclusive benefits,
+      offers, and promotions, subject to terms and restrictions, in real-time.
+    humanURL: https://developer.visa.com/capabilities/vces
+    tags: []
+    properties: []
+  - name: Visa Merchant Offers
+    description: "The Visa Merchant Offers Resource Center (VMORC) is a central offer repository that gives an easy way to promote merchant offers to their cardholders.\_VMORC is a multilingual application used by various teams worldwide to store offers as they are procured. Additionally, VMORC provides an Application Programming Interface (API) for users to extract offers to display on custom applications or pages. Since VMORC simultaneously manages the offer entry and distribution processes, users are provided access to the latest offers as soon as they become available."
+    humanURL: https://developer.visa.com/capabilities/vmorc
+    tags: []
+    properties: []
+  - name: Visa Offers Platform
+    description: >-
+      Visas Customers can get access to near real-time transaction data via the
+      Visa Offers Platform to execute and manage their card-linked programs. For
+      cardholders who have consented to take part in the Customers program, VOP
+      can access the VisaNet authorization and settlement stream to qualify
+      transactions and send the relevant notifications to the Customer in near
+      real-time. Using the VOP APIs, Customers can leverage capabilities to
+      enhance their own web and mobile applications.
+    humanURL: https://developer.visa.com/capabilities/vop
+    tags: []
+    properties: []
+  - name: Installment Transaction Service
+    description: >-
+      The Installments Transaction Service allows you to offer Buy Now Pay Later
+      (BNPL) plans to your customers through a set of APIs or on ISO. The plans
+      can be offered pre-purchase, during, or post-purchase and give consumers
+      the opportunity to pay for qualifying purchases over time. For you, it
+      means attracting and retaining a larger customer base with a seamless user
+      experience that is scalable and cost effective. For your customers, it
+      means more flexibility and control over how and when they choose to pay
+      for goods and services.
+    humanURL: https://developer.visa.com/capabilities/installment-transaction-service
     tags: []
     properties: []
 name: Visa

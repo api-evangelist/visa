@@ -1,7 +1,12 @@
 openapi: 3.0.1
 info:
   title: Card on File Data Inquiry
-  description: ''
+  description: >-
+    Card-On-File Data API allows to enable digital control capabilities in
+    Issuers online mobile application or web application to provide visibility
+    to the consumers where their card (PAN)/token credentials are stored to
+    initiate Card-On-File Data API/e-commerce transactions and where the
+    credentials are updated in case of a card reissuance or token status updates
   version: '1'
 servers:
   - url: https://sandbox.api.visa.com

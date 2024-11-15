@@ -25,6 +25,25 @@ apis:
     description: >-
       Visa Government Insights Hub enable tailored, efficient, and agile
       decision-making with a differentiated payments insights solution.
+  - name: Visa Payment Account Reference Inquiry
+    description: >-
+      PAR Inquiry delivers the capability to retrieve the PAR numeric linked to
+      a Primary Account Number (PAN) in real time. The input to PAR Inquiry is
+      either one PAN or one affiliated Token to a PAN
+    url: https://developer.visa.com/capabilities/visa-par-inquiry
+    tags: []
+    properties: []
+  - name: Visa Pilot Program Enablement
+    description: ''
+    url: https://developer.visa.com/capabilities/vdp-pilot-program
+    tags: []
+    properties: []
+  - name: Visa Underwriting Intelligence Solutions
+    description: ''
+    url: >-
+      https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions
+    tags: []
+    properties: []
 name: Visa
 tags:
   - Credit Cards

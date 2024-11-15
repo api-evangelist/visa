@@ -19,7 +19,9 @@ apis:
       decision-making with a differentiated payments insights solution.
   - aid: visa:visa-payment-account-reference-inquiry
     name: Visa Payment Account Reference Inquiry
-    tags: []
+    tags:
+      - Primary Account Number
+      - Payment Account Reference
     humanURL: https://developer.visa.com/capabilities/visa-par-inquiry
     properties:
       - url: https://developer.visa.com/capabilities/visa-par-inquiry/docs

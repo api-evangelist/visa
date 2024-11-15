@@ -166,7 +166,7 @@ apis:
     tags:
       - Currencies
       - Foreign Exchange
-      - Currency Code
+      - Currency Codes
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
     properties: []
     description: >-

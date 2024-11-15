@@ -14,11 +14,11 @@ apis:
       around engaging with our APIs and building a new project.
   - name: Visa Government Insights Hub Overview
     tags: []
+    humanURL: https://developer.visa.com/capabilities/visa-government-insights-hub
     properties:
       - url: https://developer.visa.com/capabilities/visa-government-insights-hub
         name: Visa Government Insights Hub Overview
         type: Documentation
-        humanURL: https://developer.visa.com/capabilities/visa-government-insights-hub
         description: >-
           Visa Government Insights Hub enable tailored, efficient, and agile
           decision-making with a differentiated payments insights solution.

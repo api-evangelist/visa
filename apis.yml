@@ -122,17 +122,15 @@ apis:
         type: OpenAPI
     description: ''
   - aid: visa:card-on-file-data-inquiry
-    name: Card-On-File Data Inquiry
+    name: Card on File Data Inquiry
     tags:
       - Credentials
       - Credit Cards
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
-    properties: []
-    description: >-
-      Consumers are storing their card credentials at more online retailers and
-      service providers, but often lack visibility into which merchants have
-      their card information and where the card information needs to be updated,
-      when the card is reissued.
+    properties:
+      - type: OpenAPI
+        url: properties/card-on-file-data-inquiry.yml
+    description: ''
   - aid: visa:foreign-exchange
     name: Foreign Exchange
     tags: []

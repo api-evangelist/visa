@@ -434,31 +434,27 @@ apis:
       - url: properties/visa-merchant-screening.yml
         name: OpenAPI
         type: OpenAPI
-    description: >-
-      Visa Merchant Screening Service (VMSS) allows Acquirers to identify
-      potentially high-risk, unreliable or fraudulent Merchants and Third Party
-      Agents prior to making an onboarding decision and therefore helps reduce
-      risk exposure to fraudulent and illegal transactions, and helps protect
-      against brand damage and non-compliance assessments.
+    description: ''
   - aid: visa:b2b-virtual-account-payment-method
     name: B2B Virtual Account Payment Method
-    tags:
-      - Accounts
-      - B2B
-      - Payments
+    tags: []
     humanURL: https://developer.visa.com/capabilities/vpa
     properties:
-      - url: properties/b2b-virtual-account-payment-method.yml
-        type: OpenAPI
-    description: >-
-      The B2B Virtual Account Payment Method involves a suite of APIs which
-      allows you to use virtual accounts to automate the generation of virtual
-      accounts. The B2B Virtual Account Payment Method can enable you to develop
-      flexible solutions across industries and segments. Whether it is a virtual
-      account embedded within the procure-to-pay cycle, used for
-      payer-to-provider payments, generated for ad-hoc employee purchases, or
-      used in the travel booking process, the B2B Virtual Account Payment Method
-      will streamline the payment process.
+      - name: Getting Started with B2B Virtual Account Payment Method
+        url: https://developer.visa.com/capabilities/vpa/docs-getting-started
+        type: GettingStarted
+      - name: B2B Virtual Account Payment Method Authentication Method
+        url: https://developer.visa.com/capabilities/vpa/docs-authentication
+        type: Authentication
+      - name: B2B Virtual Account Payment Method Error Codes
+        url: >-
+          https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes
+        type: Errors
+      - name: B2B Virtual Account Payment Method API Reference
+        url: >-
+          https://developer.visa.com/capabilities/vpa/reference#tag/Account-Management-service/operation/Get%20Security%20Code_v1
+        type: Documentation
+    description: ''
   - aid: visa:visa-in-app-provisioning
     name: Visa In-App Provisioning
     tags: []

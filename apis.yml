@@ -336,14 +336,16 @@ apis:
       done through the Visa Credential Data Inquiry (VCDI) API (currently in
       restricted mode).
   - aid: visa:visa-click-to-pay
-    name: Visa Click to Pay
+    name: Click to Pay
     tags:
       - Payments
       - Secure Remote Commerce
       - Merchants
     humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
-    properties: []
-    description: "Visa Click to Pay is Visa\x19s solution for e-commerce payments based upon the EMV_ Secure Remote Commerce (SRC) standards and specifications. It helps enable frictionless online checkout using a single payment profile across a variety of consumer devices and participating online merchants."
+    properties:
+      - type: OpenAPI
+        url: properties/visa-click-to-pay.yml
+    description: ''
   - aid: visa:visa-digital-enablement
     name: Visa Digital Enablement
     tags: []

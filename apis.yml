@@ -453,14 +453,10 @@ apis:
       - Mobile
       - Applications
     humanURL: https://developer.visa.com/capabilities/visa-in-app-provisioning
-    properties: []
-    description: >-
-      It's now easier than ever to digitally activate newly issued digital Visa
-      and Mastercard1 cards, and accelerate adoption of mobile payment wallets
-      for an existing card portfolio. Visa In-App Provisioning helps issuers and
-      partners such as Mobile App Developers, Processors, Fintechs and Solution
-      Providers to more easily implement a "Add to Apple Pay2, Google Pay3 or
-      Samsung Pay4" button in mobile banking applications.
+    properties:
+      - type: OpenAPI
+        url: properties/visa-in-app-provisioning.yml
+    description: ''
   - aid: visa:visa-resolve-online
     name: Visa Resolve Online
     tags: []

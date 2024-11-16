@@ -157,20 +157,20 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
     properties:
-      - name: Getting Started
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/foreign_exchange/docs-getting-started
+        name: Getting Started
         type: GettingStarted
-      - name: Authentication
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/foreign_exchange/docs-authentication
+        name: Authentication
         type: Authentication
-      - name: Errors
-        url: https://developer.visa.com/pages/visa-developer-error-codes
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Errors
         type: Errors
-      - name: Documentation
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/foreign_exchange/reference#tag/Foreign-Exchange-Rates-API/operation/ForeignExchangeRates_v2%20-%20Latest
+        name: Documentation
         type: Documentation
     description: ''
   - aid: visa:payment-account-attributes-inquiry
@@ -178,21 +178,21 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/paai
     properties:
-      - name: Getting Started with Payment Account Attributes Inquiry
-        url: https://developer.visa.com/capabilities/paai/docs-getting-started
+      - url: https://developer.visa.com/capabilities/paai/docs-getting-started
+        name: Getting Started with Payment Account Attributes Inquiry
         type: GettingStarted
-      - name: Payment Account Attributes Inquiry Authentication Method
-        url: https://developer.visa.com/capabilities/paai/docs-authentication
+      - url: https://developer.visa.com/capabilities/paai/docs-authentication
+        name: Payment Account Attributes Inquiry Authentication Method
         type: Authentication
-      - name: Visa Developer Error Codes
-        url: https://developer.visa.com/pages/visa-developer-error-codes
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Visa Developer Error Codes
         type: Errors
-      - name: Payment Account Attributes Inquiry Product Terms
-        url: https://developer.visa.com/capabilities/paai/product-terms
+      - url: https://developer.visa.com/capabilities/paai/product-terms
+        name: Payment Account Attributes Inquiry Product Terms
         type: TermsOfService
-      - name: Payment Account Attributes Inquiry API Reference
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/paai/reference#tag/Funds-Transfer-Attributes-Inquiry-API/operation/Funds%20Transfer%20Inquiry_v5%20-%20Latest
+        name: Payment Account Attributes Inquiry API Reference
         type: Documentation
     description: ''
   - aid: visa:visa-account-updater
@@ -200,24 +200,24 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/vau
     properties:
-      - name: Getting Started with Visa Account Updater
-        url: https://developer.visa.com/capabilities/vau/docs-getting-started
+      - url: https://developer.visa.com/capabilities/vau/docs-getting-started
+        name: Getting Started with Visa Account Updater
         type: GettingStarted
-      - name: Visa Account Updater APIs Authentication Method
-        url: https://developer.visa.com/capabilities/vau/docs-authentication
+      - url: https://developer.visa.com/capabilities/vau/docs-authentication
+        name: Visa Account Updater APIs Authentication Method
         type: Authentication
-      - name: Visa Developer Error Codes
-        url: https://developer.visa.com/pages/visa-developer-error-codes
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Visa Developer Error Codes
         type: Errors
-      - name: Visa Account Updater (VAU) FAQs
-        url: https://developer.visa.com/capabilities/vau/vau-faq
+      - url: https://developer.visa.com/capabilities/vau/vau-faq
+        name: Visa Account Updater (VAU) FAQs
         type: FAQ
-      - name: Visa Account Updater Product Terms
-        url: https://developer.visa.com/capabilities/vau/product-terms
+      - url: https://developer.visa.com/capabilities/vau/product-terms
+        name: Visa Account Updater Product Terms
         type: TermsOfService
-      - name: Visa Account Updater API Reference
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/vau/reference#tag/Issuer-Stop-Advice-API/operation/stopAdviceUsingPOST_v1%20-%20Latest
+        name: Visa Account Updater API Reference
         type: Documentation
     description: ''
   - aid: visa:visa-bin-attribute-sharing
@@ -228,8 +228,27 @@ apis:
       - Fraud
     humanURL: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
     properties:
-      - type: OpenAPI
-        url: properties/visa-bin-attribute-sharing.yml
+      - url: properties/visa-bin-attribute-sharing.yml
+        type: OpenAPI
+      - name: Getting Started with Visa BIN Attribute Sharing Service
+        url: >-
+          https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/docs-getting-started
+        type: GettingStarted
+      - name: Visa BIN Attribute Sharing Service Authentication Method
+        url: >-
+          https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/docs-authentication
+        type: Authentication
+      - name: Visa BIN Attribute Sharing Service Authentication Method
+        url: >-
+          https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/faq
+        type: FAQ
+      - name: Visa Developer Error Codes
+        url: https://developer.visa.com/pages/visa-developer-error-codes
+        type: Errors
+      - name: Visa BIN Attribute Sharing Service Product Terms
+        url: >-
+          https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/product-terms
+        type: TermsOfService
     description: ''
   - aid: visa:visa-business-data-solutions
     name: Visa Business Data Solutions

@@ -1,1 +1,4429 @@
-{}
+---
+openapi: 3.0.1
+info:
+  title: Visa Merchant Screening Service
+  description: ''
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Termination Inquiry APIs
+  description: Termination Inquiry API allows Acquirers to identify Merchants and
+    Agents terminated by other Acquirers and pull the termination details directly
+    from the Terminated Listing Database.
+paths:
+  "/vmss/v2/retroAlertTerminated":
+    post:
+      tags:
+      - Termination Inquiry APIs
+      summary: Get Retroactive Alert
+      description: Get Retroactive Alert
+      operationId: RetroActive Alert of Terminated Merchants or Agent
+      parameters:
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: request-message-id
+        in: header
+        description: A user-defined message identifier for the request submitted.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+      - name: request-message-ts
+        in: header
+        description: A user-entered date and timestamp in GMT for the request submitted.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+          type: string
+      requestBody:
+        description: RetroActive Alert of Terminated Merchants or Agent
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/retroAlertTerminatedRequest"
+            examples:
+              Default:
+                summary: Default
+                value:
+                  retroAlertsRequest:
+                    alertStartDate: '2020-01-01'
+                    acquirerBID: '10048640'
+                    alertEndDate: '2020-06-30'
+                    pageOffset: 0
+                    pageSize: 10
+                    acquirerCountryOrRegion: MY
+        required: true
+      responses:
+        '200':
+          description: API000 Success
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/retroAlertTerminatedResponse"
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    status:
+                      statusDescription: Success
+                      statusCode: VMSS000
+                    retroAlertsResponse:
+                      numSearchRequestRecordsReturned: 0
+                      pageOffset: 0
+                      pageSize: 0
+                      retroSearchRequestAndAlerts:
+                      - retroSearchRequest:
+                          terminatedRecordSearchCriteria:
+                            businessEmailAddress: billsmith@snapphoto.com
+                            address:
+                              countryOrRegion: JP
+                              stateOrProvince: CA
+                              city: St Albans
+                              streetAddress: 80 Wood Street
+                              zipOrPostalCode: SA82GF
+                            principals:
+                            - passportNumber: '07043453'
+                              businessEmailAddress: billsmith@snapphoto.com
+                              driverLicenseNumber: '07043453'
+                              name: Bill Smith
+                              principalID: '07043453'
+                              residentIDOrNationalID: '07043453'
+                              SSN: 000-00-0000
+                              businessPhoneNumber: "+861071111222"
+                            DBAName: Snap Photoshop Ltd
+                            legalName: Snap Photoshop Ltd
+                            webAddresses:
+                            - https://u.nu
+                            financialAccts:
+                            - financialAccountNumber: '8090765400'
+                              financialInstitutionID: '101010'
+                              intBankAccountNumber: NO8330001234567
+                            taxID: GB123456789
+                            businessRegistrationNumber: '452349600005'
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '5411'
+                            category: '1'
+                            businessPhoneNumbers:
+                            - "+861071111222"
+                          retroSearchRequestRefID: SRCH123412
+                          acquirerBID: '10048640'
+                          globalSearch: false
+                          acquirerCountryOrRegion: JP
+                        alertDate: '2019-02-01'
+                        searchDate: '2018-12-01'
+                        possibleMatches:
+                          alertRecords:
+                          - terminatedRecordMatch:
+                              legalName: N
+                              webAddresses: N
+                              principalsMatch:
+                              - passportNumber: N
+                                businessEmailAddress: N
+                                driverLicenseNumber: N
+                                name: N
+                                principalID: N
+                                residentIDOrNationalID: N
+                                SSN: N
+                                businessPhoneNumber: N
+                              businessEmailAddress: N
+                              financialAcctsMatch:
+                              - financialAccountNumber: N
+                                financialInstitutionID: N
+                                intBankAccountNumber: N
+                              taxID: N
+                              businessRegistrationNumber: N
+                              tradeOverInternet: N
+                              merchantCategoryCodes: N
+                              addressMatch:
+                                countryOrRegion: N
+                                stateOrProvince: N
+                                city: N
+                                streetAddress: N
+                                zipOrPostalCode: N
+                              businessPhoneNumbers: N
+                              DBAName: N
+                            terminatedRefID: '10048640'
+                            terminatedRecord:
+                              acquirerAssignedMerchantID: '36654773'
+                              businessEmailAddress: billsmith@snapphoto.com
+                              address:
+                                countryOrRegion: JP
+                                stateOrProvince: CA
+                                city: St Albans
+                                streetAddress: 80 Wood Street
+                                zipOrPostalCode: SA82GF
+                              incorportationStatus: '3'
+                              paymentFacilitatorCountryOrRegion: JP
+                              contractStartDate: '2019-11-01'
+                              contractEndDate: '2019-11-14'
+                              principals:
+                              - passportNumber: '07043453'
+                                businessEmailAddress: billsmith@snapphoto.com
+                                driverLicenseNumber: '07043453'
+                                name: Bill Smith
+                                principalID: '07043453'
+                                residentIDOrNationalID: '07043453'
+                                SSN: 000-00-0000
+                                businessPhoneNumber: "+861071111222"
+                              primaryListingReason: '01'
+                              DBAName: Snap Photoshop Ltd
+                              legalName: Snap Photoshop Ltd
+                              webAddresses:
+                              - https://u.nu
+                              tradeInternationally: true
+                              financialAccts:
+                              - financialAccountNumber: '8090765400'
+                                financialInstitutionID: '101010'
+                                intBankAccountNumber: NO8330001234567
+                              secondaryListingReason: '08'
+                              taxID: GB123456789
+                              paymentFacilitatorBID: '10000108'
+                              businessRegistrationNumber: '452349600005'
+                              tradeOverInternet: false
+                              merchantCategoryCodes:
+                              - '5411'
+                              category: '1'
+                              businessPhoneNumbers:
+                              - "+861071111222"
+                              cardAcceptorIDs:
+                              - '12345678910111'
+                            acquirerBID: 'Bank of ABC '
+                            acquirerCountryOrRegion: JP
+                            acquirerName: 61e8aa42-d252-4e74-9dcc-85134f37a181
+                          totalAlertCount: 0
+                      numSearchRequestRecordsTotal: 0
+        '400':
+          description: 'API001 Mandatary field (with name) is missing or validation
+            Error with (field names). '
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '401':
+          description: API004 Unauthorized
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '403':
+          description: API007 Forbidden
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '404':
+          description: API002 Data/Resource Not Found
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '405':
+          description: API008 Method Not Allowed
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '406':
+          description: API009 Unacceptable Media Type
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '500':
+          description: API003 Process failure (can be back end failures)
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v2 - Latest
+        operationPointer: "#/paths/~1vmss~1v2~1retroAlertTerminated/post"
+        default: false
+      x-hideTryIt: true
+  "/vmss/v2/searchTerminatedRequest":
+    post:
+      tags:
+      - Termination Inquiry APIs
+      summary: Search Terminated Merchant
+      description: Search terminated merchant API
+      operationId: Search Terminated Merchants or Agent
+      parameters:
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: request-message-id
+        in: header
+        description: A user-defined message identifier for the request submitted.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+      - name: request-message-ts
+        in: header
+        description: A user-entered date and timestamp in GMT for the request submitted.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+          type: string
+      requestBody:
+        description: Search Terminated Merchants or Agent
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/searchTerminatedRequestRequest"
+            examples:
+              Financial Acct with  multiple responses and 1 exact match:
+                summary: Financial Acct with  multiple responses and 1 exact match
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: FINN DEPOT
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 3131 SANDALWOOD DR
+                        zipOrPostalCode: NE12 1FB
+                      financialAccts:
+                      - financialAccountNumber: '80920220719'
+                        financialInstitutionID: '20220719'
+                        intBankAccountNumber: NO83320220719
+                      businessRegistrationNumber: BIN2022071901
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '5462'
+                      principals:
+                      - name: RYAN HOLIDAY
+                        businessPhoneNumber: '20220710011'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220710010'
+                      DBAName: FINN DEPOT
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              City Mismatch:
+                summary: City Mismatch
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: Manchester
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              'Biz reg # with multiple responses and one exact match':
+                summary: 'Biz reg # with multiple responses and one exact match'
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: FINN DEPOT
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 3131 SANDALWOOD DR
+                        zipOrPostalCode: NE12 1FB
+                      businessRegistrationNumber: BIN2022071901
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '5462'
+                      principals:
+                      - name: RYAN HOLIDAY
+                        businessPhoneNumber: '20220710011'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220710010'
+                      DBAName: FINN DEPOT
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              Principal Name only exact match:
+                summary: Principal Name only exact match
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711013'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              MCC mismatch:
+                summary: MCC mismatch
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7HA
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '742'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              Street Address Partial Match:
+                summary: Street Address Partial Match
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: BERLIN
+                        streetAddress: 38850 ASHBOURNE DR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              First Principal Exact Match with name and phone number:
+                summary: First Principal Exact Match with name and phone number
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              First Principal phone exact match:
+                summary: First Principal phone exact match
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711011'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              Two Principals with exact match on their names and phones:
+                summary: Two Principals with exact match on their names and phones
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              Country mismatch:
+                summary: Country mismatch
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: IT
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E16 7HA
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              Business Phone Mismatch:
+                summary: Business Phone Mismatch
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711013'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              Zipcode mismatch:
+                summary: Zipcode mismatch
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7HA
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              All fields match:
+                summary: All fields match
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      webAddresses:
+                      - https://avontrades.com/
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: true
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              Email Mismatch:
+                summary: Email Mismatch
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: fishmancharles@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              DBA Exact Match:
+                summary: DBA Exact Match
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON TRADERS
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON TRADERS
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+              DBA Partial Match:
+                summary: DBA Partial Match
+                value:
+                  searchTerminatedRequest:
+                    terminatedRecordSearchCriteria:
+                      legalName: AVON Traders
+                      businessEmailAddress: charlesfishman@avaontraders.com
+                      address:
+                        countryOrRegion: GB
+                        city: LONDON
+                        streetAddress: 633 ASHBOURNE CIR
+                        zipOrPostalCode: E15 7GZ
+                      tradeOverInternet: false
+                      merchantCategoryCodes:
+                      - '7379'
+                      principals:
+                      - name: CHARLES FISHMAN
+                        businessPhoneNumber: '20220711011'
+                      - name: VERA STANLEY
+                        businessPhoneNumber: '20220711012'
+                      category: '0'
+                      businessPhoneNumbers:
+                      - '20220711010'
+                      DBAName: AVON
+                    acquirerBID: '10033027'
+                    retroAlertIfNoMatch: false
+                    globalSearch: true
+                    acquirerCountryOrRegion: JP
+        required: true
+      responses:
+        '200':
+          description: API000 Success
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/searchTerminatedRequestResponse"
+              examples:
+                Financial Acct with  multiple responses and 1 exact match:
+                  summary: Financial Acct with  multiple responses and 1 exact match
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: FINN DEPOT
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 3131 SANDALWOOD DR
+                            zipOrPostalCode: NE12 1FB
+                          financialAccts:
+                          - financialAccountNumber: '80920220719'
+                            financialInstitutionID: '20220719'
+                            intBankAccountNumber: NO83320220719
+                          businessRegistrationNumber: BIN2022071901
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '5462'
+                          principals:
+                          - name: RYAN HOLIDAY
+                            businessPhoneNumber: '20220710011'
+                          businessPhoneNumbers:
+                          - '20220710010'
+                          DBAName: FINN DEPOT
+                        searchRequestRefID: '8406523'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: N
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            financialAcctsMatch:
+                            - financialAccountNumber: E
+                              financialInstitutionID: E
+                              intBankAccountNumber: E
+                            businessRegistrationNumber: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: N
+                          terminatedRefID: A48dfead8-0218-4cae-b422-49ae0e3a64ad1658248491407
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 3131 SANDALWOOD DR
+                              zipOrPostalCode: NE12 1FB
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: RYAN HOLIDAY
+                              businessPhoneNumber: '20220710011'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: CHINNO SPORTS
+                            legalName: CHINNO SPORTS
+                            webAddresses:
+                            - htpps://chinnosports.com/
+                            tradeInternationally: false
+                            financialAccts:
+                            - financialAccountNumber: '80920220719'
+                              financialInstitutionID: '20220719'
+                              intBankAccountNumber: NO83320220719
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            businessRegistrationNumber: BIN2022071901
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '5462'
+                            businessPhoneNumbers:
+                            - '20220710010'
+                          acquirerBID: '10048640'
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            financialAcctsMatch:
+                            - financialAccountNumber: N
+                              financialInstitutionID: N
+                              intBankAccountNumber: N
+                            businessRegistrationNumber: N
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: Abe0e0492-a3bf-4114-8348-ef9e6905662b1657734417199
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 3131 SANDALWOOD DR
+                              zipOrPostalCode: NE12 1FB
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: RYAN HOLIDAY
+                              businessPhoneNumber: '20220710011'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: FINN DEPOT
+                            legalName: FINN DEPOT
+                            webAddresses:
+                            - htpps://finndepot.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '5462'
+                            businessPhoneNumbers:
+                            - '20220710010'
+                          acquirerBID: '10048640'
+                        totalCount: 2
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                City Mismatch:
+                  summary: City Mismatch
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: Manchester
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406512'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: N
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                'Biz reg # with multiple responses and one exact match':
+                  summary: 'Biz reg # with multiple responses and one exact match'
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: FINN DEPOT
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 3131 SANDALWOOD DR
+                            zipOrPostalCode: NE12 1FB
+                          businessRegistrationNumber: BIN2022071901
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '5462'
+                          principals:
+                          - name: RYAN HOLIDAY
+                            businessPhoneNumber: '20220710011'
+                          businessPhoneNumbers:
+                          - '20220710010'
+                          DBAName: FINN DEPOT
+                        searchRequestRefID: '8406522'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            businessRegistrationNumber: N
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: Abe0e0492-a3bf-4114-8348-ef9e6905662b1657734417199
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 3131 SANDALWOOD DR
+                              zipOrPostalCode: NE12 1FB
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: RYAN HOLIDAY
+                              businessPhoneNumber: '20220710011'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: FINN DEPOT
+                            legalName: FINN DEPOT
+                            webAddresses:
+                            - htpps://finndepot.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '5462'
+                            businessPhoneNumbers:
+                            - '20220710010'
+                          acquirerBID: '10048640'
+                        - terminatedRecordMatch:
+                            legalName: N
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            businessRegistrationNumber: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: N
+                          terminatedRefID: A48dfead8-0218-4cae-b422-49ae0e3a64ad1658248491407
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 3131 SANDALWOOD DR
+                              zipOrPostalCode: NE12 1FB
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: RYAN HOLIDAY
+                              businessPhoneNumber: '20220710011'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: CHINNO SPORTS
+                            legalName: CHINNO SPORTS
+                            webAddresses:
+                            - htpps://chinnosports.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            businessRegistrationNumber: BIN2022071901
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '5462'
+                            businessPhoneNumbers:
+                            - '20220710010'
+                          acquirerBID: '10048640'
+                        totalCount: 2
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                Principal Name only exact match:
+                  summary: Principal Name only exact match
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711013'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406520'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: N
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                MCC mismatch:
+                  summary: MCC mismatch
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7HA
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '742'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406517'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: N
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: N
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                Street Address Partial Match:
+                  summary: Street Address Partial Match
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: BERLIN
+                            streetAddress: 38850 ASHBOURNE DR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406511'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: N
+                              streetAddress: P
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                First Principal Exact Match with name and phone number:
+                  summary: First Principal Exact Match with name and phone number
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406518'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                First Principal phone exact match:
+                  summary: First Principal phone exact match
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711011'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406521'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: P
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                Two Principals with exact match on their names and phones:
+                  summary: Two Principals with exact match on their names and phones
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406519'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                Country mismatch:
+                  summary: Country mismatch
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: IT
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E16 7HA
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406513'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: N
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: N
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                Business Phone Mismatch:
+                  summary: Business Phone Mismatch
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711013'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406515'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: N
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                Zipcode mismatch:
+                  summary: Zipcode mismatch
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7HA
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406514'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: N
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                All fields match:
+                  summary: All fields match
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          webAddresses:
+                          - https://avontrades.com/
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: true
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8868765'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            webAddresses: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                Email Mismatch:
+                  summary: Email Mismatch
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: fishmancharles@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406516'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: N
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                DBA Exact Match:
+                  summary: DBA Exact Match
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON TRADERS
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON TRADERS
+                        searchRequestRefID: '8406509'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: E
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+                DBA Partial Match:
+                  summary: DBA Partial Match
+                  value:
+                    searchTerminatedResponse:
+                      searchRequestRef:
+                        terminatedRecordSearchCriteria:
+                          legalName: AVON Traders
+                          businessEmailAddress: charlesfishman@avaontraders.com
+                          address:
+                            countryOrRegion: GB
+                            city: LONDON
+                            streetAddress: 633 ASHBOURNE CIR
+                            zipOrPostalCode: E15 7GZ
+                          tradeOverInternet: false
+                          merchantCategoryCodes:
+                          - '7379'
+                          principals:
+                          - name: CHARLES FISHMAN
+                            businessPhoneNumber: '20220711011'
+                          - name: VERA STANLEY
+                            businessPhoneNumber: '20220711012'
+                          businessPhoneNumbers:
+                          - '20220711010'
+                          DBAName: AVON
+                        searchRequestRefID: '8406510'
+                        acquirerBID: '10033027'
+                        globalSearch: true
+                        acquirerCountryOrRegion: JP
+                      possibleMatches:
+                        matchedRecords:
+                        - terminatedRecordMatch:
+                            legalName: E
+                            principalsMatch:
+                            - name: E
+                              businessPhoneNumber: E
+                            - name: E
+                              businessPhoneNumber: E
+                            businessEmailAddress: E
+                            merchantCategoryCodes: E
+                            addressMatch:
+                              countryOrRegion: E
+                              city: E
+                              streetAddress: E
+                              zipOrPostalCode: E
+                            businessPhoneNumbers: E
+                            DBAName: P
+                          terminatedRefID: A3f9e5285-e362-456a-9498-b91b9cd079cf1657734159543
+                          terminatedRecord:
+                            businessEmailAddress: charlesfishman@avaontraders.com
+                            address:
+                              countryOrRegion: GB
+                              stateOrProvince: ''
+                              city: LONDON
+                              streetAddress: 633 ASHBOURNE CIR
+                              zipOrPostalCode: E15 7GZ
+                            incorportationStatus: '3'
+                            paymentFacilitatorCountryOrRegion: ''
+                            contractStartDate: '2022-01-01'
+                            contractEndDate: '2022-07-13'
+                            principals:
+                            - name: CHARLES FISHMAN
+                              businessPhoneNumber: '20220711011'
+                            - name: VERA STANLEY
+                              businessPhoneNumber: '20220711012'
+                            primaryListingReason: 21-Excessive Fraud
+                            DBAName: AVON TRADERS
+                            legalName: AVON TRADERS
+                            webAddresses:
+                            - https://avontrades.com/
+                            tradeInternationally: false
+                            secondaryListingReason: 23-Transaction Laundering
+                            paymentFacilitatorBID: ''
+                            tradeOverInternet: false
+                            merchantCategoryCodes:
+                            - '7379'
+                            businessPhoneNumbers:
+                            - '20220711010'
+                          acquirerBID: '10048640'
+                        totalCount: 1
+                    status:
+                      statusDescription: SUCCESS
+                      statusCode: API000
+        '400':
+          description: API001 Mandatary field (with name) is missing or validation
+            Error with (field names).
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '401':
+          description: API004 Unauthorized
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '403':
+          description: API007 Forbidden
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '404':
+          description: API002 Data/Resource Not Found
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '405':
+          description: API008 Method Not Allowed
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '406':
+          description: API009 Unacceptable Media Type
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+        '500':
+          description: API003 Process failure (can be back end failures)
+          headers:
+            request-message-id:
+              description: A user-defined message identifier for the request submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-id:
+              description: A system-generated message identifier for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+                type: string
+            response-message-ts:
+              description: A system-generated date and timestamp in GMT for the response
+                sent.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            receive-message-ts:
+              description: A system-generated date and timestamp in GMT upon receipt
+                of the request.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+            request-message-ts:
+              description: A user-entered date and timestamp in GMT for the request
+                submitted.
+              style: simple
+              explode: false
+              schema:
+                pattern: "^(19|20)\\d\\d-(0[1-9]|1[012])-([012]\\d|3[01])T([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d).(\\d{3})Z$"
+                type: string
+          content: {}
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v2 - Latest
+        operationPointer: "#/paths/~1vmss~1v2~1searchTerminatedRequest/post"
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    alertRecords:
+      title: Array of matched records for a retroactive alert.
+      type: array
+      items:
+        "$ref": "#/components/schemas/alertRecord"
+    searchTerminatedRequest:
+      title: Search Terminated Merchant or Agent API Request Data
+      required:
+      - acquirerBID
+      - acquirerCountryOrRegion
+      - globalSearch
+      - terminatedRecordSearchCriteria
+      type: object
+      properties:
+        acquirerBID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: Visa assigned Business Identifier (BID) of the Acquirer for
+            the Search request.
+          example: '10048640'
+        globalSearch:
+          type: boolean
+          description: An indicator identifying if the inquiry is worldwide or regional
+            based. True means Global Search and False means Regional Search.
+          example: false
+          default: false
+        retroAlertIfNoMatch:
+          type: boolean
+          description: Add an alert so that VMSS saves the inquiry for 180 days and
+            checks the inquiry against all new terminated records that are listed
+            within the next 180 days. If your inquiry matches a new terminated record,
+            VMSS will generate a retroactive alert.
+          example: false
+          default: false
+        acquirerCountryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the Acquirer for the Search request.
+          example: JP
+        terminatedRecordSearchCriteria:
+          "$ref": "#/components/schemas/terminatedRecordSearchCriteria-1"
+    retroAlertTerminatedRequest:
+      title: RetroActive Alert for Terminated Merchant or Agent API Request
+      type: object
+      properties:
+        retroAlertsRequest:
+          "$ref": "#/components/schemas/retroAlertsRequest"
+    principals:
+      title: Up to 5 individuals that are registered as the merchant or agent principal/owner.
+      type: array
+      items:
+        "$ref": "#/components/schemas/principal"
+    matchedRecord:
+      title: 'Array of the matched records. object '
+      type: object
+      properties:
+        acquirerBID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: Visa assigned Business Identifier (BID) of the Acquirer for
+            the terminated contract.
+          example: '10048640'
+        acquirerName:
+          maxLength: 240
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: Name of the Acquirer for the terminated contract.
+          example: 'Bank of ABC '
+        terminatedRefID:
+          maxLength: 36
+          minLength: 1
+          pattern: "^(\\w|\\s|-|,| |\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+          type: string
+          description: A system-generated terminated record reference identification
+            number.
+          example: 61e8aa42-d252-4e74-9dcc-85134f37a181
+        terminatedRecord:
+          "$ref": "#/components/schemas/terminatedRecord-1"
+        terminatedRecordMatch:
+          "$ref": "#/components/schemas/terminatedRecordMatch"
+        acquirerCountryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the Acquirer for the terminated contract. 
+          example: JP
+    addressMatch:
+      title: The  addressMatch object.
+      type: object
+      properties:
+        city:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        streetAddress:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        countryOrRegion:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        stateOrProvince:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        zipOrPostalCode:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+    possibleMatches:
+      title: possibleMerchantMatches object.
+      type: object
+      properties:
+        alertRecords:
+          "$ref": "#/components/schemas/alertRecords"
+        totalAlertCount:
+          type: integer
+          description: Total number of matched records for a retroactive alert.
+    retroSearchRequestAndAlerts:
+      title: Array of retroactive alerts.
+      type: array
+      items:
+        "$ref": "#/components/schemas/retroSearchRequestAndAlert"
+    principal:
+      title: 'Up to 5 individuals that are registered as the merchant or agent principal/owner.
+        object '
+      required:
+      - name
+      type: object
+      properties:
+        SSN:
+          maxLength: 11
+          minLength: 11
+          pattern: "^\\d{3}-?\\d{2}-?\\d{4}$|^XXX-XX-XXXX$"
+          type: string
+          description: The merchant or agent principal's/owner’s social security number.
+        name:
+          maxLength: 35
+          minLength: 5
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\`\\.\\/\\?\\\\]*)$"
+          type: string
+          description: The name of the individual that is registered as the merchant
+            or agent principal/owner.
+          example: Bill Smith
+        principalID:
+          maxLength: 30
+          minLength: 0
+          pattern: "^(\\w|\\s|-|,|�|\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+          type: string
+          description: The merchant or agent principal's/owner’s id from VMSS 1.0.
+          example: '07043453'
+        passportNumber:
+          maxLength: 30
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: 'The merchant or agent principal''s/owner''s passport number. '
+          example: '07043453'
+        businessPhoneNumber:
+          maxLength: 15
+          minLength: 8
+          pattern: "^((\\+\\d{1,3}(\\(\\d{1,3}\\)|(\\d{1,3}))\\d{1,5})|((\\(\\d{2,6}\\))|(\\d{2,6})))(\\d{3,4})(\\d{3,4})$"
+          type: string
+          description: 'The merchant or agent principal''s/owner’s corporate/business
+            contact number. '
+          example: "+861071111222"
+        driverLicenseNumber:
+          maxLength: 20
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: The merchant or agent principal's/owner’s driver license number.
+          example: '07043453'
+        businessEmailAddress:
+          maxLength: 40
+          minLength: 4
+          pattern: "[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          type: string
+          description: 'The merchant or agent principal''s/owner’s corporate/business
+            email address. '
+          example: billsmith@snapphoto.com
+        residentIDOrNationalID:
+          maxLength: 30
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: The merchant or agent principal's/owner’s resident ID number
+            or National ID number. This is required for clients in CEMEA.
+          example: '07043453'
+    retroSearchRequest:
+      title: Retro Search Request information.
+      type: object
+      properties:
+        acquirerBID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: Visa assigned Business Identifier (BID) of the Acquirer for
+            the Search request.
+          example: '10048640'
+        globalSearch:
+          type: boolean
+          description: An indicator identifying if the inquiry is worldwide or regional
+            based. True means Global Search and False means Regional Search.
+          example: false
+          default: false
+        acquirerCountryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the Acquirer for the Search request.
+          example: JP
+        retroSearchRequestRefID:
+          maxLength: 99999999
+          minLength: 1
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A system-generated retroactive search identification number.
+          example: SRCH123412
+        terminatedRecordSearchCriteria:
+          "$ref": "#/components/schemas/terminatedRecordSearchCriteria"
+    searchTerminatedRequestRequest:
+      title: Search Terminated Merchant or Agent API Request
+      type: object
+      properties:
+        searchTerminatedRequest:
+          "$ref": "#/components/schemas/searchTerminatedRequest"
+    searchRequestRef:
+      title: Search request reference
+      required:
+      - acquirerBID
+      - acquirerCountryOrRegion
+      type: object
+      properties:
+        acquirerBID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: Visa assigned Business Identifier (BID) of the Acquirer for
+            the Search request.
+          example: '10048640'
+        globalSearch:
+          type: boolean
+          description: An indicator identifying if the inquiry is worldwide or regional
+            based. True means Global Search and False means Regional Search.
+          example: false
+          default: false
+        searchRequestRefID:
+          maxLength: 99999999
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A system-generated Search request reference id.
+          example: SRCH123412
+        acquirerCountryOrRegion:
+          maxLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the Acquirer for the Search request.
+          example: JP
+        terminatedRecordSearchCriteria:
+          "$ref": "#/components/schemas/terminatedRecordSearchCriteria-1"
+    terminatedRecordSearchCriteria:
+      title: terminatedRecordSearchCriteria Information
+      required:
+      - DBAName
+      - address
+      - businessPhoneNumbers
+      - category
+      - principals
+      - tradeOverInternet
+      type: object
+      properties:
+        taxID:
+          maxLength: 30
+          minLength: 6
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Tax Identification Code registered for the merchant or agent;
+            for example, a Value Added Tax (VAT) Number in the UK or a Federal Tax
+            ID Number in US.
+          example: GB123456789
+        DBAName:
+          maxLength: 70
+          minLength: 1
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The “Doing-Business-As” Name that the merchant or agent operates
+            under.
+          example: Snap Photoshop Ltd
+        address:
+          "$ref": "#/components/schemas/address"
+        category:
+          maxLength: 1
+          minLength: 1
+          pattern: "[0-5]"
+          type: string
+          description: |-
+            Business Category of the Terminated Record defined as follows:
+            0 = Merchant
+            1 = Payment Facilitator
+            2 = Independent Sales Organization
+            3 = Marketplace
+            4 = Staged Digital Wallet Operator
+            5 = Sponsored Merchant
+          example: '1'
+        legalName:
+          maxLength: 70
+          minLength: 4
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The parent or holding company legally registered name if this
+            name is different from the Trading Name/DBA Name. For a sole proprietor,
+            this field shall be omitted.
+          example: Snap Photoshop Ltd
+        principals:
+          "$ref": "#/components/schemas/principals"
+        webAddresses:
+          title: The registered web address of the merchant or agent. You may enter
+            up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          maxItems: 3
+          minItems: 0
+          type: array
+          description: The registered web address of the merchant or agent. You may
+            enter up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          items:
+            maxLength: 40
+            minLength: 4
+            pattern: "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
+            type: string
+            example: https://u.nu
+        financialAccts:
+          "$ref": "#/components/schemas/financialAccts"
+        tradeOverInternet:
+          type: boolean
+          description: An indicator identifying if the merchant or agent trades over
+            the Internet.
+          example: false
+          default: false
+        businessEmailAddress:
+          maxLength: 40
+          minLength: 4
+          pattern: "[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          type: string
+          description: The primary email address registered for the merchant or agent.
+          example: billsmith@snapphoto.com
+        businessPhoneNumbers:
+          title: The primary phone number registered for the merchant or agent. You
+            may enter up to 3 phone numbers.
+          maxItems: 3
+          minItems: 1
+          type: array
+          description: The primary phone number registered for the merchant or agent.
+            You may enter up to 3 phone numbers.
+          items:
+            maxLength: 15
+            minLength: 8
+            pattern: "^((\\+\\d{1,3}(\\(\\d{1,3}\\)|(\\d{1,3}))\\d{1,5})|((\\(\\d{2,6}\\))|(\\d{2,6})))(\\d{3,4})(\\d{3,4})$"
+            type: string
+            example: "+861071111222"
+        merchantCategoryCodes:
+          title: A four-digit numeric code describing the merchant’s type of business
+            product or service, also known as the merchant category code (MCC).
+          maxItems: 5
+          minItems: 0
+          type: array
+          description: A four-digit numeric code describing the merchant’s type of
+            business product or service, also known as the merchant category code
+            (MCC).
+          items:
+            maxLength: 5
+            minLength: 1
+            pattern: "\\d{4}"
+            type: string
+            example: '5411'
+        businessRegistrationNumber:
+          maxLength: 30
+          minLength: 2
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Business Registration Number such as Commercial Registration,
+            Ministry of Commerce certificate number or equivalent registration number
+            for the merchant or agent.
+          example: '452349600005'
+    searchTerminatedResponse:
+      title: Search Terminated Merchant or Agent API Response Data
+      type: object
+      properties:
+        possibleMatches:
+          "$ref": "#/components/schemas/possibleMatches-1"
+        searchRequestRef:
+          "$ref": "#/components/schemas/searchRequestRef"
+    financialAcct:
+      title: 'Up to 3 financial accounts. object '
+      type: object
+      properties:
+        intBankAccountNumber:
+          maxLength: 34
+          minLength: 4
+          pattern: "([a-zA-Z]){2}([0-9]){2}([a-zA-Z0-9]?){9,30}"
+          type: string
+          description: An International Bank Account Number that can be verified by
+            a checksum.
+          example: NO8330001234567
+        financialAccountNumber:
+          maxLength: 20
+          minLength: 0
+          pattern: "^[0-9]+$"
+          type: string
+          description: 'A code assigned by a financial institution to uniquely identify
+            a customer account within the financial institution. '
+          example: '8090765400'
+        financialInstitutionID:
+          maxLength: 10
+          minLength: 0
+          pattern: "^([A-Za-z0-9]|\\s)+$"
+          type: string
+          description: A unique code that identifies a Financial Institution; for
+            example, Sort Code, SWIFT, Routing Number.
+          example: '101010'
+    principalsMatc:
+      title: 'The principalMatch array. object '
+      type: object
+      properties:
+        SSN:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        name:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        principalID:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        passportNumber:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        businessPhoneNumber:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        driverLicenseNumber:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        businessEmailAddress:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        residentIDOrNationalID:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+    retroAlertTerminatedResponse:
+      title: RetroActive Alert for Terminated Merchant or Agent API Response
+      type: object
+      properties:
+        status:
+          "$ref": "#/components/schemas/status"
+        retroAlertsResponse:
+          "$ref": "#/components/schemas/retroAlertsResponse"
+    terminatedRecordSearchCriteria-1:
+      title: terminatedRecordSearchCriteria Information
+      required:
+      - DBAName
+      - address
+      - businessPhoneNumbers
+      - category
+      - principals
+      - tradeOverInternet
+      type: object
+      properties:
+        taxID:
+          maxLength: 30
+          minLength: 6
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Tax Identification Code registered for the merchant or agent;
+            for example, a Value Added Tax (VAT) Number in the UK or a Federal Tax
+            ID Number in US.
+          example: GB123456789
+        DBAName:
+          maxLength: 70
+          minLength: 1
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The “Doing-Business-As” Name that the merchant or agent operates
+            under.
+          example: Snap Photoshop Ltd
+        address:
+          "$ref": "#/components/schemas/address"
+        category:
+          maxLength: 1
+          minLength: 1
+          pattern: "[0-5]"
+          type: string
+          description: |-
+            Business Category of the Terminated Record defined as follows:
+            0 = Merchant
+            1 = Payment Facilitator
+            2 = Independent Sales Organization
+            3 = Marketplace
+            4 = Staged Digital Wallet Operator
+            5 = Sponsored Merchant
+          example: '1'
+        legalName:
+          maxLength: 70
+          minLength: 4
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The parent or holding company legally registered name if this
+            name is different from the Trading Name/DBA Name. For a sole proprietor,
+            this field shall be omitted.
+          example: Snap Photoshop Ltd
+        principals:
+          "$ref": "#/components/schemas/principals-1"
+        webAddresses:
+          title: The registered web address of the merchant or agent. You may enter
+            up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          maxItems: 3
+          minItems: 0
+          type: array
+          description: The registered web address of the merchant or agent. You may
+            enter up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          items:
+            maxLength: 40
+            minLength: 4
+            pattern: "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
+            type: string
+            example: https://u.nu
+        financialAccts:
+          "$ref": "#/components/schemas/financialAccts-1"
+        tradeOverInternet:
+          type: boolean
+          description: An indicator identifying if the merchant or agent trades over
+            the Internet.
+          example: false
+          default: false
+        businessEmailAddress:
+          maxLength: 40
+          minLength: 4
+          pattern: "[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          type: string
+          description: The primary email address registered for the merchant or agent.
+          example: billsmith@snapphoto.com
+        businessPhoneNumbers:
+          title: The primary phone number registered for the merchant or agent. You
+            may enter up to 3 phone numbers.
+          maxItems: 3
+          minItems: 1
+          type: array
+          description: The primary phone number registered for the merchant or agent.
+            You may enter up to 3 phone numbers.
+          items:
+            maxLength: 15
+            minLength: 8
+            pattern: "^((\\+\\d{1,3}(\\(\\d{1,3}\\)|(\\d{1,3}))\\d{1,5})|((\\(\\d{2,6}\\))|(\\d{2,6})))(\\d{3,4})(\\d{3,4})$"
+            type: string
+            example: "+861071111222"
+        merchantCategoryCodes:
+          title: A four-digit numeric code describing the merchant’s type of business
+            product or service, also known as the merchant category code (MCC).
+          maxItems: 5
+          minItems: 0
+          type: array
+          description: A four-digit numeric code describing the merchant’s type of
+            business product or service, also known as the merchant category code
+            (MCC).
+          items:
+            maxLength: 5
+            minLength: 1
+            pattern: "\\d{4}"
+            type: string
+            example: '5411'
+        businessRegistrationNumber:
+          maxLength: 30
+          minLength: 2
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Business Registration Number such as Commercial Registration,
+            Ministry of Commerce certificate number or equivalent registration number
+            for the merchant or agent.
+          example: '452349600005'
+    terminatedRecord-1:
+      title: terminatedRecord Information
+      required:
+      - DBAName
+      - address
+      - businessPhoneNumbers
+      - cardAcceptorIDs
+      - category
+      - contractEndDate
+      - contractStartDate
+      - incorportationStatus
+      - primaryListingReason
+      - principals
+      - tradeInternationally
+      - tradeOverInternet
+      type: object
+      properties:
+        taxID:
+          maxLength: 30
+          minLength: 6
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Tax Identification Code registered for the merchant or agent;
+            for example, a Value Added Tax (VAT) Number in the UK or a Federal Tax
+            ID Number in US.
+          example: GB123456789
+        DBAName:
+          maxLength: 70
+          minLength: 1
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The “Doing-Business-As” Name that the merchant or agent operates
+            under.
+          example: Snap Photoshop Ltd
+        address:
+          "$ref": "#/components/schemas/address"
+        category:
+          maxLength: 1
+          minLength: 0
+          pattern: "[0-5]"
+          type: string
+          description: |-
+            Business Category of the Terminated Record defined as follows:
+            0 = Merchant
+            1 = Payment Facilitator
+            2 = Independent Sales Organization
+            3 = Marketplace
+            4 = Staged Digital Wallet Operator
+            5 = Sponsored Merchant
+          example: '1'
+        legalName:
+          maxLength: 70
+          minLength: 4
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The parent or holding company legally registered name if this
+            name is different from the Trading Name/DBA Name. For a sole proprietor,
+            this field shall be omitted.
+          example: Snap Photoshop Ltd
+        principals:
+          "$ref": "#/components/schemas/principals-1"
+        webAddresses:
+          title: The registered web address of the merchant or agent. You may enter
+            up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          maxItems: 3
+          minItems: 0
+          type: array
+          description: The registered web address of the merchant or agent. You may
+            enter up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          items:
+            maxLength: 40
+            minLength: 4
+            pattern: "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
+            type: string
+            example: https://u.nu
+        financialAccts:
+          "$ref": "#/components/schemas/financialAccts-1"
+        cardAcceptorIDs:
+          title: A unique reference identifying the sales establishment requesting
+            the transaction. You may enter up to 5 Card Acceptor IDs.
+          maxItems: 5
+          minItems: 1
+          type: array
+          items:
+            maxLength: 15
+            minLength: 1
+            pattern: "^(\\w|\\s|-|,|�|\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+            type: string
+            description: A unique reference identifying the sales establishment requesting
+              the transaction. You may enter up to 5 Card Acceptor IDs.
+            example: '12345678910111'
+        contractEndDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: The date on which the merchant's or agent's contract agreement
+            was terminated.
+          example: '2019-11-14'
+        contractStartDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: The date on which the merchant's or agent's contract agreement
+            was granted.
+          example: '2019-11-01'
+        tradeOverInternet:
+          type: boolean
+          description: An indicator identifying if the merchant or agent trades over
+            the Internet.
+          example: false
+          default: false
+        businessEmailAddress:
+          maxLength: 40
+          minLength: 4
+          pattern: "[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          type: string
+          description: The primary email address registered for the merchant or agent.
+          example: billsmith@snapphoto.com
+        businessPhoneNumbers:
+          title: The primary phone number registered for the merchant or agent. You
+            may enter up to 3 phone numbers.
+          maxItems: 3
+          minItems: 1
+          type: array
+          description: The primary phone number registered for the merchant or agent.
+            You may enter up to 3 phone numbers.
+          items:
+            maxLength: 15
+            minLength: 8
+            pattern: "^((\\+\\d{1,3}(\\(\\d{1,3}\\)|(\\d{1,3}))\\d{1,5})|((\\(\\d{2,6}\\))|(\\d{2,6})))(\\d{3,4})(\\d{3,4})$"
+            type: string
+            example: "+861071111222"
+        incorportationStatus:
+          maxLength: 1
+          minLength: 1
+          pattern: "[1-6]|-1"
+          type: string
+          description: |-
+            The incorporation status registered for the merchant or agent defined as follows:
+            1 = Individual/Sole Proprietor
+            2 = Partnership
+            3 = Corporation
+            4 = Medical or Legal Corporation 5 = Association / Estate / Trust
+            6 = Non-Profit Organization
+            -1 = Unknown (returned for legacy listings)
+          example: '3'
+        primaryListingReason:
+          maxLength: 103
+          minLength: 2
+          pattern: "[0-9][0-9]\\-[a-zA-Z0-9\\s\\W]+"
+          type: string
+          description: The primary reason for the termination of the merchant's or
+            agent's contract.
+          example: 29-Bankruptcy/Liquidation/Insolvency
+        tradeInternationally:
+          type: boolean
+          description: An indicator identifying if the merchant or agent trades across
+            international borders or territories.
+          example: true
+          default: false
+        merchantCategoryCodes:
+          title: A four-digit numeric code describing the merchant’s type of business
+            product or service, also known as the merchant category code (MCC).
+          maxItems: 5
+          minItems: 0
+          type: array
+          description: A four-digit numeric code describing the merchant’s type of
+            business product or service, also known as the merchant category code
+            (MCC).
+          items:
+            maxLength: 5
+            minLength: 1
+            pattern: "\\d{4}"
+            type: string
+            example: '5411'
+        paymentFacilitatorBID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: The business ID as registered with Visa to uniquely identify
+            a payment facilitator.
+          example: '10000108'
+        secondaryListingReason:
+          maxLength: 103
+          minLength: 2
+          pattern: "[0-9][0-9]\\-[a-zA-Z0-9\\s\\W]+"
+          type: string
+          description: The secondary reason for the termination of the merchant's
+            or agent's contract.
+          example: 34-Merchant Identity Theft
+        acquirerAssignedMerchantID:
+          maxLength: 30
+          minLength: 2
+          pattern: "^(\\w|\\s|-|,|�|\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+          type: string
+          description: A unique Merchant Identification Number assigned by the Acquirer
+            or by the Payment Facilitator in the case of a Sponsored Merchant. Mandatory
+            for Merchant.
+          example: '36654773'
+        businessRegistrationNumber:
+          maxLength: 30
+          minLength: 2
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Business Registration Number such as Commercial Registration,
+            Ministry of Commerce certificate number or equivalent registration number
+            for the merchant or agent.
+          example: '452349600005'
+        paymentFacilitatorCountryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the payment facilitator.
+          example: JP
+    financialAcct-1:
+      title: 'Up to 3 financial accounts. object '
+      type: object
+      properties:
+        intBankAccountNumber:
+          maxLength: 34
+          minLength: 4
+          pattern: "([a-zA-Z]){2}([0-9]){2}([a-zA-Z0-9]?){9,30}"
+          type: string
+          description: An International Bank Account Number that can be verified by
+            a checksum.
+          example: NO8330001234567
+        financialAccountNumber:
+          maxLength: 20
+          minLength: 0
+          pattern: "^[0-9]+$"
+          type: string
+          description: A code assigned by a financial institution to uniquely identify
+            a customer account within the financial institution.
+          example: '8090765400'
+        financialInstitutionID:
+          maxLength: 10
+          minLength: 0
+          pattern: "^([A-Za-z0-9]|\\s)+$"
+          type: string
+          description: A unique code that identifies a Financial Institution; for
+            example, Sort Code, SWIFT, Routing Number.
+          example: '101010'
+    address:
+      title: The merchant or agent registered address object.
+      required:
+      - city
+      - countryOrRegion
+      - streetAddress
+      type: object
+      properties:
+        city:
+          maxLength: 30
+          minLength: 2
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: The city of the merchant's or agent's registered address.
+          example: St Albans
+        streetAddress:
+          maxLength: 40
+          minLength: 4
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: 'The street details of the merchant''s or agent''s registered
+            address that should include, in this order as applicable: building number/name,
+            street number and name, shop number, floor number.'
+          example: 80 Wood Street
+        countryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the merchant's or agent's registered
+            address.
+          example: JP
+        stateOrProvince:
+          maxLength: 20
+          minLength: 2
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: The state or province of the merchant's or agent's registered
+            address.
+          example: CA
+        zipOrPostalCode:
+          maxLength: 8
+          minLength: 3
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: The postal code or zip code for the merchant's or agent's registered
+            address.
+          example: SA82GF
+    financialAcctsMatc:
+      title: 'The financialAcctMatch array. object '
+      type: object
+      properties:
+        intBankAccountNumber:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        financialAccountNumber:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        financialInstitutionID:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+    alertRecord:
+      title: 'Array of matched records for a retroactive alert. object '
+      type: object
+      properties:
+        acquirerBID:
+          maxLength: 240
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: Visa assigned Business Identifier (BID) of the Acquirer for
+            the terminated contract.
+          example: 'Bank of ABC '
+        acquirerName:
+          maxLength: 36
+          minLength: 1
+          pattern: "^(\\w|\\s|-|,| |\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+          type: string
+          description: Name of the Acquirer for the terminated contract.
+          example: 61e8aa42-d252-4e74-9dcc-85134f37a181
+        terminatedRefID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: A system-generated terminated record reference identification
+            number.
+          example: '10048640'
+        terminatedRecord:
+          "$ref": "#/components/schemas/terminatedRecord"
+        terminatedRecordMatch:
+          "$ref": "#/components/schemas/terminatedRecordMatch"
+        acquirerCountryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the Acquirer for the terminated contract. 
+          example: JP
+    principals-1:
+      title: Up to 5 individuals that are registered as the merchant or agent principal/owner.
+      type: array
+      items:
+        "$ref": "#/components/schemas/principal-1"
+    retroAlertsResponse:
+      title: RetroActive Alert for Terminated Merchant or Agent API Response Data
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          description: The maximum number of matched records to retrieve within the
+            current page of retroactive alerts.
+        pageOffset:
+          type: integer
+          description: 'Pagination can be supported using pageOffet and pageSize.
+            An offset is simply the number of matched records you wish to skip before
+            selecting records. The zero-based offset to start at. An offset of 10
+            starts at the 11th record. '
+        retroSearchRequestAndAlerts:
+          "$ref": "#/components/schemas/retroSearchRequestAndAlerts"
+        numSearchRequestRecordsTotal:
+          type: integer
+          description: Total number of search request records with retroactive alerts
+            generated in the requested alert date range.
+        numSearchRequestRecordsReturned:
+          type: integer
+          description: Number of search request records with retroactive alerts returned
+            in the response.
+    possibleMatches-1:
+      title: possibleMatches object.
+      type: object
+      properties:
+        totalCount:
+          type: integer
+          description: Number of possibly matched records returned in the response.
+        matchedRecords:
+          "$ref": "#/components/schemas/matchedRecords"
+    terminatedRecordMatch:
+      title: terminatedRecordMatch Information
+      type: object
+      properties:
+        taxID:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        DBAName:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        legalName:
+          maxLength: 35
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        addressMatch:
+          "$ref": "#/components/schemas/addressMatch"
+        webAddresses:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        principalsMatch:
+          "$ref": "#/components/schemas/principalsMatch"
+        tradeOverInternet:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        financialAcctsMatch:
+          "$ref": "#/components/schemas/financialAcctsMatch"
+        businessEmailAddress:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        businessPhoneNumbers:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        merchantCategoryCodes:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+        businessRegistrationNumber:
+          maxLength: 1
+          minLength: 1
+          pattern: "([NEP]){1}"
+          type: string
+          description: |-
+            The indicator of the match type for the data field.
+            N = No Match
+            E = Exact Match
+            P = Partial Match
+          example: N
+    principalsMatch:
+      title: The principalMatch array.
+      type: array
+      items:
+        "$ref": "#/components/schemas/principalsMatc"
+    matchedRecords:
+      title: Array of the matched records.
+      type: array
+      items:
+        "$ref": "#/components/schemas/matchedRecord"
+    principal-1:
+      title: Up to 5 individuals that are registered as the merchant or agent principal/owner.
+        object
+      required:
+      - name
+      type: object
+      properties:
+        SSN:
+          maxLength: 11
+          minLength: 11
+          pattern: "^\\d{3}-?\\d{2}-?\\d{4}$|^XXX-XX-XXXX$"
+          type: string
+          description: The merchant or agent principal's/owner’s social security number.
+        name:
+          maxLength: 35
+          minLength: 5
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\`\\.\\/\\?\\\\]*)$"
+          type: string
+          description: The name of the individual that is registered as the merchant
+            or agent principal/owner.
+          example: Bill Smith
+        principalID:
+          maxLength: 30
+          minLength: 0
+          pattern: "^(\\w|\\s|-|,|�|\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+          type: string
+          description: The merchant or agent principal's/owner’s id from VMSS 1.0.
+          example: '07043453'
+        passportNumber:
+          maxLength: 30
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: 'The merchant or agent principal''s/owner''s passport number. '
+          example: '07043453'
+        businessPhoneNumber:
+          maxLength: 15
+          minLength: 8
+          pattern: "^((\\+\\d{1,3}(\\(\\d{1,3}\\)|(\\d{1,3}))\\d{1,5})|((\\(\\d{2,6}\\))|(\\d{2,6})))(\\d{3,4})(\\d{3,4})$"
+          type: string
+          description: The merchant or agent principal's/owner’s corporate/business
+            contact number.
+          example: "+861071111222"
+        driverLicenseNumber:
+          maxLength: 20
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: The merchant or agent principal's/owner’s driver license number.
+          example: '07043453'
+        businessEmailAddress:
+          maxLength: 40
+          minLength: 4
+          pattern: "[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          type: string
+          description: The merchant or agent principal's/owner’s corporate/business
+            email address.
+          example: billsmith@snapphoto.com
+        residentIDOrNationalID:
+          maxLength: 30
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: The merchant or agent principal's/owner’s resident ID number
+            or National ID number. This is required for clients in CEMEA.
+          example: '07043453'
+    financialAcctsMatch:
+      title: The financialAcctMatch array.
+      type: array
+      items:
+        "$ref": "#/components/schemas/financialAcctsMatc"
+    searchTerminatedRequestResponse:
+      title: Search Terminated Merchant or Agent API Response
+      type: object
+      properties:
+        status:
+          "$ref": "#/components/schemas/status"
+        searchTerminatedResponse:
+          "$ref": "#/components/schemas/searchTerminatedResponse"
+    financialAccts:
+      title: Up to 3 financial accounts.
+      type: array
+      items:
+        "$ref": "#/components/schemas/financialAcct"
+    retroAlertsRequest:
+      title: RetroActive Alert for Terminated Merchant or Agent API Request Data
+      required:
+      - acquirerBID
+      - acquirerCountryOrRegion
+      - alertEndDate
+      - alertStartDate
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          description: The maximum number of matched records to retrieve within the
+            current page of retroactive alerts.
+        pageOffset:
+          type: integer
+          description: 'Pagination can be supported using pageOffet and pageSize.
+            An offset is simply the number of matched records you wish to skip before
+            selecting records. The zero-based offset to start at. An offset of 10
+            starts at the 11th record. '
+        acquirerBID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: Visa assigned Business Identifier (BID) of the Acquirer.
+          example: '10048640'
+        alertEndDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: Add an end date in the alert date range filter to retrieve
+            the retroactive alerts generated for the inquiries performed by you or
+            a colleague in your organization.
+          example: '2029-06-30'
+        alertStartDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: Add a start date in the alert date range filter to retrieve
+            the retroactive alerts generated for the inquiries performed by you or
+            a colleague in your organization.
+          example: '2019-01-01'
+        acquirerCountryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the Acquirer.
+          example: JP
+    terminatedRecord:
+      title: terminatedRecord Information
+      required:
+      - DBAName
+      - address
+      - businessPhoneNumbers
+      - cardAcceptorIDs
+      - category
+      - contractEndDate
+      - contractStartDate
+      - incorportationStatus
+      - primaryListingReason
+      - principals
+      - tradeInternationally
+      - tradeOverInternet
+      type: object
+      properties:
+        taxID:
+          maxLength: 30
+          minLength: 6
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Tax Identification Code registered for the merchant or agent;
+            for example, a Value Added Tax (VAT) Number in the UK or a Federal Tax
+            ID Number in US.
+          example: GB123456789
+        DBAName:
+          maxLength: 70
+          minLength: 1
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The “Doing-Business-As” Name that the merchant or agent operates
+            under.
+          example: Snap Photoshop Ltd
+        address:
+          "$ref": "#/components/schemas/address"
+        category:
+          maxLength: 1
+          minLength: 0
+          pattern: "[0-5]"
+          type: string
+          description: |-
+            Business Category of the Terminated Record defined as follows:
+            0 = Merchant
+            1 = Payment Facilitator
+            2 = Independent Sales Organization
+            3 = Marketplace
+            4 = Staged Digital Wallet Operator
+            5 = Sponsored Merchant
+          example: '1'
+        legalName:
+          maxLength: 70
+          minLength: 4
+          pattern: "^([\\w\\s\\u00C0-\\u00D6\\u00D8-\\u00f6\\u00f8-\\u00ff\\�\\-\\,\\(\\)\\'\\.\\/\\;\\:\\&\\$\\#\\!\\+\\?\\@\\=\\\\]*)$"
+          type: string
+          description: The parent or holding company legally registered name if this
+            name is different from the Trading Name/DBA Name. For a sole proprietor,
+            this field shall be omitted.
+          example: Snap Photoshop Ltd
+        principals:
+          "$ref": "#/components/schemas/principals"
+        webAddresses:
+          title: The registered web address of the merchant or agent. You may enter
+            up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          maxItems: 3
+          minItems: 0
+          type: array
+          description: The registered web address of the merchant or agent. You may
+            enter up to 3 web addresses. A web address is required when tradeOverInternet
+            is true.
+          items:
+            maxLength: 40
+            minLength: 4
+            pattern: "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
+            type: string
+            example: https://u.nu
+        financialAccts:
+          "$ref": "#/components/schemas/financialAccts"
+        cardAcceptorIDs:
+          title: A unique reference identifying the sales establishment requesting
+            the transaction. You may enter up to 5 Card Acceptor IDs.
+          maxItems: 5
+          minItems: 1
+          type: array
+          items:
+            maxLength: 15
+            minLength: 1
+            pattern: "^(\\w|\\s|-|,|�|\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+            type: string
+            description: A unique reference identifying the sales establishment requesting
+              the transaction. You may enter up to 5 Card Acceptor IDs.
+            example: '12345678910111'
+        contractEndDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: The date on which the merchant's or agent's contract agreement
+            was terminated.
+          example: '2019-11-14'
+        contractStartDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: The date on which the merchant's or agent's contract agreement
+            was granted.
+          example: '2019-11-01'
+        tradeOverInternet:
+          type: boolean
+          description: An indicator identifying if the merchant or agent trades over
+            the Internet.
+          example: false
+          default: false
+        businessEmailAddress:
+          maxLength: 40
+          minLength: 4
+          pattern: "[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          type: string
+          description: The primary email address registered for the merchant or agent.
+          example: billsmith@snapphoto.com
+        businessPhoneNumbers:
+          title: The primary phone number registered for the merchant or agent. You
+            may enter up to 3 phone numbers.
+          maxItems: 3
+          minItems: 1
+          type: array
+          description: The primary phone number registered for the merchant or agent.
+            You may enter up to 3 phone numbers.
+          items:
+            maxLength: 15
+            minLength: 8
+            pattern: "^((\\+\\d{1,3}(\\(\\d{1,3}\\)|(\\d{1,3}))\\d{1,5})|((\\(\\d{2,6}\\))|(\\d{2,6})))(\\d{3,4})(\\d{3,4})$"
+            type: string
+            example: "+861071111222"
+        incorportationStatus:
+          maxLength: 1
+          minLength: 1
+          pattern: "[1-6]|-1"
+          type: string
+          description: |-
+            The incorporation status registered for the merchant or agent defined as follows:
+            1 = Individual/Sole Proprietor
+            2 = Partnership
+            3 = Corporation
+            4 = Medical or Legal Corporation 5 = Association / Estate / Trust
+            6 = Non-Profit Organization
+            -1 = Unknown (returned for legacy listings)
+          example: '3'
+        primaryListingReason:
+          maxLength: 103
+          minLength: 2
+          pattern: "[0-9][0-9]\\-[a-zA-Z0-9\\s\\W]+"
+          type: string
+          description: The primary reason for the termination of the merchant's or
+            agent's contract.
+          example: 29-Bankruptcy/Liquidation/Insolvency
+        tradeInternationally:
+          type: boolean
+          description: An indicator identifying if the merchant or agent trades across
+            international borders or territories.
+          example: true
+          default: false
+        merchantCategoryCodes:
+          title: A four-digit numeric code describing the merchant’s type of business
+            product or service, also known as the merchant category code (MCC).
+          maxItems: 5
+          minItems: 0
+          type: array
+          description: A four-digit numeric code describing the merchant’s type of
+            business product or service, also known as the merchant category code
+            (MCC).
+          items:
+            maxLength: 5
+            minLength: 1
+            pattern: "\\d{4}"
+            type: string
+            example: '5411'
+        paymentFacilitatorBID:
+          maxLength: 8
+          minLength: 8
+          pattern: "\\d{8}"
+          type: string
+          description: The business ID as registered with Visa to uniquely identify
+            a payment facilitator.
+          example: '10000108'
+        secondaryListingReason:
+          maxLength: 103
+          minLength: 2
+          pattern: "[0-9][0-9]\\-[a-zA-Z0-9\\s\\W]+"
+          type: string
+          description: The secondary reason for the termination of the merchant's
+            or agent's contract.
+          example: 34-Merchant Identity Theft
+        acquirerAssignedMerchantID:
+          maxLength: 30
+          minLength: 2
+          pattern: "^(\\w|\\s|-|,|�|\\(|\\)|\\`|\\'|\\.|\\/|;|:|&|\\$|#|!|\\+|\\?|@|=|\\\\)+$"
+          type: string
+          description: A unique Merchant Identification Number assigned by the Acquirer
+            or by the Payment Facilitator in the case of a Sponsored Merchant. Mandatory
+            for Merchant.
+          example: '36654773'
+        businessRegistrationNumber:
+          maxLength: 30
+          minLength: 2
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: A Business Registration Number such as Commercial Registration,
+            Ministry of Commerce certificate number or equivalent registration number
+            for the merchant or agent.
+          example: '452349600005'
+        paymentFacilitatorCountryOrRegion:
+          maxLength: 2
+          minLength: 2
+          pattern: "([A-Z]){2}"
+          type: string
+          description: The country or region of the payment facilitator.
+          example: JP
+    financialAccts-1:
+      title: Up to 3 financial accounts.
+      type: array
+      items:
+        "$ref": "#/components/schemas/financialAcct-1"
+    retroSearchRequestAndAlert:
+      title: 'Array of retroactive alerts. object '
+      type: object
+      properties:
+        alertDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: The date on which the retroactive alert was generated.
+          example: '2019-02-01'
+        searchDate:
+          maxLength: 10
+          minLength: 10
+          pattern: "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+          type: string
+          description: The original Search request date.
+          example: '2018-12-01'
+        possibleMatches:
+          "$ref": "#/components/schemas/possibleMatches"
+        retroSearchRequest:
+          "$ref": "#/components/schemas/retroSearchRequest"
+    status:
+      title: Response Status
+      type: object
+      properties:
+        statusCode:
+          maxLength: 6
+          minLength: 6
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: Status Code.
+          example: API000
+        statusDescription:
+          maxLength: 256
+          minLength: 0
+          pattern: "[\\p{L}\\p{Nd}\\p{Nl}\\p{Z}]*"
+          type: string
+          description: Status Description.
+          example: Success
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  callbacks: {}
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Termination Inquiry APIs

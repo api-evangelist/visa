@@ -448,9 +448,17 @@ apis:
       - Payments
     humanURL: https://developer.visa.com/capabilities/vpa
     properties:
-      - type: OpenAPI
-        url: properties/b2b-virtual-account-payment-method.yml
-    description: ''
+      - url: properties/b2b-virtual-account-payment-method.yml
+        type: OpenAPI
+    description: >-
+      The B2B Virtual Account Payment Method involves a suite of APIs which
+      allows you to use virtual accounts to automate the generation of virtual
+      accounts. The B2B Virtual Account Payment Method can enable you to develop
+      flexible solutions across industries and segments. Whether it is a virtual
+      account embedded within the procure-to-pay cycle, used for
+      payer-to-provider payments, generated for ad-hoc employee purchases, or
+      used in the travel booking process, the B2B Virtual Account Payment Method
+      will streamline the payment process.
   - aid: visa:visa-in-app-provisioning
     name: Visa In-App Provisioning
     tags: []

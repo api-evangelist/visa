@@ -434,12 +434,22 @@ apis:
       - url: properties/visa-merchant-screening.yml
         name: OpenAPI
         type: OpenAPI
-    description: ''
+    description: >-
+      Visa Merchant Screening Service (VMSS) allows Acquirers to identify
+      potentially high-risk, unreliable or fraudulent Merchants and Third Party
+      Agents prior to making an onboarding decision and therefore helps reduce
+      risk exposure to fraudulent and illegal transactions, and helps protect
+      against brand damage and non-compliance assessments.
   - aid: visa:b2b-virtual-account-payment-method
     name: B2B Virtual Account Payment Method
-    tags: []
+    tags:
+      - Accounts
+      - B2B
+      - Payments
     humanURL: https://developer.visa.com/capabilities/vpa
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/b2b-virtual-account-payment-method.yml
     description: ''
   - aid: visa:visa-in-app-provisioning
     name: Visa In-App Provisioning

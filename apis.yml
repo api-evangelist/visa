@@ -120,17 +120,17 @@ apis:
     properties:
       - url: properties/visa-consent-management-service.yml
         type: OpenAPI
-      - name: Getting Started
-        url: https://developer.visa.com/capabilities/vcms/docs-getting-started
+      - url: https://developer.visa.com/capabilities/vcms/docs-getting-started
+        name: Getting Started
         type: GettingStarted
-      - name: Authentication
-        url: https://developer.visa.com/capabilities/vcms/docs-authentication
+      - url: https://developer.visa.com/capabilities/vcms/docs-authentication
+        name: Authentication
         type: Authentication
-      - name: Visa Consent Management Service - Error Codes
-        url: https://developer.visa.com/capabilities/vcms/error-codes
+      - url: https://developer.visa.com/capabilities/vcms/error-codes
+        name: Visa Consent Management Service - Error Codes
         type: Errors
-      - name: TermsOfService
-        url: https://developer.visa.com/capabilities/vcms/product-terms
+      - url: https://developer.visa.com/capabilities/vcms/product-terms
+        name: TermsOfService
         type: TermsOfService
     description: ''
   - aid: visa:card-on-file-data-inquiry
@@ -142,35 +142,36 @@ apis:
     properties:
       - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-getting-started
-        name: Getting Started
-        type: GettingStarted
+        name: Getting Started with Card on File Data Inquiry
+        type: OpenAPI
       - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-authentication
         name: Authentication
-        type: Authentication
-      - url: https://developer.visa.com/pages/visa-developer-error-codes
-        name: Errors
-        type: Errors
-      - url: properties/card-on-file-data-inquiry.yml
-        name: OpenAPI
         type: OpenAPI
-    description: >-
-      Card-On-File Data API allows to enable digital control capabilities in
-      Issuers online mobile application or web application to provide
-      visibility to the consumers where their card (PAN)/token credentials are
-      stored to initiate Card-On-File Data API/e-commerce transactions and where
-      the credentials are updated in case of a card reissuance or token status
-      updates.
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Visa Developer Error Codes
+        type: OpenAPI
+    description: ''
   - aid: visa:foreign-exchange
-    name: Foreign Exchange Rates
-    tags:
-      - Currencies
-      - Foreign Exchange
-      - Currency Codes
+    name: Foreign Exchange
+    tags: []
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
     properties:
-      - type: OpenAPI
-        url: properties/foreign-exchange.yml
+      - name: Getting Started
+        url: >-
+          https://developer.visa.com/capabilities/foreign_exchange/docs-getting-started
+        type: GettingStarted
+      - name: Authentication
+        url: >-
+          https://developer.visa.com/capabilities/foreign_exchange/docs-authentication
+        type: Authentication
+      - name: Errors
+        url: https://developer.visa.com/pages/visa-developer-error-codes
+        type: Errors
+      - name: Documentation
+        url: >-
+          https://developer.visa.com/capabilities/foreign_exchange/reference#tag/Foreign-Exchange-Rates-API/operation/ForeignExchangeRates_v2%20-%20Latest
+        type: Documentation
     description: ''
   - aid: visa:payment-account-attributes-inquiry
     name: Payment Account Attributes Inquiry

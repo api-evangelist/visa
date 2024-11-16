@@ -197,7 +197,9 @@ apis:
     description: ''
   - aid: visa:visa-account-updater
     name: Visa Account Updater
-    tags: []
+    tags:
+      - Accounts
+      - Interoperability
     humanURL: https://developer.visa.com/capabilities/vau
     properties: []
     description: >-

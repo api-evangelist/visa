@@ -291,7 +291,10 @@ apis:
       (future) and/or product recommendations for consumers who opt in.
   - aid: visa:visa-practical-money-skills-financial-education-platform
     name: Visa Practical Money Skills Financial Education Platform
-    tags: []
+    tags:
+      - Money
+      - Skills
+      - Education
     humanURL: https://developer.visa.com/capabilities/practical-money-skills
     properties: []
     description: "Visa\x19s Practical Money Skills APIs deliver a robust Learning Management System (LMS) that allows users to create accounts, enroll in financial education courses, track their progress via badges and streaks, and obtain certificates of completion. The APIs integrate into existing mobile apps, support single sign-on and offer immediate access to the LMS for users. "

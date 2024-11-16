@@ -437,23 +437,14 @@ apis:
     description: ''
   - aid: visa:b2b-virtual-account-payment-method
     name: B2B Virtual Account Payment Method
-    tags: []
+    tags:
+      - Accounts
+      - B2B
+      - Payments
     humanURL: https://developer.visa.com/capabilities/vpa
     properties:
-      - name: Getting Started with B2B Virtual Account Payment Method
-        url: https://developer.visa.com/capabilities/vpa/docs-getting-started
-        type: GettingStarted
-      - name: B2B Virtual Account Payment Method Authentication Method
-        url: https://developer.visa.com/capabilities/vpa/docs-authentication
-        type: Authentication
-      - name: B2B Virtual Account Payment Method Error Codes
-        url: >-
-          https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes
-        type: Errors
-      - name: B2B Virtual Account Payment Method API Reference
-        url: >-
-          https://developer.visa.com/capabilities/vpa/reference#tag/Account-Management-service/operation/Get%20Security%20Code_v1
-        type: Documentation
+      - url: properties/b2b-virtual-account-payment-method.yml
+        type: OpenAPI
     description: ''
   - aid: visa:visa-in-app-provisioning
     name: Visa In-App Provisioning

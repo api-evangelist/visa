@@ -197,13 +197,28 @@ apis:
     description: ''
   - aid: visa:visa-account-updater
     name: Visa Account Updater
-    tags:
-      - Accounts
-      - Interoperability
+    tags: []
     humanURL: https://developer.visa.com/capabilities/vau
     properties:
-      - type: OpenAPI
-        url: properties/visa-account-updater.yml
+      - name: Getting Started with Visa Account Updater
+        url: https://developer.visa.com/capabilities/vau/docs-getting-started
+        type: GettingStarted
+      - name: Visa Account Updater APIs Authentication Method
+        url: https://developer.visa.com/capabilities/vau/docs-authentication
+        type: Authentication
+      - name: Visa Developer Error Codes
+        url: https://developer.visa.com/pages/visa-developer-error-codes
+        type: Errors
+      - name: Visa Account Updater (VAU) FAQs
+        url: https://developer.visa.com/capabilities/vau/vau-faq
+        type: FAQ
+      - name: Visa Account Updater Product Terms
+        url: https://developer.visa.com/capabilities/vau/product-terms
+        type: TermsOfService
+      - name: Visa Account Updater API Reference
+        url: >-
+          https://developer.visa.com/capabilities/vau/reference#tag/Issuer-Stop-Advice-API/operation/stopAdviceUsingPOST_v1%20-%20Latest
+        type: Documentation
     description: ''
   - aid: visa:visa-bin-attribute-sharing
     name: Visa BIN Attribute Sharing

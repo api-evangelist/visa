@@ -252,7 +252,10 @@ apis:
     description: ''
   - aid: visa:visa-business-data-solutions
     name: Visa Business Data Solutions
-    tags: []
+    tags:
+      - Data
+      - Credit Cards
+      - Transactions
     humanURL: https://developer.visa.com/capabilities/vbds
     properties: []
     description: >-

@@ -222,7 +222,10 @@ apis:
     description: ''
   - aid: visa:visa-bin-attribute-sharing
     name: Visa BIN Attribute Sharing
-    tags: []
+    tags:
+      - BIN
+      - VBASS
+      - Fraud
     humanURL: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
     properties: []
     description: >-

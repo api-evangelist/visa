@@ -274,7 +274,8 @@ apis:
     description: ''
   - aid: visa:visa-data-tokens
     name: Visa Data Tokens
-    tags: []
+    tags:
+      - Historical
     humanURL: https://developer.visa.com/capabilities/visa-data-tokens
     properties: []
     description: >-

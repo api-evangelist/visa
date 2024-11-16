@@ -276,6 +276,10 @@ apis:
     name: Visa Data Tokens
     tags:
       - Historical
+      - Insights
+      - Signals
+      - Personalization
+      - Predictive
     humanURL: https://developer.visa.com/capabilities/visa-data-tokens
     properties: []
     description: >-

@@ -374,10 +374,16 @@ apis:
       digital wallet, thereby enabling immediate use of the card.
   - *ref_0
   - aid: visa:visa-merchant-screening
-    name: Visa Merchant Screening
-    tags: []
+    name: Visa Merchant Screening Service
+    tags:
+      - Merchants
+      - Screening
+      - Fraud
+      - Assesssments
     humanURL: https://developer.visa.com/capabilities/visa-merchant-screening-service
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: properties/visa-merchant-screening.yml
     description: ''
   - aid: visa:b2b-virtual-account-payment-method
     name: B2B Virtual Account Payment Method

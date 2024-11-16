@@ -353,18 +353,26 @@ apis:
           https://developer.visa.com/capabilities/visa-secure-remote-commerce/reference#tag/CTP-Checkout-API/operation/CTP%20Checkout%20API_v1%20-%20Latest
         type: Documentation
     description: "Visa Click to Pay is Visa\x19s solution for e-commerce payments based upon the EMV_ Secure Remote Commerce (SRC) standards and specifications. It helps enable frictionless online checkout using a single payment profile across a variety of consumer devices and participating online merchants."
-  - aid: visa:visa-digital-enablement
-    name: Visa Digital Enablement
-    tags: []
+  - &ref_0
+    aid: visa:visa-digital-enablement
+    name: Visa Digital Enablement Lite App
+    tags:
+      - White-Label
+      - Apple Pay
+      - Google Wallet
+      - Digital Wallet
     humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
-    properties: []
-    description: ''
-  - aid: visa:visa-digital-enablement
-    name: Visa Digital Enablement
-    tags: []
-    humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-sdk
-    properties: []
-    description: ''
+    properties:
+      - type: OpenAPI
+        url: properties/visa-digital-enablement.yml
+    description: >-
+      The Visa Digital Enablement (VDE) Lite App is a standalone, white-label
+      solution that enables cardholders to push card credentials into Apple Pay
+      (for iOS users) or Google Wallet (for Android users) without the need to
+      download a client's mobile app. This efficient user experience facilitates
+      quick and seamless execution of targeted tasks like provisioning to a
+      digital wallet, thereby enabling immediate use of the card.
+  - *ref_0
   - aid: visa:visa-merchant-screening
     name: Visa Merchant Screening
     tags: []

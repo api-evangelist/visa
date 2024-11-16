@@ -294,17 +294,17 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/practical-money-skills
     properties:
-      - name: Getting Started with Visa Practical Money Skills
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/practical-money-skills/docs-getting-started
+        name: Getting Started with Visa Practical Money Skills
         type: GettingStarted
-      - name: Authentication Method for Visa Practical Money Skills
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/practical-money-skills/docs-authentication
+        name: Authentication Method for Visa Practical Money Skills
         type: Authentication
-      - name: Visa Practical Money Skills Terms
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/practical-money-skills/product-terms
+        name: Visa Practical Money Skills Terms
         type: TermsOfService
     description: "Visa\x19s Practical Money Skills APIs deliver a robust Learning Management System (LMS) that allows users to create accounts, enroll in financial education courses, track their progress via badges and streaks, and obtain certificates of completion. The APIs integrate into existing mobile apps, support single sign-on and offer immediate access to the LMS for users. "
   - aid: visa:visa-card-program-management
@@ -312,21 +312,21 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/vcpm
     properties:
-      - name: Getting Started with Visa Card Program Management
-        url: https://developer.visa.com/capabilities/vcpm/docs-getting-started
+      - url: https://developer.visa.com/capabilities/vcpm/docs-getting-started
+        name: Getting Started with Visa Card Program Management
         type: GettingStarted
-      - name: Visa Card Program Management Authentication Method
-        url: https://developer.visa.com/capabilities/vcpm/docs-authentication
+      - url: https://developer.visa.com/capabilities/vcpm/docs-authentication
+        name: Visa Card Program Management Authentication Method
         type: Authentication
-      - name: Error Codes for Visa Card Program Management
-        url: https://developer.visa.com/capabilities/vcpm/docs-error-codes
+      - url: https://developer.visa.com/capabilities/vcpm/docs-error-codes
+        name: Error Codes for Visa Card Program Management
         type: Errors
-      - name: Visa Card Program Management Product Terms
-        url: https://developer.visa.com/capabilities/vcpm/product-terms
+      - url: https://developer.visa.com/capabilities/vcpm/product-terms
+        name: Visa Card Program Management Product Terms
         type: TermsOfService
-      - name: Visa Card Program Management API Reference
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/vcpm/reference#tag/Visa-Card-Program-Enrollment/operation/enrollmentV2UsingPOST_v2%20-%20Latest
+        name: Visa Card Program Management API Reference
         type: Documentation
     description: >-
       Visa Card Program Management is a suite of APIs that enable issuers,
@@ -340,21 +340,20 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
     properties:
-      - name: Getting Started with Visa Click to Pay
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs-getting-started
+        name: Getting Started with Visa Click to Pay
         type: GettingStarted
-      - name: Glossary
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs-glossary
+        name: Glossary
         type: Glossary
-      - name: Click to Pay API Reference
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-secure-remote-commerce/reference#tag/CTP-Checkout-API/operation/CTP%20Checkout%20API_v1%20-%20Latest
+        name: Click to Pay API Reference
         type: Documentation
     description: "Visa Click to Pay is Visa\x19s solution for e-commerce payments based upon the EMV_ Secure Remote Commerce (SRC) standards and specifications. It helps enable frictionless online checkout using a single payment profile across a variety of consumer devices and participating online merchants."
-  - &ref_0
-    aid: visa:visa-digital-enablement
+  - aid: visa:visa-digital-enablement
     name: Visa Digital Enablement Lite App
     tags:
       - White-Label
@@ -363,8 +362,16 @@ apis:
       - Digital Wallet
     humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
     properties:
-      - type: OpenAPI
-        url: properties/visa-digital-enablement.yml
+      - url: properties/visa-digital-enablement.yml
+        type: OpenAPI
+      - name: Visa Digital Enablement Lite App Product Terms
+        url: >-
+          https://developer.visa.com/capabilities/visa-digital-enablement-lite/product-terms
+        type: TermsOfService
+      - name: Visa Digital Enablement Lite App API Reference
+        url: >-
+          https://developer.visa.com/capabilities/visa-digital-enablement-lite/reference#tag/URL-Generation-API_/paths/~1inapp~1provision~1appclip~1url/post_v1%20-%20Latest
+        type: Documentation
     description: >-
       The Visa Digital Enablement (VDE) Lite App is a standalone, white-label
       solution that enables cardholders to push card credentials into Apple Pay
@@ -372,18 +379,56 @@ apis:
       download a client's mobile app. This efficient user experience facilitates
       quick and seamless execution of targeted tasks like provisioning to a
       digital wallet, thereby enabling immediate use of the card.
-  - *ref_0
-  - aid: visa:visa-merchant-screening
-    name: Visa Merchant Screening Service
+  - aid: visa:visa-digital-enablement
+    name: Visa Digital Enablement Lite App
     tags:
-      - Merchants
-      - Screening
-      - Fraud
-      - Assesssments
+      - White-Label
+      - Apple Pay
+      - Google Wallet
+      - Digital Wallet
+    humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
+    properties:
+      - url: properties/visa-digital-enablement.yml
+        type: OpenAPI
+      - name: Visa Digital Enablement Lite App Product Terms
+        url: >-
+          https://developer.visa.com/capabilities/visa-digital-enablement-lite/product-terms
+        type: TermsOfService
+      - name: Visa Digital Enablement Lite App API Reference
+        url: >-
+          https://developer.visa.com/capabilities/visa-digital-enablement-lite/reference#tag/URL-Generation-API_/paths/~1inapp~1provision~1appclip~1url/post_v1%20-%20Latest
+        type: Documentation
+    description: >-
+      The Visa Digital Enablement (VDE) Lite App is a standalone, white-label
+      solution that enables cardholders to push card credentials into Apple Pay
+      (for iOS users) or Google Wallet (for Android users) without the need to
+      download a client's mobile app. This efficient user experience facilitates
+      quick and seamless execution of targeted tasks like provisioning to a
+      digital wallet, thereby enabling immediate use of the card.
+  - aid: visa:visa-merchant-screening
+    name: Visa Merchant Screening
+    tags: []
     humanURL: https://developer.visa.com/capabilities/visa-merchant-screening-service
     properties:
-      - type: OpenAPI
-        url: properties/visa-merchant-screening.yml
+      - name: Getting Started
+        url: >-
+          https://developer.visa.com/capabilities/visa-digital-enablement-lite/docs-getting-started
+        type: GettingStarted
+      - name: Getting Started
+        url: >-
+          https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-getting-started
+        type: GettingStarted
+      - name: Authentication Method
+        url: >-
+          https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-authentication
+        type: Authentication
+      - name: Visa Developer Error Codes
+        url: https://developer.visa.com/pages/visa-developer-error-codes
+        type: Errors
+      - name: Visa Merchant Screening Service API Reference
+        url: >-
+          https://developer.visa.com/capabilities/visa-merchant-screening-service/reference#tag/Termination-Inquiry-APIs/operation/RetroActive%20Alert%20of%20Terminated%20Merchants%20or%20Agent_v2%20-%20Latest
+        type: Documentation
     description: ''
   - aid: visa:b2b-virtual-account-payment-method
     name: B2B Virtual Account Payment Method

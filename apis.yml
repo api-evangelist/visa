@@ -419,19 +419,33 @@ apis:
       - url: >-
           https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-getting-started
         name: Getting Started
-        type: OpenAPI
+        type: GettingStarted
       - url: >-
           https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-authentication
         name: Authentication Method
-        type: OpenAPI
+        type: Authentication
       - url: https://developer.visa.com/pages/visa-developer-error-codes
         name: Visa Developer Error Codes
-        type: OpenAPI
+        type: Errors
       - url: >-
           https://developer.visa.com/capabilities/visa-merchant-screening-service/reference#tag/Termination-Inquiry-APIs/operation/RetroActive%20Alert%20of%20Terminated%20Merchants%20or%20Agent_v2%20-%20Latest
         name: Visa Merchant Screening Service API Reference
+        type: Documentation
+      - url: properties/visa-merchant-screening.yml
+        name: OpenAPI
         type: OpenAPI
-    description: ''
+    description: >-
+      The Visa Merchant Screening Service (VMSS) is a risk management tool and
+      central database designed for participation by Visa acquirers to
+      facilitate the Merchant and Third Party Agent acquisition due diligence
+      process, by allowing Visa acquirers to determine if a potential new
+      Merchant, Sponsored Merchant or Third Party Agent (including but not
+      limited to a Payment Facilitator, Marketplace, Staged Digital Wallet
+      Operator (SDWO) or Independent Sales Organization) (each as defined in the
+      Visa Core Rules and Visa Product and Service Rules) had previously been
+      terminated for defined reason(s) by any acquirer and assessing the risk
+      associated with Merchants, Sponsored Merchants or Third Party Agents in
+      onboarding decisions (VMSS Purpose).
   - aid: visa:b2b-virtual-account-payment-method
     name: B2B Virtual Account Payment Method
     tags: []

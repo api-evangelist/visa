@@ -362,15 +362,19 @@ apis:
       - Digital Wallet
     humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
     properties:
+      - url: >-
+          https://developer.visa.com/capabilities/visa-digital-enablement-lite/docs-getting-started
+        name: Getting Started
+        type: OpenAPI
       - url: properties/visa-digital-enablement.yml
         type: OpenAPI
-      - name: Visa Digital Enablement Lite App Product Terms
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-digital-enablement-lite/product-terms
+        name: Visa Digital Enablement Lite App Product Terms
         type: TermsOfService
-      - name: Visa Digital Enablement Lite App API Reference
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-digital-enablement-lite/reference#tag/URL-Generation-API_/paths/~1inapp~1provision~1appclip~1url/post_v1%20-%20Latest
+        name: Visa Digital Enablement Lite App API Reference
         type: Documentation
     description: >-
       The Visa Digital Enablement (VDE) Lite App is a standalone, white-label
@@ -390,13 +394,13 @@ apis:
     properties:
       - url: properties/visa-digital-enablement.yml
         type: OpenAPI
-      - name: Visa Digital Enablement Lite App Product Terms
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-digital-enablement-lite/product-terms
+        name: Visa Digital Enablement Lite App Product Terms
         type: TermsOfService
-      - name: Visa Digital Enablement Lite App API Reference
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-digital-enablement-lite/reference#tag/URL-Generation-API_/paths/~1inapp~1provision~1appclip~1url/post_v1%20-%20Latest
+        name: Visa Digital Enablement Lite App API Reference
         type: Documentation
     description: >-
       The Visa Digital Enablement (VDE) Lite App is a standalone, white-label
@@ -412,10 +416,6 @@ apis:
       - Screening
     humanURL: https://developer.visa.com/capabilities/visa-merchant-screening-service
     properties:
-      - url: >-
-          https://developer.visa.com/capabilities/visa-digital-enablement-lite/docs-getting-started
-        name: Getting Started
-        type: OpenAPI
       - url: >-
           https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-getting-started
         name: Getting Started
@@ -815,7 +815,7 @@ common:
     name: Getting Started
     type: GettingStarted
 created: '2024-11-15T00:00:00.000Z'
-modified: '2024-11-15'
+modified: '2024-11-16'
 position: Consumer
 description: >-
   Visa is a trusted world leader in digital payment technology that connects and

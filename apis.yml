@@ -200,7 +200,11 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/vau
     properties: []
-    description: ''
+    description: >-
+      Visa Account Updater (VAU) enables a secure electronic exchange of account
+      information updates between participating Visa card issuers and acquirers
+      for credential-on-file merchants, which enables a more seamless payment
+      process.
   - aid: visa:visa-bin-attribute-sharing
     name: Visa BIN Attribute Sharing
     tags: []

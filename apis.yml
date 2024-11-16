@@ -162,19 +162,16 @@ apis:
       the credentials are updated in case of a card reissuance or token status
       updates.
   - aid: visa:foreign-exchange
-    name: Foreign Exchange
+    name: Foreign Exchange Rates
     tags:
       - Currencies
       - Foreign Exchange
       - Currency Codes
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
-    properties: []
-    description: >-
-      Visa provides daily FX rates for the 180+ global currencies that are used
-      within VisaNet to authorize and settle transactions. The current list of
-      supported currencies with their alphabetic and numeric ISO codes and their
-      minor decimal places (for displaying amounts) can be found on the Request
-      and Response Code Reference.
+    properties:
+      - type: OpenAPI
+        url: properties/foreign-exchange.yml
+    description: ''
   - aid: visa:payment-account-attributes-inquiry
     name: Payment Account Attributes Inquiry
     tags: []

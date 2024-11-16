@@ -225,7 +225,13 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
     properties: []
-    description: ''
+    description: >-
+      Visa BIN Attribute Sharing Service (VBASS) can enable eligible Visa
+      clients and partners to look up the most current Visa BIN Information.
+      Using VBASS, clients can access Issuer BIN Attributes for authorization
+      improvement, fraud management, customer service support enhancements,
+      point-of-sale checkout customization, acceptance troubleshooting and more
+      within the allowed use cases.
   - aid: visa:visa-business-data-solutions
     name: Visa Business Data Solutions
     tags: []

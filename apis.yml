@@ -255,7 +255,15 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/vbds
     properties: []
-    description: ''
+    description: >-
+      The Visa Business Data Solutions API provides a faster and more efficient
+      way for participating issuers and their commercial clients to pull their
+      commercial card transaction data and make strategic decisions based on
+      data-driven insights. Current APIs provide access to transaction and
+      enhanced data along with supplier data via different data groupings.
+      Access is subject to Visa approval and subject to applicable terms and
+      conditions. There is an Issuer subscription process to access the relevant
+      data using APIs.
   - aid: visa:visa-data-tokens
     name: Visa Data Tokens
     tags: []

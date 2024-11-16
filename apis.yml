@@ -252,14 +252,25 @@ apis:
     description: ''
   - aid: visa:visa-business-data-solutions
     name: Visa Business Data Solutions
-    tags:
-      - Data
-      - Credit Cards
-      - Transactions
+    tags: []
     humanURL: https://developer.visa.com/capabilities/vbds
     properties:
-      - type: OpenAPI
-        url: properties/visa-business-data-solutions.yml
+      - name: Getting Started with Visa Business Data Solutions
+        url: https://developer.visa.com/capabilities/vbds/docs-getting-started
+        type: GettingStarted
+      - name: Visa Business Data Solutions Authentication Method
+        url: https://developer.visa.com/capabilities/vbds/docs-authentication
+        type: Authentication
+      - name: Visa Developer Error Codes
+        url: https://developer.visa.com/pages/visa-developer-error-codes
+        type: Errors
+      - name: Visa Business Data Solutions Product Terms
+        url: https://developer.visa.com/capabilities/vbds/product-terms
+        type: TermsOfService
+      - name: Visa Business Data Solutions API Reference
+        url: >-
+          https://developer.visa.com/capabilities/vbds/reference#tag/Authorization-Data-API/operation/getAuthDataUsingPOST_v1%20-%20Latest
+        type: Documentation
     description: ''
   - aid: visa:visa-data-tokens
     name: Visa Data Tokens

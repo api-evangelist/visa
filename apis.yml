@@ -230,24 +230,24 @@ apis:
     properties:
       - url: properties/visa-bin-attribute-sharing.yml
         type: OpenAPI
-      - name: Getting Started with Visa BIN Attribute Sharing Service
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/docs-getting-started
+        name: Getting Started with Visa BIN Attribute Sharing Service
         type: GettingStarted
-      - name: Visa BIN Attribute Sharing Service Authentication Method
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/docs-authentication
+        name: Visa BIN Attribute Sharing Service Authentication Method
         type: Authentication
-      - name: Visa BIN Attribute Sharing Service Authentication Method
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/faq
+        name: Visa BIN Attribute Sharing Service Authentication Method
         type: FAQ
-      - name: Visa Developer Error Codes
-        url: https://developer.visa.com/pages/visa-developer-error-codes
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Visa Developer Error Codes
         type: Errors
-      - name: Visa BIN Attribute Sharing Service Product Terms
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/product-terms
+        name: Visa BIN Attribute Sharing Service Product Terms
         type: TermsOfService
     description: ''
   - aid: visa:visa-business-data-solutions
@@ -255,21 +255,21 @@ apis:
     tags: []
     humanURL: https://developer.visa.com/capabilities/vbds
     properties:
-      - name: Getting Started with Visa Business Data Solutions
-        url: https://developer.visa.com/capabilities/vbds/docs-getting-started
+      - url: https://developer.visa.com/capabilities/vbds/docs-getting-started
+        name: Getting Started with Visa Business Data Solutions
         type: GettingStarted
-      - name: Visa Business Data Solutions Authentication Method
-        url: https://developer.visa.com/capabilities/vbds/docs-authentication
+      - url: https://developer.visa.com/capabilities/vbds/docs-authentication
+        name: Visa Business Data Solutions Authentication Method
         type: Authentication
-      - name: Visa Developer Error Codes
-        url: https://developer.visa.com/pages/visa-developer-error-codes
+      - url: https://developer.visa.com/pages/visa-developer-error-codes
+        name: Visa Developer Error Codes
         type: Errors
-      - name: Visa Business Data Solutions Product Terms
-        url: https://developer.visa.com/capabilities/vbds/product-terms
+      - url: https://developer.visa.com/capabilities/vbds/product-terms
+        name: Visa Business Data Solutions Product Terms
         type: TermsOfService
-      - name: Visa Business Data Solutions API Reference
-        url: >-
+      - url: >-
           https://developer.visa.com/capabilities/vbds/reference#tag/Authorization-Data-API/operation/getAuthDataUsingPOST_v1%20-%20Latest
+        name: Visa Business Data Solutions API Reference
         type: Documentation
     description: ''
   - aid: visa:visa-data-tokens
@@ -291,26 +291,50 @@ apis:
       (future) and/or product recommendations for consumers who opt in.
   - aid: visa:visa-practical-money-skills-financial-education-platform
     name: Visa Practical Money Skills Financial Education Platform
-    tags:
-      - Money
-      - Skills
-      - Education
+    tags: []
     humanURL: https://developer.visa.com/capabilities/practical-money-skills
-    properties: []
+    properties:
+      - name: Getting Started with Visa Practical Money Skills
+        url: >-
+          https://developer.visa.com/capabilities/practical-money-skills/docs-getting-started
+        type: GettingStarted
+      - name: Authentication Method for Visa Practical Money Skills
+        url: >-
+          https://developer.visa.com/capabilities/practical-money-skills/docs-authentication
+        type: Authentication
+      - name: Visa Practical Money Skills Terms
+        url: >-
+          https://developer.visa.com/capabilities/practical-money-skills/product-terms
+        type: TermsOfService
     description: "Visa\x19s Practical Money Skills APIs deliver a robust Learning Management System (LMS) that allows users to create accounts, enroll in financial education courses, track their progress via badges and streaks, and obtain certificates of completion. The APIs integrate into existing mobile apps, support single sign-on and offer immediate access to the LMS for users. "
   - aid: visa:visa-card-program-management
     name: Visa Card Program Management
-    tags:
-      - Credit Cards
-      - Issuers
-      - Processors
-      - Partners
-      - Enrollment
+    tags: []
     humanURL: https://developer.visa.com/capabilities/vcpm
     properties:
-      - type: OpenAPI
-        url: properties/visa-card-program-management.yml
-    description: ''
+      - name: Getting Started with Visa Card Program Management
+        url: https://developer.visa.com/capabilities/vcpm/docs-getting-started
+        type: GettingStarted
+      - name: Visa Card Program Management Authentication Method
+        url: https://developer.visa.com/capabilities/vcpm/docs-authentication
+        type: Authentication
+      - name: Error Codes for Visa Card Program Management
+        url: https://developer.visa.com/capabilities/vcpm/docs-error-codes
+        type: Errors
+      - name: Visa Card Program Management Product Terms
+        url: https://developer.visa.com/capabilities/vcpm/product-terms
+        type: TermsOfService
+      - name: Visa Card Program Management API Reference
+        url: >-
+          https://developer.visa.com/capabilities/vcpm/reference#tag/Visa-Card-Program-Enrollment/operation/enrollmentV2UsingPOST_v2%20-%20Latest
+        type: Documentation
+    description: >-
+      Visa Card Program Management is a suite of APIs that enable issuers,
+      processors, and issuer partners to manage card programs in a modern
+      digital environment. There are two components: enrollment, which is done
+      through the Visa Card Program Enrollment (VCPE) API, and inquiry, which is
+      done through the Visa Credential Data Inquiry (VCDI) API (currently in
+      restricted mode).
   - aid: visa:visa-click-to-pay
     name: Visa Click to Pay
     tags: []

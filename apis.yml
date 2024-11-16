@@ -175,10 +175,19 @@ apis:
     description: ''
   - aid: visa:payment-account-attributes-inquiry
     name: Payment Account Attributes Inquiry
-    tags: []
+    tags:
+      - Inquiries
+      - Accounts
+      - Attributes
     humanURL: https://developer.visa.com/capabilities/paai
     properties: []
-    description: ''
+    description: >-
+      Payment Account Attributes Inquiry enables the caller to look up
+      information about a payment account that may be needed as part of a funds
+      transfer. The Payment Account Attributes Inquiry service consists of the
+      Fund Transfer Inquiry API that lets you look up important attributes of a
+      Visa account that you may need to know in order to successfully implement
+      your project. 
   - aid: visa:visa-account-updater
     name: Visa Account Updater
     tags: []

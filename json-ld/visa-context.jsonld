@@ -1,0 +1,153 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "visa": "https://developer.visa.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/FND/",
+
+    "PaymentTransaction": {
+      "@id": "visa:PaymentTransaction",
+      "@context": {
+        "transactionIdentifier": "visa:transactionIdentifier",
+        "systemsTraceAuditNumber": "visa:systemsTraceAuditNumber",
+        "retrievalReferenceNumber": "visa:retrievalReferenceNumber",
+        "amount": {
+          "@id": "schema:price",
+          "@type": "xsd:decimal"
+        },
+        "transactionCurrencyCode": "schema:priceCurrency",
+        "transmissionDateTime": {
+          "@id": "dcterms:date",
+          "@type": "xsd:dateTime"
+        },
+        "actionCode": "visa:actionCode",
+        "approvalCode": "visa:approvalCode",
+        "responseCode": "visa:responseCode",
+        "businessApplicationId": "visa:businessApplicationId",
+        "acquiringBin": "visa:acquiringBin",
+        "acquirerCountryCode": "visa:acquirerCountryCode"
+      }
+    },
+
+    "PaymentAccount": {
+      "@id": "visa:PaymentAccount",
+      "@context": {
+        "primaryAccountNumber": "visa:primaryAccountNumber",
+        "paymentAccountReference": "visa:paymentAccountReference",
+        "cardExpiryDate": {
+          "@id": "visa:cardExpiryDate",
+          "@type": "xsd:gYearMonth"
+        },
+        "cardholderName": "schema:name",
+        "cardTypeCode": "visa:cardTypeCode",
+        "cardProductType": "visa:cardProductType",
+        "issuerName": "schema:lender",
+        "issuerCountryCode": "visa:issuerCountryCode",
+        "binNumber": "visa:binNumber",
+        "accountStatus": "visa:accountStatus",
+        "fastFundsIndicator": "visa:fastFundsIndicator",
+        "pushPaymentsIndicator": "visa:pushPaymentsIndicator"
+      }
+    },
+
+    "Merchant": {
+      "@id": "visa:Merchant",
+      "@context": {
+        "visaMerchantId": "visa:visaMerchantId",
+        "visaStoreId": "visa:visaStoreId",
+        "merchantName": "schema:name",
+        "merchantCategoryCode": "visa:merchantCategoryCode",
+        "merchantUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "merchantLogoUrl": {
+          "@id": "schema:logo",
+          "@type": "@id"
+        },
+        "phoneNumber": "schema:telephone",
+        "merchantAddress": "schema:address",
+        "acceptsVisa": "visa:acceptsVisa",
+        "cardAcceptorId": "visa:cardAcceptorId"
+      }
+    },
+
+    "CardAcceptor": {
+      "@id": "visa:CardAcceptor",
+      "@context": {
+        "name": "schema:name",
+        "terminalId": "visa:terminalId",
+        "idCode": "visa:cardAcceptorIdCode",
+        "address": "schema:address"
+      }
+    },
+
+    "MerchantOffer": {
+      "@id": "visa:MerchantOffer",
+      "@context": {
+        "offerId": "visa:offerId",
+        "offerTitle": "schema:name",
+        "offerDescription": "schema:description",
+        "validityStartDate": {
+          "@id": "schema:validFrom",
+          "@type": "xsd:date"
+        },
+        "validityEndDate": {
+          "@id": "schema:validThrough",
+          "@type": "xsd:date"
+        },
+        "redemptionUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "merchantName": "schema:seller",
+        "category": "schema:category",
+        "termsAndConditions": "visa:termsAndConditions"
+      }
+    },
+
+    "AtmLocation": {
+      "@id": "visa:AtmLocation",
+      "@context": {
+        "atmId": "visa:atmId",
+        "terminalId": "visa:terminalId",
+        "ownerBusinessName": "schema:name",
+        "address": "schema:address",
+        "latitude": "schema:latitude",
+        "longitude": "schema:longitude",
+        "isAvailable24Hours": "schema:openingHours",
+        "networkAlliance": "visa:networkAlliance"
+      }
+    },
+
+    "TransactionControl": {
+      "@id": "visa:TransactionControl",
+      "@context": {
+        "controlType": "visa:controlType",
+        "isDeclinedEnabled": "visa:isDeclinedEnabled",
+        "isAlertEnabled": "visa:isAlertEnabled",
+        "thresholdAmount": {
+          "@id": "visa:thresholdAmount",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "FundsTransfer": {
+      "@id": "visa:FundsTransfer",
+      "@context": {
+        "senderName": "schema:sender",
+        "recipientName": "schema:recipient",
+        "senderAccountNumber": "visa:senderAccountNumber",
+        "recipientPrimaryAccountNumber": "visa:recipientPrimaryAccountNumber",
+        "amount": {
+          "@id": "schema:price",
+          "@type": "xsd:decimal"
+        },
+        "transactionCurrencyCode": "schema:priceCurrency"
+      }
+    }
+  }
+}

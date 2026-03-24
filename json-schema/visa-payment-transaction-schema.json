@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.visa.com/schemas/visa/payment-transaction.json",
+  "title": "Visa Payment Transaction",
+  "description": "Schema representing a Visa payment transaction including push funds, pull funds, and card payment operations across Visa Direct and other Visa payment APIs.",
+  "type": "object",
+  "required": [
+    "systemsTraceAuditNumber",
+    "retrievalReferenceNumber",
+    "acquiringBin",
+    "acquirerCountryCode",
+    "transactionCurrencyCode",
+    "amount"
+  ],
+  "properties": {
+    "systemsTraceAuditNumber": {
+      "type": "string",
+      "description": "A unique six-digit value assigned by the acquirer to identify a transaction",
+      "pattern": "^\\d{6}$",
+      "maxLength": 6
+    },
+    "retrievalReferenceNumber": {
+      "type": "string",
+      "description": "A 12-character value used to identify a transaction uniquely within the acquirer system",
+      "maxLength": 12
+    },
+    "acquiringBin": {
+      "type": "string",
+      "description": "Bank Identification Number (BIN) of the acquiring financial institution",
+      "pattern": "^\\d{6,11}$"
+    },
+    "acquirerCountryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 numeric country code of the acquiring institution",
+      "pattern": "^\\d{3}$"
+    },
+    "transactionCurrencyCode": {
+      "type": "string",
+      "description": "ISO 4217 numeric currency code for the transaction",
+      "pattern": "^\\d{3}$"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Transaction amount in the specified currency",
+      "minimum": 0
+    },
+    "primaryAccountNumber": {
+      "type": "string",
+      "description": "Primary Account Number (PAN) of the Visa card",
+      "minLength": 13,
+      "maxLength": 19
+    },
+    "cardExpiryDate": {
+      "type": "string",
+      "description": "Card expiration date in YYYY-MM format",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+    },
+    "transactionIdentifier": {
+      "type": "integer",
+      "description": "Unique transaction identifier assigned by VisaNet"
+    },
+    "actionCode": {
+      "type": "string",
+      "description": "Response action code indicating the result of the transaction",
+      "maxLength": 2
+    },
+    "approvalCode": {
+      "type": "string",
+      "description": "Authorization approval code from the card issuer",
+      "maxLength": 6
+    },
+    "responseCode": {
+      "type": "string",
+      "description": "Response code from the issuer indicating transaction outcome",
+      "maxLength": 2
+    },
+    "transmissionDateTime": {
+      "type": "string",
+      "description": "Date and time of the transaction transmission in MMDDHHmmss format"
+    },
+    "businessApplicationId": {
+      "type": "string",
+      "description": "Identifies the business use case for the transaction",
+      "enum": [
+        "AA", "BB", "BI", "BP", "CI", "CP", "FD", "GD",
+        "GP", "LO", "MD", "MP", "OG", "PD", "PP", "PS", "TL", "WT"
+      ]
+    },
+    "cardAcceptor": {
+      "$ref": "#/$defs/CardAcceptor"
+    },
+    "sender": {
+      "$ref": "#/$defs/TransactionParty"
+    },
+    "recipient": {
+      "$ref": "#/$defs/TransactionParty"
+    }
+  },
+  "$defs": {
+    "CardAcceptor": {
+      "type": "object",
+      "description": "Information about the card acceptor (merchant) involved in the transaction",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the card acceptor or merchant"
+        },
+        "terminalId": {
+          "type": "string",
+          "description": "Terminal identifier at the point of sale",
+          "maxLength": 8
+        },
+        "idCode": {
+          "type": "string",
+          "description": "Card acceptor identification code",
+          "maxLength": 15
+        },
+        "address": {
+          "$ref": "#/$defs/Address"
+        }
+      }
+    },
+    "TransactionParty": {
+      "type": "object",
+      "description": "Information about a sender or recipient in a funds transfer",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the party"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "Account number of the party"
+        },
+        "address": {
+          "type": "string",
+          "description": "Street address of the party"
+        },
+        "city": {
+          "type": "string",
+          "description": "City of the party"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "ISO 3166-1 numeric country code",
+          "pattern": "^\\d{3}$"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "description": "Physical address information",
+      "properties": {
+        "country": {
+          "type": "string",
+          "description": "Country code"
+        },
+        "state": {
+          "type": "string",
+          "description": "State or province code"
+        },
+        "city": {
+          "type": "string",
+          "description": "City name"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "Postal or ZIP code"
+        }
+      }
+    }
+  }
+}

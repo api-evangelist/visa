@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.visa.com/schemas/visa/merchant.json",
+  "title": "Visa Merchant",
+  "description": "Schema representing a merchant in the Visa network, used across Merchant Search, Merchant Screening, Merchant Offers, and ATM Locator APIs.",
+  "type": "object",
+  "required": [
+    "merchantName"
+  ],
+  "properties": {
+    "visaMerchantId": {
+      "type": "string",
+      "description": "Visa-assigned unique identifier for the merchant"
+    },
+    "visaStoreId": {
+      "type": "string",
+      "description": "Visa-assigned unique identifier for a specific merchant store location"
+    },
+    "merchantName": {
+      "type": "string",
+      "description": "Registered business name of the merchant"
+    },
+    "merchantCategoryCode": {
+      "type": "string",
+      "description": "Four-digit Merchant Category Code (MCC) classifying the merchant's business type",
+      "pattern": "^\\d{4}$"
+    },
+    "merchantUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Merchant's official website URL"
+    },
+    "merchantLogoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the merchant's logo image"
+    },
+    "merchantAddress": {
+      "$ref": "#/$defs/MerchantAddress"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "Merchant's contact phone number"
+    },
+    "cardAcceptorId": {
+      "type": "string",
+      "description": "Card Acceptor Identification Code (CAID) assigned by the acquirer",
+      "maxLength": 15
+    },
+    "acquiringBin": {
+      "type": "string",
+      "description": "Bank Identification Number of the merchant's acquiring institution"
+    },
+    "terminalId": {
+      "type": "string",
+      "description": "Point-of-sale terminal identifier",
+      "maxLength": 8
+    },
+    "acceptsVisa": {
+      "type": "boolean",
+      "description": "Whether the merchant accepts Visa payment cards"
+    },
+    "acceptsVisaCommercial": {
+      "type": "boolean",
+      "description": "Whether the merchant accepts Visa commercial payment products"
+    },
+    "supportsEnhancedData": {
+      "type": "boolean",
+      "description": "Whether the merchant provides enhanced transaction data (Level 2/3)"
+    },
+    "terminationStatus": {
+      "type": "string",
+      "description": "Current termination status from the MATCH/TMF database",
+      "enum": [
+        "NONE",
+        "TERMINATED",
+        "UNDER_REVIEW"
+      ]
+    },
+    "riskIndicators": {
+      "$ref": "#/$defs/RiskIndicators"
+    },
+    "offers": {
+      "type": "array",
+      "description": "Active merchant offers from VMORC",
+      "items": {
+        "$ref": "#/$defs/MerchantOffer"
+      }
+    }
+  },
+  "$defs": {
+    "MerchantAddress": {
+      "type": "object",
+      "description": "Physical address of the merchant location",
+      "properties": {
+        "street": {
+          "type": "string",
+          "description": "Street address"
+        },
+        "city": {
+          "type": "string",
+          "description": "City name"
+        },
+        "state": {
+          "type": "string",
+          "description": "State or province code"
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal or ZIP code"
+        },
+        "country": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Latitude coordinate of the merchant location"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Longitude coordinate of the merchant location"
+        }
+      }
+    },
+    "RiskIndicators": {
+      "type": "object",
+      "description": "Risk-related indicators for the merchant from screening services",
+      "properties": {
+        "riskScore": {
+          "type": "number",
+          "description": "Computed risk score for the merchant",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "terminationReasonCode": {
+          "type": "string",
+          "description": "Reason code if the merchant has been terminated"
+        },
+        "addedToMatchDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the merchant was added to the MATCH/TMF database"
+        }
+      }
+    },
+    "MerchantOffer": {
+      "type": "object",
+      "description": "A promotional offer associated with the merchant",
+      "properties": {
+        "offerId": {
+          "type": "integer",
+          "description": "Unique identifier for the offer"
+        },
+        "offerTitle": {
+          "type": "string",
+          "description": "Title of the offer"
+        },
+        "offerDescription": {
+          "type": "string",
+          "description": "Description of the offer terms"
+        },
+        "validityStartDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Start date of the offer validity period"
+        },
+        "validityEndDate": {
+          "type": "string",
+          "format": "date",
+          "description": "End date of the offer validity period"
+        },
+        "redemptionUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for redeeming the offer"
+        }
+      }
+    }
+  }
+}

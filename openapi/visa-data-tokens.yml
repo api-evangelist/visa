@@ -1,1 +1,219 @@
-{}
+openapi: 3.1.0
+info:
+  title: Visa Data Tokens
+  description: >-
+    The Visa Data Tokens API provides access to tokenized, aggregated, and
+    anonymized transaction data insights derived from Visa's global payment
+    network. Data tokens enable businesses to leverage historical spending
+    signals, predictive analytics, and personalization capabilities without
+    exposing individual cardholder information.
+  version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/visa-data-tokens/product-terms
+externalDocs:
+  description: Visa Data Tokens Documentation
+  url: https://developer.visa.com/capabilities/visa-data-tokens
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox Server
+  - url: https://api.visa.com
+    description: Production Server
+tags:
+  - name: Data Tokens API
+    description: >-
+      Retrieve tokenized data signals and insights from Visa's payment network
+      for use in personalization, risk assessment, and business analytics.
+security:
+  - mutualTLS: []
+paths:
+  /vdt/v1/tokens:
+    post:
+      operationId: requestDataToken
+      summary: Request Data Token
+      description: >-
+        Requests a data token containing aggregated and anonymized insights for
+        the specified criteria. The token encapsulates spending signals,
+        predictive scores, or historical patterns that can be used for
+        personalization, risk assessment, or business analytics.
+      tags:
+        - Data Tokens API
+      requestBody:
+        description: Data token request parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataTokenRequest'
+      responses:
+        '200':
+          description: Data token generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataTokenResponse'
+        '400':
+          description: Bad request - invalid input parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden - insufficient permissions for the requested token type
+  /vdt/v1/tokens/{tokenId}:
+    get:
+      operationId: getDataToken
+      summary: Retrieve Data Token
+      description: >-
+        Retrieves the details and insights associated with a previously
+        generated data token.
+      tags:
+        - Data Tokens API
+      parameters:
+        - name: tokenId
+          in: path
+          required: true
+          description: Unique identifier of the data token
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Data token details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataTokenDetailResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Data token not found
+components:
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: >-
+        Two-way SSL mutual authentication using a PKI certificate issued by
+        Visa.
+  schemas:
+    DataTokenRequest:
+      type: object
+      required:
+        - tokenType
+      properties:
+        tokenType:
+          type: string
+          description: Type of data token to generate
+          enum:
+            - SPENDING_SIGNAL
+            - PREDICTIVE_SCORE
+            - HISTORICAL_PATTERN
+            - PERSONALIZATION
+        primaryAccountNumber:
+          type: string
+          description: >-
+            PAN for account-level insights (anonymized in response)
+        merchantCategoryCode:
+          type: string
+          description: Filter insights by merchant category code
+          pattern: '^\d{4}$'
+        dateRange:
+          type: object
+          description: Date range for historical data
+          properties:
+            startDate:
+              type: string
+              format: date
+              description: Start date for the data range
+            endDate:
+              type: string
+              format: date
+              description: End date for the data range
+        geography:
+          type: string
+          description: ISO 3166-1 alpha-2 country code for geographic filtering
+    DataTokenResponse:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          description: Unique identifier for the generated data token
+        tokenType:
+          type: string
+          description: Type of data token generated
+        status:
+          type: string
+          description: Token generation status
+          enum:
+            - READY
+            - PROCESSING
+            - EXPIRED
+        expiresAt:
+          type: string
+          format: date-time
+          description: Expiration timestamp for the data token
+    DataTokenDetailResponse:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          description: Unique identifier for the data token
+        tokenType:
+          type: string
+          description: Type of data token
+        insights:
+          type: object
+          description: Aggregated and anonymized insight data
+          properties:
+            spendingIndex:
+              type: number
+              format: double
+              description: Normalized spending index value
+            trendDirection:
+              type: string
+              description: Direction of spending trend
+              enum:
+                - INCREASING
+                - STABLE
+                - DECREASING
+            confidenceScore:
+              type: number
+              format: double
+              description: Confidence score for the insight
+              minimum: 0
+              maximum: 1
+            categoryBreakdown:
+              type: array
+              description: Spending breakdown by category
+              items:
+                type: object
+                properties:
+                  category:
+                    type: string
+                    description: Merchant category description
+                  percentage:
+                    type: number
+                    format: double
+                    description: Percentage of total spending
+        status:
+          type: string
+          description: Current status of the data token
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the token was created
+        expiresAt:
+          type: string
+          format: date-time
+          description: Expiration timestamp
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description

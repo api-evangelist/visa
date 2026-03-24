@@ -146,9 +146,13 @@ apis:
       integrity of the banking system as a whole.
   - aid: visa:visa-supplier-matching-service
     name: Visa Supplier Matching Service
-    tags: []
+    tags:
+      - Suppliers
+      - Matching
     humanURL: https://developer.visa.com/capabilities/suppliermatchingservice
     properties:
+      - url: openapi/visa-supplier-matching-service.yml
+        type: OpenAPI
       - url: >-
           https://developer.visa.com/capabilities/suppliermatchingservice/docs-getting-started
         name: Getting Started
@@ -215,17 +219,19 @@ apis:
       - Credit Cards
     humanURL: https://developer.visa.com/capabilities/card-on-file-data-inquiry
     properties:
+      - url: openapi/card-on-file-data-inquiry.yml
+        type: OpenAPI
       - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-getting-started
         name: Getting Started with Card on File Data Inquiry
-        type: OpenAPI
+        type: GettingStarted
       - url: >-
           https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-authentication
         name: Authentication
-        type: OpenAPI
+        type: Authentication
       - url: https://developer.visa.com/pages/visa-developer-error-codes
         name: Visa Developer Error Codes
-        type: OpenAPI
+        type: Errors
     description: >-
       Card on File Data Inquiry is a service that allows businesses to securely
       and efficiently access and manage customer's card information that is
@@ -240,9 +246,13 @@ apis:
       process.
   - aid: visa:foreign-exchange
     name: Foreign Exchange
-    tags: []
+    tags:
+      - Foreign Exchange
+      - Currency
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
     properties:
+      - url: openapi/foreign-exchange.yml
+        type: OpenAPI
       - url: >-
           https://developer.visa.com/capabilities/foreign_exchange/docs-getting-started
         name: Getting Started
@@ -272,9 +282,13 @@ apis:
       opportunities for diversification and hedging against currency risk.
   - aid: visa:payment-account-attributes-inquiry
     name: Payment Account Attributes Inquiry
-    tags: []
+    tags:
+      - Accounts
+      - Attributes
     humanURL: https://developer.visa.com/capabilities/paai
     properties:
+      - url: openapi/payment-account-attributes-inquiry.yml
+        type: OpenAPI
       - url: https://developer.visa.com/capabilities/paai/docs-getting-started
         name: Getting Started with Payment Account Attributes Inquiry
         type: GettingStarted
@@ -305,9 +319,13 @@ apis:
       accounts effectively and responsibly.
   - aid: visa:visa-account-updater
     name: Visa Account Updater
-    tags: []
+    tags:
+      - Accounts
+      - Updates
     humanURL: https://developer.visa.com/capabilities/vau
     properties:
+      - url: openapi/visa-account-updater.yml
+        type: OpenAPI
       - url: https://developer.visa.com/capabilities/vau/docs-getting-started
         name: Getting Started with Visa Account Updater
         type: GettingStarted
@@ -380,9 +398,13 @@ apis:
       secure functioning of the Visa payment network.
   - aid: visa:visa-business-data-solutions
     name: Visa Business Data Solutions
-    tags: []
+    tags:
+      - Data
+      - Analytics
     humanURL: https://developer.visa.com/capabilities/vbds
     properties:
+      - url: openapi/visa-business-data-solutions.yml
+        type: OpenAPI
       - url: https://developer.visa.com/capabilities/vbds/docs-getting-started
         name: Getting Started with Visa Business Data Solutions
         type: GettingStarted
@@ -422,7 +444,9 @@ apis:
       - Personalization
       - Predictive
     humanURL: https://developer.visa.com/capabilities/visa-data-tokens
-    properties: []
+    properties:
+      - url: openapi/visa-data-tokens.yml
+        type: OpenAPI
     description: >-
       Visa Data Tokens is a technology developed by Visa that replaces sensitive
       payment card information, such as credit card numbers, with a unique
@@ -464,9 +488,13 @@ apis:
       and achieve long-term financial stability.
   - aid: visa:visa-card-program-management
     name: Visa Card Program Management
-    tags: []
+    tags:
+      - Cards
+      - Programs
     humanURL: https://developer.visa.com/capabilities/vcpm
     properties:
+      - url: openapi/visa-card-program-management.yml
+        type: OpenAPI
       - url: https://developer.visa.com/capabilities/vcpm/docs-getting-started
         name: Getting Started with Visa Card Program Management
         type: GettingStarted
@@ -496,9 +524,13 @@ apis:
       the global adoption of Visa cards.
   - aid: visa:visa-click-to-pay
     name: Visa Click to Pay
-    tags: []
+    tags:
+      - Checkout
+      - Payments
     humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
     properties:
+      - url: openapi/visa-click-to-pay.yml
+        type: OpenAPI
       - url: >-
           https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs-getting-started
         name: Getting Started with Visa Click to Pay
@@ -809,9 +841,13 @@ apis:
       compromising their personal information.
   - aid: visa:merchant-search
     name: Merchant Search
-    tags: []
+    tags:
+      - Merchants
+      - Search
     humanURL: https://developer.visa.com/capabilities/merchant_search
     properties:
+      - url: openapi/visa-merchant-search.yml
+        type: OpenAPI
       - type: Documentation
         url: https://developer.visa.com/capabilities/merchant_search/docs
     description: >-
@@ -826,9 +862,13 @@ apis:
       unlocking your business's full potential.
   - aid: visa:visa-b2b-connect
     name: Visa B2B Connect
-    tags: []
+    tags:
+      - B2B
+      - Payments
     humanURL: https://developer.visa.com/capabilities/vba
     properties:
+      - url: openapi/visa-b2b-connect.yml
+        type: OpenAPI
       - type: Documentation
         url: https://developer.visa.com/capabilities/vba/docs
     description: >-
@@ -857,9 +897,13 @@ apis:
       offers, and promotions, subject to terms and restrictions, in real-time.
   - aid: visa:visa-merchant-offers
     name: Visa Merchant Offers
-    tags: []
+    tags:
+      - Merchants
+      - Offers
     humanURL: https://developer.visa.com/capabilities/vmorc
     properties:
+      - url: openapi/visa-merchant-offers.yml
+        type: OpenAPI
       - type: Documentation
         url: https://developer.visa.com/capabilities/vmorc/docs
     description: >-
@@ -933,9 +977,15 @@ apis:
     description: "Securely capture, validate, verify and store a receiver\x19s payment credentials within the Alias Directory Service, without the burden of being PCI compliant"
   - aid: visa:visa-direct
     name: Visa Direct
-    tags: []
+    tags:
+      - Payments
+      - Transfers
     humanURL: https://developer.visa.com/capabilities/visa_direct
-    properties: []
+    properties:
+      - url: openapi/visa-direct.yml
+        type: OpenAPI
+      - url: https://developer.visa.com/capabilities/visa_direct/docs
+        type: Documentation
     description: "\vHelp drive growth for you and your clients with fast, convenient and secure payments worldwide2."
   - aid: visa:visa-direct-account-and-wallet
     name: Visa Direct Account and Wallet
@@ -964,9 +1014,15 @@ apis:
     description: Streamline L3 testing through the use of these APIs.
   - aid: visa:visa-global-atm-locator
     name: Visa Global ATM Locator
-    tags: []
+    tags:
+      - ATM
+      - Locator
     humanURL: https://developer.visa.com/capabilities/atmlocator
-    properties: []
+    properties:
+      - url: openapi/visa-global-atm-locator.yml
+        type: OpenAPI
+      - url: https://developer.visa.com/capabilities/atmlocator/docs
+        type: Documentation
     description: >-
       Visa Global ATM Locator enables cardholders to search for Visa/Plus ATM
       locations around the world, via the Web or from their internet-enabled
@@ -1046,9 +1102,15 @@ apis:
       access to multiple funding sources through a single Visa credential.
   - aid: visa:visa-transaction-controls
     name: Visa Transaction Controls
-    tags: []
+    tags:
+      - Controls
+      - Alerts
     humanURL: https://developer.visa.com/capabilities/vctc
-    properties: []
+    properties:
+      - url: openapi/visa-transaction-controls.yml
+        type: OpenAPI
+      - url: https://developer.visa.com/capabilities/vctc/docs
+        type: Documentation
     description: >-
       VTC control-types let cardholders place_their own rules on_a payment cards
       use and when to be_notified of_different financial events._Independent
@@ -1109,8 +1171,16 @@ common:
   - url: https://developer.visa.com/capabilities/vdp-pilot-program/docs
     name: Getting Started
     type: GettingStarted
+  - url: json-schema/visa-payment-transaction-schema.json
+    type: JSONSchema
+  - url: json-schema/visa-merchant-schema.json
+    type: JSONSchema
+  - url: json-schema/visa-account-schema.json
+    type: JSONSchema
+  - url: json-ld/visa-context.jsonld
+    type: JSON-LD
 created: '2024-11-15T00:00:00.000Z'
-modified: '2025-02-20'
+modified: '2026-03-24'
 position: Consuming
 description: >-
   Visa is a global payment technology company that facilitates electronic funds

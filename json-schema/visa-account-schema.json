@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.visa.com/schemas/visa/account.json",
+  "title": "Visa Payment Account",
+  "description": "Schema representing a Visa payment account with attributes used across Payment Account Validation, Payment Account Attributes Inquiry, Account Updater, and Card on File services.",
+  "type": "object",
+  "required": [
+    "primaryAccountNumber"
+  ],
+  "properties": {
+    "primaryAccountNumber": {
+      "type": "string",
+      "description": "Primary Account Number (PAN) of the Visa card",
+      "minLength": 13,
+      "maxLength": 19
+    },
+    "paymentAccountReference": {
+      "type": "string",
+      "description": "Payment Account Reference (PAR) that uniquely identifies a cardholder account across multiple tokens and PANs",
+      "maxLength": 29
+    },
+    "cardExpiryDate": {
+      "type": "string",
+      "description": "Card expiration date in YYYY-MM format",
+      "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+    },
+    "cardholderName": {
+      "type": "string",
+      "description": "Name of the cardholder as printed on the card"
+    },
+    "cardTypeCode": {
+      "type": "string",
+      "description": "Code indicating the type of card account",
+      "enum": [
+        "CREDIT",
+        "DEBIT",
+        "PREPAID",
+        "DEFERRED_DEBIT",
+        "CHARGE"
+      ]
+    },
+    "cardProductType": {
+      "type": "string",
+      "description": "Product type of the Visa card (e.g., Classic, Gold, Platinum, Infinite)"
+    },
+    "issuerName": {
+      "type": "string",
+      "description": "Name of the financial institution that issued the card"
+    },
+    "issuerCountryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 numeric country code of the card issuer",
+      "pattern": "^\\d{3}$"
+    },
+    "binNumber": {
+      "type": "string",
+      "description": "Bank Identification Number (first 6-8 digits of the PAN)",
+      "pattern": "^\\d{6,8}$"
+    },
+    "accountStatus": {
+      "type": "string",
+      "description": "Current status of the payment account",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "BLOCKED",
+        "CLOSED"
+      ]
+    },
+    "fastFundsIndicator": {
+      "type": "string",
+      "description": "Indicates whether the issuer participates in Fast Funds service for the account",
+      "enum": [
+        "Y",
+        "N",
+        "D"
+      ]
+    },
+    "pushPaymentsIndicator": {
+      "type": "string",
+      "description": "Indicates whether the account can receive push payment transactions",
+      "enum": [
+        "Y",
+        "N"
+      ]
+    },
+    "onlineGamblingBlockIndicator": {
+      "type": "string",
+      "description": "Indicates whether online gambling transactions are blocked for this account",
+      "enum": [
+        "Y",
+        "N"
+      ]
+    },
+    "billingAddress": {
+      "$ref": "#/$defs/Address"
+    },
+    "cardOnFileDetails": {
+      "type": "array",
+      "description": "List of merchants with this card stored on file",
+      "items": {
+        "$ref": "#/$defs/CardOnFileMerchant"
+      }
+    },
+    "tokenDetails": {
+      "type": "array",
+      "description": "Token references associated with this account",
+      "items": {
+        "$ref": "#/$defs/TokenReference"
+      }
+    }
+  },
+  "$defs": {
+    "Address": {
+      "type": "object",
+      "description": "Physical address associated with the account",
+      "properties": {
+        "street": {
+          "type": "string",
+          "description": "Street address"
+        },
+        "city": {
+          "type": "string",
+          "description": "City name"
+        },
+        "state": {
+          "type": "string",
+          "description": "State or province code"
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal or ZIP code"
+        },
+        "country": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code",
+          "pattern": "^[A-Z]{2}$"
+        }
+      }
+    },
+    "CardOnFileMerchant": {
+      "type": "object",
+      "description": "Details of a merchant that has the card stored on file",
+      "properties": {
+        "merchantName": {
+          "type": "string",
+          "description": "Name of the merchant"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "Unique identifier of the merchant"
+        },
+        "enrollmentDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the card was stored on file with this merchant"
+        },
+        "transactionType": {
+          "type": "string",
+          "description": "Type of stored credential usage",
+          "enum": [
+            "RECURRING",
+            "INSTALLMENT",
+            "UNSCHEDULED",
+            "SUBSCRIPTION"
+          ]
+        }
+      }
+    },
+    "TokenReference": {
+      "type": "object",
+      "description": "Reference to a token associated with the payment account",
+      "properties": {
+        "tokenReferenceId": {
+          "type": "string",
+          "description": "Unique identifier for the token"
+        },
+        "tokenType": {
+          "type": "string",
+          "description": "Type of the token",
+          "enum": [
+            "DEVICE",
+            "ECOMMERCE",
+            "NETWORK"
+          ]
+        },
+        "tokenStatus": {
+          "type": "string",
+          "description": "Current status of the token",
+          "enum": [
+            "ACTIVE",
+            "SUSPENDED",
+            "DEACTIVATED"
+          ]
+        },
+        "tokenRequestorId": {
+          "type": "string",
+          "description": "Identifier of the entity that requested the token"
+        }
+      }
+    }
+  }
+}

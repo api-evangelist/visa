@@ -1,1 +1,357 @@
-{}
+openapi: 3.1.0
+info:
+  title: Visa Click to Pay
+  description: >-
+    The Visa Click to Pay API enables merchants and payment service providers to
+    integrate Visa's secure remote commerce checkout experience. Based on EMV
+    Secure Remote Commerce (SRC) standards, Click to Pay provides a streamlined
+    online checkout flow where consumers can pay with stored Visa credentials
+    without re-entering card details for each purchase.
+  version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/visa-secure-remote-commerce/product-terms
+externalDocs:
+  description: Visa Click to Pay Documentation
+  url: https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox Server
+  - url: https://api.visa.com
+    description: Production Server
+tags:
+  - name: CTP Checkout API
+    description: >-
+      The Click to Pay Checkout API enables merchants to initiate and complete
+      checkout transactions using stored Visa credentials, providing consumers
+      with a seamless and secure payment experience.
+  - name: CTP Consumer Management API
+    description: >-
+      The Consumer Management API allows SRC Initiators to manage consumer
+      profiles, including enrollment, identity verification, and credential
+      management within the Click to Pay ecosystem.
+security:
+  - mutualTLS: []
+paths:
+  /visasrci/v1/checkout:
+    post:
+      operationId: initiateCheckout
+      summary: Initiate Checkout
+      description: >-
+        Initiates a Click to Pay checkout session for a consumer transaction.
+        This operation creates a checkout context that allows the consumer to
+        select from their stored payment credentials and complete the purchase.
+      tags:
+        - CTP Checkout API
+      requestBody:
+        description: Checkout initiation request details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutRequest'
+      responses:
+        '200':
+          description: Checkout session initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /visasrci/v1/checkout/{checkoutId}:
+    get:
+      operationId: getCheckoutStatus
+      summary: Get Checkout Status
+      description: >-
+        Retrieves the current status and details of an existing Click to Pay
+        checkout session identified by the checkout ID.
+      tags:
+        - CTP Checkout API
+      parameters:
+        - $ref: '#/components/parameters/CheckoutIdParam'
+      responses:
+        '200':
+          description: Checkout status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutStatusResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Checkout session not found
+  /visasrci/v1/consumers:
+    post:
+      operationId: enrollConsumer
+      summary: Enroll Consumer
+      description: >-
+        Enrolls a new consumer into the Click to Pay ecosystem, creating a
+        profile that can store payment credentials for streamlined checkout
+        experiences across participating merchants.
+      tags:
+        - CTP Consumer Management API
+      requestBody:
+        description: Consumer enrollment details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsumerEnrollmentRequest'
+      responses:
+        '201':
+          description: Consumer enrolled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumerEnrollmentResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Consumer already enrolled
+  /visasrci/v1/consumers/{consumerId}/credentials:
+    post:
+      operationId: addConsumerCredential
+      summary: Add Consumer Credential
+      description: >-
+        Adds a new payment credential to an existing consumer profile. The
+        credential is tokenized and stored securely for use in future Click to
+        Pay transactions.
+      tags:
+        - CTP Consumer Management API
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdParam'
+      requestBody:
+        description: Payment credential details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCredentialRequest'
+      responses:
+        '201':
+          description: Credential added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddCredentialResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Consumer not found
+components:
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: >-
+        Two-way SSL mutual authentication using a PKI certificate issued by
+        Visa.
+  parameters:
+    CheckoutIdParam:
+      name: checkoutId
+      in: path
+      required: true
+      description: Unique identifier for the checkout session
+      schema:
+        type: string
+    ConsumerIdParam:
+      name: consumerId
+      in: path
+      required: true
+      description: Unique identifier for the enrolled consumer
+      schema:
+        type: string
+  schemas:
+    CheckoutRequest:
+      type: object
+      required:
+        - merchantId
+        - amount
+        - currency
+      properties:
+        merchantId:
+          type: string
+          description: Unique identifier for the merchant initiating checkout
+        amount:
+          type: number
+          format: double
+          description: Transaction amount
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          pattern: '^[A-Z]{3}$'
+          example: USD
+        consumerIdentity:
+          type: string
+          description: >-
+            Consumer email or phone number used to look up stored credentials
+        merchantName:
+          type: string
+          description: Display name of the merchant
+        returnUrl:
+          type: string
+          format: uri
+          description: URL to redirect the consumer after checkout completion
+    CheckoutResponse:
+      type: object
+      properties:
+        checkoutId:
+          type: string
+          description: Unique identifier for the initiated checkout session
+        status:
+          type: string
+          description: Current status of the checkout session
+          enum:
+            - INITIATED
+            - PENDING
+            - COMPLETED
+            - EXPIRED
+        checkoutUrl:
+          type: string
+          format: uri
+          description: URL to redirect the consumer for checkout completion
+    CheckoutStatusResponse:
+      type: object
+      properties:
+        checkoutId:
+          type: string
+          description: Unique identifier for the checkout session
+        status:
+          type: string
+          description: Current status of the checkout session
+          enum:
+            - INITIATED
+            - PENDING
+            - COMPLETED
+            - EXPIRED
+            - CANCELLED
+        transactionId:
+          type: string
+          description: >-
+            Transaction identifier assigned after successful payment
+        paymentToken:
+          type: string
+          description: Tokenized payment credential used for the transaction
+    ConsumerEnrollmentRequest:
+      type: object
+      required:
+        - emailAddress
+      properties:
+        emailAddress:
+          type: string
+          format: email
+          description: Consumer email address used as primary identifier
+        firstName:
+          type: string
+          description: Consumer first name
+        lastName:
+          type: string
+          description: Consumer last name
+        mobileNumber:
+          type: string
+          description: Consumer mobile phone number in E.164 format
+        countryCode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          pattern: '^[A-Z]{2}$'
+    ConsumerEnrollmentResponse:
+      type: object
+      properties:
+        consumerId:
+          type: string
+          description: Unique identifier assigned to the newly enrolled consumer
+        status:
+          type: string
+          description: Enrollment status
+          enum:
+            - ENROLLED
+            - PENDING_VERIFICATION
+    AddCredentialRequest:
+      type: object
+      required:
+        - primaryAccountNumber
+        - cardExpiryDate
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number of the Visa card
+        cardExpiryDate:
+          type: string
+          description: Card expiration date in YYYY-MM format
+          pattern: '^\d{4}-\d{2}$'
+        cardholderName:
+          type: string
+          description: Name as it appears on the card
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+    AddCredentialResponse:
+      type: object
+      properties:
+        credentialId:
+          type: string
+          description: Unique identifier for the stored credential
+        maskedPan:
+          type: string
+          description: Masked primary account number showing only last four digits
+        status:
+          type: string
+          description: Credential storage status
+          enum:
+            - ACTIVE
+            - PENDING_VERIFICATION
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          description: Street address
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State or province code
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          pattern: '^[A-Z]{2}$'
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field that caused the error
+              message:
+                type: string
+                description: Detail about the field error

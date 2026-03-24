@@ -1,0 +1,387 @@
+openapi: 3.1.0
+info:
+  title: Visa Merchant Offers Resource Center
+  description: >-
+    The Visa Merchant Offers Resource Center (VMORC) API provides developers a
+    quick and easy way to retrieve offer information from Visa's central offer
+    repository. VMORC is a multilingual application used to store and distribute
+    merchant offers, providing access to the latest offers as soon as they
+    become available.
+  version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/vmorc/product-terms
+externalDocs:
+  description: VMORC Documentation
+  url: https://developer.visa.com/capabilities/vmorc/docs
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox Server
+  - url: https://api.visa.com
+    description: Production Server
+tags:
+  - name: Offers Data API
+    description: >-
+      Retrieve offer data available to the caller, filtered by various offer
+      attributes such as merchant, category, location, and date range.
+  - name: Reference Data API
+    description: >-
+      Retrieve reference data values used for offer filtering criteria including
+      merchant categories, countries, and offer types.
+security:
+  - mutualTLS: []
+paths:
+  /vmorc/offers/v1/all:
+    get:
+      operationId: getAllOffers
+      summary: Get All Offers
+      description: >-
+        Retrieves all available merchant offers. Results can be filtered by
+        various attributes including merchant, category, country, and offer
+        type.
+      tags:
+        - Offers Data API
+      parameters:
+        - name: language
+          in: query
+          description: Language code for offer content
+          schema:
+            type: string
+            default: en-us
+        - name: start_index
+          in: query
+          description: Starting index for pagination
+          schema:
+            type: integer
+        - name: max_offers
+          in: query
+          description: Maximum number of offers to return
+          schema:
+            type: integer
+        - name: category
+          in: query
+          description: Offer category filter
+          schema:
+            type: string
+        - name: country
+          in: query
+          description: Country code filter
+          schema:
+            type: integer
+        - name: merchant
+          in: query
+          description: Merchant name filter
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Offers retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OffersResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /vmorc/offers/v1/byofferid:
+    get:
+      operationId: getOfferById
+      summary: Get Offer By ID
+      description: >-
+        Retrieves detailed information about a specific merchant offer
+        identified by its offer ID.
+      tags:
+        - Offers Data API
+      parameters:
+        - name: offerid
+          in: query
+          required: true
+          description: Unique identifier of the offer
+          schema:
+            type: integer
+        - name: language
+          in: query
+          description: Language code for offer content
+          schema:
+            type: string
+            default: en-us
+      responses:
+        '200':
+          description: Offer retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferDetailResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Offer not found
+  /vmorc/offers/v1/byfilter:
+    get:
+      operationId: getOffersByFilter
+      summary: Get Offers By Filter
+      description: >-
+        Retrieves merchant offers filtered by specified criteria such as
+        business segment, card product type, and promotion channel.
+      tags:
+        - Offers Data API
+      parameters:
+        - name: language
+          in: query
+          description: Language code for offer content
+          schema:
+            type: string
+            default: en-us
+        - name: business_segment
+          in: query
+          description: Business segment filter
+          schema:
+            type: integer
+        - name: card_product_type
+          in: query
+          description: Card product type filter
+          schema:
+            type: string
+        - name: promotion_channel
+          in: query
+          description: Promotion channel filter
+          schema:
+            type: string
+        - name: start_index
+          in: query
+          description: Starting index for pagination
+          schema:
+            type: integer
+        - name: max_offers
+          in: query
+          description: Maximum number of offers to return
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Offers retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OffersResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /vmorc/referencedata/v1/categories:
+    get:
+      operationId: getCategories
+      summary: Get Offer Categories
+      description: >-
+        Retrieves the list of available offer categories used for filtering
+        offers.
+      tags:
+        - Reference Data API
+      parameters:
+        - name: language
+          in: query
+          description: Language code
+          schema:
+            type: string
+            default: en-us
+      responses:
+        '200':
+          description: Categories retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponse'
+        '401':
+          description: Unauthorized
+  /vmorc/referencedata/v1/countries:
+    get:
+      operationId: getCountries
+      summary: Get Countries
+      description: >-
+        Retrieves the list of countries where merchant offers are available.
+      tags:
+        - Reference Data API
+      parameters:
+        - name: language
+          in: query
+          description: Language code
+          schema:
+            type: string
+            default: en-us
+      responses:
+        '200':
+          description: Countries retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountriesResponse'
+        '401':
+          description: Unauthorized
+  /vmorc/referencedata/v1/merchants:
+    get:
+      operationId: getMerchants
+      summary: Get Merchants
+      description: >-
+        Retrieves the list of merchants that have offers available in the
+        VMORC system.
+      tags:
+        - Reference Data API
+      parameters:
+        - name: language
+          in: query
+          description: Language code
+          schema:
+            type: string
+            default: en-us
+      responses:
+        '200':
+          description: Merchants retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantsResponse'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: >-
+        Two-way SSL mutual authentication using a PKI certificate issued by
+        Visa.
+  schemas:
+    OffersResponse:
+      type: object
+      properties:
+        totalFoundResults:
+          type: integer
+          description: Total number of offers matching the criteria
+        returnedResults:
+          type: integer
+          description: Number of offers returned in this response
+        offers:
+          type: array
+          description: List of merchant offers
+          items:
+            $ref: '#/components/schemas/Offer'
+    OfferDetailResponse:
+      type: object
+      properties:
+        offer:
+          $ref: '#/components/schemas/Offer'
+    Offer:
+      type: object
+      properties:
+        offerId:
+          type: integer
+          description: Unique identifier for the offer
+        offerTitle:
+          type: string
+          description: Title of the offer
+        offerShortDescription:
+          type: string
+          description: Short description of the offer
+        offerLongDescription:
+          type: string
+          description: Detailed description of the offer
+        merchantName:
+          type: string
+          description: Name of the merchant providing the offer
+        merchantAddress:
+          type: string
+          description: Address of the merchant
+        category:
+          type: string
+          description: Category of the offer
+        validityStartDate:
+          type: string
+          format: date
+          description: Date when the offer becomes valid
+        validityEndDate:
+          type: string
+          format: date
+          description: Date when the offer expires
+        redemptionUrl:
+          type: string
+          format: uri
+          description: URL for offer redemption
+        imageUrl:
+          type: string
+          format: uri
+          description: URL of the offer image
+        termsAndConditions:
+          type: string
+          description: Terms and conditions for the offer
+        countryCode:
+          type: string
+          description: Country code where the offer is valid
+        promotionChannel:
+          type: string
+          description: Channel through which the offer is promoted
+    CategoriesResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          description: List of offer categories
+          items:
+            type: object
+            properties:
+              categoryId:
+                type: integer
+                description: Unique identifier for the category
+              categoryName:
+                type: string
+                description: Display name of the category
+    CountriesResponse:
+      type: object
+      properties:
+        countries:
+          type: array
+          description: List of countries with available offers
+          items:
+            type: object
+            properties:
+              countryId:
+                type: integer
+                description: Unique identifier for the country
+              countryName:
+                type: string
+                description: Name of the country
+              countryCode:
+                type: string
+                description: ISO country code
+    MerchantsResponse:
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: List of merchants with available offers
+          items:
+            type: object
+            properties:
+              merchantId:
+                type: integer
+                description: Unique identifier for the merchant
+              merchantName:
+                type: string
+                description: Name of the merchant
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description

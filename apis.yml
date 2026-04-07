@@ -6,11 +6,9 @@ apis:
     tags:
       - Government
       - Insights
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-government-insights-hub
+    humanURL: https://developer.visa.com/capabilities/visa-government-insights-hub
     properties:
-      - url: 
-          https://developer.visa.com/capabilities/visa-government-insights-hub
+      - url: https://developer.visa.com/capabilities/visa-government-insights-hub
         name: Visa Government Insights Hub
         type: Documentation
         description: >-
@@ -119,8 +117,8 @@ apis:
   - aid: visa:visa-supplier-matching-service
     name: Visa Supplier Matching Service
     tags:
-      - Suppliers
       - Matching
+      - Suppliers
     humanURL: https://developer.visa.com/capabilities/suppliermatchingservice
     properties:
       - url: openapi/visa-supplier-matching-service.yml
@@ -202,8 +200,8 @@ apis:
   - aid: visa:foreign-exchange
     name: Foreign Exchange
     tags:
-      - Foreign Exchange
       - Currency
+      - Foreign Exchange
     humanURL: https://developer.visa.com/capabilities/foreign_exchange
     properties:
       - url: openapi/foreign-exchange.yml
@@ -300,10 +298,9 @@ apis:
     name: Visa BIN Attribute Sharing Service
     tags:
       - BIN
-      - VBASS
       - Fraud
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
+      - VBASS
+    humanURL: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service
     properties:
       - url: openapi/visa-bin-attribute-sharing.yml
         type: OpenAPI
@@ -335,8 +332,8 @@ apis:
   - aid: visa:visa-business-data-solutions
     name: Visa Business Data Solutions
     tags:
-      - Data
       - Analytics
+      - Data
     humanURL: https://developer.visa.com/capabilities/vbds
     properties:
       - url: openapi/visa-business-data-solutions.yml
@@ -369,9 +366,9 @@ apis:
     tags:
       - Historical
       - Insights
-      - Signals
       - Personalization
       - Predictive
+      - Signals
     humanURL: https://developer.visa.com/capabilities/visa-data-tokens
     properties:
       - url: openapi/visa-data-tokens.yml
@@ -442,8 +439,7 @@ apis:
     tags:
       - Checkout
       - Payments
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-secure-remote-commerce
+    humanURL: https://developer.visa.com/capabilities/visa-secure-remote-commerce
     properties:
       - url: openapi/visa-click-to-pay.yml
         type: OpenAPI
@@ -469,12 +465,11 @@ apis:
   - aid: visa:visa-digital-enablement
     name: Visa Digital Enablement Lite App
     tags:
-      - White-Label
       - Apple Pay
-      - Google Wallet
       - Digital Wallet
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-digital-enablement-lite
+      - Google Wallet
+      - White-Label
+    humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
     properties:
       - url: >-
           https://developer.visa.com/capabilities/visa-digital-enablement-lite/docs-getting-started
@@ -500,12 +495,11 @@ apis:
   - aid: visa:visa-digital-enablement
     name: Visa Digital Enablement Lite App
     tags:
-      - White-Label
       - Apple Pay
-      - Google Wallet
       - Digital Wallet
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-digital-enablement-lite
+      - Google Wallet
+      - White-Label
+    humanURL: https://developer.visa.com/capabilities/visa-digital-enablement-lite
     properties:
       - url: openapi/visa-digital-enablement.yml
         type: OpenAPI
@@ -529,8 +523,7 @@ apis:
     tags:
       - Merchants
       - Screening
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-merchant-screening-service
+    humanURL: https://developer.visa.com/capabilities/visa-merchant-screening-service
     properties:
       - url: >-
           https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-getting-started
@@ -577,9 +570,9 @@ apis:
   - aid: visa:visa-in-app-provisioning
     name: Visa In-App Provisioning
     tags:
-      - Payments
-      - Mobile
       - Applications
+      - Mobile
+      - Payments
     humanURL: https://developer.visa.com/capabilities/visa-in-app-provisioning
     properties:
       - url: openapi/visa-in-app-provisioning.yml
@@ -636,8 +629,7 @@ apis:
   - aid: visa:order-insight-digital
     name: Order Insight Digital
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry
+    humanURL: https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry
     properties:
       - type: Documentation
         url: >-
@@ -781,18 +773,11 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.visa.com/capabilities/vop
-    description: "Visa\x19s Customers can get access to near real-time transaction
-      data via the Visa Offers Platform to execute and manage their card-linked programs.
-      For cardholders who have consented to take part in the Customer\x19s program,
-      VOP can access the VisaNet authorization and settlement stream to qualify transactions
-      and send the relevant notifications to the Customer in near real-time. Using
-      the VOP APIs, Customers can leverage capabilities to enhance their own web and
-      mobile applications."
+    description: "Visa\x19s Customers can get access to near real-time transaction data via the Visa Offers Platform to execute and manage their card-linked programs. For cardholders who have consented to take part in the Customer\x19s program, VOP can access the VisaNet authorization and settlement stream to qualify transactions and send the relevant notifications to the Customer in near real-time. Using the VOP APIs, Customers can leverage capabilities to enhance their own web and mobile applications."
   - aid: visa:installment-transaction-service
     name: Installment Transaction Service
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/installment-transaction-service
+    humanURL: https://developer.visa.com/capabilities/installment-transaction-service
     properties:
       - type: Documentation
         url: >-
@@ -836,8 +821,7 @@ apis:
   - aid: visa:receiver-directed-payouts
     name: Receiver Directed Payouts
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-receiver-directed-payouts
+    humanURL: https://developer.visa.com/capabilities/visa-receiver-directed-payouts
     properties: []
     description: >-
       Securely capture, validate, verify and store a receivers payment credentials
@@ -859,8 +843,7 @@ apis:
   - aid: visa:visa-direct-account-and-wallet
     name: Visa Direct Account and Wallet
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-direct-account-and-wallet
+    humanURL: https://developer.visa.com/capabilities/visa-direct-account-and-wallet
     properties: []
     description: >-
       Visa Direct Account and Wallet is built to help businesses deliver money
@@ -917,8 +900,7 @@ apis:
   - aid: visa:dps-card-and-account
     name: DPS Card and Account
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/dps-card-and-account-services
+    humanURL: https://developer.visa.com/capabilities/dps-card-and-account-services
     properties: []
     description: >-
       Enable issuers to manage their cardholders card and account informationDPS
@@ -946,8 +928,7 @@ apis:
   - aid: visa:visa-tokenized-asset-platform-vtap-
     name: Visa Tokenized Asset Platform (VTAP)
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-tokenized-asset-platform
+    humanURL: https://developer.visa.com/capabilities/visa-tokenized-asset-platform
     properties: []
     description: >-
       VTAP provides the tools and infrastructure for banks to tokenize fiat currencies
@@ -978,8 +959,8 @@ apis:
   - aid: visa:visa-transaction-controls
     name: Visa Transaction Controls
     tags:
-      - Controls
       - Alerts
+      - Controls
     humanURL: https://developer.visa.com/capabilities/vctc
     properties:
       - url: openapi/visa-transaction-controls.yml
@@ -1007,8 +988,7 @@ apis:
   - aid: visa:visa-installment-management
     name: Visa Installment Management
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/installment-management-service
+    humanURL: https://developer.visa.com/capabilities/installment-management-service
     properties: []
     description: >-
       The Installment Management Service allows you to provide installment offers
@@ -1017,8 +997,7 @@ apis:
   - aid: visa:visa-faster-payments-gateway
     name: Visa Faster Payments Gateway
     tags: []
-    humanURL: 
-      https://developer.visa.com/capabilities/visa-faster-payments-gateway
+    humanURL: https://developer.visa.com/capabilities/visa-faster-payments-gateway
     properties: []
     description: >-
       Visa Faster Payments Gateway_supports both send and receive capabilities

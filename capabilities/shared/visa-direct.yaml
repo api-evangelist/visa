@@ -1,0 +1,103 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Visa Direct"
+  description: "Real-time push payment capabilities for person-to-person transfers, business disbursements, and account funding worldwide."
+  tags:
+    - Payments
+    - Transfers
+    - Real-Time
+    - Visa
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VISA_API_KEY: VISA_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: visa-direct
+      baseUri: https://sandbox.api.visa.com
+      description: "Visa Direct Funds Transfer API"
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{VISA_API_KEY}}"
+        placement: header
+      resources:
+        - name: push-funds
+          path: /visadirect/fundstransfer/v1/pushfundstransactions
+          description: "Push funds to a recipient's Visa account"
+          operations:
+            - name: push-funds
+              method: POST
+              description: "Push funds to a recipient's account in real-time"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: pull-funds
+          path: /visadirect/fundstransfer/v1/pullfundstransactions
+          description: "Pull funds from a sender's Visa account"
+          operations:
+            - name: pull-funds
+              method: POST
+              description: "Pull funds from a sender's account"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: visa-direct-api
+      resources:
+        - path: /v1/push-funds
+          operations:
+            - method: POST
+              name: push-funds
+              description: "Push funds to a recipient"
+              call: "visa-direct.push-funds"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/pull-funds
+          operations:
+            - method: POST
+              name: pull-funds
+              description: "Pull funds from a sender"
+              call: "visa-direct.pull-funds"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: visa-direct-mcp
+      transport: http
+      tools:
+        - name: push-funds
+          description: "Push funds to a recipient's Visa account in real-time"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "visa-direct.push-funds"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pull-funds
+          description: "Pull funds from a sender's Visa account"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "visa-direct.pull-funds"
+          outputParameters:
+            - type: object
+              mapping: "$."

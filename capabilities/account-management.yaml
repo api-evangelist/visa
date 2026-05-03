@@ -1,0 +1,123 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Visa Account Management"
+  description: >-
+    Workflow capability for Visa account validation, transaction controls, and
+    account attribute inquiry. Used by issuers, fintech developers, and
+    banking apps to validate accounts before transactions, manage cardholder
+    spending controls, and inspect account attributes.
+  tags:
+    - Accounts
+    - Alerts
+    - Controls
+    - Validation
+    - Visa
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VISA_API_KEY: VISA_API_KEY
+
+capability:
+  consumes:
+    - import: payment-account-validation
+      location: ./shared/payment-account-validation.yaml
+    - import: visa-transaction-controls
+      location: ./shared/visa-transaction-controls.yaml
+
+  exposes:
+    - type: rest
+      port: 8082
+      namespace: account-management-api
+      description: "Unified REST API for Visa account validation and transaction controls."
+      resources:
+        - path: /v1/cards/validate
+          name: card-validation
+          description: "Card account validation"
+          operations:
+            - method: POST
+              name: validate-card
+              description: "Validate a Visa card account with AVS, CVV2, and account verification"
+              call: "payment-account-validation.validate-card"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/card-controls
+          name: card-controls
+          description: "Transaction controls management"
+          operations:
+            - method: POST
+              name: create-controls
+              description: "Create spending controls for a card"
+              call: "visa-transaction-controls.create-controls"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-controls
+              description: "Get spending controls for a card"
+              call: "visa-transaction-controls.get-controls"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9092
+      namespace: account-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted Visa account validation and controls management."
+      tools:
+        - name: validate-card-account
+          description: "Validate a Visa card account before processing a transaction"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "payment-account-validation.validate-card"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-card-controls
+          description: "Set spending limits and merchant category controls on a Visa card"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "visa-transaction-controls.create-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-card-controls
+          description: "Retrieve existing transaction controls configured for a card"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-transaction-controls.get-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-card-controls
+          description: "Update spending controls and alerts on a Visa card"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "visa-transaction-controls.update-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-card-controls
+          description: "Remove all transaction controls from a Visa card"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "visa-transaction-controls.delete-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."

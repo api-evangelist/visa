@@ -1,0 +1,105 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Visa Merchant Intelligence"
+  description: >-
+    Workflow capability for merchant data enrichment, transaction clarity, and
+    location-based merchant discovery using Visa Merchant Search. Used by
+    issuers, card statement apps, and expense management tools to provide
+    clear merchant information on transactions.
+  tags:
+    - Data Enrichment
+    - Location
+    - Merchants
+    - Search
+    - Visa
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VISA_API_KEY: VISA_API_KEY
+
+capability:
+  consumes:
+    - import: visa-merchant-search
+      location: ./shared/visa-merchant-search.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: merchant-intelligence-api
+      description: "Unified REST API for merchant data enrichment and discovery."
+      resources:
+        - path: /v1/merchants/search
+          name: merchant-search
+          description: "Merchant search and discovery"
+          operations:
+            - method: POST
+              name: search-merchants
+              description: "Search for Visa merchants by name and location"
+              call: "visa-merchant-search.search-merchants"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/merchants/nearby
+          name: nearby-merchants
+          description: "Location-based merchant discovery"
+          operations:
+            - method: POST
+              name: find-nearby-merchants
+              description: "Find Visa-accepting merchants near a geographic location"
+              call: "visa-merchant-search.find-nearby-merchants"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/transactions/enrich
+          name: transaction-enrichment
+          description: "Transaction data enrichment"
+          operations:
+            - method: POST
+              name: enrich-transaction
+              description: "Enrich a transaction with enhanced merchant information"
+              call: "visa-merchant-search.enrich-transaction"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9091
+      namespace: merchant-intelligence-mcp
+      transport: http
+      description: "MCP server for AI-assisted merchant intelligence and transaction enrichment."
+      tools:
+        - name: search-merchants
+          description: "Search the Visa merchant database by name and location"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-merchant-search.search-merchants"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: find-nearby-merchants
+          description: "Discover Visa-accepting merchants near a geographic location"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-merchant-search.find-nearby-merchants"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: enrich-transaction
+          description: "Enrich a transaction with merchant details like address, logo, and website"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-merchant-search.enrich-transaction"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,72 @@
+{
+  "name": "VisaMerchant",
+  "description": "Structure of a Visa merchant entity including identifiers, location, and category data",
+  "fields": [
+    {
+      "name": "visaMerchantId",
+      "type": "string",
+      "description": "Unique Visa merchant identifier in the VisaNet network",
+      "required": true
+    },
+    {
+      "name": "visaStoreId",
+      "type": "string",
+      "description": "Unique store-level identifier within the merchant",
+      "required": false
+    },
+    {
+      "name": "merchantName",
+      "type": "string",
+      "description": "Legal business name of the merchant",
+      "required": true
+    },
+    {
+      "name": "merchantCountryCode",
+      "type": "string",
+      "description": "ISO 3166-1 numeric country code",
+      "required": true
+    },
+    {
+      "name": "merchantCity",
+      "type": "string",
+      "description": "City where the merchant is located",
+      "required": false
+    },
+    {
+      "name": "merchantState",
+      "type": "string",
+      "description": "State or province code",
+      "required": false
+    },
+    {
+      "name": "merchantPostalCode",
+      "type": "string",
+      "description": "Postal/ZIP code",
+      "required": false
+    },
+    {
+      "name": "merchantStreetAddress",
+      "type": "string",
+      "description": "Street address",
+      "required": false
+    },
+    {
+      "name": "merchantCategoryCode",
+      "type": "string",
+      "description": "MCC - 4-digit code classifying the merchant's business type",
+      "required": false
+    },
+    {
+      "name": "latitude",
+      "type": "string",
+      "description": "Geographic latitude coordinate",
+      "required": false
+    },
+    {
+      "name": "longitude",
+      "type": "string",
+      "description": "Geographic longitude coordinate",
+      "required": false
+    }
+  ]
+}

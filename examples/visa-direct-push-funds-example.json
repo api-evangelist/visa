@@ -1,0 +1,54 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/visadirect/fundstransfer/v1/pushfundstransactions",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "systemsTraceAuditNumber": "743700",
+      "retrievalReferenceNumber": "430000367618",
+      "localTransactionDateTime": "2026-05-03T12:00:00",
+      "amount": "124.05",
+      "senderCurrencyCode": "USD",
+      "acquirerCountryCode": "840",
+      "acquiringBin": "408999",
+      "businessApplicationId": "PP",
+      "cardAcceptor": {
+        "address": {
+          "country": "USA",
+          "zipCode": "94404",
+          "county": "081",
+          "state": "CA"
+        },
+        "idCode": "ABCD1234ABCD123",
+        "name": "Visa Inc. USA-Foster City",
+        "terminalId": "TERM0001"
+      },
+      "senderAccountNumber": "4895142232120006",
+      "senderName": "John Smith",
+      "senderAddress": "901 Metro Center Blvd",
+      "senderCity": "Foster City",
+      "senderStateCode": "CA",
+      "senderCountryCode": "840",
+      "senderReference": "SENDER-REF-001",
+      "merchantCategoryCode": "6012",
+      "feeProgramIndicator": "123",
+      "recipientPrimaryAccountNumber": "4123640062698797",
+      "recipientName": "Jane Doe",
+      "transactionCurrencyCode": "USD"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "statusIdentifier": "Success",
+      "actionCode": "00",
+      "transmissionDateTime": "2026-05-03T12:00:01Z",
+      "systemsTraceAuditNumber": "743700",
+      "retrievalReferenceNumber": "430000367618",
+      "approvalCode": "20304B",
+      "transactionIdentifier": "381228649430015"
+    }
+  }
+}

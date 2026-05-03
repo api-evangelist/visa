@@ -1031,7 +1031,18 @@ apis:
       is provided via a lightweight, easy-to-integrate set of RESTful APIs.
 name: Visa
 tags:
+  - Accounts
+  - Banking
   - Credit Cards
+  - Digital Commerce
+  - Digital Wallets
+  - Fintech
+  - Foreign Exchange
+  - Fraud Prevention
+  - Merchants
+  - Money Movement
+  - Payments
+  - Tokenization
 type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
@@ -1039,6 +1050,10 @@ common:
   - url: https://developer.visa.com/capabilities/vdp-pilot-program/docs
     name: Getting Started
     type: GettingStarted
+  - url: https://developer.visa.com/
+    type: Website
+  - url: https://developer.visa.com/support
+    type: Support
   - url: json-schema/visa-payment-transaction-schema.json
     type: JSONSchema
   - url: json-schema/visa-merchant-schema.json
@@ -1047,15 +1062,25 @@ common:
     type: JSONSchema
   - url: json-ld/visa-context.jsonld
     type: JSON-LD
+  - url: json-structure/visa-payment-transaction-structure.json
+    type: JSONStructure
+  - url: json-structure/visa-merchant-structure.json
+    type: JSONStructure
+  - url: vocabulary/visa-vocabulary.yml
+    type: Vocabulary
+  - url: rules/visa-rules.yml
+    type: SpectralRules
 created: '2024-11-15T00:00:00.000Z'
-modified: '2026-03-24'
+modified: '2026-05-03'
 position: Consuming
 description: >-
   Visa is a global payment technology company that facilitates electronic funds transfers
   by providing consumers, businesses, and governments with secure, convenient, and
   reliable payment solutions. Through its network of financial institutions and partners,
   Visa enables individuals to make purchases, transfer money, and access other financial
-  services in over 200 countries and territories worldwide.
+  services in over 200 countries and territories worldwide. The Visa Developer platform
+  provides APIs for money movement (Visa Direct), merchant intelligence, account validation,
+  transaction controls, foreign exchange, digital wallets, tokenization, and more.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

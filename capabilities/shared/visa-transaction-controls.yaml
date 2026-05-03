@@ -1,0 +1,155 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Visa Transaction Controls"
+  description: "Cardholder-defined controls and alerts for managing card spending, merchant types, and transaction limits."
+  tags:
+    - Alerts
+    - Controls
+    - Cards
+    - Visa
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VISA_API_KEY: VISA_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: visa-transaction-controls
+      baseUri: https://sandbox.api.visa.com
+      description: "Visa Transaction Controls API"
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{VISA_API_KEY}}"
+        placement: header
+      resources:
+        - name: card-controls
+          path: /vctc/cardcontrols/v1/controls
+          description: "Manage cardholder transaction controls"
+          operations:
+            - name: create-controls
+              method: POST
+              description: "Set transaction controls for a card"
+              inputParameters:
+                - name: primaryAccountNumber
+                  in: body
+                  type: string
+                  required: true
+                  description: "Card PAN"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-controls
+              method: GET
+              description: "Retrieve existing transaction controls for a card"
+              inputParameters:
+                - name: primaryAccountNumber
+                  in: query
+                  type: string
+                  required: true
+                  description: "Card PAN"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-controls
+              method: PUT
+              description: "Update transaction controls for a card"
+              inputParameters:
+                - name: primaryAccountNumber
+                  in: body
+                  type: string
+                  required: true
+                  description: "Card PAN"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-controls
+              method: DELETE
+              description: "Remove transaction controls from a card"
+              inputParameters:
+                - name: primaryAccountNumber
+                  in: query
+                  type: string
+                  required: true
+                  description: "Card PAN"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8105
+      namespace: visa-transaction-controls-api
+      resources:
+        - path: /v1/card-controls
+          operations:
+            - method: POST
+              name: create-controls
+              description: "Create card controls"
+              call: "visa-transaction-controls.create-controls"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-controls
+              description: "Get card controls"
+              call: "visa-transaction-controls.get-controls"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9105
+      namespace: visa-transaction-controls-mcp
+      transport: http
+      tools:
+        - name: create-card-controls
+          description: "Set spending controls and alerts for a Visa card"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "visa-transaction-controls.create-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-card-controls
+          description: "Retrieve transaction controls configured for a card"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-transaction-controls.get-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-card-controls
+          description: "Update existing transaction controls for a card"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "visa-transaction-controls.update-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-card-controls
+          description: "Remove transaction controls from a card"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "visa-transaction-controls.delete-controls"
+          outputParameters:
+            - type: object
+              mapping: "$."

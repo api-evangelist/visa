@@ -1,0 +1,88 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Payment Account Validation"
+  description: "Validate Visa payment accounts using account verification, AVS, CVV2, and Account Name Inquiry."
+  tags:
+    - Accounts
+    - Validation
+    - Fraud Prevention
+    - Visa
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VISA_API_KEY: VISA_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: payment-account-validation
+      baseUri: https://sandbox.api.visa.com
+      description: "Visa Payment Account Validation API"
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{VISA_API_KEY}}"
+        placement: header
+      resources:
+        - name: card-validation
+          path: /pav/v1/cardvalidation
+          description: "Validate a payment card account"
+          operations:
+            - name: validate-card
+              method: POST
+              description: "Validate a Visa card account using AVS, CVV2, and account verification"
+              inputParameters:
+                - name: primaryAccountNumber
+                  in: body
+                  type: string
+                  required: true
+                  description: "Card Primary Account Number"
+                - name: cardExpiryDate
+                  in: body
+                  type: string
+                  required: false
+                  description: "Card expiration date (YYYY-MM)"
+                - name: cardCvv2Value
+                  in: body
+                  type: string
+                  required: false
+                  description: "CVV2 security code"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8104
+      namespace: payment-account-validation-api
+      resources:
+        - path: /v1/cards/validate
+          operations:
+            - method: POST
+              name: validate-card
+              description: "Validate a Visa payment account"
+              call: "payment-account-validation.validate-card"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9104
+      namespace: payment-account-validation-mcp
+      transport: http
+      tools:
+        - name: validate-card
+          description: "Validate a Visa card account using AVS, CVV2, and account verification"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "payment-account-validation.validate-card"
+          outputParameters:
+            - type: object
+              mapping: "$."

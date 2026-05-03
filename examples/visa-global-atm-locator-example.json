@@ -1,0 +1,39 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/locator/v1/locateatm",
+    "parameters": {
+      "requestData": "WyJ7XCJoZWFkZXJcIjp7XCJtZXNzYWdlRGF0ZVRpbWVcIjpcIjIwMjYtMDUtMDNUMTI6MDA6MDAuMDAwWlwifSxcInNlYXJjaEF0dHJpYnV0ZXNcIjp7XCJsYXRpdHVkZVwiOlwiMzcuNTYzMlwiLFwibG9uZ2l0dWRlXCI6XCItMTIyLjI4MjFcIixcImRpc3RhbmNlXCI6XCIyXCIsXCJkaXN0YW5jZVVuaXRcIjpcIm1pbGVcIn19Il0="
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "header": {
+        "status": {
+          "statusCode": "CDI000",
+          "statusDescription": "Success"
+        },
+        "requestMessageId": "req-atm-001",
+        "noOfRecordsReturned": 1
+      },
+      "atmList": [
+        {
+          "atmId": "ATM001",
+          "address": {
+            "line1": "400 Howard Street",
+            "city": "San Francisco",
+            "state": "CA",
+            "postalCode": "94105",
+            "country": "USA"
+          },
+          "latitude": "37.7864",
+          "longitude": "-122.3892",
+          "distance": "0.5",
+          "distanceUnit": "mile",
+          "accessibility": true
+        }
+      ]
+    }
+  }
+}

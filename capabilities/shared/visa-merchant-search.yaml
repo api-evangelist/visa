@@ -1,0 +1,134 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Visa Merchant Search"
+  description: "Enriched merchant data for transaction clarity, merchant search, and nearby location discovery."
+  tags:
+    - Merchants
+    - Search
+    - Data Enrichment
+    - Visa
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VISA_API_KEY: VISA_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: visa-merchant-search
+      baseUri: https://sandbox.api.visa.com
+      description: "Visa Merchant Search API"
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{VISA_API_KEY}}"
+        placement: header
+      resources:
+        - name: merchant-search
+          path: /merchantsearch/v1/search
+          description: "Search for merchants by name and location"
+          operations:
+            - name: search-merchants
+              method: POST
+              description: "Search for Visa merchants by name and location"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: transaction-enrichment
+          path: /merchantsearch/v1/transactionenrichment
+          description: "Enrich transaction data with merchant details"
+          operations:
+            - name: enrich-transaction
+              method: POST
+              description: "Enrich transaction data with enhanced merchant information"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: nearby-merchants
+          path: /merchantsearch/v1/nearby
+          description: "Find nearby Visa-accepting merchants"
+          operations:
+            - name: find-nearby-merchants
+              method: POST
+              description: "Discover nearby merchants by geographic location"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8102
+      namespace: visa-merchant-search-api
+      resources:
+        - path: /v1/merchants/search
+          operations:
+            - method: POST
+              name: search-merchants
+              description: "Search merchants by name and location"
+              call: "visa-merchant-search.search-merchants"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/merchants/nearby
+          operations:
+            - method: POST
+              name: find-nearby-merchants
+              description: "Find nearby merchants"
+              call: "visa-merchant-search.find-nearby-merchants"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/transactions/enrich
+          operations:
+            - method: POST
+              name: enrich-transaction
+              description: "Enrich a transaction with merchant details"
+              call: "visa-merchant-search.enrich-transaction"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9102
+      namespace: visa-merchant-search-mcp
+      transport: http
+      tools:
+        - name: search-merchants
+          description: "Search for Visa merchants by name and location"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-merchant-search.search-merchants"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: enrich-transaction
+          description: "Enrich a transaction with enhanced merchant data"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-merchant-search.enrich-transaction"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: find-nearby-merchants
+          description: "Find Visa-accepting merchants near a location"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "visa-merchant-search.find-nearby-merchants"
+          outputParameters:
+            - type: object
+              mapping: "$."

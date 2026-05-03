@@ -1,0 +1,93 @@
+extends: spectral:oas
+rules:
+  visa-operation-id-camel-case:
+    description: Visa API operation IDs must use camelCase
+    message: "Operation ID '{{value}}' should be camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  visa-tags-required:
+    description: All operations must have tags for API categorization
+    message: "Operation is missing tags"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  visa-summary-title-case:
+    description: All operation summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]+$"
+
+  visa-description-required:
+    description: All operations must have descriptions
+    message: "Operation at '{{path}}' is missing a description"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: description
+      function: truthy
+
+  visa-https-servers:
+    description: All Visa API servers must use HTTPS
+    message: "Server URL must use HTTPS"
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  visa-mutual-tls-security:
+    description: Visa APIs should use mutual TLS for authentication
+    message: "API should define mutualTLS or similar security scheme"
+    severity: warn
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+
+  visa-operation-id-required:
+    description: All operations must have an operationId for SDK generation
+    message: "Operation at '{{path}}' is missing operationId"
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  visa-contact-in-info:
+    description: All Visa APIs should have contact information
+    message: "info.contact should be defined"
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  visa-400-response-defined:
+    description: All POST operations should define a 400 bad request response
+    message: "POST operation should define a 400 error response"
+    severity: warn
+    given: "$.paths[*][post].responses"
+    then:
+      field: "400"
+      function: truthy
+
+  visa-external-docs:
+    description: Each API should link to its Visa Developer portal documentation
+    message: "externalDocs should be defined with a developer.visa.com URL"
+    severity: info
+    given: "$"
+    then:
+      field: externalDocs
+      function: truthy

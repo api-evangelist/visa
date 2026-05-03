@@ -1,0 +1,42 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/vctc/cardcontrols/v1/controls",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "primaryAccountNumber": "4000000000000010",
+      "controls": [
+        {
+          "controlType": "MCCControl",
+          "merchantCategoryCode": "7995",
+          "controlEnabled": true,
+          "controlAction": "Decline"
+        },
+        {
+          "controlType": "SpendingLimitControl",
+          "transactionLimit": "500.00",
+          "currencyCode": "840",
+          "controlEnabled": true
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "status": "Success",
+      "documentId": "ctrl-2026050301",
+      "primaryAccountNumber": "4000000000000010",
+      "controls": [
+        {
+          "controlType": "MCCControl",
+          "merchantCategoryCode": "7995",
+          "controlEnabled": true,
+          "controlAction": "Decline"
+        }
+      ]
+    }
+  }
+}

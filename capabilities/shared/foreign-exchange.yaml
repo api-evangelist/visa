@@ -1,0 +1,88 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Foreign Exchange Rates"
+  description: "Visa currency conversion rates for card, bank account, and wallet transactions."
+  tags:
+    - Currency
+    - Foreign Exchange
+    - Rates
+    - Visa
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VISA_API_KEY: VISA_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: foreign-exchange
+      baseUri: https://sandbox.api.visa.com
+      description: "Visa Foreign Exchange Rates API"
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{VISA_API_KEY}}"
+        placement: header
+      resources:
+        - name: fx-rates
+          path: /forexrates/v2/foreignexchangerates
+          description: "Get currency conversion rates"
+          operations:
+            - name: get-foreign-exchange-rates
+              method: POST
+              description: "Get Visa's currency conversion rate for a given currency pair"
+              inputParameters:
+                - name: destinationCurrencyCode
+                  in: body
+                  type: string
+                  required: true
+                  description: "Destination currency ISO 4217 code"
+                - name: sourceCurrencyCode
+                  in: body
+                  type: string
+                  required: true
+                  description: "Source currency ISO 4217 code"
+                - name: rateProductCode
+                  in: body
+                  type: string
+                  required: true
+                  description: "Rate product code (A=card, B=bank, BANK=realtime bank, WALLET=realtime wallet)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8103
+      namespace: foreign-exchange-api
+      resources:
+        - path: /v1/foreign-exchange-rates
+          operations:
+            - method: POST
+              name: get-foreign-exchange-rates
+              description: "Get currency conversion rates"
+              call: "foreign-exchange.get-foreign-exchange-rates"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9103
+      namespace: foreign-exchange-mcp
+      transport: http
+      tools:
+        - name: get-fx-rates
+          description: "Get Visa currency conversion rates for a currency pair"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "foreign-exchange.get-foreign-exchange-rates"
+          outputParameters:
+            - type: object
+              mapping: "$."

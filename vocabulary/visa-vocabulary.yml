@@ -1,0 +1,221 @@
+name: Visa Vocabulary
+description: >-
+  Domain vocabulary for Visa's global payment network APIs, covering payment
+  processing, money movement, fraud prevention, account management, merchant
+  data, and digital commerce concepts.
+version: '1.0'
+source: https://developer.visa.com/
+terms:
+  - term: VisaNet
+    definition: >-
+      Visa's global payment processing network that facilitates authorization,
+      clearing, and settlement of electronic payments between issuers, acquirers,
+      and merchants in over 200 countries and territories.
+    tags:
+      - Core
+      - Network
+
+  - term: Primary Account Number
+    definition: >-
+      The unique identifier embossed or encoded on a payment card, typically
+      13-19 digits. Used to identify the card account in transaction processing.
+    aliases:
+      - PAN
+      - Card Number
+    tags:
+      - Payment Instruments
+      - Core
+
+  - term: Bank Identification Number
+    definition: >-
+      The first 6-9 digits of a PAN identifying the issuing bank and card type.
+      Used by acquirers to route authorization requests to the correct issuer.
+    aliases:
+      - BIN
+      - IIN
+    tags:
+      - Payment Instruments
+
+  - term: Systems Trace Audit Number
+    definition: >-
+      A 6-digit number assigned by the merchant system to uniquely identify
+      each transaction within a business day. Used for transaction matching
+      and reconciliation.
+    aliases:
+      - STAN
+    tags:
+      - Transaction
+      - Core
+
+  - term: Retrieval Reference Number
+    definition: >-
+      A 12-character alphanumeric reference number that uniquely identifies
+      a transaction. Used for retrievals, chargebacks, and transaction research.
+    aliases:
+      - RRN
+    tags:
+      - Transaction
+
+  - term: Visa Direct
+    definition: >-
+      Visa's push payment platform enabling real-time or near-real-time
+      fund transfers to Visa accounts worldwide, supporting P2P, B2C
+      disbursements, payroll, and government benefits.
+    tags:
+      - Money Movement
+      - Core
+
+  - term: Push Funds Transaction
+    definition: >-
+      A Visa Direct operation that delivers funds to a recipient's Visa account.
+      The originator of a push payment is typically a financial institution or
+      payment service provider.
+    tags:
+      - Money Movement
+
+  - term: Pull Funds Transaction
+    definition: >-
+      A Visa Direct operation that debits funds from a sender's Visa account.
+      Typically used in the first step of a two-step transfer (pull then push).
+    tags:
+      - Money Movement
+
+  - term: Business Application ID
+    definition: >-
+      A two-character code identifying the business use case for a Visa Direct
+      transaction (e.g., PP=person-to-person, AA=account-to-account, CI=credit
+      card bill payment).
+    aliases:
+      - BAID
+    tags:
+      - Money Movement
+
+  - term: Merchant Category Code
+    definition: >-
+      A 4-digit code (ISO 18245) classifying a merchant's business type.
+      Used for transaction routing, fraud detection, and spending controls.
+    aliases:
+      - MCC
+    tags:
+      - Merchants
+
+  - term: Visa Merchant ID
+    definition: >-
+      A unique identifier assigned by Visa to each merchant accepting Visa
+      payments. Used in the Visa Merchant Search API for merchant lookup
+      and enrichment.
+    aliases:
+      - VMID
+    tags:
+      - Merchants
+
+  - term: Transaction Enrichment
+    definition: >-
+      The process of augmenting raw transaction data with enhanced merchant
+      information such as business name, logo, street address, and website
+      to improve cardholder statement clarity.
+    tags:
+      - Merchants
+      - Data
+
+  - term: Card Verification Value
+    definition: >-
+      A 3 or 4 digit security code printed on payment cards used to verify
+      that the cardholder possesses the physical card during card-not-present
+      transactions.
+    aliases:
+      - CVV
+      - CVV2
+      - CVN
+    tags:
+      - Security
+      - Fraud Prevention
+
+  - term: Address Verification Service
+    definition: >-
+      A fraud prevention service that verifies the billing address provided
+      by a cardholder during a transaction against the address on file with
+      the issuing bank.
+    aliases:
+      - AVS
+    tags:
+      - Security
+      - Fraud Prevention
+
+  - term: Account Name Inquiry
+    definition: >-
+      A Payment Account Validation method that verifies the name associated
+      with a Visa account, helping prevent misdirected payments.
+    aliases:
+      - ANI
+    tags:
+      - Account Validation
+
+  - term: Action Code
+    definition: >-
+      A two-digit code returned by the issuer in the authorization response
+      indicating the outcome (e.g., 00=Approved, 05=Do Not Honor,
+      51=Insufficient Funds).
+    tags:
+      - Transaction
+      - Processing
+
+  - term: Approval Code
+    definition: >-
+      An alphanumeric code returned when a transaction is approved. Used
+      for transaction verification, chargeback defense, and reconciliation.
+    tags:
+      - Transaction
+      - Processing
+
+  - term: Transaction Controls
+    definition: >-
+      Cardholder-defined rules that restrict or alert on card usage, such
+      as spending limits, merchant category blocks, geographic restrictions,
+      and transaction type controls.
+    tags:
+      - Security
+      - Account Management
+
+  - term: Visa Token Service
+    definition: >-
+      A tokenization service that replaces sensitive PAN data with a
+      payment token, enabling secure digital wallet and card-on-file
+      transactions without exposing the actual card number.
+    aliases:
+      - VTS
+    tags:
+      - Security
+      - Digital Commerce
+
+  - term: Foreign Exchange Rate
+    definition: >-
+      Visa's currency conversion rate for a given pair of currencies,
+      used when processing cross-border transactions. Available as
+      indicative daily rates or real-time rates depending on the
+      payment instrument.
+    aliases:
+      - FX Rate
+    tags:
+      - Currency
+      - International
+
+  - term: Acquiring BIN
+    definition: >-
+      The Bank Identification Number of the acquiring bank processing the
+      transaction on behalf of the merchant. Used in transaction routing
+      and settlement.
+    tags:
+      - Processing
+      - Banking
+
+  - term: Mutual TLS
+    definition: >-
+      The authentication mechanism used for Visa Developer APIs requiring
+      both client and server to present valid certificates for two-way
+      identity verification.
+    aliases:
+      - mTLS
+    tags:
+      - Security
+      - Authentication

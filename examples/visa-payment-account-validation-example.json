@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/pav/v1/cardvalidation",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "systemsTraceAuditNumber": "743720",
+      "cardCvv2Value": "022",
+      "cardAcceptor": {
+        "address": {
+          "country": "US",
+          "zipCode": "94404",
+          "city": "Foster City",
+          "state": "CA"
+        },
+        "idCode": "111111",
+        "name": "ABC Corp",
+        "terminalId": "12345678"
+      },
+      "acquirerCountryCode": "840",
+      "primaryAccountNumber": "4957030420210462",
+      "acquiringBin": "408999",
+      "retrievalReferenceNumber": "015221743720",
+      "cardExpiryDate": "2030-10",
+      "addressVerificationResults": {
+        "street": "801 Metro Center Blvd",
+        "postalCode": "94404"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "cvv2ResultCode": "M",
+      "actionCode": "00",
+      "responseCode": "Z",
+      "retrievalReferenceNumber": "015221743720",
+      "systemsTraceAuditNumber": "743720"
+    }
+  }
+}

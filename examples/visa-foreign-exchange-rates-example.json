@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/forexrates/v2/foreignexchangerates",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "destinationCurrencyCode": "EUR",
+      "sourceCurrencyCode": "USD",
+      "sourceAmount": "100.00",
+      "rateProductCode": "A",
+      "acquiringBin": "408999",
+      "acquirerCountryCode": "840"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "destinationCurrencyCode": "EUR",
+      "sourceCurrencyCode": "USD",
+      "conversionRate": 0.921543,
+      "destinationAmount": "92.15",
+      "sourceAmount": "100.00",
+      "markUpRate": 0.02,
+      "fxRateTimestamp": "2026-05-03T12:00:00.000Z"
+    }
+  }
+}

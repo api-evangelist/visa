@@ -1,0 +1,47 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/merchantsearch/v1/search",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "header": {
+        "messageDateTime": "2026-05-03T12:00:00.000Z",
+        "requestMessageId": "req-1234567890",
+        "startIndex": 0
+      },
+      "merchantName": "Starbucks",
+      "merchantCountryCode": "840",
+      "merchantCity": "San Francisco",
+      "merchantState": "CA",
+      "merchantPostalCode": "94104"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "header": {
+        "responseMessageId": "res-1234567890",
+        "status": {
+          "statusCode": "CDI000",
+          "statusDescription": "Success"
+        },
+        "requestMessageId": "req-1234567890",
+        "noOfRecordsReturned": 2
+      },
+      "merchantList": [
+        {
+          "visaMerchantId": "12345678",
+          "visaStoreId": "87654321",
+          "merchantName": "Starbucks",
+          "merchantCountryCode": "840",
+          "merchantCity": "San Francisco",
+          "merchantState": "CA",
+          "merchantPostalCode": "94104",
+          "merchantStreetAddress": "1 Market Street"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "name": "VisaPaymentTransaction",
+  "description": "Core structure of a Visa payment transaction across Visa Direct and other payment APIs",
+  "fields": [
+    {
+      "name": "systemsTraceAuditNumber",
+      "type": "string",
+      "description": "Unique 6-digit trace number assigned by the merchant for each transaction",
+      "required": true
+    },
+    {
+      "name": "retrievalReferenceNumber",
+      "type": "string",
+      "description": "12-digit reference number used for transaction retrieval",
+      "required": true
+    },
+    {
+      "name": "localTransactionDateTime",
+      "type": "string",
+      "description": "Transaction date and time in local merchant timezone (ISO 8601)",
+      "required": true
+    },
+    {
+      "name": "amount",
+      "type": "string",
+      "description": "Transaction amount as decimal string",
+      "required": true
+    },
+    {
+      "name": "transactionCurrencyCode",
+      "type": "string",
+      "description": "ISO 4217 numeric currency code",
+      "required": true
+    },
+    {
+      "name": "acquiringBin",
+      "type": "string",
+      "description": "Bank Identification Number of the acquiring institution",
+      "required": true
+    },
+    {
+      "name": "acquirerCountryCode",
+      "type": "string",
+      "description": "ISO 3166-1 numeric country code of the acquiring institution",
+      "required": true
+    },
+    {
+      "name": "cardAcceptor",
+      "type": "object",
+      "description": "Information about the merchant or card acceptor",
+      "required": true,
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Merchant name"
+        },
+        {
+          "name": "idCode",
+          "type": "string",
+          "description": "Merchant ID code"
+        },
+        {
+          "name": "terminalId",
+          "type": "string",
+          "description": "Terminal ID"
+        },
+        {
+          "name": "address",
+          "type": "object",
+          "description": "Merchant address details"
+        }
+      ]
+    },
+    {
+      "name": "primaryAccountNumber",
+      "type": "string",
+      "description": "Cardholder's Primary Account Number (PAN)",
+      "required": false
+    },
+    {
+      "name": "actionCode",
+      "type": "string",
+      "description": "Response code from the issuer (00 = approved)",
+      "required": false
+    },
+    {
+      "name": "approvalCode",
+      "type": "string",
+      "description": "Authorization approval code",
+      "required": false
+    },
+    {
+      "name": "transactionIdentifier",
+      "type": "string",
+      "description": "Unique VisaNet transaction identifier",
+      "required": false
+    },
+    {
+      "name": "businessApplicationId",
+      "type": "string",
+      "description": "Business application identifier (PP=person-to-person, AA=account-to-account)",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Visa
+providerId: visa
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Payment Network
+  - Enterprise
+  - B2B
+description: Visa does not publish public API pricing. Access is via partner/B2B contracts negotiated
+  through the provider's enterprise sales team. Visa Developer Platform APIs (Visa Direct, Token Service,
+  Acceptance) require commercial agreements via Visa partner sales.
+sources:
+  - https://developer.visa.com/
+plans:
+  - id: visa-partner
+    name: Partner / B2B Contract
+    type: enterprise
+    description: Custom pricing through enterprise sales / partner program.
+    entries:
+      - label: Annual contract (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Negotiated contracts
+      - name: Volume discounts
+      - name: Service-level agreements
+      - name: Dedicated account team
+      - name: 'Partner program: https://developer.visa.com/'

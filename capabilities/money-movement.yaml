@@ -1,108 +1,165 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Visa Money Movement"
-  description: >-
-    Workflow capability for real-time money movement using Visa Direct push payments,
-    foreign exchange rate lookup, and account funding. Supports person-to-person
-    transfers, payroll disbursements, insurance claims, and cross-border payment
+  label: Visa Money Movement
+  description: Workflow capability for real-time money movement using Visa Direct push payments, foreign exchange rate lookup,
+    and account funding. Supports person-to-person transfers, payroll disbursements, insurance claims, and cross-border payment
     use cases for fintech developers and payment service providers.
   tags:
-    - Currency
-    - Foreign Exchange
-    - Payments
-    - Real-Time
-    - Transfers
-    - Visa
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Currency
+  - Foreign Exchange
+  - Payments
+  - Real-Time
+  - Transfers
+  - Visa
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      VISA_API_KEY: VISA_API_KEY
-
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
 capability:
   consumes:
-    - import: visa-direct
-      location: ./shared/visa-direct.yaml
-    - import: foreign-exchange
-      location: ./shared/foreign-exchange.yaml
-
+  - type: http
+    namespace: visa-direct
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Direct Funds Transfer API
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{VISA_API_KEY}}'
+      placement: header
+    resources:
+    - name: push-funds
+      path: /visadirect/fundstransfer/v1/pushfundstransactions
+      description: Push funds to a recipient's Visa account
+      operations:
+      - name: push-funds
+        method: POST
+        description: Push funds to a recipient's account in real-time
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pull-funds
+      path: /visadirect/fundstransfer/v1/pullfundstransactions
+      description: Pull funds from a sender's Visa account
+      operations:
+      - name: pull-funds
+        method: POST
+        description: Pull funds from a sender's account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: foreign-exchange
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Foreign Exchange Rates API
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{VISA_API_KEY}}'
+      placement: header
+    resources:
+    - name: fx-rates
+      path: /forexrates/v2/foreignexchangerates
+      description: Get currency conversion rates
+      operations:
+      - name: get-foreign-exchange-rates
+        method: POST
+        description: Get Visa's currency conversion rate for a given currency pair
+        inputParameters:
+        - name: destinationCurrencyCode
+          in: body
+          type: string
+          required: true
+          description: Destination currency ISO 4217 code
+        - name: sourceCurrencyCode
+          in: body
+          type: string
+          required: true
+          description: Source currency ISO 4217 code
+        - name: rateProductCode
+          in: body
+          type: string
+          required: true
+          description: Rate product code (A=card, B=bank, BANK=realtime bank, WALLET=realtime wallet)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: money-movement-api
-      description: "Unified REST API for Visa money movement — transfers and foreign exchange."
-      resources:
-        - path: /v1/push-funds
-          name: push-funds
-          description: "Real-time push payments"
-          operations:
-            - method: POST
-              name: push-funds
-              description: "Push funds to a recipient's Visa account in real-time"
-              call: "visa-direct.push-funds"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/pull-funds
-          name: pull-funds
-          description: "Pull funds from a sender"
-          operations:
-            - method: POST
-              name: pull-funds
-              description: "Pull funds from a sender's Visa account"
-              call: "visa-direct.pull-funds"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-        - path: /v1/foreign-exchange-rates
-          name: foreign-exchange-rates
-          description: "Currency conversion rates"
-          operations:
-            - method: POST
-              name: get-foreign-exchange-rates
-              description: "Get Visa currency conversion rates for a pair"
-              call: "foreign-exchange.get-foreign-exchange-rates"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: money-movement-mcp
-      transport: http
-      description: "MCP server for AI-assisted money movement and cross-border payments."
-      tools:
-        - name: push-funds
-          description: "Push funds to a recipient's Visa account in real-time for P2P, payroll, or disbursements"
-          hints:
-            readOnly: false
-            idempotent: false
-          call: "visa-direct.push-funds"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: pull-funds
-          description: "Pull funds from a sender's Visa account"
-          hints:
-            readOnly: false
-            idempotent: false
-          call: "visa-direct.pull-funds"
-          outputParameters:
-            - type: object
-              mapping: "$."
-
-        - name: get-foreign-exchange-rates
-          description: "Look up Visa currency conversion rates for a given currency pair before initiating a cross-border transfer"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "foreign-exchange.get-foreign-exchange-rates"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: money-movement-api
+    description: Unified REST API for Visa money movement — transfers and foreign exchange.
+    resources:
+    - path: /v1/push-funds
+      name: push-funds
+      description: Real-time push payments
+      operations:
+      - method: POST
+        name: push-funds
+        description: Push funds to a recipient's Visa account in real-time
+        call: visa-direct.push-funds
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pull-funds
+      name: pull-funds
+      description: Pull funds from a sender
+      operations:
+      - method: POST
+        name: pull-funds
+        description: Pull funds from a sender's Visa account
+        call: visa-direct.pull-funds
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/foreign-exchange-rates
+      name: foreign-exchange-rates
+      description: Currency conversion rates
+      operations:
+      - method: POST
+        name: get-foreign-exchange-rates
+        description: Get Visa currency conversion rates for a pair
+        call: foreign-exchange.get-foreign-exchange-rates
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: money-movement-mcp
+    transport: http
+    description: MCP server for AI-assisted money movement and cross-border payments.
+    tools:
+    - name: push-funds
+      description: Push funds to a recipient's Visa account in real-time for P2P, payroll, or disbursements
+      hints:
+        readOnly: false
+        idempotent: false
+      call: visa-direct.push-funds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: pull-funds
+      description: Pull funds from a sender's Visa account
+      hints:
+        readOnly: false
+        idempotent: false
+      call: visa-direct.pull-funds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-foreign-exchange-rates
+      description: Look up Visa currency conversion rates for a given currency pair before initiating a cross-border transfer
+      hints:
+        readOnly: true
+        idempotent: true
+      call: foreign-exchange.get-foreign-exchange-rates
+      outputParameters:
+      - type: object
+        mapping: $.

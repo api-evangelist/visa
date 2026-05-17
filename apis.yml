@@ -895,7 +895,7 @@ tags:
   - Money Movement
   - Payments
   - Tokenization
-type: Contract
+kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
@@ -913,7 +913,7 @@ common:
   - url: json-schema/visa-account-schema.json
     type: JSONSchema
   - url: json-ld/visa-context.jsonld
-    type: JSON-LD
+    type: JSONLD
   - url: json-structure/visa-payment-transaction-structure.json
     type: JSONStructure
   - url: json-structure/visa-merchant-structure.json

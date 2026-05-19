@@ -1,0 +1,161 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Global ATM Locator — ATM Locator API
+  description: 'Visa Global ATM Locator — ATM Locator API. 3 operations. Lead operation: Find Geocodes. Self-contained Naftiko
+    capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - ATM Locator API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: global-atm-locator-atm-locator-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Global ATM Locator — ATM Locator API business capability. Self-contained, no shared references.
+    resources:
+    - name: atmlocator-v1-findgeocodes
+      path: /atmlocator/v1/findgeocodes
+      operations:
+      - name: findgeocodes
+        method: POST
+        description: Find Geocodes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: atmlocator-v1-findnearbyatms
+      path: /atmlocator/v1/findnearbyatms
+      operations:
+      - name: findnearbyatms
+        method: POST
+        description: Find Nearby ATMs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: atmlocator-v1-findnearbytotals
+      path: /atmlocator/v1/findnearbytotals
+      operations:
+      - name: findnearbyatmtotals
+        method: POST
+        description: Find Nearby ATM Totals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: global-atm-locator-atm-locator-api-rest
+    port: 8080
+    description: REST adapter for Visa Global ATM Locator — ATM Locator API. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/atmlocator/v1/findgeocodes
+      name: atmlocator-v1-findgeocodes
+      description: REST surface for atmlocator-v1-findgeocodes.
+      operations:
+      - method: POST
+        name: findgeocodes
+        description: Find Geocodes
+        call: global-atm-locator-atm-locator-api.findgeocodes
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/atmlocator/v1/findnearbyatms
+      name: atmlocator-v1-findnearbyatms
+      description: REST surface for atmlocator-v1-findnearbyatms.
+      operations:
+      - method: POST
+        name: findnearbyatms
+        description: Find Nearby ATMs
+        call: global-atm-locator-atm-locator-api.findnearbyatms
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/atmlocator/v1/findnearbytotals
+      name: atmlocator-v1-findnearbytotals
+      description: REST surface for atmlocator-v1-findnearbytotals.
+      operations:
+      - method: POST
+        name: findnearbyatmtotals
+        description: Find Nearby ATM Totals
+        call: global-atm-locator-atm-locator-api.findnearbyatmtotals
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: global-atm-locator-atm-locator-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Global ATM Locator — ATM Locator API. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: find-geocodes
+      description: Find Geocodes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: global-atm-locator-atm-locator-api.findgeocodes
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: find-nearby-atms
+      description: Find Nearby ATMs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: global-atm-locator-atm-locator-api.findnearbyatms
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: find-nearby-atm-totals
+      description: Find Nearby ATM Totals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: global-atm-locator-atm-locator-api.findnearbyatmtotals
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

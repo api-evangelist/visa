@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Supplier Matching Service — Visa Supplier Matching Service API
+  description: 'Visa Supplier Matching Service — Visa Supplier Matching Service API. 1 operations. Lead operation: Match suppliers
+    to Visa merchants. Self-contained Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Visa Supplier Matching Service API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: supplier-matching-service-visa-supplier-matching-service-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Supplier Matching Service — Visa Supplier Matching Service API business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: visasuppliermatchingservice-v1-search
+      path: /visasuppliermatchingservice/v1/search
+      operations:
+      - name: matchsupplierstovisamerchants
+        method: POST
+        description: Match suppliers to Visa merchants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: supplierName
+          in: query
+          type: string
+          description: Name of the Supplier
+          required: true
+        - name: supplierStreetAddress
+          in: query
+          type: string
+          description: Address of Supplier
+        - name: supplierCity
+          in: query
+          type: string
+          description: City of the Supplier
+        - name: supplierState
+          in: query
+          type: string
+          description: State of the Supplier
+        - name: supplierPostalCode
+          in: query
+          type: string
+          description: Postal Code of the Supplier
+        - name: supplierCountryCode
+          in: query
+          type: string
+          description: Country Code of the Supplier<br><br>Refer to <a href="/request_response_codes#iso_country_and_currency_codes">ISO
+            Country Codes</a>
+          required: true
+        - name: supplierPhoneNumber
+          in: query
+          type: string
+          description: Phone number of the Supplier
+        - name: supplierTaxId
+          in: query
+          type: string
+          description: Tax Id of the Supplier
+  exposes:
+  - type: rest
+    namespace: supplier-matching-service-visa-supplier-matching-service-api-rest
+    port: 8080
+    description: REST adapter for Visa Supplier Matching Service — Visa Supplier Matching Service API. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/visasuppliermatchingservice/v1/search
+      name: visasuppliermatchingservice-v1-search
+      description: REST surface for visasuppliermatchingservice-v1-search.
+      operations:
+      - method: POST
+        name: matchsupplierstovisamerchants
+        description: Match suppliers to Visa merchants
+        call: supplier-matching-service-visa-supplier-matching-service-api.matchsupplierstovisamerchants
+        with:
+          supplierName: rest.supplierName
+          supplierStreetAddress: rest.supplierStreetAddress
+          supplierCity: rest.supplierCity
+          supplierState: rest.supplierState
+          supplierPostalCode: rest.supplierPostalCode
+          supplierCountryCode: rest.supplierCountryCode
+          supplierPhoneNumber: rest.supplierPhoneNumber
+          supplierTaxId: rest.supplierTaxId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: supplier-matching-service-visa-supplier-matching-service-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Supplier Matching Service — Visa Supplier Matching Service API. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: match-suppliers-visa-merchants
+      description: Match suppliers to Visa merchants
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: supplier-matching-service-visa-supplier-matching-service-api.matchsupplierstovisamerchants
+      with:
+        supplierName: tools.supplierName
+        supplierStreetAddress: tools.supplierStreetAddress
+        supplierCity: tools.supplierCity
+        supplierState: tools.supplierState
+        supplierPostalCode: tools.supplierPostalCode
+        supplierCountryCode: tools.supplierCountryCode
+        supplierPhoneNumber: tools.supplierPhoneNumber
+        supplierTaxId: tools.supplierTaxId
+      outputParameters:
+      - type: object
+        mapping: $.

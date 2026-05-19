@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa BIN Attribute Sharing Service — BIN Files Metadata
+  description: 'Visa BIN Attribute Sharing Service — BIN Files Metadata. 1 operations. Lead operation: BIN Files Metadata.
+    Self-contained Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - BIN Files Metadata
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: bin-attribute-sharing-bin-files-metadata
+    baseUri: https://sandbox.api.visa.com
+    description: Visa BIN Attribute Sharing Service — BIN Files Metadata business capability. Self-contained, no shared references.
+    resources:
+    - name: filedeliveryservice-v1-binFilesMetadata
+      path: /filedeliveryservice/v1/binFilesMetadata
+      operations:
+      - name: binfilesmetadatalookupusingpost
+        method: POST
+        description: BIN Files Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: bin-attribute-sharing-bin-files-metadata-rest
+    port: 8080
+    description: REST adapter for Visa BIN Attribute Sharing Service — BIN Files Metadata. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/filedeliveryservice/v1/binfilesmetadata
+      name: filedeliveryservice-v1-binfilesmetadata
+      description: REST surface for filedeliveryservice-v1-binFilesMetadata.
+      operations:
+      - method: POST
+        name: binfilesmetadatalookupusingpost
+        description: BIN Files Metadata
+        call: bin-attribute-sharing-bin-files-metadata.binfilesmetadatalookupusingpost
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bin-attribute-sharing-bin-files-metadata-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa BIN Attribute Sharing Service — BIN Files Metadata. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: bin-files-metadata
+      description: BIN Files Metadata
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: bin-attribute-sharing-bin-files-metadata.binfilesmetadatalookupusingpost
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,159 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Merchant Offers Resource Center — Reference Data API
+  description: 'Visa Merchant Offers Resource Center — Reference Data API. 3 operations. Lead operation: Get Offer Categories.
+    Self-contained Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Reference Data API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: merchant-offers-reference-data-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Merchant Offers Resource Center — Reference Data API business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: vmorc-referencedata-v1-categories
+      path: /vmorc/referencedata/v1/categories
+      operations:
+      - name: getcategories
+        method: GET
+        description: Get Offer Categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: language
+          in: query
+          type: string
+          description: Language code
+    - name: vmorc-referencedata-v1-countries
+      path: /vmorc/referencedata/v1/countries
+      operations:
+      - name: getcountries
+        method: GET
+        description: Get Countries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: language
+          in: query
+          type: string
+          description: Language code
+    - name: vmorc-referencedata-v1-merchants
+      path: /vmorc/referencedata/v1/merchants
+      operations:
+      - name: getmerchants
+        method: GET
+        description: Get Merchants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: language
+          in: query
+          type: string
+          description: Language code
+  exposes:
+  - type: rest
+    namespace: merchant-offers-reference-data-api-rest
+    port: 8080
+    description: REST adapter for Visa Merchant Offers Resource Center — Reference Data API. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/vmorc/referencedata/v1/categories
+      name: vmorc-referencedata-v1-categories
+      description: REST surface for vmorc-referencedata-v1-categories.
+      operations:
+      - method: GET
+        name: getcategories
+        description: Get Offer Categories
+        call: merchant-offers-reference-data-api.getcategories
+        with:
+          language: rest.language
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vmorc/referencedata/v1/countries
+      name: vmorc-referencedata-v1-countries
+      description: REST surface for vmorc-referencedata-v1-countries.
+      operations:
+      - method: GET
+        name: getcountries
+        description: Get Countries
+        call: merchant-offers-reference-data-api.getcountries
+        with:
+          language: rest.language
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vmorc/referencedata/v1/merchants
+      name: vmorc-referencedata-v1-merchants
+      description: REST surface for vmorc-referencedata-v1-merchants.
+      operations:
+      - method: GET
+        name: getmerchants
+        description: Get Merchants
+        call: merchant-offers-reference-data-api.getmerchants
+        with:
+          language: rest.language
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: merchant-offers-reference-data-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Merchant Offers Resource Center — Reference Data API. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-offer-categories
+      description: Get Offer Categories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: merchant-offers-reference-data-api.getcategories
+      with:
+        language: tools.language
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-countries
+      description: Get Countries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: merchant-offers-reference-data-api.getcountries
+      with:
+        language: tools.language
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-merchants
+      description: Get Merchants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: merchant-offers-reference-data-api.getmerchants
+      with:
+        language: tools.language
+      outputParameters:
+      - type: object
+        mapping: $.

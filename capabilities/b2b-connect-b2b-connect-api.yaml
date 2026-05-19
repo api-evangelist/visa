@@ -1,0 +1,161 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa B2B Connect — B2B Connect API
+  description: 'Visa B2B Connect — B2B Connect API. 3 operations. Lead operation: Initiate Payment. Self-contained Naftiko
+    capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - B2B Connect API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: b2b-connect-b2b-connect-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa B2B Connect — B2B Connect API business capability. Self-contained, no shared references.
+    resources:
+    - name: vba-v1-payments
+      path: /vba/v1/payments
+      operations:
+      - name: initiatepayment
+        method: POST
+        description: Initiate Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vba-v1-payments-paymentId
+      path: /vba/v1/payments/{paymentId}
+      operations:
+      - name: getpaymentstatus
+        method: GET
+        description: Get Payment Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: string
+          description: Unique identifier for the payment
+          required: true
+    - name: vba-v1-payments-paymentId-acknowledge
+      path: /vba/v1/payments/{paymentId}/acknowledge
+      operations:
+      - name: acknowledgepayment
+        method: POST
+        description: Acknowledge Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: paymentId
+          in: path
+          type: string
+          description: Unique identifier for the payment
+          required: true
+  exposes:
+  - type: rest
+    namespace: b2b-connect-b2b-connect-api-rest
+    port: 8080
+    description: REST adapter for Visa B2B Connect — B2B Connect API. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/vba/v1/payments
+      name: vba-v1-payments
+      description: REST surface for vba-v1-payments.
+      operations:
+      - method: POST
+        name: initiatepayment
+        description: Initiate Payment
+        call: b2b-connect-b2b-connect-api.initiatepayment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vba/v1/payments/{paymentid}
+      name: vba-v1-payments-paymentid
+      description: REST surface for vba-v1-payments-paymentId.
+      operations:
+      - method: GET
+        name: getpaymentstatus
+        description: Get Payment Status
+        call: b2b-connect-b2b-connect-api.getpaymentstatus
+        with:
+          paymentId: rest.paymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vba/v1/payments/{paymentid}/acknowledge
+      name: vba-v1-payments-paymentid-acknowledge
+      description: REST surface for vba-v1-payments-paymentId-acknowledge.
+      operations:
+      - method: POST
+        name: acknowledgepayment
+        description: Acknowledge Payment
+        call: b2b-connect-b2b-connect-api.acknowledgepayment
+        with:
+          paymentId: rest.paymentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: b2b-connect-b2b-connect-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa B2B Connect — B2B Connect API. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: initiate-payment
+      description: Initiate Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-connect-b2b-connect-api.initiatepayment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-payment-status
+      description: Get Payment Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: b2b-connect-b2b-connect-api.getpaymentstatus
+      with:
+        paymentId: tools.paymentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: acknowledge-payment
+      description: Acknowledge Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-connect-b2b-connect-api.acknowledgepayment
+      with:
+        paymentId: tools.paymentId
+      outputParameters:
+      - type: object
+        mapping: $.

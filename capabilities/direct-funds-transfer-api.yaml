@@ -1,0 +1,245 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Direct — Funds Transfer API
+  description: 'Visa Direct — Funds Transfer API. 5 operations. Lead operation: Multi Pull Funds Transaction. Self-contained
+    Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Funds Transfer API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: direct-funds-transfer-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Direct — Funds Transfer API business capability. Self-contained, no shared references.
+    resources:
+    - name: visadirect-fundstransfer-v1-multipullfundstransactions
+      path: /visadirect/fundstransfer/v1/multipullfundstransactions
+      operations:
+      - name: multipullfunds
+        method: POST
+        description: Multi Pull Funds Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: visadirect-fundstransfer-v1-multipushfundstransactions
+      path: /visadirect/fundstransfer/v1/multipushfundstransactions
+      operations:
+      - name: multipushfunds
+        method: POST
+        description: Multi Push Funds Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: visadirect-fundstransfer-v1-pullfundstransactions
+      path: /visadirect/fundstransfer/v1/pullfundstransactions
+      operations:
+      - name: pullfunds
+        method: POST
+        description: Pull Funds Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: visadirect-fundstransfer-v1-pushfundstransactions
+      path: /visadirect/fundstransfer/v1/pushfundstransactions
+      operations:
+      - name: pushfunds
+        method: POST
+        description: Push Funds Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: visadirect-fundstransfer-v1-reversefundstransactions
+      path: /visadirect/fundstransfer/v1/reversefundstransactions
+      operations:
+      - name: reversefunds
+        method: POST
+        description: Reverse Funds Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: direct-funds-transfer-api-rest
+    port: 8080
+    description: REST adapter for Visa Direct — Funds Transfer API. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/visadirect/fundstransfer/v1/multipullfundstransactions
+      name: visadirect-fundstransfer-v1-multipullfundstransactions
+      description: REST surface for visadirect-fundstransfer-v1-multipullfundstransactions.
+      operations:
+      - method: POST
+        name: multipullfunds
+        description: Multi Pull Funds Transaction
+        call: direct-funds-transfer-api.multipullfunds
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/visadirect/fundstransfer/v1/multipushfundstransactions
+      name: visadirect-fundstransfer-v1-multipushfundstransactions
+      description: REST surface for visadirect-fundstransfer-v1-multipushfundstransactions.
+      operations:
+      - method: POST
+        name: multipushfunds
+        description: Multi Push Funds Transaction
+        call: direct-funds-transfer-api.multipushfunds
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/visadirect/fundstransfer/v1/pullfundstransactions
+      name: visadirect-fundstransfer-v1-pullfundstransactions
+      description: REST surface for visadirect-fundstransfer-v1-pullfundstransactions.
+      operations:
+      - method: POST
+        name: pullfunds
+        description: Pull Funds Transaction
+        call: direct-funds-transfer-api.pullfunds
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/visadirect/fundstransfer/v1/pushfundstransactions
+      name: visadirect-fundstransfer-v1-pushfundstransactions
+      description: REST surface for visadirect-fundstransfer-v1-pushfundstransactions.
+      operations:
+      - method: POST
+        name: pushfunds
+        description: Push Funds Transaction
+        call: direct-funds-transfer-api.pushfunds
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/visadirect/fundstransfer/v1/reversefundstransactions
+      name: visadirect-fundstransfer-v1-reversefundstransactions
+      description: REST surface for visadirect-fundstransfer-v1-reversefundstransactions.
+      operations:
+      - method: POST
+        name: reversefunds
+        description: Reverse Funds Transaction
+        call: direct-funds-transfer-api.reversefunds
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: direct-funds-transfer-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Direct — Funds Transfer API. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: multi-pull-funds-transaction
+      description: Multi Pull Funds Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: direct-funds-transfer-api.multipullfunds
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: multi-push-funds-transaction
+      description: Multi Push Funds Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: direct-funds-transfer-api.multipushfunds
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: pull-funds-transaction
+      description: Pull Funds Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: direct-funds-transfer-api.pullfunds
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: push-funds-transaction
+      description: Push Funds Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: direct-funds-transfer-api.pushfunds
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reverse-funds-transaction
+      description: Reverse Funds Transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: direct-funds-transfer-api.reversefunds
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

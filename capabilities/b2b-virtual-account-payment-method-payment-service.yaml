@@ -1,0 +1,287 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: B2B Virtual Account Payment Method — Payment Service
+  description: 'B2B Virtual Account Payment Method — Payment Service. 6 operations. Lead operation: Process Payment - Recipe.
+    Self-contained Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Payment Service
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: b2b-virtual-account-payment-method-payment-service
+    baseUri: https://sandbox.api.visa.com
+    description: B2B Virtual Account Payment Method — Payment Service business capability. Self-contained, no shared references.
+    resources:
+    - name: pop-v1-recipes-processPayment
+      path: /pop/v1/recipes/processPayment
+      operations:
+      - name: post
+        method: POST
+        description: Process Payment - Recipe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-payment-CancelPayment
+      path: /vpa/v1/payment/CancelPayment
+      operations:
+      - name: cancelpayment
+        method: POST
+        description: Cancel Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-payment-GetPaymentDetailURL
+      path: /vpa/v1/payment/GetPaymentDetailURL
+      operations:
+      - name: getpaymentdetailurl
+        method: POST
+        description: Get Payment Detail URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-payment-GetPaymentDetails
+      path: /vpa/v1/payment/GetPaymentDetails
+      operations:
+      - name: getpaymentdetails
+        method: POST
+        description: Get Payment Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-payment-ProcessPayments
+      path: /vpa/v1/payment/ProcessPayments
+      operations:
+      - name: processpayments
+        method: POST
+        description: Process Payments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-payment-ResendPayment
+      path: /vpa/v1/payment/ResendPayment
+      operations:
+      - name: resendpayment
+        method: POST
+        description: Resend Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: b2b-virtual-account-payment-method-payment-service-rest
+    port: 8080
+    description: REST adapter for B2B Virtual Account Payment Method — Payment Service. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/pop/v1/recipes/processpayment
+      name: pop-v1-recipes-processpayment
+      description: REST surface for pop-v1-recipes-processPayment.
+      operations:
+      - method: POST
+        name: post
+        description: Process Payment - Recipe
+        call: b2b-virtual-account-payment-method-payment-service.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/payment/cancelpayment
+      name: vpa-v1-payment-cancelpayment
+      description: REST surface for vpa-v1-payment-CancelPayment.
+      operations:
+      - method: POST
+        name: cancelpayment
+        description: Cancel Payment
+        call: b2b-virtual-account-payment-method-payment-service.cancelpayment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/payment/getpaymentdetailurl
+      name: vpa-v1-payment-getpaymentdetailurl
+      description: REST surface for vpa-v1-payment-GetPaymentDetailURL.
+      operations:
+      - method: POST
+        name: getpaymentdetailurl
+        description: Get Payment Detail URL
+        call: b2b-virtual-account-payment-method-payment-service.getpaymentdetailurl
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/payment/getpaymentdetails
+      name: vpa-v1-payment-getpaymentdetails
+      description: REST surface for vpa-v1-payment-GetPaymentDetails.
+      operations:
+      - method: POST
+        name: getpaymentdetails
+        description: Get Payment Details
+        call: b2b-virtual-account-payment-method-payment-service.getpaymentdetails
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/payment/processpayments
+      name: vpa-v1-payment-processpayments
+      description: REST surface for vpa-v1-payment-ProcessPayments.
+      operations:
+      - method: POST
+        name: processpayments
+        description: Process Payments
+        call: b2b-virtual-account-payment-method-payment-service.processpayments
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/payment/resendpayment
+      name: vpa-v1-payment-resendpayment
+      description: REST surface for vpa-v1-payment-ResendPayment.
+      operations:
+      - method: POST
+        name: resendpayment
+        description: Resend Payment
+        call: b2b-virtual-account-payment-method-payment-service.resendpayment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: b2b-virtual-account-payment-method-payment-service-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for B2B Virtual Account Payment Method — Payment Service. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: process-payment-recipe
+      description: Process Payment - Recipe
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-payment-service.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-payment
+      description: Cancel Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-payment-service.cancelpayment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-payment-detail-url
+      description: Get Payment Detail URL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-payment-service.getpaymentdetailurl
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-payment-details
+      description: Get Payment Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-payment-service.getpaymentdetails
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: process-payments
+      description: Process Payments
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-payment-service.processpayments
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resend-payment
+      description: Resend Payment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-payment-service.resendpayment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

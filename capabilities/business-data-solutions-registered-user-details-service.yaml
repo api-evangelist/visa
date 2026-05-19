@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Business Data Solutions — Registered User Details Service
+  description: 'Visa Business Data Solutions — Registered User Details Service. 1 operations. Lead operation: RegisteredUserDetails.
+    Self-contained Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Registered User Details Service
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: business-data-solutions-registered-user-details-service
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Business Data Solutions — Registered User Details Service business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: CPRAPI-v1-registeredUserDetails
+      path: /CPRAPI/v1/registeredUserDetails
+      operations:
+      - name: registereduserdetails
+        method: POST
+        description: RegisteredUserDetails
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: business-data-solutions-registered-user-details-service-rest
+    port: 8080
+    description: REST adapter for Visa Business Data Solutions — Registered User Details Service. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/cprapi/v1/registereduserdetails
+      name: cprapi-v1-registereduserdetails
+      description: REST surface for CPRAPI-v1-registeredUserDetails.
+      operations:
+      - method: POST
+        name: registereduserdetails
+        description: RegisteredUserDetails
+        call: business-data-solutions-registered-user-details-service.registereduserdetails
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: business-data-solutions-registered-user-details-service-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Business Data Solutions — Registered User Details Service. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: registereduserdetails
+      description: RegisteredUserDetails
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: business-data-solutions-registered-user-details-service.registereduserdetails
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

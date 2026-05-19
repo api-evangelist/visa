@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Merchant Search — Merchant Search API
+  description: 'Visa Merchant Search — Merchant Search API. 1 operations. Lead operation: Search Merchants. Self-contained
+    Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Merchant Search API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: merchant-search-merchant-search-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Merchant Search — Merchant Search API business capability. Self-contained, no shared references.
+    resources:
+    - name: merchantsearch-v1-search
+      path: /merchantsearch/v1/search
+      operations:
+      - name: searchmerchants
+        method: POST
+        description: Search Merchants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: merchant-search-merchant-search-api-rest
+    port: 8080
+    description: REST adapter for Visa Merchant Search — Merchant Search API. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/merchantsearch/v1/search
+      name: merchantsearch-v1-search
+      description: REST surface for merchantsearch-v1-search.
+      operations:
+      - method: POST
+        name: searchmerchants
+        description: Search Merchants
+        call: merchant-search-merchant-search-api.searchmerchants
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: merchant-search-merchant-search-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Merchant Search — Merchant Search API. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: search-merchants
+      description: Search Merchants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: merchant-search-merchant-search-api.searchmerchants
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

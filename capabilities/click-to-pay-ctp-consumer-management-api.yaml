@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Click to Pay — CTP Consumer Management API
+  description: 'Visa Click to Pay — CTP Consumer Management API. 2 operations. Lead operation: Enroll Consumer. Self-contained
+    Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - CTP Consumer Management API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: click-to-pay-ctp-consumer-management-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Click to Pay — CTP Consumer Management API business capability. Self-contained, no shared references.
+    resources:
+    - name: visasrci-v1-consumers
+      path: /visasrci/v1/consumers
+      operations:
+      - name: enrollconsumer
+        method: POST
+        description: Enroll Consumer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: visasrci-v1-consumers-consumerId-credentials
+      path: /visasrci/v1/consumers/{consumerId}/credentials
+      operations:
+      - name: addconsumercredential
+        method: POST
+        description: Add Consumer Credential
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: click-to-pay-ctp-consumer-management-api-rest
+    port: 8080
+    description: REST adapter for Visa Click to Pay — CTP Consumer Management API. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/visasrci/v1/consumers
+      name: visasrci-v1-consumers
+      description: REST surface for visasrci-v1-consumers.
+      operations:
+      - method: POST
+        name: enrollconsumer
+        description: Enroll Consumer
+        call: click-to-pay-ctp-consumer-management-api.enrollconsumer
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/visasrci/v1/consumers/{consumerid}/credentials
+      name: visasrci-v1-consumers-consumerid-credentials
+      description: REST surface for visasrci-v1-consumers-consumerId-credentials.
+      operations:
+      - method: POST
+        name: addconsumercredential
+        description: Add Consumer Credential
+        call: click-to-pay-ctp-consumer-management-api.addconsumercredential
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: click-to-pay-ctp-consumer-management-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Click to Pay — CTP Consumer Management API. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: enroll-consumer
+      description: Enroll Consumer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: click-to-pay-ctp-consumer-management-api.enrollconsumer
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-consumer-credential
+      description: Add Consumer Credential
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: click-to-pay-ctp-consumer-management-api.addconsumercredential
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

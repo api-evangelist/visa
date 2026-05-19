@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Visa Business Data Solutions — Business Data Corporate Setup API
+  description: 'Visa Business Data Solutions — Business Data Corporate Setup API. 1 operations. Lead operation: Get starter
+    data. Self-contained Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Business Data Corporate Setup API
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: business-data-solutions-business-data-corporate-setup-api
+    baseUri: https://sandbox.api.visa.com
+    description: Visa Business Data Solutions — Business Data Corporate Setup API business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: cdsapi-commercial-v1-ob-starterdata
+      path: cdsapi/commercial/v1/ob/starterdata
+      operations:
+      - name: getstarterdata
+        method: POST
+        description: Get starter data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: business-data-solutions-business-data-corporate-setup-api-rest
+    port: 8080
+    description: REST adapter for Visa Business Data Solutions — Business Data Corporate Setup API. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/cdsapi/commercial/v1/ob/starterdata
+      name: cdsapi-commercial-v1-ob-starterdata
+      description: REST surface for cdsapi-commercial-v1-ob-starterdata.
+      operations:
+      - method: POST
+        name: getstarterdata
+        description: Get starter data
+        call: business-data-solutions-business-data-corporate-setup-api.getstarterdata
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: business-data-solutions-business-data-corporate-setup-api-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Visa Business Data Solutions — Business Data Corporate Setup API. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-starter-data
+      description: Get starter data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: business-data-solutions-business-data-corporate-setup-api.getstarterdata
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

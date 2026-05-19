@@ -1,0 +1,540 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: B2B Virtual Account Payment Method — Account Management service
+  description: 'B2B Virtual Account Payment Method — Account Management service. 12 operations. Lead operation: Get Account
+    Status. Self-contained Naftiko capability covering one Visa business surface.'
+  tags:
+  - Visa
+  - Account Management service
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VISA_API_KEY: VISA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: b2b-virtual-account-payment-method-account-management-service
+    baseUri: https://sandbox.api.visa.com
+    description: B2B Virtual Account Payment Method — Account Management service business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: vpa-v1-accountManagement-GetAccountStatus
+      path: /vpa/v1/accountManagement/GetAccountStatus
+      operations:
+      - name: getaccountstatus
+        method: POST
+        description: Get Account Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-GetSecurityCode
+      path: /vpa/v1/accountManagement/GetSecurityCode
+      operations:
+      - name: getsecuritycode
+        method: POST
+        description: Get Security Code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-ListPaymentControl
+      path: /vpa/v1/accountManagement/ListPaymentControl
+      operations:
+      - name: listpaymentcontrol
+        method: POST
+        description: List Payment Control
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-ManagePaymentControls
+      path: /vpa/v1/accountManagement/ManagePaymentControls
+      operations:
+      - name: managepaymentcontrols
+        method: POST
+        description: Manage Payment Controls
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-VirtualCardRequisition
+      path: /vpa/v1/accountManagement/VirtualCardRequisition
+      operations:
+      - name: virtualcardrequisition
+        method: POST
+        description: Virtual Card Requisition
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-fundingAccount-create
+      path: /vpa/v1/accountManagement/fundingAccount/create
+      operations:
+      - name: addfundingaccount
+        method: POST
+        description: Add Funding Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-fundingAccount-get
+      path: /vpa/v1/accountManagement/fundingAccount/get
+      operations:
+      - name: getfundingaccountdetails
+        method: POST
+        description: Get Funding AccountDetails
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-fundingAccount-update
+      path: /vpa/v1/accountManagement/fundingAccount/update
+      operations:
+      - name: updatefundingaccount
+        method: POST
+        description: Update Funding Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-accountManagement-getPaymentControls
+      path: /vpa/v1/accountManagement/getPaymentControls
+      operations:
+      - name: getpaymentcontrols
+        method: POST
+        description: Get Payment Controls
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-getRequisitionDetails
+      path: /vpa/v1/getRequisitionDetails
+      operations:
+      - name: getrequisitiondetails
+        method: POST
+        description: Get Requisition Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v1-requisitionService
+      path: /vpa/v1/requisitionService
+      operations:
+      - name: requestvirtualaccount
+        method: POST
+        description: Request Virtual Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: vpa-v2-accountManagement-getPaymentControls
+      path: /vpa/v2/accountManagement/getPaymentControls
+      operations:
+      - name: getpaymentcontrols
+        method: POST
+        description: Get Payment Controls
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: b2b-virtual-account-payment-method-account-management-service-rest
+    port: 8080
+    description: REST adapter for B2B Virtual Account Payment Method — Account Management service. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/vpa/v1/accountmanagement/getaccountstatus
+      name: vpa-v1-accountmanagement-getaccountstatus
+      description: REST surface for vpa-v1-accountManagement-GetAccountStatus.
+      operations:
+      - method: POST
+        name: getaccountstatus
+        description: Get Account Status
+        call: b2b-virtual-account-payment-method-account-management-service.getaccountstatus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/getsecuritycode
+      name: vpa-v1-accountmanagement-getsecuritycode
+      description: REST surface for vpa-v1-accountManagement-GetSecurityCode.
+      operations:
+      - method: POST
+        name: getsecuritycode
+        description: Get Security Code
+        call: b2b-virtual-account-payment-method-account-management-service.getsecuritycode
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/listpaymentcontrol
+      name: vpa-v1-accountmanagement-listpaymentcontrol
+      description: REST surface for vpa-v1-accountManagement-ListPaymentControl.
+      operations:
+      - method: POST
+        name: listpaymentcontrol
+        description: List Payment Control
+        call: b2b-virtual-account-payment-method-account-management-service.listpaymentcontrol
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/managepaymentcontrols
+      name: vpa-v1-accountmanagement-managepaymentcontrols
+      description: REST surface for vpa-v1-accountManagement-ManagePaymentControls.
+      operations:
+      - method: POST
+        name: managepaymentcontrols
+        description: Manage Payment Controls
+        call: b2b-virtual-account-payment-method-account-management-service.managepaymentcontrols
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/virtualcardrequisition
+      name: vpa-v1-accountmanagement-virtualcardrequisition
+      description: REST surface for vpa-v1-accountManagement-VirtualCardRequisition.
+      operations:
+      - method: POST
+        name: virtualcardrequisition
+        description: Virtual Card Requisition
+        call: b2b-virtual-account-payment-method-account-management-service.virtualcardrequisition
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/fundingaccount/create
+      name: vpa-v1-accountmanagement-fundingaccount-create
+      description: REST surface for vpa-v1-accountManagement-fundingAccount-create.
+      operations:
+      - method: POST
+        name: addfundingaccount
+        description: Add Funding Account
+        call: b2b-virtual-account-payment-method-account-management-service.addfundingaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/fundingaccount/get
+      name: vpa-v1-accountmanagement-fundingaccount-get
+      description: REST surface for vpa-v1-accountManagement-fundingAccount-get.
+      operations:
+      - method: POST
+        name: getfundingaccountdetails
+        description: Get Funding AccountDetails
+        call: b2b-virtual-account-payment-method-account-management-service.getfundingaccountdetails
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/fundingaccount/update
+      name: vpa-v1-accountmanagement-fundingaccount-update
+      description: REST surface for vpa-v1-accountManagement-fundingAccount-update.
+      operations:
+      - method: POST
+        name: updatefundingaccount
+        description: Update Funding Account
+        call: b2b-virtual-account-payment-method-account-management-service.updatefundingaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/accountmanagement/getpaymentcontrols
+      name: vpa-v1-accountmanagement-getpaymentcontrols
+      description: REST surface for vpa-v1-accountManagement-getPaymentControls.
+      operations:
+      - method: POST
+        name: getpaymentcontrols
+        description: Get Payment Controls
+        call: b2b-virtual-account-payment-method-account-management-service.getpaymentcontrols
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/getrequisitiondetails
+      name: vpa-v1-getrequisitiondetails
+      description: REST surface for vpa-v1-getRequisitionDetails.
+      operations:
+      - method: POST
+        name: getrequisitiondetails
+        description: Get Requisition Details
+        call: b2b-virtual-account-payment-method-account-management-service.getrequisitiondetails
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v1/requisitionservice
+      name: vpa-v1-requisitionservice
+      description: REST surface for vpa-v1-requisitionService.
+      operations:
+      - method: POST
+        name: requestvirtualaccount
+        description: Request Virtual Account
+        call: b2b-virtual-account-payment-method-account-management-service.requestvirtualaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vpa/v2/accountmanagement/getpaymentcontrols
+      name: vpa-v2-accountmanagement-getpaymentcontrols
+      description: REST surface for vpa-v2-accountManagement-getPaymentControls.
+      operations:
+      - method: POST
+        name: getpaymentcontrols
+        description: Get Payment Controls
+        call: b2b-virtual-account-payment-method-account-management-service.getpaymentcontrols
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: b2b-virtual-account-payment-method-account-management-service-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for B2B Virtual Account Payment Method — Account Management service. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-account-status
+      description: Get Account Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.getaccountstatus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-security-code
+      description: Get Security Code
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.getsecuritycode
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-payment-control
+      description: List Payment Control
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.listpaymentcontrol
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: manage-payment-controls
+      description: Manage Payment Controls
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.managepaymentcontrols
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: virtual-card-requisition
+      description: Virtual Card Requisition
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.virtualcardrequisition
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-funding-account
+      description: Add Funding Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.addfundingaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-funding-accountdetails
+      description: Get Funding AccountDetails
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.getfundingaccountdetails
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-funding-account
+      description: Update Funding Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.updatefundingaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-payment-controls
+      description: Get Payment Controls
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.getpaymentcontrols
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-requisition-details
+      description: Get Requisition Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.getrequisitiondetails
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: request-virtual-account
+      description: Request Virtual Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.requestvirtualaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-payment-controls-2
+      description: Get Payment Controls
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: b2b-virtual-account-payment-method-account-management-service.getpaymentcontrols
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

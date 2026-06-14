@@ -1,0 +1,1300 @@
+# Visa Conceptual GraphQL Schema
+# Derived from Visa Developer Platform REST APIs (https://developer.visa.com)
+# Visa does not offer a native public GraphQL endpoint.
+# This schema is a conceptual representation for developer tooling and research purposes.
+
+# ─────────────────────────────────────────────
+# Scalars
+# ─────────────────────────────────────────────
+
+scalar DateTime
+scalar Date
+scalar Decimal
+scalar JSON
+scalar ISO4217    # Currency code, e.g. "USD"
+scalar ISO3166    # Country code, e.g. "US"
+
+# ─────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────
+
+enum TransactionStatus {
+  APPROVED
+  DECLINED
+  PENDING
+  REVERSED
+  SETTLED
+  VOIDED
+}
+
+enum AuthorizationResult {
+  APPROVED
+  DECLINED
+  REFERRAL
+  PARTIAL_APPROVAL
+  TIMEOUT
+}
+
+enum CardType {
+  CREDIT
+  DEBIT
+  PREPAID
+  COMMERCIAL
+}
+
+enum TokenStatus {
+  ACTIVE
+  SUSPENDED
+  DEACTIVATED
+  PENDING_ACTIVATION
+}
+
+enum FundingSource {
+  PUSH_FUNDS
+  PULL_FUNDS
+  P2P
+  ATM
+  ACCOUNT
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  VERY_HIGH
+}
+
+enum ThreeDSStatus {
+  AUTHENTICATED
+  ATTEMPTED
+  FAILED
+  NOT_ENROLLED
+  BYPASSED
+}
+
+enum InstallmentStatus {
+  OFFERED
+  ACCEPTED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum OfferType {
+  STATEMENT_CREDIT
+  CASHBACK
+  DISCOUNT
+  REWARD_POINTS
+  MERCHANT_SPECIFIC
+}
+
+enum PaymentMethodType {
+  CARD
+  TOKEN
+  WALLET
+  BANK_ACCOUNT
+  VIRTUAL_ACCOUNT
+}
+
+enum ATMType {
+  VISA
+  PLUS
+  INTERLINK
+  PARTNER
+}
+
+enum ConsentStatus {
+  ACTIVE
+  REVOKED
+  PENDING
+  EXPIRED
+}
+
+# ─────────────────────────────────────────────
+# Supporting / Shared Types
+# ─────────────────────────────────────────────
+
+type Address {
+  line1: String
+  line2: String
+  city: String
+  state: String
+  postalCode: String
+  country: ISO3166
+}
+
+type PhoneNumber {
+  countryCode: String
+  number: String
+  type: String
+}
+
+type Money {
+  amount: Decimal!
+  currency: ISO4217!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+  totalCount: Int
+}
+
+# ─────────────────────────────────────────────
+# Cards & Accounts
+# ─────────────────────────────────────────────
+
+"""
+Represents a physical or virtual Visa payment card.
+"""
+type Card {
+  panSuffix: String!
+  expiryMonth: Int!
+  expiryYear: Int!
+  cardType: CardType!
+  network: String
+  binRange: String
+  issuerName: String
+  issuerCountry: ISO3166
+  cardAccount: CardAccount
+  binAttributes: BINAttributes
+  tokens: [Token!]
+}
+
+"""
+A cardholder's account associated with a Visa card.
+"""
+type CardAccount {
+  accountId: ID!
+  cardholder: Cardholder
+  card: Card
+  balance: Balance
+  transactions: [Transaction!]
+  paymentMethods: [PaymentMethod!]
+  accountUpdates: [AccountUpdate!]
+  consentRecords: [ConsentRecord!]
+}
+
+"""
+The individual who owns a Visa card/account.
+"""
+type Cardholder {
+  cardholderId: ID!
+  firstName: String
+  lastName: String
+  email: String
+  phone: PhoneNumber
+  address: Address
+  accounts: [CardAccount!]
+  loyaltyPrograms: [LoyaltyProgram!]
+  travelNotifications: [TravelNotification!]
+}
+
+"""
+Account balance information.
+"""
+type Balance {
+  available: Money!
+  current: Money!
+  creditLimit: Money
+  minimumPaymentDue: Money
+  paymentDueDate: Date
+  lastUpdated: DateTime
+}
+
+"""
+BIN (Bank Identification Number) attributes from the Visa BIN Attribute Sharing Service.
+"""
+type BINAttributes {
+  bin: String!
+  issuerName: String
+  issuerCountry: ISO3166
+  cardType: CardType
+  productCode: String
+  productName: String
+  regulated: Boolean
+  reloadable: Boolean
+  prepaid: Boolean
+  commercial: Boolean
+  corporate: Boolean
+  purchasingCard: Boolean
+  healthcareCard: Boolean
+  pinlessDebit: Boolean
+}
+
+"""
+Tracks changes to card account information (Visa Account Updater).
+"""
+type AccountUpdate {
+  updateId: ID!
+  accountId: String!
+  updateType: String!
+  oldPan: String
+  newPan: String
+  oldExpiry: String
+  newExpiry: String
+  updateReason: String
+  updatedAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Core Transactions
+# ─────────────────────────────────────────────
+
+"""
+A completed payment transaction processed through VisaNet.
+"""
+type Transaction {
+  transactionId: ID!
+  retrievalReferenceNumber: String
+  systemTraceAuditNumber: String
+  amount: Money!
+  originalAmount: Money
+  status: TransactionStatus!
+  authorization: Authorization
+  capture: Capture
+  settlement: Settlement
+  reversal: Reversal
+  refunds: [Refund!]
+  merchant: Merchant
+  card: Card
+  riskScore: RiskScore
+  threeDS: ThreeDSResult
+  currencyConversion: CurrencyConversion
+  installment: Installment
+  createdAt: DateTime!
+  settledAt: DateTime
+}
+
+"""
+Payment authorization message sent through VisaNet.
+"""
+type Authorization {
+  authorizationId: ID!
+  authorizationCode: String
+  result: AuthorizationResult!
+  responseCode: String
+  amount: Money!
+  partialApprovalAmount: Money
+  merchantId: String
+  terminalId: String
+  visaNetMessageId: String
+  riskScore: RiskScore
+  threeDS: ThreeDSResult
+  authorizedAt: DateTime!
+  expiresAt: DateTime
+  transaction: Transaction
+}
+
+"""
+Capture of a previously authorized transaction.
+"""
+type Capture {
+  captureId: ID!
+  authorizationId: String!
+  capturedAmount: Money!
+  capturedAt: DateTime!
+  transaction: Transaction
+}
+
+"""
+Settlement record for a completed transaction.
+"""
+type Settlement {
+  settlementId: ID!
+  transactionId: String!
+  settledAmount: Money!
+  settlementDate: Date!
+  batchNumber: String
+  acquirerReferenceNumber: String
+  transaction: Transaction
+}
+
+"""
+Reversal of a previously authorized or captured transaction.
+"""
+type Reversal {
+  reversalId: ID!
+  originalTransactionId: String!
+  reversalAmount: Money!
+  reversalReason: String
+  reversedAt: DateTime!
+  transaction: Transaction
+}
+
+"""
+Refund issued back to a cardholder.
+"""
+type Refund {
+  refundId: ID!
+  originalTransactionId: String!
+  refundAmount: Money!
+  refundReason: String
+  status: TransactionStatus!
+  refundedAt: DateTime!
+  transaction: Transaction
+}
+
+# ─────────────────────────────────────────────
+# Money Movement — Visa Direct
+# ─────────────────────────────────────────────
+
+"""
+Push Funds transfer (Visa Direct OCT — Original Credit Transaction).
+"""
+type PushFunds {
+  transactionId: ID!
+  recipientPrimaryAccountNumber: String!
+  amount: Money!
+  senderName: String
+  senderAddress: Address
+  recipientName: String
+  businessApplicationId: String
+  sourceOfFundsCode: String
+  merchantCategoryCode: String
+  status: TransactionStatus!
+  approvalCode: String
+  statusCode: String
+  transmissionDateTime: DateTime!
+  retrievalReferenceNumber: String
+  systemTraceAuditNumber: String
+}
+
+"""
+Pull Funds transfer (Visa Direct AFT — Account Funding Transaction).
+"""
+type PullFunds {
+  transactionId: ID!
+  senderPrimaryAccountNumber: String!
+  amount: Money!
+  acquirerCountryCode: String
+  acquiringBin: String
+  businessApplicationId: String
+  cardAcceptor: Merchant
+  status: TransactionStatus!
+  approvalCode: String
+  transmissionDateTime: DateTime!
+  retrievalReferenceNumber: String
+  systemTraceAuditNumber: String
+}
+
+"""
+Peer-to-peer (P2P) funds transfer.
+"""
+type P2PTransfer {
+  transferId: ID!
+  sender: Cardholder
+  recipient: Cardholder
+  senderCard: Card
+  recipientCard: Card
+  amount: Money!
+  pullFunds: PullFunds
+  pushFunds: PushFunds
+  status: TransactionStatus!
+  initiatedAt: DateTime!
+  completedAt: DateTime
+}
+
+"""
+Instruction for funding a payment (used in Visa Direct and B2B flows).
+"""
+type FundingInstruction {
+  instructionId: ID!
+  fundingSource: FundingSource!
+  amount: Money!
+  paymentMethod: PaymentMethod
+  issuedAt: DateTime!
+  expiresAt: DateTime
+}
+
+"""
+Cash back amount associated with a point-of-sale debit transaction.
+"""
+type CashBack {
+  cashBackId: ID!
+  transactionId: String!
+  cashBackAmount: Money!
+  requestedAt: DateTime!
+}
+
+"""
+Push to Card payout (gig, insurance, earned wage access).
+"""
+type PushToCard {
+  payoutId: ID!
+  recipientCard: Card
+  amount: Money!
+  payoutPurpose: String
+  merchantCategoryCode: String
+  status: TransactionStatus!
+  transmissionDateTime: DateTime!
+  approvalCode: String
+}
+
+# ─────────────────────────────────────────────
+# Tokenization — Visa Token Service
+# ─────────────────────────────────────────────
+
+"""
+A digital payment token replacing a primary account number (PAN).
+"""
+type Token {
+  tokenId: ID!
+  tokenValue: String!
+  tokenReferenceId: String
+  status: TokenStatus!
+  tokenRequestorId: String
+  tokenRequestor: TokenRequestor
+  card: Card
+  expiryMonth: Int
+  expiryYear: Int
+  tokenType: String
+  deviceId: String
+  walletProvider: String
+  provisioned: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  lifecycle: TokenLifecycle
+  cryptogram: TokenCryptogram
+}
+
+"""
+A requestor provisioning tokens through Visa Token Service.
+"""
+type TokenRequestor {
+  tokenRequestorId: ID!
+  name: String!
+  deviceTypes: [String!]
+  supportedWallets: [String!]
+  tokens: [Token!]
+}
+
+"""
+Request to provision a new payment token.
+"""
+type TokenRequest {
+  requestId: ID!
+  primaryAccountNumber: String
+  requestorId: String
+  tokenRequestor: TokenRequestor
+  deviceId: String
+  walletProvider: String
+  status: String!
+  requestedAt: DateTime!
+  token: Token
+}
+
+"""
+Lifecycle events for a token (activate, suspend, resume, delete).
+"""
+type TokenLifecycle {
+  tokenId: String!
+  events: [TokenLifecycleEvent!]!
+}
+
+type TokenLifecycleEvent {
+  eventId: ID!
+  eventType: String!
+  reason: String
+  performedBy: String
+  occurredAt: DateTime!
+}
+
+"""
+Cryptographic value used to authenticate a token-based transaction.
+"""
+type TokenCryptogram {
+  cryptogramValue: String!
+  cryptogramType: String!
+  generatedAt: DateTime!
+  expiresAt: DateTime
+}
+
+"""
+Digital wallet containing payment tokens.
+"""
+type DigitalWallet {
+  walletId: ID!
+  walletProvider: String!
+  cardholder: Cardholder
+  tokens: [Token!]!
+  walletToken: WalletToken
+  linkedAt: DateTime!
+}
+
+"""
+A wallet-level token representation (Apple Pay, Google Wallet, Samsung Pay).
+"""
+type WalletToken {
+  walletTokenId: ID!
+  walletProvider: String!
+  deviceId: String
+  token: Token
+  status: TokenStatus!
+  createdAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Merchants
+# ─────────────────────────────────────────────
+
+"""
+A merchant participating in the Visa network.
+"""
+type Merchant {
+  merchantId: ID!
+  merchantName: String!
+  merchantCategoryCode: String
+  merchantCategory: MerchantCategory
+  description: String
+  website: String
+  logoUrl: String
+  locations: [MerchantLocation!]
+  offers: [MerchantOffer!]
+}
+
+"""
+Physical or virtual location of a merchant.
+"""
+type MerchantLocation {
+  locationId: ID!
+  merchant: Merchant!
+  address: Address
+  phone: PhoneNumber
+  latitude: Float
+  longitude: Float
+  distance: Float
+  distanceUnit: String
+  hours: String
+  acceptsVisa: Boolean
+  acceptsContactless: Boolean
+}
+
+"""
+Merchant category (MCC) classification.
+"""
+type MerchantCategory {
+  mcc: String!
+  description: String!
+  group: String
+}
+
+"""
+An offer or deal available at a specific merchant (Visa Merchant Offers / VMORC).
+"""
+type MerchantOffer {
+  offerId: ID!
+  merchant: Merchant
+  offerType: OfferType!
+  title: String!
+  description: String
+  discountRate: Decimal
+  cashBackAmount: Money
+  minimumPurchaseAmount: Money
+  maxRedemptions: Int
+  validFrom: Date
+  validTo: Date
+  eligibleCardTypes: [CardType!]
+  redemptionUrl: String
+}
+
+# ─────────────────────────────────────────────
+# Foreign Exchange
+# ─────────────────────────────────────────────
+
+"""
+Currency conversion applied to a cross-border transaction.
+"""
+type CurrencyConversion {
+  conversionId: ID!
+  sourceCurrency: ISO4217!
+  destinationCurrency: ISO4217!
+  sourceAmount: Money!
+  convertedAmount: Money!
+  exchangeRate: ExchangeRate!
+  conversionFee: Money
+  appliedAt: DateTime!
+  transaction: Transaction
+}
+
+"""
+Foreign exchange context for a transaction or rate inquiry.
+"""
+type FX {
+  fxId: ID!
+  baseCurrency: ISO4217!
+  quoteCurrency: ISO4217!
+  rate: Decimal!
+  inverseRate: Decimal
+  effectiveDate: Date!
+  expiryDate: Date
+  quote: FXQuote
+}
+
+"""
+A specific exchange rate between two currencies from the Visa FX Rates API.
+"""
+type ExchangeRate {
+  rateId: ID!
+  sourceCurrency: ISO4217!
+  destinationCurrency: ISO4217!
+  rate: Decimal!
+  markup: Decimal
+  effectiveDate: Date!
+  expiryDate: Date
+  rateType: String
+}
+
+"""
+A quoted FX rate locked for a specific transaction or period.
+"""
+type FXQuote {
+  quoteId: ID!
+  fxRate: ExchangeRate!
+  amount: Money!
+  convertedAmount: Money!
+  quotedAt: DateTime!
+  expiresAt: DateTime!
+}
+
+# ─────────────────────────────────────────────
+# Risk & Fraud
+# ─────────────────────────────────────────────
+
+"""
+Decision Manager output for a transaction.
+"""
+type DecisionManager {
+  decisionId: ID!
+  transaction: Transaction
+  recommendation: String!
+  score: Int!
+  riskFactors: [String!]
+  evaluatedAt: DateTime!
+}
+
+"""
+Risk score computed for an authorization or transaction.
+"""
+type RiskScore {
+  scoreId: ID!
+  score: Int!
+  riskLevel: RiskLevel!
+  scoringModel: String
+  riskReasons: [String!]
+  generatedAt: DateTime!
+}
+
+"""
+3-D Secure authentication data for a transaction.
+"""
+type ThreeDS {
+  threeDSId: ID!
+  version: String!
+  transactionId: String
+  eci: String
+  aav: String
+  status: ThreeDSStatus!
+  authenticationValue: String
+  dsTransactionId: String
+  acsTransactionId: String
+  requestedAt: DateTime!
+}
+
+"""
+3-D Secure authentication result embedded in a transaction.
+"""
+type ThreeDSResult {
+  status: ThreeDSStatus!
+  eci: String
+  authenticationValue: String
+  version: String
+  dsTransactionId: String
+}
+
+"""
+Visa Integrated Payment (VIP) alert for suspicious or notable transaction activity.
+"""
+type VIPAlert {
+  alertId: ID!
+  alertType: String!
+  severity: RiskLevel!
+  transaction: Transaction
+  cardholder: Cardholder
+  message: String
+  triggeredAt: DateTime!
+  resolvedAt: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Installments & Split Payments
+# ─────────────────────────────────────────────
+
+"""
+An individual installment record within a buy-now-pay-later plan.
+"""
+type Installment {
+  installmentId: ID!
+  installmentPlan: InstallmentPlan
+  installmentNumber: Int!
+  dueDate: Date!
+  amount: Money!
+  status: InstallmentStatus!
+  paidAt: DateTime
+  transaction: Transaction
+}
+
+"""
+A BNPL (Buy Now Pay Later) installment plan (Visa Installment Transaction Service).
+"""
+type InstallmentPlan {
+  planId: ID!
+  originalTransaction: Transaction
+  totalAmount: Money!
+  numberOfInstallments: Int!
+  installmentAmount: Money!
+  interestRate: Decimal
+  annualPercentageRate: Decimal
+  fees: Money
+  status: InstallmentStatus!
+  merchant: Merchant
+  cardholder: Cardholder
+  installments: [Installment!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A split payment dividing a single purchase into multiple funding sources.
+"""
+type SplitPayment {
+  splitId: ID!
+  totalAmount: Money!
+  splits: [SplitPaymentItem!]!
+  transaction: Transaction
+  createdAt: DateTime!
+}
+
+type SplitPaymentItem {
+  paymentMethod: PaymentMethod!
+  amount: Money!
+  status: TransactionStatus!
+}
+
+# ─────────────────────────────────────────────
+# Loyalty, Offers & Benefits
+# ─────────────────────────────────────────────
+
+"""
+A loyalty or rewards program linked to a Visa card.
+"""
+type LoyaltyProgram {
+  programId: ID!
+  name: String!
+  sponsor: String
+  pointsBalance: Int
+  pointsValue: Money
+  tier: String
+  cardholder: Cardholder
+  offers: [Offer!]
+  redemptions: [RewardRedemption!]
+}
+
+"""
+A Visa-powered offer available to eligible cardholders.
+"""
+type Offer {
+  offerId: ID!
+  title: String!
+  description: String
+  offerType: OfferType!
+  merchant: Merchant
+  discountRate: Decimal
+  cashBackAmount: Money
+  eligibleBins: [String!]
+  validFrom: Date
+  validTo: Date
+  termsAndConditions: String
+  loyaltyProgram: LoyaltyProgram
+  deal: Deal
+}
+
+"""
+A time-limited deal at a merchant, potentially linked to a Visa offer.
+"""
+type Deal {
+  dealId: ID!
+  merchant: Merchant!
+  title: String!
+  description: String
+  savings: Money
+  originalPrice: Money
+  discountedPrice: Money
+  validFrom: Date!
+  validTo: Date!
+  offer: Offer
+}
+
+"""
+A benefit program associated with a Visa card product.
+"""
+type BenefitProgram {
+  programId: ID!
+  name: String!
+  description: String
+  benefits: [String!]
+  eligibleCardTypes: [CardType!]
+  validFrom: Date
+  validTo: Date
+}
+
+"""
+Redemption of rewards points or a loyalty offer.
+"""
+type RewardRedemption {
+  redemptionId: ID!
+  loyaltyProgram: LoyaltyProgram
+  offer: Offer
+  pointsRedeemed: Int
+  monetaryValue: Money
+  redemptionMethod: String
+  redeemedAt: DateTime!
+  transaction: Transaction
+}
+
+# ─────────────────────────────────────────────
+# Digital Payments & Click to Pay
+# ─────────────────────────────────────────────
+
+"""
+Payment method (card, token, wallet, bank account) stored by a consumer.
+"""
+type PaymentMethod {
+  paymentMethodId: ID!
+  type: PaymentMethodType!
+  cardholder: Cardholder
+  card: Card
+  token: Token
+  digitalWallet: DigitalWallet
+  isDefault: Boolean!
+  nickname: String
+  addedAt: DateTime!
+}
+
+"""
+A Visa Click to Pay (SRC — Secure Remote Commerce) checkout request.
+"""
+type ClickToPayRequest {
+  requestId: ID!
+  merchantTransactionId: String
+  merchant: Merchant
+  amount: Money!
+  currency: ISO4217!
+  cardholder: Cardholder
+  paymentMethod: PaymentMethod
+  correlationId: String
+  checkoutSessionId: String
+  status: String!
+  requestedAt: DateTime!
+  completedAt: DateTime
+  authorization: Authorization
+}
+
+# ─────────────────────────────────────────────
+# Infrastructure — ATM & VisaNet
+# ─────────────────────────────────────────────
+
+"""
+An ATM location found via the Visa Global ATM Locator API.
+"""
+type ATM {
+  atmId: ID!
+  name: String
+  atmType: ATMType!
+  location: ATMLocation!
+  acceptsVisa: Boolean!
+  acceptsPlus: Boolean!
+  supportsContactless: Boolean
+  supportsDeposit: Boolean
+  accessFeeDisclosed: Boolean
+  surchargeType: String
+  hours: String
+}
+
+"""
+Geographic location of an ATM.
+"""
+type ATMLocation {
+  address: Address!
+  latitude: Float!
+  longitude: Float!
+  distance: Float
+  distanceUnit: String
+  landmark: String
+}
+
+"""
+Representation of the VisaNet global payment network.
+"""
+type VisaNet {
+  networkId: ID!
+  region: String!
+  processingCenter: String
+  uptime: Float
+  transactionsPerSecond: Int
+  supportedCurrencies: [ISO4217!]
+  supportedCountries: [ISO3166!]
+}
+
+"""
+A raw message transacted through VisaNet (authorization, clearing, settlement).
+"""
+type VisaNetMessage {
+  messageId: ID!
+  messageType: String!
+  processingCode: String
+  amount: Money
+  transmissionDateTime: DateTime!
+  systemTraceAuditNumber: String
+  acquiringBin: String
+  forwardingBin: String
+  merchantId: String
+  terminalId: String
+  responseCode: String
+  raw: JSON
+}
+
+# ─────────────────────────────────────────────
+# Visa Developer Platform / Direct API
+# ─────────────────────────────────────────────
+
+"""
+Visa Direct API configuration for a registered partner.
+"""
+type DirectAPI {
+  apiId: ID!
+  partnerName: String!
+  businessApplicationId: String!
+  acquiringBin: String!
+  acquirerCountryCode: String
+  environment: String!
+  capabilities: [String!]
+  createdAt: DateTime!
+}
+
+"""
+Push notification delivered via Visa Transaction Controls or VIP alerts.
+"""
+type PushNotification {
+  notificationId: ID!
+  recipientCardholderRef: String
+  notificationType: String!
+  message: String!
+  transaction: Transaction
+  deliveredAt: DateTime!
+  acknowledged: Boolean!
+}
+
+"""
+Travel notification submitted by a cardholder (Visa Travel Notification Service).
+"""
+type TravelNotification {
+  notificationId: ID!
+  cardholder: Cardholder
+  destinationCountries: [ISO3166!]!
+  departureDate: Date!
+  returnDate: Date!
+  submittedAt: DateTime!
+  status: String!
+}
+
+"""
+A consent record managed via the Visa Consent Management Service.
+"""
+type ConsentRecord {
+  consentId: ID!
+  cardholder: Cardholder
+  consentingParty: String!
+  purpose: String!
+  dataCategories: [String!]
+  status: ConsentStatus!
+  grantedAt: DateTime
+  revokedAt: DateTime
+  expiresAt: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Root Types
+# ─────────────────────────────────────────────
+
+type Query {
+  # Transactions
+  transaction(transactionId: ID!): Transaction
+  transactions(
+    cardAccountId: ID
+    merchantId: ID
+    status: TransactionStatus
+    from: DateTime
+    to: DateTime
+    first: Int
+    after: String
+  ): TransactionConnection!
+
+  # Authorizations
+  authorization(authorizationId: ID!): Authorization
+
+  # Cards & Accounts
+  card(panSuffix: String!, expiryMonth: Int!, expiryYear: Int!): Card
+  cardAccount(accountId: ID!): CardAccount
+  cardholder(cardholderId: ID!): Cardholder
+  balance(accountId: ID!): Balance
+  binAttributes(bin: String!): BINAttributes
+
+  # Money Movement
+  pushFunds(transactionId: ID!): PushFunds
+  pullFunds(transactionId: ID!): PullFunds
+  p2pTransfer(transferId: ID!): P2PTransfer
+
+  # Tokens
+  token(tokenId: ID!): Token
+  tokenByValue(tokenValue: String!): Token
+  tokenRequest(requestId: ID!): TokenRequest
+
+  # Merchants
+  merchant(merchantId: ID!): Merchant
+  searchMerchants(
+    query: String
+    latitude: Float
+    longitude: Float
+    radius: Float
+    merchantCategoryCode: String
+    first: Int
+    after: String
+  ): MerchantConnection!
+  merchantCategory(mcc: String!): MerchantCategory
+
+  # Foreign Exchange
+  exchangeRate(sourceCurrency: ISO4217!, destinationCurrency: ISO4217!): ExchangeRate
+  fxRates(baseCurrency: ISO4217!, quoteCurrencies: [ISO4217!]!): [ExchangeRate!]!
+  fxQuote(sourceCurrency: ISO4217!, destinationCurrency: ISO4217!, amount: Decimal!): FXQuote
+
+  # Risk & Fraud
+  riskScore(transactionId: ID!): RiskScore
+  vipAlerts(cardAccountId: ID, from: DateTime, to: DateTime): [VIPAlert!]!
+
+  # Installments
+  installmentPlan(planId: ID!): InstallmentPlan
+  installmentPlans(cardAccountId: ID!): [InstallmentPlan!]!
+
+  # Loyalty & Offers
+  loyaltyProgram(programId: ID!): LoyaltyProgram
+  offers(merchantId: ID, cardType: CardType, latitude: Float, longitude: Float): [Offer!]!
+  deal(dealId: ID!): Deal
+  benefitPrograms(cardType: CardType): [BenefitProgram!]!
+
+  # Digital Payments
+  clickToPayRequest(requestId: ID!): ClickToPayRequest
+  paymentMethods(cardholderId: ID!): [PaymentMethod!]!
+
+  # ATMs
+  nearbyATMs(
+    latitude: Float!
+    longitude: Float!
+    radius: Float
+    unit: String
+    atmType: ATMType
+    first: Int
+    after: String
+  ): ATMConnection!
+  atm(atmId: ID!): ATM
+
+  # Consent
+  consentRecords(cardholderId: ID!): [ConsentRecord!]!
+  consentRecord(consentId: ID!): ConsentRecord
+
+  # VisaNet
+  visaNetMessage(messageId: ID!): VisaNetMessage
+  travelNotifications(cardholderId: ID!): [TravelNotification!]!
+}
+
+type Mutation {
+  # Authorizations
+  createAuthorization(input: AuthorizationInput!): Authorization!
+  captureAuthorization(authorizationId: ID!, amount: Decimal): Capture!
+  reverseAuthorization(authorizationId: ID!, reason: String): Reversal!
+  refundTransaction(transactionId: ID!, amount: Decimal, reason: String): Refund!
+
+  # Visa Direct
+  pushFunds(input: PushFundsInput!): PushFunds!
+  pullFunds(input: PullFundsInput!): PullFunds!
+  sendP2P(input: P2PInput!): P2PTransfer!
+  pushToCard(input: PushToCardInput!): PushToCard!
+
+  # Tokens
+  requestToken(input: TokenRequestInput!): TokenRequest!
+  activateToken(tokenId: ID!): Token!
+  suspendToken(tokenId: ID!, reason: String): Token!
+  resumeToken(tokenId: ID!): Token!
+  deleteToken(tokenId: ID!): Boolean!
+
+  # Installments
+  createInstallmentPlan(input: InstallmentPlanInput!): InstallmentPlan!
+  cancelInstallmentPlan(planId: ID!, reason: String): InstallmentPlan!
+
+  # Loyalty & Rewards
+  redeemReward(programId: ID!, offerId: ID!, transactionId: ID): RewardRedemption!
+
+  # Click to Pay
+  initiateClickToPay(input: ClickToPayInput!): ClickToPayRequest!
+
+  # Consent
+  grantConsent(input: ConsentInput!): ConsentRecord!
+  revokeConsent(consentId: ID!): ConsentRecord!
+
+  # Travel Notifications
+  createTravelNotification(input: TravelNotificationInput!): TravelNotification!
+  cancelTravelNotification(notificationId: ID!): TravelNotification!
+}
+
+# ─────────────────────────────────────────────
+# Input Types
+# ─────────────────────────────────────────────
+
+input AuthorizationInput {
+  primaryAccountNumber: String!
+  expiryMonth: Int!
+  expiryYear: Int!
+  amount: Decimal!
+  currency: ISO4217!
+  merchantId: String!
+  terminalId: String
+  cvv2: String
+  threeDS: ThreeDSInput
+}
+
+input ThreeDSInput {
+  eci: String!
+  authenticationValue: String!
+  dsTransactionId: String
+  version: String
+}
+
+input PushFundsInput {
+  recipientPrimaryAccountNumber: String!
+  amount: Decimal!
+  currency: ISO4217!
+  senderName: String!
+  senderAddress: AddressInput
+  businessApplicationId: String!
+  merchantCategoryCode: String
+  retrievalReferenceNumber: String
+}
+
+input PullFundsInput {
+  senderPrimaryAccountNumber: String!
+  amount: Decimal!
+  currency: ISO4217!
+  businessApplicationId: String!
+  acquirerCountryCode: String!
+  acquiringBin: String!
+  merchantId: String
+}
+
+input P2PInput {
+  senderCardPan: String!
+  recipientCardPan: String!
+  amount: Decimal!
+  currency: ISO4217!
+  memo: String
+}
+
+input PushToCardInput {
+  recipientPrimaryAccountNumber: String!
+  amount: Decimal!
+  currency: ISO4217!
+  payoutPurpose: String!
+  merchantCategoryCode: String
+}
+
+input TokenRequestInput {
+  primaryAccountNumber: String!
+  expiryMonth: Int!
+  expiryYear: Int!
+  tokenRequestorId: String!
+  deviceId: String
+  walletProvider: String
+}
+
+input InstallmentPlanInput {
+  transactionId: ID!
+  numberOfInstallments: Int!
+  currency: ISO4217!
+}
+
+input ClickToPayInput {
+  merchantTransactionId: String!
+  amount: Decimal!
+  currency: ISO4217!
+  merchantId: String!
+  cardholderEmail: String
+}
+
+input ConsentInput {
+  cardholderId: ID!
+  consentingParty: String!
+  purpose: String!
+  dataCategories: [String!]!
+  expiresAt: DateTime
+}
+
+input TravelNotificationInput {
+  cardholderId: ID!
+  destinationCountries: [ISO3166!]!
+  departureDate: Date!
+  returnDate: Date!
+}
+
+input AddressInput {
+  line1: String
+  line2: String
+  city: String
+  state: String
+  postalCode: String
+  country: ISO3166
+}
+
+# ─────────────────────────────────────────────
+# Connection / Pagination Types
+# ─────────────────────────────────────────────
+
+type TransactionConnection {
+  edges: [TransactionEdge!]!
+  pageInfo: PageInfo!
+}
+
+type TransactionEdge {
+  cursor: String!
+  node: Transaction!
+}
+
+type MerchantConnection {
+  edges: [MerchantEdge!]!
+  pageInfo: PageInfo!
+}
+
+type MerchantEdge {
+  cursor: String!
+  node: Merchant!
+}
+
+type ATMConnection {
+  edges: [ATMEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ATMEdge {
+  cursor: String!
+  node: ATM!
+}

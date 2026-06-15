@@ -1,0 +1,719 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "B2B Virtual Account Payment Method",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Buyer Management Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/buyerManagement/buyerTemplate/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Obtain all current parameters for an existing buyer template. Optional and default values will be provided as well as the ability to obtain a full picture of the buyer configurations. This is helpful for troubleshooting or to see the details of a template before many any changes to it."
+        },
+        {
+          "info": {
+            "name": "Get Buyer Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyer/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Buyer Details"
+        },
+        {
+          "info": {
+            "name": "Create Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyerTemplate/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Buyer Template"
+        },
+        {
+          "info": {
+            "name": "Update Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyerTemplate/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Buyer Template"
+        },
+        {
+          "info": {
+            "name": "Update Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyer/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Buyer"
+        },
+        {
+          "info": {
+            "name": "Create Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyer/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Buyer"
+        },
+        {
+          "info": {
+            "name": "Get Buyer Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/buyerManagement/buyer/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve all of the current parameters of an existing buyers’ profile. Use this for troubleshooting or to get the full buyer profile details before updating a buyer. Enables the addition, update or deletion of new company template and profiles."
+        },
+        {
+          "info": {
+            "name": "Get Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyerTemplate/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Buyer Template"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account Management service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Security Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/GetSecurityCode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Security Code"
+        },
+        {
+          "info": {
+            "name": "Get Requisition Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/getRequisitionDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Requisition Details request and response"
+        },
+        {
+          "info": {
+            "name": "Get Payment Controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/accountManagement/getPaymentControls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This version is recommended for buyers subscribed to Visa payment Control(VPC)  and supporting mcgRuleAction field."
+        },
+        {
+          "info": {
+            "name": "Manage Payment Controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/ManagePaymentControls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Manage Payment Controls"
+        },
+        {
+          "info": {
+            "name": "Get Account Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/GetAccountStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Account Status"
+        },
+        {
+          "info": {
+            "name": "Get Funding AccountDetails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/fundingAccount/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Funding AccountDetails"
+        },
+        {
+          "info": {
+            "name": "Request Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/requisitionService",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requisition API Request and Response"
+        },
+        {
+          "info": {
+            "name": "Virtual Card Requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/VirtualCardRequisition",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Virtual Card Requisition"
+        },
+        {
+          "info": {
+            "name": "List Payment Control",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/ListPaymentControl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Payment Control"
+        },
+        {
+          "info": {
+            "name": "Update Funding Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/fundingAccount/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Funding Account"
+        },
+        {
+          "info": {
+            "name": "Get Payment Controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/getPaymentControls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Payment Controls"
+        },
+        {
+          "info": {
+            "name": "Add Funding Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/fundingAccount/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Funding Account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Supplier Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Disable Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/DisableSupplier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disable Supplier"
+        },
+        {
+          "info": {
+            "name": "ManageSupplierAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/ManageSupplierAccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ManageSupplierAccount"
+        },
+        {
+          "info": {
+            "name": "Get Supplier Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/supplier/GetSupplierDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Supplier Details"
+        },
+        {
+          "info": {
+            "name": "Get Supplier Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/GetSupplierDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Supplier Details"
+        },
+        {
+          "info": {
+            "name": "Update Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/UpdateSupplier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Supplier"
+        },
+        {
+          "info": {
+            "name": "Create Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/CreateSupplier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Supplier"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Workflows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health Check Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/hcs/healthCheckService",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API for checking Health Check of the Application"
+        },
+        {
+          "info": {
+            "name": "Payments Recipe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/recipes/Payment",
+            "headers": [
+              {
+                "name": "X-Payment-Action-Type",
+                "value": ""
+              },
+              {
+                "name": "X-IPaaS",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Composite API which handles process, resend and cancel payments."
+        },
+        {
+          "info": {
+            "name": "Get Payment Details - Recipe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/recipes/getPaymentDetails",
+            "headers": [
+              {
+                "name": "X-IPaaS",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetPaymentDetails Recipe API"
+        },
+        {
+          "info": {
+            "name": "Client Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/register/client",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to enable auth for the client"
+        },
+        {
+          "info": {
+            "name": "Generate Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/notification/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate notification"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Single Use Account Pool Maintenance Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Proxy Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/proxy/UpdateProxyPool",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Update operation, allows the consumer to update the details of a proxy pool."
+        },
+        {
+          "info": {
+            "name": "Get Proxy Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/proxy/GetProxyPool",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Get operation allows the consumer to get the details of a proxy."
+        },
+        {
+          "info": {
+            "name": "Manage Proxy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/proxy/ManageProxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Manage Proxy"
+        },
+        {
+          "info": {
+            "name": "SUA Get Account Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/proxy/GetAccountStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "SUA Get Account Status"
+        },
+        {
+          "info": {
+            "name": "Delete Proxy Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.visa.com/vpa/v1/proxy/DeleteProxyPool",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Delete operation allows the consumer to delete a proxy pool from a buyer."
+        },
+        {
+          "info": {
+            "name": "Create Proxy Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/proxy/CreateProxyPool",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Create operation allows the consumer to create a new proxy pool for a buyer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payment Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Payment Detail URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/GetPaymentDetailURL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Payment Detail URL"
+        },
+        {
+          "info": {
+            "name": "Get Payment Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/GetPaymentDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Payment Details"
+        },
+        {
+          "info": {
+            "name": "Resend Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/ResendPayment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resend Payment"
+        },
+        {
+          "info": {
+            "name": "Process Payment - Recipe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/recipes/processPayment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ProcessPayment Recipe API"
+        },
+        {
+          "info": {
+            "name": "Cancel Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/CancelPayment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel Payment"
+        },
+        {
+          "info": {
+            "name": "Process Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/ProcessPayments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Process Payments"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

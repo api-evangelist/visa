@@ -1,0 +1,591 @@
+{
+  "item": [
+    {
+      "id": "5ec53f0d-ab4f-4daa-97fb-9fe0852e68bb",
+      "name": "Transaction Enrichment API",
+      "description": {
+        "content": "Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7653151d-f98b-4c11-b8ac-b7f5c5107d01",
+          "name": "Enrich Transaction",
+          "request": {
+            "name": "Enrich Transaction",
+            "description": {
+              "content": "Enriches transaction data with enhanced merchant information such as merchant street address, website URL, logo, and contact information. This operation helps improve the cardholder experience by providing clearer and more recognizable merchant details on statements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "merchantsearch",
+                "v1",
+                "transactionenrichment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d791a991-8edc-48da-8974-c78c15cb3e28",
+              "name": "Transaction enriched successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "transactionenrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merchantSearchServiceResponse\": {\n    \"response\": [\n      {\n        \"visaMerchantId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantUrl\": \"https://KxYcHYmm.guvxeKXygIWG7D9VQVwpj1SvfioTe.\",\n        \"merchantLogoUrl\": \"http://CG.rvuk-46N89w3kkcrxhKZN+wR.W-HYKSjABK42rh-cPGmRMtrVq1,fXq\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"merchantCategoryCode\": \"string\",\n        \"phoneNumber\": \"string\"\n      },\n      {\n        \"visaMerchantId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantUrl\": \"https://WSrQROKvRMlL.mhsax9\",\n        \"merchantLogoUrl\": \"http://oKcSndCIYcDck.gnpqC8wwpDS-YEE0Kg8-s1jSn9idEb\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"merchantCategoryCode\": \"string\",\n        \"phoneNumber\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dda33218-856a-43bf-8cd0-5dca796ed180",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "transactionenrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f96b0cf-1161-4a77-bf35-cf7b49e8ebef",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "transactionenrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fd052d8e-a679-44be-b2a3-1f7688fda29d",
+      "name": "Merchant Search API",
+      "description": {
+        "content": "Search for merchants by name and location to retrieve Visa merchant identifiers and related details.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b992b231-8132-4e69-8ba9-397a59119145",
+          "name": "Search Merchants",
+          "request": {
+            "name": "Search Merchants",
+            "description": {
+              "content": "Searches for merchants by name and location criteria, returning Visa merchant identifiers and related business details. This operation enables applications to find and validate merchant information in the Visa merchant database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "merchantsearch",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"searchAttrList\": {\n    \"merchantName\": \"<string>\",\n    \"merchantCity\": \"<string>\",\n    \"merchantState\": \"<string>\",\n    \"merchantCountryCode\": \"<string>\",\n    \"merchantPostalCode\": \"<string>\",\n    \"merchantCategoryCode\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"searchOptions\": {\n    \"maxRecords\": \"<integer>\",\n    \"matchScore\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1e8ef29-8ed4-4a73-812a-3d426b8c7659",
+              "name": "Search results returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchAttrList\": {\n    \"merchantName\": \"<string>\",\n    \"merchantCity\": \"<string>\",\n    \"merchantState\": \"<string>\",\n    \"merchantCountryCode\": \"<string>\",\n    \"merchantPostalCode\": \"<string>\",\n    \"merchantCategoryCode\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"searchOptions\": {\n    \"maxRecords\": \"<integer>\",\n    \"matchScore\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merchantSearchServiceResponse\": {\n    \"response\": [\n      {\n        \"visaMerchantId\": \"string\",\n        \"visaStoreId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantCategoryCode\": \"string\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"matchScore\": 4957.052488510204\n      },\n      {\n        \"visaMerchantId\": \"string\",\n        \"visaStoreId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantCategoryCode\": \"string\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"matchScore\": 6876.8311847314235\n      }\n    ],\n    \"totalCount\": 7659\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9635e97-dfbb-4e32-a51c-69fa026da3ba",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchAttrList\": {\n    \"merchantName\": \"<string>\",\n    \"merchantCity\": \"<string>\",\n    \"merchantState\": \"<string>\",\n    \"merchantCountryCode\": \"<string>\",\n    \"merchantPostalCode\": \"<string>\",\n    \"merchantCategoryCode\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"searchOptions\": {\n    \"maxRecords\": \"<integer>\",\n    \"matchScore\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e04f63c-7fb2-450b-b88a-8a752095fe70",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchAttrList\": {\n    \"merchantName\": \"<string>\",\n    \"merchantCity\": \"<string>\",\n    \"merchantState\": \"<string>\",\n    \"merchantCountryCode\": \"<string>\",\n    \"merchantPostalCode\": \"<string>\",\n    \"merchantCategoryCode\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"searchOptions\": {\n    \"maxRecords\": \"<integer>\",\n    \"matchScore\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1aeca285-ab6d-43e8-8bc6-27cc14379ea3",
+      "name": "Nearby Merchants API",
+      "description": {
+        "content": "Discover nearby Visa-accepting merchants based on geographic coordinates or address information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7289d928-6fab-4831-a991-e90269d39be2",
+          "name": "Find Nearby Merchants",
+          "request": {
+            "name": "Find Nearby Merchants",
+            "description": {
+              "content": "Finds Visa-accepting merchants near a specified geographic location. This operation supports location-based merchant discovery for consumer applications and services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "merchantsearch",
+                "v1",
+                "nearbymerchants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a903aaae-674f-4aaa-8a63-dd2cf76713dc",
+              "name": "Nearby merchants found successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "nearbymerchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merchantSearchServiceResponse\": {\n    \"response\": [\n      {\n        \"visaMerchantId\": \"string\",\n        \"visaStoreId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantCategoryCode\": \"string\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"matchScore\": 669.9441562404895\n      },\n      {\n        \"visaMerchantId\": \"string\",\n        \"visaStoreId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantCategoryCode\": \"string\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"matchScore\": 9077.532808125812\n      }\n    ],\n    \"totalCount\": 2047\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c59e25fc-3c85-4c9e-9598-1114619c1fec",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "nearbymerchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f296e854-7ea4-4d98-b5ab-17f69eb86ae4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "nearbymerchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "300bfe3d-debc-4e02-9e8f-15e744ce0c69",
+    "name": "Visa Merchant Search",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Visa Merchant Search API provides enriched and precise merchant data to create a more transparent and effective transaction process. The API supports transaction enrichment with enhanced merchant information, generic merchant search by name and location, and nearby merchant discovery for Visa-accepting locations.\n\nContact Support:\n Name: Visa Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

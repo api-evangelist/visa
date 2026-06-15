@@ -1,0 +1,209 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Consent Management Service",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visa Consent Management API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Revoke Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vcms/v1/consents/:consentID/revoke",
+            "headers": [
+              {
+                "name": "X-Correlation-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentID",
+                "value": "",
+                "type": "path",
+                "description": "Consent identifier.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API revokes a current consent.\nA consent may be revoked if it is in either ACTIVE or PAUSED state. Attempting to revoke a consent in any other state results in a 409 error with <code>invalidConsentStateTransition</code> reason."
+        },
+        {
+          "info": {
+            "name": "Update Remaining Consent Uses",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.api.visa.com/vcms/v1/consents/:consentID/constraints/remainingNumberUses",
+            "headers": [
+              {
+                "name": "X-Correlation-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentID",
+                "value": "",
+                "type": "path",
+                "description": "Consent identifier.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API for Visa partners (Consent Requestors) to update the remaining number of uses for a multi-use consent.\nNotes:\n+ This API is idempotent.\n+ For an active consent, this value may be set to less than or equal to the current value, and only if maxNumberUses is set as non-zero on the consent. Any violation of the above conditions will result in a 409 error with <code>invalidConsentModification</code> reason. If set to zero, the status of the consent changes to CONSUMED and is no longer active."
+        },
+        {
+          "info": {
+            "name": "Save Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vcms/v1/consents",
+            "headers": [
+              {
+                "name": "X-Correlation-Id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API for Visa partners (Consent Requestors) to save a consumer-granted consent.\nNotes:\n+ This API is not idempotent, and there is no duplicate check to prevent clients from creating multiple consents with the same values.\n+ The associated Consent Directory entry determines which, if any, identity verification attestation is required."
+        },
+        {
+          "info": {
+            "name": "Get Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vcms/v1/consents/:consentID",
+            "headers": [
+              {
+                "name": "X-Correlation-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentID",
+                "value": "",
+                "type": "path",
+                "description": "Consent identifier.\n"
+              }
+            ]
+          },
+          "docs": "This API retrieves the consent object identified by consent ID."
+        },
+        {
+          "info": {
+            "name": "Update Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.visa.com/vcms/v1/consents/:consentID",
+            "headers": [
+              {
+                "name": "X-Correlation-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentID",
+                "value": "",
+                "type": "path",
+                "description": "Consent identifier.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Consent"
+        },
+        {
+          "info": {
+            "name": "Validate Consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vcms/v1/consents/:consentID/validate",
+            "headers": [
+              {
+                "name": "X-Correlation-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentID",
+                "value": "",
+                "type": "path",
+                "description": "Consent identifier.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API is used by Resource Providers to verify that a consent is recorded against the provided user ID. If so, the consent object is returned."
+        },
+        {
+          "info": {
+            "name": "Update Consent Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.api.visa.com/vcms/v1/consents/:consentID/status",
+            "headers": [
+              {
+                "name": "X-Correlation-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentID",
+                "value": "",
+                "type": "path",
+                "description": "Consent identifier.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API for Visa partners (Consent Requestors) to update consent status.\nNotes:\nStatus may be set in accordance with the following state transitions, with invalid transitions resulting in a 409 error with <code>invalidConsentStateTransition</code> reason.\n  + ACTIVE -> PAUSED\n  + PAUSED -> ACTIVE\n  + ACTIVE -> CONSUMED"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa B2B Connect",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "B2B Connect API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vba/v1/payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a new cross-border B2B payment transaction. The payment is routed through Visa's network for direct settlement between the originating and beneficiary financial institutions."
+        },
+        {
+          "info": {
+            "name": "Get Payment Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vba/v1/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the payment"
+              }
+            ]
+          },
+          "docs": "Retrieves the current status and details of a B2B Connect payment transaction."
+        },
+        {
+          "info": {
+            "name": "Acknowledge Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vba/v1/payments/:paymentId/acknowledge",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the payment"
+              }
+            ]
+          },
+          "docs": "Acknowledges receipt of a B2B Connect payment by the beneficiary financial institution."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

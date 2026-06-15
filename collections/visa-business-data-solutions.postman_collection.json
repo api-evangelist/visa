@@ -1,0 +1,1713 @@
+{
+  "item": [
+    {
+      "id": "25e14336-9e4a-4e75-8c60-d639cd4335cb",
+      "name": "Authorization Data API",
+      "description": {
+        "content": "Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20f61aea-1498-487a-8c61-c214638683e6",
+          "name": "Get Authorization Data",
+          "request": {
+            "name": "Get Authorization Data",
+            "description": {
+              "content": "Get Authorization Data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vbs",
+                "dapi",
+                "v1",
+                "transactions",
+                "auth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) clientId",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authEndDateTime\": \"<dateTime>\",\n  \"authStartDateTime\": \"<dateTime>\",\n  \"companyId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"processorId\": \"<string>\",\n  \"regionId\": \"<string>\",\n  \"filters\": [\n    {\n      \"filterBy\": \"<string>\",\n      \"filterValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"filterBy\": \"<string>\",\n      \"filterValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"pageNum\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"accountList\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f19d0e2c-1568-4112-8997-12c85c8e58a3",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metaData\": {\n    \"totalMatchedRecords\": 2,\n    \"pageNum\": 1\n  },\n  \"authTransactions\": [\n    {\n      \"tranId\": \"973839033642644\",\n      \"mrchCatgCd\": \"9399\",\n      \"stipAdvcCd\": \"5\",\n      \"msgType\": \"0100\",\n      \"isoTranAmt\": \"100.04\",\n      \"vpcPropActnCd\": \" \",\n      \"crdhBillAmt\": \"100.04\",\n      \"authTime\": \"12:11:22\",\n      \"stipSwtchRsnCd\": \" \",\n      \"tokenIndicator\": \"0\",\n      \"issuer\": \"4444\",\n      \"trgrSvcDesc\": \"Airline merchants restriction\",\n      \"trgrSvcType\": \"AIR\",\n      \"uniqSeqId\": \"5464545355453454\",\n      \"vpcActTknCd\": \" \",\n      \"authCatgCd\": \"99\",\n      \"authCatgDesc\": \"PROCESSING ERROR\",\n      \"company\": \"90001\",\n      \"partialAuthAmt\": \"100.04\",\n      \"preAuth\": \"Yes\",\n      \"mrchNm\": \"Amazon\",\n      \"tranProcCd\": \" \",\n      \"mrchStatePrvCd\": \" \",\n      \"crdTypCd\": \"4\",\n      \"isoTranCurrCd\": \"840\",\n      \"authStatusCode\": \"80\",\n      \"mrchCtryCd\": \"COLUMBIA\",\n      \"msgTypeDesc\": \"AUTHORIZATION REQUEST\",\n      \"acctNum\": \"4000000000000003\",\n      \"crdAcptrId\": \" \",\n      \"authRsnDesc\": \"NO FINANCIAL IMPACT\",\n      \"crdhBillCurrCd\": \"840\",\n      \"processor\": \"2\",\n      \"crdhBillAmtUsd\": \"100.04\",\n      \"authDt\": \"20220901\",\n      \"mrchZipCd\": \"29201\",\n      \"authIdResp\": \" \",\n      \"tokenNumber\": \"                \",\n      \"stipSwtchRsnDesc\": \"Not Applicable\",\n      \"mrchCity\": \"San Jose\",\n      \"region\": \"1\"\n    },\n    {\n      \"tranId\": \"973492303180772\",\n      \"mrchCatgCd\": \"9399\",\n      \"stipAdvcCd\": \"5\",\n      \"msgType\": \"0100\",\n      \"isoTranAmt\": \"100.04\",\n      \"vpcPropActnCd\": \" \",\n      \"crdhBillAmt\": \"100.04\",\n      \"authTime\": \"12:11:22\",\n      \"stipSwtchRsnCd\": \" \",\n      \"tokenIndicator\": \"0\",\n      \"issuer\": \"4444\",\n      \"trgrSvcDesc\": \"Airline merchants restriction\",\n      \"trgrSvcType\": \"AIR\",\n      \"uniqSeqId\": \"43454543534545\",\n      \"vpcActTknCd\": \" \",\n      \"authCatgCd\": \"99\",\n      \"authCatgDesc\": \"PROCESSING ERROR\",\n      \"company\": \"90001\",\n      \"partialAuthAmt\": \"100.04\",\n      \"preAuth\": \"Yes\",\n      \"mrchNm\": \"Amazon\",\n      \"tranProcCd\": \" \",\n      \"mrchStatePrvCd\": \" \",\n      \"crdTypCd\": \"4\",\n      \"isoTranCurrCd\": \"840\",\n      \"authStatusCode\": \"56\",\n      \"mrchCtryCd\": \"COLUMBIA\",\n      \"msgTypeDesc\": \"AUTHORIZATION REQUEST\",\n      \"acctNum\": \"4000000000000014\",\n      \"crdAcptrId\": \" \",\n      \"authRsnDesc\": \"UNABLE TO LOCATE RECORD\",\n      \"crdhBillCurrCd\": \"840\",\n      \"processor\": \"2\",\n      \"crdhBillAmtUsd\": \"100.04\",\n      \"authDt\": \"20220901\",\n      \"mrchZipCd\": \"29201\",\n      \"authIdResp\": \" \",\n      \"tokenNumber\": \"                \",\n      \"stipSwtchRsnDesc\": \"Not Applicable\",\n      \"mrchCity\": \"San Jose\",\n      \"region\": \"1\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bf4e350-3b58-46c9-9627-502ab9bafc3c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0d49c767-f5fa-443c-90c2-b98a23e6714e",
+              "name": "One or more fields were in incorrect format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f626de8f-fce6-465f-b368-5a5990bb4cff",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7965e45-ef0a-478f-9964-55e16c321d73",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3fd5f1f2-45d2-4eda-89b1-48883b1eca32",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44b925cd-0406-4f0a-91ba-49b6a83ca697",
+              "name": "Something went wrong. Please try again later",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3eac83d9-7cf8-4f50-bd60-68c1ccf167cb",
+      "name": "Business Data Corporate Setup API",
+      "description": {
+        "content": "Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e2c26d86-cd36-4008-a71a-af5d9ee8db4f",
+          "name": "Get starter data",
+          "request": {
+            "name": "Get starter data",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cdsapi",
+                "commercial",
+                "v1",
+                "ob",
+                "starterdata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuer\": {\n    \"bank\": [\n      {\n        \"bankId\": \"<integer>\",\n        \"company\": [\n          {\n            \"companyId\": \"<integer>\"\n          },\n          {\n            \"companyId\": \"<integer>\"\n          }\n        ]\n      },\n      {\n        \"bankId\": \"<integer>\",\n        \"company\": [\n          {\n            \"companyId\": \"<integer>\"\n          },\n          {\n            \"companyId\": \"<integer>\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": {\n      \"adhoc\": \"<string>\",\n      \"numberOfRecords\": \"<integer>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46320677-7a82-4c83-9836-7d0adf13a372",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cdsapi",
+                    "commercial",
+                    "v1",
+                    "ob",
+                    "starterdata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuer\": {\n    \"bank\": [\n      {\n        \"bankId\": \"200\",\n        \"company\": [\n          {\n            \"companyId\": \"8888800000\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": {\n      \"numberOfRecords\": 300,\n      \"adhoc\": \"true\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"starterData\": {\n    \"starterDataRecords\": {\n      \"cardHolder\": [],\n      \"company\": [\n        {\n          \"city\": \"RICHMOND\",\n          \"effectiveDt\": 1233014400000,\n          \"orgHierManagementInd\": 0,\n          \"optFld1\": \"\",\n          \"optFld2\": \"\",\n          \"isParticipating\": \"Y\",\n          \"spendingLimit\": 18250014,\n          \"processorId\": 1,\n          \"companyNm\": \"207-UVA\",\n          \"stateProvCd\": \"VA\",\n          \"federalInd\": 0,\n          \"optFld3\": \"\",\n          \"optFld4\": \"\",\n          \"mnrGroupId\": null,\n          \"address3\": null,\n          \"address2\": \"101 N 14TH ST 2ND FL\",\n          \"address1\": \"DEPARTMENT OF ACCOUNTS\",\n          \"isoCtryCd\": 840,\n          \"prmyCntcFirstNm\": null,\n          \"prmyIndustryClsfnCd\": 0,\n          \"cardType\": 2,\n          \"postalCd\": \"232193684\",\n          \"sctrCd\": null,\n          \"memberBankId\": \"6040\",\n          \"dnbNum\": 0,\n          \"websiteUrlAddr\": null,\n          \"companyId\": \"3011207\",\n          \"reportingIsoCurrCd\": null,\n          \"regionId\": 1,\n          \"prmyCntcLastNm\": null,\n          \"emailAddr\": null,\n          \"companyBid\": null,\n          \"secyIndustryClsfnCd\": null,\n          \"issuerNm\": \"BANK OF AMERICA\",\n          \"logoId\": null,\n          \"conversionIsoCurrCd\": null\n        },\n        {\n          \"city\": \"HARTSVILLE\",\n          \"effectiveDt\": 1115856000000,\n          \"orgHierManagementInd\": 0,\n          \"optFld1\": null,\n          \"optFld2\": null,\n          \"isParticipating\": \"N\",\n          \"spendingLimit\": 37358470,\n          \"processorId\": 1,\n          \"companyNm\": \"SONOCO PRODUCTS COMPANY                                                         \",\n          \"stateProvCd\": \"SC  \",\n          \"federalInd\": 0,\n          \"optFld3\": null,\n          \"optFld4\": null,\n          \"mnrGroupId\": null,\n          \"address3\": null,\n          \"address2\": \"MS J25\",\n          \"address1\": \"NORTH 2ND ST\",\n          \"isoCtryCd\": 840,\n          \"prmyCntcFirstNm\": null,\n          \"prmyIndustryClsfnCd\": null,\n          \"cardType\": 2,\n          \"postalCd\": \"29550330001\",\n          \"sctrCd\": null,\n          \"memberBankId\": \"6040\",\n          \"dnbNum\": null,\n          \"websiteUrlAddr\": null,\n          \"companyId\": \"6603824\",\n          \"reportingIsoCurrCd\": null,\n          \"regionId\": 1,\n          \"prmyCntcLastNm\": null,\n          \"emailAddr\": null,\n          \"companyBid\": null,\n          \"secyIndustryClsfnCd\": null,\n          \"issuerNm\": \"FIA CARD SERVICES, N.A.\",\n          \"logoId\": null,\n          \"conversionIsoCurrCd\": null\n        },\n        {\n          \"city\": \"BRANTFORD\",\n          \"effectiveDt\": 1225152000000,\n          \"orgHierManagementInd\": 0,\n          \"optFld1\": null,\n          \"optFld2\": null,\n          \"isParticipating\": \"N\",\n          \"spendingLimit\": 2699964,\n          \"processorId\": 1,\n          \"companyNm\": \"SONOCO CANADA CORPORATION                                                       \",\n          \"stateProvCd\": \"ON  \",\n          \"federalInd\": 0,\n          \"optFld3\": null,\n          \"optFld4\": null,\n          \"mnrGroupId\": null,\n          \"address3\": null,\n          \"address2\": null,\n          \"address1\": \"33 PARK AVE EAST\",\n          \"isoCtryCd\": 124,\n          \"prmyCntcFirstNm\": null,\n          \"prmyIndustryClsfnCd\": null,\n          \"cardType\": 2,\n          \"postalCd\": \"N3T 5T5\",\n          \"sctrCd\": null,\n          \"memberBankId\": \"6040\",\n          \"dnbNum\": null,\n          \"websiteUrlAddr\": null,\n          \"companyId\": \"6613474\",\n          \"reportingIsoCurrCd\": null,\n          \"regionId\": 1,\n          \"prmyCntcLastNm\": null,\n          \"emailAddr\": null,\n          \"companyBid\": null,\n          \"secyIndustryClsfnCd\": null,\n          \"issuerNm\": \"FIA CARD SERVICES, N.A.\",\n          \"logoId\": null,\n          \"conversionIsoCurrCd\": null\n        },\n        {\n          \"mgrPhoneNum\": null,\n          \"effectiveDt\": 253402214400000,\n          \"parentHierNode\": \"000000000030704581\",\n          \"glSubAcctCd\": \"                                                                            \",\n          \"partIsoCtryCd\": 840,\n          \"description\": \"HENDERSON                               \",\n          \"partPostalCd\": \"29550         \",\n          \"costCtrCd\": null,\n          \"optFld1\": null,\n          \"partAddr2\": null,\n          \"optFld2\": null,\n          \"partAddr3\": null,\n          \"secondHierNodeRep\": \"0000200\",\n          \"mgrLastNm\": null,\n          \"partAddr1\": \"1 N. 2ND ST. MS J22\",\n          \"processorId\": 1,\n          \"partFaxNum\": \"                \",\n          \"taskOrderNum\": null,\n          \"partStateCd\": \"SC\",\n          \"mgrTrainingDt\": 253402214400000,\n          \"partFirstNm\": \"SHEILA\",\n          \"optFld3\": null,\n          \"optFld4\": null,\n          \"mgrFirstNm\": null,\n          \"pHiernodeIsNum\": 191002135,\n          \"partPhoneNum\": \"8433837045      \",\n          \"memberBankId\": \"6040\",\n          \"partLastNm\": \"MULLIS\",\n          \"thirdHierNodeRep\": \"0000021\",\n          \"treeId\": null,\n          \"companyId\": \"6603824\",\n          \"partCity\": \"HARTSVILLE\",\n          \"regionId\": 1,\n          \"partEmailAddr\": null,\n          \"mgrTitle\": null,\n          \"hierNode\": \"000000000040704567\"\n        }\n      ],\n      \"cardAccount\": []\n    },\n    \"responseMetadata\": {\n      \"startIndex\": 1,\n      \"requestId\": 10302,\n      \"numberOfRecordsFetched\": 300,\n      \"nextIndex\": 288,\n      \"remainingStarterRecCount\": 2126752\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5fca2641-4d74-4819-986e-9c19ddda52fb",
+      "name": "Business Data Transactions API",
+      "description": {
+        "content": "Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1- Transaction API, 2- Enhanced Data API, 3- Starter Data API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f99527f-870a-4b77-a726-a57aa4810da1",
+          "name": "Get card transaction data",
+          "request": {
+            "name": "Get card transaction data",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cdsapi",
+                "commercial",
+                "v1",
+                "ob",
+                "trxndata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Client Identification Code",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuer\": {\n    \"bank\": [\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      },\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"endDate\": \"<string>\",\n      \"endTime\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"startTime\": \"<string>\",\n      \"startIndex\": \"<string>\"\n    }\n  },\n  \"accountRequest\": {\n    \"bank\": [\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      },\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"endDate\": \"<string>\",\n      \"endTime\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"startTime\": \"<string>\",\n      \"startIndex\": \"<string>\"\n    }\n  },\n  \"transactionRecordFields\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cc2c86a3-3c11-4e34-8a2b-91bce8a2c06a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cdsapi",
+                    "commercial",
+                    "v1",
+                    "ob",
+                    "trxndata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Client Identification Code",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bank\": [\n    {\n      \"bankId\": \"999999\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionData\": {\n    \"starterInfo\": {},\n    \"responseMetadata\": {\n      \"endIndex\": 8197,\n      \"nextIndex\": 1642,\n      \"requestId\": 4599,\n      \"startIndex\": 5355,\n      \"remainingTrxnRecCount\": 8123,\n      \"numberOfRecordsFetched\": 5832\n    },\n    \"transactionRecords\": [\n      {\n        \"gmrId\": \"string\",\n        \"matId\": \"string\",\n        \"mpsId\": \"string\",\n        \"ddaNbr\": \"string\",\n        \"feeAmt\": \"string\",\n        \"loadCd\": \"string\",\n        \"source\": \"string\",\n        \"tipAmt\": \"string\",\n        \"vatAmt\": \"string\",\n        \"acctNum\": \"string\",\n        \"acqrBin\": \"string\",\n        \"authNbr\": \"string\",\n        \"buyerId\": \"string\",\n        \"feeDesc\": \"string\",\n        \"optFld1\": \"string\",\n        \"optFld2\": \"string\",\n        \"optFld3\": \"string\",\n        \"optFld4\": \"string\",\n        \"psngrNm\": \"string\",\n        \"purchId\": \"string\",\n        \"tax2Amt\": \"string\",\n        \"transDt\": \"string\",\n        \"transTm\": \"string\",\n        \"usageCd\": \"string\",\n        \"regionId\": \"string\",\n        \"supplier\": {\n          \"atId\": \"string\",\n          \"vmid\": \"string\",\n          \"matId\": \"string\",\n          \"mpsId\": \"string\",\n          \"hbcInd\": \"string\",\n          \"mailSt\": \"string\",\n          \"dsblInd\": \"string\",\n          \"dunsNum\": \"string\",\n          \"frchsCd\": \"string\",\n          \"txpyrNm\": \"string\",\n          \"b2MrchNm\": \"string\",\n          \"b2MrchSt\": \"string\",\n          \"busLglNm\": \"string\",\n          \"incStaCd\": \"string\",\n          \"mailAddr\": \"string\",\n          \"mailCity\": \"string\",\n          \"prmSicCd\": \"string\",\n          \"secSicCd\": \"string\",\n          \"tinTypCd\": \"string\",\n          \"wbencInd\": \"string\",\n          \"altMrchNm\": \"string\",\n          \"altMrchSt\": \"string\",\n          \"emailAddr\": \"string\",\n          \"expir8ADt\": \"string\",\n          \"isoCtryCd\": \"string\",\n          \"mailZipCd\": \"string\",\n          \"optOutInd\": \"string\",\n          \"smlBusInd\": \"string\",\n          \"tinMtchCd\": \"string\",\n          \"wmnOwnInd\": \"string\",\n          \"annlSlsVol\": \"string\",\n          \"b2MrchCity\": \"string\",\n          \"busSizeInd\": \"string\",\n          \"clsfn8AInd\": \"string\",\n          \"infoRfslDt\": \"string\",\n          \"mrchCatgCd\": \"string\",\n          \"mrchFaxNum\": \"string\",\n          \"mrchPhnNum\": \"string\",\n          \"nonPrftInd\": \"string\",\n          \"outOfBusDt\": \"string\",\n          \"prmNaicsCd\": \"string\",\n          \"secNaicsCd\": \"string\",\n          \"txpyrIdNum\": \"string\",\n          \"veteranInd\": \"string\",\n          \"altMrchCity\": \"string\",\n          \"altSuppCtry\": \"string\",\n          \"atMrchTypCd\": \"string\",\n          \"b2MrchZipCd\": \"string\",\n          \"incStaChgDt\": \"string\",\n          \"infoRfslInd\": \"string\",\n          \"lvl2CertInd\": \"string\",\n          \"lvl2CptrInd\": \"string\",\n          \"mnrtyVndrCd\": \"string\",\n          \"mrchStrAddr\": \"string\",\n          \"rsrvnPhnNum\": \"string\",\n          \"sbaRgstrInd\": \"string\",\n          \"altMrchZipCd\": \"string\",\n          \"latestEmpCnt\": \"string\",\n          \"lvl3Tier1Ind\": \"string\",\n          \"lvl3Tier2Ind\": \"string\",\n          \"lvl3Tier3Ind\": \"string\",\n          \"lvl3Tier4Ind\": \"string\",\n          \"mrchntQualCd\": \"string\",\n          \"ownrshpChgDt\": \"string\",\n          \"wmnSmlBusInd\": \"string\",\n          \"ccdrAdjMrchNm\": \"string\",\n          \"ccdrAdjMrchSt\": \"string\",\n          \"hubzoneBusInd\": \"string\",\n          \"mailZipSffxCd\": \"string\",\n          \"mailingCtryCd\": \"string\",\n          \"vtrnSmlBusInd\": \"string\",\n          \"dVtrnSmlBusInd\": \"string\",\n          \"dotDisadBusInd\": \"string\",\n          \"dsblVeteranInd\": \"string\",\n          \"smlDisadBusInd\": \"string\",\n          \"akNativeCorpInd\": \"string\",\n          \"b2MrchZipSffxCd\": \"string\",\n          \"ccdrAdjMrchCity\": \"string\",\n          \"smlBusSrceCd1Nm\": \"string\",\n          \"smlBusSrceCd2Nm\": \"string\",\n          \"smlBusSrceCd3Nm\": \"string\",\n          \"solePrptrLastNm\": \"string\",\n          \"airprtDisadvdInd\": \"string\",\n          \"altMrchZipSffxCd\": \"string\",\n          \"caDeptGenlSvcInd\": \"string\",\n          \"certdTexasGsaInd\": \"string\",\n          \"level3CaptureInd\": \"string\",\n          \"smlBusCertfcn1Dt\": \"string\",\n          \"smlBusCertfcn2Dt\": \"string\",\n          \"smlBusCertfcn3Dt\": \"string\",\n          \"smlBusSrceLvl1Cd\": \"string\",\n          \"smlBusSrceLvl2Cd\": \"string\",\n          \"smlBusSrceLvl3Cd\": \"string\",\n          \"solePrptrFirstNm\": \"string\",\n          \"solePrptrMdlInit\": \"string\",\n          \"mrchLocnLatitdVal\": \"string\",\n          \"smlBusCertfcn1Num\": \"string\",\n          \"smlBusCertfcn2Num\": \"string\",\n          \"smlBusCertfcn3Num\": \"string\",\n          \"vietnamVeteranInd\": \"string\",\n          \"airprtDisadvdCd1Nm\": \"string\",\n          \"airprtDisadvdCd2Nm\": \"string\",\n          \"airprtDisadvdCd3Nm\": \"string\",\n          \"airprtDisadvdCd4Nm\": \"string\",\n          \"airprtDisadvdCd5Nm\": \"string\",\n          \"mrchLocnLongitdVal\": \"string\",\n          \"sbaSmlBusRgstryInd\": \"string\",\n          \"airprtDisadvdLvl1Cd\": \"string\",\n          \"airprtDisadvdLvl2Cd\": \"string\",\n          \"airprtDisadvdLvl3Cd\": \"string\",\n          \"airprtDisadvdLvl4Cd\": \"string\",\n          \"airprtDisadvdLvl5Cd\": \"string\",\n          \"certdDnbNmsdcDocInd\": \"string\",\n          \"patrActExclpartyind\": \"string\",\n          \"airprtDisadvdCtry1Cd\": \"string\",\n          \"airprtDisadvdCtry2Cd\": \"string\",\n          \"airprtDisadvdCtry3Cd\": \"string\",\n          \"airprtDisadvdCtry4Cd\": \"string\",\n          \"airprtDisadvdCtry5Cd\": \"string\",\n          \"airprtDisadvdTerr1Nm\": \"string\",\n          \"airprtDisadvdTerr2Nm\": \"string\",\n          \"airprtDisadvdTerr3Nm\": \"string\",\n          \"airprtDisadvdTerr4Nm\": \"string\",\n          \"airprtDisadvdTerr5Nm\": \"string\",\n          \"visaCommerceSellerId\": \"string\",\n          \"histBlkCollegeInstInd\": \"string\",\n          \"smlBusCertfcnExpirnDt\": \"string\",\n          \"smlBusCertfcnExpirn2Dt\": \"string\",\n          \"smlBusCertfcnExpirn3Dt\": \"string\"\n        },\n        \"carrierCd\": \"string\",\n        \"companyId\": \"string\",\n        \"custCdCri\": \"string\",\n        \"disputeDt\": \"string\",\n        \"extractId\": \"string\",\n        \"matchedId\": \"string\",\n        \"messageId\": \"string\",\n        \"postingDt\": \"string\",\n        \"refundNum\": \"string\",\n        \"rvaStatus\": \"string\",\n        \"sourceAmt\": \"string\",\n        \"ticketNum\": \"string\",\n        \"tokenType\": \"string\",\n        \"userData1\": \"string\",\n        \"userData2\": \"string\",\n        \"userData3\": \"string\",\n        \"userData4\": \"string\",\n        \"userData5\": \"string\",\n        \"billingAmt\": \"string\",\n        \"custVatNum\": \"string\",\n        \"disputeAmt\": \"string\",\n        \"origlMccCd\": \"string\",\n        \"routingNbr\": \"string\",\n        \"rvaEndDate\": \"string\",\n        \"supplierNm\": \"string\",\n        \"tranIdntfn\": \"string\",\n        \"addendumKey\": \"string\",\n        \"commodityCd\": \"string\",\n        \"fltDepartDt\": \"string\",\n        \"memoPostFlg\": \"string\",\n        \"merchCatgCd\": \"string\",\n        \"orderTypeCd\": \"string\",\n        \"processorId\": \"string\",\n        \"rvaTimezone\": \"string\",\n        \"rvaUniqueId\": \"string\",\n        \"salesTaxAmt\": \"string\",\n        \"statementDt\": \"string\",\n        \"transRefNum\": \"string\",\n        \"transTypeCd\": \"string\",\n        \"disputeRsnCd\": \"string\",\n        \"memberBankId\": \"string\",\n        \"rvaStartDate\": \"string\",\n        \"sourceCurrCd\": \"string\",\n        \"supplierCity\": \"string\",\n        \"billingCurrCd\": \"string\",\n        \"billingPeriod\": \"string\",\n        \"ddaSavingsNbr\": \"string\",\n        \"purchIdFormat\": \"string\",\n        \"userData1Desc\": \"string\",\n        \"userData2Desc\": \"string\",\n        \"userData3Desc\": \"string\",\n        \"userData4Desc\": \"string\",\n        \"userData5Desc\": \"string\",\n        \"vmpdLtMtchInd\": \"string\",\n        \"accountExpDate\": \"string\",\n        \"billingAcctNbr\": \"string\",\n        \"cardAcceptorId\": \"string\",\n        \"disputeStateCd\": \"string\",\n        \"enrichedTxnFlg\": \"string\",\n        \"exchgRtDcmlNum\": \"string\",\n        \"fgnTranExchgRt\": \"string\",\n        \"origSupplierNm\": \"string\",\n        \"reservedField1\": \"string\",\n        \"reservedField2\": \"string\",\n        \"reservedField3\": \"string\",\n        \"reservedField4\": \"string\",\n        \"supplierCtryCd\": \"string\",\n        \"supplierVatNum\": \"string\",\n        \"cardTransSeqNum\": \"string\",\n        \"lineitemMatchId\": \"string\",\n        \"origTransRefNum\": \"string\",\n        \"pCardTransIsNum\": \"string\",\n        \"taxAmtIncludeCd\": \"string\",\n        \"origlSuplrCityNm\": \"string\",\n        \"origlSuplrCtryCd\": \"string\",\n        \"origlSuplrPstlCd\": \"string\",\n        \"supplierOrderNum\": \"string\",\n        \"supplierPostalCd\": \"string\",\n        \"taxAmt2IncludeCd\": \"string\",\n        \"destnAirprtCityCd\": \"string\",\n        \"rvaClientMessageId\": \"string\",\n        \"vpaProxyPoolNumber\": \"string\",\n        \"origlSuplrStPrvncCd\": \"string\",\n        \"supplierStateProvCd\": \"string\",\n        \"visaCommerceBatchId\": \"string\",\n        \"issuerDefinedUsageCd\": \"string\",\n        \"cardHolderTxnApproval\": \"string\",\n        \"visaCommerPymntInstdt\": \"string\",\n        \"supplierNameJapaneseKanji\": \"string\",\n        \"supplierNameJapaneseKatakana\": \"string\"\n      },\n      {\n        \"gmrId\": \"string\",\n        \"matId\": \"string\",\n        \"mpsId\": \"string\",\n        \"ddaNbr\": \"string\",\n        \"feeAmt\": \"string\",\n        \"loadCd\": \"string\",\n        \"source\": \"string\",\n        \"tipAmt\": \"string\",\n        \"vatAmt\": \"string\",\n        \"acctNum\": \"string\",\n        \"acqrBin\": \"string\",\n        \"authNbr\": \"string\",\n        \"buyerId\": \"string\",\n        \"feeDesc\": \"string\",\n        \"optFld1\": \"string\",\n        \"optFld2\": \"string\",\n        \"optFld3\": \"string\",\n        \"optFld4\": \"string\",\n        \"psngrNm\": \"string\",\n        \"purchId\": \"string\",\n        \"tax2Amt\": \"string\",\n        \"transDt\": \"string\",\n        \"transTm\": \"string\",\n        \"usageCd\": \"string\",\n        \"regionId\": \"string\",\n        \"supplier\": {\n          \"atId\": \"string\",\n          \"vmid\": \"string\",\n          \"matId\": \"string\",\n          \"mpsId\": \"string\",\n          \"hbcInd\": \"string\",\n          \"mailSt\": \"string\",\n          \"dsblInd\": \"string\",\n          \"dunsNum\": \"string\",\n          \"frchsCd\": \"string\",\n          \"txpyrNm\": \"string\",\n          \"b2MrchNm\": \"string\",\n          \"b2MrchSt\": \"string\",\n          \"busLglNm\": \"string\",\n          \"incStaCd\": \"string\",\n          \"mailAddr\": \"string\",\n          \"mailCity\": \"string\",\n          \"prmSicCd\": \"string\",\n          \"secSicCd\": \"string\",\n          \"tinTypCd\": \"string\",\n          \"wbencInd\": \"string\",\n          \"altMrchNm\": \"string\",\n          \"altMrchSt\": \"string\",\n          \"emailAddr\": \"string\",\n          \"expir8ADt\": \"string\",\n          \"isoCtryCd\": \"string\",\n          \"mailZipCd\": \"string\",\n          \"optOutInd\": \"string\",\n          \"smlBusInd\": \"string\",\n          \"tinMtchCd\": \"string\",\n          \"wmnOwnInd\": \"string\",\n          \"annlSlsVol\": \"string\",\n          \"b2MrchCity\": \"string\",\n          \"busSizeInd\": \"string\",\n          \"clsfn8AInd\": \"string\",\n          \"infoRfslDt\": \"string\",\n          \"mrchCatgCd\": \"string\",\n          \"mrchFaxNum\": \"string\",\n          \"mrchPhnNum\": \"string\",\n          \"nonPrftInd\": \"string\",\n          \"outOfBusDt\": \"string\",\n          \"prmNaicsCd\": \"string\",\n          \"secNaicsCd\": \"string\",\n          \"txpyrIdNum\": \"string\",\n          \"veteranInd\": \"string\",\n          \"altMrchCity\": \"string\",\n          \"altSuppCtry\": \"string\",\n          \"atMrchTypCd\": \"string\",\n          \"b2MrchZipCd\": \"string\",\n          \"incStaChgDt\": \"string\",\n          \"infoRfslInd\": \"string\",\n          \"lvl2CertInd\": \"string\",\n          \"lvl2CptrInd\": \"string\",\n          \"mnrtyVndrCd\": \"string\",\n          \"mrchStrAddr\": \"string\",\n          \"rsrvnPhnNum\": \"string\",\n          \"sbaRgstrInd\": \"string\",\n          \"altMrchZipCd\": \"string\",\n          \"latestEmpCnt\": \"string\",\n          \"lvl3Tier1Ind\": \"string\",\n          \"lvl3Tier2Ind\": \"string\",\n          \"lvl3Tier3Ind\": \"string\",\n          \"lvl3Tier4Ind\": \"string\",\n          \"mrchntQualCd\": \"string\",\n          \"ownrshpChgDt\": \"string\",\n          \"wmnSmlBusInd\": \"string\",\n          \"ccdrAdjMrchNm\": \"string\",\n          \"ccdrAdjMrchSt\": \"string\",\n          \"hubzoneBusInd\": \"string\",\n          \"mailZipSffxCd\": \"string\",\n          \"mailingCtryCd\": \"string\",\n          \"vtrnSmlBusInd\": \"string\",\n          \"dVtrnSmlBusInd\": \"string\",\n          \"dotDisadBusInd\": \"string\",\n          \"dsblVeteranInd\": \"string\",\n          \"smlDisadBusInd\": \"string\",\n          \"akNativeCorpInd\": \"string\",\n          \"b2MrchZipSffxCd\": \"string\",\n          \"ccdrAdjMrchCity\": \"string\",\n          \"smlBusSrceCd1Nm\": \"string\",\n          \"smlBusSrceCd2Nm\": \"string\",\n          \"smlBusSrceCd3Nm\": \"string\",\n          \"solePrptrLastNm\": \"string\",\n          \"airprtDisadvdInd\": \"string\",\n          \"altMrchZipSffxCd\": \"string\",\n          \"caDeptGenlSvcInd\": \"string\",\n          \"certdTexasGsaInd\": \"string\",\n          \"level3CaptureInd\": \"string\",\n          \"smlBusCertfcn1Dt\": \"string\",\n          \"smlBusCertfcn2Dt\": \"string\",\n          \"smlBusCertfcn3Dt\": \"string\",\n          \"smlBusSrceLvl1Cd\": \"string\",\n          \"smlBusSrceLvl2Cd\": \"string\",\n          \"smlBusSrceLvl3Cd\": \"string\",\n          \"solePrptrFirstNm\": \"string\",\n          \"solePrptrMdlInit\": \"string\",\n          \"mrchLocnLatitdVal\": \"string\",\n          \"smlBusCertfcn1Num\": \"string\",\n          \"smlBusCertfcn2Num\": \"string\",\n          \"smlBusCertfcn3Num\": \"string\",\n          \"vietnamVeteranInd\": \"string\",\n          \"airprtDisadvdCd1Nm\": \"string\",\n          \"airprtDisadvdCd2Nm\": \"string\",\n          \"airprtDisadvdCd3Nm\": \"string\",\n          \"airprtDisadvdCd4Nm\": \"string\",\n          \"airprtDisadvdCd5Nm\": \"string\",\n          \"mrchLocnLongitdVal\": \"string\",\n          \"sbaSmlBusRgstryInd\": \"string\",\n          \"airprtDisadvdLvl1Cd\": \"string\",\n          \"airprtDisadvdLvl2Cd\": \"string\",\n          \"airprtDisadvdLvl3Cd\": \"string\",\n          \"airprtDisadvdLvl4Cd\": \"string\",\n          \"airprtDisadvdLvl5Cd\": \"string\",\n          \"certdDnbNmsdcDocInd\": \"string\",\n          \"patrActExclpartyind\": \"string\",\n          \"airprtDisadvdCtry1Cd\": \"string\",\n          \"airprtDisadvdCtry2Cd\": \"string\",\n          \"airprtDisadvdCtry3Cd\": \"string\",\n          \"airprtDisadvdCtry4Cd\": \"string\",\n          \"airprtDisadvdCtry5Cd\": \"string\",\n          \"airprtDisadvdTerr1Nm\": \"string\",\n          \"airprtDisadvdTerr2Nm\": \"string\",\n          \"airprtDisadvdTerr3Nm\": \"string\",\n          \"airprtDisadvdTerr4Nm\": \"string\",\n          \"airprtDisadvdTerr5Nm\": \"string\",\n          \"visaCommerceSellerId\": \"string\",\n          \"histBlkCollegeInstInd\": \"string\",\n          \"smlBusCertfcnExpirnDt\": \"string\",\n          \"smlBusCertfcnExpirn2Dt\": \"string\",\n          \"smlBusCertfcnExpirn3Dt\": \"string\"\n        },\n        \"carrierCd\": \"string\",\n        \"companyId\": \"string\",\n        \"custCdCri\": \"string\",\n        \"disputeDt\": \"string\",\n        \"extractId\": \"string\",\n        \"matchedId\": \"string\",\n        \"messageId\": \"string\",\n        \"postingDt\": \"string\",\n        \"refundNum\": \"string\",\n        \"rvaStatus\": \"string\",\n        \"sourceAmt\": \"string\",\n        \"ticketNum\": \"string\",\n        \"tokenType\": \"string\",\n        \"userData1\": \"string\",\n        \"userData2\": \"string\",\n        \"userData3\": \"string\",\n        \"userData4\": \"string\",\n        \"userData5\": \"string\",\n        \"billingAmt\": \"string\",\n        \"custVatNum\": \"string\",\n        \"disputeAmt\": \"string\",\n        \"origlMccCd\": \"string\",\n        \"routingNbr\": \"string\",\n        \"rvaEndDate\": \"string\",\n        \"supplierNm\": \"string\",\n        \"tranIdntfn\": \"string\",\n        \"addendumKey\": \"string\",\n        \"commodityCd\": \"string\",\n        \"fltDepartDt\": \"string\",\n        \"memoPostFlg\": \"string\",\n        \"merchCatgCd\": \"string\",\n        \"orderTypeCd\": \"string\",\n        \"processorId\": \"string\",\n        \"rvaTimezone\": \"string\",\n        \"rvaUniqueId\": \"string\",\n        \"salesTaxAmt\": \"string\",\n        \"statementDt\": \"string\",\n        \"transRefNum\": \"string\",\n        \"transTypeCd\": \"string\",\n        \"disputeRsnCd\": \"string\",\n        \"memberBankId\": \"string\",\n        \"rvaStartDate\": \"string\",\n        \"sourceCurrCd\": \"string\",\n        \"supplierCity\": \"string\",\n        \"billingCurrCd\": \"string\",\n        \"billingPeriod\": \"string\",\n        \"ddaSavingsNbr\": \"string\",\n        \"purchIdFormat\": \"string\",\n        \"userData1Desc\": \"string\",\n        \"userData2Desc\": \"string\",\n        \"userData3Desc\": \"string\",\n        \"userData4Desc\": \"string\",\n        \"userData5Desc\": \"string\",\n        \"vmpdLtMtchInd\": \"string\",\n        \"accountExpDate\": \"string\",\n        \"billingAcctNbr\": \"string\",\n        \"cardAcceptorId\": \"string\",\n        \"disputeStateCd\": \"string\",\n        \"enrichedTxnFlg\": \"string\",\n        \"exchgRtDcmlNum\": \"string\",\n        \"fgnTranExchgRt\": \"string\",\n        \"origSupplierNm\": \"string\",\n        \"reservedField1\": \"string\",\n        \"reservedField2\": \"string\",\n        \"reservedField3\": \"string\",\n        \"reservedField4\": \"string\",\n        \"supplierCtryCd\": \"string\",\n        \"supplierVatNum\": \"string\",\n        \"cardTransSeqNum\": \"string\",\n        \"lineitemMatchId\": \"string\",\n        \"origTransRefNum\": \"string\",\n        \"pCardTransIsNum\": \"string\",\n        \"taxAmtIncludeCd\": \"string\",\n        \"origlSuplrCityNm\": \"string\",\n        \"origlSuplrCtryCd\": \"string\",\n        \"origlSuplrPstlCd\": \"string\",\n        \"supplierOrderNum\": \"string\",\n        \"supplierPostalCd\": \"string\",\n        \"taxAmt2IncludeCd\": \"string\",\n        \"destnAirprtCityCd\": \"string\",\n        \"rvaClientMessageId\": \"string\",\n        \"vpaProxyPoolNumber\": \"string\",\n        \"origlSuplrStPrvncCd\": \"string\",\n        \"supplierStateProvCd\": \"string\",\n        \"visaCommerceBatchId\": \"string\",\n        \"issuerDefinedUsageCd\": \"string\",\n        \"cardHolderTxnApproval\": \"string\",\n        \"visaCommerPymntInstdt\": \"string\",\n        \"supplierNameJapaneseKanji\": \"string\",\n        \"supplierNameJapaneseKatakana\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2b33c5c-9763-44ec-8403-798e986729f8",
+          "name": "Get Transaction and Enhanced Data",
+          "request": {
+            "name": "Get Transaction and Enhanced Data",
+            "description": {
+              "content": "Get Transaction & Enhanced Data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vbs",
+                "dapi",
+                "v1",
+                "transaction_enhanced"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"companyId\": \"<string>\",\n  \"filters\": {\n    \"key_0\": {\n      \"filterType\": \"<string>\",\n      \"filterValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"issuerId\": \"<string>\",\n  \"pagination\": {\n    \"pageNum\": \"<integer>\",\n    \"pageSize\": \"<integer>\"\n  },\n  \"processorId\": \"<string>\",\n  \"regionId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rejectedSettlements\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7c943ae-6e29-48c7-85f0-d516b1a33f4c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transaction_enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"clientId\": \"1111\",\n    \"x-correlation-id\": \"XXXX-111111-222222-333333\"\n  },\n  \"requestData\": {\n    \"issuerId\": \"9999\",\n    \"companyId\": \"11112222\",\n    \"pagination\": {\n      \"pageSize\": 10,\n      \"pageNum\": \"1\"\n    },\n    \"processorId\": \"1\",\n    \"regionId\": \"1\",\n    \"filters\": {\n      \"enhancedData\": {\n        \"filterValues\": [\n          \"supplier\",\n          \"airline\"\n        ],\n        \"filterType\": \"ENHN_CAT\"\n      },\n      \"transactionDateTime\": {\n        \"filterValues\": [\n          \"2023-07-01T01:59:59\",\n          \"2023-07-30T10:59:59\"\n        ],\n        \"filterType\": \"BETWN\"\n      }\n    },\n    \"type\": \"TRAN_ENHN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseHeader\": {\n    \"Keep-Alive\": \"timeout=60\",\n    \"X-Frame-Options\": \"DENY\",\n    \"Strict-Transport-Security\": \"max-age=31536000 ; includeSubDomains\",\n    \"Cache-Control\": \"no-cache, no-store, max-age=0, must-revalidate\",\n    \"X-Correlation-Id\": \"XXXX-111111-222222-333333\",\n    \"X-Content-Type-Options\": \"nosniff\",\n    \"Pragma\": \"no-cache\",\n    \"Expires\": \"0\",\n    \"Content-Length\": \"149596\",\n    \"X-XSS-Protection\": \"0\",\n    \"Date\": \"Thu, 31 Aug 2023 20:58:04 GMT\",\n    \"Content-Type\": \"application/json\"\n  },\n  \"responseData\": [\n    {\n      \"originalMccCode\": 3333,\n      \"period\": 23072,\n      \"virtual\": {},\n      \"bilingPeriodCheckIndicator\": 0,\n      \"userData\": {},\n      \"billingAmount\": 53,\n      \"enhancedData\": {\n        \"lodging\": {\n          \"lodgingSummary\": [\n            {\n              \"itemSequenceNumber\": 1,\n              \"totalMiniBarCharges\": 111,\n              \"totalMovieCharges\": 543,\n              \"healthClubCharges\": 324,\n              \"totalValetParkingCharges\": 123,\n              \"totalLaundryCharges\": 23,\n              \"totalFoodOrBeverageCharges\": 765,\n              \"totalGiftShopPurchases\": 0,\n              \"sourceAmount\": 23.5,\n              \"totalNonRoomCharges\": 9876,\n              \"lodgingNights\": 1,\n              \"netValue\": 123,\n              \"totalRoomTaxAmount\": 100,\n              \"dailyRoomRate\": 1987,\n              \"totalPrepaidExpenses\": 424.75,\n              \"totalTelephoneCharges\": 0,\n              \"taxValue\": 765,\n              \"grossValue\": 99,\n              \"noShowIndicator\": 0,\n              \"totalBusinessCenterCharges\": 564,\n              \"merchantCategoryCode\": 3040,\n              \"totalDiscount\": 10,\n              \"totalOtherCharges\": 24.5,\n              \"totalTaxAmount\": 99,\n              \"totalFolioCashAdvances\": 323\n            }\n          ],\n          \"lodgingDetail\": [\n            {\n              \"discountRate\": 0,\n              \"itemSequenceNumber\": 1,\n              \"foodOrBeverageCharges\": 123,\n              \"valetParkingCharges\": 545,\n              \"laundryCharges\": 0,\n              \"roomTax4Amount\": 232,\n              \"healthClubCharges\": 324,\n              \"roomTax3Amount\": 0,\n              \"roomRate\": 0,\n              \"telephoneCharges\": 666,\n              \"otherCharge\": 87,\n              \"businessCenterCharges\": 213,\n              \"miniBarCharges\": 0,\n              \"folioCashAdvances\": 454,\n              \"roomTaxAmount\": 0,\n              \"movieCharges\": 54,\n              \"sourceAmount\": 23.5,\n              \"roomTax2Amount\": 0,\n              \"giftShopPurchases\": 1\n            }\n          ]\n        }\n      },\n      \"memoPostFlag\": 0,\n      \"supplierIsoCountryCode\": 840,\n      \"sourceCurrencyCode\": 840,\n      \"billingCurrencyCode\": 124,\n      \"vatAmount\": 0,\n      \"originalSupplierCountryCode\": 250,\n      \"preprocessId\": 8,\n      \"bussinessNameSpace\": {\n        \"regionIdentification\": 1,\n        \"processorIdentification\": 902\n      },\n      \"merchantCategoryCode\": 3028,\n      \"sourceLineNumber\": 0,\n      \"base2GmrIdentification\": {\n        \"$numberLong\": \"31023473433\"\n      },\n      \"sourceAmount\": 29,\n      \"_id\": {\n        \"$oid\": \"645a7a55553bbbc444444f9b\"\n      },\n      \"transAudit\": {\n        \"kafkaMongoKey\": \"2023-05-09_2023-05-09\",\n        \"createTime\": \"Tue May 09 11:53:06 CDT 2023\",\n        \"totalProcessTime\": 0,\n        \"transHotStoreProcessTime\": 0,\n        \"upStreamProcessTime\": 0,\n        \"rpicStampingProcessTime\": 0,\n        \"authUnixTime\": {\n          \"$numberLong\": \"1683608400000\"\n        }\n      },\n      \"taxAmount\": 0,\n      \"key\": {\n        \"sequenceNumber\": 297,\n        \"recordKey\": 10007130\n      }\n    },\n    {\n      \"originalMccCode\": 3007,\n      \"period\": 23072,\n      \"virtual\": {},\n      \"bilingPeriodCheckIndicator\": 0,\n      \"userData\": {},\n      \"billingAmount\": 53,\n      \"enhancedData\": {\n        \"lodging\": {\n          \"lodgingSummary\": [\n            {\n              \"itemSequenceNumber\": 1,\n              \"totalMiniBarCharges\": 111,\n              \"totalMovieCharges\": 543,\n              \"healthClubCharges\": 324,\n              \"totalValetParkingCharges\": 123,\n              \"totalLaundryCharges\": 23,\n              \"totalFoodOrBeverageCharges\": 765,\n              \"totalGiftShopPurchases\": 0,\n              \"sourceAmount\": 23.5,\n              \"totalNonRoomCharges\": 9876,\n              \"lodgingNights\": 1,\n              \"netValue\": 123,\n              \"totalRoomTaxAmount\": 100,\n              \"dailyRoomRate\": 1987,\n              \"totalPrepaidExpenses\": 424.75,\n              \"totalTelephoneCharges\": 0,\n              \"taxValue\": 765,\n              \"grossValue\": 99,\n              \"noShowIndicator\": 0,\n              \"totalBusinessCenterCharges\": 564,\n              \"merchantCategoryCode\": 3040,\n              \"totalDiscount\": 10,\n              \"totalOtherCharges\": 24.5,\n              \"totalTaxAmount\": 99,\n              \"totalFolioCashAdvances\": 323\n            }\n          ],\n          \"lodgingDetail\": [\n            {\n              \"discountRate\": 0,\n              \"itemSequenceNumber\": 1,\n              \"foodOrBeverageCharges\": 123,\n              \"valetParkingCharges\": 545,\n              \"laundryCharges\": 0,\n              \"roomTax4Amount\": 232,\n              \"healthClubCharges\": 324,\n              \"roomTax3Amount\": 0,\n              \"roomRate\": 0,\n              \"telephoneCharges\": 666,\n              \"otherCharge\": 87,\n              \"businessCenterCharges\": 213,\n              \"miniBarCharges\": 0,\n              \"folioCashAdvances\": 454,\n              \"roomTaxAmount\": 0,\n              \"movieCharges\": 54,\n              \"sourceAmount\": 23.5,\n              \"roomTax2Amount\": 0,\n              \"giftShopPurchases\": 1\n            }\n          ]\n        },\n        \"fleet\": {\n          \"fleetService\": [\n            {\n              \"serviceType\": \" \",\n              \"cityMotorFuelTaxExemptionIndicator\": 0,\n              \"fuelNetAmount\": 0,\n              \"itemSequenceNumber\": null,\n              \"matchType\": \"P\",\n              \"nonFuelNetAmount\": 0,\n              \"fuelQuantity\": 0,\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"countyFuelSalesTaxAmount\": 0,\n              \"processorFinancialKey\": \"\",\n              \"secondaryStateFuelTaxExemptionIndicator\": 0,\n              \"fleetAdditionalPromptedData1\": \"\",\n              \"fleetAdditionalPromptedData2\": \"\",\n              \"optionalField1\": \"                          \",\n              \"checkOutDate\": null,\n              \"fuelMiscellaneousTaxAmount\": 0,\n              \"vatOrTaxRate\": 40,\n              \"optionalField4\": \"                          \",\n              \"nonFuelGrossAmount\": 0,\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"cityFuelSalesTaxExemptionIndicator\": 0,\n              \"merchantSourceCode\": \"PCR\",\n              \"matchReferenceKey\": \"                                                  \",\n              \"countyFuelSalesTaxExemptionIndicator\": 0,\n              \"fuelFederalExciseTaxAmount\": 0,\n              \"cityFuelSalesTaxAmount\": 0,\n              \"countyMotorFuelTaxAmount\": 0,\n              \"stateMotorFuelTaxExemptionIndicator\": 0,\n              \"nonFuelStateAndLocalSalesTaxAmount\": 0,\n              \"supplierPostalCode\": \"12345\",\n              \"fuelFederalExciseTaxExemptionIndicator\": 0,\n              \"allocationSequenceNumber\": null,\n              \"fileDatePartition\": \"20230826\",\n              \"nonFuelMiscellaneousTaxAmount\": 0,\n              \"stateMotorFuelTaxAmount\": 0,\n              \"fuelUnitCost\": 0,\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"countyMotorFuelTaxExemptionIndicator\": 0,\n              \"fuelMiscellaneousTaxExemptionIndicator\": 0,\n              \"purchaseId\": \"3333                                              \",\n              \"cityMotorFuelTaxAmount\": 0,\n              \"fuelGrossAmount\": 0,\n              \"tokenIndicator\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": 2,\n              \"fleetEmployeeNumber\": \"\",\n              \"nonFuelFederalExciseTaxExemptionIndicator\": 0,\n              \"nonFuelStateAndLocalSalesTaxExemptInd\": 0,\n              \"sourceAmount\": 27.98,\n              \"productSequenceNumber\": null,\n              \"expandedFuelType\": \"\",\n              \"federalSalesTaxAmount\": 0,\n              \"supplierName\": \"CARQUEST 3333\",\n              \"legNumber\": null,\n              \"odometerReading\": \"0000000\",\n              \"fuelUnitOfMeasureCode\": \"G\",\n              \"nonFuelFederalExciseTaxAmount\": 0,\n              \"fleetTrailerNumber\": \"\",\n              \"roomRate\": null,\n              \"secondaryStateFuelTaxAmount\": 0,\n              \"fuelType\": \"00\",\n              \"merchantCategoryCode\": 5555,\n              \"nonFuelMiscellaneousTaxExemptionIndicator\": 0,\n              \"numberOfLegs\": null,\n              \"businessFormatCode\": \"\",\n              \"originationAirportCode\": \"\",\n              \"federalSalesTaxExemptionIndicator\": 0\n            }\n          ],\n          \"fleetProduct\": [\n            {\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"itemSequenceNumber\": null,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"3333                                             \",\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"                          \",\n              \"checkOutDate\": null,\n              \"sourceAmount\": 27.98,\n              \"productSequenceNumber\": 1,\n              \"optionalField4\": \"                          \",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"supplierName\": \"CARQUEST 3333\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": null,\n              \"matchReferenceKey\": \"                                                  \",\n              \"supplierPostalCode\": \"12345\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"productCode\": \"00\",\n              \"fuelType\": \"\",\n              \"fileDatePartition\": \"20230826\",\n              \"merchantCategoryCode\": \"5555\",\n              \"numberOfLegs\": null,\n              \"businessFormatCode\": \"\",\n              \"originationAirportCode\": \"\"\n            }\n          ]\n        },\n        \"carRental\": {\n          \"carRentalSummary\": [\n            {\n              \"insuranceCharges\": 0,\n              \"itemSequenceNumber\": null,\n              \"corporateIdentification\": \"\",\n              \"matchType\": \"P\",\n              \"otherCharges\": 0,\n              \"extraMileageCharges\": 0,\n              \"processorAddendumKey\": \"4444555566668461   22223333444455559293673 08882222 \",\n              \"mileageOrKmAtCheckOut\": null,\n              \"extraChargeCode\": \"\",\n              \"carCompanyCode\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"taBookingReferenceNumber\": \"\",\n              \"optionalField1\": \"                          \",\n              \"totalTaxOrVat\": 0,\n              \"checkOutDate\": \"2023-08-13\",\n              \"vehicleGroupCharge\": \"\",\n              \"dropOffStationCode\": \"\",\n              \"optionalField4\": \"                          \",\n              \"vehicleType\": \"\",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"merchantSourceCode\": \"PCR\",\n              \"dailyRentalRate\": 0,\n              \"matchReferenceKey\": \"\",\n              \"mileageOrKmDriven\": null,\n              \"netValue\": null,\n              \"costCenter\": \"\",\n              \"glCode\": \"\",\n              \"locationRentedFrom\": \"\",\n              \"oneWayDropCharges\": 0,\n              \"supplierPostalCode\": \"12345\",\n              \"lateReturnChargesOrHourlyRate\": 0,\n              \"allocationSequenceNumber\": null,\n              \"unitOfDistance\": \"\",\n              \"autoTowing\": 0,\n              \"grossValue\": null,\n              \"noShowIndicator\": 0,\n              \"fileDatePartition\": \"20230826\",\n              \"regularMileageCharges\": 0,\n              \"additionalServices\": \"\",\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"returnLocation\": \"\",\n              \"clientReferenceField6\": \"\",\n              \"clientReferenceField7\": \"\",\n              \"clientReferenceField9\": \"\",\n              \"tokenIndicator\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"clientReferenceField5\": \"\",\n              \"clientReferenceField16\": \"\",\n              \"clientReferenceField15\": \"\",\n              \"clientReferenceField14\": \"\",\n              \"clientReferenceField13\": \"\",\n              \"clientReferenceField12\": \"\",\n              \"clientReferenceField11\": \"\",\n              \"clientReferenceField10\": \"\",\n              \"sourceAmount\": 123.45,\n              \"productSequenceNumber\": null,\n              \"renterName\": \"TEMP NAME\",\n              \"mileageOrKmAtCheckIn\": null,\n              \"fuelCharges\": 0,\n              \"checkInDateAndTime\": \"\",\n              \"supplierName\": \"TEMP CAR SUPPLIER\",\n              \"classCode\": \"\",\n              \"legNumber\": null,\n              \"weeklyRentalRate\": 0,\n              \"daysRented\": 0,\n              \"pick_UpStationCode\": \"\",\n              \"employeeId\": \"\",\n              \"businessNumber\": \"\",\n              \"locationReturnedTo\": \"\",\n              \"checkOutDateAndTime\": \"\",\n              \"vehicleRegistrationNumber\": \"\",\n              \"roomRate\": null,\n              \"telephoneCharges\": 0,\n              \"productCode\": \"\",\n              \"fuelType\": \"\",\n              \"taxValue\": null,\n              \"merchantCategoryCode\": 3333,\n              \"totalDiscount\": null,\n              \"reservationNumber\": \"\",\n              \"numberOfLegs\": null,\n              \"originationAirportCode\": \"\"\n            }\n          ],\n          \"carRentalDetail\": []\n        },\n        \"purchase\": {\n          \"purchaseSummary\": [\n            {\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"itemSequenceNumber\": null,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"3333\",\n              \"destinationCountryCode\": 840,\n              \"discountAmount\": 0,\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"                          \",\n              \"sourceStateOrProvince\": \" \",\n              \"checkOutDate\": null,\n              \"freightOrShippingVatOrTaxAmount\": 0,\n              \"sourceAmount\": 27.98,\n              \"productSequenceNumber\": null,\n              \"optionalField4\": \"                          \",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"supplierName\": \"CARQUEST 3901\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": null,\n              \"matchReferenceKey\": \"                                                  \",\n              \"freightAmount\": 0,\n              \"freightOrShippingVatOrTaxRate\": 0,\n              \"supplierPostalCode\": \"12345\",\n              \"vatReferenceNumber\": \"\",\n              \"sourcePostalCode\": \"\",\n              \"serviceIdentifier\": \"PURCHA\",\n              \"allocationSequenceNumber\": null,\n              \"destinationStateOrProvince\": \" \",\n              \"roomRate\": null,\n              \"sourceCountryCode\": 9000,\n              \"destinationPostalCode\": \"\",\n              \"fuelType\": \"\",\n              \"fileDatePartition\": \"20230826\",\n              \"merchantCategoryCode\": 5555,\n              \"numberOfLegs\": null,\n              \"originationAirportCode\": \"\",\n              \"orderDate\": \"\",\n              \"dutyAmount\": 0\n            }\n          ],\n          \"purchaseDetail\": [\n            {\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"itemLevelUsageCode\": \"\",\n              \"matchType\": \"P\",\n              \"purchaseId\": \"3362\",\n              \"lineItemSource\": \"VI\",\n              \"typeSupply\": \"0\",\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"                          \",\n              \"itemDiscountAmount\": 0,\n              \"checkOutDate\": null,\n              \"vatOrTaxRate\": 0,\n              \"sourceAmount\": 27.98,\n              \"lastItemIndicator\": 1,\n              \"productSequenceNumber\": null,\n              \"optionalField4\": \"                          \",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"supplierName\": \"CARQUEST 3901\",\n              \"itemDescriptor\": \"TEMP Merchandise\",\n              \"itemCommodityCode\": \"\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": null,\n              \"matchReferenceKey\": \"                                                  \",\n              \"quantity\": 1,\n              \"itemTotalAmount\": 27.98,\n              \"lineItemSalesTaxChargedFlag\": 0,\n              \"itemProductCode\": \"72\",\n              \"supplierPostalCode\": \"12345\",\n              \"unitMeasure\": \"\",\n              \"vatOrTaxAmount\": 0,\n              \"serviceIdentifier\": \"PURCHL\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"fuelType\": \"\",\n              \"unitCost\": 27.98,\n              \"fileDatePartition\": \"20230826\",\n              \"merchantCategoryCode\": 5555,\n              \"numberOfLegs\": null,\n              \"originationAirportCode\": \"\"\n            }\n          ]\n        },\n        \"airline\": {\n          \"airlineDetail\": [\n            {\n              \"departureTime\": \"0000\",\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"domesticOrInternationalIndicator\": 0,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"\",\n              \"destinationOrAirportCode\": \"XXX\",\n              \"dateOfTravel\": \"2023-08-24\",\n              \"primaryTicketNumber\": \"\",\n              \"processorAddendumKey\": \"475144811112222333344445555666677778888999912003    \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"\",\n              \"checkOutDate\": null,\n              \"arrivalTime\": \"0000\",\n              \"sectorArrivalDateScheduled\": \"\",\n              \"sectorNumber\": 0,\n              \"conjunctionTicketNumber\": \"\",\n              \"sourceAmount\": 497.8,\n              \"productSequenceNumber\": null,\n              \"stopoverCode\": 1,\n              \"optionalField4\": \"\",\n              \"optionalField2\": \"\",\n              \"optionalField3\": \"\",\n              \"supplierName\": \"TEMP AIR  000011112222\",\n              \"originationAirportOrRailroadCode\": \"XXX\",\n              \"merchantSourceCode\": \"XXX\",\n              \"legNumber\": 1,\n              \"matchReferenceKey\": \"\",\n              \"couponNumber\": 0,\n              \"serviceClass\": \"L\",\n              \"supplierPostalCode\": \"123450000\",\n              \"arrivalDate\": \"\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"departureTax\": 0,\n              \"fuelType\": \"\",\n              \"fareBasis\": \"\",\n              \"carrierCode\": \"XX\",\n              \"fileDatePartition\": \"20230825\",\n              \"merchantCategoryCode\": 3256,\n              \"numberOfLegs\": null,\n              \"sectorFareAmount\": 0,\n              \"carrierReferenceNumber\": \"\",\n              \"sectorRefundIndicator\": \"\"\n            },\n            {\n              \"departureTime\": \"0000\",\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"domesticOrInternationalIndicator\": 0,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"\",\n              \"destinationOrAirportCode\": \"XXX\",\n              \"dateOfTravel\": \"2023-08-24\",\n              \"primaryTicketNumber\": \"\",\n              \"processorAddendumKey\": \"475200011112222333344445555666677778888999912003    \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"\",\n              \"checkOutDate\": null,\n              \"arrivalTime\": \"0000\",\n              \"sectorArrivalDateScheduled\": \"\",\n              \"sectorNumber\": 0,\n              \"conjunctionTicketNumber\": \"\",\n              \"sourceAmount\": 497.8,\n              \"productSequenceNumber\": null,\n              \"stopoverCode\": 1,\n              \"optionalField4\": \"\",\n              \"optionalField2\": \"\",\n              \"optionalField3\": \"\",\n              \"supplierName\": \"TEMP AIR  0000111122223\",\n              \"originationAirportOrRailroadCode\": \"SFO\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": 2,\n              \"matchReferenceKey\": \"\",\n              \"couponNumber\": 0,\n              \"serviceClass\": \"B\",\n              \"supplierPostalCode\": \"123450000\",\n              \"arrivalDate\": \"\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"departureTax\": 0,\n              \"fuelType\": \"\",\n              \"fareBasis\": \"\",\n              \"carrierCode\": \"AS\",\n              \"fileDatePartition\": \"20230825\",\n              \"merchantCategoryCode\": 1111,\n              \"numberOfLegs\": null,\n              \"sectorFareAmount\": 0,\n              \"carrierReferenceNumber\": \"\",\n              \"sectorRefundIndicator\": \"\"\n            }\n          ],\n          \"airlineSummary\": [\n            {\n              \"clientReference7\": \"\",\n              \"clientReference6\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"endorsementOrRestrictions\": \"                    \",\n              \"matchType\": \"P\",\n              \"documentNumber\": \"\",\n              \"processorAddendumKey\": \"475200011112222333344445555666677778888999912004    \",\n              \"processorFinancialKey\": \"\",\n              \"clientReference9\": \"\",\n              \"primaryCarrierCode\": \"\",\n              \"domesticTicketIndicator\": \"\",\n              \"clientReference16\": \"\",\n              \"clientReference15\": \"\",\n              \"checkOutDate\": null,\n              \"travelAgencyName\": \"\",\n              \"clientReference14\": \"\",\n              \"clientReference13\": \"\",\n              \"clientReference12\": \"\",\n              \"clientReference11\": \"\",\n              \"pnrReferenceNumber\": \"\",\n              \"consultantCode\": \"\",\n              \"optionalField4\": \"\",\n              \"optionalField3\": \"\",\n              \"merchantSourceCode\": \"PCR\",\n              \"enhancedDataSupplierName\": \"\",\n              \"exchangeTicketNumber\": \"\",\n              \"passengerSpecificData\": \"\",\n              \"clientReference10\": \"\",\n              \"airportTax\": 0,\n              \"supplierPostalCode\": \"123450000\",\n              \"securityTax\": 0,\n              \"allocationSequenceNumber\": null,\n              \"ticketIndicator\": 0,\n              \"ancillaryService\": \"\",\n              \"travelAgencyCode\": \"55260004\",\n              \"salesTaxOrGst\": 0,\n              \"fileDatePartition\": \"20230825\",\n              \"exchangeTicketAmount\": 0,\n              \"internetIndicator\": 0,\n              \"totalTaxAmount\": 0,\n              \"travelObligationNumber\": \"\",\n              \"ticketNumber\": \"1000111122223\",\n              \"passengerName\": \"TEMPNAME/LNAME\",\n              \"destinationAirportCode\": \"\",\n              \"createdByProcessCode\": \"N\",\n              \"routingId\": \"\",\n              \"ticketIssueDate\": \"\",\n              \"tcnPassengerName\": \"\",\n              \"overallFlightClass\": \"\",\n              \"purchaseId\": \"\",\n              \"exchangeTicketNumber1\": \"\",\n              \"exchangeTicketNumber2\": \"\",\n              \"ticketFareCurrencyCode\": null,\n              \"tokenIndicator\": \"\",\n              \"eTicketIndicator\": 0,\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"provincialTax\": 0,\n              \"sourceAmount\": 497.8,\n              \"productSequenceNumber\": null,\n              \"departureDate\": \"2023-08-24\",\n              \"supplierName\": \"TEMP AIR  1000111122223\",\n              \"legNumber\": null,\n              \"countrySpecificTax1\": 0,\n              \"countrySpecificTax2\": 0,\n              \"totalFeeAmount\": 0,\n              \"businessNumber\": \"\",\n              \"clientNumber\": \"\",\n              \"matchReferenceField\": \"\",\n              \"roomRate\": null,\n              \"fuelType\": \"\",\n              \"totalFareAmount\": 0,\n              \"merchantCategoryCode\": 3256,\n              \"numberOfLegs\": 2,\n              \"tripDestination\": \"\",\n              \"originationAirportCode\": \"\",\n              \"refundNoticeNumber\": \"\"\n            }\n          ]\n        }\n      },\n      \"memoPostFlag\": 0,\n      \"supplierIsoCountryCode\": 840,\n      \"sourceCurrencyCode\": 840,\n      \"billingCurrencyCode\": 124,\n      \"vatAmount\": 0,\n      \"originalSupplierCountryCode\": 250,\n      \"preprocessId\": 8,\n      \"bussinessNameSpace\": {\n        \"regionIdentification\": 1,\n        \"processorIdentification\": 902\n      },\n      \"merchantCategoryCode\": 3028,\n      \"sourceLineNumber\": 0,\n      \"base2GmrIdentification\": {\n        \"$numberLong\": \"31023473433\"\n      },\n      \"sourceAmount\": 29,\n      \"_id\": {\n        \"$oid\": \"644a4a44444bbbc555566667\"\n      },\n      \"transAudit\": {\n        \"kafkaMongoKey\": \"2023-05-09_2023-05-09\",\n        \"createTime\": \"Tue May 09 11:53:20 CDT 2023\",\n        \"totalProcessTime\": 0,\n        \"transHotStoreProcessTime\": 0,\n        \"upStreamProcessTime\": 0,\n        \"rpicStampingProcessTime\": 0,\n        \"authUnixTime\": {\n          \"$numberLong\": \"1683608400000\"\n        }\n      },\n      \"taxAmount\": 0,\n      \"key\": {\n        \"sequenceNumber\": 297,\n        \"recordKey\": 10007130\n      }\n    }\n  ],\n  \"responseStatus\": {\n    \"statusDescription\": \"Success\",\n    \"statusCode\": \"200\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14418bca-c4ad-4c60-8b33-f7e2902bf0b6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transaction_enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"clientId\": \"1111\",\n    \"x-correlation-id\": \"XXXX-111111-222222-333333\"\n  },\n  \"requestData\": {\n    \"issuerId\": \"9999\",\n    \"companyId\": \"11112222\",\n    \"pagination\": {\n      \"pageSize\": 10,\n      \"pageNum\": \"1\"\n    },\n    \"processorId\": \"1\",\n    \"regionId\": \"1\",\n    \"filters\": {\n      \"enhancedData\": {\n        \"filterValues\": [\n          \"supplier\",\n          \"airline\"\n        ],\n        \"filterType\": \"ENHN_CAT\"\n      },\n      \"transactionDateTime\": {\n        \"filterValues\": [\n          \"2023-07-01T01:59:59\",\n          \"2023-07-30T10:59:59\"\n        ],\n        \"filterType\": \"BETWN\"\n      }\n    },\n    \"type\": \"TRAN_ENHN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdb82a96-f5a9-4997-90a6-b3082ed2dac7",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transaction_enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"clientId\": \"1111\",\n    \"x-correlation-id\": \"XXXX-111111-222222-333333\"\n  },\n  \"requestData\": {\n    \"issuerId\": \"9999\",\n    \"companyId\": \"11112222\",\n    \"pagination\": {\n      \"pageSize\": 10,\n      \"pageNum\": \"1\"\n    },\n    \"processorId\": \"1\",\n    \"regionId\": \"1\",\n    \"filters\": {\n      \"enhancedData\": {\n        \"filterValues\": [\n          \"supplier\",\n          \"airline\"\n        ],\n        \"filterType\": \"ENHN_CAT\"\n      },\n      \"transactionDateTime\": {\n        \"filterValues\": [\n          \"2023-07-01T01:59:59\",\n          \"2023-07-30T10:59:59\"\n        ],\n        \"filterType\": \"BETWN\"\n      }\n    },\n    \"type\": \"TRAN_ENHN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c5dd23d7-96e3-497b-bd1a-68af7ed522be",
+      "name": "Push Authorization Data API",
+      "description": {
+        "content": "PushNotification is a generic data channel to send Commercial Data to the end user over VDP. This API has capability to send Authorization data sets, Enhanced Data , Transaction data and Starter Data sets. Each push notification sent through VDP will have ONLY ONE of above data set i.e. auth or enhanced or transaction or starter data not a combined data sets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b94639f2-dbc0-4635-9d94-676dfd78484d",
+          "name": "Send Auth Data",
+          "request": {
+            "name": "Send Auth Data",
+            "description": {
+              "content": "Authorization Push",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Any_Client_URL"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0396cdd2-8b40-4fc5-999d-593f35761496",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "353a6bb9-f419-4809-8c4b-202e2436be86",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "762c7ada-6473-436f-9325-e5ec6e243cc9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f3c51111-6cb0-49b9-af38-c7fcdb514a65",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "579edfe0-1f57-4022-b730-05d3ffa16bd0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1de1d2b0-e0c4-4a6b-85a3-57c82fed8b51",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c98244e0-d715-46fc-9418-44ba9fa8bfe8",
+              "name": "Something went wrong. Please try again later",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7de9f0da-a049-441e-8721-18ced48b86d7",
+      "name": "Registered User Details Service",
+      "description": {
+        "content": "Self Registration web services are used to register the new users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "65c136e6-a371-491a-b809-bced6d617cf8",
+          "name": "RegisteredUserDetails",
+          "request": {
+            "name": "RegisteredUserDetails",
+            "description": {
+              "content": "RegisteredUserDetails",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CPRAPI",
+                "v1",
+                "registeredUserDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"pagination\": {\n    \"current_page\": \"<string>\"\n  },\n  \"endDate\": \"<string>\",\n  \"startDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e4e43c0-baa0-473d-aba5-8b97b3ddc0dd",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRAPI",
+                    "v1",
+                    "registeredUserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"1\",\n  \"pagination\": {\n    \"current_page\": 1\n  },\n  \"endDate\": \"2019/01/01\",\n  \"messageId\": \"3734508035777106.5\",\n  \"startDate\": \"2016/02/18\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"total_records\": \"462\",\n    \"total_pages\": \"10\",\n    \"current_page\": \"1\"\n  },\n  \"statusDesc\": \"SUCCESS\",\n  \"userDetails\": [\n    {\n      \"lastName\": \"jorege\",\n      \"firstName\": \"alex\",\n      \"bankID\": \"1980\",\n      \"companyID\": \"1336\",\n      \"address\": {\n        \"country\": \"1\",\n        \"zipCode\": \"94404\",\n        \"city\": \"foster city\",\n        \"addressLine1\": \"800 metro center blv\",\n        \"addressLine2\": \"\",\n        \"state\": \"CA\"\n      },\n      \"loginId\": \"jinashah@visa.com\",\n      \"regionID\": \"1\",\n      \"companyName\": \"visa\",\n      \"bankName\": \"PNC Bank-1980\",\n      \"phnNum\": \"1234567891\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e6cd6f4-a63c-4868-92e2-af4362ee567d",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRAPI",
+                    "v1",
+                    "registeredUserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"1\",\n  \"pagination\": {\n    \"current_page\": 1\n  },\n  \"endDate\": \"2019/01/01\",\n  \"messageId\": \"3734508035777106.5\",\n  \"startDate\": \"2016/02/18\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CP050\": {},\n  \"CP051\": {},\n  \"CP052\": {},\n  \"CP053\": {},\n  \"KK001\": {},\n  \"KK002\": {},\n  \"KK006\": {},\n  \"KK007\": {},\n  \"KK012\": {},\n  \"KK013\": {},\n  \"KK014\": {},\n  \"KK015\": {},\n  \"KK016\": {},\n  \"KK017\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "72d9d274-00ff-42fa-882a-f26c1a31dfc3",
+      "name": "VCS Enrollment API",
+      "description": {
+        "content": "The API is used to onboard and register companies, users and cards in Commercial Space",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e815a833-8fe5-4c35-b528-47602cda4566",
+          "name": "VCS Registration",
+          "request": {
+            "name": "VCS Registration",
+            "description": {
+              "content": "The Register endpoint is used to add additional cards and users and provide assopciations required",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vocs",
+                "v1",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientCompanyId\": \"<string>\",\n  \"language\": \"<string>\",\n  \"messageId\": \"<integer>\",\n  \"service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cardInfo\": [\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    },\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    }\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    },\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77802d44-4dfc-46da-96f5-2565cd6a6b63",
+              "name": "Returns correlationId with Success/Failure status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vocs",
+                    "v1",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"language\": \"en_us\",\n  \"messageId\": 649833257,\n  \"service\": [\n    \"VSCB\",\n    \"VSCB\"\n  ],\n  \"cardInfo\": [\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    },\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    }\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    },\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"messageId\": \"9854765\",\n  \"correlationId\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"cardInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    }\n  ],\n  \"userInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    }\n  ],\n  \"associationResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28d3615c-d3c0-4afa-b4cf-f9cea48c67bd",
+          "name": "VCS Registration",
+          "request": {
+            "name": "VCS Registration",
+            "description": {
+              "content": "The Register endpoint is used for registration of corporate companies, cards, users and association between user and card. For the request to be valid, we need company details and primary card",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vocs",
+                "v1",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"zipCode\": \"<string>\",\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\"\n  },\n  \"cardInfo\": [\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    },\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    }\n  ],\n  \"clientCompanyId\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"companyPhoneNumber\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"messageId\": \"<integer>\",\n  \"service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    },\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51bcf811-b866-48af-9a84-627ecc5f7e71",
+              "name": "Returns correlationId with Success/Failure status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vocs",
+                    "v1",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"FC1\",\n    \"state\": \"WA\",\n    \"country\": \"840\",\n    \"zipCode\": \"12234\",\n    \"addressLine1\": \"AddressLine1\",\n    \"addressLine2\": \"AddressLine2\"\n  },\n  \"cardInfo\": [\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    },\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    }\n  ],\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"companyName\": \"TestCompany10220270\",\n  \"companyPhoneNumber\": 99197904935,\n  \"language\": \"en_us\",\n  \"messageId\": 649833257,\n  \"service\": [\n    \"VSCB\",\n    \"VSCB\"\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    },\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"messageId\": \"9854765\",\n  \"correlationId\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"cardInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    }\n  ],\n  \"userInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    }\n  ],\n  \"associationResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fdf7649-d9aa-44c8-bb00-236bf6e0ee69",
+          "name": "Get Status",
+          "request": {
+            "name": "Get Status",
+            "description": {
+              "content": "The Issuer passes userEmail and service to check user creation status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CPRWeb",
+                "getUserStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userEmail",
+                  "value": "<string>",
+                  "description": "(Required) Email Id of the registered user."
+                },
+                {
+                  "disabled": false,
+                  "key": "service",
+                  "value": "<string>",
+                  "description": "(Required) This is the service code correspond to the service you want to subscribe to. Code is VSCB for Visa Spand Clarity for Business."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) As part of the onboarding the clientId will be provided by Visa. Please pass the same clientId for every request.",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e524887-fbf5-44f6-93a6-172d4c2dc0ea",
+              "name": "Returns status of the user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRWeb",
+                    "getUserStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) As part of the onboarding the clientId will be provided by Visa. Please pass the same clientId for every request.",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"\",\n  \"status\": \"COMPLETED\",\n  \"correlationId\": \"1675674574_089_79_l73q003m_CPRWEB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e5cf36a-225c-4061-8028-7cdf046b2fc1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRWeb",
+                    "getUserStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) As part of the onboarding the clientId will be provided by Visa. Please pass the same clientId for every request.",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"VDP Client not Onboarded for Registration API\",\n  \"status\": \"400 BAD_REQUEST\",\n  \"correlationId\": \"1678954277_707_63_l73q003m_CPRWEB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9bf5d9a2-002f-497e-b4fd-7a1945fd7ed1",
+    "name": "Visa Business Data Solutions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

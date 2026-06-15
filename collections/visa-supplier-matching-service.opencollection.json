@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Supplier Matching Service",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visa Supplier Matching Service API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Match suppliers to Visa merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasuppliermatchingservice/v1/search",
+            "params": [
+              {
+                "name": "supplierName",
+                "value": "",
+                "type": "query",
+                "description": "Name of the Supplier"
+              },
+              {
+                "name": "supplierStreetAddress",
+                "value": "",
+                "type": "query",
+                "description": "Address of Supplier"
+              },
+              {
+                "name": "supplierCity",
+                "value": "",
+                "type": "query",
+                "description": "City of the Supplier"
+              },
+              {
+                "name": "supplierState",
+                "value": "",
+                "type": "query",
+                "description": "State of the Supplier"
+              },
+              {
+                "name": "supplierPostalCode",
+                "value": "",
+                "type": "query",
+                "description": "Postal Code of the Supplier"
+              },
+              {
+                "name": "supplierCountryCode",
+                "value": "",
+                "type": "query",
+                "description": "Country Code of the Supplier<br><br>Refer to <a href=\"/request_response_codes#iso_country_and_currency_codes\">ISO Country Codes</a>"
+              },
+              {
+                "name": "supplierPhoneNumber",
+                "value": "",
+                "type": "query",
+                "description": "Phone number of the Supplier"
+              },
+              {
+                "name": "supplierTaxId",
+                "value": "",
+                "type": "query",
+                "description": "Tax Id of the Supplier"
+              }
+            ]
+          },
+          "docs": "Match suppliers to Visa merchants"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Visa Supplier Matching Service Bulk API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/visasuppliermatchingservice/v1/status",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "query",
+                "description": "Otf Id of request file "
+              }
+            ]
+          },
+          "docs": "Supplier Matching Service Bulk File Status"
+        },
+        {
+          "info": {
+            "name": "Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasuppliermatchingservice/v1/upload",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Default Country Code for this file"
+              }
+            ]
+          },
+          "docs": "Supplier Matching Service Bulk upload"
+        },
+        {
+          "info": {
+            "name": "Download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/visasuppliermatchingservice/v1/download",
+            "params": [
+              {
+                "name": "inputFileId",
+                "value": "",
+                "type": "query",
+                "description": "Id of request file supplied at time of upload"
+              }
+            ]
+          },
+          "docs": "Supplier Matching Service Bulk Match download"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

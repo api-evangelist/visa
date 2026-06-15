@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Merchant Screening Service",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Termination Inquiry APIs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Retroactive Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vmss/v2/retroAlertTerminated",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "request-message-id",
+                "value": ""
+              },
+              {
+                "name": "request-message-ts",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Retroactive Alert"
+        },
+        {
+          "info": {
+            "name": "Search Terminated Merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vmss/v2/searchTerminatedRequest",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "request-message-id",
+                "value": ""
+              },
+              {
+                "name": "request-message-ts",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search terminated merchant API"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Direct",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Funds Transfer API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Push Funds Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visadirect/fundstransfer/v1/pushfundstransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pushes funds to a recipient's Visa account. This operation is used to deliver money to a recipient in real-time, supporting use cases such as person-to-person payments, payroll disbursements, insurance claims, and government benefits."
+        },
+        {
+          "info": {
+            "name": "Pull Funds Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visadirect/fundstransfer/v1/pullfundstransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pulls funds from a sender's Visa account. This operation debits funds from the sender's account, typically as the first step in a two-step funds transfer where funds are subsequently pushed to a recipient."
+        },
+        {
+          "info": {
+            "name": "Multi Push Funds Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visadirect/fundstransfer/v1/multipushfundstransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pushes funds to multiple recipient Visa accounts in a single request. This batch operation enables efficient disbursement to many recipients simultaneously."
+        },
+        {
+          "info": {
+            "name": "Multi Pull Funds Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visadirect/fundstransfer/v1/multipullfundstransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pulls funds from multiple sender Visa accounts in a single request. This batch operation supports scenarios requiring funds collection from many accounts simultaneously."
+        },
+        {
+          "info": {
+            "name": "Reverse Funds Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visadirect/fundstransfer/v1/reversefundstransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reverses a previously completed push or pull funds transaction. This operation is used to return funds in cases of errors, disputes, or refund scenarios."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

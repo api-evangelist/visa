@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Merchant Search",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merchant Search API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/merchantsearch/v1/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches for merchants by name and location criteria, returning Visa merchant identifiers and related business details. This operation enables applications to find and validate merchant information in the Visa merchant database."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transaction Enrichment API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enrich Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/merchantsearch/v1/transactionenrichment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enriches transaction data with enhanced merchant information such as merchant street address, website URL, logo, and contact information. This operation helps improve the cardholder experience by providing clearer and more recognizable merchant details on statements."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Nearby Merchants API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find Nearby Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/merchantsearch/v1/nearbymerchants",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finds Visa-accepting merchants near a specified geographic location. This operation supports location-based merchant discovery for consumer applications and services."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

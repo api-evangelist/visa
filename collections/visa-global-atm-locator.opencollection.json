@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Global ATM Locator",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ATM Locator API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find Nearby ATM Totals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/atmlocator/v1/findnearbytotals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the number of ATMs nearest to a given location based on search criteria. Provides subtotals of the number of ATMs matching each filter criteria included in the request."
+        },
+        {
+          "info": {
+            "name": "Find Nearby ATMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/atmlocator/v1/findnearbyatms",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves all details of ATMs near a given area based on search criteria. Returns ATM location details including address, operating hours, supported features, and distance from the search location."
+        },
+        {
+          "info": {
+            "name": "Find Geocodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/atmlocator/v1/findgeocodes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns latitude and longitude coordinates based on an input address. This geocoding operation can be used to convert addresses to coordinates before searching for nearby ATMs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1588 @@
+{
+  "item": [
+    {
+      "id": "5c4cbf97-c022-473f-a130-ed97667cd2a1",
+      "name": "Termination Inquiry APIs",
+      "description": {
+        "content": "Termination Inquiry API allows Acquirers to identify Merchants and Agents terminated by other Acquirers and pull the termination details directly from the Terminated Listing Database.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cac5d120-adf4-407c-8c13-cd2f155aec56",
+          "name": "Get Retroactive Alert",
+          "request": {
+            "name": "Get Retroactive Alert",
+            "description": {
+              "content": "Get Retroactive Alert",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vmss",
+                "v2",
+                "retroAlertTerminated"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "A user-defined message identifier for the request submitted.",
+                "key": "request-message-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                "key": "request-message-ts",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"retroAlertsRequest\": {\n    \"acquirerBID\": \"<string>\",\n    \"acquirerCountryOrRegion\": \"<string>\",\n    \"alertEndDate\": \"<string>\",\n    \"alertStartDate\": \"<string>\",\n    \"pageSize\": \"<integer>\",\n    \"pageOffset\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "56484dc4-8d9d-4825-9dec-c346b72f51e9",
+              "name": "API000 Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"statusDescription\": \"Success\",\n    \"statusCode\": \"VMSS000\"\n  },\n  \"retroAlertsResponse\": {\n    \"numSearchRequestRecordsReturned\": 0,\n    \"pageOffset\": 0,\n    \"pageSize\": 0,\n    \"retroSearchRequestAndAlerts\": [\n      {\n        \"retroSearchRequest\": {\n          \"terminatedRecordSearchCriteria\": {\n            \"businessEmailAddress\": \"billsmith@snapphoto.com\",\n            \"address\": {\n              \"countryOrRegion\": \"JP\",\n              \"stateOrProvince\": \"CA\",\n              \"city\": \"St Albans\",\n              \"streetAddress\": \"80 Wood Street\",\n              \"zipOrPostalCode\": \"SA82GF\"\n            },\n            \"principals\": [\n              {\n                \"passportNumber\": \"07043453\",\n                \"businessEmailAddress\": \"billsmith@snapphoto.com\",\n                \"driverLicenseNumber\": \"07043453\",\n                \"name\": \"Bill Smith\",\n                \"principalID\": \"07043453\",\n                \"residentIDOrNationalID\": \"07043453\",\n                \"SSN\": \"000-00-0000\",\n                \"businessPhoneNumber\": \"+861071111222\"\n              }\n            ],\n            \"DBAName\": \"Snap Photoshop Ltd\",\n            \"legalName\": \"Snap Photoshop Ltd\",\n            \"webAddresses\": [\n              \"https://u.nu\"\n            ],\n            \"financialAccts\": [\n              {\n                \"financialAccountNumber\": \"8090765400\",\n                \"financialInstitutionID\": \"101010\",\n                \"intBankAccountNumber\": \"NO8330001234567\"\n              }\n            ],\n            \"taxID\": \"GB123456789\",\n            \"businessRegistrationNumber\": \"452349600005\",\n            \"tradeOverInternet\": false,\n            \"merchantCategoryCodes\": [\n              \"5411\"\n            ],\n            \"category\": \"1\",\n            \"businessPhoneNumbers\": [\n              \"+861071111222\"\n            ]\n          },\n          \"retroSearchRequestRefID\": \"SRCH123412\",\n          \"acquirerBID\": \"10048640\",\n          \"globalSearch\": false,\n          \"acquirerCountryOrRegion\": \"JP\"\n        },\n        \"alertDate\": \"2019-02-01\",\n        \"searchDate\": \"2018-12-01\",\n        \"possibleMatches\": {\n          \"alertRecords\": [\n            {\n              \"terminatedRecordMatch\": {\n                \"legalName\": \"N\",\n                \"webAddresses\": \"N\",\n                \"principalsMatch\": [\n                  {\n                    \"passportNumber\": \"N\",\n                    \"businessEmailAddress\": \"N\",\n                    \"driverLicenseNumber\": \"N\",\n                    \"name\": \"N\",\n                    \"principalID\": \"N\",\n                    \"residentIDOrNationalID\": \"N\",\n                    \"SSN\": \"N\",\n                    \"businessPhoneNumber\": \"N\"\n                  }\n                ],\n                \"businessEmailAddress\": \"N\",\n                \"financialAcctsMatch\": [\n                  {\n                    \"financialAccountNumber\": \"N\",\n                    \"financialInstitutionID\": \"N\",\n                    \"intBankAccountNumber\": \"N\"\n                  }\n                ],\n                \"taxID\": \"N\",\n                \"businessRegistrationNumber\": \"N\",\n                \"tradeOverInternet\": \"N\",\n                \"merchantCategoryCodes\": \"N\",\n                \"addressMatch\": {\n                  \"countryOrRegion\": \"N\",\n                  \"stateOrProvince\": \"N\",\n                  \"city\": \"N\",\n                  \"streetAddress\": \"N\",\n                  \"zipOrPostalCode\": \"N\"\n                },\n                \"businessPhoneNumbers\": \"N\",\n                \"DBAName\": \"N\"\n              },\n              \"terminatedRefID\": \"10048640\",\n              \"terminatedRecord\": {\n                \"acquirerAssignedMerchantID\": \"36654773\",\n                \"businessEmailAddress\": \"billsmith@snapphoto.com\",\n                \"address\": {\n                  \"countryOrRegion\": \"JP\",\n                  \"stateOrProvince\": \"CA\",\n                  \"city\": \"St Albans\",\n                  \"streetAddress\": \"80 Wood Street\",\n                  \"zipOrPostalCode\": \"SA82GF\"\n                },\n                \"incorportationStatus\": \"3\",\n                \"paymentFacilitatorCountryOrRegion\": \"JP\",\n                \"contractStartDate\": \"2019-11-01\",\n                \"contractEndDate\": \"2019-11-14\",\n                \"principals\": [\n                  {\n                    \"passportNumber\": \"07043453\",\n                    \"businessEmailAddress\": \"billsmith@snapphoto.com\",\n                    \"driverLicenseNumber\": \"07043453\",\n                    \"name\": \"Bill Smith\",\n                    \"principalID\": \"07043453\",\n                    \"residentIDOrNationalID\": \"07043453\",\n                    \"SSN\": \"000-00-0000\",\n                    \"businessPhoneNumber\": \"+861071111222\"\n                  }\n                ],\n                \"primaryListingReason\": \"01\",\n                \"DBAName\": \"Snap Photoshop Ltd\",\n                \"legalName\": \"Snap Photoshop Ltd\",\n                \"webAddresses\": [\n                  \"https://u.nu\"\n                ],\n                \"tradeInternationally\": true,\n                \"financialAccts\": [\n                  {\n                    \"financialAccountNumber\": \"8090765400\",\n                    \"financialInstitutionID\": \"101010\",\n                    \"intBankAccountNumber\": \"NO8330001234567\"\n                  }\n                ],\n                \"secondaryListingReason\": \"08\",\n                \"taxID\": \"GB123456789\",\n                \"paymentFacilitatorBID\": \"10000108\",\n                \"businessRegistrationNumber\": \"452349600005\",\n                \"tradeOverInternet\": false,\n                \"merchantCategoryCodes\": [\n                  \"5411\"\n                ],\n                \"category\": \"1\",\n                \"businessPhoneNumbers\": [\n                  \"+861071111222\"\n                ],\n                \"cardAcceptorIDs\": [\n                  \"12345678910111\"\n                ]\n              },\n              \"acquirerBID\": \"Bank of ABC \",\n              \"acquirerCountryOrRegion\": \"JP\",\n              \"acquirerName\": \"61e8aa42-d252-4e74-9dcc-85134f37a181\"\n            }\n          ],\n          \"totalAlertCount\": 0\n        }\n      }\n    ],\n    \"numSearchRequestRecordsTotal\": 0\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7302c7ed-9224-457f-8355-7b1b24074572",
+              "name": "API001 Mandatary field (with name) is missing or validation Error with (field names). ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9607432e-2bf8-4683-9e28-4d042ae81593",
+              "name": "API004 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67799196-23fc-4512-a083-8c5eb4eb451e",
+              "name": "API007 Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13626310-c2d2-44f7-9118-47ae59a7a837",
+              "name": "API002 Data/Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f392d1c-310d-4696-b99c-8796c5da9d7c",
+              "name": "API008 Method Not Allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9620b6b9-e311-4842-b328-20486e91c14b",
+              "name": "API009 Unacceptable Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5968983b-c17b-400b-93e0-9058a8c946f1",
+              "name": "API003 Process failure (can be back end failures)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "retroAlertTerminated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retroAlertsRequest\": {\n    \"alertStartDate\": \"2020-01-01\",\n    \"acquirerBID\": \"10048640\",\n    \"alertEndDate\": \"2020-06-30\",\n    \"pageOffset\": 0,\n    \"pageSize\": 10,\n    \"acquirerCountryOrRegion\": \"MY\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f5d072d-0375-4fef-aab4-6709cabb9007",
+          "name": "Search Terminated Merchant",
+          "request": {
+            "name": "Search Terminated Merchant",
+            "description": {
+              "content": "Search terminated merchant API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vmss",
+                "v2",
+                "searchTerminatedRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "A user-defined message identifier for the request submitted.",
+                "key": "request-message-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                "key": "request-message-ts",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"searchTerminatedRequest\": {\n    \"acquirerBID\": \"<string>\",\n    \"acquirerCountryOrRegion\": \"<string>\",\n    \"globalSearch\": false,\n    \"terminatedRecordSearchCriteria\": {\n      \"DBAName\": \"<string>\",\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryOrRegion\": \"<string>\",\n        \"streetAddress\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"zipOrPostalCode\": \"<string>\"\n      },\n      \"businessPhoneNumbers\": [\n        \"<string>\"\n      ],\n      \"category\": \"<string>\",\n      \"principals\": [\n        {\n          \"name\": \"<string>\",\n          \"SSN\": \"<string>\",\n          \"principalID\": \"<string>\",\n          \"passportNumber\": \"<string>\",\n          \"businessPhoneNumber\": \"<string>\",\n          \"driverLicenseNumber\": \"<string>\",\n          \"businessEmailAddress\": \"<string>\",\n          \"residentIDOrNationalID\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"SSN\": \"<string>\",\n          \"principalID\": \"<string>\",\n          \"passportNumber\": \"<string>\",\n          \"businessPhoneNumber\": \"<string>\",\n          \"driverLicenseNumber\": \"<string>\",\n          \"businessEmailAddress\": \"<string>\",\n          \"residentIDOrNationalID\": \"<string>\"\n        }\n      ],\n      \"tradeOverInternet\": false,\n      \"taxID\": \"<string>\",\n      \"legalName\": \"<string>\",\n      \"webAddresses\": [\n        \"<string>\",\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"financialAccts\": [\n        {\n          \"intBankAccountNumber\": \"<string>\",\n          \"financialAccountNumber\": \"<string>\",\n          \"financialInstitutionID\": \"<string>\"\n        },\n        {\n          \"intBankAccountNumber\": \"<string>\",\n          \"financialAccountNumber\": \"<string>\",\n          \"financialInstitutionID\": \"<string>\"\n        }\n      ],\n      \"businessEmailAddress\": \"<string>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\",\n        \"<string>\",\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"businessRegistrationNumber\": \"<string>\"\n    },\n    \"retroAlertIfNoMatch\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "55c01b43-8193-49e6-86ce-2b55019dc4b9",
+              "name": "API000 Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"searchTerminatedResponse\": {\n    \"searchRequestRef\": {\n      \"terminatedRecordSearchCriteria\": {\n        \"legalName\": \"FINN DEPOT\",\n        \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n        \"address\": {\n          \"countryOrRegion\": \"GB\",\n          \"city\": \"LONDON\",\n          \"streetAddress\": \"3131 SANDALWOOD DR\",\n          \"zipOrPostalCode\": \"NE12 1FB\"\n        },\n        \"financialAccts\": [\n          {\n            \"financialAccountNumber\": \"80920220719\",\n            \"financialInstitutionID\": \"20220719\",\n            \"intBankAccountNumber\": \"NO83320220719\"\n          }\n        ],\n        \"businessRegistrationNumber\": \"BIN2022071901\",\n        \"tradeOverInternet\": false,\n        \"merchantCategoryCodes\": [\n          \"5462\"\n        ],\n        \"principals\": [\n          {\n            \"name\": \"RYAN HOLIDAY\",\n            \"businessPhoneNumber\": \"20220710011\"\n          }\n        ],\n        \"businessPhoneNumbers\": [\n          \"20220710010\"\n        ],\n        \"DBAName\": \"FINN DEPOT\"\n      },\n      \"searchRequestRefID\": \"8406523\",\n      \"acquirerBID\": \"10033027\",\n      \"globalSearch\": true,\n      \"acquirerCountryOrRegion\": \"JP\"\n    },\n    \"possibleMatches\": {\n      \"matchedRecords\": [\n        {\n          \"terminatedRecordMatch\": {\n            \"legalName\": \"N\",\n            \"principalsMatch\": [\n              {\n                \"name\": \"E\",\n                \"businessPhoneNumber\": \"E\"\n              }\n            ],\n            \"businessEmailAddress\": \"E\",\n            \"financialAcctsMatch\": [\n              {\n                \"financialAccountNumber\": \"E\",\n                \"financialInstitutionID\": \"E\",\n                \"intBankAccountNumber\": \"E\"\n              }\n            ],\n            \"businessRegistrationNumber\": \"E\",\n            \"merchantCategoryCodes\": \"E\",\n            \"addressMatch\": {\n              \"countryOrRegion\": \"E\",\n              \"city\": \"E\",\n              \"streetAddress\": \"E\",\n              \"zipOrPostalCode\": \"E\"\n            },\n            \"businessPhoneNumbers\": \"E\",\n            \"DBAName\": \"N\"\n          },\n          \"terminatedRefID\": \"A48dfead8-0218-4cae-b422-49ae0e3a64ad1658248491407\",\n          \"terminatedRecord\": {\n            \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n            \"address\": {\n              \"countryOrRegion\": \"GB\",\n              \"stateOrProvince\": \"\",\n              \"city\": \"LONDON\",\n              \"streetAddress\": \"3131 SANDALWOOD DR\",\n              \"zipOrPostalCode\": \"NE12 1FB\"\n            },\n            \"incorportationStatus\": \"3\",\n            \"paymentFacilitatorCountryOrRegion\": \"\",\n            \"contractStartDate\": \"2022-01-01\",\n            \"contractEndDate\": \"2022-07-13\",\n            \"principals\": [\n              {\n                \"name\": \"RYAN HOLIDAY\",\n                \"businessPhoneNumber\": \"20220710011\"\n              }\n            ],\n            \"primaryListingReason\": \"21-Excessive Fraud\",\n            \"DBAName\": \"CHINNO SPORTS\",\n            \"legalName\": \"CHINNO SPORTS\",\n            \"webAddresses\": [\n              \"htpps://chinnosports.com/\"\n            ],\n            \"tradeInternationally\": false,\n            \"financialAccts\": [\n              {\n                \"financialAccountNumber\": \"80920220719\",\n                \"financialInstitutionID\": \"20220719\",\n                \"intBankAccountNumber\": \"NO83320220719\"\n              }\n            ],\n            \"secondaryListingReason\": \"23-Transaction Laundering\",\n            \"paymentFacilitatorBID\": \"\",\n            \"businessRegistrationNumber\": \"BIN2022071901\",\n            \"tradeOverInternet\": false,\n            \"merchantCategoryCodes\": [\n              \"5462\"\n            ],\n            \"businessPhoneNumbers\": [\n              \"20220710010\"\n            ]\n          },\n          \"acquirerBID\": \"10048640\"\n        },\n        {\n          \"terminatedRecordMatch\": {\n            \"legalName\": \"E\",\n            \"principalsMatch\": [\n              {\n                \"name\": \"E\",\n                \"businessPhoneNumber\": \"E\"\n              }\n            ],\n            \"businessEmailAddress\": \"E\",\n            \"financialAcctsMatch\": [\n              {\n                \"financialAccountNumber\": \"N\",\n                \"financialInstitutionID\": \"N\",\n                \"intBankAccountNumber\": \"N\"\n              }\n            ],\n            \"businessRegistrationNumber\": \"N\",\n            \"merchantCategoryCodes\": \"E\",\n            \"addressMatch\": {\n              \"countryOrRegion\": \"E\",\n              \"city\": \"E\",\n              \"streetAddress\": \"E\",\n              \"zipOrPostalCode\": \"E\"\n            },\n            \"businessPhoneNumbers\": \"E\",\n            \"DBAName\": \"E\"\n          },\n          \"terminatedRefID\": \"Abe0e0492-a3bf-4114-8348-ef9e6905662b1657734417199\",\n          \"terminatedRecord\": {\n            \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n            \"address\": {\n              \"countryOrRegion\": \"GB\",\n              \"stateOrProvince\": \"\",\n              \"city\": \"LONDON\",\n              \"streetAddress\": \"3131 SANDALWOOD DR\",\n              \"zipOrPostalCode\": \"NE12 1FB\"\n            },\n            \"incorportationStatus\": \"3\",\n            \"paymentFacilitatorCountryOrRegion\": \"\",\n            \"contractStartDate\": \"2022-01-01\",\n            \"contractEndDate\": \"2022-07-13\",\n            \"principals\": [\n              {\n                \"name\": \"RYAN HOLIDAY\",\n                \"businessPhoneNumber\": \"20220710011\"\n              }\n            ],\n            \"primaryListingReason\": \"21-Excessive Fraud\",\n            \"DBAName\": \"FINN DEPOT\",\n            \"legalName\": \"FINN DEPOT\",\n            \"webAddresses\": [\n              \"htpps://finndepot.com/\"\n            ],\n            \"tradeInternationally\": false,\n            \"secondaryListingReason\": \"23-Transaction Laundering\",\n            \"paymentFacilitatorBID\": \"\",\n            \"tradeOverInternet\": false,\n            \"merchantCategoryCodes\": [\n              \"5462\"\n            ],\n            \"businessPhoneNumbers\": [\n              \"20220710010\"\n            ]\n          },\n          \"acquirerBID\": \"10048640\"\n        }\n      ],\n      \"totalCount\": 2\n    }\n  },\n  \"status\": {\n    \"statusDescription\": \"SUCCESS\",\n    \"statusCode\": \"API000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a76dfc08-5c07-4a58-a94c-5fd5d27777f5",
+              "name": "API001 Mandatary field (with name) is missing or validation Error with (field names).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f7876f0-660b-45cd-8294-504adb5e559d",
+              "name": "API004 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b54cb487-6f87-45ae-a685-030303dcae22",
+              "name": "API007 Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "386811d3-cc6f-41ea-b64b-ea1e963f7937",
+              "name": "API002 Data/Resource Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "697c725d-b256-4f5a-a220-58f4438d69f4",
+              "name": "API008 Method Not Allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e363b1f3-d758-4dac-8509-c57134b0127e",
+              "name": "API009 Unacceptable Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec005317-f9b4-4594-bf18-15d089ccc570",
+              "name": "API003 Process failure (can be back end failures)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmss",
+                    "v2",
+                    "searchTerminatedRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-defined message identifier for the request submitted.",
+                    "key": "request-message-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                    "key": "request-message-ts",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"searchTerminatedRequest\": {\n    \"terminatedRecordSearchCriteria\": {\n      \"legalName\": \"FINN DEPOT\",\n      \"businessEmailAddress\": \"charlesfishman@avaontraders.com\",\n      \"address\": {\n        \"countryOrRegion\": \"GB\",\n        \"city\": \"LONDON\",\n        \"streetAddress\": \"3131 SANDALWOOD DR\",\n        \"zipOrPostalCode\": \"NE12 1FB\"\n      },\n      \"financialAccts\": [\n        {\n          \"financialAccountNumber\": \"80920220719\",\n          \"financialInstitutionID\": \"20220719\",\n          \"intBankAccountNumber\": \"NO83320220719\"\n        }\n      ],\n      \"businessRegistrationNumber\": \"BIN2022071901\",\n      \"tradeOverInternet\": false,\n      \"merchantCategoryCodes\": [\n        \"5462\"\n      ],\n      \"principals\": [\n        {\n          \"name\": \"RYAN HOLIDAY\",\n          \"businessPhoneNumber\": \"20220710011\"\n        }\n      ],\n      \"category\": \"0\",\n      \"businessPhoneNumbers\": [\n        \"20220710010\"\n      ],\n      \"DBAName\": \"FINN DEPOT\"\n    },\n    \"acquirerBID\": \"10033027\",\n    \"retroAlertIfNoMatch\": false,\n    \"globalSearch\": true,\n    \"acquirerCountryOrRegion\": \"JP\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A user-defined message identifier for the request submitted.",
+                  "key": "request-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated message identifier for the response sent.",
+                  "key": "response-message-id",
+                  "value": "LN}dpZpL"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT for the response sent.",
+                  "key": "response-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A system-generated date and timestamp in GMT upon receipt of the request.",
+                  "key": "receive-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "disabled": false,
+                  "description": "A user-entered date and timestamp in GMT for the request submitted.",
+                  "key": "request-message-ts",
+                  "value": "1985-04-31T02:27:18R551Z"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2adae5ca-3255-45a7-9345-d7159c173790",
+    "name": "Visa Merchant Screening Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

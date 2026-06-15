@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Transaction Controls",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Rules API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Customer Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vctc/customerrules/v1/consumertransactioncontrols",
+            "params": [
+              {
+                "name": "primaryAccountNumber",
+                "value": "",
+                "type": "query",
+                "description": "Primary account number of the registered card"
+              }
+            ]
+          },
+          "docs": "Retrieves the current transaction control rules configured for a registered consumer account."
+        },
+        {
+          "info": {
+            "name": "Create Customer Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vctc/customerrules/v1/consumertransactioncontrols",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a consumer's payment account to the VTC service and establishes the payment rules and thresholds that define which transaction types the consumer wants to block or receive alerts about."
+        },
+        {
+          "info": {
+            "name": "Update Customer Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.api.visa.com/vctc/customerrules/v1/consumertransactioncontrols",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the transaction control rules for an existing registered consumer account."
+        },
+        {
+          "info": {
+            "name": "Delete Customer Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.visa.com/vctc/customerrules/v1/consumertransactioncontrols",
+            "params": [
+              {
+                "name": "primaryAccountNumber",
+                "value": "",
+                "type": "query",
+                "description": "Primary account number to deregister"
+              }
+            ]
+          },
+          "docs": "Removes transaction control rules and unregisters a consumer account from the VTC service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alerts Preference Management API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Manage Alerts Preference",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vctc/alertspreference/v1/managealertspreference",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Configures the cardholder's alert delivery preferences including mobile number, email address, and device identifiers that Visa will use to send all alert notifications."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alert History API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Alert History",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vctc/alerthistory/v1/alerthistoryinquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves the VTC notification history for a registered account, including details of all alerts generated based on the consumer's configured rules and thresholds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

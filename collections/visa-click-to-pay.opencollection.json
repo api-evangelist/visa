@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Click to Pay",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CTP Checkout API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasrci/v1/checkout",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a Click to Pay checkout session for a consumer transaction. This operation creates a checkout context that allows the consumer to select from their stored payment credentials and complete the purchase."
+        },
+        {
+          "info": {
+            "name": "Get Checkout Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/visasrci/v1/checkout/:checkoutId",
+            "params": [
+              {
+                "name": "checkoutId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the checkout session"
+              }
+            ]
+          },
+          "docs": "Retrieves the current status and details of an existing Click to Pay checkout session identified by the checkout ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CTP Consumer Management API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enroll Consumer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasrci/v1/consumers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enrolls a new consumer into the Click to Pay ecosystem, creating a profile that can store payment credentials for streamlined checkout experiences across participating merchants."
+        },
+        {
+          "info": {
+            "name": "Add Consumer Credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasrci/v1/consumers/:consumerId/credentials",
+            "params": [
+              {
+                "name": "consumerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the enrolled consumer"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new payment credential to an existing consumer profile. The credential is tokenized and stored securely for use in future Click to Pay transactions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

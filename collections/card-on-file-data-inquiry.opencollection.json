@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Card on File Data Inquiry",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Card on File Data Inquiry API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Inquire Card on File Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/cofds/v1/dataInquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a list of merchants that have the specified Visa card stored on file. This allows issuers to provide cardholders with visibility into where their credentials are being used for recurring or stored-credential transactions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

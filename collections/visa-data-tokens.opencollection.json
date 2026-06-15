@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Data Tokens",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Tokens API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request Data Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vdt/v1/tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requests a data token containing aggregated and anonymized insights for the specified criteria. The token encapsulates spending signals, predictive scores, or historical patterns that can be used for personalization, risk assessment, or business analytics."
+        },
+        {
+          "info": {
+            "name": "Retrieve Data Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vdt/v1/tokens/:tokenId",
+            "params": [
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the data token"
+              }
+            ]
+          },
+          "docs": "Retrieves the details and insights associated with a previously generated data token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

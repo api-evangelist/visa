@@ -1,0 +1,831 @@
+{
+  "item": [
+    {
+      "id": "9df95011-4a06-480e-a760-5e4396ba67de",
+      "name": "CTP Checkout API",
+      "description": {
+        "content": "The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a seamless and secure payment experience.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0a82695-ced2-4444-9c88-c1b70d073031",
+          "name": "Initiate Checkout",
+          "request": {
+            "name": "Initiate Checkout",
+            "description": {
+              "content": "Initiates a Click to Pay checkout session for a consumer transaction. This operation creates a checkout context that allows the consumer to select from their stored payment credentials and complete the purchase.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasrci",
+                "v1",
+                "checkout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"<string>\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4783b1f0-94e3-4d33-af1f-7b30a29a07d7",
+              "name": "Checkout session initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkoutId\": \"string\",\n  \"status\": \"COMPLETED\",\n  \"checkoutUrl\": \"http://Zl.fvamzUfOlLSIfLONWALdHuqA.rdf+6XlZUtW460Zc5-vecEeUhzBAuDia4-YqUtteipkDP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b93b7d61-33fb-4f36-8620-e26463192250",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c48be98-1870-42b3-ab30-7f220e81c3f7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e03a336-eb00-4a4e-af43-acc09eb98f43",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbd39956-e1fa-409d-9201-85fb70b5271f",
+          "name": "Get Checkout Status",
+          "request": {
+            "name": "Get Checkout Status",
+            "description": {
+              "content": "Retrieves the current status and details of an existing Click to Pay checkout session identified by the checkout ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasrci",
+                "v1",
+                "checkout",
+                ":checkoutId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "checkoutId",
+                  "description": "(Required) Unique identifier for the checkout session"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21f63937-a3f3-46ec-a816-40d5bc811442",
+              "name": "Checkout status retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout",
+                    ":checkoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "checkoutId",
+                      "description": "(Required) Unique identifier for the checkout session"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkoutId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"transactionId\": \"string\",\n  \"paymentToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "514fcc95-b540-4a1c-833c-a4a03dc5b151",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout",
+                    ":checkoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "checkoutId",
+                      "description": "(Required) Unique identifier for the checkout session"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb531291-4088-4d8c-8661-9ebafc79fb5e",
+              "name": "Checkout session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout",
+                    ":checkoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "checkoutId",
+                      "description": "(Required) Unique identifier for the checkout session"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5365b5e4-f3fa-434b-83e4-5d75e1101dff",
+      "name": "CTP Consumer Management API",
+      "description": {
+        "content": "The Consumer Management API allows SRC Initiators to manage consumer profiles, including enrollment, identity verification, and credential management within the Click to Pay ecosystem.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a52bb17d-5d03-4122-9467-b318448ef4d5",
+          "name": "Enroll Consumer",
+          "request": {
+            "name": "Enroll Consumer",
+            "description": {
+              "content": "Enrolls a new consumer into the Click to Pay ecosystem, creating a profile that can store payment credentials for streamlined checkout experiences across participating merchants.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasrci",
+                "v1",
+                "consumers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"countryCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "693715bc-b174-4f94-9102-8e306c660724",
+              "name": "Consumer enrolled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "consumers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"countryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consumerId\": \"string\",\n  \"status\": \"ENROLLED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f29c9ac0-00d4-4bba-bf01-d86415d80e6a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "consumers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"countryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e935180-049c-4c79-81fa-a376decee9c7",
+              "name": "Consumer already enrolled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "consumers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"countryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02f03686-2019-4aed-86a2-02760368ec54",
+          "name": "Add Consumer Credential",
+          "request": {
+            "name": "Add Consumer Credential",
+            "description": {
+              "content": "Adds a new payment credential to an existing consumer profile. The credential is tokenized and stored securely for use in future Click to Pay transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasrci",
+                "v1",
+                "consumers",
+                ":consumerId",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumerId",
+                  "description": "(Required) Unique identifier for the enrolled consumer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"cardExpiryDate\": \"<string>\",\n  \"cardholderName\": \"<string>\",\n  \"billingAddress\": {\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1356c9c0-1ce4-4439-a0c5-97054cb24462",
+              "name": "Credential added successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "consumers",
+                    ":consumerId",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumerId",
+                      "description": "(Required) Unique identifier for the enrolled consumer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"cardExpiryDate\": \"<string>\",\n  \"cardholderName\": \"<string>\",\n  \"billingAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"LX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credentialId\": \"string\",\n  \"maskedPan\": \"string\",\n  \"status\": \"PENDING_VERIFICATION\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9218c41-1bde-4b9f-bd14-2f747627412c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "consumers",
+                    ":consumerId",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumerId",
+                      "description": "(Required) Unique identifier for the enrolled consumer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"cardExpiryDate\": \"<string>\",\n  \"cardholderName\": \"<string>\",\n  \"billingAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"LX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "614270c4-0100-4ac9-820a-bc435533ef31",
+              "name": "Consumer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "consumers",
+                    ":consumerId",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumerId",
+                      "description": "(Required) Unique identifier for the enrolled consumer"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"cardExpiryDate\": \"<string>\",\n  \"cardholderName\": \"<string>\",\n  \"billingAddress\": {\n    \"street\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"LX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6e26a93b-a16a-4b6d-8923-15a242ce9bbd",
+    "name": "Visa Click to Pay",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Visa Click to Pay API enables merchants and payment service providers to integrate Visa's secure remote commerce checkout experience. Based on EMV Secure Remote Commerce (SRC) standards, Click to Pay provides a streamlined online checkout flow where consumers can pay with stored Visa credentials without re-entering card details for each purchase.\n\nContact Support:\n Name: Visa Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

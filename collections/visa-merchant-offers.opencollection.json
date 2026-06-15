@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa Merchant Offers Resource Center",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Offers Data API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Offers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/offers/v1/all",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code for offer content"
+              },
+              {
+                "name": "start_index",
+                "value": "",
+                "type": "query",
+                "description": "Starting index for pagination"
+              },
+              {
+                "name": "max_offers",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of offers to return"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Offer category filter"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Country code filter"
+              },
+              {
+                "name": "merchant",
+                "value": "",
+                "type": "query",
+                "description": "Merchant name filter"
+              }
+            ]
+          },
+          "docs": "Retrieves all available merchant offers. Results can be filtered by various attributes including merchant, category, country, and offer type."
+        },
+        {
+          "info": {
+            "name": "Get Offer By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/offers/v1/byofferid",
+            "params": [
+              {
+                "name": "offerid",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the offer"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code for offer content"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific merchant offer identified by its offer ID."
+        },
+        {
+          "info": {
+            "name": "Get Offers By Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/offers/v1/byfilter",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code for offer content"
+              },
+              {
+                "name": "business_segment",
+                "value": "",
+                "type": "query",
+                "description": "Business segment filter"
+              },
+              {
+                "name": "card_product_type",
+                "value": "",
+                "type": "query",
+                "description": "Card product type filter"
+              },
+              {
+                "name": "promotion_channel",
+                "value": "",
+                "type": "query",
+                "description": "Promotion channel filter"
+              },
+              {
+                "name": "start_index",
+                "value": "",
+                "type": "query",
+                "description": "Starting index for pagination"
+              },
+              {
+                "name": "max_offers",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of offers to return"
+              }
+            ]
+          },
+          "docs": "Retrieves merchant offers filtered by specified criteria such as business segment, card product type, and promotion channel."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reference Data API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Offer Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/referencedata/v1/categories",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of available offer categories used for filtering offers."
+        },
+        {
+          "info": {
+            "name": "Get Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/referencedata/v1/countries",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of countries where merchant offers are available."
+        },
+        {
+          "info": {
+            "name": "Get Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/referencedata/v1/merchants",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of merchants that have offers available in the VMORC system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

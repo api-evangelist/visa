@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Visa BIN Attribute Sharing Service",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BIN Files Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BIN Files Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/filedeliveryservice/v1/binFilesMetadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get BIN Files Metadata including number of files, file names, sizes, checksum, creation date."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Issuer API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Files Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vbass/v1/files/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the metadata for the VBASS files including the count of files, file names, size, checksum and creation date."
+        },
+        {
+          "info": {
+            "name": "File Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vbass/v1/files/transfers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The VBASS File Transfer API endpoint allows the download of VBASS File"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Single BIN Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PAN TOKEN Lookup Using POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v1/paymentAccountLookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all the values related to PAN/TOKEN"
+        },
+        {
+          "info": {
+            "name": "PAN TOKEN Lookup Using POST V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v2/paymentAccountLookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all the values related to PAN/TOKEN<br><br>Access to Visa BIN Attributes such as Issuer BIN, Issuer Country , Issuer Billing Currency and Product Identifiers such as Product ID/name, Product Platform, Card type, Card Subtype for any single payment account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Full BIN List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bin Range Details Using POST V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v2/binRangeDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Full BIN List API provides access to Visa BIN Attributes such as Issuer BIN, Issuer Country, Issuer Billing Currency and Product Identifiers such as Product ID/name, Product Platform, Card type , Card Subtype"
+        },
+        {
+          "info": {
+            "name": "Bin Range Details Using POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v1/binRangeDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Full Bin List"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "BIN File Transfer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BIN File Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/filedeliveryservice/v1/binFileTransfer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get access to a BIN Account/Token Range file in csv format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

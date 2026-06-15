@@ -1,0 +1,781 @@
+{
+  "item": [
+    {
+      "id": "2b37820e-016e-4f64-a721-43a3da8773ea",
+      "name": "Visa Supplier Matching Service API",
+      "description": {
+        "content": "Visa Supplier Matching Service",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "261afd00-ad86-4dd1-92f7-43ecd2fcbf99",
+          "name": "Match suppliers to Visa merchants",
+          "request": {
+            "name": "Match suppliers to Visa merchants",
+            "description": {
+              "content": "Match suppliers to Visa merchants",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasuppliermatchingservice",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "supplierName",
+                  "value": "<string>",
+                  "description": "(Required) Name of the Supplier"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierStreetAddress",
+                  "value": "<string>",
+                  "description": "Address of Supplier"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierCity",
+                  "value": "<string>",
+                  "description": "City of the Supplier"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierState",
+                  "value": "<string>",
+                  "description": "State of the Supplier"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierPostalCode",
+                  "value": "<string>",
+                  "description": "Postal Code of the Supplier"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierCountryCode",
+                  "value": "<string>",
+                  "description": "(Required) Country Code of the Supplier<br><br>Refer to <a href=\"/request_response_codes#iso_country_and_currency_codes\">ISO Country Codes</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierPhoneNumber",
+                  "value": "<string>",
+                  "description": "Phone number of the Supplier"
+                },
+                {
+                  "disabled": false,
+                  "key": "supplierTaxId",
+                  "value": "<string>",
+                  "description": "Tax Id of the Supplier"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3e0baef-6a8f-4501-90dd-d8fc7a1d90a2",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "supplierName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierStreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierCity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierState",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierPostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierCountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierPhoneNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "supplierTaxId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matchConfidence\": \"High\",\n  \"matchStatus\": \"Yes\",\n  \"matchDetails\": {\n    \"l3li\": \"\",\n    \"l2\": \"\",\n    \"fleetInd\": \"\",\n    \"mcc\": \"3501\",\n    \"l3s\": \"\"\n  },\n  \"status\": {\n    \"statusDescription\": \"Request successfully received\",\n    \"statusCode\": \"SMSAPI000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6ed3e9fd-3ba1-448d-8a77-9738b74da850",
+      "name": "Visa Supplier Matching Service Bulk API",
+      "description": {
+        "content": "VISA Supplier Matching Service",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7b94b1c-b0f8-44b1-9ea6-f1682e00145c",
+          "name": "Status",
+          "request": {
+            "name": "Status",
+            "description": {
+              "content": "Supplier Matching Service Bulk File Status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasuppliermatchingservice",
+                "v1",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fileId",
+                  "value": "<string>",
+                  "description": "(Required) Otf Id of request file "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84da1169-2523-4698-86be-192545d9d720",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fileId\": 1001,\n  \"status\": {\n    \"statusDescription\": \"string\",\n    \"statusCode\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fa16331-45e1-45a0-bb29-b5b2d42021b9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6cf86164-1167-40d5-865f-5faaea3dca01",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "589c8cb5-350c-4227-974d-207caeff5c9b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5da6dafd-6558-4564-aaa3-3576be0ab9c2",
+          "name": "Upload",
+          "request": {
+            "name": "Upload",
+            "description": {
+              "content": "Supplier Matching Service Bulk upload",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasuppliermatchingservice",
+                "v1",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) Default Country Code for this file"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbd71ce3-7fed-48ff-988d-a651cbcbd09c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fileId\": 1001,\n  \"status\": {\n    \"statusDescription\": \"string\",\n    \"statusCode\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6cbc6e32-cf50-40e0-8978-5f18a44db01d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "132899d7-8478-4389-b6b7-284ce79716bf",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbbe44be-1758-459a-bb6a-ecc0dfb9d8f8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "794d8962-4e17-4ada-8d9e-84521249c833",
+          "name": "Download",
+          "request": {
+            "name": "Download",
+            "description": {
+              "content": "Supplier Matching Service Bulk Match download",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasuppliermatchingservice",
+                "v1",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "inputFileId",
+                  "value": "<string>",
+                  "description": "(Required) Id of request file supplied at time of upload"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5431a8a-99b6-41ea-beb3-5f6588ce9d1c",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inputFileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"byteArray\": [\n    \"1,Supplier 1,123 Main St,Boston ,MA,12345,840\",\n    \"2,Supplier 2,456 Green Ave,San Franciso,CA,98765,840\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d647a7e1-683f-455e-9f0f-72a0242a4dbf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inputFileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c242c7ba-6375-44e3-872b-5bc5bcd7d6ab",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inputFileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "870568f6-7f3f-4ce0-b8c8-ad485379b4ae",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasuppliermatchingservice",
+                    "v1",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inputFileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6621ec56-0ee9-4b15-bb55-01d0486960d3",
+    "name": "Visa Supplier Matching Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Visa Supplier Matching Service is the fast, efficient way to identify suppliers that accept Visa Commercial payment products, so you can reduce time-consuming and labor-intensive paper-based invoice processing and check writing.null",
+      "type": "text/plain"
+    }
+  }
+}

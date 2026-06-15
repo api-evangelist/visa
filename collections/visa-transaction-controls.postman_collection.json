@@ -1,0 +1,1098 @@
+{
+  "item": [
+    {
+      "id": "55984a28-f060-4ea5-b9fe-14c0961d50f2",
+      "name": "Customer Rules API",
+      "description": {
+        "content": "Register consumer accounts and manage payment rules and thresholds that define which transaction types to block or alert on.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccdc6335-b8ec-4761-9ab0-dddbdc4193c4",
+          "name": "Create Customer Rules",
+          "request": {
+            "name": "Create Customer Rules",
+            "description": {
+              "content": "Registers a consumer's payment account to the VTC service and establishes the payment rules and thresholds that define which transaction types the consumer wants to block or receive alerts about.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f3ff63d-6ed1-4c1c-97cc-06de6f7f3bd3",
+              "name": "Customer rules created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 6730.648401107889,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"IN_STORE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 5076.510247161703,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primaryAccountNumber\": \"string\",\n  \"status\": \"string\",\n  \"controls\": [\n    {\n      \"controlType\": \"CHANNEL\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 1705.9316631974064,\n      \"transactionTypes\": [\n        \"INTERNATIONAL\",\n        \"ECOMMERCE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 8737.786062944318,\n      \"transactionTypes\": [\n        \"ECOMMERCE\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8b78dd0-91f9-4a38-8c3f-949839e5e70e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 6730.648401107889,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"IN_STORE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 5076.510247161703,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06864d47-b375-428c-bc87-7d98de267d20",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 6730.648401107889,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"IN_STORE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 5076.510247161703,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f70ef097-38ee-4f9a-9953-81788992d423",
+          "name": "Get Customer Rules",
+          "request": {
+            "name": "Get Customer Rules",
+            "description": {
+              "content": "Retrieves the current transaction control rules configured for a registered consumer account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "primaryAccountNumber",
+                  "value": "<string>",
+                  "description": "(Required) Primary account number of the registered card"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c6eab15-979f-4a98-b4ea-80c6c07b834e",
+              "name": "Customer rules retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primaryAccountNumber\": \"string\",\n  \"status\": \"string\",\n  \"controls\": [\n    {\n      \"controlType\": \"CHANNEL\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 1705.9316631974064,\n      \"transactionTypes\": [\n        \"INTERNATIONAL\",\n        \"ECOMMERCE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 8737.786062944318,\n      \"transactionTypes\": [\n        \"ECOMMERCE\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3cb213d-eaeb-4a02-8254-e53821b97340",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4864340c-75ae-445c-b6ce-5aa37154edc2",
+              "name": "No rules found for the specified account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebde9139-4322-42c8-a79c-4155972a8862",
+          "name": "Update Customer Rules",
+          "request": {
+            "name": "Update Customer Rules",
+            "description": {
+              "content": "Updates the transaction control rules for an existing registered consumer account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c157fcb-bb5f-49d0-8745-165bb96dc7e5",
+              "name": "Customer rules updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 6730.648401107889,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"IN_STORE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 5076.510247161703,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primaryAccountNumber\": \"string\",\n  \"status\": \"string\",\n  \"controls\": [\n    {\n      \"controlType\": \"CHANNEL\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 1705.9316631974064,\n      \"transactionTypes\": [\n        \"INTERNATIONAL\",\n        \"ECOMMERCE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 8737.786062944318,\n      \"transactionTypes\": [\n        \"ECOMMERCE\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18771e1c-1b56-4280-8416-6cbf40e14084",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 6730.648401107889,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"IN_STORE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 5076.510247161703,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9bcaa6d-f137-4ea9-b64a-37771b51f8c3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": true,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 6730.648401107889,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"IN_STORE\"\n      ]\n    },\n    {\n      \"controlType\": \"GEOGRAPHIC_LOCATION\",\n      \"isDeclinedEnabled\": true,\n      \"isAlertEnabled\": false,\n      \"merchantCategoryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countryCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"thresholdAmount\": 5076.510247161703,\n      \"transactionTypes\": [\n        \"ATM\",\n        \"ATM\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95a6e2b9-81b8-4a1e-b812-93ef6c998b39",
+          "name": "Delete Customer Rules",
+          "request": {
+            "name": "Delete Customer Rules",
+            "description": {
+              "content": "Removes transaction control rules and unregisters a consumer account from the VTC service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "primaryAccountNumber",
+                  "value": "<string>",
+                  "description": "(Required) Primary account number to deregister"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4b27916-af81-4f16-b9d7-1614ba046c74",
+              "name": "Customer rules deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb793f86-1b8c-45a4-89c2-c6feabc54c73",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4321c3b2-65c0-49bd-adbb-9af9cf3504c2",
+              "name": "Account not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bb0b2a13-4606-43ff-818a-8a74d9a0424f",
+      "name": "Alerts Preference Management API",
+      "description": {
+        "content": "Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f774a0c-132b-4fa5-b671-bc34e9f2791b",
+          "name": "Manage Alerts Preference",
+          "request": {
+            "name": "Manage Alerts Preference",
+            "description": {
+              "content": "Configures the cardholder's alert delivery preferences including mobile number, email address, and device identifiers that Visa will use to send all alert notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "alertspreference",
+                "v1",
+                "managealertspreference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b69e1ff-f4f8-496d-aa4a-9e9c94912c7e",
+              "name": "Alert preferences configured successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alertspreference",
+                    "v1",
+                    "managealertspreference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"alertDeliveryChannel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "580cb0c4-7753-4a8e-8bf3-afb3445887ab",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alertspreference",
+                    "v1",
+                    "managealertspreference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85404e75-e856-4df2-8ac2-6382845c374e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alertspreference",
+                    "v1",
+                    "managealertspreference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ff9e2c15-77c3-4f7b-9463-6487a33263d3",
+      "name": "Alert History API",
+      "description": {
+        "content": "Retrieve notification history for accounts and manage customer profiles for alert delivery.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f0220c4f-77fb-4ac6-92d5-a4aa5abd59aa",
+          "name": "Get Alert History",
+          "request": {
+            "name": "Get Alert History",
+            "description": {
+              "content": "Retrieves the VTC notification history for a registered account, including details of all alerts generated based on the consumer's configured rules and thresholds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "alerthistory",
+                "v1",
+                "alerthistoryinquiry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "782db917-a8c1-450b-a6cc-fc45a93a5309",
+              "name": "Alert history retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alerthistory",
+                    "v1",
+                    "alerthistoryinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"alerts\": [\n    {\n      \"alertId\": \"string\",\n      \"alertType\": \"string\",\n      \"transactionAmount\": 3280.175751442892,\n      \"merchantName\": \"string\",\n      \"alertDateTime\": \"1967-07-09T10:16:31.381Z\",\n      \"controlType\": \"string\",\n      \"actionTaken\": \"ALERT\"\n    },\n    {\n      \"alertId\": \"string\",\n      \"alertType\": \"string\",\n      \"transactionAmount\": 4600.354713763915,\n      \"merchantName\": \"string\",\n      \"alertDateTime\": \"2013-01-11T05:16:41.597Z\",\n      \"controlType\": \"string\",\n      \"actionTaken\": \"ALERT\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1df1c52a-8321-4692-95c7-fd6c7ef0a844",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alerthistory",
+                    "v1",
+                    "alerthistoryinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc390527-39c9-4e66-a447-5ac0868dbfa0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alerthistory",
+                    "v1",
+                    "alerthistoryinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4e5801cb-c112-4644-89f0-cc81042020a8",
+    "name": "Visa Transaction Controls",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Visa Transaction Controls (VTC) API enables issuers to offer their cardholders the ability to set spending rules and receive real-time alerts on their Visa payment cards. Cardholders can define rules to block or alert on specific transaction types, merchant categories, geographic locations, spending thresholds, and more.\n\nContact Support:\n Name: Visa Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

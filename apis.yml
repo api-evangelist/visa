@@ -99,7 +99,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Errors
-    type: Errors
+    type: ErrorCodes
   description: Payment Account Validation is a process used by financial institutions
     to verify the accuracy and legitimacy of a customer's payment account information.
     This validation helps prevent fraudulent transactions and ensure that funds are
@@ -123,7 +123,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Errors
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/suppliermatchingservice/product-terms
     name: TermsOfService
     type: TermsOfService
@@ -148,7 +148,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/capabilities/vcms/error-codes
     name: Visa Consent Management Service - Error Codes
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/vcms/product-terms
     name: TermsOfService
     type: TermsOfService
@@ -176,7 +176,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Visa Developer Error Codes
-    type: Errors
+    type: ErrorCodes
   description: Card on File Data Inquiry is a service that allows businesses to securely
     and efficiently access and manage customer's card information that is stored on
     file. This service streamlines the process of verifying and updating card data,
@@ -199,7 +199,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Errors
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/foreign_exchange/reference#tag/Foreign-Exchange-Rates-API/operation/ForeignExchangeRates_v2%20-%20Latest
     name: Documentation
     type: Documentation
@@ -225,7 +225,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Visa Developer Error Codes
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/paai/product-terms
     name: Payment Account Attributes Inquiry Product Terms
     type: TermsOfService
@@ -255,7 +255,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Visa Developer Error Codes
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/vau/vau-faq
     name: Visa Account Updater (VAU) FAQs
     type: FAQ
@@ -293,7 +293,7 @@ apis:
     type: FAQ
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Visa Developer Error Codes
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/product-terms
     name: Visa BIN Attribute Sharing Service Product Terms
     type: TermsOfService
@@ -319,7 +319,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Visa Developer Error Codes
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/vbds/product-terms
     name: Visa Business Data Solutions Product Terms
     type: TermsOfService
@@ -386,7 +386,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/capabilities/vcpm/docs-error-codes
     name: Error Codes for Visa Card Program Management
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/vcpm/product-terms
     name: Visa Card Program Management Product Terms
     type: TermsOfService
@@ -486,7 +486,7 @@ apis:
     type: Authentication
   - url: https://developer.visa.com/pages/visa-developer-error-codes
     name: Visa Developer Error Codes
-    type: Errors
+    type: ErrorCodes
   - url: https://developer.visa.com/capabilities/visa-merchant-screening-service/reference#tag/Termination-Inquiry-APIs/operation/RetroActive%20Alert%20of%20Terminated%20Merchants%20or%20Agent_v2%20-%20Latest
     name: Visa Merchant Screening Service API Reference
     type: Documentation

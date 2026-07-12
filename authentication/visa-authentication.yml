@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/card-on-file-data-inquiry.yml, openapi/visa-b2b-connect.yml, openapi/visa-click-to-pay.yml,
+  openapi/visa-data-tokens.yml, openapi/visa-direct.yml, openapi/visa-global-atm-locator.yml,
+  openapi/visa-merchant-offers.yml, openapi/visa-merchant-search.yml, openapi/visa-transaction-controls.yml
+summary:
+  types:
+  - mutualTLS
+schemes:
+- name: mutualTLS
+  type: mutualTLS
+  description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+  sources:
+  - openapi/card-on-file-data-inquiry.yml
+  - openapi/visa-b2b-connect.yml
+  - openapi/visa-click-to-pay.yml
+  - openapi/visa-data-tokens.yml
+  - openapi/visa-direct.yml
+  - openapi/visa-global-atm-locator.yml
+  - openapi/visa-merchant-offers.yml
+  - openapi/visa-merchant-search.yml
+  - openapi/visa-transaction-controls.yml

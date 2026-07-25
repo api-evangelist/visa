@@ -1,0 +1,375 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Issuer API API
+  description: API that enables issuers to source acquirer BIN data directly from Visa
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Issuer API
+  description: API that enables issuers to source acquirer BIN data directly from Visa
+paths:
+  /vbass/v1/files/metadata:
+    post:
+      tags:
+      - Issuer API
+      summary: Files Metadata
+      description: Get the metadata for the VBASS files including the count of files, file names, size, checksum and creation date.
+      operationId: VBASS Files metadata lookup using POST
+      requestBody:
+        description: VBASS Files Metadata request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/vbassFilesMetadataRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  requestHeader:
+                    requestTS: '2022-12-01T21:26:52.021'
+                    requestMessageId: TestGenFilesMetadata
+                  requestData:
+                    fileType: ACQ
+        required: true
+      responses:
+        '200':
+          description: VBASSFilesMetadata Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/vbassFilesMetadataResponse'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    responseHeader:
+                      responseTS: '2024-02-08T23:54:24.245'
+                      responseMessageId: 108VDP41105220240208235424237
+                      requestMessageId: TestGenFilesMetadata
+                    responseData:
+                      fileDetails:
+                      - fileName: VBASS_ACQ_02082024_1.csv
+                        fileSize: 2411325
+                        checkSum: ae0d04247d2bb5fc0fb0f711af51ef29
+                        rowCount: 25318
+                      totalNumberOfFiles: 1
+                      filesCreationDate: '2024-02-08'
+                      fileType: ACQ
+        '400':
+          description: Request Data Invalid
+          content: {}
+        '500':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorCodes'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vbass~1v1~1files~1metadata/post'
+        default: false
+      x-codegen-request-body-name: VBASS Files Metadata Request
+      x-hideTryIt: true
+  /vbass/v1/files/transfers:
+    post:
+      tags:
+      - Issuer API
+      summary: File Transfer
+      description: The VBASS File Transfer API endpoint allows the download of VBASS File
+      operationId: VBASS File Transfer - POST
+      requestBody:
+        description: VBASS File Transfer request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/vbassFileTransferRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  requestHeader:
+                    requestTS: '2021-02-10T21:26:52.021'
+                    requestMessageId: TestGenFileTransfers
+                  requestData:
+                    fileName: VBASS_ACQ_02082024_1.csv
+        required: true
+      responses:
+        '200':
+          description: VBASS File Transfer Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/vbassFileTransferResponse'
+              examples:
+                Default:
+                  summary: Default
+                  value: Sample response will contain csv file in a comma-separated format
+        '400':
+          description: Request Data Invalid
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '500':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorCodes-1'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vbass~1v1~1files~1transfers/post'
+        default: false
+      x-codegen-request-body-name: VBASS File Transfer Request
+      x-hideTryIt: true
+components:
+  schemas:
+    vbassFileTransferResponse:
+      title: vbassFileTransferResponse
+      type: object
+    requestHeader-2:
+      title: requestHeader
+      required:
+      - requestMessageId
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2024-01-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+    responseStatus:
+      title: responseStatus
+      type: object
+      properties:
+        statusCode:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: Status Code of the Service Request
+          example: CDI000
+        statusDescription:
+          maxLength: 250
+          minLength: 0
+          type: string
+          description: A description of the Status Code. A brief description indicating the result of the Service Request
+          example: Success
+    requestHeader-1:
+      title: requestHeader
+      required:
+      - requestMessageId
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which request is sent (up to milliseconds in UTC). Ex: 2024-01-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2024-01-29T22:05:00.000'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId135
+    vbassFilesMetadataRequest:
+      title: VBASSFilesMetadataRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData-1'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-1'
+    errorCodes-1:
+      title: errorCodes
+      type: object
+      properties:
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI002:
+          type: object
+          description: XML Parsing Failure
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI052:
+          type: object
+          description: Client Authentication failed
+        CDI071:
+          type: object
+          description: Exception in Group level entitlement process
+        CDI249:
+          type: object
+          description: Payment Account Type validation failure
+        CDI250:
+          type: object
+          description: Atleast one of the required/mandatory fields is missing in the request
+    responseHeader-1:
+      title: responseHeader
+      type: object
+      properties:
+        responseTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: Date and time at which Response is sent (up to milliseconds in UTC)
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2024-01-17T06:31:31.194'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId135
+        responseMessageId:
+          maxLength: 33
+          minLength: 33
+          type: string
+          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
+          example: 106VDP87035320230217063131177
+    fileDetails-1:
+      title: fileDetails
+      required:
+      - checkSum
+      - fileName
+      - fileSize
+      - rowCount
+      type: object
+      properties:
+        checkSum:
+          maxLength: 32
+          minLength: 32
+          type: string
+          description: File checksum
+          example: bb8e4c75d51001dd35b40dc6209eccc2
+        fileName:
+          maxLength: 255
+          minLength: 30
+          type: string
+          description: File Name
+          example: VBASS_ACQ_01282024_1.csv
+        fileSize:
+          minimum: 0
+          type: number
+          description: File Size in bytes (from Linux OS)
+          example: 1770048
+        rowCount:
+          minimum: 0
+          type: number
+          description: Number of records in the file (excludes the column header record at the top of the csv file)
+          example: 30000
+    vbassFilesMetadataResponse:
+      title: VBASSFilesMetadataResponse
+      type: object
+      properties:
+        responseData:
+          $ref: '#/components/schemas/responseData-1'
+        responseHeader:
+          $ref: '#/components/schemas/responseHeader-1'
+        responseStatus:
+          $ref: '#/components/schemas/responseStatus'
+    errorCodes:
+      title: ErrorCodes
+      type: object
+      properties:
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI003:
+          type: object
+          description: Missing Required Attributes
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI071:
+          type: object
+          description: Request data invalid
+        CDI092:
+          type: object
+          description: No data
+        CDI098:
+          type: object
+          description: Invalid RequestTS format
+        CDI251:
+          type: object
+          description: Client configuration incomplete, reach out to BINAttributes@visa.com
+    requestData-2:
+      title: requestData
+      required:
+      - fileName
+      type: object
+      properties:
+        fileName:
+          maxLength: 255
+          minLength: 1
+          type: string
+          description: Name of the file
+    requestData-1:
+      title: requestData
+      required:
+      - fileType
+      type: object
+      properties:
+        fileType:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: File Type Identifier
+          example: ACQ
+    responseData-1:
+      title: responseData
+      required:
+      - fileDetails
+      - fileType
+      - filesCreationDate
+      - totalNumberOfFiles
+      type: object
+      properties:
+        fileType:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: File Type for which file details have been retrieved, i.e., Acquirer (ACQ)
+          example: ACQ
+        fileDetails:
+          type: array
+          description: List of VBASS Files MetaData
+          items:
+            $ref: '#/components/schemas/fileDetails-1'
+        filesCreationDate:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: Files creation date in YYYY-MM-DD Format
+          format: YYYY-MM-DD
+          example: '2024-01-17'
+        totalNumberOfFiles:
+          minimum: 0
+          type: integer
+          description: Total number of files for a requested payment account type
+          example: 1
+    vbassFileTransferRequest:
+      title: vbassFileTransferRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData-2'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-2'
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

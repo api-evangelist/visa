@@ -1,0 +1,949 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Workflows API
+  description: Workflows
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Workflows
+  description: Workflows
+paths:
+  /pop/v1/hcs/healthCheckService:
+    post:
+      tags:
+      - Workflows
+      summary: Health Check Service
+      description: API for checking Health Check of the Application
+      operationId: healthCheck
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDetailList'
+        '400':
+          description: Bad Request
+      servers:
+      - url: http://health-check-qa1.oce-np-sm-dpd-b-en.trusted.visa.com
+        description: Generated server url
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1pop~1v1~1hcs~1healthCheckService/post'
+        default: false
+      x-hideTryIt: true
+  /pop/v1/recipes/Payment:
+    post:
+      tags:
+      - Workflows
+      summary: Payments Recipe
+      description: Composite API which handles process, resend and cancel payments.
+      operationId: recipes-payments
+      parameters:
+      - name: X-Payment-Action-Type
+        in: header
+        description: Describes what payment action is to be performed. It can be process, resend or cancel
+        required: true
+        explode: false
+        schema:
+          type: string
+          enum:
+          - process
+          - cancel
+          - resend
+      - name: X-IPaaS
+        in: header
+        description: Describes what iPaaS is the source system for this request
+        required: true
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: "Based on X-Payment-Action-Type Header, it can be - \r\n1. process - Process Payment Request\r\n2. resend - Resend Payment Request\r\n3. cancel - Cancel Payment Request"
+        content:
+          application/json:
+            schema:
+              description: "Based on X-Payment-Action-Type Header, it can be -\r\n1. process \r\n2. resend \r\n3. cancel"
+              oneOf:
+              - $ref: '#/components/schemas/ProcessPaymentRequest'
+              - $ref: '#/components/schemas/ResendPaymentRequest'
+              - $ref: '#/components/schemas/CancelPaymentRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/ProcessPaymentResponse'
+                - $ref: '#/components/schemas/CancelPaymentResponse'
+                - $ref: '#/components/schemas/ResendPaymentResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/POPErrorResponse'
+              examples:
+                POP Error Response:
+                  value:
+                    messageId: string
+                    statusCode: 0
+                    errorResponse:
+                      errorItems:
+                      - errorCode: string
+                        errorDescription: string
+                    statusDescription: string
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1pop~1v1~1recipes~1Payment/post'
+        default: false
+      x-hideTryIt: true
+  /pop/v1/recipes/getPaymentDetails:
+    post:
+      tags:
+      - Workflows
+      summary: Get Payment Details - Recipe
+      description: GetPaymentDetails Recipe API
+      operationId: getPaymentDetails
+      parameters:
+      - name: X-IPaaS
+        in: header
+        description: Describes what iPaaS is the source system for this request
+        required: true
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Get Payment details request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPaymentDetailsRequest'
+            examples:
+              Get Payment Details - Recipe:
+                summary: Get Payment Details - Recipe
+                value:
+                  fromDate: ''
+                  toDate: ''
+                  corporate_internal_id: 1-2-3029-11181
+                  resultSetNo: '1'
+                  buyerId: 11181
+                  trackingNumber: 1691683534
+                  status: A
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentDetailsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/POPErrorResponse-1'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1pop~1v1~1recipes~1getPaymentDetails/post'
+        default: false
+      x-hideTryIt: true
+  /pop/v1/register/client:
+    post:
+      tags:
+      - Workflows
+      summary: Client Registration
+      description: This endpoint is used to enable auth for the client
+      requestBody:
+        description: Onboarding Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardingRequest'
+            examples:
+              Client registration Payload:
+                summary: Client registration Payload
+                value:
+                  issuerId: 1-1-1940
+                  accountingSoftware: QBO
+                  messageId: '12121'
+                  buyerId: '111812'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardingResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messageId:
+                    type: string
+                  errorMessage:
+                    type: string
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1pop~1v1~1register~1client/post'
+        default: false
+      x-hideTryIt: true
+  /pop/v1/notification/generate:
+    post:
+      tags:
+      - Workflows
+      summary: Generate Notification
+      description: Generate notification
+      operationId: notification-generate
+      requestBody:
+        description: Notification Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationErrorResponse'
+              examples:
+                Example 1:
+                  value:
+                    messageId: string
+                    statusCode: 0
+                    errorResponse:
+                      errorItems:
+                      - errorCode: string
+                        errorDescription: string
+                    statusDescription: string
+      servers:
+      - url: https://api-orchestration-qa.oce-np-sm-dpd-b-en.trusted.visa.com
+        description: QA
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1pop~1v1~1notification~1generate/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    ProcessPaymentRequest:
+      title: ProcessPaymentRequest
+      required:
+      - accountingSoftware
+      - accountingSoftwareEntityId
+      - actionType
+      - buyerId
+      - issuerId
+      - messageId
+      - payment
+      type: object
+      properties:
+        buyerId:
+          type: string
+          description: Buyer ID is the buyer identifier as defined in Visa Payables Automation.
+        payment:
+          $ref: '#/components/schemas/Payment'
+        issuerId:
+          type: string
+          description: A '-' (hyphen) separated field which contains the region id, processor id and bank id
+        clientKey:
+          type: string
+          description: Client key for secure communication
+        messageId:
+          type: string
+          description: Unique ID specific to this API call.
+        actionType:
+          type: string
+          description: "Type of payment processing. \r\n  1 - Payment Instruction  \r\n  2 - Payment Requisition"
+        codeChallenge:
+          type: string
+          description: Code challenge for secure communication
+        accountingSoftware:
+          type: string
+          description: Name/Initials of the accounting software used.
+          enum:
+          - QBO
+        paymentDescription:
+          type: string
+          description: Description of the payment.
+        accountingSoftwareEntityId:
+          type: string
+          description: Unique ID of that particular accounting software entity
+          example: bill Id with respect to QuickBooks Online(QBO)
+      description: Process Payment Request Schema
+    Payment:
+      required:
+      - currencyCode
+      - paymentGrossAmount
+      type: object
+      properties:
+        invoices:
+          type: array
+          description: This complex element contains the details about the invoice associated with the payment.
+          items:
+            $ref: '#/components/schemas/Invoices'
+        supplier:
+          $ref: '#/components/schemas/Supplier'
+        accountType:
+          type: string
+          description: "Account Type.  Valid values are-<br>  \r\n  1- Lodged Adjustable Limit account  <br>\r\n  2- Lodged account.  <br> \r\n  Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made."
+        paymentType:
+          type: string
+          description: Payment type.  Valid values are <br>  CCC - Credit Card Payment <br>  STP - Straight Through Processing payment
+        accountLimit:
+          type: string
+          description: Credit limit of the account. <br>   Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made.
+        currencyCode:
+          type: string
+          description: Payment Currency Code.  A valid ISO alpha currency code should be passed.  If the currency passed is not one of the supported currencies setup in the buyer profile, the payment will be rejected.
+        accountNumber:
+          type: string
+          description: "Account number can be an existing Visa account, a new account in the VPA system, or a proxy number. If this column is blank, the following logic is used for determining the account number <br>\r\n\r\n  1. Lodged account is used if there is one for the supplier.<br>\r\n\r\n  2. If the supplier does not have a lodged card account, system should\r\npick the card account from the pool based on the matrix in Account Picking logic table."
+        paymentExpiryDate:
+          type: string
+          description: The date by which a supplier must collect a payment. Format is YYYY-MM-DD.
+        paymentGrossAmount:
+          type: string
+          description: Payment gross amount.  Format is 99999999999999.99
+        paymentRequestDate:
+          type: string
+          description: Payment requested date.  If this field is blank, system will set the current date as the payment request date.Format is YYYY-MM-DD.
+        cardAccountExpiryDate:
+          type: string
+          description: The expiry date for the card account
+      description: Payment Class
+    ResendPaymentRequest:
+      title: ResendPaymentRequest
+      required:
+      - accountingSoftwareEntityId
+      - buyerId
+      - issuerId
+      - messageId
+      - vendorId
+      type: object
+      properties:
+        buyerId:
+          type: string
+          description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+        issuerId:
+          type: string
+          description: A '-' (hyphen) separated field which contains the region id, processor id and bank id
+        vendorId:
+          type: string
+          description: Identifier used by the buyer to identify the vendor. This is the vendor id of the vendor whose payment is being modified.
+        clientKey:
+          type: string
+          description: Client key for secure communication
+        messageId:
+          type: string
+          description: Unique ID specific to this API call.
+        emailNotes:
+          type: string
+          description: Extra notes for the email address
+        accountNumber:
+          type: string
+          description: An existing Visa card account. Values are 09. Note- If the account number is passed, it should correspond to the card account number used for the payment.
+        codeChallenge:
+          type: string
+          description: Code Challenge for secure communication
+        expirationDate:
+          type: string
+          description: The date by which a supplier must collect his payment. Format is YYYY-MM-DD
+        primaryEmailAddress:
+          type: string
+          description: This contains the email address for the supplier that will receive the payment instruction. It must be a valid email address. If the primary email address is provided, the payment advice will be sent to the new primary email address provided in the request. If it is not, the email address in the original request will be used.
+        alternateEmailAddresses:
+          type: array
+          description: This complex element will contain up to five alternate email addresses.
+          items:
+            $ref: '#/components/schemas/AlternateEmailAddress'
+        accountingSoftwareEntityId:
+          type: string
+          description: Unique ID used by that particular accounting software entity
+          example: bill Id with respect to QuickBooks Online(QBO)
+        supplierProfileUpdateIndicator:
+          type: string
+          description: This field contains value as Y if supplier profile has to be updated and N if supplier profile should not be updated. By default, the system will not update the supplier profile with the new values sent in the request.
+      description: Resend payment request payload
+    ResendPaymentResponse:
+      title: ResendPaymentResponse
+      required:
+      - messageId
+      - statusCode
+      - statusDesc
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique identifier which was sent in the request.
+        statusCode:
+          type: string
+          description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+        statusDesc:
+          type: string
+          description: Status description of the response.
+      description: Resend Payment Response Schema
+    Recipients:
+      type: object
+      properties:
+        sms:
+          type: array
+          description: List of phone numbers
+          items:
+            type: string
+            description: Phone number value
+        email:
+          type: array
+          description: List of email recipients
+          items:
+            type: string
+            description: Email address value
+      description: Recipients of the Notification
+    AlternateEmailAddress:
+      type: object
+      properties:
+        alternateEmailAddress:
+          type: string
+    OnboardingResponse:
+      type: object
+      properties:
+        clientKey:
+          type: string
+          description: Client key for secure communication
+        messageId:
+          type: string
+          description: Unique identifier for the message
+        errorMessage:
+          type: string
+          description: Error message, if any
+        codeChallenge:
+          type: string
+          description: Code Challenge for secure communication
+    NotificationRequest:
+      required:
+      - buyerId
+      - issuerId
+      - messageId
+      - notificationType
+      - productName
+      type: object
+      properties:
+        source:
+          type: string
+          description: Value to identify from where this API request is originated
+        buyerId:
+          maxLength: 25
+          pattern: ^[0-9]*$
+          type: string
+          description: Buyer ID is the buyer identifier as defined in Visa Payables Automation.
+        issuerId:
+          type: string
+          description: A '-' (hyphen) separated field which contains the region id, processor id and bank id
+        language:
+          type: string
+          description: Language in which the Notification to be sent
+        priority:
+          type: string
+          description: Priority to be set for this Notification (high, low or medium)
+        schedule:
+          $ref: '#/components/schemas/Schedule'
+        messageId:
+          maxLength: 36
+          pattern: ^[a-zA-Z0-9]*$
+          type: string
+          description: Unique identifier specific for this API request
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
+            description: Key value property pairs
+          description: Additional Key value pairs to be sent as placeholder for Notification Templates
+        recipients:
+          $ref: '#/components/schemas/Recipients'
+        templateId:
+          type: string
+          description: Template id selected based on Notification Type
+        productName:
+          type: string
+          description: Product name value to identify the Notification Request
+        notificationType:
+          type: string
+          description: Type of the Notification to be sent
+        notificationStatus:
+          type: string
+          description: Used to do Lifecycle management of Notification Request
+      description: Notification Generation Request
+    GetPaymentDetailsResponse:
+      type: object
+      properties:
+        payments:
+          type: object
+          properties:
+            invoices:
+              type: array
+              items:
+                type: object
+                properties:
+                  invoiceDate:
+                    type: string
+                  invoiceAmount:
+                    type: integer
+                  invoiceNumber:
+                    type: string
+                  purchaseOrderDate:
+                    type: string
+                  purchaseOrderNumber:
+                    type: string
+                  partialPaymentIndicator:
+                    type: string
+            supplier:
+              type: object
+              properties:
+                supplierID:
+                  type: string
+                supplierName:
+                  type: string
+                primaryEmailAddress:
+                  type: string
+                alternateEmailAddresses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      localAlternateEmailAddress:
+                        type: string
+            paymentType:
+              type: string
+            currencyCode:
+              type: string
+            accountNumber:
+              type: string
+            manualMatchStatus:
+              type: string
+            paymentExpiryDate:
+              type: string
+            systemMatchStatus:
+              type: string
+            paymentDescription:
+              type: string
+            paymentGrossAmount:
+              type: string
+            paymentRequestDate:
+              type: string
+        messageId:
+          type: string
+        statusCode:
+          type: string
+        statusDesc:
+          type: string
+        resultSetNo:
+          type: string
+        hasMoreElements:
+          type: string
+        totalRecordCount:
+          type: string
+      x-examples:
+        Example 1:
+          payments:
+            invoices:
+            - invoiceDate: string
+              invoiceAmount: 0
+              invoiceNumber: string
+              purchaseOrderDate: string
+              purchaseOrderNumber: string
+              partialPaymentIndicator: str
+            supplier:
+              supplierID: string
+              supplierName: string
+              primaryEmailAddress: string
+              alternateEmailAddresses:
+              - localAlternateEmailAddress: string
+            paymentType: s
+            currencyCode: str
+            accountNumber: string
+            manualMatchStatus: string
+            paymentExpiryDate: string
+            systemMatchStatus: string
+            paymentDescription: string
+            paymentGrossAmount: string
+            paymentRequestDate: string
+          messageId: string
+          statusCode: string
+          statusDesc: string
+          resultSetNo: str
+          hasMoreElements: s
+          totalRecordCount: string
+    Schedule:
+      type: object
+      properties:
+        frequencyType:
+          type: string
+          description: Frequency of the notification to be scheduled recursively
+        scheduledTime:
+          type: string
+          description: Notification schedule time to send a notification
+    GetPaymentDetailsRequest:
+      required:
+      - buyerId
+      - issuerId
+      - messageId
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of payment.  If you would like to get the details of payments in a particular status, you can pass it in this field.  The status will be used along with the date range filter if specified to get the payments.  <br> Valid values are M-Matched, U- UnMatched, R-Rejected, E-Expired, O-Error, A-All, C-Canceled.
+        toDate:
+          type: string
+          description: Specifies the end of date range. Format is MMDDYYYY
+        buyerId:
+          type: string
+          description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+        fromDate:
+          type: string
+          description: Specifies the beginning of date range for which the payment details is requested. Format is MMDDYYYY. If "FromDate" and "ToDate" is not provided, the system will retrieve the last 9 months data. <br> <br>Note-  The system retrieves only last 250 payments made during the specified date range sent in the initial request. User can make subsequent calls to retrieve additional data.
+        issuerId:
+          type: string
+          description: A '-' (hyphen) separated field which contains the region id, processor id and bank id
+        clientKey:
+          type: string
+          description: Client key for secure communication
+        messageId:
+          type: string
+          description: Unique ID specific to this API call.
+        resultSetNo:
+          type: string
+          description: Result Set Number.
+        codeChallenge:
+          type: string
+          description: Code Challenge for secure communication
+        trackingNumber:
+          type: string
+          description: The MessageID of the original process payment request for which the payment is needed.
+      description: Get payment details request payload
+    ErrorItem-2:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: POP Notification Error Code
+        errorDescription:
+          type: string
+          description: POP Notification Error Description
+    POPErrorResponse-1:
+      title: POPErrorResponse
+      required:
+      - errorResponse
+      - messageId
+      - statusCode
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique ID specific to this API call.
+        statusCode:
+          type: integer
+          description: HTTP Error status code
+        errorResponse:
+          $ref: '#/components/schemas/ErrorResponse-1'
+        statusDescription:
+          type: string
+          description: HTTP Error status description
+      description: Error Response for POP APIs
+    ErrorResponse-1:
+      type: object
+      properties:
+        errorItems:
+          type: array
+          description: list of errored items
+          items:
+            $ref: '#/components/schemas/ErrorItem-1'
+      description: Error Response Schema
+    CancelPaymentResponse:
+      title: CancelPaymentResponse
+      required:
+      - grossAmount
+      - messageId
+      - statusCode
+      - statusDesc
+      - supplierName
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique identifier which was sent in the request.
+        statusCode:
+          type: string
+          description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table
+        statusDesc:
+          type: string
+          description: Status description of the response.
+        supplierId:
+          type: string
+          description: Identifier used by the buyer to identify the supplier. This is the supplier id of the supplier whose payment is being canceled.
+        grossAmount:
+          type: string
+          description: Contains the payment gross amount of the payment being cancelled
+        supplierName:
+          type: string
+          description: Name of supplier whose payment is being canceled.
+      description: Cancel Payment Response Schema
+    NotificationResponse:
+      title: NotificationResponse
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique identifier which was sent in the request
+        statusCode:
+          type: integer
+          description: HTTP Success status code
+        statusDescription:
+          type: string
+          description: Success Message description
+      description: Notification Generation Response Schema
+    CancelPaymentRequest:
+      title: CancelPaymentRequest
+      required:
+      - accountingSoftwareEntityId
+      - buyerId
+      - issuerId
+      - messageId
+      - vendorId
+      type: object
+      properties:
+        buyerId:
+          type: string
+          description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+        issuerId:
+          type: string
+          description: A '-' (hyphen) separated field which contains the region id, processor id and bank id
+        vendorId:
+          type: string
+          description: Identifier used by the buyer to identify the vendor. This is the vendor id of the vendor whose payment is being canceled.
+        clientKey:
+          type: string
+          description: Client key for secure communication
+        messageId:
+          type: string
+          description: Unique ID specific to this API call.
+        cancelReason:
+          type: string
+          description: Contains the reason for canceling the payment.
+        accountNumber:
+          type: string
+          description: An existing Visa card account. Values are  09. Note- If the account number is passed, it should correspond to the card account number used for the payment.
+        codeChallenge:
+          type: string
+          description: Code Challenge for secure communication
+        accountingSoftwareEntityId:
+          type: string
+          description: Unique ID used by that particular accounting software entity
+          example: bill Id with respect to QuickBooks Online(QBO)
+      description: Cancel payment request payload
+    Invoices:
+      type: object
+      properties:
+        invoiceDate:
+          type: string
+          description: This contains the date of the invoice being paid. Format is MM/DD/YY.
+        invoiceAmount:
+          type: string
+          description: Invoice amount. maximum length is 16. Maximum number of decimals is two. Format is XXXXXXXXXX9999.99
+        invoiceNumber:
+          type: string
+          description: Invoice Number.
+        purchaseOrderDate:
+          type: string
+          description: This contains the date on which the  purchase order was created. Format is MM/DD/YY.
+        purchaseOrderNumber:
+          type: string
+          description: This contains the purchase order number associated with the invoice.
+    OnboardingRequest:
+      required:
+      - accountingSoftware
+      - buyerId
+      - issuerId
+      - messageId
+      type: object
+      properties:
+        buyerId:
+          maxLength: 25
+          type: string
+          description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+        issuerId:
+          type: string
+          description: A '-' (hyphen) separated field which contains the region id, processor id and bank id
+        messageId:
+          maxLength: 36
+          type: string
+          description: Unique identifier for the message
+        accountingSoftware:
+          type: string
+          description: Name of the accounting software
+    ErrorItem-1:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: POP Error Code
+        errorDescription:
+          type: string
+          description: POP Error Description
+    NotificationErrorResponse:
+      title: NotificationErrorResponse
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique identifier which was sent in the request
+        statusCode:
+          type: integer
+          description: HTTP Error status code
+        errorResponse:
+          $ref: '#/components/schemas/ErrorResponse-3'
+        statusDescription:
+          type: string
+          description: HTTP Error status description
+      description: Notification Generation Error Response Schema
+    ProcessPaymentResponse:
+      title: ProcessPaymentResponse
+      required:
+      - expirationDate
+      - messageId
+      - statusCode
+      - statusDesc
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique identifier which was sent in the request
+        statusCode:
+          type: string
+          description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error code returned for this method refer to the "Error Codes" table below.
+        statusDesc:
+          type: string
+          description: Status description of the response.
+        accountNumber:
+          type: string
+          description: Account number used for processing the payment. The account number will be masked in the response if the corresponding Client ID is configured to be masked.
+        expirationDate:
+          type: string
+          description: The date the card account expires. Format is MM/YYYY Note- The card account expiration date is sent for all Payment Requisitions and Single Use Account payments.
+      description: Process Payment Response Schema
+    ErrorResponse-3:
+      type: object
+      properties:
+        errorItems:
+          type: array
+          description: list of errored items
+          items:
+            $ref: '#/components/schemas/ErrorItem-2'
+      description: Error Response Schema
+    POPErrorResponse:
+      title: POPErrorResponse
+      required:
+      - errorResponse
+      - messageId
+      - statusCode
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique ID specific to this API call.
+        statusCode:
+          type: integer
+          description: HTTP Error status code
+        errorResponse:
+          $ref: '#/components/schemas/ErrorResponse-1'
+        statusDescription:
+          type: string
+          description: HTTP Error status description
+      description: Error Response for POP APIs
+    ApiDetailList:
+      required:
+      - description
+      - overallStatus
+      type: object
+      properties:
+        description:
+          type: string
+          description: Gives the current status of the POP application endpoints in OCC or OCE
+          example: All services are up and running
+        overallStatus:
+          type: string
+          description: Gives the status as UP or DOWN based on the services status for the 2 datacentres
+          example: UP, DOWN
+    Supplier:
+      required:
+      - supplierID
+      - supplierName
+      type: object
+      properties:
+        emailNotes:
+          type: string
+          description: This contains the text to be included on email notifications and remittance advice.
+        supplierID:
+          type: string
+          description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+        supplierCity:
+          type: string
+          description: Supplier city.
+        supplierName:
+          type: string
+          description: Name of supplier to be paid. It is mandatory for new suppliers.
+        supplierState:
+          type: string
+          description: Supplier state.
+        supplierPostalCode:
+          type: string
+          description: Supplier postal code. It is mandatory for new suppliers and only if the country mandates it.
+        primaryEmailAddress:
+          type: string
+          description: Email address
+        supplierCountryCode:
+          type: string
+          description: Supplier country code. It is alphanumeric. VPA supports all ISO alphanumeric country code.For example- USA.
+        supplierAddressLine1:
+          type: string
+          description: Supplier address line 1.
+        supplierAddressLine2:
+          type: string
+          description: Supplier address line 2.
+        alternateEmailAddresses:
+          type: array
+          description: This complex element can have up to five alternate email addresses.
+          items:
+            $ref: '#/components/schemas/AlternateEmailAddress'
+      description: Supplier Class
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

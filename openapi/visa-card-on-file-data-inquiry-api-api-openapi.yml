@@ -1,0 +1,123 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Card on File Data Inquiry API API
+  description: Retrieve information about where a cardholder's Visa payment credentials are stored on file with participating merchants.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Card on File Data Inquiry API
+  description: Retrieve information about where a cardholder's Visa payment credentials are stored on file with participating merchants.
+paths:
+  /cofds/v1/dataInquiry:
+    post:
+      operationId: inquireCardOnFileData
+      summary: Inquire Card on File Data
+      description: Retrieves a list of merchants that have the specified Visa card stored on file. This allows issuers to provide cardholders with visibility into where their credentials are being used for recurring or stored-credential transactions.
+      tags:
+      - Card on File Data Inquiry API
+      requestBody:
+        description: Request body containing the card details to inquire
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardOnFileInquiryRequest'
+      responses:
+        '200':
+          description: Card on file data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardOnFileInquiryResponse'
+        '400':
+          description: Bad request - invalid input parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - authentication failure
+        '404':
+          description: No card on file data found for the specified account
+components:
+  schemas:
+    MerchantCardOnFile:
+      type: object
+      properties:
+        merchantName:
+          type: string
+          description: Name of the merchant storing the card on file
+        merchantId:
+          type: string
+          description: Unique identifier for the merchant
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code (MCC)
+          pattern: ^\d{4}$
+        lastTransactionDate:
+          type: string
+          format: date
+          description: Date of the last transaction with this merchant
+        enrollmentDate:
+          type: string
+          format: date
+          description: Date the card was stored on file with this merchant
+        transactionType:
+          type: string
+          description: Type of stored credential usage
+          enum:
+          - RECURRING
+          - INSTALLMENT
+          - UNSCHEDULED
+          - SUBSCRIPTION
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    CardOnFileInquiryRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: The 16-digit primary account number (PAN) of the Visa card to inquire about
+          minLength: 13
+          maxLength: 19
+        paymentAccountReference:
+          type: string
+          description: Payment Account Reference (PAR) as an alternative identifier to the PAN
+        requestTimeStamp:
+          type: string
+          format: date-time
+          description: Timestamp of the inquiry request in ISO 8601 format
+    CardOnFileInquiryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the inquiry
+          enum:
+          - SUCCESS
+          - NO_DATA_FOUND
+          - PARTIAL_DATA
+        merchants:
+          type: array
+          description: List of merchants with the card stored on file
+          items:
+            $ref: '#/components/schemas/MerchantCardOnFile'
+        totalCount:
+          type: integer
+          description: Total number of merchants with the card on file
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

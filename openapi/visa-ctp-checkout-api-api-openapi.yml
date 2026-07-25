@@ -1,0 +1,166 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates CTP Checkout API API
+  description: The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a seamless and secure payment experience.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: CTP Checkout API
+  description: The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a seamless and secure payment experience.
+paths:
+  /visasrci/v1/checkout:
+    post:
+      operationId: initiateCheckout
+      summary: Initiate Checkout
+      description: Initiates a Click to Pay checkout session for a consumer transaction. This operation creates a checkout context that allows the consumer to select from their stored payment credentials and complete the purchase.
+      tags:
+      - CTP Checkout API
+      requestBody:
+        description: Checkout initiation request details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutRequest'
+      responses:
+        '200':
+          description: Checkout session initiated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Resource not found
+  /visasrci/v1/checkout/{checkoutId}:
+    get:
+      operationId: getCheckoutStatus
+      summary: Get Checkout Status
+      description: Retrieves the current status and details of an existing Click to Pay checkout session identified by the checkout ID.
+      tags:
+      - CTP Checkout API
+      parameters:
+      - $ref: '#/components/parameters/CheckoutIdParam'
+      responses:
+        '200':
+          description: Checkout status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutStatusResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Checkout session not found
+components:
+  parameters:
+    CheckoutIdParam:
+      name: checkoutId
+      in: path
+      required: true
+      description: Unique identifier for the checkout session
+      schema:
+        type: string
+  schemas:
+    CheckoutResponse:
+      type: object
+      properties:
+        checkoutId:
+          type: string
+          description: Unique identifier for the initiated checkout session
+        status:
+          type: string
+          description: Current status of the checkout session
+          enum:
+          - INITIATED
+          - PENDING
+          - COMPLETED
+          - EXPIRED
+        checkoutUrl:
+          type: string
+          format: uri
+          description: URL to redirect the consumer for checkout completion
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field that caused the error
+              message:
+                type: string
+                description: Detail about the field error
+    CheckoutRequest:
+      type: object
+      required:
+      - merchantId
+      - amount
+      - currency
+      properties:
+        merchantId:
+          type: string
+          description: Unique identifier for the merchant initiating checkout
+        amount:
+          type: number
+          format: double
+          description: Transaction amount
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          pattern: ^[A-Z]{3}$
+          example: USD
+        consumerIdentity:
+          type: string
+          description: Consumer email or phone number used to look up stored credentials
+        merchantName:
+          type: string
+          description: Display name of the merchant
+        returnUrl:
+          type: string
+          format: uri
+          description: URL to redirect the consumer after checkout completion
+    CheckoutStatusResponse:
+      type: object
+      properties:
+        checkoutId:
+          type: string
+          description: Unique identifier for the checkout session
+        status:
+          type: string
+          description: Current status of the checkout session
+          enum:
+          - INITIATED
+          - PENDING
+          - COMPLETED
+          - EXPIRED
+          - CANCELLED
+        transactionId:
+          type: string
+          description: Transaction identifier assigned after successful payment
+        paymentToken:
+          type: string
+          description: Tokenized payment credential used for the transaction
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

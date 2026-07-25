@@ -1,0 +1,235 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Visa Card Program Enrollment  API
+  description: VCPE supports issuers that want to offer instant/digital issuance or re-issuance; as well as allow their cardholders to upgrade and downgrade cards in their banking app and enjoy new rewards programs in near real-time without needing a physical card and without changing their 16-digit card number.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: 'Visa Card Program Enrollment '
+  description: VCPE supports issuers that want to offer instant/digital issuance or re-issuance; as well as allow their cardholders to upgrade and downgrade cards in their banking app and enjoy new rewards programs in near real-time without needing a physical card and without changing their 16-digit card number.
+paths:
+  /vcpe/v2/pan/enrollment:
+    post:
+      tags:
+      - 'Visa Card Program Enrollment '
+      summary: Enrollment
+      description: Process enrollment and handover message to ALM.
+      operationId: enrollmentV2UsingPOST
+      parameters:
+      - name: Accept
+        in: header
+        description: Content-Types that are acceptable for the response. Example- application/json
+        required: true
+        explode: false
+        allowReserved: false
+        schema:
+          type: string
+      - name: Accept-Language
+        in: header
+        description: List of acceptable languages for the response. Defaults to en-US if not present. Example- en-US
+        required: false
+        explode: false
+        allowReserved: false
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: The type of the request body. Example- application/json
+        required: true
+        explode: false
+        allowReserved: false
+        schema:
+          type: string
+      - name: Content-Language
+        in: header
+        description: The language of the request body. Defaults to en-US if not present. Example- en-US
+        required: false
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - operationType
+              - updateReferenceID
+              type: object
+              properties:
+                operationType:
+                  type: string
+                  description: "Type of operation. Format: It is one of the following values: \n\n UPDATE"
+                enrollmentInfo:
+                  type: object
+                  properties:
+                    cardholderInfo:
+                      required:
+                      - primaryAccountNumber
+                      type: object
+                      properties:
+                        primaryAccountNumber:
+                          maxLength: 19
+                          type: string
+                          description: Primary account number
+                      description: Required
+                    accountLevelInfo:
+                      type: object
+                      properties:
+                        productID:
+                          maxLength: 2
+                          type: string
+                          description: This is the product ID for the card number in the Account Number field. It is required, when the rpinEnrollment structure is provided in the request, or when the linkEnrollment structure is present for either the USHNW or VIRTUAL groupType. For example if the product type of the card is Visa Traditional Credit, the value of productID is A.
+                        linkEnrollment:
+                          type: object
+                          properties:
+                            group:
+                              type: array
+                              description: Required. Array of Groups
+                              items:
+                                type: object
+                                properties:
+                                  action:
+                                    type: string
+                                    description: "(REQUIRED if linkEnrollment segment is present) \n\n  Action taken on the record for an enrollment link. Format: It is one of the following values: \n\n Add Record is for a new link. \n\n Delete Record is for removing a link. \n\n Change Can only be used to change the Primary Account flag."
+                                  groupID:
+                                    maxLength: 32
+                                    type: string
+                                    description: "(REQUIRED if linkEnrollment segment is present) \n\n Contains the issuer-supplied identifier for the group type specified in the Group Type field. Must not be PAI/PII data. Format: String; alphabetic, numeric, hyphens ( - ), and underscores ( _) [a-zA-Z0-9-_ ]."
+                                  groupType:
+                                    type: string
+                                    description: "(REQUIRED if linkEnrollment segment is present) \n\n Group type. Format: It is one of the following values:\nLOC Groups a primary card account with authorized accounts from other cardholders. \n\n CUSTOMER Groups a set of card accounts for the same cardholder. \n\n VIRTUAL Groups a primary card account with a set of virtual cards. \n\n Note: A value for productID must be specified. Contact your Visa representative before \n\n submitting a request using the VIRTUAL Group Type. \n\n USHNW \n\n Note: A value for productID must be specified.\n A variety of customized Group Types may be available, depending on region, issuer, or other criteria. Additional Group Types and values for those Group Types may be required, depending on region, issuer, or other criteria. For information on these Group Types, see their respective Product Implementation Guides. Issuers should consult the respective Product Implementation Guides for details on how to submit primary/supplementary flags to generate accurate billing information for those related products with associated card fees. For more information, contact your Visa representative."
+                                  isPrimaryAccount:
+                                    type: string
+                                    description: "(Conditional) Whether the account the account number is to be the primary account number in the group.. Used for group types that have a primary or owner account. It is required when groupType is LOC, or VIRTUAL. It should be set to Y for Primary (physical plastic card). Issuers should refer to the Product Implementation Guide for requirements related to custom group types. Format: It is one of the following values: \n\n Y The account number is to be the primary account number in the group. \n\n BlankThe account number is not the primary account number."
+                          description: Optional. Contains linking information for the account number. Link enrollment information is not required when sending request only for RPIN enrollment or replace enrollment.
+                        rpinEnrollment:
+                          type: object
+                          properties:
+                            rpin:
+                              maxLength: 6
+                              type: string
+                              description: " (REQUIRED if rpinEnrollment segment is present)  \n\n The six-digit Visa-provided Registered Program Identification Number (RPIN) in which this account is enrolled. The RPINs product ID in the Visa system must match the product ID provided in the web service call. Format: String; numeric; max length 6 characters."
+                            action:
+                              type: string
+                              description: "(REQUIRED if rpinEnrollment segment is present) \n\n Action for RPIN Enrollment. Format: It is one of the following values: \n\nAdd Use Add when submitting new card numbers; record is for a new account number. All required fields must be provided.\n\nChange Use if changing any attribute in rpinEnrollment data. A change record will fully replace all data in the original record. Every required field must be submitted in a change record. If issuers wish to preserve previously submitted optional data, this data must be resubmitted.\n\nDelete Use if removing an account number. For delete records, all other fields are optional."
+                            accountOpenDate:
+                              maxLength: 10
+                              type: string
+                              description: "(REQUIRED if rpinEnrollment segment is present) \n\n  The date the account number was first opened with the issuer. Format: String in the form of YYYYMMDD."
+                            rpinEffectiveDate:
+                              maxLength: 10
+                              type: string
+                              description: '(Optional) The RPIN effective date, which can be a past or future date, but it must be a date that is after the RPIN create-date and before the RPIN end-date. If the date does not follow these rules, the request is rejected with an Invalid Date reject reason. It will default to the current date if the correct date is not provided. Format: String; YYYYMMDD.'
+                          description: Optional. Contains information to enroll the account number in a given Registered Program Identification Number (RPIN). This field is not required when sending request only for linking or replacement.
+                        replaceEnrollment:
+                          type: object
+                          properties:
+                            linkReasonCode:
+                              maxLength: 1
+                              type: string
+                              description: "(Conditional) The reason for replacement. Format: It is one of the following values: \n\n L Lost: Consumer reports the card has been lost.  \n S Stolen: Consumer reports the card has been stolen.  \n U Upgrade/Downgrade: Consumer has been issued a new product.  \n O Other: Used when no other value applies.  \n C Converted  \n R Reissued  \n N Not known"
+                            unlinkIndicator:
+                              maxLength: 1
+                              type: string
+                              description: "(Conditional) Unlink indicator. This must be set to Y when deleting a replacement relationship. Format: It is one of the following values: \n\n Y User is trying to unlink the account number"
+                            oldAccountNumber:
+                              maxLength: 19
+                              type: string
+                              description: "(REQUIRED if replaceEnrollment segment is present) \n\n  A valid account number specifying the card is being replaced by the card number in the Account Number field."
+                          description: Optional. Contains information about card replacement for the account number. This information can be sent independently of other structures such as rpinEnrollment or linkEnrollment
+                        customerContactInfo:
+                          type: object
+                          properties:
+                            email:
+                              maxLength: 100
+                              type: string
+                              description: (Conditional) Account holders email address. Required when prefMethodOfContact is E.
+                            action:
+                              type: string
+                              description: "(REQUIRED if customerContactInfo segment is present) \n\n  If an action other than Add is selected, the webservice call will be rejected. \n\n Format: It is one of the following values: \n\n Add Use this to add new customer information. All required fields must be provided."
+                            address:
+                              type: object
+                              properties:
+                                zip:
+                                  maxLength: 5
+                                  type: string
+                                  description: '(Conditional) Account holders zipcode. Required for the US, but can be left blank for a non-US address. Format: String; numeric.'
+                                city:
+                                  maxLength: 30
+                                  type: string
+                                  description: "(REQUIRED if customerContactInfo segment is present) \n\n City associated with the account holders address. Format: String; alphanumeric; UTF-8, white space, carat (^), period (.), single quote (), asterisk (*), and hyphen (-) are allowed."
+                                line1:
+                                  maxLength: 40
+                                  type: string
+                                  description: '(Required) First line associated with the account holders address. Format: String; alphanumeric; UTF-8, white space, comma (,), underscore (_), hashtag (#), colon (:), forward slash (/), period (.), single quote (), asterisk (*), and hyphen (-) are allowed.'
+                                line2:
+                                  maxLength: 40
+                                  type: string
+                                  description: '(Optional) Second line associated with the account holders address. Format: String; alphanumeric; UTF-8, white space, comma (,), underscore (_), hashtag (#), colon (:), forward slash (/), period (.), single quote (), asterisk (*), and hyphen (-) are allowed.'
+                                state:
+                                  maxLength: 2
+                                  type: string
+                                  description: '(Conditional) State or province code associated with the account holders address. Required for the US, but can be left blank for a non-US address. Example: NY Format: String; ISO 3166-2.'
+                                companyName:
+                                  maxLength: 40
+                                  type: string
+                                  description: '(Conditional) Account holders company name. Format: String; alphanumeric; UTF-8, white space, comma (,), underscore (_), hashtag (#), colon (:), forward slash (/), period (.), single quote (), and hyphens (-) are allowed.'
+                              description: (Optional) Address details for the account holder.
+                            lastName:
+                              maxLength: 25
+                              type: string
+                              description: "(REQUIRED if customerContactInfo segment is present) \n\n  Account holders last name."
+                            firstName:
+                              maxLength: 15
+                              type: string
+                              description: "(REQUIRED if customerContactInfo segment is present) \n\n  Account holders first name."
+                            namePrefix:
+                              maxLength: 5
+                              type: string
+                              description: (Optional) Account holders name prefix.
+                            nameSuffix:
+                              maxLength: 5
+                              type: string
+                              description: (Optional) Account holders name suffix.
+                            mobileNumber:
+                              maxLength: 10
+                              type: string
+                              description: (Conditional) Account holders telephone number. Required when prefMethodOfContact is C.
+                            middleInitial:
+                              maxLength: 1
+                              type: string
+                              description: (Optional) Account holders middle initial.
+                            prefMethodOfContact:
+                              maxLength: 1
+                              type: string
+                              description: "(Optional) Account holders preferred method of contact; if a space or an empty string is specified, the preferred method of contact is no preference. \n Format: It is one of the following values: M Physical mail. \n E E mail. \n  C Mobile telephone."
+                          description: Optional, Contains account-number-specific information such as name and address. It is only accepted for certain Visa Product IDs but ignored for all other product IDs. When specified, it must have the accompanying rpinEnrollment structure in its entirety.
+                updateReferenceID:
+                  maxLength: 32
+                  type: string
+                  description: Reference ID that is needed to track all account level updates.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '202':
+          description: Accepted. Request successfully persisted to queue.
+        '400':
+          description: Bad request. Incorrect parameters supplied.
+        '500':
+          description: Internal Server Error.
+      x-operationVersions:
+      - label: v2 - Latest
+        operationPointer: '#/paths/~1vcpe~1v2~1pan~1enrollment/post'
+        default: false
+      x-hideTryIt: true
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

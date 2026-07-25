@@ -1,0 +1,1727 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Business Data Transactions API API
+  description: Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1- Transaction API, 2- Enhanced Data API, 3- Starter Data API
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Business Data Transactions API
+  description: Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1- Transaction API, 2- Enhanced Data API, 3- Starter Data API
+paths:
+  /cdsapi/commercial/v1/ob/trxndata:
+    post:
+      tags:
+      - Business Data Transactions API
+      summary: Get card transaction data
+      description: ''
+      operationId: getTransactionDataDetail
+      parameters:
+      - name: clientId
+        in: header
+        description: Client Identification Code
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Get Transaction data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/trxnRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  bank:
+                  - bankId: '999999'
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+      x-codegen-request-body-name: Get Transaction data
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1cdsapi~1commercial~1v1~1ob~1trxndata/post'
+        default: false
+  /vbs/dapi/v1/transaction_enhanced:
+    post:
+      tags:
+      - Business Data Transactions API
+      summary: Get Transaction and Enhanced Data
+      description: Get Transaction & Enhanced Data
+      operationId: fetchTransactionData
+      parameters:
+      - name: clientId
+        in: header
+        required: true
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  requestHeader:
+                    clientId: '1111'
+                    x-correlation-id: XXXX-111111-222222-333333
+                  requestData:
+                    issuerId: '9999'
+                    companyId: '11112222'
+                    pagination:
+                      pageSize: 10
+                      pageNum: '1'
+                    processorId: '1'
+                    regionId: '1'
+                    filters:
+                      enhancedData:
+                        filterValues:
+                        - supplier
+                        - airline
+                        filterType: ENHN_CAT
+                      transactionDateTime:
+                        filterValues:
+                        - '2023-07-01T01:59:59'
+                        - '2023-07-30T10:59:59'
+                        filterType: BETWN
+                    type: TRAN_ENHN
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: object
+            application/json:
+              schema:
+                type: object
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    responseHeader:
+                      Keep-Alive: timeout=60
+                      X-Frame-Options: DENY
+                      Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+                      Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+                      X-Correlation-Id: XXXX-111111-222222-333333
+                      X-Content-Type-Options: nosniff
+                      Pragma: no-cache
+                      Expires: '0'
+                      Content-Length: '149596'
+                      X-XSS-Protection: '0'
+                      Date: Thu, 31 Aug 2023 20:58:04 GMT
+                      Content-Type: application/json
+                    responseData:
+                    - originalMccCode: 3333
+                      period: 23072
+                      virtual: {}
+                      bilingPeriodCheckIndicator: 0
+                      userData: {}
+                      billingAmount: 53
+                      enhancedData:
+                        lodging:
+                          lodgingSummary:
+                          - itemSequenceNumber: 1
+                            totalMiniBarCharges: 111
+                            totalMovieCharges: 543
+                            healthClubCharges: 324
+                            totalValetParkingCharges: 123
+                            totalLaundryCharges: 23
+                            totalFoodOrBeverageCharges: 765
+                            totalGiftShopPurchases: 0
+                            sourceAmount: 23.5
+                            totalNonRoomCharges: 9876
+                            lodgingNights: 1
+                            netValue: 123
+                            totalRoomTaxAmount: 100
+                            dailyRoomRate: 1987
+                            totalPrepaidExpenses: 424.75
+                            totalTelephoneCharges: 0
+                            taxValue: 765
+                            grossValue: 99
+                            noShowIndicator: 0
+                            totalBusinessCenterCharges: 564
+                            merchantCategoryCode: 3040
+                            totalDiscount: 10
+                            totalOtherCharges: 24.5
+                            totalTaxAmount: 99
+                            totalFolioCashAdvances: 323
+                          lodgingDetail:
+                          - discountRate: 0
+                            itemSequenceNumber: 1
+                            foodOrBeverageCharges: 123
+                            valetParkingCharges: 545
+                            laundryCharges: 0
+                            roomTax4Amount: 232
+                            healthClubCharges: 324
+                            roomTax3Amount: 0
+                            roomRate: 0
+                            telephoneCharges: 666
+                            otherCharge: 87
+                            businessCenterCharges: 213
+                            miniBarCharges: 0
+                            folioCashAdvances: 454
+                            roomTaxAmount: 0
+                            movieCharges: 54
+                            sourceAmount: 23.5
+                            roomTax2Amount: 0
+                            giftShopPurchases: 1
+                      memoPostFlag: 0
+                      supplierIsoCountryCode: 840
+                      sourceCurrencyCode: 840
+                      billingCurrencyCode: 124
+                      vatAmount: 0
+                      originalSupplierCountryCode: 250
+                      preprocessId: 8
+                      bussinessNameSpace:
+                        regionIdentification: 1
+                        processorIdentification: 902
+                      merchantCategoryCode: 3028
+                      sourceLineNumber: 0
+                      base2GmrIdentification:
+                        $numberLong: '31023473433'
+                      sourceAmount: 29
+                      _id:
+                        $oid: 645a7a55553bbbc444444f9b
+                      transAudit:
+                        kafkaMongoKey: 2023-05-09_2023-05-09
+                        createTime: Tue May 09 11:53:06 CDT 2023
+                        totalProcessTime: 0
+                        transHotStoreProcessTime: 0
+                        upStreamProcessTime: 0
+                        rpicStampingProcessTime: 0
+                        authUnixTime:
+                          $numberLong: '1683608400000'
+                      taxAmount: 0
+                      key:
+                        sequenceNumber: 297
+                        recordKey: 10007130
+                    - originalMccCode: 3007
+                      period: 23072
+                      virtual: {}
+                      bilingPeriodCheckIndicator: 0
+                      userData: {}
+                      billingAmount: 53
+                      enhancedData:
+                        lodging:
+                          lodgingSummary:
+                          - itemSequenceNumber: 1
+                            totalMiniBarCharges: 111
+                            totalMovieCharges: 543
+                            healthClubCharges: 324
+                            totalValetParkingCharges: 123
+                            totalLaundryCharges: 23
+                            totalFoodOrBeverageCharges: 765
+                            totalGiftShopPurchases: 0
+                            sourceAmount: 23.5
+                            totalNonRoomCharges: 9876
+                            lodgingNights: 1
+                            netValue: 123
+                            totalRoomTaxAmount: 100
+                            dailyRoomRate: 1987
+                            totalPrepaidExpenses: 424.75
+                            totalTelephoneCharges: 0
+                            taxValue: 765
+                            grossValue: 99
+                            noShowIndicator: 0
+                            totalBusinessCenterCharges: 564
+                            merchantCategoryCode: 3040
+                            totalDiscount: 10
+                            totalOtherCharges: 24.5
+                            totalTaxAmount: 99
+                            totalFolioCashAdvances: 323
+                          lodgingDetail:
+                          - discountRate: 0
+                            itemSequenceNumber: 1
+                            foodOrBeverageCharges: 123
+                            valetParkingCharges: 545
+                            laundryCharges: 0
+                            roomTax4Amount: 232
+                            healthClubCharges: 324
+                            roomTax3Amount: 0
+                            roomRate: 0
+                            telephoneCharges: 666
+                            otherCharge: 87
+                            businessCenterCharges: 213
+                            miniBarCharges: 0
+                            folioCashAdvances: 454
+                            roomTaxAmount: 0
+                            movieCharges: 54
+                            sourceAmount: 23.5
+                            roomTax2Amount: 0
+                            giftShopPurchases: 1
+                        fleet:
+                          fleetService:
+                          - serviceType: ' '
+                            cityMotorFuelTaxExemptionIndicator: 0
+                            fuelNetAmount: 0
+                            itemSequenceNumber: null
+                            matchType: P
+                            nonFuelNetAmount: 0
+                            fuelQuantity: 0
+                            processorAddendumKey: '3333444455556666802                                 '
+                            countyFuelSalesTaxAmount: 0
+                            processorFinancialKey: ''
+                            secondaryStateFuelTaxExemptionIndicator: 0
+                            fleetAdditionalPromptedData1: ''
+                            fleetAdditionalPromptedData2: ''
+                            optionalField1: '                          '
+                            checkOutDate: null
+                            fuelMiscellaneousTaxAmount: 0
+                            vatOrTaxRate: 40
+                            optionalField4: '                          '
+                            nonFuelGrossAmount: 0
+                            optionalField2: '                          '
+                            optionalField3: '                          '
+                            cityFuelSalesTaxExemptionIndicator: 0
+                            merchantSourceCode: PCR
+                            matchReferenceKey: '                                                  '
+                            countyFuelSalesTaxExemptionIndicator: 0
+                            fuelFederalExciseTaxAmount: 0
+                            cityFuelSalesTaxAmount: 0
+                            countyMotorFuelTaxAmount: 0
+                            stateMotorFuelTaxExemptionIndicator: 0
+                            nonFuelStateAndLocalSalesTaxAmount: 0
+                            supplierPostalCode: '12345'
+                            fuelFederalExciseTaxExemptionIndicator: 0
+                            allocationSequenceNumber: null
+                            fileDatePartition: '20230826'
+                            nonFuelMiscellaneousTaxAmount: 0
+                            stateMotorFuelTaxAmount: 0
+                            fuelUnitCost: 0
+                            ticketNumber: ''
+                            passengerName: ''
+                            destinationAirportCode: ''
+                            countyMotorFuelTaxExemptionIndicator: 0
+                            fuelMiscellaneousTaxExemptionIndicator: 0
+                            purchaseId: '3333                                              '
+                            cityMotorFuelTaxAmount: 0
+                            fuelGrossAmount: 0
+                            tokenIndicator: ''
+                            checkInDate: null
+                            purchaseType: 2
+                            fleetEmployeeNumber: ''
+                            nonFuelFederalExciseTaxExemptionIndicator: 0
+                            nonFuelStateAndLocalSalesTaxExemptInd: 0
+                            sourceAmount: 27.98
+                            productSequenceNumber: null
+                            expandedFuelType: ''
+                            federalSalesTaxAmount: 0
+                            supplierName: CARQUEST 3333
+                            legNumber: null
+                            odometerReading: '0000000'
+                            fuelUnitOfMeasureCode: G
+                            nonFuelFederalExciseTaxAmount: 0
+                            fleetTrailerNumber: ''
+                            roomRate: null
+                            secondaryStateFuelTaxAmount: 0
+                            fuelType: '00'
+                            merchantCategoryCode: 5555
+                            nonFuelMiscellaneousTaxExemptionIndicator: 0
+                            numberOfLegs: null
+                            businessFormatCode: ''
+                            originationAirportCode: ''
+                            federalSalesTaxExemptionIndicator: 0
+                          fleetProduct:
+                          - ticketNumber: ''
+                            passengerName: ''
+                            destinationAirportCode: ''
+                            itemSequenceNumber: null
+                            matchType: P
+                            purchaseId: '3333                                             '
+                            processorAddendumKey: '3333444455556666802                                 '
+                            tokenIndicator: ''
+                            processorFinancialKey: ''
+                            checkInDate: null
+                            purchaseType: null
+                            optionalField1: '                          '
+                            checkOutDate: null
+                            sourceAmount: 27.98
+                            productSequenceNumber: 1
+                            optionalField4: '                          '
+                            optionalField2: '                          '
+                            optionalField3: '                          '
+                            supplierName: CARQUEST 3333
+                            merchantSourceCode: PCR
+                            legNumber: null
+                            matchReferenceKey: '                                                  '
+                            supplierPostalCode: '12345'
+                            allocationSequenceNumber: null
+                            roomRate: null
+                            productCode: '00'
+                            fuelType: ''
+                            fileDatePartition: '20230826'
+                            merchantCategoryCode: '5555'
+                            numberOfLegs: null
+                            businessFormatCode: ''
+                            originationAirportCode: ''
+                        carRental:
+                          carRentalSummary:
+                          - insuranceCharges: 0
+                            itemSequenceNumber: null
+                            corporateIdentification: ''
+                            matchType: P
+                            otherCharges: 0
+                            extraMileageCharges: 0
+                            processorAddendumKey: '4444555566668461   22223333444455559293673 08882222 '
+                            mileageOrKmAtCheckOut: null
+                            extraChargeCode: ''
+                            carCompanyCode: ''
+                            processorFinancialKey: ''
+                            taBookingReferenceNumber: ''
+                            optionalField1: '                          '
+                            totalTaxOrVat: 0
+                            checkOutDate: '2023-08-13'
+                            vehicleGroupCharge: ''
+                            dropOffStationCode: ''
+                            optionalField4: '                          '
+                            vehicleType: ''
+                            optionalField2: '                          '
+                            optionalField3: '                          '
+                            merchantSourceCode: PCR
+                            dailyRentalRate: 0
+                            matchReferenceKey: ''
+                            mileageOrKmDriven: null
+                            netValue: null
+                            costCenter: ''
+                            glCode: ''
+                            locationRentedFrom: ''
+                            oneWayDropCharges: 0
+                            supplierPostalCode: '12345'
+                            lateReturnChargesOrHourlyRate: 0
+                            allocationSequenceNumber: null
+                            unitOfDistance: ''
+                            autoTowing: 0
+                            grossValue: null
+                            noShowIndicator: 0
+                            fileDatePartition: '20230826'
+                            regularMileageCharges: 0
+                            additionalServices: ''
+                            ticketNumber: ''
+                            passengerName: ''
+                            destinationAirportCode: ''
+                            returnLocation: ''
+                            clientReferenceField6: ''
+                            clientReferenceField7: ''
+                            clientReferenceField9: ''
+                            tokenIndicator: ''
+                            checkInDate: null
+                            purchaseType: null
+                            clientReferenceField5: ''
+                            clientReferenceField16: ''
+                            clientReferenceField15: ''
+                            clientReferenceField14: ''
+                            clientReferenceField13: ''
+                            clientReferenceField12: ''
+                            clientReferenceField11: ''
+                            clientReferenceField10: ''
+                            sourceAmount: 123.45
+                            productSequenceNumber: null
+                            renterName: TEMP NAME
+                            mileageOrKmAtCheckIn: null
+                            fuelCharges: 0
+                            checkInDateAndTime: ''
+                            supplierName: TEMP CAR SUPPLIER
+                            classCode: ''
+                            legNumber: null
+                            weeklyRentalRate: 0
+                            daysRented: 0
+                            pick_UpStationCode: ''
+                            employeeId: ''
+                            businessNumber: ''
+                            locationReturnedTo: ''
+                            checkOutDateAndTime: ''
+                            vehicleRegistrationNumber: ''
+                            roomRate: null
+                            telephoneCharges: 0
+                            productCode: ''
+                            fuelType: ''
+                            taxValue: null
+                            merchantCategoryCode: 3333
+                            totalDiscount: null
+                            reservationNumber: ''
+                            numberOfLegs: null
+                            originationAirportCode: ''
+                          carRentalDetail: []
+                        purchase:
+                          purchaseSummary:
+                          - ticketNumber: ''
+                            passengerName: ''
+                            destinationAirportCode: ''
+                            itemSequenceNumber: null
+                            matchType: P
+                            purchaseId: '3333'
+                            destinationCountryCode: 840
+                            discountAmount: 0
+                            processorAddendumKey: '3333444455556666802                                 '
+                            tokenIndicator: ''
+                            processorFinancialKey: ''
+                            checkInDate: null
+                            purchaseType: null
+                            optionalField1: '                          '
+                            sourceStateOrProvince: ' '
+                            checkOutDate: null
+                            freightOrShippingVatOrTaxAmount: 0
+                            sourceAmount: 27.98
+                            productSequenceNumber: null
+                            optionalField4: '                          '
+                            optionalField2: '                          '
+                            optionalField3: '                          '
+                            supplierName: CARQUEST 3901
+                            merchantSourceCode: PCR
+                            legNumber: null
+                            matchReferenceKey: '                                                  '
+                            freightAmount: 0
+                            freightOrShippingVatOrTaxRate: 0
+                            supplierPostalCode: '12345'
+                            vatReferenceNumber: ''
+                            sourcePostalCode: ''
+                            serviceIdentifier: PURCHA
+                            allocationSequenceNumber: null
+                            destinationStateOrProvince: ' '
+                            roomRate: null
+                            sourceCountryCode: 9000
+                            destinationPostalCode: ''
+                            fuelType: ''
+                            fileDatePartition: '20230826'
+                            merchantCategoryCode: 5555
+                            numberOfLegs: null
+                            originationAirportCode: ''
+                            orderDate: ''
+                            dutyAmount: 0
+                          purchaseDetail:
+                          - ticketNumber: ''
+                            passengerName: ''
+                            destinationAirportCode: ''
+                            itemSequenceNumber: 1
+                            itemLevelUsageCode: ''
+                            matchType: P
+                            purchaseId: '3362'
+                            lineItemSource: VI
+                            typeSupply: '0'
+                            processorAddendumKey: '3333444455556666802                                 '
+                            tokenIndicator: ''
+                            processorFinancialKey: ''
+                            checkInDate: null
+                            purchaseType: null
+                            optionalField1: '                          '
+                            itemDiscountAmount: 0
+                            checkOutDate: null
+                            vatOrTaxRate: 0
+                            sourceAmount: 27.98
+                            lastItemIndicator: 1
+                            productSequenceNumber: null
+                            optionalField4: '                          '
+                            optionalField2: '                          '
+                            optionalField3: '                          '
+                            supplierName: CARQUEST 3901
+                            itemDescriptor: TEMP Merchandise
+                            itemCommodityCode: ''
+                            merchantSourceCode: PCR
+                            legNumber: null
+                            matchReferenceKey: '                                                  '
+                            quantity: 1
+                            itemTotalAmount: 27.98
+                            lineItemSalesTaxChargedFlag: 0
+                            itemProductCode: '72'
+                            supplierPostalCode: '12345'
+                            unitMeasure: ''
+                            vatOrTaxAmount: 0
+                            serviceIdentifier: PURCHL
+                            allocationSequenceNumber: null
+                            roomRate: null
+                            fuelType: ''
+                            unitCost: 27.98
+                            fileDatePartition: '20230826'
+                            merchantCategoryCode: 5555
+                            numberOfLegs: null
+                            originationAirportCode: ''
+                        airline:
+                          airlineDetail:
+                          - departureTime: '0000'
+                            ticketNumber: ''
+                            passengerName: ''
+                            itemSequenceNumber: 1
+                            domesticOrInternationalIndicator: 0
+                            matchType: P
+                            purchaseId: ''
+                            destinationOrAirportCode: XXX
+                            dateOfTravel: '2023-08-24'
+                            primaryTicketNumber: ''
+                            processorAddendumKey: '475144811112222333344445555666677778888999912003    '
+                            tokenIndicator: ''
+                            processorFinancialKey: ''
+                            checkInDate: null
+                            purchaseType: null
+                            optionalField1: ''
+                            checkOutDate: null
+                            arrivalTime: '0000'
+                            sectorArrivalDateScheduled: ''
+                            sectorNumber: 0
+                            conjunctionTicketNumber: ''
+                            sourceAmount: 497.8
+                            productSequenceNumber: null
+                            stopoverCode: 1
+                            optionalField4: ''
+                            optionalField2: ''
+                            optionalField3: ''
+                            supplierName: TEMP AIR  000011112222
+                            originationAirportOrRailroadCode: XXX
+                            merchantSourceCode: XXX
+                            legNumber: 1
+                            matchReferenceKey: ''
+                            couponNumber: 0
+                            serviceClass: L
+                            supplierPostalCode: '123450000'
+                            arrivalDate: ''
+                            allocationSequenceNumber: null
+                            roomRate: null
+                            departureTax: 0
+                            fuelType: ''
+                            fareBasis: ''
+                            carrierCode: XX
+                            fileDatePartition: '20230825'
+                            merchantCategoryCode: 3256
+                            numberOfLegs: null
+                            sectorFareAmount: 0
+                            carrierReferenceNumber: ''
+                            sectorRefundIndicator: ''
+                          - departureTime: '0000'
+                            ticketNumber: ''
+                            passengerName: ''
+                            itemSequenceNumber: 1
+                            domesticOrInternationalIndicator: 0
+                            matchType: P
+                            purchaseId: ''
+                            destinationOrAirportCode: XXX
+                            dateOfTravel: '2023-08-24'
+                            primaryTicketNumber: ''
+                            processorAddendumKey: '475200011112222333344445555666677778888999912003    '
+                            tokenIndicator: ''
+                            processorFinancialKey: ''
+                            checkInDate: null
+                            purchaseType: null
+                            optionalField1: ''
+                            checkOutDate: null
+                            arrivalTime: '0000'
+                            sectorArrivalDateScheduled: ''
+                            sectorNumber: 0
+                            conjunctionTicketNumber: ''
+                            sourceAmount: 497.8
+                            productSequenceNumber: null
+                            stopoverCode: 1
+                            optionalField4: ''
+                            optionalField2: ''
+                            optionalField3: ''
+                            supplierName: TEMP AIR  0000111122223
+                            originationAirportOrRailroadCode: SFO
+                            merchantSourceCode: PCR
+                            legNumber: 2
+                            matchReferenceKey: ''
+                            couponNumber: 0
+                            serviceClass: B
+                            supplierPostalCode: '123450000'
+                            arrivalDate: ''
+                            allocationSequenceNumber: null
+                            roomRate: null
+                            departureTax: 0
+                            fuelType: ''
+                            fareBasis: ''
+                            carrierCode: AS
+                            fileDatePartition: '20230825'
+                            merchantCategoryCode: 1111
+                            numberOfLegs: null
+                            sectorFareAmount: 0
+                            carrierReferenceNumber: ''
+                            sectorRefundIndicator: ''
+                          airlineSummary:
+                          - clientReference7: ''
+                            clientReference6: ''
+                            itemSequenceNumber: 1
+                            endorsementOrRestrictions: '                    '
+                            matchType: P
+                            documentNumber: ''
+                            processorAddendumKey: '475200011112222333344445555666677778888999912004    '
+                            processorFinancialKey: ''
+                            clientReference9: ''
+                            primaryCarrierCode: ''
+                            domesticTicketIndicator: ''
+                            clientReference16: ''
+                            clientReference15: ''
+                            checkOutDate: null
+                            travelAgencyName: ''
+                            clientReference14: ''
+                            clientReference13: ''
+                            clientReference12: ''
+                            clientReference11: ''
+                            pnrReferenceNumber: ''
+                            consultantCode: ''
+                            optionalField4: ''
+                            optionalField3: ''
+                            merchantSourceCode: PCR
+                            enhancedDataSupplierName: ''
+                            exchangeTicketNumber: ''
+                            passengerSpecificData: ''
+                            clientReference10: ''
+                            airportTax: 0
+                            supplierPostalCode: '123450000'
+                            securityTax: 0
+                            allocationSequenceNumber: null
+                            ticketIndicator: 0
+                            ancillaryService: ''
+                            travelAgencyCode: '55260004'
+                            salesTaxOrGst: 0
+                            fileDatePartition: '20230825'
+                            exchangeTicketAmount: 0
+                            internetIndicator: 0
+                            totalTaxAmount: 0
+                            travelObligationNumber: ''
+                            ticketNumber: '1000111122223'
+                            passengerName: TEMPNAME/LNAME
+                            destinationAirportCode: ''
+                            createdByProcessCode: N
+                            routingId: ''
+                            ticketIssueDate: ''
+                            tcnPassengerName: ''
+                            overallFlightClass: ''
+                            purchaseId: ''
+                            exchangeTicketNumber1: ''
+                            exchangeTicketNumber2: ''
+                            ticketFareCurrencyCode: null
+                            tokenIndicator: ''
+                            eTicketIndicator: 0
+                            checkInDate: null
+                            purchaseType: null
+                            provincialTax: 0
+                            sourceAmount: 497.8
+                            productSequenceNumber: null
+                            departureDate: '2023-08-24'
+                            supplierName: TEMP AIR  1000111122223
+                            legNumber: null
+                            countrySpecificTax1: 0
+                            countrySpecificTax2: 0
+                            totalFeeAmount: 0
+                            businessNumber: ''
+                            clientNumber: ''
+                            matchReferenceField: ''
+                            roomRate: null
+                            fuelType: ''
+                            totalFareAmount: 0
+                            merchantCategoryCode: 3256
+                            numberOfLegs: 2
+                            tripDestination: ''
+                            originationAirportCode: ''
+                            refundNoticeNumber: ''
+                      memoPostFlag: 0
+                      supplierIsoCountryCode: 840
+                      sourceCurrencyCode: 840
+                      billingCurrencyCode: 124
+                      vatAmount: 0
+                      originalSupplierCountryCode: 250
+                      preprocessId: 8
+                      bussinessNameSpace:
+                        regionIdentification: 1
+                        processorIdentification: 902
+                      merchantCategoryCode: 3028
+                      sourceLineNumber: 0
+                      base2GmrIdentification:
+                        $numberLong: '31023473433'
+                      sourceAmount: 29
+                      _id:
+                        $oid: 644a4a44444bbbc555566667
+                      transAudit:
+                        kafkaMongoKey: 2023-05-09_2023-05-09
+                        createTime: Tue May 09 11:53:20 CDT 2023
+                        totalProcessTime: 0
+                        transHotStoreProcessTime: 0
+                        upStreamProcessTime: 0
+                        rpicStampingProcessTime: 0
+                        authUnixTime:
+                          $numberLong: '1683608400000'
+                      taxAmount: 0
+                      key:
+                        sequenceNumber: 297
+                        recordKey: 10007130
+                    responseStatus:
+                      statusDescription: Success
+                      statusCode: '200'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vbs~1dapi~1v1~1transaction_enhanced/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    trxnRequest:
+      type: object
+      properties:
+        issuer:
+          type: object
+          properties:
+            bank:
+              type: array
+              items:
+                type: object
+                properties:
+                  bankId:
+                    type: string
+                    description: Bank Id
+                  company:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        companyId:
+                          type: string
+                          description: Company Id
+                  regionId:
+                    type: string
+                    description: Region Id Code
+                  processorId:
+                    type: string
+                    description: Processor Id Code
+            metadata:
+              type: object
+              properties:
+                endDate:
+                  type: string
+                  description: yyyy/MM/dd
+                endTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startDate:
+                  type: string
+                  description: yyyy/MM/dd
+                startTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startIndex:
+                  type: string
+                  description: Use this value only on subsequent requests. This value should be equal to the next index in the previous respose. Do not use startIndex in the first request in a pagination.
+        accountRequest:
+          type: object
+          properties:
+            bank:
+              type: array
+              items:
+                type: object
+                properties:
+                  bankId:
+                    type: string
+                    description: Bank Id
+                  company:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        acctList:
+                          type: array
+                          description: List of accounts
+                          items:
+                            type: string
+                        companyId:
+                          type: string
+                          description: Company Id
+                  regionId:
+                    type: string
+                    description: Region Id Code
+                  processorId:
+                    type: string
+                    description: Processor Id Code
+            metadata:
+              type: object
+              properties:
+                endDate:
+                  type: string
+                  description: yyyy/MM/dd
+                endTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startDate:
+                  type: string
+                  description: yyyy/MM/dd
+                startTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startIndex:
+                  type: string
+                  description: Use this value only on subsequent requests. This value should be equal to the next index in the previous respose. Do not use startIndex in the first request in a pagination.
+        transactionRecordFields:
+          type: string
+          description: List of comma separated field names
+      description: Json request object. (Either of issuer or accountRequest is required and not both )
+    TransRequestFilters:
+      required:
+      - filterType
+      - filterValues
+      type: object
+      properties:
+        filterType:
+          type: string
+        filterValues:
+          type: array
+          items:
+            type: string
+    Pagination:
+      type: object
+      properties:
+        pageNum:
+          minimum: 1
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+    TransactionResponse:
+      type: object
+      properties:
+        transactionData:
+          type: object
+          properties:
+            starterInfo:
+              type: object
+              properties: {}
+              description: Starter Validation Information
+            responseMetadata:
+              type: object
+              properties:
+                endIndex:
+                  type: integer
+                  description: The last index on the current page.
+                nextIndex:
+                  type: integer
+                  description: This will be used as the startIndex in the next request to retrieve the next page in the pagination.
+                requestId:
+                  type: integer
+                  description: The request identification code for this request.
+                startIndex:
+                  type: integer
+                  description: The start index on the current page.
+                remainingTrxnRecCount:
+                  type: integer
+                  description: The remaining number of records in the pagination.
+                numberOfRecordsFetched:
+                  type: integer
+                  description: The number of records retrieved and shown from the response.
+            transactionRecords:
+              type: array
+              description: An array of the Transaction objects.
+              items:
+                type: object
+                properties:
+                  gmrId:
+                    type: string
+                    description: GMR Identifier
+                  matId:
+                    type: string
+                    description: Matched Indicator
+                  mpsId:
+                    type: string
+                    description: Merchant Profile Service Identifier
+                  ddaNbr:
+                    type: string
+                    description: DDA Number
+                  feeAmt:
+                    type: string
+                    description: Fee Amount
+                  loadCd:
+                    type: string
+                    description: Load Code
+                  source:
+                    type: string
+                    description: Source
+                  tipAmt:
+                    type: string
+                    description: Tip Amount
+                  vatAmt:
+                    type: string
+                    description: Vat Amount
+                  acctNum:
+                    type: string
+                    description: Account Number
+                  acqrBin:
+                    type: string
+                    description: Acquiring BIN
+                  authNbr:
+                    type: string
+                    description: Authorization Number
+                  buyerId:
+                    type: string
+                    description: Buyer id for the RVA
+                  feeDesc:
+                    type: string
+                    description: Fee Description
+                  optFld1:
+                    type: string
+                    description: Optional Field 1
+                  optFld2:
+                    type: string
+                    description: Optional Field 2
+                  optFld3:
+                    type: string
+                    description: Optional Field 3
+                  optFld4:
+                    type: string
+                    description: Optional Field 4
+                  psngrNm:
+                    type: string
+                    description: Passenger Name
+                  purchId:
+                    type: string
+                    description: Purchase Identification
+                  tax2Amt:
+                    type: string
+                    description: Tax 2 Amount
+                  transDt:
+                    type: string
+                    description: Transaction Date
+                  transTm:
+                    type: string
+                    description: Transaction Time
+                  usageCd:
+                    type: string
+                    description: Usage Code
+                  regionId:
+                    type: string
+                    description: Region Identifier
+                  supplier:
+                    type: object
+                    properties:
+                      atId:
+                        type: string
+                        description: Alternate Identifier
+                      vmid:
+                        type: string
+                        description: VM Id
+                      matId:
+                        type: string
+                        description: Match Indicator
+                      mpsId:
+                        type: string
+                        description: Merchant Profile Service Identifier
+                      hbcInd:
+                        type: string
+                        description: Hbc Indicator
+                      mailSt:
+                        type: string
+                        description: Mailing State Province
+                      dsblInd:
+                        type: string
+                        description: Disabled Indicator
+                      dunsNum:
+                        type: string
+                        description: Dun & Bradstreet Number
+                      frchsCd:
+                        type: string
+                        description: Franchise Code
+                      txpyrNm:
+                        type: string
+                        description: Tax Payer Name
+                      b2MrchNm:
+                        type: string
+                        description: B2 Merchant Name
+                      b2MrchSt:
+                        type: string
+                        description: B2 Merchant State
+                      busLglNm:
+                        type: string
+                        description: Business Legal Name
+                      incStaCd:
+                        type: string
+                        description: Incorporation Status Code
+                      mailAddr:
+                        type: string
+                        description: Mailing Address
+                      mailCity:
+                        type: string
+                        description: Mailing City
+                      prmSicCd:
+                        type: string
+                        description: Primary Standard Industrial Classification SIC Code
+                      secSicCd:
+                        type: string
+                        description: Secondary Standard Industrial Classification SIC Code
+                      tinTypCd:
+                        type: string
+                        description: TIN Type Code
+                      wbencInd:
+                        type: string
+                        description: WBENC Indicator
+                      altMrchNm:
+                        type: string
+                        description: Alternate Merchant Name
+                      altMrchSt:
+                        type: string
+                        description: Alternate Merchant State
+                      emailAddr:
+                        type: string
+                        description: Email Address
+                      expir8ADt:
+                        type: string
+                        description: 8A Expiration Date
+                      isoCtryCd:
+                        type: string
+                        description: ISO Country Code
+                      mailZipCd:
+                        type: string
+                        description: Mailing Zip Code
+                      optOutInd:
+                        type: string
+                        description: Opt Out Indicator
+                      smlBusInd:
+                        type: string
+                        description: Certified Small Business Indicator
+                      tinMtchCd:
+                        type: string
+                        description: TIN Match Code
+                      wmnOwnInd:
+                        type: string
+                        description: Woman Owned Indicator
+                      annlSlsVol:
+                        type: string
+                        description: Annual Sales Volume
+                      b2MrchCity:
+                        type: string
+                        description: B2 Merchant City
+                      busSizeInd:
+                        type: string
+                        description: Business Size Indicator
+                      clsfn8AInd:
+                        type: string
+                        description: Classification Indicator
+                      infoRfslDt:
+                        type: string
+                        description: Information Refusal Date
+                      mrchCatgCd:
+                        type: string
+                        description: Merchant Category Code
+                      mrchFaxNum:
+                        type: string
+                        description: Merchant Fax Number
+                      mrchPhnNum:
+                        type: string
+                        description: Merchant Phone Number
+                      nonPrftInd:
+                        type: string
+                        description: Non-Profit Indicator
+                      outOfBusDt:
+                        type: string
+                        description: Out of Business Date
+                      prmNaicsCd:
+                        type: string
+                        description: Primary NAICS Code
+                      secNaicsCd:
+                        type: string
+                        description: Secondary NAICS Code
+                      txpyrIdNum:
+                        type: string
+                        description: Tax Payer Identification Number
+                      veteranInd:
+                        type: string
+                        description: Veteran Indicator
+                      altMrchCity:
+                        type: string
+                        description: Alternate Merchant City
+                      altSuppCtry:
+                        type: string
+                        description: Alternate Supplier Country
+                      atMrchTypCd:
+                        type: string
+                        description: Alternate Merchant Type Code
+                      b2MrchZipCd:
+                        type: string
+                        description: B2 Merchant Zip Code
+                      incStaChgDt:
+                        type: string
+                        description: Incorporation Status Change Date
+                      infoRfslInd:
+                        type: string
+                        description: Information Refusal Indicator
+                      lvl2CertInd:
+                        type: string
+                        description: Level 2 Certified Indicator Code
+                      lvl2CptrInd:
+                        type: string
+                        description: Level 2 Capture Indicator Code
+                      mnrtyVndrCd:
+                        type: string
+                        description: Minority Vendor Code
+                      mrchStrAddr:
+                        type: string
+                        description: Merchant Street Address
+                      rsrvnPhnNum:
+                        type: string
+                        description: Reservation Phone Number
+                      sbaRgstrInd:
+                        type: string
+                        description: SBA Participant Indicator
+                      altMrchZipCd:
+                        type: string
+                        description: Alternate Merchant Zip Code
+                      latestEmpCnt:
+                        type: string
+                        description: Latest Employee Count
+                      lvl3Tier1Ind:
+                        type: string
+                        description: Level 3 Tier 1 Indicator
+                      lvl3Tier2Ind:
+                        type: string
+                        description: Level 3 Tier 2 Indicator
+                      lvl3Tier3Ind:
+                        type: string
+                        description: Level 3 Tier 3 Indicator
+                      lvl3Tier4Ind:
+                        type: string
+                        description: Level 3 Tier 4 Indicator
+                      mrchntQualCd:
+                        type: string
+                        description: Merchant Qual Code
+                      ownrshpChgDt:
+                        type: string
+                        description: Ownershio Change Date
+                      wmnSmlBusInd:
+                        type: string
+                        description: Woman owned Small Business Indicator
+                      ccdrAdjMrchNm:
+                        type: string
+                        description: VBS processed Adjacent Merchant Name
+                      ccdrAdjMrchSt:
+                        type: string
+                        description: VBS processed Adjacent Merchant State
+                      hubzoneBusInd:
+                        type: string
+                        description: HUB Zone Indicator
+                      mailZipSffxCd:
+                        type: string
+                        description: Mailing Zip Suffix Code
+                      mailingCtryCd:
+                        type: string
+                        description: Mailing Country Code
+                      vtrnSmlBusInd:
+                        type: string
+                        description: Sba Small Business Registry Indicator
+                      dVtrnSmlBusInd:
+                        type: string
+                        description: Supplier Certified Small Business Indicator
+                      dotDisadBusInd:
+                        type: string
+                        description: DOT Disadvantaged Business Indicator
+                      dsblVeteranInd:
+                        type: string
+                        description: Disabled Veteran Indicator
+                      smlDisadBusInd:
+                        type: string
+                        description: Small Disadvantaged Business Indicator
+                      akNativeCorpInd:
+                        type: string
+                        description: Alaskan Native Corporation Indicator
+                      b2MrchZipSffxCd:
+                        type: string
+                        description: B2 Merchant Zip Suffix Code
+                      ccdrAdjMrchCity:
+                        type: string
+                        description: VBS processed Adjacent Merchant City
+                      smlBusSrceCd1Nm:
+                        type: string
+                        description: Certified Small Business Source Code 1 Name
+                      smlBusSrceCd2Nm:
+                        type: string
+                        description: Certified Small Business Source Code 2 Name
+                      smlBusSrceCd3Nm:
+                        type: string
+                        description: Certified Small Business Source Code 3 Name
+                      solePrptrLastNm:
+                        type: string
+                        description: Sole Proprietor Owner Last Name
+                      airprtDisadvdInd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Indicator
+                      altMrchZipSffxCd:
+                        type: string
+                        description: Alternate Merchant Zip Suffix Code
+                      caDeptGenlSvcInd:
+                        type: string
+                        description: California Department Od General Service Indicator
+                      certdTexasGsaInd:
+                        type: string
+                        description: Certified Texas Gsa Indicator
+                      level3CaptureInd:
+                        type: string
+                        description: Level 3 Capture Indicator Code
+                      smlBusCertfcn1Dt:
+                        type: string
+                        description: Certified Small Business Certification 1 Date
+                      smlBusCertfcn2Dt:
+                        type: string
+                        description: Certified Small Business Certification 2 Date
+                      smlBusCertfcn3Dt:
+                        type: string
+                        description: Certified Small Business Certification 3 Date
+                      smlBusSrceLvl1Cd:
+                        type: string
+                        description: Certified Small Business Source Level 1 Code
+                      smlBusSrceLvl2Cd:
+                        type: string
+                        description: Certified Small Business Source Level 2 Code
+                      smlBusSrceLvl3Cd:
+                        type: string
+                        description: Certified Small Business Source Level 3 Code
+                      solePrptrFirstNm:
+                        type: string
+                        description: Sole Proprietor Owner First Name
+                      solePrptrMdlInit:
+                        type: string
+                        description: Sole Proprietor Owner Middle Initial
+                      mrchLocnLatitdVal:
+                        type: string
+                        description: Merchant Location Latitude Value
+                      smlBusCertfcn1Num:
+                        type: string
+                        description: Certified Small Business Certification 1 Number
+                      smlBusCertfcn2Num:
+                        type: string
+                        description: Certified Small Business Certification 2 Number
+                      smlBusCertfcn3Num:
+                        type: string
+                        description: Certified Small Business Certification 3 Number
+                      vietnamVeteranInd:
+                        type: string
+                        description: Vietnam Era Veteran Indicator
+                      airprtDisadvdCd1Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Code1 name
+                      airprtDisadvdCd2Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Code2 name
+                      airprtDisadvdCd3Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Code3 name
+                      airprtDisadvdCd4Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Code4 name
+                      airprtDisadvdCd5Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Code5 name
+                      mrchLocnLongitdVal:
+                        type: string
+                        description: Merchant Location Longitude Value
+                      sbaSmlBusRgstryInd:
+                        type: string
+                        description: Sba Small Business Registry Indicator
+                      airprtDisadvdLvl1Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Level 1 Code
+                      airprtDisadvdLvl2Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Level 2 Code
+                      airprtDisadvdLvl3Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Level 3 Code
+                      airprtDisadvdLvl4Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Level 4 Code
+                      airprtDisadvdLvl5Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Level 5 Code
+                      certdDnbNmsdcDocInd:
+                        type: string
+                        description: Certified D&b Nmsdc Doc Indicator
+                      patrActExclpartyind:
+                        type: string
+                        description: Patriot Act Excluded Party List Indicator
+                      airprtDisadvdCtry1Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Country 1 Code
+                      airprtDisadvdCtry2Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Country 2 Code
+                      airprtDisadvdCtry3Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Country 3 Code
+                      airprtDisadvdCtry4Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Country 4 Code
+                      airprtDisadvdCtry5Cd:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Country 5 Code
+                      airprtDisadvdTerr1Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Territory 1 name
+                      airprtDisadvdTerr2Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Territory 2 name
+                      airprtDisadvdTerr3Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Territory 3 name
+                      airprtDisadvdTerr4Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Territory 4 name
+                      airprtDisadvdTerr5Nm:
+                        type: string
+                        description: Certfied Airport Concession Disadvantage Source Territory 5 name
+                      visaCommerceSellerId:
+                        type: string
+                        description: Visa Commerce Seller ID
+                      histBlkCollegeInstInd:
+                        type: string
+                        description: Historically Black College Univ Minority Institution
+                      smlBusCertfcnExpirnDt:
+                        type: string
+                        description: Certified Small Business Certification 1 Expiration Date
+                      smlBusCertfcnExpirn2Dt:
+                        type: string
+                        description: Certified Small Business Certification 2 Expiration Date
+                      smlBusCertfcnExpirn3Dt:
+                        type: string
+                        description: Certified Small Business Certification 3 Expiration Date
+                    description: Supplier Information
+                  carrierCd:
+                    type: string
+                    description: Carrier Code
+                  companyId:
+                    type: string
+                    description: Company Identifier
+                  custCdCri:
+                    type: string
+                    description: Customer Code CRI
+                  disputeDt:
+                    type: string
+                    description: Dispute Date
+                  extractId:
+                    type: string
+                    description: Extract ID
+                  matchedId:
+                    type: string
+                    description: Matched Indicator
+                  messageId:
+                    type: string
+                    description: Message Identifier
+                  postingDt:
+                    type: string
+                    description: Posting Date
+                  refundNum:
+                    type: string
+                    description: Refund Number
+                  rvaStatus:
+                    type: string
+                    description: Status of the RVA record
+                  sourceAmt:
+                    type: string
+                    description: Source Amount
+                  ticketNum:
+                    type: string
+                    description: Ticket Number
+                  tokenType:
+                    type: string
+                    description: RVA Token Type
+                  userData1:
+                    type: string
+                    description: User Data 1
+                  userData2:
+                    type: string
+                    description: User Data 2
+                  userData3:
+                    type: string
+                    description: User Data 3
+                  userData4:
+                    type: string
+                    description: User Data 4
+                  userData5:
+                    type: string
+                    description: User Data 5
+                  billingAmt:
+                    type: string
+                    description: Billing Amount
+                  custVatNum:
+                    type: string
+                    description: Customer Vat Number
+                  disputeAmt:
+                    type: string
+                    description: Dispute Amount
+                  origlMccCd:
+                    type: string
+                    description: Original Merchant Category Code
+                  routingNbr:
+                    type: string
+                    description: Routing Number
+                  rvaEndDate:
+                    type: string
+                    description: RVA End Date
+                  supplierNm:
+                    type: string
+                    description: Supplier Name
+                  tranIdntfn:
+                    type: string
+                    description: Transaction Identification
+                  addendumKey:
+                    type: string
+                    description: Processor Addendum Key
+                  commodityCd:
+                    type: string
+                    description: Commodity Code
+                  fltDepartDt:
+                    type: string
+                    description: Flight Depart Date
+                  memoPostFlg:
+                    type: string
+                    description: Memo Post Flag
+                  merchCatgCd:
+                    type: string
+                    description: Merchant Category Code
+                  orderTypeCd:
+                    type: string
+                    description: Order Type Code
+                  processorId:
+                    type: string
+                    description: Processor Identifier
+                  rvaTimezone:
+                    type: string
+                    description: Time Zone of Start Date
+                  rvaUniqueId:
+                    type: string
+                    description: It is an unique Identifier for each requisition (if RVA has multiple accounts, each will have its own requisition id)
+                  salesTaxAmt:
+                    type: string
+                    description: Sales Tax Amount
+                  statementDt:
+                    type: string
+                    description: Statement Date
+                  transRefNum:
+                    type: string
+                    description: Transaction Reference Number
+                  transTypeCd:
+                    type: string
+                    description: Transaction Type Code
+                  disputeRsnCd:
+                    type: string
+                    description: Dispute Reason Code
+                  memberBankId:
+                    type: string
+                    description: Issuer Identifier
+                  rvaStartDate:
+                    type: string
+                    description: RVA Start Date
+                  sourceCurrCd:
+                    type: string
+                    description: Source Currency Code
+                  supplierCity:
+                    type: string
+                    description: Supplier City
+                  billingCurrCd:
+                    type: string
+                    description: Billing Currency Code
+                  billingPeriod:
+                    type: string
+                    description: Billing Period
+                  ddaSavingsNbr:
+                    type: string
+                    description: DDA Savings Number
+                  purchIdFormat:
+                    type: string
+                    description: Purchase Identification Format
+                  userData1Desc:
+                    type: string
+                    description: User Data 1 Description
+                  userData2Desc:
+                    type: string
+                    description: User Data 2 Description
+                  userData3Desc:
+                    type: string
+                    description: User Data 2 Description
+                  userData4Desc:
+                    type: string
+                    description: User Data 4 Description
+                  userData5Desc:
+                    type: string
+                    description: User Data 5 Description
+                  vmpdLtMtchInd:
+                    type: string
+                    description: VMPD Match Code
+                  vpaClientRefs:
+                    type: array
+                    description: Map of Client reference that has field name and value pair
+                    items:
+                      type: object
+                      properties: {}
+                  accountExpDate:
+                    type: string
+                    description: The expiration date of the account used for RVA processing
+                  billingAcctNbr:
+                    type: string
+                    description: Billing Account Number
+                  cardAcceptorId:
+                    type: string
+                    description: Card Acceptor ID
+                  disputeStateCd:
+                    type: string
+                    description: Dispute Status Code
+                  enrichedTxnFlg:
+                    type: string
+                    description: Enriched Transaction Flag
+                  exchgRtDcmlNum:
+                    type: string
+                    description: Exchange Rate Decimal Number
+                  fgnTranExchgRt:
+                    type: string
+                    description: Foreign Transaction Exchange Rate
+                  origSupplierNm:
+                    type: string
+                    description: Original Supplier Name
+                  reservedField1:
+                    type: string
+                    description: Reserved Field 1
+                  reservedField2:
+                    type: string
+                    description: Reserved Field 2
+                  reservedField3:
+                    type: string
+                    description: Reserved Field 3
+                  reservedField4:
+                    type: string
+                    description: Reserved Field 4
+                  supplierCtryCd:
+                    type: string
+                    description: Supplier ISO Country Code
+                  supplierVatNum:
+                    type: string
+                    description: Supplier VAT Number
+                  cardTransSeqNum:
+                    type: string
+                    description: Transaction Sequence Number
+                  lineitemMatchId:
+                    type: string
+                    description: Line Item Matched Indicator
+                  origTransRefNum:
+                    type: string
+                    description: Original Transaction Reference Number
+                  pCardTransIsNum:
+                    type: string
+                    description: Card Transaction Is Number
+                  taxAmtIncludeCd:
+                    type: string
+                    description: Tax Amount Included Code
+                  origlSuplrCityNm:
+                    type: string
+                    description: Original Supplier City Name
+                  origlSuplrCtryCd:
+                    type: string
+                    description: Original Supplier Country Code
+                  origlSuplrPstlCd:
+                    type: string
+                    description: Original Supplier Postal Code
+                  supplierOrderNum:
+                    type: string
+                    description: Supplier Order Number
+                  supplierPostalCd:
+                    type: string
+                    description: Supplier Postal Code
+                  taxAmt2IncludeCd:
+                    type: string
+                    description: Tax Amount 2 Included Code
+                  destnAirprtCityCd:
+                    type: string
+                    description: Destination Airport City Code
+                  rvaClientMessageId:
+                    type: string
+                    description: RVA client message ID
+                  vpaProxyPoolNumber:
+                    type: string
+                    description: Proxy Pool ID
+                  origlSuplrStPrvncCd:
+                    type: string
+                    description: Original Supplier State Province Code
+                  supplierStateProvCd:
+                    type: string
+                    description: Supplier State Province Code
+                  visaCommerceBatchId:
+                    type: string
+                    description: Visa Commerce Batch ID
+                  issuerDefinedUsageCd:
+                    type: string
+                    description: Issuer Defined Usage Code
+                  cardHolderTxnApproval:
+                    type: string
+                    description: Cardholder Transaction Approval
+                  visaCommerPymntInstdt:
+                    type: string
+                    description: Visa Commerce Payment Instruction Date
+                  supplierNameJapaneseKanji:
+                    type: string
+                    description: Japanese Kanji supplier Name
+                  supplierNameJapaneseKatakana:
+                    type: string
+                    description: Japanese Katakana supplier Name
+          description: response object
+      description: Json response object
+    TransRequest:
+      required:
+      - companyId
+      - filters
+      - issuerId
+      - pagination
+      - processorId
+      - regionId
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        filters:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TransRequestFilters'
+        issuerId:
+          maxLength: 15
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        regionId:
+          maxLength: 5
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        companyId:
+          maxLength: 25
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        processorId:
+          maxLength: 10
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        rejectedSettlements:
+          type: boolean
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

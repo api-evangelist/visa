@@ -1,0 +1,1500 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Supplier Service API
+  description: The Supplier web service is used for creating and maintaining a supplier.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Supplier Service
+  description: The Supplier web service is used for creating and maintaining a supplier.
+paths:
+  /vpa/v1/supplier/DisableSupplier:
+    post:
+      tags:
+      - Supplier Service
+      summary: Disable Supplier
+      description: ''
+      operationId: Disable Supplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - supplierId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                supplierId:
+                  maxLength: 30
+                  type: string
+                  description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                disableReason:
+                  maxLength: 255
+                  type: string
+                  description: Reason for disabling the supplier. This will be logged in the audit table.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  disableReason: Disabling the supplier
+                  clientId: B2BWS_1_1_9999
+                  supplierId: 111111
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DisableSupplierResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                    description: Success
+        '400':
+          description: Refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#disable_supplier">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: disablesupplier
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1supplier~1DisableSupplier/post'
+        default: false
+  /vpa/v1/supplier/ManageSupplierAccount:
+    post:
+      tags:
+      - Supplier Service
+      summary: ManageSupplierAccount
+      description: ''
+      operationId: ManageSupplierAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - cardDetails
+              - clientId
+              - messageId
+              - supplierId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                supplierId:
+                  maxLength: 30
+                  type: string
+                  description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                cardDetails:
+                  required:
+                  - accountType
+                  - actiontype
+                  type: object
+                  properties:
+                    actiontype:
+                      maxLength: 1
+                      type: string
+                      description: "Mode of account creation. Possible values are  \n  1 - Request New Account    \n  2 - Enter Account (Credit) and prepaid card association (Debit)  \n  3 - Update Account  \n  4 - Remove Account   "
+                    accountType:
+                      maxLength: 1
+                      type: string
+                      description: "Types accounts supported in VPA are  \n  1 - Adjustable Limit   \n  2 - Lodged  \n  5 - Reloadable"
+                    proxyNumber:
+                      maxLength: 19
+                      type: string
+                      description: Proxy number is required if the buyer is DPS.
+                    accountLimit:
+                      maxLength: 10
+                      type: string
+                      description: Account limit is applicable only for lodged (fixed)-account types.imit of the card account. Account limit is applicable only for lodged (fixed)-account types.
+                    currencyCode:
+                      maxLength: 3
+                      type: string
+                      description: Currency code for the newly requested or entered card account. It is alphanumeric and is mandatory if Payment Control is activated for this supplier. The currency code cannot be changed for an account if payment control is ON. Examples are USD, CAD. Note when the buyer's default currency is taken else the currency code passed is used.
+                    accountNumber:
+                      maxLength: 16
+                      type: string
+                      description: Account number. Account number needs to be provided only if the "ActionType" field is 2,3,4.
+                    expirationDate:
+                      maxLength: 10
+                      type: string
+                      description: Account expiration date. It is needed only for Lodged type card accounts. The format is MM/YYYY. This field needs to be provided only if the "ActionType" is 2 and for "AccountType" 1 and 2.
+                    defaultIndicator:
+                      maxLength: 1
+                      type: string
+                      description: 'Indicates if this account is the default account for the supplier. If not passed in the request, the default will be Y if there are no default cards for the supplier else will be defaulted as N. '
+                  description: Account details Class
+                disableReason:
+                  maxLength: 255
+                  type: string
+                  description: Contains the reason for disabling the account.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  supplierId: 111111
+                  cardDetails:
+                    actionType: 2
+                    accountLimit: 100
+                    accountType: 2
+                    accountNumber: 4111111111111111
+                    currencyCode: USD
+                    expirationDate: 12/2025
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ManageSupplierAccountResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      accountNumber:
+                        maxLength: 19
+                        type: string
+                        description: Account number used for processing the payment. The account number will be masked in the response if the corresponding Client ID is configured to be masked.
+                      expirationDate:
+                        type: string
+                        description: Account expiration date. It is needed only for Lodged (Fixed) type card accounts. The format is MMYYYY. Note- Expiration Date is returned only if the "Account Type" is 5 (reloadable).
+                      accountRequestID:
+                        maxLength: 13
+                        type: string
+                        description: A unique ID generated by the VPA system, which the requester can use for checking the status of the card account if it is requested from the processor.
+                      defaultIndicator:
+                        maxLength: 6
+                        type: string
+                        description: 'Indicates if this account is the default account for the supplier. '
+                    description: Success
+        '400':
+          description: Refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#manage_supplier_account">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: managesupplieraccount
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1supplier~1ManageSupplierAccount/post'
+        default: false
+  /vpa/v2/supplier/GetSupplierDetails:
+    post:
+      tags:
+      - Supplier Service
+      summary: Get Supplier Details
+      description: Get Supplier Details
+      operationId: Get Supplier Details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - supplierId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                supplierId:
+                  maxLength: 30
+                  type: string
+                  description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                accountNumber:
+                  maxLength: 16
+                  type: string
+                  description: Provide account number to acquire details only about this particular card account.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientID: B2BWS_1_Region_Bank_3029
+                  supplierId: Memo_prat_2221_11
+                  messageId: '{{$timestamp}}'
+                  buyerID: '11181'
+                  AccountNumber: ''
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetSupplierResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    - supplierAddressLine1
+                    - supplierCity
+                    - supplierCountryCode
+                    - supplierId
+                    - supplierLanguage
+                    - supplierName
+                    - supplierType
+                    type: object
+                    properties:
+                      stpId:
+                        type: integer
+                        description: STP ID to be associated with supplier of type STP. Format- 09. STPID is required new STP suppliers.  You can get the STPID for the supplier you want to pay using the supplier matching service.
+                      enablePin:
+                        maxLength: 1
+                        type: string
+                        description: The EnablePin field is an indicator, which bank and buyer uses to specify if PIN can be enabled at supplier level. A supplier can set a PIN on his account only if EnablePin is set to Y. This field is used only for DPS buyers. This field should be set as Y only if bank and buyer are enabled for PIN.
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      supplierId:
+                        maxLength: 30
+                        type: string
+                        description: 'Identifier used by the buyer to identify the supplier in VPA system. '
+                      supplierCity:
+                        maxLength: 50
+                        type: string
+                        description: Supplier city.
+                      supplierDate:
+                        maxLength: 11
+                        type: string
+                        description: "This field contains the Supplier Date Format. This is a mandatory field, if an empty value is supplied VPA will default the value to the Buyer’s date format. The valid values are\n     MMDDYYYY     DDMMYYYY    \n     YYYYMMDD     DD/MM/YYYY  \n     DD/MM/YY     YYYY/MM/DD   \n     YY/MM/DD     MM/DD/YYYY   \n     MM/DD/YY     DD/MMM/YYYY   \n     DD/MMM/YY    YYYY/MMM/DD   \n     YY/MMM/DD    MMM/DD/YYYY   \n     MMMM/DD/YY   DD-MM-YYYY   \n     DD-MM-YY     YYYY-MM-DD   \n     YY-MM-DD     MM-DD-YYYY   \n     MM-DD-YY     DD-MMM-YY    \n     DD-MMM-YYYY  YYYY-MMM-DD   \n     YY-MMM-DD    MMM-DD-YYYY   \n     MMM-DD-YY"
+                      supplierName:
+                        maxLength: 50
+                        type: string
+                        description: Name of supplier to be paid. It is mandatory for new suppliers.
+                      supplierType:
+                        maxLength: 50
+                        type: string
+                        description: Type of supplier. Valid values are  VPA  STP
+                      supplierState:
+                        maxLength: 50
+                        type: string
+                        description: Supplier state.
+                      accountDetails:
+                        type: array
+                        description: This complex element contains details of the card including account type, account limit, account number, action type, expiration date, currency code, and proxy number. Refer to "Card Details" table for more information.
+                        items:
+                          type: object
+                          properties:
+                            accountType:
+                              maxLength: 1
+                              type: string
+                              description: "Card account type.  Valid values are  \n  1 - Adjustable Limit   \n  2 - Lodged    \n  5 -  Reloadable"
+                            accountLimit:
+                              maxLength: 10
+                              type: string
+                              description: Credit limit of the card account. Account limit is applicable only for lodged (fixed)-account types.
+                            currencyCode:
+                              maxLength: 3
+                              type: string
+                              description: The card account's ISO alphanumeric currency code.  This currency code identifies the currency in which the payment can be made using this account if the authorization control is enabled.  The currency code cannot be changed for an account if payment control is ON. Examples are USD, CAD.
+                            accountNumber:
+                              maxLength: 16
+                              type: string
+                              description: Account number.
+                            expirationDate:
+                              maxLength: 10
+                              type: string
+                              description: 'Account''s expiration date '
+                            defaultIndicator:
+                              maxLength: 1
+                              type: string
+                              description: 'Indicates if this account is the default account for the supplier. '
+                      supplierGLCode:
+                        maxLength: 70
+                        type: string
+                        description: Supplier GL code.
+                      securityAnswers:
+                        type: array
+                        description: This is a complex type element that contains another complex type element.
+                        items:
+                          type: object
+                          properties:
+                            questionAnswer:
+                              type: object
+                              properties:
+                                questionNumber:
+                                  maxLength: 1
+                                  type: string
+                                  description: Question number of a security question.
+                                securityAnswer:
+                                  maxLength: 50
+                                  type: string
+                                  description: Answer of a security question.
+                              description: Security Answers Class
+                      supplierLanguage:
+                        maxLength: 5
+                        type: string
+                        description: "Supplier language. The valid values and corresponding language are \n     fr_FR- Corresponds to the French language.  \n     en_US- Corresponds to the English (US) language.  \n     en_GB- Corresponds to the English (UK) language.   \n     es_ES- Corresponds to the Spanish language.    \n     pt_BR- Corresponds to the Brazilian Portugese language.  \n     English- Corresponds to the English (US) language.   \n     IntlEnglish- Corresponds to the English (UK) language.   \n     French- Corresponds to the French language.    \n     SpanishLA- Corresponds to the Spanish language.   \n     PortugueseBR- Corresponds to the Brazilian Portugese language. \n     German - Corresponds to the German language.\n     Italian - Corresponds to the Italian language."
+                      suaExactMatchRule:
+                        maxLength: 1
+                        type: string
+                        description: Specifies whether the Exact Match rule is to be enabled/disabled for SUA(Single Use Accounts) payments. Valid values are Y/N. For a Lodged card payments ExactMatch rule will be always applied and value in this field is ignored.
+                      supplierPostalCode:
+                        maxLength: 20
+                        type: string
+                        description: Supplier postal code. It is mandatory for new suppliers and only if the country mandates it.
+                      defaultCurrencyCode:
+                        maxLength: 3
+                        type: string
+                        description: Default currency code. All ISO alphanumeric currency codes will be supported. For example- USD. If default currency code is not provided, buyer currency code is used.  If the currency code supplied is not setup in the allowable currencies in the buyer profile, the request will be rejected.
+                      primaryEmailAddress:
+                        maxLength: 70
+                        type: string
+                        description: Supplier primary email address. The value is mandatory in case the bank/buyer has the notification indicator set to Y.
+                      supplierCountryCode:
+                        maxLength: 3
+                        type: string
+                        description: Supplier country code. It is alphanumeric.VPA supports all ISO alphanumeric country code. For example- USA.
+                      securityCodeRequired:
+                        maxLength: 1
+                        type: string
+                        description: Specifies whether security code (CVV2) is required for a supplier to collect a payment. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to "N".
+                      supplierAddressLine1:
+                        maxLength: 100
+                        type: string
+                        description: Supplier address line 1.
+                      supplierAddressLine2:
+                        maxLength: 100
+                        type: string
+                        description: Supplier address line 2.
+                      paymentExpirationDays:
+                        maxLength: 3
+                        type: string
+                        description: Determines the number of days within which a supplier must take his payment to avoid expiration of payment instruction. Its value must be greater than zero.  If this value is not provided, payment expiry days set in the buyer profile is used.
+                      paymentControlRequired:
+                        maxLength: 1
+                        type: string
+                        description: "Specifies whether the supplier is enabled for payment controls. Valid values are  Y  N \n If this field is not passed/set in the WS request\nthen the value of this field is defaulted to Y if the Default Auth Control is enabled in the buyer profile else it is set to N."
+                      alternateEmailAddresses:
+                        type: object
+                        properties:
+                          alternateEmailAddress:
+                            type: array
+                            items:
+                              type: object
+                        description: Supplier CC email address.
+                      reminderNotificationDays:
+                        maxLength: 2
+                        type: string
+                        description: Specifies how many days before payment expiration will the reminder notification be sent. For example, if this value is set to 4, reminder notification will be sent to the supplier four days before payment expiration. This field is required if the reminder notification required field is set to Y.
+                      invoiceAttachmentRequired:
+                        maxLength: 1
+                        type: string
+                        description: Invoice attachment indicator. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to N.
+                      reminderNotificationRequired:
+                        maxLength: 1
+                        type: string
+                        description: "Indicator to enable the supplier reminder notification feature. Possible values are Y and N. If this is not set or is set to N then reminder notification will not be sent to the supplier before payment expiration. \n  Note- If the suppress supplier notification option is enabled for the buyer, the reminder notification is not sent even if this flag is set to Y."
+                    description: OK
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    supplierCity: Foster city
+                    supplierAddressLine2: 10th avenue
+                    supplierAddressLine1: 800 metro drive
+                    supplierDate: YYYYMMDD
+                    messageID: '1646235257'
+                    defaultCurrencyCode: USD
+                    enablePin: N
+                    supplierLanguage: en_US
+                    primaryEmailAddress: amrudesa@visa.com
+                    securityCodeRequired: Y
+                    supplierGLCode: '56789'
+                    invoiceAttachmentRequired: N
+                    securityAnswers:
+                    - questionAnswer:
+                        securityAnswer: blue
+                        questionNumber: '1'
+                    supplierName: Memo_prat22namepk7
+                    suaExactMatchRule: N
+                    statusDesc: Supplier and Account Information Received
+                    supplierID: Memo_prat_2221_11
+                    supplierPostalCode: '94404'
+                    alternateEmailAddresses:
+                      alternateEmailAddress:
+                      - chandank@visa.com
+                      - johsiu@visa.com
+                    reminderNotificationRequired: N
+                    accountDetails:
+                    - accountLimit: '100.00'
+                      accountType: '2'
+                      defaultIndicator: Y
+                      accountNumber: '4807060600772991'
+                      currencyCode: USD
+                      expirationDate: '2022-05-06'
+                    paymentControlRequired: N
+                    supplierState: CA
+                    supplierCountryCode: US
+                    supplierType: VPA
+                    statusCode: ASR060
+        '400':
+          description: Refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_supplier_details">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: getsupplierdetails
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1supplier~1GetSupplierDetails/post'
+        default: false
+      - label: v2 - Latest
+        operationPointer: '#/paths/~1vpa~1v2~1supplier~1GetSupplierDetails/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/supplier/GetSupplierDetails:
+    post:
+      tags:
+      - Supplier Service
+      summary: Get Supplier Details
+      description: ''
+      operationId: Get Supplier Details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - supplierId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                supplierId:
+                  maxLength: 30
+                  type: string
+                  description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                accountNumber:
+                  maxLength: 16
+                  type: string
+                  description: Provide account number to acquire details only about this particular card account.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  supplierId: 111111
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetSupplierResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    - supplierAddressLine1
+                    - supplierCity
+                    - supplierCountryCode
+                    - supplierId
+                    - supplierLanguage
+                    - supplierName
+                    - supplierType
+                    type: object
+                    properties:
+                      stpId:
+                        type: integer
+                        description: STP ID to be associated with supplier of type STP. Format- 09. STPID is required new STP suppliers.  You can get the STPID for the supplier you want to pay using the supplier matching service.
+                      enablePin:
+                        maxLength: 1
+                        type: string
+                        description: The EnablePin field is an indicator, which bank and buyer uses to specify if PIN can be enabled at supplier level. A supplier can set a PIN on his account only if EnablePin is set to Y. This field is used only for DPS buyers. This field should be set as Y only if bank and buyer are enabled for PIN.
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      supplierId:
+                        maxLength: 30
+                        type: string
+                        description: 'Identifier used by the buyer to identify the supplier in VPA system. '
+                      supplierCity:
+                        maxLength: 50
+                        type: string
+                        description: Supplier city.
+                      supplierDate:
+                        maxLength: 11
+                        type: string
+                        description: "This field contains the Supplier Date Format. This is a mandatory field, if an empty value is supplied VPA will default the value to the Buyer’s date format. The valid values are\n     MMDDYYYY     DDMMYYYY    \n     YYYYMMDD     DD/MM/YYYY  \n     DD/MM/YY     YYYY/MM/DD   \n     YY/MM/DD     MM/DD/YYYY   \n     MM/DD/YY     DD/MMM/YYYY   \n     DD/MMM/YY    YYYY/MMM/DD   \n     YY/MMM/DD    MMM/DD/YYYY   \n     MMMM/DD/YY   DD-MM-YYYY   \n     DD-MM-YY     YYYY-MM-DD   \n     YY-MM-DD     MM-DD-YYYY   \n     MM-DD-YY     DD-MMM-YY    \n     DD-MMM-YYYY  YYYY-MMM-DD   \n     YY-MMM-DD    MMM-DD-YYYY   \n     MMM-DD-YY"
+                      supplierName:
+                        maxLength: 50
+                        type: string
+                        description: Name of supplier to be paid. It is mandatory for new suppliers.
+                      supplierType:
+                        maxLength: 50
+                        type: string
+                        description: Type of supplier. Valid values are  VPA  STP
+                      supplierState:
+                        maxLength: 50
+                        type: string
+                        description: Supplier state.
+                      accountDetails:
+                        type: array
+                        description: This complex element contains details of the card including account type, account limit, account number, action type, expiration date, currency code, and proxy number. Refer to "Card Details" table for more information.
+                        items:
+                          type: object
+                          properties:
+                            accountType:
+                              maxLength: 1
+                              type: string
+                              description: "Card account type.  Valid values are  \n  1 - Adjustable Limit   \n  2 - Lodged    \n  5 -  Reloadable"
+                            accountLimit:
+                              maxLength: 10
+                              type: string
+                              description: Credit limit of the card account. Account limit is applicable only for lodged (fixed)-account types.
+                            currencyCode:
+                              maxLength: 3
+                              type: string
+                              description: The card account's ISO alphanumeric currency code.  This currency code identifies the currency in which the payment can be made using this account if the authorization control is enabled.  The currency code cannot be changed for an account if payment control is ON. Examples are USD, CAD.
+                            accountNumber:
+                              maxLength: 16
+                              type: string
+                              description: Account number.
+                            expirationDate:
+                              maxLength: 10
+                              type: string
+                              description: 'Account''s expiration date '
+                            defaultIndicator:
+                              maxLength: 1
+                              type: string
+                              description: 'Indicates if this account is the default account for the supplier. '
+                      supplierGLCode:
+                        maxLength: 70
+                        type: string
+                        description: Supplier GL code.
+                      securityAnswers:
+                        type: array
+                        description: This is a complex type element that contains another complex type element.
+                        items:
+                          type: object
+                          properties:
+                            questionAnswer:
+                              type: object
+                              properties:
+                                questionNumber:
+                                  maxLength: 1
+                                  type: string
+                                  description: Question number of a security question.
+                                securityAnswer:
+                                  maxLength: 50
+                                  type: string
+                                  description: Answer of a security question.
+                              description: Security Answers Class
+                      supplierLanguage:
+                        maxLength: 5
+                        type: string
+                        description: "Supplier language. The valid values and corresponding language are \n     fr_FR- Corresponds to the French language.  \n     en_US- Corresponds to the English (US) language.  \n     en_GB- Corresponds to the English (UK) language.   \n     es_ES- Corresponds to the Spanish language.    \n     pt_BR- Corresponds to the Brazilian Portugese language.  \n     English- Corresponds to the English (US) language.   \n     IntlEnglish- Corresponds to the English (UK) language.   \n     French- Corresponds to the French language.    \n     SpanishLA- Corresponds to the Spanish language.   \n     PortugueseBR- Corresponds to the Brazilian Portugese language. \n     German - Corresponds to the German language.\n     Italian - Corresponds to the Italian language."
+                      supplierPostalCode:
+                        maxLength: 20
+                        type: string
+                        description: Supplier postal code. It is mandatory for new suppliers and only if the country mandates it.
+                      defaultCurrencyCode:
+                        maxLength: 3
+                        type: string
+                        description: Default currency code. All ISO alphanumeric currency codes will be supported. For example- USD. If default currency code is not provided, buyer currency code is used.  If the currency code supplied is not setup in the allowable currencies in the buyer profile, the request will be rejected.
+                      primaryEmailAddress:
+                        maxLength: 70
+                        type: string
+                        description: Supplier primary email address. The value is mandatory in case the bank/buyer has the notification indicator set to Y.
+                      supplierCountryCode:
+                        maxLength: 3
+                        type: string
+                        description: Supplier country code. It is alphanumeric.VPA supports all ISO alphanumeric country code. For example- USA.
+                      securityCodeRequired:
+                        maxLength: 1
+                        type: string
+                        description: Specifies whether security code (CVV2) is required for a supplier to collect a payment. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to "N".
+                      supplierAddressLine1:
+                        maxLength: 100
+                        type: string
+                        description: Supplier address line 1.
+                      supplierAddressLine2:
+                        maxLength: 100
+                        type: string
+                        description: Supplier address line 2.
+                      paymentExpirationDays:
+                        maxLength: 3
+                        type: string
+                        description: Determines the number of days within which a supplier must take his payment to avoid expiration of payment instruction. Its value must be greater than zero.  If this value is not provided, payment expiry days set in the buyer profile is used.
+                      paymentControlRequired:
+                        maxLength: 1
+                        type: string
+                        description: "Specifies whether the supplier is enabled for payment controls. Valid values are  Y  N \n If this field is not passed/set in the WS request\nthen the value of this field is defaulted to Y if the Default Auth Control is enabled in the buyer profile else it is set to N."
+                      alternateEmailAddresses:
+                        type: object
+                        properties:
+                          alternateEmailAddress:
+                            type: array
+                            items:
+                              type: object
+                        description: Supplier CC email address.
+                      reminderNotificationDays:
+                        maxLength: 2
+                        type: string
+                        description: Specifies how many days before payment expiration will the reminder notification be sent. For example, if this value is set to 4, reminder notification will be sent to the supplier four days before payment expiration. This field is required if the reminder notification required field is set to Y.
+                      invoiceAttachmentRequired:
+                        maxLength: 1
+                        type: string
+                        description: Invoice attachment indicator. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to N.
+                      reminderNotificationRequired:
+                        maxLength: 1
+                        type: string
+                        description: "Indicator to enable the supplier reminder notification feature. Possible values are Y and N. If this is not set or is set to N then reminder notification will not be sent to the supplier before payment expiration. \n  Note- If the suppress supplier notification option is enabled for the buyer, the reminder notification is not sent even if this flag is set to Y."
+                    description: OK
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '601':
+                    type: object
+                    description: Schema Validation Success
+                  '651':
+                    type: object
+                    description: Schema Validation Fail
+                  '7023':
+                    type: object
+                    description: Bank or Buyer is not subscribed for service.
+                  '7297':
+                    type: object
+                    description: MessageID is Required
+                  '7299':
+                    type: object
+                    description: Duplicate Message ID
+                  '7304':
+                    type: object
+                    description: Invalid Web Service Method
+                  '7358':
+                    type: object
+                    description: Account Type is invalid. Valid values are 1,2 and 5
+                  '7359':
+                    type: object
+                    description: Invalid Client ID
+                  '7360':
+                    type: object
+                    description: Invalid Buyer
+                  '7361':
+                    type: object
+                    description: Invalid Account type. Bank does not support this card type
+                  '7362':
+                    type: object
+                    description: Account Limit is Required
+                  '7363':
+                    type: object
+                    description: Account Limit should contain only numbers
+                  '7365':
+                    type: object
+                    description: Invalid Account limit. Length or Precision does not match with allowed Limit
+                  '7366':
+                    type: object
+                    description: Account Limit is Invalid
+                  '7370':
+                    type: object
+                    description: ActionType is required
+                  '7372':
+                    type: object
+                    description: Invalid Account number
+                  '7376':
+                    type: object
+                    description: Invalid month for expiration date
+                  '7377':
+                    type: object
+                    description: Invalid year for expiration date
+                  '7382':
+                    type: object
+                    description: Request schema validated success
+                  '7406':
+                    type: object
+                    description: Account Currency Code should match with buyer currency code for account type 1 and 5
+                  '7412':
+                    type: object
+                    description: Invalid reloadable proxy account
+                  '7439':
+                    type: object
+                    description: Invalid Supplier
+                  '7445':
+                    type: object
+                    description: MessageId cannot be more than 36 character
+                  '7446':
+                    type: object
+                    description: ClientId is required
+                  '7447':
+                    type: object
+                    description: ClientId cannot be more than 50 characters
+                  '7448':
+                    type: object
+                    description: BuyerId is required
+                  '7449':
+                    type: object
+                    description: BuyerId cannot be more than 25 character
+                  '7457':
+                    type: object
+                    description: Disable Reason cannot be more than 255 characters
+                  '7458':
+                    type: object
+                    description: Supplier ID is Required
+                  '7459':
+                    type: object
+                    description: Supplier ID cannot be more than 30 character
+                  '7460':
+                    type: object
+                    description: Supplier ID contains invalid character
+                  '7461':
+                    type: object
+                    description: Invalid Buyer/Supplier combination
+                  '7465':
+                    type: object
+                    description: Account Type is required
+                  '7466':
+                    type: object
+                    description: Account number already present for the supplier
+                  '7467':
+                    type: object
+                    description: Account number required
+                  '7468':
+                    type: object
+                    description: 'Account Number already does not exist or disabled '
+                  '7469':
+                    type: object
+                    description: Account number is not associated with this supplier
+                  '7470':
+                    type: object
+                    description: Invalid Action type
+                  '7471':
+                    type: object
+                    description: Default Indicator is invalid. Valid value is Y/N.
+                  '7472':
+                    type: object
+                    description: Default card account cannot be marked as nondefault card account
+                  '7473':
+                    type: object
+                    description: Currency code should be 3 characters long. Space and numbers not allowed
+                  '7474':
+                    type: object
+                    description: Expiration Date should not be provided
+                  '7475':
+                    type: object
+                    description: Account Number should not be provided
+                  '7476':
+                    type: object
+                    description: Account Limit should not be provided
+                  '7477':
+                    type: object
+                    description: Invalid Action type and account type combination
+                  '7478':
+                    type: object
+                    description: Expiration is required
+                  '7479':
+                    type: object
+                    description: ExpirationDate is Invalid.Supported date format MM/YYYY
+                  '7480':
+                    type: object
+                    description: Invalid Expiration Date Format. Expected format is MM/YYYY
+                  '7481':
+                    type: object
+                    description: Account Number is required
+                  '7482':
+                    type: object
+                    description: Proxy number must be provided for account type 5
+                  '7483':
+                    type: object
+                    description: Invalid SupplierID
+                  '7484':
+                    type: object
+                    description: Invalid Action type. User cannot request new cards when processor interaction is disabled
+                  '7486':
+                    type: object
+                    description: Invalid Account Number/Account Type combination
+                  '7487':
+                    type: object
+                    description: Account Number does not belong to this supplier
+                  '7488':
+                    type: object
+                    description: Payment control is set for this supplier.Currency Code cannot be updated
+                  '7489':
+                    type: object
+                    description: Account Number does not exist or already disabled
+                  '7490':
+                    type: object
+                    description: Default card account cannot be removed. Remove non default card accounts before removing default card account
+                  '7491':
+                    type: object
+                    description: Card account cannot be deleted, some payments are in pending status.
+                  '7494':
+                    type: object
+                    description: Account already exist with a different currency code. Please use the same currency code.
+                  '7607':
+                    type: object
+                    description: Account currency code sent in the request is not in the allowable currency list for the buyer.
+                  '8365':
+                    type: object
+                    description: Account Limit exceeds the maximum limit of
+                  7023a:
+                    type: object
+                    description: Bank is not subscribed for service.
+                  ASR001:
+                    type: object
+                    description: Manage Card Accounts completed successfully
+                  ASR060:
+                    type: object
+                    description: Proxy account does not have any active accounts
+                  ASR099:
+                    type: object
+                    description: System Exception
+                  ASR001a:
+                    type: object
+                    description: Manage Card Accounts Failed
+                  ASR060a:
+                    type: object
+                    description: Manage Card Accounts Failed to lodged the account. Credit limit difference found
+                  ASR060b:
+                    type: object
+                    description: Manage Card Accounts Failed to lodge the account. Unable to get account information
+                  ASR060c:
+                    type: object
+                    description: Manage Card Accounts Failed in VPC registration
+                  ASR060d:
+                    type: object
+                    description: Manage Card Accounts completed successfully. Failed to notify the supplier
+                  ASR060e:
+                    type: object
+                    description: Manage Card Accounts completed successfully. Failed to notify the supplier
+                  ASR060f:
+                    type: object
+                    description: Manage Card Accounts Failed. Failed to deregister account for Auth Controls.
+                  ASR060g:
+                    type: object
+                    description: Manage Card Accounts failed
+      x-codegen-request-body-name: getsupplierdetails
+  /vpa/v1/supplier/UpdateSupplier:
+    post:
+      tags:
+      - Supplier Service
+      summary: Update Supplier
+      description: ''
+      operationId: Update Supplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - supplierId
+              type: object
+              properties:
+                stpId:
+                  maxLength: 19
+                  type: string
+                  description: STP ID to be associated with supplier of type STP. Format- 09. STPID is required new STP suppliers.  You can get the STPID for the supplier you want to pay using the supplier matching service.
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                enablePin:
+                  maxLength: 1
+                  type: string
+                  description: The EnablePin field is an indicator, which bank and buyer uses to specify if PIN can be enabled at supplier level. A supplier can set a PIN on his account only if EnablePin is set to Y. This field is used only for DPS buyers. This field should be set as Y only if bank and buyer are enabled for PIN.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                supplierId:
+                  maxLength: 30
+                  type: string
+                  description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                supplierCity:
+                  maxLength: 50
+                  type: string
+                  description: Supplier city.
+                supplierDate:
+                  maxLength: 11
+                  type: string
+                  description: "This field contains the Supplier Date Format. This is a mandatory field, if an empty value is supplied VPA will default the value to the Buyer’s date format. The valid values are\n   MMDDYYYY  \n   DDMMYYYY  \n   YYYYMMDD   \n   DD/MM/YYYY  \n   DD/MM/YY    \n   YYYY/MM/DD  \n   YY/MM/DD    \n   MM/DD/YYYY  \n   MM/DD/YY   \n   DD/MMM/YYYY  \n   DD/MMM/YY   \n   YYYY/MMM/DD   \n   YY/MMM/DD    \n   MMM/DD/YYYY   \n   MMMM/DD/YY   \n   DD-MM-YYYY  \n   DD-MM-YY  \n   YYYY-MM-DD   \n   YY-MM-DD   \n   MM-DD-YYYY  \n   MM-DD-YY  \n   DD-MMM-YY   \n   DD-MMM-YYYY   \n   YYYY-MMM-DD   \n   YY-MMM-DD   \n   MMM-DD-YYYY  \n   MMM-DD-YY"
+                supplierName:
+                  maxLength: 50
+                  type: string
+                  description: Name of supplier to be paid. It is mandatory for new suppliers.
+                supplierType:
+                  maxLength: 50
+                  type: string
+                  description: Type of supplier. Valid values are  VPA  STP
+                supplierState:
+                  maxLength: 50
+                  type: string
+                  description: Supplier state.
+                supplierGLCode:
+                  maxLength: 70
+                  type: string
+                  description: Supplier GL code.
+                securityAnswers:
+                  type: array
+                  description: This is a complex type element that contains another complex type element.
+                  items:
+                    type: object
+                    properties:
+                      questionAnswer:
+                        type: object
+                        properties:
+                          questionNumber:
+                            maxLength: 1
+                            type: string
+                            description: Question number of a security question.
+                          securityAnswer:
+                            maxLength: 50
+                            type: string
+                            description: Answer of a security question.
+                        description: Security Answers Class
+                supplierLanguage:
+                  maxLength: 5
+                  type: string
+                  description: "Supplier language. The valid values and corresponding language are  \n     fr_FR- Corresponds to the French language.  \n     en_US- Corresponds to the English (US) language.  \n     en_GB- Corresponds to the English (UK) language.  \n     es_ES- Corresponds to the Spanish language.  \n     pt_BR- Corresponds to the Brazilian Portugese language.  \n     English- Corresponds to the English (US) language.    \n     IntlEnglish- Corresponds to the English (UK) language.  \n     French- Corresponds to the French language.  \n     SpanishLA- Corresponds to the Spanish language.  \n     PortugueseBR- Corresponds to the Brazilian Portugese language.\n     German - Corresponds to the German language.\n     Italian - Corresponds to the Italian language."
+                suaExactMatchRule:
+                  maxLength: 1
+                  type: string
+                  description: Specifies whether the Exact Match rule is to be enabled/disabled for SUA(Single Use Accounts) payments. Valid values are Y/N. For a Lodged card payments ExactMatch rule will be always applied and value in this field is ignored.
+                supplierPostalCode:
+                  maxLength: 20
+                  type: string
+                  description: Supplier postal code. It is mandatory for new suppliers and only if the country mandates it.
+                defaultCurrencyCode:
+                  maxLength: 3
+                  type: string
+                  description: Default currency code. All ISO alphanumeric currency codes will be supported. For example- USD. If default currency code is not provided, buyer currency code is used.  If the currency code supplied is not setup in the allowable currencies in the buyer profile, the request will be rejected.
+                primaryEmailAddress:
+                  maxLength: 70
+                  type: string
+                  description: Supplier primary email address. The value is mandatory in case the bank/buyer has the notification indicator set to Y.
+                supplierCountryCode:
+                  maxLength: 3
+                  type: string
+                  description: Supplier country code. It is alphanumeric. VPA supports all ISO alphanumeric country code.  For example- USA.
+                securityCodeRequired:
+                  maxLength: 1
+                  type: string
+                  description: Specifies whether security code (CVV2) is required for a supplier to collect a payment. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to "N".
+                supplierAddressLine1:
+                  maxLength: 100
+                  type: string
+                  description: Supplier address line 1.
+                supplierAddressLine2:
+                  maxLength: 100
+                  type: string
+                  description: Supplier address line 2.
+                paymentExpirationDays:
+                  maxLength: 3
+                  type: string
+                  description: Determines the number of days within which a supplier must take his payment to avoid expiration of payment instruction. Its value must be greater than zero.  If this value is not provided, payment expiry days set in the buyer profile is used.
+                paymentControlRequired:
+                  maxLength: 1
+                  type: string
+                  description: Specifies whether the supplier is enabled for payment controls. Valid values are     Y     N    If this field is not passed/set in the WS request then the value of this field is defaulted to Y if the Default Auth Control is enabled in the buyer profile else it is set to N.
+                alternateEmailAddresses:
+                  type: array
+                  description: This complex element can have up to five alternate email addresses.
+                  items:
+                    type: object
+                    properties:
+                      alternateEmailAddress:
+                        maxLength: 70
+                        type: string
+                        description: Supplier CC email address.
+                reminderNotificationDays:
+                  maxLength: 2
+                  type: string
+                  description: Specifies how many days before payment expiration will the reminder notification be sent. For example, if this value is set to 4, reminder notification will be sent to the supplier four days before payment expiration. This field is required if the reminder notification required field is set to Y.
+                invoiceAttachmentRequired:
+                  maxLength: 1
+                  type: string
+                  description: Invoice attachment indicator. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to N.
+                reminderNotificationRequired:
+                  maxLength: 1
+                  type: string
+                  description: "Indicator to enable the supplier reminder notification feature. Possible values are Y and N. If this is not set or is set to N then reminder notification will not be sent to the supplier before payment expiration.\n\n  Note If the suppress supplier notification option is enabled for the\nbuyer, the reminder notification is not sent even if this flag is set to Y."
+            examples:
+              Default:
+                summary: Default
+                value:
+                  supplierName: APISupp-103
+                  clientId: B2BWS_1_1_9999
+                  supplierId: APISupp-105
+                  supplierCity: Austin
+                  supplierAddressLine2: Address2
+                  supplierAddressLine1: Address1
+                  paymentExpirationDays: 0
+                  supplierDate: MMDDYYYY
+                  messageId: 2019-02-24T04:05:45.000X
+                  buyerId: '9999'
+                  supplierLanguage: en_US
+                  supplierPostalCode: 78759
+                  primaryEmailAddress: aaa@bbb.com
+                  securityCodeRequired: N
+                  alternateEmailAddresses:
+                  - alternateEmailAddress: aaa1@bbb.com
+                  - alternateEmailAddress: aaa2@bbb.com
+                  - alternateEmailAddress: aaa3@bbb.com
+                  - alternateEmailAddress: aaa4@bbb.com
+                  - alternateEmailAddress: aaa5@bbb.com
+                  reminderNotificationDays: 0
+                  reminderNotificationRequired: N
+                  paymentControlRequired: N
+                  invoiceAttachmentRequired: N
+                  supplierState: TX
+                  supplierCountryCode: USA
+                  supplierType: VPA
+                  securityAnswers:
+                  - questionAnswer:
+                      securityAnswer: Test
+                      questionNumber: '1'
+                  - questionAnswer:
+                      securityAnswer: test2
+                      questionNumber: '2'
+                  - questionAnswer:
+                      securityAnswer: test3
+                      questionNumber: '3'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  UpdateSupplierResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                    description: Success
+        '400':
+          description: Refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#update_supplier">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: updatesupplier
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1supplier~1UpdateSupplier/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/supplier/CreateSupplier:
+    post:
+      tags:
+      - Supplier Service
+      summary: Create Supplier
+      description: ''
+      operationId: Create Supplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - supplierAddressLine1
+              - supplierCity
+              - supplierCountryCode
+              - supplierId
+              - supplierName
+              - supplierType
+              type: object
+              properties:
+                stpId:
+                  maxLength: 19
+                  type: string
+                  description: STP ID to be associated with supplier of type STP. Format- 09. STPID is required new STP suppliers.  You can get the STPID for the supplier you want to pay using the supplier matching service.
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                enablePin:
+                  maxLength: 1
+                  type: string
+                  description: The EnablePin field is an indicator, which bank and buyer uses to specify if PIN can be enabled at supplier level. A supplier can set a PIN on his account only if EnablePin is set to Y. This field is used only for DPS buyers. This field should be set as Y only if bank and buyer are enabled for PIN.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                supplierId:
+                  maxLength: 30
+                  type: string
+                  description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                cardDetails:
+                  type: object
+                  properties:
+                    actionType:
+                      maxLength: 1
+                      type: string
+                      description: "Mode of account creation. Note- This field is mandatory if the card details is added and for all clients, except Visa Debit Processing Service clients. Possible values are  \n    1 - Request New Card (Request the card from the processor) \n    2 - Add/Lodge Card Number (Supply the Card account details as part of the request)"
+                    accountType:
+                      maxLength: 1
+                      type: string
+                      description: Account Type.  Valid values are-  1- Lodged Adjustable Limit account   2- Lodged account. Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made.
+                    proxyNumber:
+                      maxLength: 19
+                      type: string
+                      description: Proxy number is required if the buyer is DPS or the Account Type is 5.
+                    accountLimit:
+                      maxLength: 10
+                      type: string
+                      description: Credit limit of the account.    Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made.
+                    currencyCode:
+                      maxLength: 3
+                      type: string
+                      description: Payment Currency Code.  A valid ISO alpha currency code should be passed.  If the currency passed is not one of the supported currencies setup in the buyer profile, the payment will be rejected.
+                    accountNumber:
+                      maxLength: 19
+                      type: string
+                      description: "Account number can be an existing Visa account, a new account in the VPA system, or a proxy number. If this column is blank, the following logic is used for determining the account number   \n  1. Lodged account is used if there is one for the supplier  \n  2. If the supplier does not have a lodged card account, system should pick the card account from the pool based on the matrix in Account Picking logic table."
+                    expirationDate:
+                      maxLength: 7
+                      type: string
+                      description: Account's expiry date.  Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made.
+                  description: Card Details Class
+                supplierCity:
+                  maxLength: 50
+                  type: string
+                  description: Supplier city.
+                supplierDate:
+                  maxLength: 11
+                  type: string
+                  description: "This field contains the Supplier Date Format. This is a mandatory field, if an empty value is supplied VPA will default the value to the Buyer’s date format. The valid values are \n     MMDDYYYY     DDMMYYYY    \n     YYYYMMDD     DD/MM/YYYY  \n     DD/MM/YY     YYYY/MM/DD   \n     YY/MM/DD     MM/DD/YYYY   \n     MM/DD/YY     DD/MMM/YYYY   \n     DD/MMM/YY    YYYY/MMM/DD   \n     YY/MMM/DD    MMM/DD/YYYY   \n     MMMM/DD/YY   DD-MM-YYYY   \n     DD-MM-YY     YYYY-MM-DD   \n     YY-MM-DD     MM-DD-YYYY   \n     MM-DD-YY     DD-MMM-YY    \n     DD-MMM-YYYY  YYYY-MMM-DD   \n     YY-MMM-DD    MMM-DD-YYYY   \n     MMM-DD-YY"
+                supplierName:
+                  maxLength: 50
+                  type: string
+                  description: Name of supplier to be paid. It is mandatory for new suppliers.
+                supplierType:
+                  maxLength: 50
+                  type: string
+                  description: Type of supplier. Valid values are  VPA  STP
+                supplierState:
+                  maxLength: 50
+                  type: string
+                  description: Supplier state.
+                supplierGLCode:
+                  maxLength: 70
+                  type: string
+                  description: Supplier GL code.
+                securityAnswers:
+                  type: array
+                  description: This is a complex type element that contains another complex type element.
+                  items:
+                    type: object
+                    properties:
+                      questionAnswer:
+                        type: object
+                        properties:
+                          questionNumber:
+                            maxLength: 1
+                            type: string
+                            description: Question number of a security question.
+                          securityAnswer:
+                            maxLength: 50
+                            type: string
+                            description: Answer of a security question.
+                        description: Security Answers Class
+                supplierLanguage:
+                  maxLength: 5
+                  type: string
+                  description: "Supplier language. The valid values and corresponding language are \n     fr_FR- Corresponds to the French language.  \n     en_US- Corresponds to the English (US) language.  \n     en_GB- Corresponds to the English (UK) language.   \n     es_ES- Corresponds to the Spanish language.    \n     pt_BR- Corresponds to the Brazilian Portugese language.  \n     English- Corresponds to the English (US) language.   \n     IntlEnglish- Corresponds to the English (UK) language.   \n     French- Corresponds to the French language.    \n     SpanishLA- Corresponds to the Spanish language.   \n     PortugueseBR- Corresponds to the Brazilian Portugese language. \n     German - Corresponds to the German language.\n     Italian - Corresponds to the Italian language."
+                suaExactMatchRule:
+                  maxLength: 1
+                  type: string
+                  description: Specifies whether the Exact Match rule is to be enabled/disabled for SUA(Single Use Accounts) payments. Valid values are Y/N. For  a lodged card payments ExactMatch rule will be always applied and  value in this field is ignored.
+                supplierPostalCode:
+                  maxLength: 20
+                  type: string
+                  description: Supplier postal code. It is mandatory for new suppliers and only if the country mandates it.
+                defaultCurrencyCode:
+                  maxLength: 3
+                  type: string
+                  description: Default currency code. All ISO alphanumeric currency codes will be supported. For example- USD. If default currency code is not provided, buyer currency code is used.  If the currency code supplied is not setup in the allowable currencies in the buyer profile, the request will be rejected.
+                primaryEmailAddress:
+                  maxLength: 70
+                  type: string
+                  description: Supplier primary email address. The value is mandatory in case the bank/buyer has the notification indicator set to Y.
+                supplierCountryCode:
+                  maxLength: 3
+                  type: string
+                  description: Supplier country code. It is alphanumeric. VPA supports all ISO alphanumeric country code.For example- USA.
+                securityCodeRequired:
+                  maxLength: 1
+                  type: string
+                  description: Specifies whether security code (CVV2) is required for a supplier to collect a payment. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to "N".
+                supplierAddressLine1:
+                  maxLength: 100
+                  type: string
+                  description: Supplier address line 1.
+                supplierAddressLine2:
+                  maxLength: 100
+                  type: string
+                  description: Supplier address line 2.
+                paymentExpirationDays:
+                  maxLength: 3
+                  type: string
+                  description: Determines the number of days within which a supplier must take his payment to avoid expiration of payment instruction. Its value must be greater than zero.  If this value is not provided, payment expiry days set in the buyer profile is used.
+                paymentControlRequired:
+                  maxLength: 1
+                  type: string
+                  description: Specifies whether the supplier is enabled for payment controls. Valid values are  Y  N If this field is not passed/set in the WS request then the value of this field is defaulted to Y if the Default Auth Control is enabled in the buyer profile else it is set to N.
+                alternateEmailAddresses:
+                  type: array
+                  description: This complex element can have up to five alternate email addresses.
+                  items:
+                    type: object
+                    properties:
+                      alternateEmailAddress:
+                        maxLength: 70
+                        type: string
+                        description: Supplier CC email address.
+                reminderNotificationDays:
+                  maxLength: 2
+                  type: string
+                  description: Specifies how many days before payment expiration will the reminder notification be sent. For example, if this value is set to 4, reminder notification will be sent to the supplier four days before payment expiration. This field is required if the reminder notification required field is set to Y.
+                invoiceAttachmentRequired:
+                  maxLength: 1
+                  type: string
+                  description: Invoice attachment indicator. Possible values are Y and N. If this field is not passed/set in the WS request then the value of this field is defaulted to N.
+                reminderNotificationRequired:
+                  maxLength: 1
+                  type: string
+                  description: "Indicator to enable the supplier reminder notification feature. Possible values are Y and N. If this is not set or is set to N then reminder notification will not be sent to the supplier before payment expiration.\n\n  Note If the suppress supplier notification option is enabled for the\nbuyer, the reminder notification is not sent even if this flag is set to Y."
+            examples:
+              Default:
+                summary: Default
+                value:
+                  supplierId: APISupp-102
+                  supplierCity: FC
+                  supplierAddressLine2: Address2
+                  supplierAddressLine1: Address1
+                  supplierDate: MMDDYYYY
+                  defaultCurrencyCode: USD
+                  enablePin: ''
+                  buyerId: '9210101012'
+                  supplierLanguage: en_US
+                  primaryEmailAddress: test@visa.com
+                  securityCodeRequired: Y
+                  supplierGLCode: '12345'
+                  cardDetails:
+                    actionType: '1'
+                    accountLimit: '100'
+                    accountType: '1'
+                    proxyNumber: ''
+                    accountNumber: ''
+                    currencyCode: ''
+                    expirationDate: ''
+                  invoiceAttachmentRequired: Y
+                  ccEmailAddresses:
+                  - test1@visa.com
+                  - test2@visa.com
+                  - test3@visa.com
+                  - aaa@bb.com
+                  - aaaa1@cc.com
+                  securityAnswers:
+                  - questionAnswer:
+                      securityAnswer: Test
+                      questionNumber: '1'
+                  - questionAnswer:
+                      securityAnswer: test2
+                      questionNumber: '2'
+                  - questionAnswer:
+                      securityAnswer: test3
+                      questionNumber: '3'
+                  stpId: ''
+                  supplierName: APISupp-102
+                  clientId: B2BWS_1_1_9999
+                  paymentExpirationDays: '10'
+                  messageId: '1525731018854'
+                  supplierPostalCode: '94404'
+                  reminderNotificationDays: '9'
+                  reminderNotificationRequired: Y
+                  paymentControlRequired: Y
+                  supplierState: CA
+                  supplierCountryCode: USA
+                  supplierType: VPA
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  CreateSupplierResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table below.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      accountNumber:
+                        maxLength: 19
+                        type: string
+                        description: Account number used for processing the payment. The account number will be masked in the response if the corresponding Client ID is configured to be masked.
+                      expirationDate:
+                        maxLength: 6
+                        type: string
+                        description: Account expiration date. It is needed only for Lodged (Fixed) type card accounts. The format is MMYYYY. Note- Expiration Date is returned only if the "Account Type" is 5 (reloadable).
+                      accountRequestID:
+                        maxLength: 13
+                        type: string
+                        description: A unique ID generated by the VPA system, which the requester can use for checking the status of the card account if it is requested from the processor.
+                    description: Success
+        '400':
+          description: Refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#create_supplier">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: createsupplier
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1supplier~1CreateSupplier/post'
+        default: false
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

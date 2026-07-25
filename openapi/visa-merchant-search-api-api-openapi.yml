@@ -1,0 +1,149 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Merchant Search API API
+  description: Search for merchants by name and location to retrieve Visa merchant identifiers and related details.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Merchant Search API
+  description: Search for merchants by name and location to retrieve Visa merchant identifiers and related details.
+paths:
+  /merchantsearch/v1/search:
+    post:
+      operationId: searchMerchants
+      summary: Search Merchants
+      description: Searches for merchants by name and location criteria, returning Visa merchant identifiers and related business details. This operation enables applications to find and validate merchant information in the Visa merchant database.
+      tags:
+      - Merchant Search API
+      requestBody:
+        description: Merchant search criteria
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MerchantSearchRequest'
+      responses:
+        '200':
+          description: Search results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantSearchResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    MerchantSearchResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of matching merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total number of matching records
+    MerchantRecord:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        visaStoreId:
+          type: string
+          description: Visa-assigned store identifier
+        merchantName:
+          type: string
+          description: Name of the merchant
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        matchScore:
+          type: number
+          format: double
+          description: Confidence score of the match
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    MerchantSearchRequest:
+      type: object
+      required:
+      - searchAttrList
+      properties:
+        searchAttrList:
+          type: object
+          description: Search attributes for merchant lookup
+          properties:
+            merchantName:
+              type: string
+              description: Name of the merchant to search for
+            merchantCity:
+              type: string
+              description: City where the merchant is located
+            merchantState:
+              type: string
+              description: State or province of the merchant
+            merchantCountryCode:
+              type: string
+              description: ISO 3166-1 numeric country code
+            merchantPostalCode:
+              type: string
+              description: Postal code of the merchant location
+            merchantCategoryCode:
+              type: array
+              description: List of Merchant Category Codes to filter by
+              items:
+                type: string
+        searchOptions:
+          type: object
+          description: Additional search configuration
+          properties:
+            maxRecords:
+              type: integer
+              description: Maximum number of records to return
+              minimum: 1
+              maximum: 100
+            matchScore:
+              type: boolean
+              description: Include match confidence score in results
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

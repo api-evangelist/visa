@@ -1,0 +1,287 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates In-App Provisioning for Google Pay API
+  description: In-App Provisioning for Google Pay
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: In-App Provisioning for Google Pay
+  description: In-App Provisioning for Google Pay
+paths:
+  /inapp/provisioning/cardData/googlePay:
+    post:
+      tags:
+      - In-App Provisioning for Google Pay
+      summary: Create Card Data Google Pay
+      description: Card data for provisioning a Visa Token in GooglePay using vCardId or encrypted card as input
+      operationId: provisionForGooglePayUsingPOST
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Create Card Data for Google Pay provisioning using vCardID or encrypted card
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GooglePayProvisioningRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  vCardID: v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02
+                  encCard: eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A
+                  deviceID: uztEQocBRFrbK5hCgcDbxqw_
+                  clientCustomerID: dead-beef-123
+                  tokenServiceProvider: V
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GooglePayProvisioningResponse'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    last4: '4008'
+                    vCardID: v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02
+                    opaquePaymentCard: eyJhdWQiOiIxODk5NzZhNi0yZmFjLTRlZDEtOTM0ZS03MjY5NmVhMDgxMzEiLCJraWQiOiJYS1ZYNUlHNTVDWTFRM0FVR0JLQTExbV9VNGR2b2FROVVzZ3lESUxqQjNUempCYmU4IiwiaXNzIjoiODM3NjVhZjUtZGZhZS0zNWI0LTViNGItMWM5OWJhN2EwZDAxIiwidHlwIjoiSk9TRSIsImNoYW5uZWxTZWN1cml0eUNvbnRleHQiOiJTSEFSRURfU0VDUkVUIiwiZW5jIjoiQTI1NkdDTSIsInRhZyI6ImVvN3d5eDFXU29EQVZUWm9jZlc3N3ciLCJpYXQiOjE1ODgyNDM1NjAsImFsZyI6IkEyNTZHQ01LVyIsIml2IjoiaHN5TWwwbEp3Qk5rbWxtUiJ9.GL-_-PaVQ8xQzv7s6VNC4t75dfa7ZzglsvQG1S1BfL8.9W0-tgfN0eOEWnY7.a9XxDeQsDr55HXsHdIOjmdytTvTv3CFDHo668K-fe9Bk6p8eqbSz3QwwbjB3pRdwpBkzhqjqhKW6C-_Fe1RUliN01z648XBLYYW4VGoT1LxS4eCnucTGaTj-J7xTl3MGCCjrnL38sqpXGs-jWgwaHYpjZ4PlMG9dPeLiUxkodArI98Ph953VYHE_0UPLzB-bkUGKc_y86VH8DYuFTxYAE6LAr0J3R5o6Var7YnseUZrXMvQCf_yHisFNjHkCW4EY8xIWEoiK1vYvPJXOHr9KdAYgdFBJKDoCgs3Vb7AuI_zDEh4jNtkSauQuKZUjD_WCNDcSl75xDiSzT1nX3BMcGLXUbaWvzHARqYheZQ_fKQ8D3xI38yTklf0oJVYLE-Id1XuN437ECyaKHtyxz1L3fXk_n4xpD80f3gy_xwqJelzZFtSlZQVhG925YhQsYjKZjNt_pIFz9RYeDPSP8tflMEx3huFRBmbjNXS9c6jdMk6z5kskOci9p0ur4J3gcKqGjetrp-0bVDJYnpr6d1RffiEvXDuRBIaabMjr5iRuxuGCIT0w0_sL9VcClKxg10MoacGXV3jcnYU2XjUe3aqOZJwbwLnQPWn_V3ke7xvdAdd_52rdiaoJ.P3YDNNCCX5sVgD2QVcDGoQ
+                    encAddress: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.HBI8Vcz7VGXuHLSoPwWKu_X8vVhIZjCxcnk3trpBHPfWv17WeIgtxLMfrBBcZA7sLEESyEPjCsZuuiYtNHQ-CGdQ5XaMVTN2pQNJ8DAk2swELjYU0ukxphosI1WduUZbUUIaCuaUnFxVps8n8QnjHoYcl5S2QCoSjIDAaq6UFhVMPTl5Z8h80VE0BJUufwpFn60ccxflmTFtZcbA03Zib74OJtwBWDYVFqUoPeDVI4-eTyOQVvUNfsFRd6C4wQhbcGsehqnHZpxVV_dadPvv884Udim5Vi8QOFXBE7k9Q-9JZV9VKPtz7TErIP5iWDP0cb2GBu6A6X8RwXIhSfOxcw.mTT0c2QP5L9zJ7ys.GOBZF8wHW9HaSMjuZhvCW1PAl15r616BsbG6LsKt5Uo9rFiKCUnM5mXPKjvFKspmjyDxARVgW1q3mkO4uFGICnFljM5XLBhHHBok9dy_8gm9gGbjT9XeIdEb0-nscXyMeV8MI4e5NvQ1zCw1hAvzSIqqR_xYmN3aLjPoxTE-GZBBDVIw4QUdSlaZfw.TCoV1n8rlJU3hg8_IXbHUQ
+                    expirationDate:
+                      month: '01'
+                      year: '2020'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Name on Card not Available. The card referenced in this request is already enrolled but has no nameOnCard value. And, there is no Customer associated with this card so that the nameOnCard can not be derived from Customer name.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-samplePayload:
+        encCard: eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A
+        vCardID: v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02
+        deviceID: uztEQocBRFrbK5hCgcDbxqw_
+        clientCustomerID: dead-beef-123
+        tokenServiceProvider: V
+      x-name: Create Card Data for Google Pay using vCardID or Encrypted Card.
+      x-notes: Card data for provisioning a Visa Token in GooglePay using vCardID or Encrypted Card.
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1inapp~1provisioning~1cardData~1googlePay/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    Expiry:
+      title: Expiry
+      required:
+      - month
+      - year
+      type: object
+      properties:
+        year:
+          pattern: ^2[0-9]{3}$
+          type: string
+          description: 4-digit expiration year
+        month:
+          pattern: ^(0[1-9]|1[0-2])
+          type: string
+          description: 2-digit card expiration month
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/ValidationError'
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
+    GooglePayProvisioningResponse:
+      title: GooglePayProvisioningResponse
+      required:
+      - expirationDate
+      - last4
+      - opaquePaymentCard
+      - vCardID
+      type: object
+      properties:
+        last4:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: Last 4 digits of card
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: Visa-defined unique ID of the card
+        encAddress:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Address</code></p> <h4>Example</h4> <pre><code> {\n  \"name\": \"Digital Issuance\",\n  \"line1\": \"12301 Research Boulevard\",\n  \"line2\": \"Research Boulevard\",\n  \"line3\": \"Visa USA\",\n  \"city\": \"Austin\",\n  \"state\": \"TX\",\n  \"countryCode\": \"US\",\n  \"postalCode\": \"78759\"\n} </code></pre> <h4>Address Schema</h4> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \"TX\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+        expirationDate:
+          $ref: '#/components/schemas/Expiry'
+        encMobileNumber:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Phone Number</code></p> <h3>Example</h3> <pre><code> {\n  \"countryCode\": \"65\",\n  \"phoneNumber\": \"5128653617\"\n} </code></pre> <h3>Phone Number Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>countryCode</td><td>string<br>required<br>maxLength: 10</td><td>Phone number Country code</td></tr> <tr><td>phoneNumber</td><td>string<br>required<br>maxLength: 25</td><td>Phone Numbers without any special characters</td></tr> <tr><td>extension</td><td>string<br>optional<br>maxLength: 10</td><td>Phone number extension</td></tr> </tbody> </table> </div>\n"
+        opaquePaymentCard:
+          type: string
+          description: This is the opaque card data that is needed by GooglePay for tokenization.
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    ErrorDetails:
+      title: ErrorDetails
+      type: object
+      properties:
+        message:
+          type: string
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+    GooglePayProvisioningRequest:
+      title: GooglePayProvisioningRequest
+      required:
+      - clientCustomerID
+      - deviceID
+      type: object
+      properties:
+        encCard:
+          type: string
+          description: "<div>\n<p><code>Conditional.</code> </p>\n  <p> Either of <code>vCardId</code> or <code>encCard</code> is required.</p>\n <p> <code>vCardId</code> will take precedence in case both <code>vCardId</code> and <code>encCard</code> is part of the request body.</p> \n <div> \n <p>Encrypted <code>CardInfo</code></p> <h3>Example</h3> <pre><code>{\n  \"accountNumber\": \"4000000000000000\",\n  \"nameOnCard\": \"Digital Issuance\",\n  \"cvv2\": \"123\",\n  \"expirationDate\": {\n      \"month\": \"01\",\n      \"year\": \"2021\"\n  },\n  \"billingAddress\": {\n    \"name\": \"Digital Issuance\",\n    \"line1\": \"12301 Research Boulevard\",\n    \"line2\": \"Research Boulevard\",\n    \"line3\": \"Visa USA\",\n    \"city\": \"Austin\",\n    \"state\": \"TX\",\n    \"countryCode\": \"US\",\n    \"postalCode\": \"78759\"\n  }\n} </code></pre> <h3>CardInfo Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>accountNumber</td><td>string<br>required<br>minLength: 12<br>maxLength: 18</td><td>PAN (Primary Account Number) of the card to be provisioned or enrolled</td></tr> <tr><td>paymentAccountReference</td><td>string<br>optional</td><td>A Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN</td></tr> <tr><td>cvv2</td><td>string<br>conditional<br>minLength: 3<br>maxLength: 3</td><td>CVV2 value associated with the PAN on the card</td></tr> <tr><td>nameOnCard</td><td>string<br>conditional<br>minLength: 0<br>maxLength: 256</td><td>The full name on the card associated with the issued/enrolled card</td></tr> <tr><td>expirationDate</td><td><code>ExpirationDate</code><br>required</td><td>Cards expiration date</td></tr> <tr><td>billingAddress</td><td><code>Address</code><br>optional</td><td>Billing address associated with the card</td></tr> </tbody> </table> <h3>ExpirationDate Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>month</td><td>string<br>required<br>minLength: 2<br>maxLength: 2</td><td>The month that the card is set to expire</td></tr> <tr><td>year</td><td>string<br>required<br>minLength: 4<br>maxLength: 4</td><td>The year that the card is set to expire</td></tr> </tbody> </table> <h3>Address Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \\\"TX\\\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: "<div>\n<p><code>Conditional.</code> </p>\n  <p> Either of <code>vCardId</code> or <code>encCard</code> is required.</p>\n<p> Visa-defined unique ID of the card to produce the Google Pay provisioning card data for. <code>vCardId</code> will take precedence in case both <code>vCardId</code> and <code>encCard</code> is part of the request body.\n </p></div> \n"
+        deviceID:
+          maxLength: 24
+          minLength: 2
+          type: string
+          description: The user's Android device ID, the device's unique identifier.
+        signingKeyID:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Token service provider specific signing key identifier
+        encryptionKeyID:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Token service provider specific encryption key identifier
+        clientCustomerID:
+          maxLength: 36
+          minLength: 2
+          type: string
+          description: The user's Google wallet account ID.
+        tokenServiceProvider:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Indicates which token service provider will process the card data generated for provisioning. The default value is "V".
+          enum:
+          - V
+          - M
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

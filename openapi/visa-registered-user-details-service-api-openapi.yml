@@ -1,0 +1,255 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Registered User Details Service API
+  description: Self Registration web services are used to register the new users.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Registered User Details Service
+  description: Self Registration web services are used to register the new users.
+paths:
+  /CPRAPI/v1/registeredUserDetails:
+    post:
+      tags:
+      - Registered User Details Service
+      summary: RegisteredUserDetails
+      description: RegisteredUserDetails
+      operationId: RegisteredUserDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - clientId
+              - messageId
+              - pagination
+              type: object
+              properties:
+                endDate:
+                  type: string
+                  description: End date till which date records need to be retrieved.
+                clientId:
+                  type: string
+                  description: Client ID field is a unique identification of the partner Service.
+                messageId:
+                  type: string
+                  description: 'Unique identifier for this request.  Each request sent to client requires its own unique ID. '
+                startDate:
+                  type: string
+                  description: Start date from which date records need to be retrieved.
+                pagination:
+                  required:
+                  - current_page
+                  type: object
+                  properties:
+                    current_page:
+                      type: string
+                      description: This element contains the current_page number.
+                  description: Complex element which contains the pagination details.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: '1'
+                  pagination:
+                    current_page: 1
+                  endDate: 2019/01/01
+                  messageId: '3734508035777106.5'
+                  startDate: 2016/02/18
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  RegisteredUserDetailsResponseBean:
+                    type: object
+                    properties:
+                      pagination:
+                        required:
+                        - current_page
+                        - total_pages
+                        - total_records
+                        type: object
+                        properties:
+                          total_pages:
+                            type: string
+                            description: This element contains the total_page details.
+                          current_page:
+                            type: string
+                            description: This element contains the current_page details.
+                          total_records:
+                            type: string
+                            description: This element contains the total_records details.
+                      statusCode:
+                        type: string
+                        description: The API response status code.
+                      statusDesc:
+                        type: string
+                        description: The API response status description.
+                      userDetails:
+                        type: array
+                        description: Complex element which contains a arraylist of userDetails.
+                        items:
+                          type: object
+                          properties:
+                            bankID:
+                              type: string
+                              description: Bank Identifier.
+                            phnNum:
+                              type: string
+                              description: Phone Number.
+                            address:
+                              type: object
+                              properties:
+                                city:
+                                  type: string
+                                  description: City.
+                                state:
+                                  type: string
+                                  description: State.
+                                country:
+                                  type: string
+                                  description: Country.
+                                zipcode:
+                                  type: string
+                                  description: Zipcode.
+                                addressLine1:
+                                  type: string
+                                  description: This element contains the address line 1.
+                                addressLine2:
+                                  type: string
+                                  description: This element contains the address line 2.
+                              description: Complex element which contains the address of the User.
+                            loginId:
+                              type: string
+                              description: Login ID.
+                            bankName:
+                              type: string
+                              description: Bank Name .
+                            lastName:
+                              type: string
+                              description: Last Name.
+                            regionID:
+                              type: string
+                              description: Region Identifier.
+                            companyID:
+                              type: string
+                              description: Company Identifier.
+                            firstName:
+                              type: string
+                              description: First Name.
+                            clientName:
+                              type: string
+                              description: clientName
+                            companyName:
+                              type: string
+                              description: Company Name.
+                            processorID:
+                              type: string
+                              description: Processor Identifier.
+                            customFields:
+                              type: object
+                              properties:
+                                custom_field1:
+                                  type: string
+                                  description: custom_field1
+                                custom_field2:
+                                  type: string
+                                  description: custom_field2
+                                custom_field3:
+                                  type: string
+                                  description: custom_field3
+                              description: custom fields
+                    description: Success
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    pagination:
+                      total_records: '462'
+                      total_pages: '10'
+                      current_page: '1'
+                    statusDesc: SUCCESS
+                    userDetails:
+                    - lastName: jorege
+                      firstName: alex
+                      bankID: '1980'
+                      companyID: '1336'
+                      address:
+                        country: '1'
+                        zipCode: '94404'
+                        city: foster city
+                        addressLine1: 800 metro center blv
+                        addressLine2: ''
+                        state: CA
+                      loginId: jinashah@visa.com
+                      regionID: '1'
+                      companyName: visa
+                      bankName: PNC Bank-1980
+                      phnNum: '1234567891'
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  CP050:
+                    type: object
+                    description: clientId cannot be empty.
+                  CP051:
+                    type: object
+                    description: clientId is required
+                  CP052:
+                    type: object
+                    description: clientId Field Size should be between 5 and 25.
+                  CP053:
+                    type: object
+                    description: Request has incorrect Date Format, the Correct Date format is YYYY/MM/DD.
+                  KK001:
+                    type: object
+                    description: Given ClientId is not associated with any bank yet.
+                  KK002:
+                    type: object
+                    description: An Unexpcted System error occurred, Please contact System adminstrator.
+                  KK006:
+                    type: object
+                    description: Request has incorrect Date Format, the Correct Date format is YYYY/MM/DD.
+                  KK007:
+                    type: object
+                    description: Given clientId is invalid.
+                  KK012:
+                    type: object
+                    description: Current page can't be more than total page
+                  KK013:
+                    type: object
+                    description: Current page can't be '0' or less
+                  KK014:
+                    type: object
+                    description: Current page can't be an Empty value
+                  KK015:
+                    type: object
+                    description: Current page can't be Null value
+                  KK016:
+                    type: object
+                    description: Invalid characters
+                  KK017:
+                    type: object
+                    description: Pagination values are not valid
+      x-codegen-request-body-name: RegisteredUserRequestBean
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1CPRAPI~1v1~1registeredUserDetails/post'
+        default: false
+      x-hideTryIt: true
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

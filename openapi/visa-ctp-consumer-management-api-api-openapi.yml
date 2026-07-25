@@ -1,0 +1,193 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates CTP Consumer Management API API
+  description: The Consumer Management API allows SRC Initiators to manage consumer profiles, including enrollment, identity verification, and credential management within the Click to Pay ecosystem.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: CTP Consumer Management API
+  description: The Consumer Management API allows SRC Initiators to manage consumer profiles, including enrollment, identity verification, and credential management within the Click to Pay ecosystem.
+paths:
+  /visasrci/v1/consumers:
+    post:
+      operationId: enrollConsumer
+      summary: Enroll Consumer
+      description: Enrolls a new consumer into the Click to Pay ecosystem, creating a profile that can store payment credentials for streamlined checkout experiences across participating merchants.
+      tags:
+      - CTP Consumer Management API
+      requestBody:
+        description: Consumer enrollment details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsumerEnrollmentRequest'
+      responses:
+        '201':
+          description: Consumer enrolled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsumerEnrollmentResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Consumer already enrolled
+  /visasrci/v1/consumers/{consumerId}/credentials:
+    post:
+      operationId: addConsumerCredential
+      summary: Add Consumer Credential
+      description: Adds a new payment credential to an existing consumer profile. The credential is tokenized and stored securely for use in future Click to Pay transactions.
+      tags:
+      - CTP Consumer Management API
+      parameters:
+      - $ref: '#/components/parameters/ConsumerIdParam'
+      requestBody:
+        description: Payment credential details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCredentialRequest'
+      responses:
+        '201':
+          description: Credential added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddCredentialResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Consumer not found
+components:
+  parameters:
+    ConsumerIdParam:
+      name: consumerId
+      in: path
+      required: true
+      description: Unique identifier for the enrolled consumer
+      schema:
+        type: string
+  schemas:
+    ConsumerEnrollmentResponse:
+      type: object
+      properties:
+        consumerId:
+          type: string
+          description: Unique identifier assigned to the newly enrolled consumer
+        status:
+          type: string
+          description: Enrollment status
+          enum:
+          - ENROLLED
+          - PENDING_VERIFICATION
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          description: Street address
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State or province code
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          pattern: ^[A-Z]{2}$
+    AddCredentialResponse:
+      type: object
+      properties:
+        credentialId:
+          type: string
+          description: Unique identifier for the stored credential
+        maskedPan:
+          type: string
+          description: Masked primary account number showing only last four digits
+        status:
+          type: string
+          description: Credential storage status
+          enum:
+          - ACTIVE
+          - PENDING_VERIFICATION
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field that caused the error
+              message:
+                type: string
+                description: Detail about the field error
+    ConsumerEnrollmentRequest:
+      type: object
+      required:
+      - emailAddress
+      properties:
+        emailAddress:
+          type: string
+          format: email
+          description: Consumer email address used as primary identifier
+        firstName:
+          type: string
+          description: Consumer first name
+        lastName:
+          type: string
+          description: Consumer last name
+        mobileNumber:
+          type: string
+          description: Consumer mobile phone number in E.164 format
+        countryCode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          pattern: ^[A-Z]{2}$
+    AddCredentialRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      - cardExpiryDate
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number of the Visa card
+        cardExpiryDate:
+          type: string
+          description: Card expiration date in YYYY-MM format
+          pattern: ^\d{4}-\d{2}$
+        cardholderName:
+          type: string
+          description: Name as it appears on the card
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

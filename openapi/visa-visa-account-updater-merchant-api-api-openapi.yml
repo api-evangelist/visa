@@ -1,0 +1,654 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Visa Account Updater Merchant API API
+  description: Visa Account Updater Merchant API for merchant enrollment and search.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Visa Account Updater Merchant API
+  description: Visa Account Updater Merchant API for merchant enrollment and search.
+paths:
+  /vau/onboard-api/acquirer/v1/merchants/search:
+    post:
+      tags:
+      - Visa Account Updater Merchant API
+      summary: Merchant Search
+      description: Merchants can be searched by providing following requested information
+      operationId: merchantSearchUsingPOST
+      parameters:
+      - name: Accept
+        in: header
+        required: false
+        explode: false
+        schema:
+          type: string
+          enum:
+          - application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/merchantSearchRequest'
+        required: true
+      responses:
+        '200':
+          description: This response code will be returned in scenarios where the merchant search is successful, all possible response codes are explained below in the model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantSearchResponse'
+        '400':
+          description: This response code will be returned in scenarios where the merchant search is badly formatted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadFormattedErrorMessage'
+        '409':
+          description: This response code will be returned in scenarios where the merchant search is rejected, all possible reasons for request rejection are explained below in the model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RejectedMerchantSearchResponse'
+        '500':
+          description: This response code will be returned in scenarios where the merchant search could not be sucessfully processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorMessage'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vau~1onboard-api~1acquirer~1v1~1merchants~1search/post'
+        default: false
+      x-hideTryIt: true
+  /vau/onboard-api/acquirer/v1/merchants:
+    post:
+      tags:
+      - Visa Account Updater Merchant API
+      summary: Merchant Enrollment
+      description: Enroll new merchants by providing following requested information
+      operationId: merchantEnrolmentUsingPOST
+      parameters:
+      - name: Accept
+        in: header
+        required: false
+        explode: false
+        schema:
+          type: string
+          enum:
+          - application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/merchantEnrolmentRequest'
+        required: true
+      responses:
+        '200':
+          description: This response code will be returned in scenarios where the merchant enrolment is successful, all possible response codes are explained below in the model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantEnrolmentResponse'
+        '400':
+          description: This response code will be returned in scenarios where the merchant enrolment is badly formatted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadFormattedErrorMessage'
+        '409':
+          description: This response code will be returned in scenarios where the merchant enrolment is rejected, all possible reasons for request rejection are explained below in the model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RejectedMerchantEnrollmentResponse'
+        '500':
+          description: This response code will be returned in scenarios where the merchant enrolment could not be sucessfully processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorMessage'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vau~1onboard-api~1acquirer~1v1~1merchants/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    MerchantResponse:
+      required:
+      - enrollStatus
+      type: object
+      properties:
+        reject:
+          $ref: '#/components/schemas/RejectMerchant'
+        merchantId:
+          type: string
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID.]'
+          example: 000000705853
+        enrollStatus:
+          type: string
+          description: '[Merchant enrollment status, This field contains one of the following status:
+
+            * Success  Merchant is enrolled successfully
+
+            * In-Progress  Merchant enrollment is in progress
+
+            * Reject  Merchant is rejected, reject code and reject code and reject message will be returned]
+
+            '
+          example: Reject
+        merchantName:
+          type: string
+          description: '[Name of Merchant]'
+          example: GS PERFORMANCE
+      description: '[Merchant Response]'
+    MerchantRequest:
+      required:
+      - cardAcceptorId
+      - countryCode
+      - merchantAcquiringIdentifiers
+      - merchantCategoryCode
+      - merchantId
+      - merchantName
+      type: object
+      properties:
+        city:
+          type: string
+          description: '[Merchant city name]'
+          example: Dallas
+        state:
+          type: string
+          description: '[Merchant state name]'
+          example: TX
+        merchantId:
+          maxLength: 12
+          minLength: 12
+          type: string
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID.]'
+          example: 000000705853
+        postalCode:
+          type: string
+          description: '[Merchant postal code]'
+          example: '75231'
+        contactName:
+          type: string
+          description: '[Merchant contact name]'
+          example: John
+        countryCode:
+          type: string
+          description: '[Merchant ISO country code]'
+          example: '840'
+        contactEmail:
+          type: string
+          description: '[Merchant contact email]'
+          example: john@glockstor.com
+        contactPhone:
+          type: string
+          description: '[Contact phone number of the merchant]'
+          example: '840909090'
+        merchantName:
+          maxLength: 75
+          minLength: 1
+          type: string
+          description: '[Name of Merchant]'
+          example: GS PERFORMANCE
+        parentCompany:
+          type: string
+          description: '[Parent company name of  the merchants]'
+          example: GS PERFORMANCE
+        cardAcceptorId:
+          maxLength: 15
+          minLength: 1
+          type: string
+          description: '[Merchant card acceptor id]'
+          example: '8405445454'
+        streetAddress1:
+          type: string
+          description: '[Address1 for the merchant]'
+          example: 8144 Walnut Hill Lane
+        streetAddress2:
+          type: string
+          description: '[Address2 for the merchant]'
+          example: 4th cross
+        internetAddress:
+          maxLength: 100
+          minLength: 0
+          type: string
+          description: '[Internet address for the merchant]'
+          example: https://www.glockstor.com
+        merchantDescriptor:
+          type: string
+          description: '[Merchant descriptor]'
+          example: GS PERFORMANCE
+        merchantCategoryCode:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: '[A 4 digit code assigned by the merchants acquirer to identify the merchants type of business.]'
+          example: '5735'
+        merchantLineBusiness:
+          type: string
+          description: '[Merchant line business]'
+          example: Online Service
+        merchantAcquiringIdentifiers:
+          maxItems: 18
+          minItems: 1
+          type: array
+          description: '[Merchant acquiring identifier]'
+          example:
+          - '312345'
+          - '312344'
+          items:
+            maxLength: 8
+            minLength: 6
+            type: string
+            description: '[Merchant acquiring identifier]'
+            example: '["312345","312344"]'
+      description: '[List of merchant enrolment]'
+    merchantEnrolmentRequest:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: '[List of merchant enrolment]'
+          items:
+            $ref: '#/components/schemas/MerchantRequest'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU acquirer segment id]'
+          format: int32
+          example: 2
+      description: merchantEnrolment
+    BadFormattedErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Request is badly formatted and/or the required field(s) is (are) missing
+
+            '
+          example: Request is badly formatted and/or the required field(s) is (are) missing
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * B
+
+            '
+          example: B
+      description: '[Inquiry is badly formatted]'
+    MerchantId:
+      required:
+      - merchantId
+      type: object
+      properties:
+        merchantId:
+          type: string
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID of 12 characters.]'
+          example: 000000705853
+      description: '[List of merchants to search]'
+    RejectMerchant:
+      required:
+      - rejectCode
+      - rejectMessage
+      type: object
+      properties:
+        rejectCode:
+          type: string
+          description: '[This field contains one of the following reject codes:
+
+            * C-Mandatory field Card Acceptor Id missing or invalid or having value zero
+
+            * D-Duplicate Merchant ID in Request
+
+            * F-Merchant name exceeds the maximum length of 75 characters
+
+            * G-Mandatory Field Merchant Country Code missing or must be 3 digit ISO code(including leading zeros)
+
+            * H-Merchant Acquiring Identifier must be numeric of length 6 or 8
+
+            * I-Merchant ID must be 12 characters
+
+            * J-Merchant name having non english characters or ''|'' unsupported character
+
+            * K-Max number of Merchant Acquiring Identifiers supported is 18
+
+            * L-Internet Address exceeds the maximum length of 100 characters
+
+            * M-Merchant Id already exists for this Acquirer Segment
+
+            * N-Mandatory Field Merchant Name missing
+
+            * O-Parent Company name having non english characters or ''|'' unsupported character
+
+            * P-Mandatory Field Merchant Category Code missing or must be numeric
+
+            * Q-Mandatory Field Merchant Acquiring Identifier(s) missing or invalid
+
+            * R-Mandatory Field Merchant ID missing
+
+            * S-Merchant Country  should be in same region as acquirer
+
+            * U-Card Acceptor Id exceeds the maximum length of 15 characters
+
+            * W-Merchant Category Code exceeds the maximum length of 4 digits
+
+            * Y-Merchant did not qualify for compliance check
+
+            * Z-Merchant Category Code is Ineligible for Merchant enrollment]
+
+            '
+          example: M
+        rejectMessage:
+          type: string
+          description: '[This field contains the description of reject message:
+
+            * C-Mandatory field Card Acceptor Id missing or invalid or having value zero
+
+            * D-Duplicate Merchant ID in Request
+
+            * F-Merchant name exceeds the maximum length of 75 characters
+
+            * G-Mandatory Field Merchant Country Code missing or must be 3 digit ISO code(including leading zeros)
+
+            * H-Merchant Acquiring Identifier must be numeric of length 6 or 8
+
+            * I-Merchant ID must be 12 characters
+
+            * J-Merchant name having non english characters or ''|'' unsupported character
+
+            * K-Max number of Merchant Acquiring Identifiers supported is 18
+
+            * L-Internet Address exceeds the maximum length of 100 characters
+
+            * M-Merchant Id already exists for this Acquirer Segment
+
+            * N-Mandatory Field Merchant Name missing
+
+            * O-Parent Company name having non english characters or ''|'' unsupported character
+
+            * P-Mandatory Field Merchant Category Code missing or must be numeric
+
+            * Q-Mandatory Field Merchant Acquiring Identifier(s) missing or invalid
+
+            * R-Mandatory Field Merchant ID missing
+
+            * S-Merchant Country  should be in same region as acquirer
+
+            * U-Card Acceptor Id exceeds the maximum length of 15 characters
+
+            * W-Merchant Category Code exceeds the maximum length of 4 digits
+
+            * Y-Merchant did not qualify for compliance check
+
+            * Z-Merchant Category Code is Ineligible for Merchant enrollment]
+
+            '
+          example: Merchant Id already exists for this Acquirer Segment
+      description: '[RejectMerchant]'
+    MerchantSearchResponse:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: '[List of merchant search results]'
+          items:
+            $ref: '#/components/schemas/Merchant'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field  must contain a valid VAU acquirer segment Id.]'
+          format: int32
+          example: 2
+      description: '[Merchant Search Response]'
+    merchantSearchRequest:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          maxItems: 2147483647
+          minItems: 0
+          type: array
+          description: '[List of merchants to search]'
+          items:
+            $ref: '#/components/schemas/MerchantId'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU acquirer segment id]'
+          format: int32
+          example: 2
+      description: merchantSearch
+    GenericErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Internal Server Error, please try again after sometime
+
+            '
+          example: Internal Server Error, please try again after sometime
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * E
+
+            '
+          example: E
+      description: '[Reject Request]'
+    RejectedMerchantEnrollmentResponse:
+      required:
+      - acquirerSegmentId
+      type: object
+      properties:
+        rejectCode:
+          type: string
+          description: '[This field contains one of the following codes:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: A
+        rejectReason:
+          type: string
+          description: '[This field contains the description of the reject code:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: Acquirer segment is not enrolled
+        acquirerSegmentId:
+          type: integer
+          description: '[This field  must contain a valid VAU Acquirer Segment ID.]'
+          format: int32
+          example: 9992
+      description: '[Reject Request]'
+    MerchantEnrolmentResponse:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: '[List of merchant enrolment]'
+          items:
+            $ref: '#/components/schemas/MerchantResponse'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field  must contain a valid VAU Acquirer Segment ID.]'
+          format: int32
+          example: 2
+      description: '[Merchant Enrolment Response]'
+    Merchant:
+      required:
+      - merchantId
+      - merchantStatus
+      type: object
+      properties:
+        city:
+          type: string
+          description: '[Merchant city name]'
+          example: Dallas
+        state:
+          type: string
+          description: '[Merchant state name]'
+          example: TX
+        merchantId:
+          type: string
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID.]'
+          example: 000000705853
+        postalCode:
+          type: string
+          description: '[Merchant postal code]'
+          example: '75231'
+        contactName:
+          type: string
+          description: '[Merchant contact name]'
+          example: John
+        countryCode:
+          type: string
+          description: '[Merchant country code]'
+          example: '840'
+        contactEmail:
+          type: string
+          description: '[Merchant contact email]'
+          example: john@glockstor.com
+        contactPhone:
+          type: string
+          description: '[Contact phone number of the merchant]'
+          example: '840909090'
+        merchantName:
+          type: string
+          description: '[Name of Merchant]'
+          example: GS PERFORMANCE
+        parentCompany:
+          type: string
+          description: '[Parent company name of  the merchants]'
+          example: GS PERFORMANCE
+        cardAcceptorId:
+          type: string
+          description: '[Merchant card acceptor id]'
+          example: '8403435453'
+        merchantStatus:
+          type: string
+          description: '[Merchant status, This field contains one of the following status:
+
+            * Active  Merchant status is Active
+
+            * InActive  Merchant status is In Active
+
+            * In-Progress  Merchant enrollment is in progress
+
+            * NotFound  Merchant not found in VAU
+
+            * Declined  Merchant unable to pass screening
+
+            * Reject  Merchant search is rejected, reject code and reject code and reject message will be returned]
+
+            '
+          example: Success
+        streetAddress1:
+          type: string
+          description: '[Address1 for the merchant]'
+          example: 8144 Walnut Hill Lane
+        streetAddress2:
+          type: string
+          description: '[Address2 for the merchant]'
+          example: 4th cross
+        internetAddress:
+          type: string
+          description: '[Internet address for the merchant]'
+          example: https://www.glockstor.com
+        merchantDescriptor:
+          type: string
+          description: '[Merchant descriptor]'
+          example: GS PERFORMANCE
+        merchantCategoryCode:
+          type: string
+          description: '[A 4 digit code assigned by the merchants acquirer to identify the merchants type of business.]'
+          example: '5735'
+        merchantLineBusiness:
+          type: string
+          description: '[Merchant line business]'
+          example: Online Service
+        merchantAcquiringIdentifiers:
+          type: array
+          description: '[Merchant acquiring identifier]'
+          example:
+          - '312345'
+          - '312344'
+          items:
+            type: string
+            description: '[Merchant acquiring identifier]'
+            example: '["312345","312344"]'
+      description: '[Merchant Object]'
+    RejectedMerchantSearchResponse:
+      required:
+      - acquirerSegmentId
+      type: object
+      properties:
+        rejectCode:
+          type: string
+          description: '[This field contains one of the following codes:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: A
+        rejectReason:
+          type: string
+          description: '[This field contains the description of the reject code:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: Acquirer segment is not enrolled
+        acquirerSegmentId:
+          type: integer
+          description: '[This field  must contain a valid VAU Acquirer Segment ID.]'
+          format: int32
+          example: 9992
+      description: '[Reject Request]'
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

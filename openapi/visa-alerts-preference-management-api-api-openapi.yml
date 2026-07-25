@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Alerts Preference Management API API
+  description: Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Alerts Preference Management API
+  description: Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.
+paths:
+  /vctc/alertspreference/v1/managealertspreference:
+    post:
+      operationId: manageAlertsPreference
+      summary: Manage Alerts Preference
+      description: Configures the cardholder's alert delivery preferences including mobile number, email address, and device identifiers that Visa will use to send all alert notifications.
+      tags:
+      - Alerts Preference Management API
+      requestBody:
+        description: Alert preference configuration
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertsPreferenceRequest'
+      responses:
+        '200':
+          description: Alert preferences configured successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertsPreferenceResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    AlertsPreferenceRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number
+        mobileNumber:
+          type: string
+          description: Mobile number for SMS alerts in E.164 format
+        emailAddress:
+          type: string
+          format: email
+          description: Email address for alert delivery
+        deviceId:
+          type: string
+          description: Device identifier for push notifications
+        alertDeliveryChannel:
+          type: string
+          description: Preferred alert delivery channel
+          enum:
+          - SMS
+          - EMAIL
+          - PUSH
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    AlertsPreferenceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Preference configuration status
+        alertDeliveryChannel:
+          type: string
+          description: Configured delivery channel
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

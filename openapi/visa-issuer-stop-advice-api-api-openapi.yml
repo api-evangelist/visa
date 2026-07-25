@@ -1,0 +1,342 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Issuer Stop Advice API API
+  description: Issuers can place stop advices in VAU to block specific merchants from receiving an automatic VAU credential update (e.g., following reported fraud) while still allowing their cardholder to transact with the merchant where appropriately authorized.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Issuer Stop Advice API
+  description: Issuers can place stop advices in VAU to block specific merchants from receiving an automatic VAU credential update (e.g., following reported fraud) while still allowing their cardholder to transact with the merchant where appropriately authorized.
+paths:
+  /vau/issuer-api/v1/stopadvices:
+    post:
+      tags:
+      - Issuer Stop Advice API
+      summary: Issuer Stop Advice API
+      description: Issuer can place stop advice by providing following requested information
+      operationId: stopAdviceUsingPOST
+      parameters:
+      - name: Accept
+        in: header
+        required: false
+        explode: false
+        schema:
+          type: string
+          enum:
+          - application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/stopAdviceRequest'
+        required: true
+      responses:
+        '200':
+          description: This response code will be returned in scenarios where the stop advice is successful, all possible response codes are explained below in the model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopAdviceResponse'
+        '400':
+          description: This response code will be returned in scenarios where the stop advice is badly formatted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadFormattedErrorMessage'
+        '409':
+          description: This response code will be returned in scenarios where the stop advice is rejected, all possible reasons for request rejection are explained below in the model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RejectedStopAdviceRequestResponse'
+        '500':
+          description: This response code will be returned in scenarios where the stop advice could not be sucessfully processed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericErrorMessage'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vau~1issuer-api~1v1~1stopadvices/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    RejectedStopAdviceResponse:
+      required:
+      - cardAcceptorId
+      - cardholderAccountNumber
+      - merchantName
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: '[This field contains the start date, which shouldn''t be less than the current date, and its format is yyyy-mm-dd, the default value is the current date.]'
+          format: date
+        rejectCode:
+          type: string
+          description: '[This field contains one of the following reject codes:
+
+            * HAccount number does not start with 2, 3, 4, 5 or 6
+
+            * GAccount number contains non-numeric characters or is blank
+
+            * LAccount number is not of proper length (must be 13, 15, 16 or 19)
+
+            * MAccount number is not mod 10 compliant
+
+            * NNo stop advice applied, unable to find merchant information for the requested card acceptor id
+
+            * RAccount number is not associated with requested segment id
+
+            * SStart date must not be less than the current date
+
+            * DDuplicate stop advice in the request
+
+            * IMandatory field cardholderAccountNumber is missing or blank in the request
+
+            * JMandatory field cardAcceptorId is missing or blank in the request
+
+            * KMandatory field merchantName is missing or blank in the request
+
+            * FStop advice is already placed for requested account number and merchant]
+
+            '
+          example: G
+        merchantName:
+          type: string
+          description: '[This field must contain merchant name.]'
+          example: TestMerchant
+        rejectMessage:
+          type: string
+          description: '[This field contains the description of reject message:
+
+            * HAccount number does not start with 2, 3, 4, 5 or 6
+
+            * GAccount number contains non-numeric characters or is blank
+
+            * LAccount number is not of proper length (must be 13, 15, 16 or 19)
+
+            * MAccount number is not mod 10 compliant
+
+            * NNo stop advice applied, unable to find merchant information for the requested card acceptor id
+
+            * RAccount number is not associated with requested segment id
+
+            * SStart date must not be less than the current date
+
+            * DDuplicate stop advice in the request
+
+            * IMandatory field cardholderAccountNumber is missing or blank in the request
+
+            * JMandatory field cardAcceptorId is missing or blank in the request
+
+            * KMandatory field merchantName is missing or blank in the request
+
+            * FStop advice is already placed for requested account number and merchant]
+
+            '
+          example: Account Number contains non-numeric characters or is blank
+        cardAcceptorId:
+          type: string
+          description: '[This field must contain card acceptor id.]'
+          example: '89389898'
+        cardholderAccountNumber:
+          type: string
+          description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover).]'
+          example: 400000XX00000000
+      description: '[RejectedStopAdviceResponse]'
+    BadFormattedErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Request is badly formatted and/or the required field(s) is (are) missing
+
+            '
+          example: Request is badly formatted and/or the required field(s) is (are) missing
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * B
+
+            '
+          example: B
+      description: '[Inquiry is badly formatted]'
+    GenericErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Internal Server Error, please try again after sometime
+
+            '
+          example: Internal Server Error, please try again after sometime
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * E
+
+            '
+          example: E
+      description: '[Reject Request]'
+    stopAdviceRequest:
+      required:
+      - issuerSegmentId
+      - stopadvices
+      type: object
+      properties:
+        stopadvices:
+          type: array
+          description: '[List of stop advice]'
+          items:
+            $ref: '#/components/schemas/stopAdvice'
+        issuerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU issuer segment id]'
+          format: int32
+          example: 2
+      description: stopAdviceRequest
+    RejectedStopAdviceRequestResponse:
+      required:
+      - issuerSegmentId
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: '[This field contains the description of the reject code:
+
+            * AIssuer segment is not enrolled
+
+            * TMax stop advices threshold passed for single request, current threshold is:100
+
+            * VNo data found in stop advice field
+
+            '
+          example: Issuer segment is not enrolled
+        issuerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU Issuer Segment ID.]'
+          format: int32
+          example: 2
+        rejectReasonCode:
+          type: string
+          description: '[This field contains one of the following codes:
+
+            * AIssuer segment is not enrolled
+
+            * TMax stop advices threshold passed for single request, current threshold is:100
+
+            * VNo data found in stop advice field
+
+            '
+          example: A
+      description: '[Reject Request]'
+    StopAdviceResponse:
+      required:
+      - issuerSegmentId
+      - rejects
+      - responses
+      type: object
+      properties:
+        rejects:
+          type: array
+          description: '[List of rejected stop advice responses]'
+          items:
+            $ref: '#/components/schemas/RejectedStopAdviceResponse'
+        responses:
+          type: array
+          description: '[List of successful stop advice responses]'
+          items:
+            $ref: '#/components/schemas/SuccessfulStopAdviceResponse'
+        issuerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU issuer segment id.]'
+          format: int32
+          example: 2
+      description: '[Issuer-stop-advice-api response body]'
+    SuccessfulStopAdviceResponse:
+      required:
+      - cardAcceptorId
+      - cardholderAccountNumber
+      - merchantName
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: '[This field contains the start date, which shouldn''t be less than the current date, and its format is yyyy-mm-dd, the default value is the current date.]'
+          format: date
+        merchantName:
+          type: string
+          description: '[This field must contain merchant name.]'
+          example: TestMerchant
+        responseCode:
+          type: string
+          description: '[This field contains one of the following response codes:
+
+            * 1Stop advice applied in both RTVAU and VAU
+
+            * 2Stop advice applied in VAU
+
+            * 3Stop advice applied in RTVAU
+
+            '
+          example: '1'
+        cardAcceptorId:
+          type: string
+          description: '[This field must contain card acceptor id.]'
+          example: '89389898'
+        responseMessage:
+          type: string
+          description: '[This field contains the description of the response message:
+
+            * 1Stop advice applied in both RTVAU and VAU
+
+            * 2Stop advice applied in VAU
+
+            * 3Stop advice applied in RTVAU
+
+            '
+          example: Stop advice applied in both RTVAU and VAU
+        cardholderAccountNumber:
+          type: string
+          description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover).]'
+          example: 400000XX00000000
+      description: '[SuccessfulStopAdviceResponse body]'
+    stopAdvice:
+      required:
+      - cardAcceptorId
+      - cardholderAccountNumber
+      - merchantName
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: '[This field contains the start date, which shouldn''t be less than the current date, and its format is yyyy-mm-dd, the default value is the current date.]'
+          format: date
+        merchantName:
+          type: string
+          description: '[This field must contain merchant name.]'
+          example: TestMerchant
+        cardAcceptorId:
+          type: string
+          description: '[This field must contain card acceptor id.]'
+          example: '89389898'
+        cardholderAccountNumber:
+          type: string
+          description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover).]'
+          example: 400000XX00000000
+      description: '[Stop advice fields]'
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

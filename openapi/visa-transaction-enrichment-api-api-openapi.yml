@@ -1,0 +1,126 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Transaction Enrichment API API
+  description: Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Transaction Enrichment API
+  description: Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.
+paths:
+  /merchantsearch/v1/transactionenrichment:
+    post:
+      operationId: enrichTransaction
+      summary: Enrich Transaction
+      description: Enriches transaction data with enhanced merchant information such as merchant street address, website URL, logo, and contact information. This operation helps improve the cardholder experience by providing clearer and more recognizable merchant details on statements.
+      tags:
+      - Transaction Enrichment API
+      requestBody:
+        description: Transaction details to enrich
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionEnrichmentRequest'
+      responses:
+        '200':
+          description: Transaction enriched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionEnrichmentResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    TransactionEnrichmentResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: Enriched merchant information
+              items:
+                $ref: '#/components/schemas/EnrichedMerchant'
+    EnrichedMerchant:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        merchantName:
+          type: string
+          description: Cleaned merchant name
+        merchantUrl:
+          type: string
+          format: uri
+          description: Merchant website URL
+        merchantLogoUrl:
+          type: string
+          format: uri
+          description: URL of the merchant logo
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        phoneNumber:
+          type: string
+          description: Merchant phone number
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    TransactionEnrichmentRequest:
+      type: object
+      required:
+      - acquirerCardAcceptorId
+      properties:
+        acquirerCardAcceptorId:
+          type: string
+          description: Card acceptor ID from the transaction
+        acquiringBin:
+          type: string
+          description: Acquiring bank identification number
+        merchantName:
+          type: string
+          description: Merchant name from the transaction
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code from the transaction
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

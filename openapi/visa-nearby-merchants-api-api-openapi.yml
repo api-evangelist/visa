@@ -1,0 +1,137 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Nearby Merchants API API
+  description: Discover nearby Visa-accepting merchants based on geographic coordinates or address information.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Nearby Merchants API
+  description: Discover nearby Visa-accepting merchants based on geographic coordinates or address information.
+paths:
+  /merchantsearch/v1/nearbymerchants:
+    post:
+      operationId: findNearbyMerchants
+      summary: Find Nearby Merchants
+      description: Finds Visa-accepting merchants near a specified geographic location. This operation supports location-based merchant discovery for consumer applications and services.
+      tags:
+      - Nearby Merchants API
+      requestBody:
+        description: Location and search criteria
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NearbyMerchantsRequest'
+      responses:
+        '200':
+          description: Nearby merchants found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyMerchantsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    MerchantRecord:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        visaStoreId:
+          type: string
+          description: Visa-assigned store identifier
+        merchantName:
+          type: string
+          description: Name of the merchant
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        matchScore:
+          type: number
+          format: double
+          description: Confidence score of the match
+    NearbyMerchantsResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of nearby merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total matching merchants
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    NearbyMerchantsRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude coordinate
+        longitude:
+          type: number
+          format: double
+          description: Longitude coordinate
+        searchRadius:
+          type: number
+          format: double
+          description: Search radius in kilometers
+        searchRadiusUnit:
+          type: string
+          description: Unit of measurement for search radius
+          enum:
+          - KM
+          - MI
+        merchantCategoryCode:
+          type: array
+          description: Filter by Merchant Category Codes
+          items:
+            type: string
+        maxRecords:
+          type: integer
+          description: Maximum number of records to return
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

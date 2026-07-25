@@ -1,0 +1,136 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates BIN File Transfer API
+  description: Transfer Account/Token Range File
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: BIN File Transfer
+  description: Transfer Account/Token Range File
+paths:
+  /filedeliveryservice/v1/binFileTransfer:
+    post:
+      tags:
+      - BIN File Transfer
+      summary: BIN File Transfer
+      description: Get access to a BIN Account/Token Range file in csv format
+      operationId: Bin File Transfer - POST
+      requestBody:
+        description: BIN File Transfer request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BinFileTransferRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  requestHeader:
+                    requestTS: '2017-02-15T22:05:00.000'
+                    requestMessageId: testAnna
+                  requestData:
+                    fileName: VBASS_TR_LEVEL3_03252021_79.csv
+        required: true
+      responses:
+        '200':
+          description: BinFileTransfer Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BinFileTransferResponse'
+              examples:
+                Default:
+                  summary: Default
+                  value: Sample response will contain csv file in a comma-separated format
+        '400':
+          description: Request Data Invalid
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '500':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorCodes-1'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1filedeliveryservice~1v1~1binFileTransfer/post'
+        default: false
+      x-codegen-request-body-name: BIN File Transfer Request
+      x-hideTryIt: true
+components:
+  schemas:
+    errorCodes-1:
+      title: errorCodes
+      type: object
+      properties:
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI002:
+          type: object
+          description: XML Parsing Failure
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI052:
+          type: object
+          description: Client Authentication failed
+        CDI071:
+          type: object
+          description: Exception in Group level entitlement process
+        CDI249:
+          type: object
+          description: Payment Account Type validation failure
+        CDI250:
+          type: object
+          description: Atleast one of the required/mandatory fields is missing in the request
+    BinFileTransferRequest:
+      title: BinFileTransferRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData-2'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-5'
+    requestHeader-5:
+      title: requestHeader
+      required:
+      - requestMessageId
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+    requestData-2:
+      title: requestData
+      required:
+      - fileName
+      type: object
+      properties:
+        fileName:
+          maxLength: 255
+          minLength: 1
+          type: string
+          description: Name of the file
+    BinFileTransferResponse:
+      title: BinFileTransferResponse
+      type: object
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

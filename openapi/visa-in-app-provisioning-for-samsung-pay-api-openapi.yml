@@ -1,0 +1,257 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates In-App Provisioning for Samsung Pay API
+  description: In-App Provisioning for Samsung Pay
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: In-App Provisioning for Samsung Pay
+  description: In-App Provisioning for Samsung Pay
+paths:
+  /inapp/provisioning/cardData/samsungPay:
+    post:
+      tags:
+      - In-App Provisioning for Samsung Pay
+      summary: Create Card Data Samsung Pay
+      description: Card data for provisioning a Visa Token in SamsungPay using vCardId or encrypted card as input
+      operationId: provisionForSamsungPayUsingPOST
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Create card data for Samsung Pay provisioning using vCardID or encrypted card
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SamsungPayProvisioningRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  vCardID: v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02
+                  encCard: eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A
+                  clientAppID: VMCPTest
+                  deviceID: uztEQocBRFrbK5hCgcDbxqw_
+                  clientCustomerID: dead-beef-123
+                  tokenServiceProvider: V
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SamsungPayProvisioningResponse'
+              example:
+                last4: '3757'
+                vCardID: v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02
+                cardType: CREDIT
+                opaquePaymentCard: eyJhdWQiOiIwNTc3NjFiNy00YmM1LWVkZTktNjRjYy0xM2U4MGNkODkzMDEiLCJraWQiOiJYS1ZYNUlHNTVDWTFRM0FVR0JLQTExbV9VNGR2b2FROVVzZ3lESUxqQjNUempCYmU4IiwiaXNzIjoiODM3NjVhZjUtZGZhZS0zNWI0LTViNGItMWM5OWJhN2EwZDAxIiwidHlwIjoiSk9TRSIsImNoYW5uZWxTZWN1cml0eUNvbnRleHQiOiJTSEFSRURfU0VDUkVUIiwiZW5jIjoiQTI1NkdDTSIsInRhZyI6InNBR0xGNGdjNzRKZWl3Y0RXbXJyWnciLCJpYXQiOjE1ODgyNDM2NzUsImFsZyI6IkEyNTZHQ01LVyIsIml2IjoiWmZQd2QxSFBUTGxRRWRENiJ9.i19152t-dx22C1V7SoLuI216M516IQDCeyZ6-p2emAk.KJy_YLzGIqyQtkkZ.vgVTvD_Nsg3ca_L_5G_zUrVFiaW7hi6Np2HrpOVIayeLWiq17qTmRRhbmbl1Eh1a8E06HIraXeXOenm4zb8qR4sMg6dLhIbXC9oqvbypQpT_FQa5TjpnXDe9QX3U4jMrRPsxfSqhPwvdgIyf61RZtEq8SzeY-CrvlHufmtqED7sP3-e1OCFLvxP-nD56wGTcEW3UYwNHZmXB1u-HIUO8WETBjTZ5klyWQ-SSFkWySqdxASFjSl-jNgzwjxEW_5LX17HyjvwNlEYEdvHlJqVaUwkYD7Zu-S6wUzKHflFevk_rdvl7WyY_Yn5o4EBcz7Sj03vO5HuAE0Zx6HFdNPXP70xkhBz7zk9yklz4lSmHzORn0H8feu1zTK-ycvZiTRlIIZO5wg2F2iO3_MwHnHJzkIBvs82c-fptWXFVdB-14hO2c2_PNQoW-KAHBWyQuVFwm5LVUKl7bFA6CPlkaZqUC3G1AeEUcVj7MaiwQqP0cMARTB8Vr1V7y1tiJKYnlAXEVM4sc7OCvS_NZTGi-UAgqCZmI2rbmxLuZiSBgiAB-WhPN9mH3VpFgUEu16Q5uhtQH5Pvx5Oi0dY_ifakUzU_dc1BITckVVrwCoJTDhNXvfw8BJB41GUB.GHGNmrd5eo5fiL4NxjN5Aw
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-samplePayload:
+        encCard: eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A
+        vCardID: v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02
+        deviceID: uztEQocBRFrbK5hCgcDbxqw_
+        clientAppID: VMCPTest
+        clientCustomerID: dead-beef-123
+        tokenServiceProvider: V
+      x-name: Create Card Data for Samsung Pay using vCardID or encrypted card
+      x-notes: Card data for provisioning a Visa Token in SamsungPay using vCardID or encrypted card
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1inapp~1provisioning~1cardData~1samsungPay/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    SamsungPayProvisioningRequest:
+      title: SamsungPayProvisioningRequest
+      required:
+      - clientCustomerID
+      - deviceID
+      type: object
+      properties:
+        encCard:
+          type: string
+          description: "<div>\n<p><code>Conditional.</code> </p>\n  <p> Either of <code>vCardId</code> or <code>encCard</code> is required.</p>\n <p> <code>vCardId</code> will take precedence in case both <code>vCardId</code> and <code>encCard</code> is part of the request body.</p> \n <div> \n <p>Encrypted <code>CardInfo</code></p> <h3>Example</h3> <pre><code>{\n  \"accountNumber\": \"4000000000000000\",\n  \"nameOnCard\": \"Digital Issuance\",\n  \"cvv2\": \"123\",\n  \"expirationDate\": {\n      \"month\": \"01\",\n      \"year\": \"2021\"\n  },\n  \"billingAddress\": {\n    \"name\": \"Digital Issuance\",\n    \"line1\": \"12301 Research Boulevard\",\n    \"line2\": \"Research Boulevard\",\n    \"line3\": \"Visa USA\",\n    \"city\": \"Austin\",\n    \"state\": \"TX\",\n    \"countryCode\": \"US\",\n    \"postalCode\": \"78759\"\n  }\n} </code></pre> <h3>CardInfo Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>accountNumber</td><td>string<br>required<br>minLength: 12<br>maxLength: 18</td><td>PAN (Primary Account Number) of the card to be provisioned or enrolled</td></tr> <tr><td>paymentAccountReference</td><td>string<br>optional</td><td>A Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN</td></tr> <tr><td>cvv2</td><td>string<br>conditional<br>minLength: 3<br>maxLength: 3</td><td>CVV2 value associated with the PAN on the card</td></tr> <tr><td>nameOnCard</td><td>string<br>conditional<br>minLength: 0<br>maxLength: 256</td><td>The full name on the card associated with the issued/enrolled card</td></tr> <tr><td>expirationDate</td><td><code>ExpirationDate</code><br>required</td><td>Cards expiration date</td></tr> <tr><td>billingAddress</td><td><code>Address</code><br>optional</td><td>Billing address associated with the card</td></tr> </tbody> </table> <h3>ExpirationDate Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>month</td><td>string<br>required<br>minLength: 2<br>maxLength: 2</td><td>The month that the card is set to expire</td></tr> <tr><td>year</td><td>string<br>required<br>minLength: 4<br>maxLength: 4</td><td>The year that the card is set to expire</td></tr> </tbody> </table> <h3>Address Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \\\"TX\\\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: "<div>\n<p><code>Conditional.</code> </p>\n  <p> Either of <code>vCardId</code> or <code>encCard</code> is required.</p>\n<p> Visa-defined unique ID of the card to produce the Google Pay provisioning card data for. <code>vCardId</code> will take precedence in case both <code>vCardId</code> and <code>encCard</code> is part of the request body.\n </p></div> \n"
+        deviceID:
+          maxLength: 24
+          minLength: 2
+          type: string
+        signingKeyID:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Token service provider specific signing key identifier
+        encryptionKeyID:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Token service provider specific encryption key identifier
+        clientCustomerID:
+          maxLength: 36
+          minLength: 2
+          type: string
+        tokenServiceProvider:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Indicates which token service provider will process the card data generated for provisioning. The default value is "V".
+          enum:
+          - V
+          - M
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/ValidationError'
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
+    SamsungPayProvisioningResponse:
+      title: SamsungPayProvisioningResponse
+      required:
+      - last4
+      - opaquePaymentCard
+      - vCardID
+      type: object
+      properties:
+        last4:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: Last 4 digits of the card.
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: Visa-defined unique ID of the card
+        cardType:
+          type: string
+          description: Enum indicating the supported card type. It will be provided only for Visa cards.
+          enum:
+          - CREDIT
+          - DEBIT
+        opaquePaymentCard:
+          type: string
+          description: This is the opaque card data that is needed by SamsungPay for tokenization.
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    ErrorDetails:
+      title: ErrorDetails
+      type: object
+      properties:
+        message:
+          type: string
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

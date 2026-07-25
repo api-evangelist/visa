@@ -1,0 +1,248 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates BIN Files Metadata API
+  description: Get Bin Files Metadata including number of files, file names, sizes, checksum, creation date.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: BIN Files Metadata
+  description: Get Bin Files Metadata including number of files, file names, sizes, checksum, creation date.
+paths:
+  /filedeliveryservice/v1/binFilesMetadata:
+    post:
+      tags:
+      - BIN Files Metadata
+      summary: BIN Files Metadata
+      description: Get BIN Files Metadata including number of files, file names, sizes, checksum, creation date.
+      operationId: BinFiles metadata lookup using POST
+      requestBody:
+        description: BIN Files Metadata request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/binFilesMetadataRequest'
+            examples:
+              Request 1:
+                summary: Request 1
+                value:
+                  requestHeader:
+                    requestTS: '2021-02-10T12:26:50.002'
+                    requestMessageId: reqstMsgID1
+                  requestData:
+                    paymentAccountType: P
+              Request 2:
+                summary: Request 2
+                value:
+                  requestHeader:
+                    requestTS: '2021-02-10T12:26:50.002'
+                    requestMessageId: reqstMsgID1
+                  requestData:
+                    paymentAccountType: T
+        required: true
+      responses:
+        '200':
+          description: BinFilesMetadata Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/binFilesMetadataResponse'
+        '400':
+          description: Request Data Invalid
+          content: {}
+        '500':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorCodes'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1filedeliveryservice~1v1~1binFilesMetadata/post'
+        default: false
+      x-codegen-request-body-name: Bin Files Metadata Request
+components:
+  schemas:
+    requestData:
+      title: requestData
+      required:
+      - paymentAccountType
+      type: object
+      properties:
+        paymentAccountType:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Identifier for whether account is a PAN ('P') or Token ('T')
+          example: P
+    responseStatus:
+      title: responseStatus
+      type: object
+      properties:
+        statusCode:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: Status Code of the Service Request
+          example: CDI000
+        statusDescription:
+          maxLength: 250
+          minLength: 0
+          type: string
+          description: A description of the Status Code. A brief description indicating the result of the Service Request
+          example: Success
+    binFilesMetadataResponse:
+      title: BinFilesMetadataResponse
+      type: object
+      properties:
+        responseData:
+          $ref: '#/components/schemas/responseData'
+        responseHeader:
+          $ref: '#/components/schemas/responseHeader'
+        responseStatus:
+          $ref: '#/components/schemas/responseStatus'
+    fileDetails:
+      title: fileDetails
+      required:
+      - checkSum
+      - fileName
+      - fileSize
+      - rowCount
+      type: object
+      properties:
+        checkSum:
+          maxLength: 32
+          minLength: 32
+          type: string
+          description: File checksum
+          example: bb8e4c75d51001dd35b40dc6209eccc2
+        fileName:
+          maxLength: 255
+          minLength: 30
+          type: string
+          description: File Name
+          example: VBASS_AR_LEVEL1_04282021_20.csv
+        fileSize:
+          minimum: 0
+          type: number
+          description: File Size in bytes (from Linux OS)
+          example: 1770048
+        rowCount:
+          minimum: 0
+          type: number
+          description: Number of records in the file (excludes the column header record at the top of the csv file)
+          example: 30000
+    responseData:
+      title: responseData
+      required:
+      - fileDetails
+      - filesCreationDate
+      - paymentAccountType
+      - totalNumberOfFiles
+      type: object
+      properties:
+        fileDetails:
+          type: array
+          description: List of BinFiles MetaData
+          items:
+            $ref: '#/components/schemas/fileDetails'
+        filesCreationDate:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: Files creation date in YYYY-MM-DD Format
+          format: YYYY-MM-DD
+          example: '2023-02-17'
+        paymentAccountType:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Account Type for which file details have been retrieved, i.e., Account Range (PAN) or Token Range, Possible values - P or T
+          example: P
+        totalNumberOfFiles:
+          minimum: 0
+          type: integer
+          description: Total number of files for a requested payment account type
+          example: 1
+    requestHeader:
+      title: requestHeader
+      required:
+      - requestMessageId
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which request is sent (up to milliseconds in UTC). Ex: 2020-09-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2021-04-29T22:05:00.000'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId456
+    responseHeader:
+      title: responseHeader
+      type: object
+      properties:
+        responseTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: Date and time at which Response is sent (up to milliseconds in UTC)
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2023-02-17T06:31:31.194'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId456
+        responseMessageId:
+          maxLength: 33
+          minLength: 33
+          type: string
+          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
+          example: 106VDP87035320230217063131177
+    binFilesMetadataRequest:
+      title: BinFilesMetadataRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader'
+    errorCodes:
+      title: ErrorCodes
+      type: object
+      properties:
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI003:
+          type: object
+          description: Missing Required Attributes
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI071:
+          type: object
+          description: Request data invalid
+        CDI092:
+          type: object
+          description: No data
+        CDI098:
+          type: object
+          description: Invalid RequestTS format
+        CDI251:
+          type: object
+          description: Client configuration incomplete, reach out to BINAttributes@visa.com
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

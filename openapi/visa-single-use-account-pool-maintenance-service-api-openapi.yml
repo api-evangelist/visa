@@ -1,0 +1,1066 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Single Use Account Pool Maintenance Service API
+  description: The Proxy web service is used for managing a pool of Single-Use Accounts (SUAs) linked to a proxy. With this web service, you can create proxy pool(s) for a buyer, update details of the proxy, delete unused pools and get details about an existing pool(e.g. number of available accounts).
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Single Use Account Pool Maintenance Service
+  description: The Proxy web service is used for managing a pool of Single-Use Accounts (SUAs) linked to a proxy. With this web service, you can create proxy pool(s) for a buyer, update details of the proxy, delete unused pools and get details about an existing pool(e.g. number of available accounts).
+paths:
+  /vpa/v1/proxy/UpdateProxyPool:
+    post:
+      tags:
+      - Single Use Account Pool Maintenance Service
+      summary: Update Proxy Pool
+      description: The Update operation, allows the consumer to update the details of a proxy pool.
+      operationId: Update Proxy Pool
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - proxyAccountNumber
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: ' Denotes the buyer identifier as defined in Visa Payables Automation. This will be provided by the Visa implementation team. Should be alphanumeric. No special characters except _ (Underscore) and  (Dash) are allowed. Should be an existing buyer ID in the system and associated to the bank (associated to the client ID).'
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Denotes the client ID associated with the bank for which the proxy is being setup. Should be alphanumeric and should exist in the system. Visa will provide this during implementation.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request. Each request sent to VPA requires its own unique ID.
+                creditLimit:
+                  maxLength: 14
+                  type: string
+                  description: Denotes the credit limit associated with the proxy pool. All accounts in the proxy pool will have the same credit limit. Required only if the bank and buyer are enabled for bucketed proxy. Should be an integer numeric value. Applicable only for regular processor PANs.
+                reOrderCount:
+                  maxLength: 9
+                  type: string
+                  description: Denotes the total number of accounts to be reordered when the proxy pool has reached the Minimum Available Account. This field is used only when the auto replenishment of the proxy pool is enabled for the buyer. Should be an integer numeric value. Required only if auto replenishment has been enabled for the buyer.
+                proxyPoolType:
+                  maxLength: 1
+                  type: string
+                  description: 'Indicates if the Proxy pool is a multi use pool (meaning the accounts are recycled) or a one time use pool (meaning the accounts are used once and deleted). Valid values are: (1) Multi Use Pool (2) One Time Use Pool. If not provided, the system defaults to 1.'
+                  enum:
+                  - '1'
+                  - '2'
+                proxyAccountType:
+                  maxLength: 1
+                  type: string
+                  description: 'Denotes the account type. Valid values are: (1) SUA adjustable (2) SUA. If not provided, the system defaults to 2 for VIP/VIPP accounts.'
+                  enum:
+                  - '1'
+                  - '2'
+                initialOrderCount:
+                  maxLength: 9
+                  type: string
+                  description: Denotes the total number of accounts which needs to be ordered at the time of setting up the proxy pool. This field is used only when the auto replenishment of the proxy pool is enabled for the buyer. Should be an integer numeric value. Required only if auto replenishment has been enabled for the buyer.
+                authControlEnabled:
+                  type: boolean
+                  description: Denotes if the auth control (VPC) is enabled for the proxy pool or not. Should be set to True if the bank is mandated for auth controls. Must be set to True for VIP and VPP account pools.
+                proxyAccountNumber:
+                  maxLength: 19
+                  type: string
+                  description: Denotes the proxy pool account number. Should be alphanumeric. Should be an existing proxy pool number for the buyer. No special characters except _ (Underscore) and  (Dash) are allowed. If not provided, system will return details of all proxies (up to 250 proxies) associated with the buyer.
+                fundingAccountNumber:
+                  type: string
+                  description: Denotes the funding account number which will be used for generating the VIP or VPP accounts. The full 16 digits needs to be passed for the VIP and VPP proxy pools. If not provided, the system will use the default funding account.
+                minAvailableAccounts:
+                  maxLength: 9
+                  type: string
+                  description: Denotes the minimum number of accounts that should be available in the proxy pool at any given time. System reorders accounts when the number of available accounts in the Ready to Use status in the proxy pool is less than the value of this field E.g. if set to 10,000, then accounts will be reordered when the number of available accounts in the proxy pool is less than 10,000. Required only if auto replenishment has been enabled for the buyer.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  authControlEnabled: true
+                  clientId: B2BWS_1_1_9999
+                  proxyAccountType: '2'
+                  reOrderCount: '2'
+                  minAvailableAccounts: '3'
+                  proxyAccountNumber: TestProxyPool
+                  proxyPoolType: '1'
+                  messageId: '2020-03-01T03:47:20.000Z'
+                  creditLimit: '10'
+                  buyerId: '9999'
+                  fundingAccountNumber: '4111111111111111'
+                  initialOrderCount: '5'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  UpdateProxyPoolResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      errors:
+                        type: array
+                        description: Errors List
+                        items:
+                          type: object
+                          properties:
+                            Error:
+                              required:
+                              - code
+                              - statusDesc
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  description: error code
+                                statusDesc:
+                                  type: string
+                                  description: error description
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique ID which was sent in the request.
+                      statusCode:
+                        type: string
+                        description: Status code of the response.
+                      statusDesc:
+                        type: string
+                        description: Status description of the response. List of status codes and descriptions can be found in the following link.
+                    description: Success
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    statusDesc: Proxypool account updated successfully.
+                    proxyAccountNumber: TestA53
+                    messageId: '1578984254588'
+                    statusCode: PMUP000
+        '400':
+          description: Refer to the <a href="/pages/B2B-virtual-account-payment-method-error-codes#update_proxy_pool">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: updateproxypool
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1proxy~1UpdateProxyPool/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/proxy/GetProxyPool:
+    post:
+      tags:
+      - Single Use Account Pool Maintenance Service
+      summary: Get Proxy Pool
+      description: The Get operation allows the consumer to get the details of a proxy.
+      operationId: Get Proxy Pool
+      requestBody:
+        description: Get Proxy Pool Request
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Denotes the buyer identifier as defined in Visa Payables Automation. This will be provided by the issuer. Should be alphanumeric. No special characters except _ (Underscore) and  (Dash) are allowed. Should be an existing buyer ID in the system and associated to the bank (associated to the client ID).
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Denotes the client ID associated with the bank for which the proxy is being setup. Should be alphanumeric and should exist in the system. Visa will provide this during implementation.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request. Each request sent to VPA requires its own unique ID.
+                proxyAccountNumber:
+                  maxLength: 19
+                  type: string
+                  description: Denotes the Proxy Pool ID (or name of the proxy pool). Should be alphanumeric. Should be an existing proxy pool number for the buyer. No special characters except _ (Underscore) and  (Dash) are allowed. If not provided, system will return details of all proxies (up to 250 proxies) associated with the buyer.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  proxyAccountNumber: TestProxyPool
+                  messageId: '2020-03-01T03:47:20.000Z'
+                  buyerId: '9999'
+        required: true
+      responses:
+        '200':
+          description: Refer to the <a href="/pages/B2B-virtual-account-payment-method-error-codes#get_proxy_pool">Error Codes</a> page for the list of error codes for this API.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetProxyPoolResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      errors:
+                        type: array
+                        description: Errors List
+                        items:
+                          required:
+                          - code
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                              description: error code
+                            description:
+                              type: string
+                              description: error description
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique ID which was sent in the request.
+                      proxyList:
+                        required:
+                        - authControlEnabled
+                        - creditLimit
+                        - initialOrderCount
+                        - minAvailableAccounts
+                        - proxyAccountNumber
+                        - proxyAccountType
+                        - proxyPoolType
+                        - reOrderCount
+                        type: object
+                        properties:
+                          usedCards:
+                            maxLength: 10
+                            type: string
+                            description: Total number of used accounts in the proxy pool. These accoutns are currently in-use or still within the hold period and will be become available again after the hold period lapses, if applicable.
+                          totalCards:
+                            maxLength: 10
+                            type: string
+                            description: Denotes the total number of cards in the proxy pool.
+                          creditLimit:
+                            maxLength: 14
+                            type: string
+                            description: Denotes the credit limit associated with the proxy pool. All accounts in the proxy pool will have the same credit limit. Required only if the bank and buyer are enabled for bucketed proxy. Should be an integer numeric value. Applicable only for regular processor PANs.
+                          deletedCards:
+                            maxLength: 10
+                            type: string
+                            description: Total number of Deleted Accounts in the proxy pool. These will not be used for any future requisitions.
+                          reOrderCount:
+                            maxLength: 9
+                            type: string
+                            description: Denotes the total number of accounts to be reordered when the proxy pool has reached the Minimum Available Account. This field is used only when the auto replenishment of the proxy pool is enabled for the buyer. Should be an integer numeric value. Required only if auto replenishment has been enabled for the buyer.
+                          proxyPoolType:
+                            maxLength: 1
+                            type: string
+                            description: 'Indicates if the Proxy pool is a multi use pool (meaning the accounts are recycled) or a one time use pool (meaning the accounts are used once and deleted). Valid values are: (1) Multi Use Pool (2) One Time Use Pool. If not provided, the system defaults to 1.'
+                            enum:
+                            - '1'
+                            - '2'
+                          availableCards:
+                            maxLength: 10
+                            type: string
+                            description: Total number of active pseudo accounts in the proxy pool. These are immediately available for future requisitions.
+                          proxyAccountType:
+                            maxLength: 1
+                            type: string
+                            description: 'Denotes the account type. Valid values are: (1) SUA adjustable (2) SUA. If not provided, the system defaults to 2 for VIP/VIPP accounts.'
+                            enum:
+                            - '1'
+                            - '2'
+                          initialOrderCount:
+                            maxLength: 9
+                            type: string
+                            description: Denotes the total number of accounts which needs to be ordered at the time of setting up the proxy pool. This field is used only when the auto replenishment of the proxy pool is enabled for the buyer. Should be an integer numeric value. Required only if auto replenishment has been enabled for the buyer.
+                          authControlEnabled:
+                            type: boolean
+                            description: Denotes if the auth control (VPC) is enabled for the proxy pool or not. Should be set to True if the bank is mandated for auth controls. Must be set to True for VIP and VPP account pools.
+                          proxyAccountNumber:
+                            maxLength: 19
+                            type: string
+                            description: Denotes the Proxy Pool ID (or name of the proxy pool). Should be alphanumeric. Should be an existing proxy pool number for the buyer. No special characters except _ (Underscore) and  (Dash) are allowed. If not provided, system will return details of all proxies (up to 250 proxies) associated with the buyer.
+                          fundingAccountNumber:
+                            type: string
+                            description: Denotes the funding account number which will be used for generating the VIP or VPP accounts. The full 16 digits needs to be passed for the VIP and VPP proxy pools. If not provided, the system will use the default funding account.
+                          minAvailableAccounts:
+                            maxLength: 9
+                            type: string
+                            description: Denotes the minimum number of accounts that should be available in the proxy pool at any given time. System reorders accounts when the number of available accounts in the Ready to Use status in the proxy pool is less than the value of this field E.g. if set to 10,000, then accounts will be reordered when the number of available accounts in the proxy pool is less than 10,000. Required only if auto replenishment has been enabled for the buyer.
+                        description: Array containing the details of the proxies matching the search criteria sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response.
+                      statusDesc:
+                        type: string
+                        description: Status description of the response. List of status codes and descriptions can be found in the following link.
+                    description: Success
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    proxyList:
+                    - deletedCards: '0'
+                      authControlEnabled: 'True'
+                      usedCards: '3'
+                      proxyAccountType: '2'
+                      minAvailableAccounts: '3'
+                      proxyAccountNumber: TestProxyPool
+                      proxyPoolType: '2'
+                      creditLimit: '10'
+                      availableCards: '19'
+                      reorderCount: '2'
+                      totalCards: '22'
+                      initialOrderCount: '5'
+                    statusDesc: Get Proxy Pool Details retieved successfully
+                    messageId: '2020-02-11T19:03:02.000Z'
+                    statusCode: GP000
+      x-codegen-request-body-name: getproxypool
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1proxy~1GetProxyPool/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/proxy/ManageProxy:
+    post:
+      tags:
+      - Single Use Account Pool Maintenance Service
+      summary: Manage Proxy
+      description: ''
+      operationId: Manage Proxy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - actionType
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request. Each request sent to VPA requires its own unique ID.
+                actionType:
+                  maxLength: 30
+                  type: string
+                  description: 1- Add account to proxy (no processor integration) <br> 2- Update proxy account <br> 3- Deactivate proxy account <br> 4- Request proxy accounts (based on number records requested to add to pool)
+                proxyAccountDetails:
+                  type: object
+                  properties:
+                    proxyNumber:
+                      maxLength: 19
+                      type: string
+                      description: Proxy number linked to the SUA pool to which the specified account will be added.
+                    accountLimit:
+                      maxLength: 10
+                      type: string
+                      description: Credit limit of the account.
+                    accountNumber:
+                      maxLength: 16
+                      type: string
+                      description: Account number of the account that needs to be added to the proxy pool. This field is required for action type 1 (adding accounts to a proxy pool).
+                    expirationDate:
+                      maxLength: 6
+                      type: string
+                      description: Account's expiry date. Format is mm/yyyy
+                    totalAccountsRequested:
+                      maxLength: 5
+                      type: string
+                      description: Total number of accounts requested. This field is applicable only when ActionType is 4 (bulk requesting accounts to be added to a proxy pool).
+                  description: This complex element contains the details of the account to be added to the SUA proxy pool.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  actionType: 1
+                  clientId: B2BWS_1_1_9999
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  proxyAccountDetails:
+                    accountLimit: 100
+                    proxyNumber: 10000000000000000
+                    accountNumber: 4111111111111111
+                    expirationDate: 10/2020
+                  buyerId: 9999
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ManageProxyResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      accountRequestId:
+                        maxLength: 255
+                        type: string
+                        description: Card creation request ID associated with the request. This ID is used for requesting single or multiple card accounts from the processor.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  MPA001:
+                    type: object
+                    description: Proxy account added successfully.
+                  MPA002:
+                    type: object
+                    description: Proxy account updated successfully.
+                  MPA003:
+                    type: object
+                    description: Proxy account deactivated successfully.
+                  MPA004:
+                    type: object
+                    description: Manage proxy accounts request failed with error.
+                  MPA005:
+                    type: object
+                    description: Message ID is required.
+                  MPA006:
+                    type: object
+                    description: Message ID cannot be more than 36 characters.
+                  MPA007:
+                    type: object
+                    description: Message ID is duplicate.
+                  MPA008:
+                    type: object
+                    description: Client ID is required.
+                  MPA009:
+                    type: object
+                    description: Client ID cannot be more than 25 characters.
+                  MPA010:
+                    type: object
+                    description: Invalid client ID.
+                  MPA011:
+                    type: object
+                    description: Buyer ID is required.
+                  MPA012:
+                    type: object
+                    description: Buyer ID cannot be more than 15 characters.
+                  MPA013:
+                    type: object
+                    description: Invalid buyer ID.
+                  MPA502:
+                    type: object
+                    description: Action type is mandatory.
+                  MPA503:
+                    type: object
+                    description: Invalid action type.
+                  MPA504:
+                    type: object
+                    description: Account number is required for Action types 1, 2, and 3.
+                  MPA505:
+                    type: object
+                    description: Expiration date is required for Action type 1.
+                  MPA506:
+                    type: object
+                    description: ProxyAccountDetails tag is required.
+                  MPA507:
+                    type: object
+                    description: ProxyAccountDetails tag can occur only once in the request.
+                  MPA508:
+                    type: object
+                    description: TotalAccountsRequested should contain only numbers.
+                  MPA509:
+                    type: object
+                    description: TotalAccountsRequested is required for Action type 4.
+                  MPA510:
+                    type: object
+                    description: TotalAccountsRequired must be between 1 to 100.
+                  MPA511:
+                    type: object
+                    description: Proxy number provided does not match with buyer records.
+                  MPA512:
+                    type: object
+                    description: Proxy number contains invalid characters.
+                  MPA513:
+                    type: object
+                    description: Action type contains invalid characters.
+                  MPA514:
+                    type: object
+                    description: Account limit contains invalid characters.
+                  MPA515:
+                    type: object
+                    description: Account number contains invalid characters.
+                  MPA516:
+                    type: object
+                    description: Invalid Visa account number.
+                  MPA517:
+                    type: object
+                    description: Proxy number provided in the request is not active.
+                  MPA518:
+                    type: object
+                    description: Account number provided in the request is already associated with the proxy number.
+                  MPA519:
+                    type: object
+                    description: Account number provided in the request is not associated with the proxy number.
+                  MPA520:
+                    type: object
+                    description: Account number provided in the request is already deleted.
+                  MPA521:
+                    type: object
+                    description: Account number cannot be deleted. It has open transactions.
+                  MPA522:
+                    type: object
+                    description: New accounts cannot be requested. This proxy has pending card requests.
+                  MPA523:
+                    type: object
+                    description: Account number cannot be deleted. It has pending VPC registration.
+                  MPA524:
+                    type: object
+                    description: Account number belongs to a different proxy or different proxy of a different buyer.
+                  MPA525:
+                    type: object
+                    description: Proxy accounts requested successfully.
+                  MPA527:
+                    type: object
+                    description: Account limit is applicable only for Lodged type proxies.
+                  MPA531:
+                    type: object
+                    description: Account limit does not match with proxy bucket amount.
+                  MPA532:
+                    type: object
+                    description: Account currency code must match buyer currency code.
+                  MPA533:
+                    type: object
+                    description: Expiration date cannot be updated for Account type 1.
+                  MPA534:
+                    type: object
+                    description: Proxy number is required.
+                  MPA535:
+                    type: object
+                    description: Expiration date should not be provided.
+                  MPA536:
+                    type: object
+                    description: Account number should not be provided.
+                  MPA537:
+                    type: object
+                    description: Currency code should not be provided.
+                  MPA538:
+                    type: object
+                    description: TotalAccountsRequested should not be provided.
+                  MPA539:
+                    type: object
+                    description: Currency code should be in 3 characters.
+                  MPA540:
+                    type: object
+                    description: Currency code is invalid.
+                  MPA541:
+                    type: object
+                    description: Account limit is mandatory.
+                  MPA560:
+                    type: object
+                    description: Proxy number length should be between 1 and 19.
+                  MPA566:
+                    type: object
+                    description: Account limit contains invalid characters.
+                  MPA567:
+                    type: object
+                    description: Account limit cannot be more than XXXXXXXXXX.
+                  MPA503a:
+                    type: object
+                    description: Account number is invalid.
+                  MPA503b:
+                    type: object
+                    description: Expiration date is invalid, Supported date format is MMYYYY.
+      x-codegen-request-body-name: manageproxy
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1proxy~1ManageProxy/post'
+        default: false
+  /vpa/v1/proxy/GetAccountStatus:
+    post:
+      tags:
+      - Single Use Account Pool Maintenance Service
+      summary: SUA Get Account Status
+      description: ''
+      operationId: SUA Get Account Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - ProxyNumber
+              - accountRequestID
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation (VPA). Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request. Each request sent to VPA requires its own unique ID.
+                ProxyNumber:
+                  maxLength: 19
+                  type: string
+                  description: Proxy number related to the account creation request.
+                accountRequestID:
+                  maxLength: 25
+                  type: string
+                  description: A unique ID generated by the VPA system, which the requester can use for checking the status of the card account if it is requested from the processor.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  accountRequestId: 11423656
+                  clientId: B2BWS_1_1_1940
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 88888
+                  proxyNumber: 10000000000000000
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetAccountResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    - totalAccountsRequested
+                    - totalRequestsFailed
+                    - totalRequestsPending
+                    - totalRequestsSucceeded
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      accountDetails:
+                        type: array
+                        description: This complex element contains the details of accounts which has been already created successfully.
+                        items:
+                          type: object
+                          properties:
+                            accountLimit:
+                              maxLength: 10
+                              type: string
+                              description: Credit limit of the account.
+                            accountNumber:
+                              maxLength: 16
+                              type: string
+                              description: Account number used for processing the payment. The account number will be masked in the response if the corresponding Client ID is configured to be masked.
+                            expirationDate:
+                              maxLength: 6
+                              type: string
+                              description: Account expiration date. It is needed only for Lodged (Fixed) type card accounts. The format is MMYYYY. Note- Expiration Date is returned only if the "Account Type" is 5 (reloadable).
+                      totalRequestsFailed:
+                        maxLength: 3
+                        type: string
+                        description: Total number of account creation requests that failed.
+                      totalRequestsPending:
+                        maxLength: 3
+                        type: string
+                        description: Total number of account creation requests that are pending.
+                      totalAccountsRequested:
+                        maxLength: 3
+                        type: string
+                        description: Total number of accounts requested.
+                      totalRequestsSucceeded:
+                        maxLength: 3
+                        type: string
+                        description: Total number of accounts successfully created.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GAS005:
+                    type: object
+                    description: Message ID is required.
+                  GAS006:
+                    type: object
+                    description: Message ID cannot be more than 36 characters.
+                  GAS007:
+                    type: object
+                    description: Message ID is duplicate.
+                  GAS008:
+                    type: object
+                    description: Client ID is required.
+                  GAS009:
+                    type: object
+                    description: Client ID cannot be more than 25 characters.
+                  GAS010:
+                    type: object
+                    description: Invalid client ID.
+                  GAS011:
+                    type: object
+                    description: Buyer ID is required.
+                  GAS012:
+                    type: object
+                    description: Buyer ID cannot be more than 15 characters.
+                  GAS013:
+                    type: object
+                    description: Invalid buyer ID.
+                  GAS511:
+                    type: object
+                    description: Bank and buyer should be activated for CVV2.
+                  GAS512:
+                    type: object
+                    description: Security code unavailable. Contact your buyer.
+                  GAS517:
+                    type: object
+                    description: Proxy number provided in the request is not active.
+                  GAS531:
+                    type: object
+                    description: Get account status co'MPleted successfully.
+                  GAS532:
+                    type: object
+                    description: GetAccount request failed with error.
+                  GAS533:
+                    type: object
+                    description: Account request ID contains invalid characters.
+                  GAS534:
+                    type: object
+                    description: Account request ID does not exist.
+                  GAS535:
+                    type: object
+                    description: Account request ID is required.
+                  GAS536:
+                    type: object
+                    description: Account request ID cannot be more than 10 characters.
+                  GAS537:
+                    type: object
+                    description: Account request ID is not associated with this proxy number.
+                  GAS538:
+                    type: object
+                    description: Account request ID is not associated with this proxy number and with this buyer.
+                  GAS539:
+                    type: object
+                    description: Account creation is still in progress.
+                  GAS727:
+                    type: object
+                    description: Proxy number is required.
+      x-codegen-request-body-name: getaccountstatus
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1proxy~1GetAccountStatus/post'
+        default: false
+  /vpa/v1/proxy/DeleteProxyPool:
+    delete:
+      tags:
+      - Single Use Account Pool Maintenance Service
+      summary: Delete Proxy Pool
+      description: The Delete operation allows the consumer to delete a proxy pool from a buyer.
+      operationId: Delete Proxy Pool
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - proxyAccountNumber
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: ' Denotes the buyer identifier as defined in Visa Payables Automation. This will be provided by the Visa implementation team. Should be alphanumeric. No special characters except _ (Underscore) and  (Dash) are allowed. Should be an existing buyer ID in the system and associated to the bank (associated to the client ID).'
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Denotes the client ID associated with the bank for which the proxy is being setup. Should be alphanumeric and should exist in the system. Visa will provide this during implementation.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request. Each request sent to VPA requires its own unique ID.
+                proxyAccountNumber:
+                  maxLength: 19
+                  type: string
+                  description: Denotes the proxy pool account number. Should be alphanumeric. Should be an existing proxy pool number for the buyer. No special characters except _ (Underscore) and  (Dash) are allowed. If not provided, system will return details of all proxies (up to 250 proxies) associated with the buyer.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  proxyAccountNumber: TestProxyPool
+                  messageId: '2020-03-01T03:47:20.000Z'
+                  buyerId: '9999'
+        required: true
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DeleteProxyPoolResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      errors:
+                        type: array
+                        description: Errors List
+                        items:
+                          type: object
+                          properties:
+                            Error:
+                              required:
+                              - code
+                              - statusDesc
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  description: error code
+                                statusDesc:
+                                  type: string
+                                  description: error description
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique ID which was sent in the request.
+                      statusCode:
+                        type: string
+                        description: Status code of the response.
+                      statusDesc:
+                        type: string
+                        description: Status description of the response. List of status codes and descriptions can be found in the following link.
+                    description: Success
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    statusDesc: Proxy Pool Account deleted successfully
+                    proxyAccountNumber: TestProxyPool
+                    messageId: '2020-02-11T19:11:03.000Z'
+                    statusCode: DP000
+        '400':
+          description: Refer to the <a href="/pages/B2B-virtual-account-payment-method-error-codes#delete_proxy_pool">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: deleteproxypool
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1proxy~1DeleteProxyPool/delete'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/proxy/CreateProxyPool:
+    post:
+      tags:
+      - Single Use Account Pool Maintenance Service
+      summary: Create Proxy Pool
+      description: The Create operation allows the consumer to create a new proxy pool for a buyer.
+      operationId: Create Proxy Pool
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - proxyAccountNumber
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Denotes the buyer identifier as defined in Visa Payables Automation. This will be provided by the Visa implementation team. Should be alphanumeric. No special characters except _ (Underscore) and  (Dash) are allowed. Should be an existing buyer ID in the system and associated to the bank (associated to the client ID).
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Denotes the client ID associated with the bank for which the proxy is being setup. Should be alphanumeric and should exist in the system. Visa will provide this during implementation.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request. Each request sent to VPA requires its own unique ID.
+                creditLimit:
+                  maxLength: 14
+                  type: string
+                  description: Denotes the credit limit associated with the proxy pool. All accounts in the proxy pool will have the same credit limit. Required only if the bank and buyer are enabled for bucketed proxy. Should be an integer numeric value. Applicable only for regular processor PANs.
+                reOrderCount:
+                  maxLength: 9
+                  type: string
+                  description: Denotes the total number of accounts to be reordered when the proxy pool has reached the Minimum Available Account. This field is used only when the auto replenishment of the proxy pool is enabled for the buyer. Should be an integer numeric value. Required only if auto replenishment has been enabled for the buyer.
+                proxyPoolType:
+                  maxLength: 1
+                  type: string
+                  description: 'Indicates if the Proxy pool is a multi use pool (meaning the accounts are recycled) or a one time use pool (meaning the accounts are used once and deleted). Valid values are: (1) Multi Use Pool (2) One Time Use Pool. If not provided, the system defaults to 1.'
+                  enum:
+                  - '1'
+                  - '2'
+                proxyAccountType:
+                  maxLength: 1
+                  type: string
+                  description: 'Denotes the account type. Valid values are: (1) SUA adjustable (2) SUA. If not provided, the system defaults to 2 for VIP/VIPP accounts.'
+                  enum:
+                  - '1'
+                  - '2'
+                initialOrderCount:
+                  maxLength: 9
+                  type: string
+                  description: Denotes the total number of accounts which needs to be ordered at the time of setting up the proxy pool. This field is used only when the auto replenishment of the proxy pool is enabled for the buyer. Should be an integer numeric value. Required only if auto replenishment has been enabled for the buyer.
+                authControlEnabled:
+                  type: boolean
+                  description: Denotes if the auth control (VPC) is enabled for the proxy pool or not. Should be set to True if the bank is mandated for auth controls. Must be set to True for VIP and VPP account pools.
+                proxyAccountNumber:
+                  maxLength: 19
+                  type: string
+                  description: Denotes the proxy pool account number. Should be alphanumeric. Should be an existing proxy pool number for the buyer. No special characters except _ (Underscore) and  (Dash) are allowed. If not provided, system will return details of all proxies (up to 250 proxies) associated with the buyer.
+                fundingAccountNumber:
+                  type: string
+                  description: Denotes the funding account number which will be used for generating the VIP or VPP accounts. The full 16 digits needs to be passed for the VIP and VPP proxy pools. If not provided, the system will use the default funding account.
+                minAvailableAccounts:
+                  maxLength: 9
+                  type: string
+                  description: Denotes the minimum number of accounts that should be available in the proxy pool at any given time. System reorders accounts when the number of available accounts in the Ready to Use status in the proxy pool is less than the value of this field E.g. if set to 10,000, then accounts will be reordered when the number of available accounts in the proxy pool is less than 10,000. Required only if auto replenishment has been enabled for the buyer.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  authControlEnabled: true
+                  clientId: B2BWS_1_1_9999
+                  proxyAccountType: '2'
+                  reOrderCount: '2'
+                  minAvailableAccounts: '3'
+                  proxyAccountNumber: TestProxyPool
+                  proxyPoolType: '1'
+                  messageId: '2020-03-01T03:47:20.000Z'
+                  buyerId: '9999'
+                  fundingAccountNumber: '4111111111111111'
+                  initialOrderCount: '5'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  CreateProxyPoolResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      errors:
+                        type: array
+                        description: Errors List
+                        items:
+                          type: object
+                          properties:
+                            Error:
+                              required:
+                              - code
+                              - statusDesc
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  description: error code
+                                statusDesc:
+                                  type: string
+                                  description: error description
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique ID which was sent in the request.
+                      statusCode:
+                        type: string
+                        description: Status code of the response.
+                      statusDesc:
+                        type: string
+                        description: Status description of the response. List of status codes and descriptions can be found in the following link.
+                    description: Success
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    statusDesc: Proxy Pool account created successfully
+                    proxyAccountNumber: '1234567898'
+                    messageId: '1536776321'
+                    statusCode: CP000
+        '400':
+          description: Refer to the <a href="/pages/B2B-virtual-account-payment-method-error-codes#create_proxy_pool">Error Codes</a> page for the list of error codes for this API.
+          content: {}
+      x-codegen-request-body-name: createproxypool
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1proxy~1CreateProxyPool/post'
+        default: false
+      x-hideTryIt: true
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

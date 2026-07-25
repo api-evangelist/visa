@@ -1,0 +1,193 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Visa Supplier Matching Service Bulk API API
+  description: VISA Supplier Matching Service
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Visa Supplier Matching Service Bulk API
+  description: VISA Supplier Matching Service
+paths:
+  /visasuppliermatchingservice/v1/status:
+    get:
+      tags:
+      - Visa Supplier Matching Service Bulk API
+      summary: Status
+      description: Supplier Matching Service Bulk File Status
+      operationId: Status
+      parameters:
+      - name: fileId
+        in: query
+        description: 'Otf Id of request file '
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  BulkMatchResponse:
+                    type: object
+                    properties:
+                      fileId:
+                        type: integer
+                        format: int32
+                      status:
+                        type: object
+                        properties:
+                          statusCode:
+                            type: string
+                          statusDescription:
+                            type: string
+                    description: OK
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    fileId: 1001
+                    status:
+                      statusDescription: string
+                      statusCode: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1visasuppliermatchingservice~1v1~1status/get'
+        default: false
+      x-hideTryIt: true
+  /visasuppliermatchingservice/v1/upload:
+    post:
+      tags:
+      - Visa Supplier Matching Service Bulk API
+      summary: Upload
+      description: Supplier Matching Service Bulk upload
+      operationId: Upload
+      parameters:
+      - name: countryCode
+        in: query
+        description: Default Country Code for this file
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '201':
+                    type: object
+                    description: Created
+                  BulkMatchResponse:
+                    type: object
+                    properties:
+                      fileId:
+                        type: integer
+                        format: int32
+                      status:
+                        type: object
+                        properties:
+                          statusCode:
+                            type: string
+                          statusDescription:
+                            type: string
+                    description: OK
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    fileId: 1001
+                    status:
+                      statusDescription: string
+                      statusCode: string
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1visasuppliermatchingservice~1v1~1upload/post'
+        default: false
+      x-hideTryIt: true
+  /visasuppliermatchingservice/v1/download:
+    get:
+      tags:
+      - Visa Supplier Matching Service Bulk API
+      summary: Download
+      description: Supplier Matching Service Bulk Match download
+      operationId: Download
+      parameters:
+      - name: inputFileId
+        in: query
+        description: Id of request file supplied at time of upload
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ByteArrayResource:
+                    type: object
+                    properties:
+                      byteArray:
+                        type: array
+                        items:
+                          type: object
+                    description: OK
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    byteArray:
+                    - 1,Supplier 1,123 Main St,Boston ,MA,12345,840
+                    - 2,Supplier 2,456 Green Ave,San Franciso,CA,98765,840
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1visasuppliermatchingservice~1v1~1download/get'
+        default: false
+      x-hideTryIt: true
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

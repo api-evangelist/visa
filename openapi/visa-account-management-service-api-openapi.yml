@@ -1,0 +1,2359 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Account Management service API
+  description: The Account Management web services are used to manage payment controls for existing card accounts and to request virtual accounts while setting controls. The endpoints allow the user to retrieve the status of new account requests, view authorization rules, submit virtual card requisitions for an employee , and retrieve security code (CVV2) details of an existing account.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Account Management service
+  description: The Account Management web services are used to manage payment controls for existing card accounts and to request virtual accounts while setting controls. The endpoints allow the user to retrieve the status of new account requests, view authorization rules, submit virtual card requisitions for an employee , and retrieve security code (CVV2) details of an existing account.
+paths:
+  /vpa/v1/accountManagement/GetSecurityCode:
+    post:
+      tags:
+      - Account Management service
+      summary: Get Security Code
+      description: ''
+      operationId: Get Security Code
+      requestBody:
+        description: Get Security Code Request
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - expirationDate
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation(VPA) system. Value format is 0-9.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                accountNumber:
+                  maxLength: 19
+                  type: string
+                  description: The full 16 digit Visa account number.
+                expirationDate:
+                  maxLength: 6
+                  type: string
+                  description: Expiration date of the account for which the CVV2 is requested. The format is MM/YYYY.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+                  accountNumber: 4111111111111111
+                  expirationDate: 10/2022
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetSecurityResponse:
+                    required:
+                    - messageID
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageID:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. Example- CS001, CS002, and so on. In case of error please refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_security_code">Error Codes</a> page for this api
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      securityCode:
+                        maxLength: 3
+                        type: string
+                        description: CVV2 number.
+                    description: Success
+        '400':
+          description: Refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_security_code">Error Codes</a> page for the list of error codes for this API.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messageId:
+                    maxLength: 36
+                    type: string
+                    description: Unique identifier which was sent in the request.
+                  statusCode:
+                    maxLength: 6
+                    type: string
+                    description: Status code of the response.
+                  statusDesc:
+                    maxLength: 255
+                    type: string
+                    description: Status description of the response.
+      x-codegen-request-body-name: getsecuritycode
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1GetSecurityCode/post'
+        default: false
+  /vpa/v1/getRequisitionDetails:
+    post:
+      tags:
+      - Account Management service
+      summary: Get Requisition Details
+      description: Get Requisition Details request and response
+      operationId: Get Requisition Details
+      requestBody:
+        description: Get Requisition Details Request
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 15
+                  type: string
+                  description: Unique numeric identifier for the buyer that's defined by the Issuer.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: Unique identifier for the financial institution, provided by Visa during setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for the API request, generated by the API consumer, for tracking and referencing purposes. Each request mandates a unique messageId.
+                accountNumber:
+                  maxLength: 16
+                  type: string
+                  description: Account number for which requisition details are being requested.
+        required: true
+      responses:
+        '200':
+          description: In case of error please refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#request_virtual_account">Response Codes</a> page for this api
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetRequisitionDetailsResponse:
+                    type: object
+                    properties:
+                      rules:
+                        type: array
+                        description: List of authorization rules set on the account.
+                        items:
+                          type: object
+                          properties:
+                            ruleCode:
+                              maxLength: 8
+                              type: string
+                              description: Contains the authorization Rule Code. For the list of valid Visa Payment Controls (VPC) refer to the <VPC Rules and Overrides table>
+                            overrides:
+                              type: array
+                              description: 'Complex element which contains one or more overrides for the authorization rules. This element contains: Sequence, Override Code, and Override Value. Override is nothing but a value which you want to change in the default rule.'
+                              items:
+                                type: object
+                                properties:
+                                  sequence:
+                                    maxLength: 3
+                                    type: string
+                                    description: Contains the sequence number for the override. Each rule starts with 0 so if you have an SPV and BUS, then SPV will have sequence 0 and BUS will have a 0. If there are multiple fields/overrides within a rule, e.g. SPV. Each override - amount, currency code, range type, etc.- have the same sequence number. E.g. amount, currency code and range type will all have 0. If there is a rule that can have multiple amounts e.g. Exact match, then each VPAS rule overrides must have a unique sequence number so first VPAS has 0, then second has 1, third has 2.
+                                  overrideCode:
+                                    maxLength: 33
+                                    type: string
+                                    description: Contains the code for the override.
+                                  overrideValue:
+                                    maxLength: 25
+                                    type: string
+                                    description: Contains the value for the override.
+                      buyerId:
+                        maxLength: 15
+                        type: string
+                        description: Unique numeric identifier for the buyer that's defined by the Issuer.
+                      endDate:
+                        maxLength: 10
+                        type: string
+                        description: User specified account validity end date for the requisition
+                      clientId:
+                        maxLength: 50
+                        type: string
+                        description: Unique identifier for the financial institution, provided by Visa during setup.
+                      timeZone:
+                        maxLength: 12
+                        type: string
+                        description: User specified time zone for the requisition start and end dates.
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier for the API request.
+                      responses:
+                        type: array
+                        description: 'Complex element which contains a collection of responses returned in the response. This element contains: Response Code, Response Description'
+                        items:
+                          type: object
+                          properties:
+                            responseCode:
+                              maxLength: 10
+                              type: string
+                              description: This element contains the response code sent by the VPA system. The list can be found in the Response Codes page for this api
+                            responseDescription:
+                              maxLength: 250
+                              type: string
+                              description: This element contains the response description.
+                      startDate:
+                        maxLength: 10
+                        type: string
+                        description: User specified account validity start date for the requisition
+                      optionalInfo:
+                        type: array
+                        description: Complex element which allows the web service consumer to pass optional field name and value as name value pairs. A maximum of 50 optional field name and values will be returned.
+                        items:
+                          type: object
+                          properties:
+                            optionalFieldName:
+                              maxLength: 50
+                              type: string
+                              description: Name of the Optional Field
+                            optionalFieldValue:
+                              maxLength: 100
+                              type: string
+                              description: Value of the Optional Field
+                      accountNumber:
+                        maxLength: 16
+                        type: string
+                        description: Account number for which requisition details were requested.
+                      mcgRuleAction:
+                        maxLength: 5
+                        type: string
+                        description: This field defines action on the MCG rules sent in the request. Default value returned is Block even if no value is sent in the request. MCG rules are not defined for the card that has only VPAS rule with value of one cent set.
+                      expirationDate:
+                        maxLength: 7
+                        type: string
+                        description: Contains the expiration date of the card account. Format- MM/YYYY.
+                    description: Success
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1getRequisitionDetails/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v2/accountManagement/getPaymentControls:
+    post:
+      tags:
+      - Account Management service
+      summary: Get Payment Controls
+      description: This version is recommended for buyers subscribed to Visa payment Control(VPC)  and supporting mcgRuleAction field.
+      operationId: Get Payment Controls
+      requestBody:
+        description: Get Payment Controls Request
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 15
+                  type: string
+                  description: Buyer ID numeric is the buyer identifier as defined in Visa Payables Automation system. This is often the ID defined at the processor for the corporate buyer. This will be provided by the issuer.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: ClientID uniquely identifies a financial institution. This will be provided by the Visa implementation team.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for the API request.
+                accountNumber:
+                  maxLength: 16
+                  type: string
+                  description: Account Number for which the auth rules are requested. You must send at least the last 4 digits, but can send up to the entire account number. The value sent should uniquely identify the account number. If the last 4 digits are not unique then it will fail
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientID: B2BWS_84994_1940
+                  messageId: '{{$timestamp}}'
+                  buyerID: '84994'
+                  accountNumber: '4715338901038473'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetPaymentControlsResponse:
+                    type: object
+                    properties:
+                      rules:
+                        type: array
+                        description: List of authorization rules set on the account.
+                        items:
+                          type: object
+                          properties:
+                            ruleCode:
+                              maxLength: 8
+                              type: string
+                              description: Contains the authorization Rule Code. For the list of valid Visa Payment Controls (VPC) refer to the <a href='/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account_and_manage_payment_controls'>VPC Rules and Overrides table</a>. <br> For buyers using VANs please refer to the <a href='/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account__for_tsys_vpp'>VPP Rules and Overrides table</a>. <br>.
+                            overrides:
+                              type: array
+                              description: 'Complex element which contains one or more overrides for the authorization rules. This element contains: Sequence, Override Code, and Override Value. Override is nothing but a value which you want to change in the default rule.<br><br> For e.g. to set the threshold rule  for the account you have requested,if you want to set the threshold as $1000 then you should pass the amount override as 1000 and the currency override as 840.'
+                              items:
+                                type: object
+                                properties:
+                                  sequence:
+                                    maxLength: 3
+                                    type: string
+                                    description: Contains the sequence number for the override. Each rule starts with 0 so if you have an SPV and BUS, then SPV will have sequence 0 and BUS will have a 0. If there are multiple fields/overrides within a rule, e.g. SPV.  Each override - amount, currency code, range type, etc.-  have the same sequence number. E.g. amount, currency code and range type will all have 0. If there is a rule that can have multiple amounts e.g. Exact match, then each VPAS rule overrides must have a unique sequence number so first VPAS has 0, then second has 1, third has 2.
+                                  overrideCode:
+                                    maxLength: 33
+                                    type: string
+                                    description: Contains the code for the override.  <br> Note, follow the rule specification (provided in the link in the Rule code field description) as not every ruleCode requires an overrideCode.
+                                  overrideValue:
+                                    maxLength: 25
+                                    type: string
+                                    description: Contains the value for the override. <br> Note, follow the rule specification (provided in the link in the Rule code field description) as not every ruleCode requires an overrideValue.
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 10
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. The list of status codes can be found in the following link
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      mcgRuleAction:
+                        maxLength: 5
+                        type: string
+                        description: This field defines action on the MCG rules sent in the request.  Default value returned is "Block" even if no value sent in  request, MCG rules are not defined or card  has VPAS(one cent rule)  set. For VPP buyers this field won’t be returned.
+                    description: Success
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    statusDesc: Payment control details retrieved successfully.
+                    messageId: '{{$timestamp}}'
+                    rules:
+                    - ruleCode: AIR
+                    - ruleCode: AUTO
+                    - ruleCode: REST
+                    - ruleCode: SPV
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: spendLimitAmount
+                        overrideValue: '1000.00'
+                      - sequence: '0'
+                        overrideCode: maxAuth
+                        overrideValue: '10'
+                      - sequence: '0'
+                        overrideCode: recurringDay
+                        overrideValue: '15'
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '0'
+                        overrideCode: rangeType
+                        overrideValue: '1'
+                      - sequence: '0'
+                        overrideCode: consumedAmount
+                        overrideValue: '263.39'
+                      - sequence: '0'
+                        overrideCode: consumedAuthCount
+                        overrideValue: '1'
+                      - sequence: '0'
+                        overrideCode: balanceAuthAmount
+                        overrideValue: '736.61'
+                      - sequence: '0'
+                        overrideCode: balanceAuthCount
+                        overrideValue: '9'
+                    statusCode: AMGP000
+        '400':
+          description: In case of error please refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_payment_controls">Error Codes</a> page for this api
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    description: array of errors
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          description: error code
+                        statusDesc:
+                          type: string
+                          description: error description
+                  messageId:
+                    maxLength: 36
+                    type: string
+                    description: Unique identifier which was sent in the request.
+                  statusCode:
+                    maxLength: 6
+                    type: string
+                    description: Status code of the response.
+                  statusDesc:
+                    maxLength: 255
+                    type: string
+                    description: Status description of the response.
+      x-codegen-request-body-name: GetPaymentControls
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1getPaymentControls/post'
+        default: false
+      - label: v2 - Latest
+        operationPointer: '#/paths/~1vpa~1v2~1accountManagement~1getPaymentControls/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/accountManagement/ManagePaymentControls:
+    post:
+      tags:
+      - Account Management service
+      summary: Manage Payment Controls
+      description: ''
+      operationId: Manage Payment Controls
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                source:
+                  type: string
+                  description: This element indicates whether the request was made for VPA related cards or for VVAM related cards. Valid codes are VPA, VVAM.<br> Note, if sending source as VPA you must also include a sample invoice.
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation(VPA) system. Value format is 0-9.
+                eMailId:
+                  maxLength: 128
+                  type: string
+                  description: Email address of the employee. Note- This email address is only required for VAM clients.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                invoices:
+                  type: array
+                  description: This complex element contains the details of all invoices for which the exact match rule needs to be set.
+                  items:
+                    type: object
+                    properties:
+                      invoiceDate:
+                        maxLength: 10
+                        type: string
+                        description: This contains the date of the invoice being paid. Format is YYYY-MM-DD.
+                      invoiceAmount:
+                        maxLength: 16
+                        type: string
+                        description: Invoice amount. maximum length is 16. Maximum number of decimals is two. Format is XXXXXXXXXX9999.99
+                      invoiceNumber:
+                        maxLength: 30
+                        type: string
+                        description: Invoice Number.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                accountNumber:
+                  maxLength: 16
+                  type: string
+                  description: Card account number for which the authorization controls are being managed.
+                companyAdminEMailId:
+                  maxLength: 128
+                  type: string
+                  description: Contains the company admin email ID. Note- This email address is only required for VAM clients.
+                paymentControlDetails:
+                  type: array
+                  description: This complex element contains multiple authorization control(s) details.
+                  items:
+                    type: object
+                    properties:
+                      endDate:
+                        maxLength: 10
+                        type: string
+                        description: Contains the last date when the card account and the  authorization rules will be effective. All the authorization rules specified in the Requisition detail will be removed from the card the next day (after the end date). <br> Format is YYYY-MM-DD.
+                      rulesSet:
+                        type: array
+                        description: This complex element contains the details of all invoices for which the exact match rule needs to be set.
+                        items:
+                          type: object
+                          properties:
+                            rules:
+                              type: array
+                              description: 'This complex element contains the details of all the authorization rules that needs to be added/update/deleted or refreshed. '
+                              items:
+                                type: object
+                                properties:
+                                  ruleCode:
+                                    maxLength: 8
+                                    type: string
+                                    description: This contains the rule code. <br> For detailed information regarding the rule codes and overrides, see the <a href='/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account_and_manage_payment_controls'>Rules and Overrides table</a>.
+                                  overrides:
+                                    type: array
+                                    description: This complex element contains the details of the overrides for an authorization rule.
+                                    items:
+                                      type: object
+                                      properties:
+                                        Sequence:
+                                          maxLength: 3
+                                          type: string
+                                          description: Contains the sequence number for the override.  A few authorization rules have multiple overrides and the sequence number identifies each of them uniquely.
+                                        overrideCode:
+                                          maxLength: 50
+                                          type: string
+                                          description: Contains the override code.  For a list of override codes, refer to the Rules and Overrides table.
+                                        overrideValue:
+                                          maxLength: 10
+                                          type: string
+                                          description: Contains the override value.
+                            action:
+                              maxLength: 1
+                              type: string
+                              description: Rule Action valid values are<br>    ATo Add a Payment Controls<br>      RTo Refresh all Payment Controls (replace existing rules with new rules) <br>   XTo Remove All Payment Controls immediately
+                      timeZone:
+                        maxLength: 12
+                        type: string
+                        description: Contains the Time zone  to use for the start and end dates. The UTC OFFSET needs to be sent. Like UTC-8 for PST, UTC-6 for CST, UTC+5:30 for IST.
+                      startDate:
+                        maxLength: 10
+                        type: string
+                        description: Contains the date when the card account and the authorization rules on the account  will be made effective. Format is YYYY-MM-DD.
+                      mcgRuleAction:
+                        maxLength: 5
+                        type: string
+                        description: 'This field defines action on the MCG rules in the request. Allowed actions are "Allow"" and "Block".  If no value provided will be considered as Block. This field is case insensitive. The value "Allow"  with MCG rule code "AIR" allows authorization transaction for the card from Airline MCC''s. The value "Block" with MCG rule code "AIR" blocks  authorization transaction for the card from Airline MCC''s. The value doesn''t apply to following MCG''s: MCCB,MCCX,CAID,CAIDB,NOTFUEL  and ignored.'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  invoices:
+                  - invoiceNumber: INV0001
+                    invoiceAmount: 500
+                    invoiceDate: '2017-02-01'
+                  eMailId: aaa@bbb.com
+                  paymentControlDetails:
+                  - rulesSet:
+                    - action: A
+                      rules:
+                      - ruleCode: VPAS
+                        overrides:
+                        - sequence: 0
+                          overrideCode: amount
+                          overrideValue: 840
+                        - sequence: 0
+                          overrideCode: amount
+                          overrideValue: 55
+                    endDate: '2020-03-01'
+                    timeZone: UTC-6
+                    startDate: '2017-03-01'
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  source: VVAM
+                  buyerId: 9999
+                  accountNumber: 4111111111111111
+                  companyAdminEMailId: compAdmin@bbb.com
+        required: true
+      responses:
+        '200':
+          description: In case of error please refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#manage_payment_controls">Error Codes</a> page for this api
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ManagePaymentResponse:
+                    required:
+                    - messageID
+                    type: object
+                    properties:
+                      messageID:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      responses:
+                        type: object
+                        properties:
+                          response:
+                            required:
+                            - responseCode
+                            type: object
+                            properties:
+                              responseCode:
+                                maxLength: 10
+                                type: string
+                                description: response code of the response. It is alphanumeric. The values are specific to each method. Example- CS001, CS002, and so on.  For the details of the various error codes returned for this method refer to the "Error Codes" table below.
+                              responseDescription:
+                                maxLength: 100
+                                type: string
+                                description: Message ID passed in the Web service request.
+                            description: Response Class
+                        description: Responses Class
+                    description: Success
+      x-codegen-request-body-name: managepaymentcontrols
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1ManagePaymentControls/post'
+        default: false
+  /vpa/v1/accountManagement/GetAccountStatus:
+    post:
+      tags:
+      - Account Management service
+      summary: Get Account Status
+      description: ''
+      operationId: Get Account Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - accountRequestID
+              - buyerId
+              - clientId
+              - messageId
+              - supplierId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: 'Buyer ID is the buyer identifier as defined in Visa Payables Automation. This will be provided by the Visa implementation team. '
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: ClientID uniquely identifies a financial institution. This will be provided by Visa implementation team.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request. Each request sent to VPA requires its own unique ID.
+                supplierId:
+                  maxLength: 30
+                  type: string
+                  description: Supplier id associated with the supplier for which the account was requested.
+                accountRequestID:
+                  maxLength: 13
+                  type: string
+                  description: A unique ID generated by the VPA system, which the requester can use for checking the status of the card account if it is requested from the processor.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  accountRequestId: 1203780061142
+                  clientId: B2BWS_1_1_9999
+                  supplierId: TestSupplierTen
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetAccountResponse:
+                    required:
+                    - accountNumber
+                    - expirationDate
+                    - messageID
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageID:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. Example- AP001, AP002, and so on.  For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      accountNumber:
+                        maxLength: 19
+                        type: string
+                        description: This field will contain the account number of the account created at the processor once it is activated. The account number will be masked in the response if the  corresponding Client ID is configured for masking.
+                      expirationDate:
+                        maxLength: 6
+                        type: string
+                        description: Account expiration date. The format is- MMYYYY.
+                    description: OK
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  MC001:
+                    type: object
+                    description: Card account request successful.
+                  MC002:
+                    type: object
+                    description: Message ID is not unique.
+                  MC003:
+                    type: object
+                    description: Invalid Client ID.
+                  MC004:
+                    type: object
+                    description: Invalid buyer.
+                  MC008:
+                    type: object
+                    description: Invalid supplier ID.
+                  MC025:
+                    type: object
+                    description: Bank or buyer not subscribed.
+                  MC035:
+                    type: object
+                    description: Invalid message ID.
+                  MC059:
+                    type: object
+                    description: Card account created and activation pending.
+                  MC060:
+                    type: object
+                    description: Card account creation failed.
+                  MC061:
+                    type: object
+                    description: Card account creation pending.
+                  MC062:
+                    type: object
+                    description: Supplier ID does not exist.
+                  MC063:
+                    type: object
+                    description: AccountRequestID does not exist in the system.
+                  MC064:
+                    type: object
+                    description: AccountRequestID does not belong to this buyer and supplier combination.
+                  MC065:
+                    type: object
+                    description: Invalid AccountRequestID.
+      x-codegen-request-body-name: getaccountstatus
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1GetAccountStatus/post'
+        default: false
+  /vpa/v1/accountManagement/fundingAccount/get:
+    post:
+      tags:
+      - Account Management service
+      summary: Get Funding AccountDetails
+      description: ''
+      operationId: Get Funding AccountDetails
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. This will be provided by the Issuer.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: ClientID uniquely identifies a financial institution. This will be provided by Visa implementation team.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request.  Each request sent  to VPA requires its own unique ID.
+                accountNumber:
+                  type: integer
+                  description: The full 16 digit funding account number. Should be a valid card account number
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_FDR_5126
+                  messageId: '{{$timestamp}}'
+                  buyerId: '107777'
+                  accountNumber: 480733000718  3252
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetFundingAccountDetailsResponse:
+                    type: object
+                    properties:
+                      errors:
+                        type: array
+                        description: In case of error please refer to the <a href="/pages/B2B-virtual-account-payment-method-error-codes#get_funding_account_details">Error Codes</a> page for this api
+                        items:
+                          type: object
+                          properties:
+                            Error:
+                              required:
+                              - code
+                              - statusDesc
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  description: error code
+                                statusDesc:
+                                  type: string
+                                  description: error description
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      proxyPools:
+                        type: array
+                        description: Give details about the associated proxy pools.
+                        items:
+                          type: object
+                          properties:
+                            usedAccounts:
+                              type: integer
+                              description: Total number of used accounts in the proxy pool associated to the funding account.
+                            deletedAccounts:
+                              type: integer
+                              description: Total number of Deleted Accounts in the proxy pool associated to the funding account.
+                            proxyPoolNumber:
+                              type: integer
+                              description: Proxy Pool number associated with the funding account sent in the request.
+                            availableAccounts:
+                              type: integer
+                              description: Total number of active pseudo accounts in the proxy pool associated to the funding account.
+                      statusCode:
+                        type: string
+                        description: Status code of the response.
+                      statusDesc:
+                        type: string
+                        description: Status description of the response.
+                      creditLimit:
+                        type: integer
+                        description: Denotes the credit limit of the funding account.
+                      currencyCode:
+                        maxLength: 3
+                        type: string
+                        description: 'Denotes the ISO alpha currency code for billing currency for the funding account number.  '
+                      accountNumber:
+                        type: integer
+                        description: The full 16 digit funding account number.
+                      availableLimit:
+                        type: integer
+                        description: Available limit of the funding account.  This field will be populated only if processor integration is on
+                      blockPurchases:
+                        type: boolean
+                        description: Whether purchases on the funding account are blocked or allowed. If set to true, this will prevent any purchases on the funding account itself.  If set to “false” then purchases will allowed to be made on the funding account.
+                      currentBalance:
+                        type: integer
+                        description: Current Balance on the funding account.  This field will be populated only if processor integration is on
+                      defaultAccount:
+                        type: boolean
+                        description: 'Denotes if this funding account is designated as the default funding account. '
+                      expirationDate:
+                        maxLength: 10
+                        type: string
+                        description: Expiration date of the funding account.  Will be provided in yyyy-mm-dd format.
+                      activePseudoAccounts:
+                        type: integer
+                        description: Total number of active pseudo accounts created using the funding account across all proxy pools
+                    description: ''
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    availableLimit: 0
+                    default: true
+                    statusDesc: Funding Account has been retrieved successfully
+                    blockPurchases: true
+                    currentBalance: 0
+                    messageId: '1620851413'
+                    creditLimit: 10
+                    accountNumber: XXXXXXXXXXXX3252
+                    currencyCode: USD
+                    statusCode: AMGF000
+                    expirationDate: '2023-05-01'
+                    activePseudoAccounts: 0
+      x-codegen-request-body-name: GetFundingAccountDetails
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1fundingAccount~1get/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/requisitionService:
+    post:
+      tags:
+      - Account Management service
+      summary: Request Virtual Account
+      description: Requisition API Request and Response
+      operationId: Request Virtual Account
+      requestBody:
+        description: Requisition Request
+        content:
+          application/json:
+            schema:
+              required:
+              - action
+              - buyerID
+              - clientID
+              - messageID
+              type: object
+              properties:
+                action:
+                  maxLength: 1
+                  type: string
+                  description: 'Indicates the requisition action to be performed. Valid choices are: <br> "A" for Add: Initiates a new virtual account requisition. <br> "U" for Update: Modifies an existing virtual account requisition. Ensure that all requisition details and optional fields are included in the request since these will replace previous settings. <br> "D" for Delete: Deletes a requisition. This sets the validity end date to the current date, leading to requisition expiration and the one-cent rule being applied to the account.'
+                buyerID:
+                  maxLength: 25
+                  type: string
+                  description: Unique numeric identifier for the buyer that's defined by the Issuer.
+                clientID:
+                  maxLength: 25
+                  type: string
+                  description: Unique identifier for the financial institution, provided by Visa during setup.
+                messageID:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for the request, generated by the API consumer, for tracking and referencing purposes. Each request mandates a unique messageId.
+                proxyPoolID:
+                  maxLength: 19
+                  type: string
+                  description: 'Unique identifier for the single-use proxy pool from which the account should be selected. For a new requisition (action: "A"), the system picks an available account from this pool, applies all requisition parameters (i.e. validity period, authorization rules), and provides the account number in the response. If only one Proxy Pool exists for the buyer, this field is optional as the system will default to the existing pool. <br><br> Required for action: "A", if the buyer has more than one single-use proxy pool.'
+                OptionalInfo:
+                  type: array
+                  description: 'This complex element enables API consumers to send optional name-value pairs, which will appear in the transaction data for the requisitioned account. A maximum of 50 optional feild name and values can be passed in the request. <br><br> This complex element contains: optionalFieldName, optionalFieldValue'
+                  items:
+                    type: object
+                    properties:
+                      optionalFieldName:
+                        maxLength: 50
+                        type: string
+                        description: Name of the Optional Field
+                      optionalFieldValue:
+                        maxLength: 100
+                        type: string
+                        description: Value of the Optional Field
+                accountNumber:
+                  maxLength: 16
+                  type: string
+                  description: 'The account number associated with the virtual account requisition being updated or deleted. This number was returned with the initial requisition add request (action A).<br><br> Required if action: "U" or "D"'
+                numberOfCards:
+                  maxLength: 4
+                  type: string
+                  description: 'Indicates the number of virtual accounts being requested. <br><br> If a single card is requested, an available account is selected from the proxy pool specified in the proxyPoolID parameter. Payment controls will subsequently be applied to the account, taking effect from the specified requistion start date and ceasing on the requisition end date. The API response will return the account number and expiration date. <br><br> If multiple cards are requested, a file is created detailing each account number and expiration date and delivered via SFTP (these details won''t be returned in the API). All accounts will have identical rules and configurations. To use this bulk request feature, please contact your Visa representative. <br><br> Required if action: "A"'
+                requisitionDetails:
+                  type: object
+                  properties:
+                    rules:
+                      type: array
+                      description: 'Complex elements which contain all the authorization rules to be set on the requested account. Contains: ruleCode, overrides. It''s best practice to maintain at least one spend control on an account. For pseudo accounts and TSYS VANs, a minimum of one rule is required.'
+                      items:
+                        type: object
+                        properties:
+                          ruleCode:
+                            maxLength: 8
+                            type: string
+                            description: 'Denotes the unique code for the authorization rule. For example, "VPAS" is the ruleCode for the exact amount authorization rule. <br><br> Refer to the <a href=''/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account_and_manage_payment_controls''>VPC Rules and Overrides table</a> for the complete list of valid Visa Payment Controls (VPC) rules and specifications. <br><br> For buyers using TSYS VANs, please refer to the <a href=''/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account__for_tsys_vpp''>VPP Rules and Overrides table</a>. <br> <br> Required if action: "A" or "U"'
+                          overrides:
+                            type: array
+                            description: 'Overrides are supplementary request parameters that provide additional context to the primary "ruleCode" parameter. These may be required or optional, depending on the rule. This complex element contains: sequence, overrideCode, and overrideValue. <br><br> For example, to set a $1000 aurthorization limit on a requested account, you would include an "amountValue" override of "1000" and an "amountCurrencyCode" override of "USD" with "ruleCode": "PUR"'
+                            items:
+                              type: object
+                              properties:
+                                sequence:
+                                  maxLength: 3
+                                  type: string
+                                  description: Contains the sequence number for the override. Each rule starts with 0 so if you have an SPV and BUS, then SPV will have sequence 0 and BUS will have a 0. If there are multiple fields/ overrides within a rule, e.g. SPV.  Each override - amount, currency code, range type, etc.-  have the same sequence number. E.g. amount, currency code and range type will all have 0.  If there is a rule that can have multiple amounts e.g. Exact match, then each VPAS rule overrides must have a unique sequence number so first VPAS has 0, then second has 1, third has 2.
+                                overrideCode:
+                                  maxLength: 50
+                                  type: string
+                                  description: The code for the authorization rule override. <br><br> Required for actions "A" and "U" if the corresponding ruleCode mandates overrideCode values. Please refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#request_virtual_account">Rules and Overrides table</a> as not all ruleCodes necessitate an overrideCode. For instance, ruleCode "SPV" requires overrideCode "rangeType" and "updateFlag", while ruleCode "AUTO" has no applicable overrides.
+                                overrideValue:
+                                  maxLength: 100
+                                  type: string
+                                  description: 'The value for the authorization rule override. <br><br> Required for action: "A" and "U" for each respective overrideCode that''s included in the request.'
+                    endDate:
+                      maxLength: 10
+                      type: string
+                      description: 'The validity end date for the requisitioned account, formatted as YYYY-MM-DD or MM/DD/YYYY. Upon reaching the end date, the system revokes all existing authorization rules, and applies the 1-cent rule, effectively rendering the account unusable. For example, an endDate of 2022-10-31 results in the 1-cent rule being applied at 12:00:01 on 2022-11-01. This date must not exceed the funding account''s expiration date. <br><br> Note for Buyers using TSYS VANs: startDate and endDate must be sent in Eastern time zone. <br><br> Note for Buyers using a legacy model with processor PANs: In the absence of a requisition ''endDate'', the account''s authorization rules will remain effective until the expiration of the associated card. <br><br> Required if action: "A" or "U"'
+                    timeZone:
+                      maxLength: 12
+                      type: string
+                      description: 'Denotes the time zone for the requisition''s startDate and endDate. The system, in respect to the chosen time zone, activates the authorization rules from 0:00 a.m. on the startDate until 0:00 a.m. on the day following the endDate (i.e. endDate +1) <br><br> Time zones should adhere to the UTC offset format. For example,"UTC-08:00" for PST, "UTC-06:00" for CST, "UTC+05:30" for IST, etc. <br><br> Note for Buyers using TSYS VANs: startDate and endDate must be sent in Eastern time zone. <br><br> Required if action: "A" or "U"'
+                    startDate:
+                      maxLength: 10
+                      type: string
+                      description: 'Denotes the start date of account validity. Dates should adhere to either the YYYY-MM-DD or MM/DD/YYYY format and can be set up to three years in the future. On the specified start date, the authorization rules defined in the request will be implemented on the account. Until this date arrives, the system assigns a preliminary 1 cent exact match authorization rule to the account. In the absence of this field value, the card will be activated instantly, and the authorization rules from the requisition are applied immediately. <br><br> Note for Buyers using TSYS VANs: startDate and endDate must be sent in Eastern time zone. <br> <br> Please note, once the card is activated, it''s not possible to reset the startDate to a future date.'
+                    mcgRuleAction:
+                      maxLength: 5
+                      type: string
+                      description: 'Defines the action for Merchant Category Group (MCG) based rules applied to the requested card(s). Accepts "Allow" or "Block", defaulting to "Block" if not provided. This field only supports Visa Payment Controls (VPC) enabled buyers and is ignored for buyers using TSYS VANs. <br><br> Example: the value "Allow" with MCG rule code "AIR" authorizes transactions from Airline MCC''s. Conversely, "Block" with the same code prevents transactions from Airline MCC''s. <br><br> Please note, the mcgRuleAction value is not applicable to following MCG rules: MCCB, MCCX, CAID, CAIDB, NOTFUEL.'
+                  description: This complex element contains the requisition details.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  requisitionDetails:
+                    endDate: '2018-05-20'
+                    timeZone: UTC-8
+                    rules:
+                    - ruleCode: SPV
+                      overrides:
+                      - sequence: '1'
+                        overrideCode: spendLimitAmount
+                        overrideValue: '55.45'
+                      - sequence: '2'
+                        overrideCode: maxAuth
+                        overrideValue: '10'
+                      - sequence: '3'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '4'
+                        overrideCode: rangeType
+                        overrideValue: '3'
+                      - sequence: '5'
+                        overrideCode: startDate
+                        overrideValue: 05/11/2018
+                      - sequence: '5'
+                        overrideCode: endDate
+                        overrideValue: 05/20/2018
+                      - sequence: '7'
+                        overrideCode: updateFlag
+                        overrideValue: NOCHANGE
+                    - ruleCode: PUR
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '0'
+                        overrideCode: amountValue
+                        overrideValue: '55'
+                    - ruleCode: EAM
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '0'
+                        overrideCode: amountValue
+                        overrideValue: '55'
+                    - ruleCode: XBRA
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '0'
+                        overrideCode: amountValue
+                        overrideValue: '55'
+                    - ruleCode: ATML
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '0'
+                        overrideCode: amountValue
+                        overrideValue: '55'
+                    - ruleCode: TOLRNC
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '0'
+                        overrideCode: minValue
+                        overrideValue: '1'
+                      - sequence: '0'
+                        overrideCode: maxValue
+                        overrideValue: '50'
+                    - ruleCode: CAID
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: CAIDValue
+                        overrideValue: '123456'
+                    - ruleCode: ATM
+                    - ruleCode: ECOM
+                    - ruleCode: CNP
+                    - ruleCode: NOC
+                    - ruleCode: ADT
+                    - ruleCode: XBR
+                    - ruleCode: FUEL
+                    - ruleCode: HOT
+                    - ruleCode: AUTO
+                    - ruleCode: AIR
+                    - ruleCode: REST
+                    - ruleCode: JEWL
+                    - ruleCode: ELEC
+                    - ruleCode: ALC
+                    - ruleCode: GTM
+                    - ruleCode: OSS
+                    - ruleCode: GROC
+                    - ruleCode: ENT
+                    - ruleCode: UTIL
+                    - ruleCode: CLOTH
+                    - ruleCode: MED
+                    - ruleCode: VPAS
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        overrideValue: '840'
+                      - sequence: '0'
+                        overrideCode: amountValue
+                        overrideValue: '55.45'
+                    startDate: '2018-05-11'
+                  proxyPoolId: Proxy12345
+                  optionalInfo:
+                  - optionalFieldValue: '12345678901234567'
+                    optionalFieldName: TWOTest
+                  - optionalFieldValue: '12345112'
+                    optionalFieldName: '12345'
+                  action: A
+                  messageId: '1526077012761'
+                  numberOfCards: '1'
+                  buyerId: '9999'
+                  accountNumber: ''
+        required: true
+      responses:
+        '200':
+          description: In case of error please refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#request_virtual_account">Response Codes</a> page for this api
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  RequisitionVirtualAccountResponse:
+                    type: object
+                    properties:
+                      messageID:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      responses:
+                        type: array
+                        description: 'Complex element which contains a collection of responses returned in the response. This element contains: Response Code Response Description'
+                        items:
+                          type: object
+                          properties:
+                            responseCode:
+                              maxLength: 10
+                              type: string
+                              description: This element contains the response code sent by the VPA system. The list can be found in the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#request_virtual_account">Response Codes</a> page for this api
+                            responseDescription:
+                              maxLength: 250
+                              type: string
+                              description: This element contains the response description.
+                      accountNumber:
+                        maxLength: 16
+                        type: string
+                        description: VPA system sends the account number of the account picked from the proxy pool for the Add action. For update and delete actions, the system returns the account which was passed in the request. If the requisition failed, this field will be blank.
+                      expirationDate:
+                        maxLength: 7
+                        type: string
+                        description: Contains the expiration date of the card account. Format- MM/YYYY.
+                    description: Success
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1requisitionService/post'
+        default: false
+  /vpa/v1/accountManagement/VirtualCardRequisition:
+    post:
+      tags:
+      - Account Management service
+      summary: Virtual Card Requisition
+      description: ''
+      operationId: Virtual Card Requisition
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - employee
+              - messageId
+              - proxyPoolId
+              - requisitionDetails
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation (VPA) system. Value format is 0-9.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.  It will need to be passed in all requests.
+                employee:
+                  required:
+                  - companyAdminEMailId
+                  - eMailId
+                  - employeeId
+                  - firstName
+                  - lastName
+                  type: object
+                  properties:
+                    GL:
+                      maxLength: 76
+                      type: string
+                      description: Contains the employee GL code.
+                    address:
+                      type: object
+                      properties:
+                        city:
+                          maxLength: 60
+                          type: string
+                          description: Contains the city of the employee’s  office address.
+                        state:
+                          maxLength: 12
+                          type: string
+                          description: Contains the state of the employee’s office address.
+                        postalCode:
+                          maxLength: 14
+                          type: string
+                          description: Contains the postal code of the employee’s office address.
+                        countryCode:
+                          maxLength: 14
+                          type: string
+                          description: Contains the ISA Alphanumeric Country Code portion of the employee’s  office address. For e.g., USA.
+                        addressline1:
+                          maxLength: 100
+                          type: string
+                          description: Contains the first line of the employee's office address.
+                        addressline2:
+                          maxLength: 100
+                          type: string
+                          description: Contains the second line of the employee's office address.
+                      description: Address Class
+                    eMailId:
+                      maxLength: 128
+                      type: string
+                      description: Contains the email address of the employee.
+                    lastName:
+                      maxLength: 50
+                      type: string
+                      description: Contains the last name of the employee.
+                    firstName:
+                      maxLength: 60
+                      type: string
+                      description: Contains the first name of the employee.
+                    costCenter:
+                      maxLength: 50
+                      type: string
+                      description: Contains the Cost Center of the employee.
+                    employeeId:
+                      maxLength: 10
+                      type: string
+                      description: Contains the employee ID.
+                    companyAdminEMailId:
+                      maxLength: 128
+                      type: string
+                      description: Contains the company administrator’s email ID.
+                  description: Employee Class
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: 'Unique identifier for this request.  Each request sent to VPA requires its own unique ID. '
+                proxyPoolId:
+                  maxLength: 19
+                  type: string
+                  description: Indicates the virtual card Proxy Pool Identifier.
+                accountNumber:
+                  type: number
+                  description: Contains the card account number value. The account number is required if the consumer wants to update existing requisition parameters like the rules, effective date, etc.
+                optionalfield1:
+                  maxLength: 100
+                  type: string
+                  description: Value for the optional field 1.  Free format field 1.
+                optionalfield2:
+                  maxLength: 100
+                  type: string
+                  description: Value for the optional field 2.  Free format field 2.
+                optionalfield3:
+                  maxLength: 100
+                  type: string
+                  description: Value for the optional field 3.  Free format field 3.
+                optionalfield4:
+                  maxLength: 100
+                  type: string
+                  description: Value for the optional field 4.  Free format field 4.
+                optionalfield5:
+                  maxLength: 100
+                  type: string
+                  description: Value for the optional field 5.  Free format field 5.
+                requisitionDetails:
+                  type: array
+                  description: This complex element contains the requisition details.
+                  items:
+                    type: object
+                    properties:
+                      rules:
+                        type: array
+                        description: These complex elements contains information regarding the rule codes and overrides.
+                        items:
+                          type: object
+                          properties:
+                            ruleCode:
+                              maxLength: 8
+                              type: string
+                              description: "This contains the rule code. <br> For detailed information regarding\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n the rule codes and overrides, see the <a\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n href='/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account_and_manage_payment_controls'>Rules\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n and Overrides table</a>."
+                            overrides:
+                              type: array
+                              description: This complex element contains the details of the overrides for an authorization rule.
+                              items:
+                                type: object
+                                properties:
+                                  Sequence:
+                                    maxLength: 3
+                                    type: string
+                                    description: Contains the sequence number for the override.  A few authorization rules have multiple overrides and the sequence number identifies each of them uniquely.
+                                  overrideCode:
+                                    maxLength: 50
+                                    type: string
+                                    description: Contains the override code.  For a list of override codes, refer to the Rules and Overrides table.
+                                  overrideValue:
+                                    maxLength: 10
+                                    type: string
+                                    description: Contains the override value.
+                      endDate:
+                        maxLength: 10
+                        type: string
+                        description: Contains the last date when the card account and the  authorization rules will be effective. All the authorization rules specified in the Requisition detail will be removed from the card the next day (after the end date). The application will set the one-cent rule on the card the next day for VAM clients. Format is YYYY-MM-DD.
+                      timeZone:
+                        maxLength: 12
+                        type: string
+                        description: Contains the Time zone to use for the start and end dates. The UTC OFFSET needs to be sent. Like UTC-8 for PST, UTC-6 for CST, UTC+5:30 for IST.
+                      startDate:
+                        maxLength: 10
+                        type: string
+                        description: Contains the date when the card account and the authorization rules on the account  will be made effective. Format is YYYY-MM-DD.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  optionalField1: optionalField1
+                  clientId: B2BWS_1_1_9999
+                  requisitionDetails:
+                  - endDate: '2020-03-01'
+                    timeZone: UTC-6
+                    rules:
+                    - ruleCode: VPAS
+                      overrides:
+                      - sequence: 0
+                        overrideCode: amount
+                        overrideValue: 840
+                      - sequence: 0
+                        overrideCode: amount
+                        overrideValue: 55
+                    startDate: '2017-02-01'
+                  proxyPoolId: M7test
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+                  employee:
+                    lastName: lname
+                    firstName: fname
+                    address:
+                      city: FC
+                      countryCode: USA
+                      postalCode: 94404
+                      addressLine1: Address1
+                      addressLine2: Address2
+                      state: CA
+                    gl: 12
+                    eMailId: aaa1@bbb.com
+                    costCenter: 12
+                    employeeId: 772288
+                    companyAdminEMailId: compAdmin@bbb.com
+                  accountNumber: 4111111111111111
+                  optionalField4: optionalField4
+                  optionalField5: optionalField5
+                  optionalField2: optionalField2
+                  optionalField3: optionalField3
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  VCardRequistionResponse:
+                    required:
+                    - messageID
+                    type: object
+                    properties:
+                      messageID:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      responses:
+                        type: object
+                        properties:
+                          response:
+                            required:
+                            - responseCode
+                            type: object
+                            properties:
+                              responseCode:
+                                maxLength: 10
+                                type: string
+                                description: response code of the response. It is alphanumeric. The values are specific to each method. Example- CS001, CS002, and so on.  For the details of the various error codes returned for this method refer to the "Error Codes" table below.
+                              responseDescription:
+                                maxLength: 100
+                                type: string
+                                description: Message ID passed in the Web service request.
+                            description: Response Class
+                        description: Responses Class
+                      accountNumber:
+                        maxLength: 16
+                        type: string
+                        description: Contains the Card account number assigned to the employee.
+                      requisitionId:
+                        maxLength: 26
+                        type: string
+                        description: System will generate the Requisition ID for each request (when card is assigned to the Employee.) Note- The requisition ID is created only for a new requisition request.
+                      expirationDate:
+                        maxLength: 6
+                        type: string
+                        description: Contains the expiration date of the card account. Format is YYYYMM.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '2':
+                    type: object
+                    description: Message ID is not unique.
+                  '4':
+                    type: object
+                    description: Buyer details you have provided is invalid.
+                  '6':
+                    type: object
+                    description: MessageID cannot be more than 36 characters.
+                  '12':
+                    type: object
+                    description: Buyer ID cannot be more than 15 characters.
+                  '25':
+                    type: object
+                    description: Bank or Buyer is not yet set up.
+                  '35':
+                    type: object
+                    description: Sequence is mandatory for all rules. Provide a valid sequence for the rule.
+                  '71':
+                    type: object
+                    description: Sequence is mandatory for all rules. Provide a valid sequence for the rule.
+                  '93':
+                    type: object
+                    description: System Exception.
+                  '516':
+                    type: object
+                    description: Account number you have provided is invalid.
+                  '72801':
+                    type: object
+                    description: Proxy Pool ID you have provided contains invalid characters.
+                  '72802':
+                    type: object
+                    description: The first character of the Proxy Pool ID you have provided is invalid.
+                  '72803':
+                    type: object
+                    description: The second character of the Proxy Pool ID you have provided is invalid.
+                  '72804':
+                    type: object
+                    description: Proxy Pool ID you have provided is not yet set up.
+                  '72805':
+                    type: object
+                    description: First Name you have provided contains invalid characters.
+                  '72806':
+                    type: object
+                    description: First Name cannot be more than 60 characters.
+                  '72807':
+                    type: object
+                    description: Last Name you have provided contains invalid characters.
+                  '72808':
+                    type: object
+                    description: Last Name cannot be more than 60 characters.
+                  '72809':
+                    type: object
+                    description: Employee ID contains invalid characters.
+                  '72810':
+                    type: object
+                    description: Employee ID cannot be more than 10 characters.
+                  '72811':
+                    type: object
+                    description: Email ID cannot be more than 128 characters.
+                  '72812':
+                    type: object
+                    description: Email ID you have provided is invalid.
+                  '72813':
+                    type: object
+                    description: Company Admin Email ID cannot be more than 128 characters.
+                  '72814':
+                    type: object
+                    description: Company Email ID you have provided is Invalid.
+                  '72815':
+                    type: object
+                    description: Cost Center you have provided contains invalid characters.
+                  '72816':
+                    type: object
+                    description: Cost Center cannot be more than 50 characters
+                  '72817':
+                    type: object
+                    description: GL you have provided contains invalid characters.
+                  '72818':
+                    type: object
+                    description: GL cannot be more than 76 characters.
+                  '72819':
+                    type: object
+                    description: Address Line 1 you have provided contains invalid characters.
+                  '72820':
+                    type: object
+                    description: Address Line 1 cannot be more than 100 characters.
+                  '72821':
+                    type: object
+                    description: Address Line 2 you have provided contains invalid characters.
+                  '72822':
+                    type: object
+                    description: Address Line 2 cannot be more than 100 characters.
+                  '72823':
+                    type: object
+                    description: City you have provided contains invalid characters.
+                  '72824':
+                    type: object
+                    description: City cannot be more than 60 characters.
+                  '72825':
+                    type: object
+                    description: State you have provided contains invalid characters.
+                  '72826':
+                    type: object
+                    description: State cannot be more than 12 characters.
+                  '72827':
+                    type: object
+                    description: Postal Code you have provided contains invalid characters.
+                  '72828':
+                    type: object
+                    description: Postal Code cannot be more than 14 characters.
+                  '72829':
+                    type: object
+                    description: Country Code you have provided contains invalid characters.
+                  '72830':
+                    type: object
+                    description: Country Code cannot be more than 5 characters.
+                  '72831':
+                    type: object
+                    description: Optional Field 1 you have provided contains invalid characters.
+                  '72832':
+                    type: object
+                    description: Optional Field 1 cannot be more than 100 characters.
+                  '72833':
+                    type: object
+                    description: Optional Field 2 cannot be more than 100 characters.
+                  '72834':
+                    type: object
+                    description: Optional Field 3 you have provided contains invalid characters.
+                  '72835':
+                    type: object
+                    description: Optional Field 3 cannot be more than 100 characters.
+                  '72836':
+                    type: object
+                    description: Optional Field 4 you have provided contains invalid characters.
+                  '72837':
+                    type: object
+                    description: Optional Field 4 cannot be more than 100 characters.
+                  '72838':
+                    type: object
+                    description: Optional Field 5 you have provided contains invalid characters.
+                  '72839':
+                    type: object
+                    description: Optional Field 5 cannot be more than 100 characters
+                  '72840':
+                    type: object
+                    description: Start Date you have provided contains invalid characters.
+                  '72841':
+                    type: object
+                    description: Start Date cannot be more than 10 characters.
+                  '72842':
+                    type: object
+                    description: Start Date you have provided is invalid. Please provide a valid start date in YYYY-MM-DD format.
+                  '72843':
+                    type: object
+                    description: End Date you have provided contains invalid characters.
+                  '72844':
+                    type: object
+                    description: End Date cannot be more than 10 characters.
+                  '72845':
+                    type: object
+                    description: End Date you have provided is invalid. Please provide a valid start date in YYYY-MM-DD format.
+                  '72846':
+                    type: object
+                    description: End Date should not be in the past.
+                  '72847':
+                    type: object
+                    description: Time Zone cannot be more than 12 characters.
+                  '72848':
+                    type: object
+                    description: Time Zone you have provided contains invalid characters.
+                  '72849':
+                    type: object
+                    description: Rule Code  is not valid.
+                  '72850':
+                    type: object
+                    description: Sequence is mandatory for all rules. Provide a valid sequence for the rule
+                  '72851':
+                    type: object
+                    description: Override code provided for the rule. Required-  (Rule code for which the Override code is invalid) contains invalid characters.
+                  '72852':
+                    type: object
+                    description: Override code cannot be more than 50 characters. Please provide a valid override code for the rule.
+                  '72853':
+                    type: object
+                    description: Override code provided for the rule
+                  '72854':
+                    type: object
+                    description: Override Value is mandatory for all rules with overrides. Provide a valid Override Value.
+                  '72855':
+                    type: object
+                    description: Override value provided for the rule
+                  '72856':
+                    type: object
+                    description: Override value cannot be more than 8 characters. Please provide a valid override value for the rule.
+                  '72858':
+                    type: object
+                    description: The Start Date and End Dates you have provided should not overlap.
+                  '72860':
+                    type: object
+                    description: An account from the proxy pool sent in the request is already assigned to the employe
+                  '72861':
+                    type: object
+                    description: No card accounts available in the proxy pool sent in the request.
+                  '72891':
+                    type: object
+                    description: First Name is mandatory.
+                  '72892':
+                    type: object
+                    description: Last Name is mandatory.
+                  '72893':
+                    type: object
+                    description: Employee ID is mandatory.
+                  '72894':
+                    type: object
+                    description: End Date is mandatory.
+                  '72895':
+                    type: object
+                    description: Email Id is mandatory.
+                  '72896':
+                    type: object
+                    description: Company Admin Email Id is mandatory.
+                  '72897':
+                    type: object
+                    description: Time Zone is mandatory.
+                  '72898':
+                    type: object
+                    description: Time Zone should start with UTC.
+                  '72900':
+                    type: object
+                    description: Buyer is not subscribed for VAM.
+                  '72902':
+                    type: object
+                    description: Refresh Action should not be followed by any other Action.
+                  '72905':
+                    type: object
+                    description: Date range and rule code of the request is overlapping with data available in system.
+                  '72906':
+                    type: object
+                    description: Only one period is allowed for Single Use cards.
+                  '72927':
+                    type: object
+                    description: Proxy number length should be between 1 and 19.
+                  '72928':
+                    type: object
+                    description: ProxyPoolId is mandatory.
+                  '72929':
+                    type: object
+                    description: Country Code is mandatory.
+                  '728321':
+                    type: object
+                    description: Optional Field 2 you have provided contains invalid characters.
+                  '729061':
+                    type: object
+                    description: Only one period is allowed for Single Use cards.
+      x-codegen-request-body-name: virtualcardrequisition
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1VirtualCardRequisition/post'
+        default: false
+  /vpa/v1/accountManagement/ListPaymentControl:
+    post:
+      tags:
+      - Account Management service
+      summary: List Payment Control
+      description: ''
+      operationId: List Payment Control
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation (VPA) system. Value format is 0-9.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                accountNumber:
+                  maxLength: 19
+                  type: string
+                  description: Valid card account for which the authorization rules are requested.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+                  accountNumber: 4111111111111111
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ListPaymentResponse:
+                    required:
+                    - alertRequired
+                    - messageID
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      channel:
+                        type: object
+                        properties:
+                          channelType:
+                            maxLength: 1
+                            type: string
+                            description: Delivery channel type for the authorization decline alert. The only supported value is 1, which indicates that the channel type is email.
+                          channelValue:
+                            maxLength: 70
+                            type: string
+                            description: Value of the selected channel. Since we support only emails, this will be the email address where the decline notification needs to be sent.
+                        description: Channel Class
+                      trigger:
+                        type: array
+                        description: 'This complex element contains the details of the authorization rules set on the account.  Currently only VPAS rule is supported in this web service. '
+                        items:
+                          type: object
+                          properties:
+                            amount:
+                              maxLength: 16
+                              type: string
+                              description: 'Value of the amount override for the exact match (VPAS) rule.  '
+                            triggerType:
+                              maxLength: 10
+                              type: string
+                              description: "Authorization Rule Code. Valid value is- \n   VPAS"
+                            currencyCode:
+                              maxLength: 3
+                              type: string
+                              description: 'Currency code which is used for the VPA rule.  This is the rule currency code.  All ISO currency codes are supported. Sample value is- USD.  '
+                      messageID:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. Example- AP001, AP002, and so on.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      alertRequired:
+                        maxLength: 1
+                        type: string
+                        description: Indicates whether the notifications regarding declines due to authorization rules will to be sent to the channel (email or phone) or not.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GP001:
+                    type: object
+                    description: List of payment controls is successfully returned.
+                  GP002:
+                    type: object
+                    description: Message ID is not unique.
+                  GP003:
+                    type: object
+                    description: Invalid client.
+                  GP004:
+                    type: object
+                    description: Invalid buyer.
+                  GP005:
+                    type: object
+                    description: Invalid account number.
+                  GP010:
+                    type: object
+                    description: Buyer does not match with the issuer.
+                  GP011:
+                    type: object
+                    description: Account number does not match with the buyer.
+                  GP016:
+                    type: object
+                    description: System exception.
+                  GP017:
+                    type: object
+                    description: Account does not exist in the system.
+                  GP018:
+                    type: object
+                    description: Account is not registered.
+                  GP019:
+                    type: object
+                    description: Failed to get payment control list.
+                  GP020:
+                    type: object
+                    description: Payment control is not set for the bank.
+                  GP021:
+                    type: object
+                    description: Payment control is not set for the buyer.
+                  GP025:
+                    type: object
+                    description: Bank or buyer not enrolled.
+                  GP027:
+                    type: object
+                    description: Request is already processed.
+                  GP033:
+                    type: object
+                    description: Invalid message ID.
+                  GP035:
+                    type: object
+                    description: Invalid message ID.
+      x-codegen-request-body-name: listpaymentcontrol
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1ListPaymentControl/post'
+        default: false
+  /vpa/v1/accountManagement/fundingAccount/update:
+    post:
+      tags:
+      - Account Management service
+      summary: Update Funding Account
+      description: ''
+      operationId: Update Funding Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                action:
+                  maxLength: 1
+                  type: string
+                  description: 'Specifies the operation to be performed on the funding account. Valid values are: <br> ''U'' for Update (modifying the details of an existing funding account) <br>''D'' for Delete (removing the funding account from the Buyer). <br><br> If no action value is provided, the system will automatically default to ''U'' (Update). <br><br> Note: Before submitting a request to delete a funding account, all active payment instructions and account requisitions for the funding account must be canceled, and all associated proxy pools must be deleted. '
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the numeric buyer identifier as defined in Visa Payables Automation. This will be provided by the Issuer.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: ClientID uniquely identifies a financial institution. This will be provided by Visa implementation team.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request.  Each request sent  to VPA requires its own unique ID.
+                creditLimit:
+                  type: integer
+                  description: Denotes the credit limit of the funding account.  This field can be updated only if processor integration is disabled for the buyer, and in this case changes must also be made at the processor. Not applicable for processor integration because VPA goes directly to the processor for this field.
+                accountNumber:
+                  type: integer
+                  description: The full 16 digit funding account number.  Should be a valid card account number
+                blockPurchases:
+                  type: boolean
+                  description: Ability to Block or allow purchases on the funding account.  This field is optional and if not provided will be set to ‘true’ and will prevent any purchases from being made on the funding PAN/ funding account.  This should be set to ‘false’ if you want to remove the block on the Funding PAN/funding account and allow it to be used for purchases.  This is an optional field. Valid values are true or false.
+                defaultAccount:
+                  type: boolean
+                  description: Denotes if this funding account should be designated as the default funding account for this buyer.  This field can be updated at any time.
+                expirationDate:
+                  maxLength: 10
+                  type: string
+                  description: Denotes the Expiration date of the funding account. This field can be updated only if processor integration is disabled for the buyer, and in this case changes must also be made at the processor. Not applicable for processor integration because VPA goes directly to the processor for this field.  Should be provided in yyyy-mm-dd format.  Always provide the last day of the month for dd.  The system will set the last day of the month even if you provide a different day.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_FDR_5126
+                  blockPurchases: 'false'
+                  messageId: '{{$timestamp}}'
+                  defaultAccount: 'true'
+                  buyerId: '107777'
+                  accountNumber: 4807330007183252
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  UpdateFundingAccountResponse:
+                    type: object
+                    properties:
+                      errors:
+                        type: array
+                        description: In case of error please refer to the <a href="/pages/B2B-virtual-account-payment-method-error-codes#update_funding_account">Error Codes</a> page for this api
+                        items:
+                          type: object
+                          properties:
+                            Error:
+                              required:
+                              - code
+                              - statusDesc
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  description: error code
+                                statusDesc:
+                                  type: string
+                                  description: error description
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        type: string
+                        description: Status code of the response.
+                      statusDesc:
+                        type: string
+                        description: Status description of the response.
+                      accountNumber:
+                        type: integer
+                        description: Denotes the funding account number. The account number will be masked based on the configuration for the buyer.
+                      blockPurchases:
+                        type: boolean
+                        description: Block purchases on the funding account. This field is optional and should be set to ‘false’ if you want to remove the block on Funding PAN and use it for purchases. Valid values are true or false. If this parameter is not specified in the API request, the default value assigned will be true.
+                      expirationDate:
+                        maxLength: 10
+                        type: string
+                        description: Funding Account's expiration date. Will be provided in yyyy-mm-dd format.
+                    description: ''
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    statusDesc: Funding Account has been updated successfully
+                    messageId: '1620851509'
+                    accountNumber: XXXXXXXXXXXX3252
+                    statusCode: AMUF000
+      x-codegen-request-body-name: UpdateFundingAccount
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1fundingAccount~1update/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/accountManagement/getPaymentControls:
+    post:
+      tags:
+      - Account Management service
+      summary: Get Payment Controls
+      description: ''
+      operationId: Get Payment Controls
+      requestBody:
+        description: Get Payment Controls Request
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 15
+                  type: string
+                  description: Buyer ID numeric is the buyer identifier as defined in Visa Payables Automation system. This is often the ID defined at the processor for the corporate buyer. This will be provided by the issuer.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: ClientID uniquely identifies a financial institution. This will be provided by the Visa implementation team.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for the API request.
+                accountNumber:
+                  maxLength: 16
+                  type: string
+                  description: Account Number for which the auth rules are requested. You must send at least the last 4 digits, but can send up to the entire account number. The value sent should uniquely identify the account number. If the last 4 digits are not unique then it will fail
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  buyerId: 9999
+                  accountNumber: 4111111111111111
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetPaymentControlsResponse:
+                    type: object
+                    properties:
+                      rules:
+                        type: array
+                        description: List of authorization rules set on the account.
+                        items:
+                          type: object
+                          properties:
+                            ruleCode:
+                              maxLength: 8
+                              type: string
+                              description: Contains the authorization Rule Code. For the list of valid Visa Payment Controls (VPC) refer to the <a href='/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account_and_manage_payment_controls'>VPC Rules and Overrides table</a>. <br> For buyers using VANs please refer to the <a href='/pages/B2B-virtual-account-payment-method-codes#rules_and_overrides_for_request_virtual_account__for_tsys_vpp'>VPP Rules and Overrides table</a>. <br> This element is mandatory for action types A (Add) and U (Update).
+                            overrides:
+                              type: array
+                              description: 'Complex element which contains one or more overrides for the authorization rules. This element contains: Sequence, Override Code, and Override Value. Override is nothing but a value which you want to change in the default rule.<br><br> For e.g. to set the threshold rule  for the account you have requested,if you want to set the threshold as $1000 then you should pass the amount override as 1000 and the currency override as 840.'
+                              items:
+                                type: object
+                                properties:
+                                  sequence:
+                                    maxLength: 3
+                                    type: string
+                                    description: Contains the sequence number for the override. Each rule starts with 0 so if you have an SPV and BUS, then SPV will have sequence 0 and BUS will have a 0. If there are multiple fields/overrides within a rule, e.g. SPV.  Each override - amount, currency code, range type, etc.-  have the same sequence number. E.g. amount, currency code and range type will all have 0. If there is a rule that can have multiple amounts e.g. Exact match, then each VPAS rule overrides must have a unique sequence number so first VPAS has 0, then second has 1, third has 2.
+                                  overrideCode:
+                                    maxLength: 33
+                                    type: string
+                                    description: Contains the code for the override.  <br> Note, follow the rule specification (provided in the link in the Rule code field description) as not every ruleCode requires an overrideCode.
+                                  overrideValue:
+                                    maxLength: 25
+                                    type: string
+                                    description: Contains the value for the override. <br> Note, follow the rule specification (provided in the link in the Rule code field description) as not every ruleCode requires an overrideValue.
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 10
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. The list of status codes can be found in the following link
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                    description: Success
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    statusDesc: Payment control details retrieved successfully.
+                    messageId: '1591133872'
+                    rules:
+                    - ruleCode: ADT
+                    - ruleCode: AIR
+                    - ruleCode: ATM
+                    - ruleCode: ATML
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountValue
+                        parentOverrideCode: amountOverride
+                        overrideValue: '1'
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        parentOverrideCode: amountOverride
+                        overrideValue: '840'
+                    - ruleCode: AUTO
+                    - ruleCode: BUS
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: timezone
+                        overrideValue: Alaskan Standard Time
+                      - sequence: '0'
+                        overrideCode: weekDayEffective
+                        parentOverrideCode: timeRange
+                        overrideValue: SUN
+                      - sequence: '0'
+                        overrideCode: timeEffectiveStart
+                        parentOverrideCode: timeRange
+                        overrideValue: 01:00
+                      - sequence: '0'
+                        overrideCode: timeEffectiveEnd
+                        parentOverrideCode: timeRange
+                        overrideValue: '15:00'
+                    - ruleCode: CAID
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: CAIDValue
+                        parentOverrideCode: CAIDOverride
+                        overrideValue: '847833'
+                    - ruleCode: CLOTH
+                    - ruleCode: ECOM
+                    - ruleCode: FUEL
+                    - ruleCode: GTM
+                    - ruleCode: HOT
+                    - ruleCode: NOTFUEL
+                    - ruleCode: VPAS
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: amountValue
+                        parentOverrideCode: amountOverride
+                        overrideValue: '1.00'
+                      - sequence: '0'
+                        overrideCode: amountCurrencyCode
+                        parentOverrideCode: amountOverride
+                        overrideValue: '840'
+                    - ruleCode: XBR
+                    - ruleCode: XBRX
+                      overrides:
+                      - sequence: '0'
+                        overrideCode: jurisdictionMerchantCountry
+                        parentOverrideCode: countries
+                        overrideValue: '124'
+                    statusCode: AMGP000
+        '400':
+          description: In case of error please refer to the <a href="https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_payment_controls">Error Codes</a> page for this api
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    description: array of errors
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          description: error code
+                        statusDesc:
+                          type: string
+                          description: error description
+                  messageId:
+                    maxLength: 36
+                    type: string
+                    description: Unique identifier which was sent in the request.
+                  statusCode:
+                    maxLength: 6
+                    type: string
+                    description: Status code of the response.
+                  statusDesc:
+                    maxLength: 255
+                    type: string
+                    description: Status description of the response.
+      x-codegen-request-body-name: GetPaymentControls
+      x-hideTryIt: true
+  /vpa/v1/accountManagement/fundingAccount/create:
+    post:
+      tags:
+      - Account Management service
+      summary: Add Funding Account
+      description: ''
+      operationId: Add Funding Account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - accountNumber
+              - buyerId
+              - clientId
+              - currencyCode
+              - messageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. This will be provided by the Issuer.  Value should must be numeric.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: ClientID uniquely identifies a financial institution. This will be provided by Visa implementation team.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for identifying the request.  Each request sent  to VPA requires its own unique ID.
+                creditLimit:
+                  type: integer
+                  description: Denotes the credit limit of the funding account.  This field is required if processor integration is disabled for the buyer. If buyer is processor integrated, this value should not be provided because the credit limit will be pulled directly from the processor.
+                currencyCode:
+                  maxLength: 3
+                  type: string
+                  description: Denotes the ISO 3-character alpha code of the billing currency for the funding account number (e.g. USD)
+                accountNumber:
+                  type: integer
+                  description: Denotes the full 16 digit funding account number.  Should be a valid card account number
+                blockPurchases:
+                  type: boolean
+                  description: Ability to Block or allow purchases on the funding account.  This field is optional and if not provided will be set to ‘true’ and will prevent any purchases from being made on the funding PAN/ funding account.  This should be set to ‘false’ if you want to remove the block on the Funding PAN/funding account and allow it to be used for purchases.  This is an optional field. Valid values are true or false.
+                defaultAccount:
+                  type: boolean
+                  description: Denotes if this funding account should be designated as the default funding account. If this field is not provided, the system defaults the first funding account that is added to this buyer as the default funding account.
+                expirationDate:
+                  maxLength: 10
+                  type: string
+                  description: Expiration date of the funding account.  This field is required if  processor integration is disabled for the buyer. If buyer is processor integrated, this value should not be provided because the credit limit will be pulled directly from the processor. Should be provided in yyyy-mm-dd format.  Always provide the last day of the month for dd.  The system will set the last day of the month even if you provide a different day.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_FDR_5126
+                  blockPurchases: false
+                  messageId: '{{$timestamp}}'
+                  defaultAccount: 'true'
+                  buyerId: '107777'
+                  accountNumber: 4807330007183252
+                  currencyCode: USD
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AddFundingAccountResponse:
+                    type: object
+                    properties:
+                      errors:
+                        type: array
+                        description: In case of error please refer to the <a href="/pages/B2B-virtual-account-payment-method-error-codes#add_funding_account">Error Codes</a> page for this api
+                        items:
+                          type: object
+                          properties:
+                            Error:
+                              required:
+                              - code
+                              - statusDesc
+                              type: object
+                              properties:
+                                code:
+                                  type: string
+                                  description: error code
+                                statusDesc:
+                                  type: string
+                                  description: error description
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        type: string
+                        description: Status code of the response.
+                      statusDesc:
+                        type: string
+                        description: Status description of the response.
+                      accountNumber:
+                        type: integer
+                        description: Denotes the funding account number. The account number will be masked based on the configuration for the buyer.
+                      blockPurchases:
+                        type: boolean
+                        description: Block purchases on the funding account. This field is optional and should be set to ‘false’ if you want to remove the block on Funding PAN and use it for purchases. Valid values are true or false. If this parameter is not specified in the API request, the default value assigned will be true.
+                      expirationDate:
+                        maxLength: 10
+                        type: string
+                        description: Funding Account's expiration date. Will be provided in yyyy-mm-dd format.
+                    description: ''
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    statusDesc: Funding Account has been created successfully
+                    messageId: '1620851268'
+                    accountNumber: XXXXXXXXXXXX3252
+                    statusCode: AMCF000
+                    expirationDate: '2023-05-01'
+      x-codegen-request-body-name: AddFundingAccount
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1fundingAccount~1create/post'
+        default: false
+      x-hideTryIt: true
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

@@ -1,0 +1,138 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Push Authorization Data API API
+  description: PushNotification is a generic data channel to send Commercial Data to the end user over VDP. This API has capability to send Authorization data sets, Enhanced Data , Transaction data and Starter Data sets. Each push notification sent through VDP will have ONLY ONE of above data set i.e. auth or enhanced or transaction or starter data not a combined data sets.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Push Authorization Data API
+  description: PushNotification is a generic data channel to send Commercial Data to the end user over VDP. This API has capability to send Authorization data sets, Enhanced Data , Transaction data and Starter Data sets. Each push notification sent through VDP will have ONLY ONE of above data set i.e. auth or enhanced or transaction or starter data not a combined data sets.
+paths:
+  /Any_Client_URL:
+    post:
+      tags:
+      - Push Authorization Data API
+      summary: Send Auth Data
+      description: Authorization Push
+      operationId: sendAuthDataUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthTransactionFormat'
+      responses:
+        '200':
+          description: ok
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Something went wrong. Please try again later
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1Any_Client_URL/post'
+        default: false
+      x-hideSample: true
+      x-hideTryIt: true
+components:
+  schemas:
+    AuthTransactionFormat:
+      title: AuthTransactionFormat
+      type: object
+      properties:
+        authDt:
+          type: string
+        issuer:
+          type: string
+        mrchNm:
+          type: string
+        region:
+          type: string
+        tranId:
+          type: string
+        acctNum:
+          type: string
+        company:
+          type: string
+        msgType:
+          type: string
+        preAuth:
+          type: string
+        authTime:
+          type: string
+        crdTypCd:
+          type: string
+        mrchCity:
+          type: string
+        mrchZipCd:
+          type: string
+        processor:
+          type: string
+        uniqSeqId:
+          type: string
+        authCatgCd:
+          type: string
+        authIdResp:
+          type: string
+        crdAcptrId:
+          type: string
+        isoTranAmt:
+          type: string
+        mrchCatgCd:
+          type: string
+        mrchCtryCd:
+          type: string
+        stipAdvcCd:
+          type: string
+        tranProcCd:
+          type: string
+        authRsnDesc:
+          type: string
+        crdhBillAmt:
+          type: string
+        msgTypeDesc:
+          type: string
+        tokenNumber:
+          type: string
+        trgrSvcDesc:
+          type: string
+        trgrSvcType:
+          type: string
+        vpcActTknCd:
+          type: string
+        authCatgDesc:
+          type: string
+        isoTranCurrCd:
+          type: string
+        vpcPropActnCd:
+          type: string
+        authStatusCode:
+          type: string
+        crdhBillAmtUsd:
+          type: string
+        crdhBillCurrCd:
+          type: string
+        mrchStatePrvCd:
+          type: string
+        partialAuthAmt:
+          type: string
+        stipSwtchRsnCd:
+          type: string
+        tokenIndicator:
+          type: string
+        stipSwtchRsnDesc:
+          type: string
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

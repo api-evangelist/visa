@@ -1,0 +1,471 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Single BIN Lookup API
+  description: Lookup BIN Attributes for a single Payment Account or BIN
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Single BIN Lookup
+  description: Lookup BIN Attributes for a single Payment Account or BIN
+paths:
+  /v1/paymentAccountLookup:
+    post:
+      tags:
+      - Single BIN Lookup
+      summary: PAN TOKEN Lookup Using POST
+      description: Get all the values related to PAN/TOKEN
+      operationId: PAN TOKEN Lookup Using POST V1
+      requestBody:
+        description: PAN/TOKEN Lookup request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/paymentAccountLookupRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  requestHeader:
+                    requestTS: '2024-01-15T22:05:00.000'
+                    requestMessageID: test123
+                  requestData:
+                    paymentAccountType: P
+                    paymentAccount: '4259077000001230'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/paymentAccountLookupResponseV1'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    wsStatus:
+                      statusDesc: Success
+                      statusCode: CDI000
+                    responseData:
+                      platformCd: GV
+                      accountFundingSourceCd: R
+                      accountBusName: ABD & COMPANY
+                      productID: S2
+                      paymentAccountType: P
+                      accountRegionCode: '06'
+                      issuerBillingCurrCd: MRO
+                      accountCtryAlpha2Code: MR
+                      issuerBin: '425907'
+                      productIDName: Visa Government Purchasing
+                      accountFundingSourceSubtypeCd: N
+        '300':
+          description: Requesting Client IP is invalid
+          content: {}
+        '400':
+          description: Request Data Invalid
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '500':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorCodes-2'
+      x-operationVersions:
+      - label: v1
+        operationPointer: '#/paths/~1v1~1paymentAccountLookup/post'
+        default: false
+      - label: v2 - Latest
+        operationPointer: '#/paths/~1v2~1paymentAccountLookup/post'
+        default: false
+      x-codegen-request-body-name: PAN TOKEN Lookup Request
+      x-hideTryIt: true
+  /v2/paymentAccountLookup:
+    post:
+      tags:
+      - Single BIN Lookup
+      summary: PAN TOKEN Lookup Using POST V2
+      description: Get all the values related to PAN/TOKEN<br><br>Access to Visa BIN Attributes such as Issuer BIN, Issuer Country , Issuer Billing Currency and Product Identifiers such as Product ID/name, Product Platform, Card type, Card Subtype for any single payment account
+      operationId: PAN TOKEN Lookup Using POST V2
+      requestBody:
+        description: PAN/TOKEN Lookup request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/paymentAccountLookupRequest-1'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  requestHeader:
+                    requestTS: '2024-01-15T22:05:00.000'
+                    requestMessageID: test123
+                  requestData:
+                    paymentAccountType: P
+                    paymentAccount: '4259077000001230'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/paymentAccountLookupResponseV2-1'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    wsStatus:
+                      statusDesc: Success
+                      statusCode: CDI000
+                    responseData:
+                      commrclCrdLvl3EnhInd: N
+                      accountFundingSourceCd: R
+                      binLength: '6'
+                      productID: S2
+                      paymentAccountType: P
+                      accountRegionCode: '06'
+                      accountCtryAlpha2Code: MR
+                      posDomesticOnlyInd: N
+                      onlineGamblBlockInd: Y
+                      comboCrdCd: N
+                      accountFundingSourceSubtypeCd: N
+                      commrclCrdLvl2Ind: N
+                      platformCd: GV
+                      accountBusName: ABD & COMPANY
+                      multiAccountAccessInd: N
+                      issuerBillingCurrCd: MRO
+                      almInd: N
+                      vauInd: N
+                      brandCd: VISA
+                      autoSubstntnInd: N
+                      issuerBin: '425907'
+                      sharedBinInd: Y
+                      productIDName: Visa Government Purchasing
+                      regulatedBinCd: R
+        '400':
+          description: Request Data Invalid
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '500':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorCodes-2'
+      x-codegen-request-body-name: PAN TOKEN Lookup Request
+      x-hideTryIt: true
+components:
+  schemas:
+    paymentAccountLookupRequestData-1:
+      required:
+      - paymentAccount
+      - paymentAccountType
+      type: object
+      properties:
+        paymentAccount:
+          maxLength: 21
+          minLength: 14
+          type: string
+          description: The payment account number for which the  attributes are being requested - can be a PAN or Token
+        paymentAccountType:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: The type of account - value can either 'P' for PAN or 'T' for TOKEN
+    paymentAccountLookupRequestHeader:
+      required:
+      - requestMessageID
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageID:
+          maxLength: 50
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+    paymentAccountLookupRequest-1:
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/paymentAccountLookupRequestData-1'
+        requestHeader:
+          $ref: '#/components/schemas/paymentAccountLookupRequestHeader-1'
+    paymentAccountLookupResponseV1:
+      type: object
+      properties:
+        PanTokenLookupResponse:
+          type: object
+          properties:
+            responseData:
+              $ref: '#/components/schemas/responseDataV1'
+            responseStatus:
+              $ref: '#/components/schemas/responseStatus-1'
+          description: PanTokenLookup Response
+    errorCodes-2:
+      type: object
+      properties:
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI052:
+          type: object
+          description: Client Authentication failed
+        CDI071:
+          type: object
+          description: Exception in Group level entitlement process
+        CDI248:
+          type: object
+          description: Payment Account validation failure
+        CDI249:
+          type: object
+          description: Payment Account Type validation failure
+        CDI250:
+          type: object
+          description: Atleast one of the required/mandatory fields is missing in the request
+    paymentAccountLookupRequest:
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/paymentAccountLookupRequestData'
+        requestHeader:
+          $ref: '#/components/schemas/paymentAccountLookupRequestHeader'
+    responseStatus-2:
+      type: object
+      properties:
+        statusCode:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: Status Code of the Service Request
+        statusDesc:
+          maxLength: 250
+          minLength: 10
+          type: string
+          description: A description of the StatusCode. A brief description indicating the result of the Service Request
+    responseDataV2-1:
+      type: object
+      properties:
+        almInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Indicates if BIN or Account Range participate in Account Level Management
+        vauInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Visa Account Updater enabled indicator
+        brandCd:
+          maxLength: 4
+          minLength: 0
+          type: string
+          description: Identifies if the brand or brands is associated with the account range.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section8">Brand Indicator</a>
+        binLength:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: Provides BIN length - 6 or 8 digits
+        issuerBin:
+          maxLength: 8
+          minLength: 0
+          type: string
+          description: Issuer BIN of requested PAN/TOKEN
+        productID:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: An identifier associated with a unique card product - combination of card brand, platform, class and scheme equates to a unique product ID.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section0">Product ID</a>
+        comboCrdCd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Indicator for combo card <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section6">Combo Card Indicator</a>
+        platformCd:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: The code of product platform, e.g. Business, Consumer, Commercial, Government.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section3">Product Platform Code</a>
+        sharedBinInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Set to true if BIN shared by multiple issuers
+        productIDName:
+          maxLength: 50
+          minLength: 0
+          type: string
+          description: The name associated with the product ID, e.g. Visa Traditional, Visa Signature, Visa Government Purchasing, etc.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section0">Product ID</a>
+        accountBusName:
+          maxLength: 240
+          minLength: 0
+          type: string
+          description: Issuer Name
+        regulatedBinCd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Indicator for regulated BINs <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section7">Regulated BINs Indicator</a>
+        autoSubstntnInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Auto Substantiation enabled indicator
+        accountRegionCode:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: Issuer Region <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section9">Issuer Region Code</a>
+        commrclCrdLvl2Ind:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Indicates if transaction qualifies for Level 2 interchange rates
+        paymentAccountType:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Identifier for whether account is a PAN ('P') or Token ('T')
+        posDomesticOnlyInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Domestic Only BIN or Account Ranges
+        issuerBillingCurrCd:
+          maxLength: 3
+          minLength: 0
+          type: string
+          description: Issuer Billing Currency Code <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section5">Currency Code</a>
+        onlineGamblBlockInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Indicates whether Online Gambling permitted or not
+        commrclCrdLvl3EnhInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Indicates if transaction qualifies for Level 3 interchange rates
+        accountCtryAlpha2Code:
+          maxLength: 2
+          minLength: 0
+          type: string
+          description: Country Code Alpha Code <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section4">Country Code</a>
+        multiAccountAccessInd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: Multi Account Access indicator <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section10">Multi Account Access Indicator</a>
+        accountFundingSourceCd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: The code of account funding source for the card, e.g. Credit, Debit, Prepaid, Charge, Deferred Debit.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section1">Account Funding Source</a>
+        accountFundingSourceSubtypeCd:
+          maxLength: 1
+          minLength: 0
+          type: string
+          description: The code for account funding source subtype, such as reloadable and non-reloadable.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section2">Account Funding Source Subtype</a>
+    paymentAccountLookupRequestHeader-1:
+      required:
+      - requestMessageID
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 0
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2024-01-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageID:
+          maxLength: 50
+          minLength: 0
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+    responseStatus-1:
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Status Code of the Service Request
+        statusDesc:
+          type: string
+          description: A description of the StatusCode. A brief description indicating the result of the Service Request
+    paymentAccountLookupRequestData:
+      required:
+      - paymentAccount
+      - paymentAccountType
+      type: object
+      properties:
+        paymentAccount:
+          type: string
+          description: The payment account number for which the  attributes are being requested - can be a PAN or Token
+        paymentAccountType:
+          type: string
+          description: The type of account - value can either 'P' for PAN or 'T' for TOKEN
+    paymentAccountLookupResponseV2-1:
+      type: object
+      properties:
+        PanTokenLookupResponse:
+          type: object
+          properties:
+            responseData:
+              $ref: '#/components/schemas/responseDataV2-1'
+            responseStatus:
+              $ref: '#/components/schemas/responseStatus-2'
+          description: PanTokenLookup Response
+    responseDataV1:
+      type: object
+      properties:
+        issuerBin:
+          type: string
+          description: Issuer BIN of requested PAN/TOKEN
+        productID:
+          type: string
+          description: An identifier associated with a unique card product - combination of card brand, platform, class and scheme equates to a unique product ID.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#productid">Product ID</a>
+        platformCd:
+          type: string
+          description: The code of product platform, e.g. Business, Consumer, Commercial, Government.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#platformcode">Product Platform Code</a>
+        productIDName:
+          type: string
+          description: The name associated with the product ID, e.g. Visa Traditional, Visa Signature, Visa Government Purchasing, etc.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#productid">Product Name</a>
+        accountBusName:
+          type: string
+          description: Issuer Name
+        accountRegionCode:
+          type: string
+          description: Issuer Region
+        paymentAccountType:
+          type: string
+          description: Identifier for whether account is a PAN ('P') or Token ('T')
+        issuerBillingCurrCd:
+          type: string
+          description: Issuer Billing Currency Code <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#currencycode">Currency Code</a>
+        accountCtryAlpha2Code:
+          type: string
+          description: Country Code Alpha Code <br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#countrycode">Country Code</a>
+        accountFundingSourceCd:
+          type: string
+          description: The code of account funding source for the card, e.g. Credit, Debit, Prepaid, Charge, Deferred Debit.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#accountfundingsource">Account Funding Source</a>
+        accountFundingSourceSubtypeCd:
+          type: string
+          description: The code for account funding source subtype, such as reloadable and non-reloadable.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#accountfundingsourcesubtype">Account Funding Source Subtype</a>
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

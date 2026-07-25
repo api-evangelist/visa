@@ -1,0 +1,296 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Business Data Corporate Setup API API
+  description: 'Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API.'
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Business Data Corporate Setup API
+  description: 'Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API.'
+paths:
+  cdsapi/commercial/v1/ob/starterdata:
+    post:
+      tags:
+      - Business Data Corporate Setup API
+      summary: Get starter data
+      description: ''
+      operationId: Get starter data
+      requestBody:
+        description: Get starter data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                issuer:
+                  type: object
+                  properties:
+                    bank:
+                      type: array
+                      description: ''
+                      items:
+                        type: object
+                        properties:
+                          bankId:
+                            type: integer
+                            description: '12345'
+                          company:
+                            type: array
+                            description: ''
+                            items:
+                              type: object
+                              properties:
+                                companyId:
+                                  type: integer
+                                  description: '123456789'
+                    metadata:
+                      type: object
+                      properties:
+                        adhoc:
+                          type: string
+                          description: true/false
+                        numberOfRecords:
+                          type: integer
+                          description: '300'
+                      description: ''
+                  description: ''
+            examples:
+              Default:
+                summary: Default
+                value:
+                  issuer:
+                    bank:
+                    - bankId: '200'
+                      company:
+                      - companyId: '8888800000'
+                    metadata:
+                      numberOfRecords: 300
+                      adhoc: 'true'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  starterDataResponse:
+                    type: object
+                    properties:
+                      starterData:
+                        type: object
+                        properties:
+                          starterDataBankResponse:
+                            type: object
+                            properties:
+                              responseMetadata:
+                                type: object
+                                properties:
+                                  nextIndex:
+                                    type: integer
+                                    description: '79411025'
+                                  requestId:
+                                    type: integer
+                                    description: '12345'
+                                  startIndex:
+                                    type: integer
+                                    description: '79411015'
+                                  numberOfRecordsFetched:
+                                    type: integer
+                                    description: '10'
+                                  remainingStarterRecCount:
+                                    type: integer
+                                    description: '866'
+                                description: ''
+                              starterDataRecords:
+                                type: object
+                                properties:
+                                  company:
+                                    type: string
+                                    description: ''
+                                  cardHolder:
+                                    type: string
+                                    description: ''
+                                  department:
+                                    type: string
+                                    description: ''
+                                  cardAccount:
+                                    type: string
+                                    description: ''
+                                description: ''
+                            description: ''
+                        description: ''
+                    description: OK
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    starterData:
+                      starterDataRecords:
+                        cardHolder: []
+                        company:
+                        - city: RICHMOND
+                          effectiveDt: 1233014400000
+                          orgHierManagementInd: 0
+                          optFld1: ''
+                          optFld2: ''
+                          isParticipating: Y
+                          spendingLimit: 18250014
+                          processorId: 1
+                          companyNm: 207-UVA
+                          stateProvCd: VA
+                          federalInd: 0
+                          optFld3: ''
+                          optFld4: ''
+                          mnrGroupId: null
+                          address3: null
+                          address2: 101 N 14TH ST 2ND FL
+                          address1: DEPARTMENT OF ACCOUNTS
+                          isoCtryCd: 840
+                          prmyCntcFirstNm: null
+                          prmyIndustryClsfnCd: 0
+                          cardType: 2
+                          postalCd: '232193684'
+                          sctrCd: null
+                          memberBankId: '6040'
+                          dnbNum: 0
+                          websiteUrlAddr: null
+                          companyId: '3011207'
+                          reportingIsoCurrCd: null
+                          regionId: 1
+                          prmyCntcLastNm: null
+                          emailAddr: null
+                          companyBid: null
+                          secyIndustryClsfnCd: null
+                          issuerNm: BANK OF AMERICA
+                          logoId: null
+                          conversionIsoCurrCd: null
+                        - city: HARTSVILLE
+                          effectiveDt: 1115856000000
+                          orgHierManagementInd: 0
+                          optFld1: null
+                          optFld2: null
+                          isParticipating: N
+                          spendingLimit: 37358470
+                          processorId: 1
+                          companyNm: 'SONOCO PRODUCTS COMPANY                                                         '
+                          stateProvCd: 'SC  '
+                          federalInd: 0
+                          optFld3: null
+                          optFld4: null
+                          mnrGroupId: null
+                          address3: null
+                          address2: MS J25
+                          address1: NORTH 2ND ST
+                          isoCtryCd: 840
+                          prmyCntcFirstNm: null
+                          prmyIndustryClsfnCd: null
+                          cardType: 2
+                          postalCd: '29550330001'
+                          sctrCd: null
+                          memberBankId: '6040'
+                          dnbNum: null
+                          websiteUrlAddr: null
+                          companyId: '6603824'
+                          reportingIsoCurrCd: null
+                          regionId: 1
+                          prmyCntcLastNm: null
+                          emailAddr: null
+                          companyBid: null
+                          secyIndustryClsfnCd: null
+                          issuerNm: FIA CARD SERVICES, N.A.
+                          logoId: null
+                          conversionIsoCurrCd: null
+                        - city: BRANTFORD
+                          effectiveDt: 1225152000000
+                          orgHierManagementInd: 0
+                          optFld1: null
+                          optFld2: null
+                          isParticipating: N
+                          spendingLimit: 2699964
+                          processorId: 1
+                          companyNm: 'SONOCO CANADA CORPORATION                                                       '
+                          stateProvCd: 'ON  '
+                          federalInd: 0
+                          optFld3: null
+                          optFld4: null
+                          mnrGroupId: null
+                          address3: null
+                          address2: null
+                          address1: 33 PARK AVE EAST
+                          isoCtryCd: 124
+                          prmyCntcFirstNm: null
+                          prmyIndustryClsfnCd: null
+                          cardType: 2
+                          postalCd: N3T 5T5
+                          sctrCd: null
+                          memberBankId: '6040'
+                          dnbNum: null
+                          websiteUrlAddr: null
+                          companyId: '6613474'
+                          reportingIsoCurrCd: null
+                          regionId: 1
+                          prmyCntcLastNm: null
+                          emailAddr: null
+                          companyBid: null
+                          secyIndustryClsfnCd: null
+                          issuerNm: FIA CARD SERVICES, N.A.
+                          logoId: null
+                          conversionIsoCurrCd: null
+                        - mgrPhoneNum: null
+                          effectiveDt: 253402214400000
+                          parentHierNode: 000000000030704581
+                          glSubAcctCd: '                                                                            '
+                          partIsoCtryCd: 840
+                          description: 'HENDERSON                               '
+                          partPostalCd: '29550         '
+                          costCtrCd: null
+                          optFld1: null
+                          partAddr2: null
+                          optFld2: null
+                          partAddr3: null
+                          secondHierNodeRep: '0000200'
+                          mgrLastNm: null
+                          partAddr1: 1 N. 2ND ST. MS J22
+                          processorId: 1
+                          partFaxNum: '                '
+                          taskOrderNum: null
+                          partStateCd: SC
+                          mgrTrainingDt: 253402214400000
+                          partFirstNm: SHEILA
+                          optFld3: null
+                          optFld4: null
+                          mgrFirstNm: null
+                          pHiernodeIsNum: 191002135
+                          partPhoneNum: '8433837045      '
+                          memberBankId: '6040'
+                          partLastNm: MULLIS
+                          thirdHierNodeRep: '0000021'
+                          treeId: null
+                          companyId: '6603824'
+                          partCity: HARTSVILLE
+                          regionId: 1
+                          partEmailAddr: null
+                          mgrTitle: null
+                          hierNode: '000000000040704567'
+                        cardAccount: []
+                      responseMetadata:
+                        startIndex: 1
+                        requestId: 10302
+                        numberOfRecordsFetched: 300
+                        nextIndex: 288
+                        remainingStarterRecCount: 2126752
+      x-codegen-request-body-name: Get starter data
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/cdsapi~1commercial~1v1~1ob~1starterdata/post'
+        default: false
+      x-hideTryIt: true
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

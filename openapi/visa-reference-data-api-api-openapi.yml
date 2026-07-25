@@ -1,0 +1,136 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Reference Data API API
+  description: Retrieve reference data values used for offer filtering criteria including merchant categories, countries, and offer types.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Reference Data API
+  description: Retrieve reference data values used for offer filtering criteria including merchant categories, countries, and offer types.
+paths:
+  /vmorc/referencedata/v1/categories:
+    get:
+      operationId: getCategories
+      summary: Get Offer Categories
+      description: Retrieves the list of available offer categories used for filtering offers.
+      tags:
+      - Reference Data API
+      parameters:
+      - name: language
+        in: query
+        description: Language code
+        schema:
+          type: string
+          default: en-us
+      responses:
+        '200':
+          description: Categories retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponse'
+        '401':
+          description: Unauthorized
+  /vmorc/referencedata/v1/countries:
+    get:
+      operationId: getCountries
+      summary: Get Countries
+      description: Retrieves the list of countries where merchant offers are available.
+      tags:
+      - Reference Data API
+      parameters:
+      - name: language
+        in: query
+        description: Language code
+        schema:
+          type: string
+          default: en-us
+      responses:
+        '200':
+          description: Countries retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountriesResponse'
+        '401':
+          description: Unauthorized
+  /vmorc/referencedata/v1/merchants:
+    get:
+      operationId: getMerchants
+      summary: Get Merchants
+      description: Retrieves the list of merchants that have offers available in the VMORC system.
+      tags:
+      - Reference Data API
+      parameters:
+      - name: language
+        in: query
+        description: Language code
+        schema:
+          type: string
+          default: en-us
+      responses:
+        '200':
+          description: Merchants retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantsResponse'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    MerchantsResponse:
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: List of merchants with available offers
+          items:
+            type: object
+            properties:
+              merchantId:
+                type: integer
+                description: Unique identifier for the merchant
+              merchantName:
+                type: string
+                description: Name of the merchant
+    CategoriesResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          description: List of offer categories
+          items:
+            type: object
+            properties:
+              categoryId:
+                type: integer
+                description: Unique identifier for the category
+              categoryName:
+                type: string
+                description: Display name of the category
+    CountriesResponse:
+      type: object
+      properties:
+        countries:
+          type: array
+          description: List of countries with available offers
+          items:
+            type: object
+            properties:
+              countryId:
+                type: integer
+                description: Unique identifier for the country
+              countryName:
+                type: string
+                description: Name of the country
+              countryCode:
+                type: string
+                description: ISO country code
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

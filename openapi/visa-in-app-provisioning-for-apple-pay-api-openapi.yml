@@ -1,0 +1,268 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates In-App Provisioning for Apple Pay API
+  description: In-App Provisioning for Apple Pay
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: In-App Provisioning for Apple Pay
+  description: In-App Provisioning for Apple Pay
+paths:
+  /inapp/provisioning/cardData/applePay:
+    post:
+      tags:
+      - In-App Provisioning for Apple Pay
+      summary: Create Card Data Apple Pay
+      description: Card data for provisioning a Visa Token in ApplePay using vCardId or encrypted card as input
+      operationId: provisionForApplePayUsingPOST
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Create Card Data for ApplePay provisioning using vCardID or Encrypted Card.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplePayProvisioningRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  vCardID: v-123-b25dd0af-2960-420b-8aaa-49b3e466c00f
+                  deviceCert: MIID/TCCA6OgAwIBAgIIMq/qUa9Z2nMwCgYIKoZIzj0EAwIwgYAxNDAyBgNVBAMMK0FwcGxlIFdvcmxkd2lkZSBEZXZlbG9wZXIgUmVsYXRpb25zIENBIC0gRzIxJjAkBgNVBAsMHUFwcGxlIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUzAeFw0xODA2MDEyMjAzMTBaFw0yMDA2MzAyMjAzMTBaMGwxNTAzBgNVBAMMLGVjYy1jcnlwdG8tc2VydmljZXMtZW5jaXBoZXJtZW50X1VDNi1TQU5EQk9YMREwDwYDVQQLDAhBcHBsZVBheTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATGiJjmEMmvOZBGj+tdj2ED7xnc9y1C0vNVaqZva7lvKkbgrfcWdo0/NdIJZ5wDcZ0eBtPuRJ+q/eSP9FLXQ19wo4ICGDCCAhQwDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBSEtoTMOoZichZZlOgao71I3zrfCzBHBggrBgEFBQcBAQQ7MDkwNwYIKwYBBQUHMAGGK2h0dHA6Ly9vY3NwLmFwcGxlLmNvbS9vY3NwMDMtYXBwbGV3d2RyY2EyMDUwggEdBgNVHSAEggEUMIIBEDCCAQwGCSqGSIb3Y2QFATCB/jCBwwYIKwYBBQUHAgIwgbYMgbNSZWxpYW5jZSBvbiB0aGlzIGNlcnRpZmljYXRlIGJ5IGFueSBwYXJ0eSBhc3N1bWVzIGFjY2VwdGFuY2Ugb2YgdGhlIHRoZW4gYXBwbGljYWJsZSBzdGFuZGFyZCB0ZXJtcyBhbmQgY29uZGl0aW9ucyBvZiB1c2UsIGNlcnRpZmljYXRlIHBvbGljeSBhbmQgY2VydGlmaWNhdGlvbiBwcmFjdGljZSBzdGF0ZW1lbnRzLjA2BggrBgEFBQcCARYqaHR0cDovL3d3dy5hcHBsZS5jb20vY2VydGlmaWNhdGVhdXRob3JpdHkvMDYGA1UdHwQvMC0wK6ApoCeGJWh0dHA6Ly9jcmwuYXBwbGUuY29tL2FwcGxld3dkcmNhMi5jcmwwHQYDVR0OBBYEFMNruSHk5gH1LauD+wBI/9sgl/VpMA4GA1UdDwEB/wQEAwIDKDASBgkqhkiG92NkBicBAf8EAgUAMAoGCCqGSM49BAMCA0gAMEUCIQDhL+sL9bcrvAVO3UvswA805EHujfL7iVDrbEuJfOSJoAIgBPKehtuILl9x/SJ5kxReiml1zkJqUB8nTy0UOfUNIIQ=
+                  nonceSignature: QHuLYArUCO2OZevP0rHc99g9RJp4O1dgsZuVpUdlA7zPWqCDhVQo9Mxr1uPS6GVyjZYo3YElIhHRV4Mv3wEJ3hGOaxK1gResup88QWDK1fL0
+                  encCard: eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A
+                  nonce: kauVuA==
+                  tokenServiceProvider: V
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplePayProvisioningResponse'
+              example:
+                vCardID: v-123-b25dd0af-2960-420b-8aaa-49b3e466c00f
+                activationData: TUJQQUMtMS1GSy00MDEyMDAuMS0tVERFQS1CMEQwQjcxNDNFN0M1QTc3M0I5MTc1OTA3RENCMUEzRUNCRENCQjJEMzI2MDBEOEY4RTU5OEI5QzE4OTlGNzA3RjFCMDQ2RDY3RDNDREUwMg==
+                encryptedPassData: V3bICnkm37BmBKEF9FAKK2zh2SvLhe6PqjvJaHS2t0eJaKVL/SfQ8mXOkDN7o4h7ayFmSuBy7A4R9uYWqWdZbo7fc0xOcsQLCgwQdVkW90JHAgL6j9axg26+OxrWyo7T9qm6NBlZzQFAy1oqYmw1tq6QMAEfbv7W6omlZMojl7aJjvzETINq/YXY8Xp76hoMQFsNDpnNfFuAONmCaCm5Vd6a1zW4ULI0SC1OPo8SdiEULTtZQO1XwiMtbD31JkSUhvHAEP2uo9bEeytPQwr82u6lxzzjLhBP30JByQeOJ2y2o/k83XNGanZhlR1yojp9gObw6m/wyj/rfGxMFVhZtzDVFDblgp1NzvCkPx0iyMRTURGLLmzyrLpzwVGIqv39GorEesOL1KtHb15KuwCtawdej3QiL95rPRTW58stEr/PxLh3Bp9AjlV07tJTXdrKNz357j8hLo1AmRv2p8prnZDF0A0j3jn71P68kvwvWhvZ3F+R0sNuC+E16IV1sJrWIlChU4NvcmsLBsv+ewsFqqGquDlpbFc3LuCQhE9PUu6wEGa7Im4e+Cbk79tcg+ZYFS1X4W7sAWLlxM0JzTMWdzSkqydLjiVc9FvoM3gBFrm/1rs7I5CACNg0vyHpXDhPFTM3a9eysWef7qRdTxLIA7CUKDx59r4VTWtGijz1Pwb5uZCnYvZd3i/+T7ra4xZ+9Z6u/nCqfWkZxNTfEfc3NOXte8s=
+                ephemeralPublicKey: BBSV6JzHhqoS0pLO6xMV6Z5yRhoOnpxaLtdjHxb7pPXpmNGra65K3kvUnlwfRTkWjA7v2+rp+/sK/RhLqLdEGok=
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Name on Card not Available. The card referenced in this request is already enrolled but has no nameOnCard value. And, there is no Customer associated with this card so that the nameOnCard can not be derived from Customer name.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-samplePayload:
+        nonce: kauVuA==
+        encCard: eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A
+        vCardID: v-123-b25dd0af-2960-420b-8aaa-49b3e466c00f
+        deviceCert: MIID/TCCA6OgAwIBAgIIMq/qUa9Z2nMwCgYIKoZIzj0EAwIwgYAxNDAyBgNVBAMMK0FwcGxlIFdvcmxkd2lkZSBEZXZlbG9wZXIgUmVsYXRpb25zIENBIC0gRzIxJjAkBgNVBAsMHUFwcGxlIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUzAeFw0xODA2MDEyMjAzMTBaFw0yMDA2MzAyMjAzMTBaMGwxNTAzBgNVBAMMLGVjYy1jcnlwdG8tc2VydmljZXMtZW5jaXBoZXJtZW50X1VDNi1TQU5EQk9YMREwDwYDVQQLDAhBcHBsZVBheTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATGiJjmEMmvOZBGj+tdj2ED7xnc9y1C0vNVaqZva7lvKkbgrfcWdo0/NdIJZ5wDcZ0eBtPuRJ+q/eSP9FLXQ19wo4ICGDCCAhQwDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBSEtoTMOoZichZZlOgao71I3zrfCzBHBggrBgEFBQcBAQQ7MDkwNwYIKwYBBQUHMAGGK2h0dHA6Ly9vY3NwLmFwcGxlLmNvbS9vY3NwMDMtYXBwbGV3d2RyY2EyMDUwggEdBgNVHSAEggEUMIIBEDCCAQwGCSqGSIb3Y2QFATCB/jCBwwYIKwYBBQUHAgIwgbYMgbNSZWxpYW5jZSBvbiB0aGlzIGNlcnRpZmljYXRlIGJ5IGFueSBwYXJ0eSBhc3N1bWVzIGFjY2VwdGFuY2Ugb2YgdGhlIHRoZW4gYXBwbGljYWJsZSBzdGFuZGFyZCB0ZXJtcyBhbmQgY29uZGl0aW9ucyBvZiB1c2UsIGNlcnRpZmljYXRlIHBvbGljeSBhbmQgY2VydGlmaWNhdGlvbiBwcmFjdGljZSBzdGF0ZW1lbnRzLjA2BggrBgEFBQcCARYqaHR0cDovL3d3dy5hcHBsZS5jb20vY2VydGlmaWNhdGVhdXRob3JpdHkvMDYGA1UdHwQvMC0wK6ApoCeGJWh0dHA6Ly9jcmwuYXBwbGUuY29tL2FwcGxld3dkcmNhMi5jcmwwHQYDVR0OBBYEFMNruSHk5gH1LauD+wBI/9sgl/VpMA4GA1UdDwEB/wQEAwIDKDASBgkqhkiG92NkBicBAf8EAgUAMAoGCCqGSM49BAMCA0gAMEUCIQDhL+sL9bcrvAVO3UvswA805EHujfL7iVDrbEuJfOSJoAIgBPKehtuILl9x/SJ5kxReiml1zkJqUB8nTy0UOfUNIIQ=
+        nonceSignature: QHuLYArUCO2OZevP0rHc99g9RJp4O1dgsZuVpUdlA7zPWqCDhVQo9Mxr1uPS6GVyjZYo3YElIhHRV4Mv3wEJ3hGOaxK1gResup88QWDK1fL0
+        tokenServiceProvider: V
+      x-name: Create Card Data for Apple Pay using vCardId or encrypted card
+      x-notes: Card data for provisioning a Visa Token in ApplePay using vCardId or encrypted card
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1inapp~1provisioning~1cardData~1applePay/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    ApplePayProvisioningResponse:
+      title: ApplePayProvisioningResponse
+      required:
+      - activationData
+      - encryptedPassData
+      - ephemeralPublicKey
+      - vCardID
+      type: object
+      properties:
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: Visa-defined unique ID of the card to produce the provisioning card data for.
+        activationData:
+          maxLength: 8192
+          minLength: 0
+          type: string
+          description: Activation data consisting of encrypted nonce, noncesignature, and authCode in base64 format.
+        encryptedPassData:
+          maxLength: 8192
+          minLength: 0
+          type: string
+          description: Authentication data consisting of encrypted PAN, expiry and datetime in base64 format.
+        ephemeralPublicKey:
+          maxLength: 8192
+          minLength: 0
+          type: string
+          description: VISA.ECC.ePK generated while creating MBPAD encryptedInformation. EC point with P-256 curve and uncompressed format. Base64 format.
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/ValidationError'
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
+    ApplePayProvisioningRequest:
+      title: ApplePayProvisioningRequest
+      required:
+      - deviceCert
+      - nonce
+      - nonceSignature
+      type: object
+      properties:
+        nonce:
+          maxLength: 32
+          minLength: 32
+          type: string
+          description: 32 digit random number generated by Apple.
+        encCard:
+          type: string
+          description: "<div>\n<p><code>Conditional.</code> </p>\n  <p> Either of <code>vCardId</code> or <code>encCard</code> is required.</p>\n <p> <code>vCardId</code> will take precedence in case both <code>vCardId</code> and <code>encCard</code> is part of the request body.</p> \n <div> \n <p>Encrypted <code>CardInfo</code></p> <h3>Example</h3> <pre><code>{\n  \"accountNumber\": \"4000000000000000\",\n  \"nameOnCard\": \"Digital Issuance\",\n  \"cvv2\": \"123\",\n  \"expirationDate\": {\n      \"month\": \"01\",\n      \"year\": \"2021\"\n  },\n  \"billingAddress\": {\n    \"name\": \"Digital Issuance\",\n    \"line1\": \"12301 Research Boulevard\",\n    \"line2\": \"Research Boulevard\",\n    \"line3\": \"Visa USA\",\n    \"city\": \"Austin\",\n    \"state\": \"TX\",\n    \"countryCode\": \"US\",\n    \"postalCode\": \"78759\"\n  }\n} </code></pre> <h3>CardInfo Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>accountNumber</td><td>string<br>required<br>minLength: 12<br>maxLength: 18</td><td>PAN (Primary Account Number) of the card to be provisioned or enrolled</td></tr> <tr><td>paymentAccountReference</td><td>string<br>optional</td><td>A Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN</td></tr> <tr><td>cvv2</td><td>string<br>conditional<br>minLength: 3<br>maxLength: 3</td><td>CVV2 value associated with the PAN on the card</td></tr> <tr><td>nameOnCard</td><td>string<br>conditional<br>minLength: 0<br>maxLength: 256</td><td>The full name on the card associated with the issued/enrolled card</td></tr> <tr><td>expirationDate</td><td><code>ExpirationDate</code><br>required</td><td>Cards expiration date</td></tr> <tr><td>billingAddress</td><td><code>Address</code><br>optional</td><td>Billing address associated with the card</td></tr> </tbody> </table> <h3>ExpirationDate Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>month</td><td>string<br>required<br>minLength: 2<br>maxLength: 2</td><td>The month that the card is set to expire</td></tr> <tr><td>year</td><td>string<br>required<br>minLength: 4<br>maxLength: 4</td><td>The year that the card is set to expire</td></tr> </tbody> </table> <h3>Address Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \\\"TX\\\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: "<div>\n<p><code>Conditional.</code> </p>\n  <p> Either of <code>vCardId</code> or <code>encCard</code> is required.</p>\n<p>Visa-defined unique ID of the card to produce the ApplePay provisioning card data for. <code>vCardId</code> will take precedence in case both <code>vCardId</code> and <code>encCard</code> is part of the request body.\n </p></div> \n"
+        deviceCert:
+          maxLength: 8192
+          minLength: 0
+          type: string
+          description: Apple device X.509 certificates received from mobile application.
+        signingKeyID:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: Token service provider specific signing key identifier
+        nonceSignature:
+          maxLength: 512
+          minLength: 0
+          type: string
+          description: Signature signed by Apple on nonce in SE.
+        tokenServiceProvider:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Indicates which token service provider will process the card data generated for provisioning. The default value is "V".
+          enum:
+          - V
+          - M
+    ErrorDetails:
+      title: ErrorDetails
+      type: object
+      properties:
+        message:
+          type: string
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

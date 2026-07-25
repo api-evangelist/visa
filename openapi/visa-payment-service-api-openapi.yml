@@ -1,0 +1,1613 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Payment Service API
+  description: The Payment web service is used for processing payments and sending payment remittance information to the appropriate suppliers.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Payment Service
+  description: The Payment web service is used for processing payments and sending payment remittance information to the appropriate suppliers.
+paths:
+  /vpa/v1/payment/GetPaymentDetailURL:
+    post:
+      tags:
+      - Payment Service
+      summary: Get Payment Detail URL
+      description: ''
+      operationId: Get Payment Detail URL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - originalMessageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                accountNumber:
+                  maxLength: 19
+                  type: string
+                  description: An existing Visa card account. Values- 09. Note- If the account number is passed, it should correspond to the card account number used for the payment.
+                originalMessageId:
+                  maxLength: 36
+                  type: string
+                  description: The messageID of the original process payment request for which the URL is needed.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  originalMessageId: 1486634011147
+                  buyerId: 9999
+                  accountNumber: 411111111111111
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetPaymentURLResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      url:
+                        maxLength: 400
+                        type: string
+                        description: URL for the credential verification application which will authenticate the user before presenting the payment details.
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table below
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GURL001:
+                    type: object
+                    description: URL received successfully.
+                  GURL003:
+                    type: object
+                    description: Invalid Client ID.
+                  GURL004:
+                    type: object
+                    description: Invalid buyer ID
+                  GURL005:
+                    type: object
+                    description: Invalid account number.
+                  GURL025:
+                    type: object
+                    description: Bank or buyer is not subscribed.
+                  GURL030:
+                    type: object
+                    description: Original message ID does not exist.
+                  GURL035:
+                    type: object
+                    description: MessageID is required and cannot be more than 36 characters.
+                  GURL043:
+                    type: object
+                    description: Original message ID is required and cannot be more than 36 characters.
+                  GURL161:
+                    type: object
+                    description: Payment has already expired.
+                  GURL165:
+                    type: object
+                    description: URL generation is in progress.
+                  GURL166:
+                    type: object
+                    description: URL generation failed.
+                  GURL167:
+                    type: object
+                    description: Payment was not processed successfully or is in progress.
+      x-codegen-request-body-name: getpaymenturl
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1payment~1GetPaymentDetailURL/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/payment/GetPaymentDetails:
+    post:
+      tags:
+      - Payment Service
+      summary: Get Payment Details
+      description: ''
+      operationId: Get Payment Details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - resultSetNo
+              type: object
+              properties:
+                status:
+                  maxLength: 1
+                  type: string
+                  description: Status of payment.  If you would like to get the details of payments in a particular status, you can pass it in this field.  The status will be used along with the date range filter if specified to get the payments.  <br> Valid values are M-Matched, U- UnMatched, R-Rejected, E-Expired, O-Error, A-All, C-Canceled.
+                toDate:
+                  maxLength: 8
+                  type: string
+                  description: Specifies the end of date range. Format is MMDDYYYY
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                fromDate:
+                  maxLength: 8
+                  type: string
+                  description: Specifies the beginning of date range for which the payment details is requested. Format is MMDDYYYY. If "FromDate" and "ToDate" is not provided, the system will retrieve the last 9 months data. <br> <br>Note-  The system retrieves only last 250 payments made during the specified date range sent in the initial request. User can make subsequent calls to retrieve additional data.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                resultSetNo:
+                  maxLength: 3
+                  type: string
+                  description: Result Set Number.
+                trackingNumber:
+                  maxLength: 36
+                  type: string
+                  description: The MessageID of the original process payment request for which the payment is needed.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  fromDate: 02082017
+                  clientId: B2BWS_1_1_9999
+                  toDate: 02082017
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  resultSetNo: '1'
+                  buyerId: 9999
+                  trackingNumber: 9999999958
+                  status: A
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GetPaymentResponse:
+                    required:
+                    - hasMoreElements
+                    - messageId
+                    - resultSetNo
+                    - statusCode
+                    - statusDesc
+                    - totalRecordCount
+                    type: object
+                    properties:
+                      payments:
+                        required:
+                        - accountNumber
+                        - currencyCode
+                        - paymentExpiryDate
+                        - paymentGrossAmount
+                        type: object
+                        properties:
+                          invoices:
+                            type: array
+                            description: This complex element contains the details about the invoices associated with the payment.
+                            items:
+                              type: object
+                              properties:
+                                invoiceDate:
+                                  maxLength: 10
+                                  type: string
+                                  description: This contains the date of the invoice being paid. Format is yyyy-MM-dd
+                                invoiceAmount:
+                                  type: number
+                                  description: Invoice amount. maximum length is 16. Maximum number of decimals is two.Format is XXXXXXXXXX9999.99
+                                invoiceNumber:
+                                  maxLength: 30
+                                  type: string
+                                  description: Invoice Number.
+                                purchaseOrderDate:
+                                  maxLength: 10
+                                  type: string
+                                  description: 'This contains the date on which the  purchase order was created. Format is YYYY-MM-DD '
+                                purchaseOrderNumber:
+                                  maxLength: 20
+                                  type: string
+                                  description: This contains the purchase order number associated with the invoice.
+                                partialPaymentIndicator:
+                                  maxLength: 3
+                                  type: string
+                                  description: This field is used to indicate a partial payment. Valid values are Yes, No.
+                          supplier:
+                            required:
+                            - supplierID
+                            type: object
+                            properties:
+                              supplierID:
+                                maxLength: 30
+                                type: string
+                                description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                              supplierName:
+                                maxLength: 50
+                                type: string
+                                description: Name of supplier to be paid. It is mandatory for new suppliers.
+                              primaryEmailAddress:
+                                maxLength: 70
+                                type: string
+                                description: Email address
+                              alternateEmailAddresses:
+                                type: array
+                                description: This complex element can have up to five alternate email addresses.
+                                items:
+                                  type: object
+                                  properties:
+                                    localAlternateEmailAddress:
+                                      maxLength: 70
+                                      type: string
+                                      description: Supplier CC email address.
+                            description: Supplier Class
+                          paymentType:
+                            maxLength: 1
+                            type: string
+                            description: "Type of payment processing- \n  1 - Payment Instruction \n  2 - Payment Requisition"
+                          currencyCode:
+                            maxLength: 3
+                            type: string
+                            description: Payment currency code.  ISO alpha currency code will be returned in the response.
+                          accountNumber:
+                            maxLength: 19
+                            type: string
+                            description: Account number used for making the payment.
+                          manualMatchStatus:
+                            maxLength: 10
+                            type: string
+                            description: 'Valid values are I or G - Reconciled    U - Unreconciled      P - Partially Reconciled   Y - Forcibly Reconciled   '
+                          paymentExpiryDate:
+                            maxLength: 10
+                            type: string
+                            description: 'The date by which a supplier must collect this payment. Format is YYYY-MM-DD.  '
+                          systemMatchStatus:
+                            maxLength: 10
+                            type: string
+                            description: Valid values are Matched, Unmatched, and Expired.
+                          paymentDescription:
+                            type: string
+                            description: Description of the payment.
+                          paymentGrossAmount:
+                            maxLength: 16
+                            type: string
+                            description: Payment gross amount.  Format is 99999999999999.99
+                          paymentRequestDate:
+                            maxLength: 10
+                            type: string
+                            description: 'Payment requested date. Format is YYYY-MM-DD. '
+                        description: Payments Class.
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method.  For the details of the various error codes returned for this method refer to the "Error Codes" table below.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      resultSetNo:
+                        maxLength: 3
+                        type: string
+                        description: Result Set Number.
+                      hasMoreElements:
+                        maxLength: 1
+                        type: string
+                        description: Value is "Y" if more records available. Value is "N" if there are no more records available.
+                      totalRecordCount:
+                        maxLength: 20
+                        type: string
+                        description: Total Payment Records Count for the requested parameters.
+                    description: OK
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  GPD002:
+                    type: object
+                    description: Message id is not Unique
+                  GPD005:
+                    type: object
+                    description: Message ID is required.
+                  GPD006:
+                    type: object
+                    description: Message ID cannot be more than 36 characters.
+                  GPD007:
+                    type: object
+                    description: Message ID is duplicate.
+                  GPD008:
+                    type: object
+                    description: Client ID is required.
+                  GPD009:
+                    type: object
+                    description: Client ID cannot be more than 25 characters.
+                  GPD010:
+                    type: object
+                    description: Invalid client ID.
+                  GPD011:
+                    type: object
+                    description: Buyer ID is required.
+                  GPD012:
+                    type: object
+                    description: Buyer ID cannot be more than 15 characters.
+                  GPD013:
+                    type: object
+                    description: Invalid buyer ID.
+                  GPD539:
+                    type: object
+                    description: Get Payment Details completed successfully.
+                  GPD540:
+                    type: object
+                    description: Get Payment Details failed with error.
+                  GPD541:
+                    type: object
+                    description: Tracking number does not belong to this buyer.
+                  GPD542:
+                    type: object
+                    description: Tracking number contains invalid characters.
+                  GPD543:
+                    type: object
+                    description: Tracking number should not be more than 10 characters.
+                  GPD544:
+                    type: object
+                    description: Tracking number does not exist in the system.
+                  GPD545:
+                    type: object
+                    description: Status code contains invalid characters.
+                  GPD546:
+                    type: object
+                    description: Invalid status code.
+                  GPD547:
+                    type: object
+                    description: Status code should not be more than 1 character.
+                  GPD548:
+                    type: object
+                    description: Invalid From Date format.
+                  GPD549:
+                    type: object
+                    description: From Date should not be more than 6 characters.
+                  GPD550:
+                    type: object
+                    description: From Date should not be in the future.
+                  GPD551:
+                    type: object
+                    description: From Date contains invalid characters.
+                  GPD552:
+                    type: object
+                    description: Invalid To Date format.
+                  GPD553:
+                    type: object
+                    description: To Date should not be more than 6 characters.
+                  GPD554:
+                    type: object
+                    description: To Date should not be in the past.
+                  GPD555:
+                    type: object
+                    description: To Date contains invalid characters.
+                  GPD556:
+                    type: object
+                    description: To Date should be greater than From Date
+                  GPD602:
+                    type: object
+                    description: The value you passed in the ResultSetNo field is invalid
+      x-codegen-request-body-name: getpaymentdetails
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1payment~1GetPaymentDetails/post'
+        default: false
+  /vpa/v1/payment/ResendPayment:
+    post:
+      tags:
+      - Payment Service
+      summary: Resend Payment
+      description: ''
+      operationId: Resend Payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - originalMessageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                emailNotes:
+                  maxLength: 256
+                  type: string
+                  description: This contains the text to be included on email notifications and remittance advice.  If this field is not provided, the value from the original request will be used.
+                accountNumber:
+                  maxLength: 19
+                  type: string
+                  description: An existing Visa card account. Values are 09. Note- If the account number is passed, it should correspond to the card account number used for the payment.
+                expirationDate:
+                  maxLength: 10
+                  type: string
+                  description: The date by which a supplier must collect his payment. Format is YYYY-MM-DD
+                originalMessageId:
+                  maxLength: 36
+                  type: string
+                  description: The messageID of the original process payment request that is being resent.
+                primaryEmailAddress:
+                  maxLength: 70
+                  type: string
+                  description: This contains the email address for the supplier that will receive the payment instruction. It must be a valid email address. If the primary email address is provided, the payment advice will be sent to the new primary email address provided in the request. If it is not, the email address in the original request will be used.
+                alternateEmailAddresses:
+                  type: array
+                  description: This complex element will contain up to five alternate email addresses.
+                  items:
+                    type: object
+                    properties:
+                      localAlternateEmailAddress:
+                        maxLength: 70
+                        type: string
+                        description: Supplier CC email address.
+                supplierProfileUpdateIndicator:
+                  maxLength: 1
+                  type: string
+                  description: This field contains value as Y if supplier profile has to be updated and N if supplier profile should not be updated. By default, the system will not update the supplier profile with the new values sent in the request.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  alternateEmailAddresses:
+                  - alternateEmailAddress: aaa1@bbb.com
+                  - alternateEmailAddress: aaa2@bbb.com
+                  - alternateEmailAddress: aaa3@bbb.com
+                  - alternateEmailAddress: aaa4@bbb.com
+                  - alternateEmailAddress: aaa5@bbb.com
+                  emailNotes: resend payment
+                  clientId: B2BWS_1_1_9999
+                  supplierProfileUpdateIndicator: Y
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  originalMessageId: 1486626459243
+                  buyerId: 9999
+                  accountNumber: 4111111111111111
+                  primaryEmailAddress: aaa@bbb.com
+                  expirationDate: '2017-03-30'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ResendResponse:
+                    required:
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  RSP001:
+                    type: object
+                    description: Resend Payment initiated successfully.
+                  RSP003:
+                    type: object
+                    description: Invalid Client ID.
+                  RSP004:
+                    type: object
+                    description: Invalid buyer ID.
+                  RSP005:
+                    type: object
+                    description: Invalid account number.
+                  RSP012:
+                    type: object
+                    description: Invalid primary email address.
+                  RSP013:
+                    type: object
+                    description: Invalid alternate email address.
+                  RSP025:
+                    type: object
+                    description: Bank is not subscribed.
+                  RSP029:
+                    type: object
+                    description: Original message ID and account number do not match.
+                  RSP030:
+                    type: object
+                    description: Original message ID does not exist.
+                  RSP035:
+                    type: object
+                    description: Invalid message ID.
+                  RSP043:
+                    type: object
+                    description: Invalid original message ID.
+                  RSP049:
+                    type: object
+                    description: ExpirationDate is invalid. Supported date format is YYYY-MM-DD.
+                  RSP161:
+                    type: object
+                    description: Payment has already expired.
+                  RSP162:
+                    type: object
+                    description: SupplierProfileUpdateIndicator is invalid.
+                  RSP163:
+                    type: object
+                    description: PrimaryEmailAddress is required.
+                  RSP167:
+                    type: object
+                    description: Payment was not processed successfully or is in progress.
+                  RSP173:
+                    type: object
+                    description: Invalid email notes.
+                  RSP182:
+                    type: object
+                    description: Invalid alternate address tag.
+                  RSP186:
+                    type: object
+                    description: Expiration Date is invalid. Expiration Date cannot be past date
+                  RSP029a:
+                    type: object
+                    description: Original message ID and account number do not match.
+      x-codegen-request-body-name: resendpayment
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1payment~1ResendPayment/post'
+        default: false
+  /pop/v1/recipes/processPayment:
+    post:
+      tags:
+      - Payment Service
+      summary: Process Payment - Recipe
+      description: ProcessPayment Recipe API
+      requestBody:
+        description: Process payment request payload
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessPaymentRequestDTO'
+            examples:
+              Process Payment Recipe:
+                summary: Process Payment Recipe
+                value:
+                  actionType: 1
+                  corporate_internal_id: 1-2-3029-11181
+                  payment:
+                    cardAccountExpiryDate: 10/2025
+                    paymentExpiryDate: '2025-03-10'
+                    accountLimit: 100
+                    invoices:
+                    - purchaseOrderDate: '2017-02-01'
+                      purchaseOrderNumber: PO1234
+                      invoiceNumber: INV01
+                      invoiceAmount: 100
+                      invoiceDate: '2017-02-01'
+                    - purchaseOrderDate: '2017-03-01'
+                      purchaseOrderNumber: PO1234
+                      invoiceNumber: INV02
+                      invoiceAmount: 200
+                      invoiceDate: '2017-03-01'
+                    supplier:
+                      supplierName: TestVPASupplier111111
+                      alternateEmailAddresses:
+                      - alternateEmailAddress: aaa1@bbb.com
+                      - alternateEmailAddress: aaa2@bbb.com
+                      - alternateEmailAddress: aaa3@bbb.com
+                      - alternateEmailAddress: aaa4@bbb.com
+                      - alternateEmailAddress: aaa5@bbb.com
+                      emailNotes: Email Notes
+                      supplierID: 111111
+                      supplierCity: Austin
+                      supplierAddressLine2: Address2
+                      supplierAddressLine1: Address1
+                      supplierState: TX
+                      supplierCountryCode: USA
+                      supplierPostalCode: 78759
+                      primaryEmailAddress: aaa@bbb.com
+                    accountType: 1
+                    accountNumber: 48X7XXXX6XX7XX369
+                    currencyCode: USD
+                    paymentGrossAmount: 300
+                    paymentRequestDate: '2017-02-01'
+                    paymentType: CCC
+                  buyerId: 11181
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '201':
+          description: Created
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: processPaymentRequestDTO
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1pop~1v1~1recipes~1processPayment/post'
+        default: false
+      x-hideTryIt: true
+  /vpa/v1/payment/CancelPayment:
+    post:
+      tags:
+      - Payment Service
+      summary: Cancel Payment
+      description: ''
+      operationId: Cancel Payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - buyerId
+              - clientId
+              - messageId
+              - originalMessageId
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 15
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                clientId:
+                  maxLength: 50
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                cancelReason:
+                  maxLength: 255
+                  type: string
+                  description: Contains the reason for canceling the payment.
+                accountNumber:
+                  maxLength: 19
+                  type: string
+                  description: An existing Visa card account. Values are  09. Note- If the account number is passed, it should correspond to the card account number used for the payment.
+                originalMessageId:
+                  maxLength: 36
+                  type: string
+                  description: The messageId of the original process payment request that is being canceled.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  clientId: B2BWS_1_1_9999
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  originalMessageId: 9999999958
+                  buyerId: 9999
+                  cancelReason: cancel payment
+                  accountNumber: 4111111111111111
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  CancelResponse:
+                    required:
+                    - grossAmount
+                    - messageID
+                    - statusCode
+                    - statusDesc
+                    - supplierName
+                    type: object
+                    properties:
+                      messageID:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request.
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error codes returned for this method refer to the "Error Codes" table
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      supplierID:
+                        maxLength: 20
+                        type: string
+                        description: Identifier used by the buyer to identify the supplier. This is the supplier id of the supplier whose payment is being canceled.
+                      grossAmount:
+                        maxLength: 50
+                        type: string
+                        description: Contains the payment gross amount of the payment being cancelled
+                      supplierName:
+                        maxLength: 50
+                        type: string
+                        description: Name of supplier whose payment is being canceled.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  CP002:
+                    type: object
+                    description: The message ID sent in the request should be unique for each request.
+                  CP003:
+                    type: object
+                    description: The client ID sent in the request is not found in the system.
+                  CP004:
+                    type: object
+                    description: The buyer information sent in the request is not set up in the system.
+                  CP025:
+                    type: object
+                    description: The bank or buyer has not been set up in VPA yet.
+                  CP029:
+                    type: object
+                    description: The account number and the original message ID combination is not found in the system.
+                  CP030:
+                    type: object
+                    description: The original message ID sent in the request is not be found in the system.
+                  CP031:
+                    type: object
+                    description: The payment identified by the original message ID has already been collected by the supplier.
+                  CP032:
+                    type: object
+                    description: Cancel payment is not supported for DPS buyers.
+                  CP037:
+                    type: object
+                    description: A system error occurred while canceling the payment. Please try your request after sometime. If the issue persist, contact your system administrator.
+                  CP038:
+                    type: object
+                    description: Cancel payment is not supported for STP payments.
+                  CP161:
+                    type: object
+                    description: The payment identified by the original message ID has already been canceled.
+                  CP162:
+                    type: object
+                    description: Payment is already canceled.
+                  CP167:
+                    type: object
+                    description: The payment identified by the original message ID cannot be canceled because the original payment was not processed successfully.
+      x-codegen-request-body-name: cancelPayment
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1payment~1CancelPayment/post'
+        default: false
+  /vpa/v1/payment/ProcessPayments:
+    post:
+      tags:
+      - Payment Service
+      summary: Process Payments
+      description: ''
+      operationId: Process Payments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - actionType
+              - buyerId
+              - clientId
+              - messageId
+              - payment
+              type: object
+              properties:
+                buyerId:
+                  maxLength: 25
+                  type: string
+                  description: Buyer ID is the buyer identifier as defined in Visa Payables Automation. Value format is 09.
+                payment:
+                  required:
+                  - currencyCode
+                  - paymentGrossAmount
+                  type: object
+                  properties:
+                    invoices:
+                      type: array
+                      description: This complex element contains the details about the invoice associated with the payment.
+                      items:
+                        type: object
+                        properties:
+                          invoiceDate:
+                            maxLength: 10
+                            type: string
+                            description: This contains the date of the invoice being paid. Format is MM/DD/YY.
+                          invoiceAmount:
+                            maxLength: 16
+                            type: string
+                            description: Invoice amount. maximum length is 16. Maximum number of decimals is two. Format is XXXXXXXXXX9999.99
+                          invoiceNumber:
+                            maxLength: 30
+                            type: string
+                            description: Invoice Number.
+                          referenceFields:
+                            type: array
+                            description: Reference value which the buyer wants to pass as part of the payment. The buyer can send any reference information about the payment as part of this field.  This field value can be optionally included in email notifications to suppliers and in the reconciliation file.
+                            items:
+                              type: string
+                          purchaseOrderDate:
+                            maxLength: 10
+                            type: string
+                            description: This contains the date on which the  purchase order was created. Format is MM/DD/YY.
+                          purchaseOrderNumber:
+                            maxLength: 20
+                            type: string
+                            description: This contains the purchase order number associated with the invoice.
+                          partialPaymentIndicator:
+                            maxLength: 3
+                            type: string
+                            description: This field is used to indicate a partial payment. Valid values are Yes, No.
+                    supplier:
+                      required:
+                      - supplierID
+                      type: object
+                      properties:
+                        STPID:
+                          maxLength: 19
+                          type: string
+                          description: STP ID to be associated with supplier of type STP. Format- 09. STPID is required new STP suppliers.  You can get the STPID for the supplier you want to pay using the supplier matching service.
+                        emailNotes:
+                          maxLength: 10
+                          type: string
+                          description: This contains the text to be included on email notifications and remittance advice.
+                        supplierID:
+                          maxLength: 30
+                          type: string
+                          description: Identifier used by the buyer to identify the supplier. This has to be unique for a buyer. It cannot contain spaces.
+                        supplierCity:
+                          maxLength: 50
+                          type: string
+                          description: Supplier city.
+                        supplierName:
+                          maxLength: 50
+                          type: string
+                          description: Name of supplier to be paid. It is mandatory for new suppliers.
+                        supplierState:
+                          maxLength: 1
+                          type: string
+                          description: Supplier state.
+                        eftAchSupplierID:
+                          maxLength: 8
+                          type: string
+                          description: EFT/ACH Supplier id in the Invapay system.
+                        supplierPostalCode:
+                          maxLength: 20
+                          type: string
+                          description: Supplier postal code. It is mandatory for new suppliers and only if the country mandates it.
+                        primaryEmailAddress:
+                          maxLength: 70
+                          type: string
+                          description: Email address
+                        supplierCountryCode:
+                          maxLength: 3
+                          type: string
+                          description: Supplier country code. It is alphanumeric. VPA supports all ISO alphanumeric country code.For example- USA.
+                        supplierAddressLine1:
+                          maxLength: 100
+                          type: string
+                          description: Supplier address line 1.
+                        supplierAddressLine2:
+                          maxLength: 100
+                          type: string
+                          description: Supplier address line 2.
+                        alternateEmailAddresses:
+                          type: array
+                          description: This complex element can have up to five alternate email addresses.
+                          items:
+                            type: object
+                            properties:
+                              localAlternateEmailAddress:
+                                maxLength: 70
+                                type: string
+                                description: Supplier CC email address.
+                        supplierProfileUpdateIndicator:
+                          maxLength: 1
+                          type: string
+                          description: Y  Implies that supplier profile has to be updated.  N  Implies that supplier profile should not be updated.  By default, it will not update the supplier profile.
+                      description: Supplier Class
+                    accountType:
+                      maxLength: 1
+                      type: string
+                      description: "Account Type.  Valid values are-<br>  \n  1- Lodged Adjustable Limit account  <br>\n  2- Lodged account.  <br> \n  Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made."
+                    paymentType:
+                      maxLength: 3
+                      type: string
+                      description: Payment type.  Valid values are <br>  CCC - Credit Card Payment <br>  STP - Straight Through Processing payment
+                    accountLimit:
+                      maxLength: 16
+                      type: string
+                      description: Credit limit of the account. <br>   Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made.
+                    currencyCode:
+                      maxLength: 3
+                      type: string
+                      description: Payment Currencye Code.  A valid ISO alpha currency code should be passed.  If the currency passed is not one of the supported currencies setup in the buyer profile, the payment will be rejected.
+                    accountNumber:
+                      maxLength: 19
+                      type: string
+                      description: "Account number can be an existing Visa account, a new account in the VPA system, or a proxy number. If this column is blank, the following logic is used for determining the account number <br>\n\n  1. Lodged account is used if there is one for the supplier.<br>\n\n  2. If the supplier does not have a lodged card account, system should\npick the card account from the pool based on the matrix in Account Picking logic table."
+                    expirationDate:
+                      maxLength: 7
+                      type: string
+                      description: Account's expiry date.  Note-  This field is required only if the account is a new account which is not already lodged to the supplier for which the payment is made.
+                    paymentExpiryDate:
+                      maxLength: 10
+                      type: string
+                      description: The date by which a supplier must collect a payment. Format is YYYY-MM-DD.
+                    paymentDescription:
+                      maxLength: 100
+                      type: string
+                      description: Description of the payment.
+                    paymentGrossAmount:
+                      maxLength: 16
+                      type: string
+                      description: Payment gross amount.  Format is 99999999999999.99
+                    paymentRequestDate:
+                      maxLength: 10
+                      type: string
+                      description: Payment requested date.  If this field is blank, system will set the current date as the payment request date.Format is YYYY-MM-DD.
+                  description: Payment Class
+                clientId:
+                  maxLength: 25
+                  type: string
+                  description: Client ID field is a unique identification of the financial institution. This will be provided by Visa at the time of setup.
+                messageId:
+                  maxLength: 36
+                  type: string
+                  description: Unique identifier for this request.  Each request sent to VPA requires its own unique ID.
+                actionType:
+                  maxLength: 1
+                  type: string
+                  description: "Type of payment processing. \n  1 - Payment Instruction  \n  2 - Payment Requisition"
+                paymentDescription:
+                  maxLength: 100
+                  type: string
+                  description: Description of the payment.
+            examples:
+              Default:
+                summary: Default
+                value:
+                  actionType: 1
+                  clientId: B2BWS_1_1_9999
+                  messageId: '2017-04-06T03:47:20.000Z'
+                  payment:
+                    cardAccountExpiryDate: 10/2022
+                    paymentExpiryDate: '2017-03-10'
+                    accountLimit: 100
+                    invoices:
+                    - purchaseOrderDate: '2017-02-01'
+                      purchaseOrderNumber: PO1234
+                      invoiceNumber: INV01
+                      invoiceAmount: 100
+                      invoiceDate: '2017-02-01'
+                    - purchaseOrderDate: '2017-03-01'
+                      purchaseOrderNumber: PO1234
+                      invoiceNumber: INV02
+                      invoiceAmount: 200
+                      invoiceDate: '2017-03-01'
+                    supplier:
+                      supplierName: TestVPASupplier111111
+                      alternateEmailAddresses:
+                      - alternateEmailAddress: aaa1@bbb.com
+                      - alternateEmailAddress: aaa2@bbb.com
+                      - alternateEmailAddress: aaa3@bbb.com
+                      - alternateEmailAddress: aaa4@bbb.com
+                      - alternateEmailAddress: aaa5@bbb.com
+                      emailNotes: Email Notes
+                      supplierID: 111111
+                      supplierCity: Austin
+                      supplierAddressLine2: Address2
+                      supplierAddressLine1: Address1
+                      supplierState: TX
+                      supplierCountryCode: USA
+                      supplierPostalCode: 78759
+                      primaryEmailAddress: aaa@bbb.com
+                    accountType: 2
+                    accountNumber: 4111111111111111
+                    currencyCode: USD
+                    paymentGrossAmount: 200
+                    paymentRequestDate: '2017-02-01'
+                    paymentType: CCC
+                  buyerId: 9999
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ProcessResponse:
+                    required:
+                    - expirationDate
+                    - messageId
+                    - statusCode
+                    - statusDesc
+                    type: object
+                    properties:
+                      messageId:
+                        maxLength: 36
+                        type: string
+                        description: Unique identifier which was sent in the request
+                      statusCode:
+                        maxLength: 6
+                        type: string
+                        description: Status code of the response. It is alphanumeric. The values are specific to each method. For the details of the various error code returned for this method refer to the "Error Codes" table below.
+                      statusDesc:
+                        maxLength: 255
+                        type: string
+                        description: Status description of the response.
+                      accountNumber:
+                        maxLength: 19
+                        type: string
+                        description: Account number used for processing the payment. The account number will be masked in the response if the corresponding Client ID is configured to be masked.
+                      expirationDate:
+                        maxLength: 7
+                        type: string
+                        description: The date the card account expires. Format is MM/YYYY Note- The card account expiration date is sent for all Payment Requisitions and Single Use Account payments.
+                    description: Success
+        '400':
+          description: Error Codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  PP001:
+                    type: object
+                    description: Successfully processed.
+                  PP002:
+                    type: object
+                    description: Message ID is not unique.
+                  PP003:
+                    type: object
+                    description: Invalid Client ID.
+                  PP004:
+                    type: object
+                    description: Invalid buyer.
+                  PP005:
+                    type: object
+                    description: Invalid card account number.
+                  PP006:
+                    type: object
+                    description: Invalid payment amount.
+                  PP007:
+                    type: object
+                    description: Invalid payment date.
+                  PP008:
+                    type: object
+                    description: Invalid supplier ID.
+                  PP009:
+                    type: object
+                    description: Invalid currency code.
+                  PP010:
+                    type: object
+                    description: Buyer does not match with the issuer.
+                  PP011:
+                    type: object
+                    description: Account number does not match with the buyer.
+                  PP012:
+                    type: object
+                    description: Invalid primary email address
+                  PP013:
+                    type: object
+                    description: Invalid alternate email address
+                  PP014:
+                    type: object
+                    description: Invalid invoice number
+                  PP015:
+                    type: object
+                    description: Invalid invoice date.
+                  PP016:
+                    type: object
+                    description: Internal error.
+                  PP019:
+                    type: object
+                    description: Failed to set payment control.
+                  PP020:
+                    type: object
+                    description: Payment control validation failed.
+                  PP021:
+                    type: object
+                    description: Payment control validation failed.
+                  PP022:
+                    type: object
+                    description: Card account is currently being used for other transaction.
+                  PP024:
+                    type: object
+                    description: Payment gross amount not equal to sum of invoice amounts.
+                  PP025:
+                    type: object
+                    description: Bank or buyer not subscribed for the service.
+                  PP027:
+                    type: object
+                    description: Request is already processed.
+                  PP031:
+                    type: object
+                    description: Payment control cannot be added as the account already has 10 exact match rules set.
+                  PP032:
+                    type: object
+                    description: Transaction amount should be greater than zero.
+                  PP035:
+                    type: object
+                    description: Invalid message ID.
+                  PP036:
+                    type: object
+                    description: Invalid invoice amount.
+                  PP037:
+                    type: object
+                    description: Invalid supplier name.
+                  PP038:
+                    type: object
+                    description: Invalid supplier city.
+                  PP039:
+                    type: object
+                    description: Invalid supplier state.
+                  PP040:
+                    type: object
+                    description: Invalid supplier country.
+                  PP041:
+                    type: object
+                    description: Invalid supplier postal code.
+                  PP042:
+                    type: object
+                    description: Invalid supplier address line.
+                  PP046:
+                    type: object
+                    description: Payment currency code does not match with buyer’s configured currency code.
+                  PP047:
+                    type: object
+                    description: Invalid action type.
+                  PP049:
+                    type: object
+                    description: Invalid payment expiration date.
+                  PP050:
+                    type: object
+                    description: Supplier ID is required.
+                  PP051:
+                    type: object
+                    description: SupplierID is not associated with any STP supplier.
+                  PP052:
+                    type: object
+                    description: Incorrect supplier and STP ID combination.
+                  PP053:
+                    type: object
+                    description: STP ID does not exist.
+                  PP055:
+                    type: object
+                    description: STP supplier ID not exist.
+                  PP056:
+                    type: object
+                    description: Invalid STP supplier ID.
+                  PP057:
+                    type: object
+                    description: Invoice tag is mandatory.
+                  PP058:
+                    type: object
+                    description: Invalid purchase order number.
+                  PP059:
+                    type: object
+                    description: Invalid purchase order date.
+                  PP060:
+                    type: object
+                    description: Invalid email notes.
+                  PP061:
+                    type: object
+                    description: Invalid reference fields.
+                  PP062:
+                    type: object
+                    description: Account expiry date is not available for the card.
+                  PP063:
+                    type: object
+                    description: Payment expiration date provided is in the past.
+                  PP064:
+                    type: object
+                    description: No single use card accounts available.
+                  PP065:
+                    type: object
+                    description: Invalid card (VRZ card) when processor interaction is disabled.
+                  PP066:
+                    type: object
+                    description: Supplier is inactive for this payment.
+                  PP067:
+                    type: object
+                    description: Corporate available balance validation failed.
+                  PP068:
+                    type: object
+                    description: Corporate available balance for buyer is locked by another process.
+                  PP069:
+                    type: object
+                    description: CyberSource communication error.
+                  PP075:
+                    type: object
+                    description: CyberSource request 200- The authorization request was approved by the issuing bank but declined by CyberSource because it did not pass the Address Verification Service (AVS) check.
+                  PP076:
+                    type: object
+                    description: CyberSource request 201- The issuing bank has questions about the request. You do not receive an authorization code programmatically but you might receive one verbally by calling the processor.
+                  PP077:
+                    type: object
+                    description: CyberSource request 202- Expired card. You might also receive this if the expiration date you provided does not match the date the issuing bank has on file.
+                  PP078:
+                    type: object
+                    description: CyberSource request 203- General decline of the card. No other information provided by the issuing bank.
+                  PP079:
+                    type: object
+                    description: CyberSource request 208- Inactive card or card not authorized for card-not- present transactions.
+                  PP080:
+                    type: object
+                    description: CyberSource request 231- Invalid account number.
+                  PP081:
+                    type: object
+                    description: CyberSource request 232- The card type is not accepted by the payment processor.
+                  PP082:
+                    type: object
+                    description: CyberSource request 233- General decline by the processor.
+                  PP083:
+                    type: object
+                    description: CyberSource request 234- There is a problem with your CyberSource merchant configuration.
+                  PP084:
+                    type: object
+                    description: CyberSource request 236- Processor failure.
+                  PP085:
+                    type: object
+                    description: CyberSource request 238- CyberSource request 101- The authorization has already been captured.
+                  PP086:
+                    type: object
+                    description: CyberSource request 240- The card type sent is invalid or does not correlate with the credit card number.
+                  PP087:
+                    type: object
+                    description: CyberSource request 250- The request was received but there was a timeout at the payment processor.
+                  PP088:
+                    type: object
+                    description: Processor interaction failed.
+                  PP096:
+                    type: object
+                    description: Account for STP payment should not have VPC enabled.
+                  PP097:
+                    type: object
+                    description: Payment control interaction failed.
+                  PP098:
+                    type: object
+                    description: Account currency code does not match with payment currency code.
+                  PP163:
+                    type: object
+                    description: Primary email address is required if supplier enabled for notification.
+                  PP170:
+                    type: object
+                    description: Invalid payment description.
+                  PP171:
+                    type: object
+                    description: Invalid payment date.
+                  PP174:
+                    type: object
+                    description: Bank and buyer product type is not matching.
+                  PP175:
+                    type: object
+                    description: Problem while setting the gross amount rule in VPC.
+                  PP176:
+                    type: object
+                    description: Account is registered in VPC but not enabled for VPC.
+                  PP177:
+                    type: object
+                    description: Supplier should be of type STP to process STP payments.
+                  PP178:
+                    type: object
+                    description: Payment requisition is disabled.
+                  PP179:
+                    type: object
+                    description: Account is deleted.
+                  PP181:
+                    type: object
+                    description: Invalid reference tag.
+                  PP182:
+                    type: object
+                    description: Invalid alternate address tag.
+                  PP183:
+                    type: object
+                    description: Failure to remove payment control.
+                  PP184:
+                    type: object
+                    description: Either bank or buyer is not having STP participation enabled.
+                  PP185:
+                    type: object
+                    description: No card account available in pool.
+                  PP186:
+                    type: object
+                    description: The account type sent in the web service request is invalid.
+                  PP561:
+                    type: object
+                    description: The month you have entered for the card expiry date is invalid. Please enter a valid month.
+                  PP562:
+                    type: object
+                    description: The card expiry date you have entered is in the past. Please enter a future date.
+                  PP563:
+                    type: object
+                    description: The year you have entered for the card expiry date is invalid. Please enter a valid year.
+                  PP564:
+                    type: object
+                    description: Account number field is mandatory when expiration date is provided.
+                  PP565:
+                    type: object
+                    description: The card expiry date sent in the request is invalid. Please correct and re-submit.
+                  PP566:
+                    type: object
+                    description: Card expiration date field is mandatory for a new card account in the request.
+                  PP567:
+                    type: object
+                    description: Payment Requisition requires a valid proxy account number.
+                  PP568:
+                    type: object
+                    description: The account type sent in the web service request is invalid.
+                  PP569:
+                    type: object
+                    description: Account type is not applicable for SUA payments.
+                  PP576:
+                    type: object
+                    description: The Account Limit field is mandatory for lodged card payments.
+                  PP577:
+                    type: object
+                    description: The Account Limit sent in the request is greater than the maximum allowed limit Max allowed limit.
+                  PP582:
+                    type: object
+                    description: SupplierName is mandatory.
+                  PP586:
+                    type: object
+                    description: The Account Limit field should be numeric.
+                  PP587:
+                    type: object
+                    description: Account Limit cannot have precision value.
+                  PP589:
+                    type: object
+                    description: The Process Payment web service supports only max number allowed invoices
+                  PP590:
+                    type: object
+                    description: Payment cannot be processed for a Closed Account
+                  PP591:
+                    type: object
+                    description: The currency sent in the payment instruction does not match with the allowed currencies for the buyer. Please work with your administrator to add the new currency in the allowable list before submitting a payment.
+                  PP594:
+                    type: object
+                    description: The value you sent in the AccountNumber field is invalid. Please pass a valid pseudo account, and proxy number of the funding account associated with your buyer.
+                  PP595:
+                    type: object
+                    description: Error occurred while generating a new pseudo account. Please try your request later.
+                  PP596:
+                    type: object
+                    description: The value you sent for the funding account field is not uniquely identifying the funding account. Please send the entire 16 digit funding account number.
+                  PP069a:
+                    type: object
+                    description: CyberSource request 101- The request is missing one or more required fields.
+                  PP069b:
+                    type: object
+                    description: CyberSource request 102- One or more fields in the request contain invalid data.
+                  PP069c:
+                    type: object
+                    description: CyberSource request 150- Error- General system failure.
+                  PP069d:
+                    type: object
+                    description: CyberSource request 151- The request was received but there was a server timeout. This error does not include timeouts between the client and the server.
+                  PP069e:
+                    type: object
+                    description: CyberSource request 152- The request was received, but a service did not finish running in time.
+                  PP088a:
+                    type: object
+                    description: Processor interaction failed.
+                  PP088b:
+                    type: object
+                    description: Processor interaction failed.
+                  PP088c:
+                    type: object
+                    description: Processor interaction failed.
+                  PP088d:
+                    type: object
+                    description: Processor interaction failed.
+                  PP088e:
+                    type: object
+                    description: Processor interaction failed.
+                  PP088f:
+                    type: object
+                    description: Processor interaction failed.
+                  PP088g:
+                    type: object
+                    description: Processor interaction failed.
+                  PP567a:
+                    type: object
+                    description: The account type passed in the web service request is different from what is setup in the VPA system.
+                  PP5967:
+                    type: object
+                    description: The default payment currency of the lodged pseudo account you have sent in the request is different from the payment currency. Please pass the correct pseudo account.
+      x-codegen-request-body-name: processpayment
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vpa~1v1~1payment~1ProcessPayments/post'
+        default: false
+components:
+  schemas:
+    AlternateEmailAddr:
+      title: AlternateEmailAddr
+      type: object
+      properties:
+        alternateEmailAddress:
+          type: string
+    Supplier-1:
+      title: Supplier
+      required:
+      - supplierID
+      type: object
+      properties:
+        emailNotes:
+          type: string
+        supplierID:
+          type: string
+        supplierCity:
+          type: string
+        supplierName:
+          type: string
+        supplierState:
+          type: string
+        supplierPostalCode:
+          type: string
+        primaryEmailAddress:
+          type: string
+        supplierCountryCode:
+          type: string
+        supplierAddressLine1:
+          type: string
+        supplierAddressLine2:
+          type: string
+        alternateEmailAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlternateEmailAddr'
+    ProcessPaymentRequestDTO:
+      title: ProcessPaymentRequestDTO
+      required:
+      - actionType
+      - buyerId
+      - corporate_internal_id
+      - payment
+      type: object
+      properties:
+        buyerId:
+          type: string
+        payment:
+          $ref: '#/components/schemas/Payment-1'
+        actionType:
+          type: string
+        corporate_internal_id:
+          type: string
+    Invoices-1:
+      title: Invoices
+      type: object
+      properties:
+        invoiceDate:
+          type: string
+        invoiceAmount:
+          type: string
+        invoiceNumber:
+          type: string
+        purchaseOrderDate:
+          type: string
+        purchaseOrderNumber:
+          type: string
+    Payment-1:
+      title: Payment
+      required:
+      - currencyCode
+      - paymentGrossAmount
+      type: object
+      properties:
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Invoices-1'
+        supplier:
+          $ref: '#/components/schemas/Supplier-1'
+        accountType:
+          type: string
+        paymentType:
+          type: string
+        accountLimit:
+          type: string
+        currencyCode:
+          type: string
+        accountNumber:
+          type: string
+        paymentExpiryDate:
+          type: string
+        paymentGrossAmount:
+          type: string
+        paymentRequestDate:
+          type: string
+        cardAccountExpiryDate:
+          type: string
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

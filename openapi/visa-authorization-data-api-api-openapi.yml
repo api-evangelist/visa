@@ -1,0 +1,376 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Authorization Data API API
+  description: 'Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)'
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Authorization Data API
+  description: 'Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)'
+paths:
+  /vbs/dapi/v1/transactions/auth:
+    post:
+      tags:
+      - Authorization Data API
+      summary: Get Authorization Data
+      description: Get Authorization Data
+      operationId: getAuthDataUsingPOST
+      parameters:
+      - name: clientId
+        in: header
+        description: clientId
+        required: true
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequestBody'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  authEndDateTime: '2022-09-30T01:40:00'
+                  issuerId: '4444'
+                  companyId: '90001'
+                  processorId: '2'
+                  regionId: '1'
+                  accountList: []
+                  pageSize: 25
+                  filters:
+                  - filterValues:
+                    - 99
+                    filterBy: authCatgCd
+                  - filterValues:
+                    - '0100'
+                    filterBy: msgType
+                  pageNum: '1'
+                  authStartDateTime: '2022-09-01T01:40:00'
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponseBody'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    metaData:
+                      totalMatchedRecords: 2
+                      pageNum: 1
+                    authTransactions:
+                    - tranId: '973839033642644'
+                      mrchCatgCd: '9399'
+                      stipAdvcCd: '5'
+                      msgType: '0100'
+                      isoTranAmt: '100.04'
+                      vpcPropActnCd: ' '
+                      crdhBillAmt: '100.04'
+                      authTime: '12:11:22'
+                      stipSwtchRsnCd: ' '
+                      tokenIndicator: '0'
+                      issuer: '4444'
+                      trgrSvcDesc: Airline merchants restriction
+                      trgrSvcType: AIR
+                      uniqSeqId: '5464545355453454'
+                      vpcActTknCd: ' '
+                      authCatgCd: '99'
+                      authCatgDesc: PROCESSING ERROR
+                      company: '90001'
+                      partialAuthAmt: '100.04'
+                      preAuth: 'Yes'
+                      mrchNm: Amazon
+                      tranProcCd: ' '
+                      mrchStatePrvCd: ' '
+                      crdTypCd: '4'
+                      isoTranCurrCd: '840'
+                      authStatusCode: '80'
+                      mrchCtryCd: COLUMBIA
+                      msgTypeDesc: AUTHORIZATION REQUEST
+                      acctNum: '4000000000000003'
+                      crdAcptrId: ' '
+                      authRsnDesc: NO FINANCIAL IMPACT
+                      crdhBillCurrCd: '840'
+                      processor: '2'
+                      crdhBillAmtUsd: '100.04'
+                      authDt: '20220901'
+                      mrchZipCd: '29201'
+                      authIdResp: ' '
+                      tokenNumber: '                '
+                      stipSwtchRsnDesc: Not Applicable
+                      mrchCity: San Jose
+                      region: '1'
+                    - tranId: '973492303180772'
+                      mrchCatgCd: '9399'
+                      stipAdvcCd: '5'
+                      msgType: '0100'
+                      isoTranAmt: '100.04'
+                      vpcPropActnCd: ' '
+                      crdhBillAmt: '100.04'
+                      authTime: '12:11:22'
+                      stipSwtchRsnCd: ' '
+                      tokenIndicator: '0'
+                      issuer: '4444'
+                      trgrSvcDesc: Airline merchants restriction
+                      trgrSvcType: AIR
+                      uniqSeqId: '43454543534545'
+                      vpcActTknCd: ' '
+                      authCatgCd: '99'
+                      authCatgDesc: PROCESSING ERROR
+                      company: '90001'
+                      partialAuthAmt: '100.04'
+                      preAuth: 'Yes'
+                      mrchNm: Amazon
+                      tranProcCd: ' '
+                      mrchStatePrvCd: ' '
+                      crdTypCd: '4'
+                      isoTranCurrCd: '840'
+                      authStatusCode: '56'
+                      mrchCtryCd: COLUMBIA
+                      msgTypeDesc: AUTHORIZATION REQUEST
+                      acctNum: '4000000000000014'
+                      crdAcptrId: ' '
+                      authRsnDesc: UNABLE TO LOCATE RECORD
+                      crdhBillCurrCd: '840'
+                      processor: '2'
+                      crdhBillAmtUsd: '100.04'
+                      authDt: '20220901'
+                      mrchZipCd: '29201'
+                      authIdResp: ' '
+                      tokenNumber: '                '
+                      stipSwtchRsnDesc: Not Applicable
+                      mrchCity: San Jose
+                      region: '1'
+        '201':
+          description: Created
+        '400':
+          description: One or more fields were in incorrect format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrors'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Something went wrong. Please try again later
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrors'
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1vbs~1dapi~1v1~1transactions~1auth/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    AuthTransactionFormat:
+      title: AuthTransactionFormat
+      type: object
+      properties:
+        authDt:
+          type: string
+        issuer:
+          type: string
+        mrchNm:
+          type: string
+        region:
+          type: string
+        tranId:
+          type: string
+        acctNum:
+          type: string
+        company:
+          type: string
+        msgType:
+          type: string
+        preAuth:
+          type: string
+        authTime:
+          type: string
+        crdTypCd:
+          type: string
+        mrchCity:
+          type: string
+        mrchZipCd:
+          type: string
+        processor:
+          type: string
+        uniqSeqId:
+          type: string
+        authCatgCd:
+          type: string
+        authIdResp:
+          type: string
+        crdAcptrId:
+          type: string
+        isoTranAmt:
+          type: string
+        mrchCatgCd:
+          type: string
+        mrchCtryCd:
+          type: string
+        stipAdvcCd:
+          type: string
+        tranProcCd:
+          type: string
+        authRsnDesc:
+          type: string
+        crdhBillAmt:
+          type: string
+        msgTypeDesc:
+          type: string
+        tokenNumber:
+          type: string
+        trgrSvcDesc:
+          type: string
+        trgrSvcType:
+          type: string
+        vpcActTknCd:
+          type: string
+        authCatgDesc:
+          type: string
+        isoTranCurrCd:
+          type: string
+        vpcPropActnCd:
+          type: string
+        authStatusCode:
+          type: string
+        crdhBillAmtUsd:
+          type: string
+        crdhBillCurrCd:
+          type: string
+        mrchStatePrvCd:
+          type: string
+        partialAuthAmt:
+          type: string
+        stipSwtchRsnCd:
+          type: string
+        tokenIndicator:
+          type: string
+        stipSwtchRsnDesc:
+          type: string
+    MetaData:
+      title: MetaData
+      type: object
+      properties:
+        pageNum:
+          type: integer
+          format: int32
+        totalMatchedRecords:
+          type: integer
+          format: int32
+    ApiError:
+      title: ApiError
+      type: object
+      properties:
+        message:
+          type: string
+    AuthResponseBody:
+      title: AuthResponseBody
+      type: object
+      properties:
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        authTransactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthTransactionFormat'
+    AuthRequestBody:
+      title: AuthRequestBody
+      required:
+      - authEndDateTime
+      - authStartDateTime
+      - companyId
+      - issuerId
+      - processorId
+      - regionId
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthRequestFilters'
+        pageNum:
+          maximum: 250
+          minimum: 20
+          type: integer
+          description: page Number associated with API call.
+          format: int32
+        issuerId:
+          maxLength: 15
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: issuerId/bankId associated with the account
+        pageSize:
+          type: integer
+          description: page Size associated with API call.
+          format: int32
+        regionId:
+          maxLength: 5
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: regionId associated with the account
+        companyId:
+          maxLength: 25
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: companyId associated with the account
+        accountList:
+          type: array
+          description: A list of account numbers
+          items:
+            type: string
+        processorId:
+          maxLength: 10
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: processorId associated with the account
+        authEndDateTime:
+          type: string
+          description: Transaction Auth time in GMT. Sample value --> 2022-09-01T01:40:00
+          format: date-time
+        authStartDateTime:
+          type: string
+          description: Transaction Auth time in GMT. Sample value --> 2022-09-01T01:40:00
+          format: date-time
+      description: Authorization Pull API Request format
+    ApiErrors:
+      title: ApiErrors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiError'
+    AuthRequestFilters:
+      title: AuthRequestFilters
+      type: object
+      properties:
+        filterBy:
+          type: string
+          description: filter by clause. Supported values are authCatgCd and msgType
+        filterValues:
+          type: array
+          items:
+            type: string
+      description: A List of optional filters
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

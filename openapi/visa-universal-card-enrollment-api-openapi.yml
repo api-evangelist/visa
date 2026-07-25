@@ -1,0 +1,1175 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Universal Card Enrollment API
+  description: Universal Card Enrollment
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Universal Card Enrollment
+  description: Universal Card Enrollment
+paths:
+  /universal/core/customers:
+    post:
+      tags:
+      - Universal Card Enrollment
+      summary: Create Customer
+      description: Creates a new `Customer` object for which `Card` object will belong to
+      operationId: Create Customer
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Enroll `Customer`
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  lastName: Narayanan
+                  firstName: Shankara Child
+                  encMobileNumber: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.qlj0Ws5TusSxBPBpt_E7GMIfSqBM2Hrpq_SIDXS8fPy_FwJHdIOrWrK2Kh08aGP1BAVYzLlYBum_r4UljEPfvhFRZdZ9AaHH0e5jgTEIVYazhmn-9q__-2qGoQLwzzJBRwxNS12IoQghPjj6bC5PwevgrjIqsxpdFJFzrrPnCITW1Fj7cLw6yTehCQ1XVdPTDTZIHLVAiUZZxjnAmUuFQILrWRIUafdcmVtsjqrM-8q2ts4WySQmZ3pn3KoEnpIbRlyfOcxi-s5hcBWXAOVYDUYB7qK-Y2dxcelNaa7YD1QipNnYaab6XeNP1hmD4jsn1cc80iZQ-MnkVXxmK316Ig.Xl_o9k8iN2yATW-3.y-nD47IiBTrVURKO5BY9tRryIoB4yk1qelke0JvcfTl2BzPFmcA5ZYHcCo5tMPDjYF8Dk4G6UN2jiA.FJr7P5P4W8b-YZysKqY2nQ
+                  locale: en_US
+                  encEmailAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.UxcxOPvMDDW8VN1ZBGId5L1DavD5_HTY_Z6EySCBcjziv_Yogq56_K55paab-IC9bHwEDQQ5Fo6S_D34dZws1WDkUa3oQpRaZ3TTyfv2OMz5mVPMwcJU9qPF3V0Y1JKxoThWp2LOkmCgIC9wo3AxWVzlcq0pkDUpauNVXW3HfxXDBtE662g6K4gwSReJgm-pnrUkwA723dgKCPwtyrKkbpq1Fop0poNHB35TGMuc778Psd0r0YauRXY0VhHdJzZBrVekeFQZF3HfpYRP8vqEIAMFrGFJu8smI1O7R_s30YzEgI7rFLtsRPAim4M_3dbuKecHOsGXuE5AmLCq9bBc0Q.mhtgNtKjNGWt5OKo.k6JhkcQ5Pd1RsMVewQ.79s0w1JCEp-nP1mj5qq_nQ
+                  encAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.mULzqjvIqm8W1FuhBizKUDFDPkMxpZZAfzfByXdByvpE89QDWSkri2TONET-9ZXnS-LiYFrF9XAGD_zlMIferi8L1h3FznvLx21KpmpUJZ2LIaMFwryX8QMnOAUqaumkhM46cE1s0O0D6wWnG7jDZpFvxdG-jhSzfEsR_b_lpzvtJuYmIbNXg-a9SRh4-6K-AK-4TCCR6qpJkbNP2NMG9sOq2f8gCfF-G8QejFgpdhb1dwLZcXekdyQMkPSboaua6MGgWq9YhPw5EGMU6DPCM4SqSPoR3QMrD9Ledqn15_3NLtJ6aacLqTVQLgQFo-sk9HfLFJL3MIGsp6GcI_UHCg.cxNahyRxWQ5ZptVh.2NtHwacKBzVaqxVTfB-ES_rIYlRuiLaJbVhAwn5gjj77yMQUNFAGsDrNpa9Wpa-cr7XxOvja3uLgScxoMBQcB7UXCRfptsLkZCh3AhVOh2jbQ29oseQ2BDG1FGyjzDQi3_c7mkPHmQkk6mc_r3jXflzLlx5EjDHk2vJOcaZrmMEfQG508bF5rHpl1xB0W1qnilAaJWlf2JmIBiwJsqvBW6G-_ciYAf9zFIg.4UzBoQ0cjdhtOLfG8WKYxg
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    lastName: Narayanan
+                    firstName: Shankara Child
+                    vCustomerID: 1189052d-9540-480e-9cc0-f6c26a2a521e
+                    encMobileNumber: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.iUteJeMnY1nriwEZ7kISWgdDsVEnDUOmRVF4mbCbdeu-mYweOeosG3f3bYEQwMupC5xumUbcdXyF83jMmHT0flIF78XKI5X2-2vviIOynNO6pN8DVHyeh5YfBFQY2ScRX7S7eIkZOqiwyRpHlVN5fdGwze5lsCeol-0P183Q-d8q7M2I07I2yXj04rK1GkhU3e1GO4AzuAKkVGWbd_-83P2GsCzHb4HTVixcAaLUsA1aZYSqJ5tsxSl-GqtgnOS2HRtCXG2R6C6sZ8za9_42joZPjxyLbCO2WECXAoHa7aJgBmLd1Oe5OkvfLqI1JI5CVlErAwIUrHJVEGJKAQ_Pig.vkOURUhUR1yMzgLQ.2Jynq5CLkXx4XM8tXEJ1fZwsAbJOvRN4b5ULVuzBtGHmNcoaPI_DKLAvv5jOl8Y.nFhU1kN4__Ev7JQUsGmOcA
+                    createdDateTime: 1624928382132
+                    locale: en_US
+                    encEmailAddress: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.ZeuINFxegefC67vwmIJBRHji0aJoQJxM0dhxvfw9OQupFYbkluK9YJf5QLAx72iTHDCd5h8uwrH3bhatvMGyTSq6NxmXGiTHpgbT8v4NWkss06QIeeUcbvEU9ANqEAep2cKtofPfe7viPVPY4eh_25Rojj6YYrCwJdOOat3oCb8eToZwSPEmVrQdCv24ZQ4edlLONUQ6MQHY0JG3avpQFC4J-XrtZ4kyi5tVzs8MuY4MDrw3qs2dmbwYtjKkjufYfsVs3Q6kDo3G9aKxZzHO8XApaOYrIHO3Wjkuf05z_-ufOG7e3J8KXt3ALDpxxDdWoWbs9kA_Qkjx3ZSOJkB1aA.SmqPvAiDtWQo0Uk2.Liwm2YOy_ngJFfDWnYgP.j3icoP-ABgQOW_VvEVX81A
+                    status: ACTIVE
+                    encAddress: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.qgadplS4Nv47VG9ms1P1WAP0oM9MgIqEVhHMFUv3RxvgVwR9HuHwK3SWhnRfaWqcoMIy34hn2MQs5LNWJ55n1MulH51OIj79EGNzEY-ROv7RPMoBVMnEXkbJJIQG0i4_ZvmfWxTW14_72YjfL3A6Q_DpTpsaduUdYvtVZiAabWSUdjWBIDEffntkmzmGZ237ihZKUg-0RY3FRJlRr6ZaLfAAaFYOuqh22KdY3OAuk-2U4LpdJ9qbBSeVo3OA5CrVRneiO8rJ0tmJVXr3g7t3LCtvMhl3k5FG2t2Lc24fw8oZItoxa_HLy-_5qJTil-eJku5cxn7w8kqYTqNpMlWQAQ.O1BlwNqkFEsKvMLA.Cy8Q7DaedctY8hmRfrrJ3of2KSdGG2k1d-LJeTxGUJN1Hhji9S9beik0CgI_qgAjRyJWyx8usRNmUKQ0twsIyyu8q8lI55tYO6KQA0Q8cb2uZiK6rkC5GyfVHPu17fFnxU6n2BPq1NH2suuoWbYU9IQfrfDlITYII6C2KdThxX0HJWPrZDcvItGBnJZZyqpPnpNCNkYWgnXQUx09UeLT7B3Y9umF99ROjFGYlPpQmaL0drFdB9FrWWcxFknpEQM.7QXIeK9b00szdu6nmnkWJw
+                    updatedDateTime: 1624928382132
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-samplePayload:
+        locale: en_US
+        lastName: Smith
+        firstName: John
+        encAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.kqVmClndESpaFEnMLDbVKUZI7xWYM6UWUjBFUUkuQt0IhJUUNS-OxuIBp3r9PIyQ-kRD9u0ntZZuXAvrdnQbGa2h_caAm3xNY0kDaUFRbgprcVfWHyZxbPnQHHty38Qt6dMrkY7Z7aE3RKvDC-YASEmMF9fWYU5laNpH0JFtAQsqWG31gpybwA9OW-T9LZrlAJEReaglGSEhdkoT0jFkygA6fjerypC2Y0gF3vYZAxh-SMIxjVis8nAB8k98EMT3tGa3eDuXS1_YQXfzr9egI2BXfCzLI-3cfkqecBk0wmEEPS_yJTXouuAgmVIrn8cw7FZyKFjnoklGcnb-ArTl5A.Rmqjahy9KrEmlHCG.1sJIvWvGG6P58c5TiNYROPFJ4Ngedss1zKsRvvB4Iyo-KsFh54WHt_5ZXJ43uJ5aV-UsPwme0kzfApGJvJ4hg2cmR307RiDfzUJ73VLHO-l0mdollQdMfNiBFg6LXpNalmDe0tkBtx4QxeQPCtQgbUoSBCO73e_IUcsqcaeTeEye-Q_jn9T0C9n1m2D79LiqqHSz-RI83vjorR7eRvKqDzKBOnnwvYCu0K8.O2bqAuMTZOvLQhe7qIPpbg
+        encEmailAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.YLAr5r19ZgAm80phtWlV29utZDZDuz9rGq7GYdZ-aBVFQwZGXb6U4Tve4YbU6Q1WvvJv_YSrr6aNEOuQLoHq17Ytbv9aca8ixLxPDXyQZDke2HmkpPjd5-4Wzbn1uLmoFeRjMR5kHViVasuCdJGDyf70w_1PTptqHj0E8rAf8CeD38D69Qh8_lNdf6IEBbMxLersBvpi7rEm2Bp7hrz_9uKpqqhLbW51GLwcu8NxKJ4wAsu4JyX912xCD06GWORHGt_pUm5uXZevi7yJzGaZdzQC2vCwQZf_QNA-JA1uxiZztTLNdhhBSRVRYYmneEweMdshFjLMOKeDAvCZcudT6w.IWXaPAj9p_tCEAXy.KWmcduqkTesoJ6qjSw.8sAIJIbB2wdcdcB3OoxpWw
+        encMobileNumber: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.Mx8ZwyhZNxdh1WbAQDQUuc1GEODgV54yanVTLrIRHbZSstCd0l6GmAXurelc_vK_CFjq5UII0EqLDn3cGOxwXer0aReDh4ckoOEvIYrqiMxLbugiKVEgQriDc1mwQk07n6U61D-NsE0WVep66H_-UR0lwKvCwRjfTZ4M91pYNtesIWMaja7lTBEBi0HNXsJOG0-ybfqCHA-taC2qO471KrV2WctYQ-BffIwXCrJqLBuuisx4VEoE7mQ1A2eRLxUdaZeJXGtUkTPhmtnm9voC79JMxuQdDl_Ilmv7zkyCS2wqubJfnJ9toCaK7_LwHdMd8sHbIda9VoTyRCeTBZW5pg.ILsPvJa1UpvE5yui.G4J37gRxEvJj8xqNDBScae73Pir-9Fb7TpTecfkX0izNb8zi5tU75HUwQRU7cUyF9Z8kI3DeLOuOvg.AYZR3Fmwno4c4AIHC0RVJQ
+      x-name: Create Customer
+      x-notes: Create a Customer object.
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1customers/post'
+        default: false
+      x-hideTryIt: true
+  /universal/core/customers/{vCustomerID}:
+    get:
+      tags:
+      - Universal Card Enrollment
+      summary: Get Customer
+      description: Retrieve a Customer
+      operationId: Get Customer
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: vCustomerID
+        in: path
+        description: ID (UUID) of the `Customer`
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    lastName: Narayanan
+                    firstName: Shankara Child
+                    vCustomerID: 1189052d-9540-480e-9cc0-f6c26a2a521e
+                    encMobileNumber: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.K5NmpXIf8GxdnV3SGpMHSe58EUlZUp-6LiC356z_keZSJ5fdzNwUWfQT1pDLFbjxEK1nOiy2mJyjA3k7SbrQkQ3t3dDcHI-xhIUri_zBsyOuHTHFCisUsQkV7ZuRxYCCnu0xpLjjiqD6Ybi-jz6-mDyeznncq9ndxUj4jCGVexJ0uMdvQbLs1oq76cNepxj8Wjc5MuSHhKZDEdpMV9eNvhOm3DCkUKV1G0HVTuvFDyFZH1uqg0Qg36bTu0hU4YcrWTbatDkpxcTLlizmV2uyT3NPL83eQNdv5UiMdWI0KqUf6T0x0nsWb_7QACQsI_7In8Kl41ZnYh8qhvWyx21NMQ.ZK4HTjbDkekTLiwM.573x-UdBZh5N6v0BepUoPwCFJj_vQssRWNqFq18KfSZVIsoUyPIxqw0ePVEGKtw.kjFCqC5lraxzinkMStUcxQ
+                    createdDateTime: 1624928382132
+                    locale: en_US
+                    encEmailAddress: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.ngbW3XIohwh75C022Md23ZMB8WHO9xMbWRBevfV1vyHRqnJiMtN7nRmBrv5Kzj-L31E60elOLXWoL_8p8UxfGvYVS_ugdGd2ggOA_ryBIFsJuCBbOWXMkk-KIsnyQ3P9bCOVcS5YHOZFZoji2xvATd4J9cIX8Belz5T6J1VsrU3nKqQZw5B70D6EHYEW800ZJLH_MQATUfy8fXRjSn_2lurHA2KczcXsvkhmsIuLIgrhF-oJExoHngCwDwY0VI6LzqdUQAX0fKFvhCHqRDPVmrIbqv90oifBOmSVZWKI_rvU1YxNZZmBrxSLTl_Hv0D4NB8kIBTuIJRsMM0BV4LniA.-dn8SQ2GqfyQeTV9.75qDRk34OhTpqu55PNd7.qy3yHpdh9m8S-5SeiNyTgA
+                    status: ACTIVE
+                    encAddress: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.l6QicYDWHMILpM9Ig_HbRKL0jPDbipN_vEh7gB2ciZ1nCbH9MwwO462lARfBqTcdJsYZuekkcCrBLiasgrKEqqm-CL5fkpEm7-52v_kEjsrvXqXPFg6h7ChGQHKKrCazdGBAYSRHN111M_yS59SYllTlvFT4hehOv5lpicCYEkrocMf7Kif4CRGoxUQ2dD7BtTPgwMac0jLCn3qntxOABB2ZaCC32cwGcbkrqGhbcUhiQc-ePMY8U158NltdFnNsP6sGwygLIoMaIkDZannqzm82lsJM3xS7_fi5ei0HBfo3LlEwwOfrXK5FiGZxG2hzp8c-ffft2y8qNOHr1sfUfw.c-3gMuqtksX96f4h.uUtjgA2oa-2yGjok8KDaMhKzc-N8Tc3Kq2Atv2CmuXbtVQ92g0U9YOZqVu6xh0o6AEoLqh7YFi14GL6hs16W1TSyrsgT19hatVl-0TinJh0tWKLBVMA9Kh_Sa7kRYq0_LBv44YdG9zb0YaeZV7VvGK7j9L-FhOjxt0HTfCYP5Bu_D1izy7J0VoP_AcOX5SJrW_tVjozvTlVPEFx8KdZfsj9NwWjmGDW3aCn2RO538RaYHwsoWP6Sg9a_QV0FyEqRVkCPbSaqRGsccoMR3559ZUmUy-geSCGG.3EahILcBuhjE5VCBzrbOUQ
+                    updatedDateTime: 1624928382132
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-name: Get Customer
+      x-notes: Retrieve a Customer
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1customers~1{vCustomerID}/get'
+        default: false
+      x-hideTryIt: true
+    put:
+      tags:
+      - Universal Card Enrollment
+      summary: Update Customer
+      description: Update a Customer
+      operationId: Update Customer
+      parameters:
+      - name: API Key
+        in: header
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: Accept
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: X-Pay Token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: vCustomerID
+        in: path
+        description: ID (UUID) of the `Customer`
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Updated Customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  lastName: Narayanan
+                  firstName: Shankara Child
+                  encMobileNumber: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.qlj0Ws5TusSxBPBpt_E7GMIfSqBM2Hrpq_SIDXS8fPy_FwJHdIOrWrK2Kh08aGP1BAVYzLlYBum_r4UljEPfvhFRZdZ9AaHH0e5jgTEIVYazhmn-9q__-2qGoQLwzzJBRwxNS12IoQghPjj6bC5PwevgrjIqsxpdFJFzrrPnCITW1Fj7cLw6yTehCQ1XVdPTDTZIHLVAiUZZxjnAmUuFQILrWRIUafdcmVtsjqrM-8q2ts4WySQmZ3pn3KoEnpIbRlyfOcxi-s5hcBWXAOVYDUYB7qK-Y2dxcelNaa7YD1QipNnYaab6XeNP1hmD4jsn1cc80iZQ-MnkVXxmK316Ig.Xl_o9k8iN2yATW-3.y-nD47IiBTrVURKO5BY9tRryIoB4yk1qelke0JvcfTl2BzPFmcA5ZYHcCo5tMPDjYF8Dk4G6UN2jiA.FJr7P5P4W8b-YZysKqY2nQ
+                  locale: en_US
+                  encEmailAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.UxcxOPvMDDW8VN1ZBGId5L1DavD5_HTY_Z6EySCBcjziv_Yogq56_K55paab-IC9bHwEDQQ5Fo6S_D34dZws1WDkUa3oQpRaZ3TTyfv2OMz5mVPMwcJU9qPF3V0Y1JKxoThWp2LOkmCgIC9wo3AxWVzlcq0pkDUpauNVXW3HfxXDBtE662g6K4gwSReJgm-pnrUkwA723dgKCPwtyrKkbpq1Fop0poNHB35TGMuc778Psd0r0YauRXY0VhHdJzZBrVekeFQZF3HfpYRP8vqEIAMFrGFJu8smI1O7R_s30YzEgI7rFLtsRPAim4M_3dbuKecHOsGXuE5AmLCq9bBc0Q.mhtgNtKjNGWt5OKo.k6JhkcQ5Pd1RsMVewQ.79s0w1JCEp-nP1mj5qq_nQ
+                  encAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.kqVmClndESpaFEnMLDbVKUZI7xWYM6UWUjBFUUkuQt0IhJUUNS-OxuIBp3r9PIyQ-kRD9u0ntZZuXAvrdnQbGa2h_caAm3xNY0kDaUFRbgprcVfWHyZxbPnQHHty38Qt6dMrkY7Z7aE3RKvDC-YASEmMF9fWYU5laNpH0JFtAQsqWG31gpybwA9OW-T9LZrlAJEReaglGSEhdkoT0jFkygA6fjerypC2Y0gF3vYZAxh-SMIxjVis8nAB8k98EMT3tGa3eDuXS1_YQXfzr9egI2BXfCzLI-3cfkqecBk0wmEEPS_yJTXouuAgmVIrn8cw7FZyKFjnoklGcnb-ArTl5A.Rmqjahy9KrEmlHCG.1sJIvWvGG6P58c5TiNYROPFJ4Ngedss1zKsRvvB4Iyo-KsFh54WHt_5ZXJ43uJ5aV-UsPwme0kzfApGJvJ4hg2cmR307RiDfzUJ73VLHO-l0mdollQdMfNiBFg6LXpNalmDe0tkBtx4QxeQPCtQgbUoSBCO73e_IUcsqcaeTeEye-Q_jn9T0C9n1m2D79LiqqHSz-RI83vjorR7eRvKqDzKBOnnwvYCu0K8.O2bqAuMTZOvLQhe7qIPpbg
+                  clientCustomerID: UBER-201-SHANK
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    lastName: Narayanan
+                    firstName: Shankara Child
+                    vCustomerID: 1189052d-9540-480e-9cc0-f6c26a2a521e
+                    encMobileNumber: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.h-yMUGIq_q52bcvVMfuYh2U0GcXLp6E7nhM8Gm1exVzY-zjjGK6SakxZT0sLZ-MCsv7bKsVvcXzSOis8tpthjIOMSqM2ewgJQasd_ztcMRSak1gP8Qg2lp84iduEJh8jwUK8vCKp9MH6hAwK9UKih3mktY-QfirzNeczwDudt02CKkpGRTbrkMWOIVrdGZCfSMTxFcaDqCxNZdXbWoVoM3rXuPW3NtAfOmqcPFoF2oI5iTnFrLcF6Tj7fCz99v1piGG1ALGFnsaAsWnDn3glp0MWo92lPzd0llJhc44tBemHQ6HVXLM5mkqQgGf3HBb_o6-yVFfnTtw0iwk9QILnYg.9lY2S8xINR1DD77e.cjMaxNnJrhkoW5wLEQacRSzGuL-xBRufVqQBG5PMpJgTB7AmfcOKpTPDKTK9Bd0.HNg1uPjPvAW1AJP_LIOoJQ
+                    createdDateTime: 1624928382132
+                    locale: en_US
+                    encEmailAddress: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.p4nO9OYCIvuvRD9eO4uOD_7q_kUmq_21yuUIO6sl2Gdsdhqe8LPToqfvP5eilGT2qw-iX7Z5z377C9C6_NJkfm9Ncozx-VPyEwBf8Qxuk1xVCnM0dZoJCDOFSOMqFHJlDRGx7VmZcbW19WdzQwPy7762OeDEsxH_zIX2ivj50BwtxRgwhgLGFSIK2rDFXVzmN9KNkWcK6aOB5xgH6cum6u1GOU5PwbfxJkHTNyxqNd9iOKiaEPDYk-mM6BzgRMnoLRxXAJfupGgp6bF6GzF7an6gu98DD-omzxwtr51TO3Dksq8B41ZRa3dAyPkkJ7lIpG0wYPifOT5YMex6KYloAg.RX_qqwI_gMzDqSgx.aeTquzM4IwgAlhDqZF6h.4ujmirQO7dlSfhzkepGXeg
+                    status: ACTIVE
+                    encAddress: eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.kHEk-UuPEt-HjZwnlBXHJ18qdO29nNqwOlACtYtYyu5v1RDC1FCFDQrUOFelNXL0LuuRmAnq1tSZKLJ8hM4SjUnaCLkIigrisjo3DcuKaOF5qG87gF9HkfVjDBRWnnYtGa9mz2IbtxdDXlOljxkIe2vHwriNrgbjx_ZKldctZlOslH4rf6ZKsOlbuxRSkpULAfL3udqoTlOVnZQIbqhTFMJOI-PzPSRZay3pOKqWEEsh121xWXzSl-7LinrJnoUdGyh4iR6uQiyljbDDqxR1Q15cVQC6EBKgjEAGFoFiqtKvtFAdnC8OJTJtoXPmtGvIR0w5rny-p6eZL9coBlE4dQ.QmiHbpvaq4rma9r5.PWoou34hEiDZ37JW6YOKTc1sZGd31ACvvdMtE3inn3-Dbvyh9PsdY7kaxiDhZuePSxRIXbRKYguvmFbvYvzNSWKeBhZGxsPUQSqSyLVB-vVcgGYtN1XBN4T31lGeSHOim9lGe12SQHmznhoCuXp8rgxHDvrheBayNBTm9KsV_aqp88q6DPXZU6GaVg3MPmJ6uQvyscnr-Kh5XZFq9P8fCDMI8XeK9SeGFF9cFHMHjhsvLecR0IzvKfHxQyTZUP7oj1eNJMs1hgT9ETzhmv7x7jwsmoCIUoE5.ePNRLn_3srLn0Ipfzm25Tg
+                    updatedDateTime: 1624928854167
+                    clientCustomerID: UBER-201-SHANK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-samplePayload:
+        locale: en_US
+        lastName: Smith
+        firstName: John
+        encAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.kqVmClndESpaFEnMLDbVKUZI7xWYM6UWUjBFUUkuQt0IhJUUNS-OxuIBp3r9PIyQ-kRD9u0ntZZuXAvrdnQbGa2h_caAm3xNY0kDaUFRbgprcVfWHyZxbPnQHHty38Qt6dMrkY7Z7aE3RKvDC-YASEmMF9fWYU5laNpH0JFtAQsqWG31gpybwA9OW-T9LZrlAJEReaglGSEhdkoT0jFkygA6fjerypC2Y0gF3vYZAxh-SMIxjVis8nAB8k98EMT3tGa3eDuXS1_YQXfzr9egI2BXfCzLI-3cfkqecBk0wmEEPS_yJTXouuAgmVIrn8cw7FZyKFjnoklGcnb-ArTl5A.Rmqjahy9KrEmlHCG.1sJIvWvGG6P58c5TiNYROPFJ4Ngedss1zKsRvvB4Iyo-KsFh54WHt_5ZXJ43uJ5aV-UsPwme0kzfApGJvJ4hg2cmR307RiDfzUJ73VLHO-l0mdollQdMfNiBFg6LXpNalmDe0tkBtx4QxeQPCtQgbUoSBCO73e_IUcsqcaeTeEye-Q_jn9T0C9n1m2D79LiqqHSz-RI83vjorR7eRvKqDzKBOnnwvYCu0K8.O2bqAuMTZOvLQhe7qIPpbg
+        encEmailAddress: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.YLAr5r19ZgAm80phtWlV29utZDZDuz9rGq7GYdZ-aBVFQwZGXb6U4Tve4YbU6Q1WvvJv_YSrr6aNEOuQLoHq17Ytbv9aca8ixLxPDXyQZDke2HmkpPjd5-4Wzbn1uLmoFeRjMR5kHViVasuCdJGDyf70w_1PTptqHj0E8rAf8CeD38D69Qh8_lNdf6IEBbMxLersBvpi7rEm2Bp7hrz_9uKpqqhLbW51GLwcu8NxKJ4wAsu4JyX912xCD06GWORHGt_pUm5uXZevi7yJzGaZdzQC2vCwQZf_QNA-JA1uxiZztTLNdhhBSRVRYYmneEweMdshFjLMOKeDAvCZcudT6w.IWXaPAj9p_tCEAXy.KWmcduqkTesoJ6qjSw.8sAIJIbB2wdcdcB3OoxpWw
+        encMobileNumber: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.Mx8ZwyhZNxdh1WbAQDQUuc1GEODgV54yanVTLrIRHbZSstCd0l6GmAXurelc_vK_CFjq5UII0EqLDn3cGOxwXer0aReDh4ckoOEvIYrqiMxLbugiKVEgQriDc1mwQk07n6U61D-NsE0WVep66H_-UR0lwKvCwRjfTZ4M91pYNtesIWMaja7lTBEBi0HNXsJOG0-ybfqCHA-taC2qO471KrV2WctYQ-BffIwXCrJqLBuuisx4VEoE7mQ1A2eRLxUdaZeJXGtUkTPhmtnm9voC79JMxuQdDl_Ilmv7zkyCS2wqubJfnJ9toCaK7_LwHdMd8sHbIda9VoTyRCeTBZW5pg.ILsPvJa1UpvE5yui.G4J37gRxEvJj8xqNDBScae73Pir-9Fb7TpTecfkX0izNb8zi5tU75HUwQRU7cUyF9Z8kI3DeLOuOvg.AYZR3Fmwno4c4AIHC0RVJQ
+      x-name: Update Customer
+      x-notes: Update a Customer
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1customers~1{vCustomerID}/put'
+        default: false
+      x-hideTryIt: true
+    delete:
+      tags:
+      - Universal Card Enrollment
+      summary: Delete Customer
+      description: Delete a Customer
+      operationId: Delete Customer
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: vCustomerID
+        in: path
+        description: ID (UUID) of the `Customer`
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-name: Delete Customer
+      x-notes: Delete a Customer
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1customers~1{vCustomerID}/delete'
+        default: false
+  /universal/core/cards/{vCardID}:
+    get:
+      tags:
+      - Universal Card Enrollment
+      summary: Retrieve Card
+      description: Retrieve a Card
+      operationId: Retrieve Card
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: vCardID
+        in: path
+        description: Visa-defined unique ID of the card
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicCardInfo-3'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    last4: '7155'
+                    vCardID: v-123-5505157d-1420-4e70-8f6f-d0ca41bf2201
+                    paymentAccountReference: V1234567890124514787387207155
+                    expirationDate:
+                      month: '01'
+                      year: '2021'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-name: Get Card
+      x-notes: Get a Card
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1cards~1{vCardID}/get'
+        default: false
+      x-hideTryIt: true
+    delete:
+      tags:
+      - Universal Card Enrollment
+      summary: Delete Card
+      description: Delete enrolled card
+      operationId: Delete Card
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: vCardID
+        in: path
+        description: Visa-defined unique ID of the card
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-name: Delete Card
+      x-notes: Delete enrolled card
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1cards~1{vCardID}/delete'
+        default: false
+  /universal/core/customers/{vCustomerID}/cards:
+    post:
+      tags:
+      - Universal Card Enrollment
+      summary: Enroll Card for Customer
+      description: Enroll Card for a Customer
+      operationId: Enroll Card for Customer
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: vCustomerID
+        in: path
+        description: '`Customer` object ID (UUID) of Customer object'
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Enroll `card` for customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollCardForCustomerRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  encCard: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.Ahg9Pt2j3UJfVSKj5Tmk8kKEywHoYCbBBvwUKblOh_0M5Nb5RfsDG1Kw9M3-Sqs8_VZZ9rMRZRvDnDFzV8LgRIx-Z5fMQLdoFtOzTpOr-aD-Zx4sQSxkjI1HoZBkZTGkxNiUM5LRNMkJ5HaP0SprddkY4dO3J74xiQNDUTiHlCjsQHnGyWFwcE3B-kq9ooj--AgFMdAkPogNTcLnZoYi3HAgZk2T-Dnq_AbSJzk7xPHtklHEOrFfRRBhsDzRk__sXcmMjFlEJ5T3NK8TCOrdE6q9m13tzTpIrnV3BOWCO4FeKLrkTBzA2270oXLLTX_im0kFCVTKqtCz0oHRPFCAhQ.O7x3brFeJmSyxTER.45ETkDsYpag37X6yeHd0aOBAttQYaPI9333k-Z_t9QQez1VDSfY2yv_S3iDVcSErJP2UnxrTaHm89_bVDAc2yOwZXhxiT-1hEIFf2tJNIF4tSfb4nHiK8YI1exjQevG05KiBpvAqZEd_jF4n8Fl-iiPQFurbqkI.raYixQnXRc_86p3AkMTyZQ
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicCardInfo-4'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    last4: '7155'
+                    vCardID: v-123-1bf462b0-f3ad-4f1d-858d-b87282c0d602
+                    paymentAccountReference: V1234567890124514787387207155
+                    expirationDate:
+                      month: '01'
+                      year: '2021'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-samplePayload:
+        encCard: '{Generated from encryption of "Card" object}'
+      x-name: Enroll a Card for Customer
+      x-notes: Enroll a Card for a Customer
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1customers~1{vCustomerID}~1cards/post'
+        default: false
+      x-hideTryIt: true
+  /universal/core/cards:
+    post:
+      tags:
+      - Universal Card Enrollment
+      summary: Enroll Card
+      description: Enroll a Card
+      operationId: Enroll Card on behalf of Partner
+      parameters:
+      - name: apikey
+        in: query
+        description: API key from Visa Developer Platform (VDP)
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: application/json
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-pay-token
+        in: header
+        description: API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Enroll `card`
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollCardRequest'
+            examples:
+              Default:
+                summary: Default
+                value:
+                  encCard: eyJraWQiOiIyRUkzRE5WU1pHTUFERFlOTUtNMDExd2o3Z2V4WUJILWhOMkpzSFg5NHlkaktjb0VVIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.Ahg9Pt2j3UJfVSKj5Tmk8kKEywHoYCbBBvwUKblOh_0M5Nb5RfsDG1Kw9M3-Sqs8_VZZ9rMRZRvDnDFzV8LgRIx-Z5fMQLdoFtOzTpOr-aD-Zx4sQSxkjI1HoZBkZTGkxNiUM5LRNMkJ5HaP0SprddkY4dO3J74xiQNDUTiHlCjsQHnGyWFwcE3B-kq9ooj--AgFMdAkPogNTcLnZoYi3HAgZk2T-Dnq_AbSJzk7xPHtklHEOrFfRRBhsDzRk__sXcmMjFlEJ5T3NK8TCOrdE6q9m13tzTpIrnV3BOWCO4FeKLrkTBzA2270oXLLTX_im0kFCVTKqtCz0oHRPFCAhQ.O7x3brFeJmSyxTER.45ETkDsYpag37X6yeHd0aOBAttQYaPI9333k-Z_t9QQez1VDSfY2yv_S3iDVcSErJP2UnxrTaHm89_bVDAc2yOwZXhxiT-1hEIFf2tJNIF4tSfb4nHiK8YI1exjQevG05KiBpvAqZEd_jF4n8Fl-iiPQFurbqkI.raYixQnXRc_86p3AkMTyZQ
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicCardInfo-5'
+              examples:
+                Default:
+                  summary: Default
+                  value:
+                    last4: '7155'
+                    vCardID: v-123-5505157d-1420-4e70-8f6f-d0ca41bf2201
+                    paymentAccountReference: V1234567890124514787387207155
+                    expirationDate:
+                      month: '01'
+                      year: '2021'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '502':
+          description: Bad Gateway
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '504':
+          description: Gateway Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-samplePayload:
+        encCard: '{Generated from encryption of "Card" object}'
+      x-name: Enroll a Card
+      x-notes: Enroll a Card
+      x-codegen-request-body-name: body
+      x-operationVersions:
+      - label: v1 - Latest
+        operationPointer: '#/paths/~1universal~1core~1cards/post'
+        default: false
+      x-hideTryIt: true
+components:
+  schemas:
+    Expiry-1:
+      title: Expiry
+      required:
+      - month
+      - year
+      type: object
+      properties:
+        year:
+          type: string
+          description: 4-digit expiration year
+        month:
+          type: string
+          description: 2-digit card expiration month
+    CustomerRequest:
+      title: CustomerRequest
+      required:
+      - locale
+      type: object
+      properties:
+        locale:
+          maxLength: 5
+          minLength: 5
+          type: string
+          description: Users preferred locale.
+        status:
+          type: string
+          description: 'Enum Values: ACTIVE, ONHOLD
+
+            '
+        lastName:
+          maxLength: 40
+          minLength: 2
+          type: string
+          description: Customer's last name.
+        firstName:
+          maxLength: 40
+          minLength: 2
+          type: string
+          description: Customer's first name.
+        encAddress:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Address</code></p> <h4>Example</h4> <pre><code> {\n  \"name\": \"Digital Issuance\",\n  \"line1\": \"12301 Research Boulevard\",\n  \"line2\": \"Research Boulevard\",\n  \"line3\": \"Visa USA\",\n  \"city\": \"Austin\",\n  \"state\": \"TX\",\n  \"countryCode\": \"US\",\n  \"postalCode\": \"78759\"\n} </code></pre> <h4>Address Schema</h4> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \"TX\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+        encEmailAddress:
+          type: string
+          description: Encrypted Customer's email address.
+        encMobileNumber:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Phone Number</code></p> <h3>Example</h3> <pre><code> {\n  \"countryCode\": \"65\",\n  \"phoneNumber\": \"5128653617\"\n} </code></pre> <h3>Phone Number Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>countryCode</td><td>string<br>required<br>maxLength: 10</td><td>Phone number Country code</td></tr> <tr><td>phoneNumber</td><td>string<br>required<br>maxLength: 25</td><td>Phone Numbers without any special characters</td></tr> <tr><td>extension</td><td>string<br>optional<br>maxLength: 10</td><td>Phone number extension</td></tr> </tbody> </table> </div>\n"
+        clientCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the (external) unique identifier of the customer in the Digital Wallet Client System. This ID is unique in the clients system.
+        vParentCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+    BasicCardInfo-4:
+      title: BasicCardInfo
+      required:
+      - expirationDate
+      - last4
+      - vCardID
+      type: object
+      properties:
+        last4:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: Last 4 digits of the card
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: Visa-defined unique ID of the card
+        expirationDate:
+          $ref: '#/components/schemas/Expiry-1'
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/ValidationError'
+    EnrollCardRequest:
+      title: EnrollCardRequest
+      required:
+      - encCard
+      type: object
+      properties:
+        encCard:
+          $ref: '#/components/schemas/EncryptedCard'
+        clientCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the (external) unique identifier of the customer in the Digital Wallet Client System. This ID is unique in the clients system.
+        vClientIDForPartner:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the vClientID of the Digital Wallet Client on-behalf of whom this call is being made by the issuer partner. This field is required only when the Enroll card API is being made on-behalf of another partner.
+        vCustomerIDForPartner:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the Visa generated unique identifier of the customer of the Digital Wallet Provider Client
+    EnrollCardForCustomerRequest:
+      title: EnrollCardForCustomerRequest
+      type: object
+      properties:
+        encCard:
+          $ref: '#/components/schemas/EncryptedCard'
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: The ID of the card that is to be associated with the given customer ID.
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
+    EncryptedCard:
+      type: string
+      description: "<div>\n<p>Encrypted <code>CardInfo</code></p> <h3>Example</h3> <pre><code>{\n  \"accountNumber\": \"4000000000000000\",\n  \"nameOnCard\": \"Digital Issuance\",\n  \"cvv2\": \"123\",\n  \"expirationDate\": {\n      \"month\": \"01\",\n      \"year\": \"2021\"\n  },\n  \"billingAddress\": {\n    \"name\": \"Digital Issuance\",\n    \"line1\": \"12301 Research Boulevard\",\n    \"line2\": \"Research Boulevard\",\n    \"line3\": \"Visa USA\",\n    \"city\": \"Austin\",\n    \"state\": \"TX\",\n    \"countryCode\": \"US\",\n    \"postalCode\": \"78759\"\n  }\n} </code></pre> <h3>CardInfo Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>accountNumber</td><td>string<br>required<br>minLength: 12<br>maxLength: 18</td><td>PAN (Primary Account Number) of the card to be provisioned or enrolled</td></tr> <tr><td>paymentAccountReference</td><td>string<br>optional</td><td>A Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN</td></tr> <tr><td>cvv2</td><td>string<br>conditional<br>minLength: 3<br>maxLength: 3</td><td>CVV2 value associated with the PAN on the card</td></tr> <tr><td>nameOnCard</td><td>string<br>conditional<br>minLength: 0<br>maxLength: 256</td><td>The full name on the card associated with the issued/enrolled card</td></tr> <tr><td>expirationDate</td><td><code>ExpirationDate</code><br>required</td><td>Cards expiration date</td></tr> <tr><td>billingAddress</td><td><code>Address</code><br>optional</td><td>Billing address associated with the card</td></tr> </tbody> </table> <h3>ExpirationDate Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>month</td><td>string<br>required<br>minLength: 2<br>maxLength: 2</td><td>The month that the card is set to expire</td></tr> <tr><td>year</td><td>string<br>required<br>minLength: 4<br>maxLength: 4</td><td>The year that the card is set to expire</td></tr> </tbody> </table> <h3>Address Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \\\"TX\\\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+    BasicCardInfo-3:
+      title: BasicCardInfo
+      required:
+      - expirationDate
+      - last4
+      - vCardID
+      type: object
+      properties:
+        last4:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: Last 4 digits of the card
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: Visa-defined unique ID of the card
+        expirationDate:
+          $ref: '#/components/schemas/Expiry-1'
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    CustomerResponse:
+      title: CustomerResponse
+      required:
+      - locale
+      type: object
+      properties:
+        locale:
+          maxLength: 5
+          minLength: 5
+          type: string
+          description: Users preferred locale.
+        status:
+          type: string
+          description: 'Enum Values: ACTIVE, ONHOLD
+
+            '
+        lastName:
+          maxLength: 40
+          minLength: 2
+          type: string
+          description: Customer's last name
+        firstName:
+          maxLength: 40
+          minLength: 2
+          type: string
+          description: Customer's first name
+        encAddress:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Address</code></p> <h4>Example</h4> <pre><code> {\n  \"name\": \"Digital Issuance\",\n  \"line1\": \"12301 Research Boulevard\",\n  \"line2\": \"Research Boulevard\",\n  \"line3\": \"Visa USA\",\n  \"city\": \"Austin\",\n  \"state\": \"TX\",\n  \"countryCode\": \"US\",\n  \"postalCode\": \"78759\"\n} </code></pre> <h4>Address Schema</h4> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \"TX\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+        vCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: Visa-defined Unique Id that identifies the Customer.
+        createdDateTime:
+          type: integer
+          description: Created timestamp of this entity.
+          format: int64
+        encEmailAddress:
+          type: string
+          description: Encrypted Customer's email address.
+        encMobileNumber:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Phone Number</code></p> <h3>Example</h3> <pre><code> {\n  \"countryCode\": \"65\",\n  \"phoneNumber\": \"5128653617\"\n} </code></pre> <h3>Phone Number Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>countryCode</td><td>string<br>required<br>maxLength: 10</td><td>Phone number Country code</td></tr> <tr><td>phoneNumber</td><td>string<br>required<br>maxLength: 25</td><td>Phone Numbers without any special characters</td></tr> <tr><td>extension</td><td>string<br>optional<br>maxLength: 10</td><td>Phone number extension</td></tr> </tbody> </table> </div>\n"
+        updatedDateTime:
+          type: integer
+          description: Updated timestamp of this entity.
+          format: int64
+        clientCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the (external) unique identifier of the customer in the Digital Wallet Client System. This ID is unique in the clients system.
+        vParentCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+    BasicCardInfo-5:
+      title: BasicCardInfo
+      required:
+      - expirationDate
+      - last4
+      - vCardID
+      type: object
+      properties:
+        last4:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: Last 4 digits of the card
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: Visa-defined unique ID of the card
+        expirationDate:
+          $ref: '#/components/schemas/Expiry-1'
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    ErrorDetails:
+      title: ErrorDetails
+      type: object
+      properties:
+        message:
+          type: string
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

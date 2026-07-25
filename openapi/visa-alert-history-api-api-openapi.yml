@@ -1,0 +1,108 @@
+openapi: 3.0.1
+info:
+  title: Foreign Exchange Rates Alert History API API
+  description: Retrieve notification history for accounts and manage customer profiles for alert delivery.
+  version: '1'
+servers:
+- url: https://sandbox.api.visa.com
+  description: Sandbox server
+security: []
+tags:
+- name: Alert History API
+  description: Retrieve notification history for accounts and manage customer profiles for alert delivery.
+paths:
+  /vctc/alerthistory/v1/alerthistoryinquiry:
+    post:
+      operationId: getAlertHistory
+      summary: Get Alert History
+      description: Retrieves the VTC notification history for a registered account, including details of all alerts generated based on the consumer's configured rules and thresholds.
+      tags:
+      - Alert History API
+      requestBody:
+        description: Alert history inquiry parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertHistoryRequest'
+      responses:
+        '200':
+          description: Alert history retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertHistoryResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    AlertHistoryResponse:
+      type: object
+      properties:
+        alerts:
+          type: array
+          description: List of alert notifications
+          items:
+            type: object
+            properties:
+              alertId:
+                type: string
+                description: Unique alert identifier
+              alertType:
+                type: string
+                description: Type of alert triggered
+              transactionAmount:
+                type: number
+                format: double
+                description: Transaction amount that triggered the alert
+              merchantName:
+                type: string
+                description: Merchant name
+              alertDateTime:
+                type: string
+                format: date-time
+                description: Date and time the alert was generated
+              controlType:
+                type: string
+                description: Type of control that triggered the alert
+              actionTaken:
+                type: string
+                description: Action taken (ALERT or DECLINE)
+                enum:
+                - ALERT
+                - DECLINE
+    AlertHistoryRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number
+        startDate:
+          type: string
+          format: date
+          description: Start date for the history query
+        endDate:
+          type: string
+          format: date
+          description: End date for the history query
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Foreign Exchange Rates API

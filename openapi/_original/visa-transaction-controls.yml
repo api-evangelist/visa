@@ -1,0 +1,388 @@
+openapi: 3.1.0
+info:
+  title: Visa Transaction Controls
+  description: >-
+    The Visa Transaction Controls (VTC) API enables issuers to offer their
+    cardholders the ability to set spending rules and receive real-time alerts on
+    their Visa payment cards. Cardholders can define rules to block or alert on
+    specific transaction types, merchant categories, geographic locations,
+    spending thresholds, and more.
+  version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/vctc/product-terms
+externalDocs:
+  description: Visa Transaction Controls Documentation
+  url: https://developer.visa.com/capabilities/vctc/docs
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox Server
+  - url: https://api.visa.com
+    description: Production Server
+tags:
+  - name: Customer Rules API
+    description: >-
+      Register consumer accounts and manage payment rules and thresholds that
+      define which transaction types to block or alert on.
+  - name: Alerts Preference Management API
+    description: >-
+      Manage cardholder alert delivery preferences including mobile numbers,
+      email addresses, and device identifiers for notification delivery.
+  - name: Alert History API
+    description: >-
+      Retrieve notification history for accounts and manage customer profiles
+      for alert delivery.
+security:
+  - mutualTLS: []
+paths:
+  /vctc/customerrules/v1/consumertransactioncontrols:
+    post:
+      operationId: createCustomerRules
+      summary: Create Customer Rules
+      description: >-
+        Registers a consumer's payment account to the VTC service and establishes
+        the payment rules and thresholds that define which transaction types the
+        consumer wants to block or receive alerts about.
+      tags:
+        - Customer Rules API
+      requestBody:
+        description: Customer rules configuration
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRulesRequest'
+      responses:
+        '200':
+          description: Customer rules created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerRulesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+    get:
+      operationId: getCustomerRules
+      summary: Get Customer Rules
+      description: >-
+        Retrieves the current transaction control rules configured for a
+        registered consumer account.
+      tags:
+        - Customer Rules API
+      parameters:
+        - name: primaryAccountNumber
+          in: query
+          required: true
+          description: Primary account number of the registered card
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer rules retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerRulesResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: No rules found for the specified account
+    put:
+      operationId: updateCustomerRules
+      summary: Update Customer Rules
+      description: >-
+        Updates the transaction control rules for an existing registered
+        consumer account.
+      tags:
+        - Customer Rules API
+      requestBody:
+        description: Updated customer rules configuration
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerRulesRequest'
+      responses:
+        '200':
+          description: Customer rules updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerRulesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+    delete:
+      operationId: deleteCustomerRules
+      summary: Delete Customer Rules
+      description: >-
+        Removes transaction control rules and unregisters a consumer account
+        from the VTC service.
+      tags:
+        - Customer Rules API
+      parameters:
+        - name: primaryAccountNumber
+          in: query
+          required: true
+          description: Primary account number to deregister
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer rules deleted successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Account not found
+  /vctc/alertspreference/v1/managealertspreference:
+    post:
+      operationId: manageAlertsPreference
+      summary: Manage Alerts Preference
+      description: >-
+        Configures the cardholder's alert delivery preferences including mobile
+        number, email address, and device identifiers that Visa will use to send
+        all alert notifications.
+      tags:
+        - Alerts Preference Management API
+      requestBody:
+        description: Alert preference configuration
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertsPreferenceRequest'
+      responses:
+        '200':
+          description: Alert preferences configured successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertsPreferenceResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /vctc/alerthistory/v1/alerthistoryinquiry:
+    post:
+      operationId: getAlertHistory
+      summary: Get Alert History
+      description: >-
+        Retrieves the VTC notification history for a registered account,
+        including details of all alerts generated based on the consumer's
+        configured rules and thresholds.
+      tags:
+        - Alert History API
+      requestBody:
+        description: Alert history inquiry parameters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertHistoryRequest'
+      responses:
+        '200':
+          description: Alert history retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertHistoryResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: >-
+        Two-way SSL mutual authentication using a PKI certificate issued by
+        Visa.
+  schemas:
+    CustomerRulesRequest:
+      type: object
+      required:
+        - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number to register or update
+        controls:
+          type: array
+          description: List of transaction controls to apply
+          items:
+            $ref: '#/components/schemas/TransactionControl'
+    TransactionControl:
+      type: object
+      properties:
+        controlType:
+          type: string
+          description: Type of transaction control
+          enum:
+            - TRANSACTION_AMOUNT
+            - MERCHANT_CATEGORY
+            - GEOGRAPHIC_LOCATION
+            - TRANSACTION_TYPE
+            - CHANNEL
+        isDeclinedEnabled:
+          type: boolean
+          description: Whether to decline matching transactions
+        isAlertEnabled:
+          type: boolean
+          description: Whether to send alerts for matching transactions
+        merchantCategoryCodes:
+          type: array
+          description: >-
+            MCC codes to control (applicable when controlType is
+            MERCHANT_CATEGORY)
+          items:
+            type: string
+        countryCodes:
+          type: array
+          description: >-
+            Country codes to control (applicable when controlType is
+            GEOGRAPHIC_LOCATION)
+          items:
+            type: string
+        thresholdAmount:
+          type: number
+          format: double
+          description: >-
+            Threshold amount for amount-based controls
+        transactionTypes:
+          type: array
+          description: Transaction types to control
+          items:
+            type: string
+            enum:
+              - ATM
+              - ECOMMERCE
+              - IN_STORE
+              - INTERNATIONAL
+    CustomerRulesResponse:
+      type: object
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number
+        status:
+          type: string
+          description: Registration status
+        controls:
+          type: array
+          description: Active controls on the account
+          items:
+            $ref: '#/components/schemas/TransactionControl'
+    AlertsPreferenceRequest:
+      type: object
+      required:
+        - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number
+        mobileNumber:
+          type: string
+          description: Mobile number for SMS alerts in E.164 format
+        emailAddress:
+          type: string
+          format: email
+          description: Email address for alert delivery
+        deviceId:
+          type: string
+          description: Device identifier for push notifications
+        alertDeliveryChannel:
+          type: string
+          description: Preferred alert delivery channel
+          enum:
+            - SMS
+            - EMAIL
+            - PUSH
+    AlertsPreferenceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Preference configuration status
+        alertDeliveryChannel:
+          type: string
+          description: Configured delivery channel
+    AlertHistoryRequest:
+      type: object
+      required:
+        - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number
+        startDate:
+          type: string
+          format: date
+          description: Start date for the history query
+        endDate:
+          type: string
+          format: date
+          description: End date for the history query
+    AlertHistoryResponse:
+      type: object
+      properties:
+        alerts:
+          type: array
+          description: List of alert notifications
+          items:
+            type: object
+            properties:
+              alertId:
+                type: string
+                description: Unique alert identifier
+              alertType:
+                type: string
+                description: Type of alert triggered
+              transactionAmount:
+                type: number
+                format: double
+                description: Transaction amount that triggered the alert
+              merchantName:
+                type: string
+                description: Merchant name
+              alertDateTime:
+                type: string
+                format: date-time
+                description: Date and time the alert was generated
+              controlType:
+                type: string
+                description: Type of control that triggered the alert
+              actionTaken:
+                type: string
+                description: Action taken (ALERT or DECLINE)
+                enum:
+                  - ALERT
+                  - DECLINE
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description

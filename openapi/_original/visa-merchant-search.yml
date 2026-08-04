@@ -1,0 +1,357 @@
+openapi: 3.1.0
+info:
+  title: Visa Merchant Search
+  description: >-
+    The Visa Merchant Search API provides enriched and precise merchant data to
+    create a more transparent and effective transaction process. The API supports
+    transaction enrichment with enhanced merchant information, generic merchant
+    search by name and location, and nearby merchant discovery for Visa-accepting
+    locations.
+  version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/merchant_search/product-terms
+externalDocs:
+  description: Merchant Search Documentation
+  url: https://developer.visa.com/capabilities/merchant_search/docs
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox Server
+  - url: https://api.visa.com
+    description: Production Server
+tags:
+  - name: Transaction Enrichment API
+    description: >-
+      Enrich transaction data with additional merchant information including
+      street addresses, URLs, logos, and contact details.
+  - name: Merchant Search API
+    description: >-
+      Search for merchants by name and location to retrieve Visa merchant
+      identifiers and related details.
+  - name: Nearby Merchants API
+    description: >-
+      Discover nearby Visa-accepting merchants based on geographic coordinates
+      or address information.
+security:
+  - mutualTLS: []
+paths:
+  /merchantsearch/v1/search:
+    post:
+      operationId: searchMerchants
+      summary: Search Merchants
+      description: >-
+        Searches for merchants by name and location criteria, returning Visa
+        merchant identifiers and related business details. This operation
+        enables applications to find and validate merchant information in the
+        Visa merchant database.
+      tags:
+        - Merchant Search API
+      requestBody:
+        description: Merchant search criteria
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MerchantSearchRequest'
+      responses:
+        '200':
+          description: Search results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantSearchResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /merchantsearch/v1/transactionenrichment:
+    post:
+      operationId: enrichTransaction
+      summary: Enrich Transaction
+      description: >-
+        Enriches transaction data with enhanced merchant information such as
+        merchant street address, website URL, logo, and contact information.
+        This operation helps improve the cardholder experience by providing
+        clearer and more recognizable merchant details on statements.
+      tags:
+        - Transaction Enrichment API
+      requestBody:
+        description: Transaction details to enrich
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionEnrichmentRequest'
+      responses:
+        '200':
+          description: Transaction enriched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionEnrichmentResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /merchantsearch/v1/nearbymerchants:
+    post:
+      operationId: findNearbyMerchants
+      summary: Find Nearby Merchants
+      description: >-
+        Finds Visa-accepting merchants near a specified geographic location.
+        This operation supports location-based merchant discovery for consumer
+        applications and services.
+      tags:
+        - Nearby Merchants API
+      requestBody:
+        description: Location and search criteria
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NearbyMerchantsRequest'
+      responses:
+        '200':
+          description: Nearby merchants found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyMerchantsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: >-
+        Two-way SSL mutual authentication using a PKI certificate issued by
+        Visa.
+  schemas:
+    MerchantSearchRequest:
+      type: object
+      required:
+        - searchAttrList
+      properties:
+        searchAttrList:
+          type: object
+          description: Search attributes for merchant lookup
+          properties:
+            merchantName:
+              type: string
+              description: Name of the merchant to search for
+            merchantCity:
+              type: string
+              description: City where the merchant is located
+            merchantState:
+              type: string
+              description: State or province of the merchant
+            merchantCountryCode:
+              type: string
+              description: ISO 3166-1 numeric country code
+            merchantPostalCode:
+              type: string
+              description: Postal code of the merchant location
+            merchantCategoryCode:
+              type: array
+              description: List of Merchant Category Codes to filter by
+              items:
+                type: string
+        searchOptions:
+          type: object
+          description: Additional search configuration
+          properties:
+            maxRecords:
+              type: integer
+              description: Maximum number of records to return
+              minimum: 1
+              maximum: 100
+            matchScore:
+              type: boolean
+              description: Include match confidence score in results
+    MerchantSearchResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of matching merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total number of matching records
+    TransactionEnrichmentRequest:
+      type: object
+      required:
+        - acquirerCardAcceptorId
+      properties:
+        acquirerCardAcceptorId:
+          type: string
+          description: Card acceptor ID from the transaction
+        acquiringBin:
+          type: string
+          description: Acquiring bank identification number
+        merchantName:
+          type: string
+          description: Merchant name from the transaction
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code from the transaction
+    TransactionEnrichmentResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: Enriched merchant information
+              items:
+                $ref: '#/components/schemas/EnrichedMerchant'
+    NearbyMerchantsRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude coordinate
+        longitude:
+          type: number
+          format: double
+          description: Longitude coordinate
+        searchRadius:
+          type: number
+          format: double
+          description: Search radius in kilometers
+        searchRadiusUnit:
+          type: string
+          description: Unit of measurement for search radius
+          enum:
+            - KM
+            - MI
+        merchantCategoryCode:
+          type: array
+          description: Filter by Merchant Category Codes
+          items:
+            type: string
+        maxRecords:
+          type: integer
+          description: Maximum number of records to return
+    NearbyMerchantsResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of nearby merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total matching merchants
+    MerchantRecord:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        visaStoreId:
+          type: string
+          description: Visa-assigned store identifier
+        merchantName:
+          type: string
+          description: Name of the merchant
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        matchScore:
+          type: number
+          format: double
+          description: Confidence score of the match
+    EnrichedMerchant:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        merchantName:
+          type: string
+          description: Cleaned merchant name
+        merchantUrl:
+          type: string
+          format: uri
+          description: Merchant website URL
+        merchantLogoUrl:
+          type: string
+          format: uri
+          description: URL of the merchant logo
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        phoneNumber:
+          type: string
+          description: Merchant phone number
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description

@@ -1,0 +1,399 @@
+openapi: 3.1.0
+info:
+  title: Visa Global ATM Locator
+  description: >-
+    The Visa Global ATM Locator API enables cardholders to search for Visa and
+    Plus ATM locations around the world. With access to over 2 million ATMs in
+    more than 200 countries, the API helps consumers find convenient cash access
+    points via web or mobile applications.
+  version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/atmlocator/product-terms
+externalDocs:
+  description: Visa Global ATM Locator Documentation
+  url: https://developer.visa.com/capabilities/atmlocator/docs
+servers:
+  - url: https://sandbox.api.visa.com
+    description: Sandbox Server
+  - url: https://api.visa.com
+    description: Production Server
+tags:
+  - name: ATM Locator API
+    description: >-
+      Search for Visa and Plus ATM locations by geographic coordinates, address,
+      or other criteria to help cardholders find nearby cash access points.
+security:
+  - mutualTLS: []
+paths:
+  /atmlocator/v1/findnearbytotals:
+    post:
+      operationId: findNearbyAtmTotals
+      summary: Find Nearby ATM Totals
+      description: >-
+        Returns the number of ATMs nearest to a given location based on search
+        criteria. Provides subtotals of the number of ATMs matching each filter
+        criteria included in the request.
+      tags:
+        - ATM Locator API
+      requestBody:
+        description: ATM search criteria with location and filters
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindNearbyTotalsRequest'
+      responses:
+        '200':
+          description: ATM totals retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindNearbyTotalsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /atmlocator/v1/findnearbyatms:
+    post:
+      operationId: findNearbyAtms
+      summary: Find Nearby ATMs
+      description: >-
+        Retrieves all details of ATMs near a given area based on search
+        criteria. Returns ATM location details including address, operating
+        hours, supported features, and distance from the search location.
+      tags:
+        - ATM Locator API
+      requestBody:
+        description: ATM search criteria
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindNearbyAtmsRequest'
+      responses:
+        '200':
+          description: Nearby ATMs retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindNearbyAtmsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+  /atmlocator/v1/findgeocodes:
+    post:
+      operationId: findGeocodes
+      summary: Find Geocodes
+      description: >-
+        Returns latitude and longitude coordinates based on an input address.
+        This geocoding operation can be used to convert addresses to coordinates
+        before searching for nearby ATMs.
+      tags:
+        - ATM Locator API
+      requestBody:
+        description: Address to geocode
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FindGeocodesRequest'
+      responses:
+        '200':
+          description: Geocode results returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindGeocodesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: >-
+        Two-way SSL mutual authentication using a PKI certificate issued by
+        Visa.
+  schemas:
+    FindNearbyTotalsRequest:
+      type: object
+      required:
+        - wsRequestHeaderV2
+        - requestData
+      properties:
+        wsRequestHeaderV2:
+          $ref: '#/components/schemas/RequestHeader'
+        requestData:
+          type: object
+          properties:
+            location:
+              $ref: '#/components/schemas/Location'
+            options:
+              $ref: '#/components/schemas/SearchOptions'
+            distance:
+              type: number
+              format: double
+              description: Search radius
+            distanceUnit:
+              type: string
+              description: Unit of distance measurement
+              enum:
+                - KM
+                - MI
+    FindNearbyTotalsResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            totalATMCount:
+              type: integer
+              description: Total number of ATMs found
+            atmFilterTotals:
+              type: array
+              description: Subtotals by filter criteria
+              items:
+                type: object
+                properties:
+                  filterName:
+                    type: string
+                    description: Name of the filter
+                  count:
+                    type: integer
+                    description: Number of ATMs matching this filter
+    FindNearbyAtmsRequest:
+      type: object
+      required:
+        - wsRequestHeaderV2
+        - requestData
+      properties:
+        wsRequestHeaderV2:
+          $ref: '#/components/schemas/RequestHeader'
+        requestData:
+          type: object
+          properties:
+            location:
+              $ref: '#/components/schemas/Location'
+            options:
+              $ref: '#/components/schemas/SearchOptions'
+            distance:
+              type: number
+              format: double
+              description: Search radius
+            distanceUnit:
+              type: string
+              description: Unit of distance measurement
+              enum:
+                - KM
+                - MI
+            maxRecords:
+              type: integer
+              description: Maximum number of ATM records to return
+              minimum: 1
+              maximum: 500
+            startIndex:
+              type: integer
+              description: Starting index for pagination
+    FindNearbyAtmsResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            totalATMCount:
+              type: integer
+              description: Total number of ATMs matching criteria
+            atmLocations:
+              type: array
+              description: List of ATM locations
+              items:
+                $ref: '#/components/schemas/AtmLocation'
+    FindGeocodesRequest:
+      type: object
+      required:
+        - wsRequestHeaderV2
+        - requestData
+      properties:
+        wsRequestHeaderV2:
+          $ref: '#/components/schemas/RequestHeader'
+        requestData:
+          type: object
+          properties:
+            address:
+              type: string
+              description: Street address to geocode
+            city:
+              type: string
+              description: City name
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal or ZIP code
+            country:
+              type: string
+              description: Country name or ISO code
+    FindGeocodesResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            geocodes:
+              type: array
+              description: Geocoded results
+              items:
+                type: object
+                properties:
+                  latitude:
+                    type: number
+                    format: double
+                    description: Latitude coordinate
+                  longitude:
+                    type: number
+                    format: double
+                    description: Longitude coordinate
+                  formattedAddress:
+                    type: string
+                    description: Formatted address string
+    RequestHeader:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          description: Application identifier
+        requestMessageId:
+          type: string
+          description: Unique message identifier for the request
+    ResponseHeader:
+      type: object
+      properties:
+        responseMessageId:
+          type: string
+          description: Unique message identifier for the response
+        numOfRowsReturned:
+          type: integer
+          description: Number of rows in the response
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude coordinate
+        longitude:
+          type: number
+          format: double
+          description: Longitude coordinate
+        placeName:
+          type: string
+          description: Place name or address
+    SearchOptions:
+      type: object
+      properties:
+        operationName:
+          type: string
+          description: Name of the search operation
+        findFilters:
+          type: array
+          description: Search filter criteria
+          items:
+            type: object
+            properties:
+              filterName:
+                type: string
+                description: Name of the filter
+              filterValue:
+                type: string
+                description: Value for the filter
+    AtmLocation:
+      type: object
+      properties:
+        atmId:
+          type: string
+          description: Unique identifier for the ATM
+        terminalId:
+          type: string
+          description: Terminal identifier
+        ownerBusinessName:
+          type: string
+          description: Business name of the ATM owner
+        address:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country
+        coordinates:
+          type: object
+          properties:
+            latitude:
+              type: number
+              format: double
+              description: Latitude
+            longitude:
+              type: number
+              format: double
+              description: Longitude
+        distance:
+          type: number
+          format: double
+          description: Distance from the search location
+        distanceUnit:
+          type: string
+          description: Unit of the distance value
+        isAvailable24Hours:
+          type: boolean
+          description: Whether the ATM is available 24 hours
+        supportedServices:
+          type: array
+          description: Services supported by this ATM
+          items:
+            type: string
+        networkAlliance:
+          type: string
+          description: ATM network alliance
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description

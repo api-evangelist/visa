@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Alert History API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alert History API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Alert History",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vctc/alerthistory/v1/alerthistoryinquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves the VTC notification history for a registered account, including details of all alerts generated based on the consumer's configured rules and thresholds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Payment Service API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Payment Detail URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/GetPaymentDetailURL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Payment Detail URL"
+        },
+        {
+          "info": {
+            "name": "Get Payment Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/GetPaymentDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Payment Details"
+        },
+        {
+          "info": {
+            "name": "Resend Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/ResendPayment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resend Payment"
+        },
+        {
+          "info": {
+            "name": "Process Payment - Recipe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/recipes/processPayment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ProcessPayment Recipe API"
+        },
+        {
+          "info": {
+            "name": "Cancel Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/CancelPayment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel Payment"
+        },
+        {
+          "info": {
+            "name": "Process Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/payment/ProcessPayments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Process Payments"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

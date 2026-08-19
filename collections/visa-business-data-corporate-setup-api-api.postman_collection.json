@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "7cae0845-3915-479c-90eb-330e68c5fae7",
+      "name": "Business Data Corporate Setup API",
+      "description": {
+        "content": "Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "869da5cd-8e7b-4790-92fa-62542ca68d14",
+          "name": "Get starter data",
+          "request": {
+            "name": "Get starter data",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cdsapi",
+                "commercial",
+                "v1",
+                "ob",
+                "starterdata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuer\": {\n    \"bank\": [\n      {\n        \"bankId\": \"<integer>\",\n        \"company\": [\n          {\n            \"companyId\": \"<integer>\"\n          },\n          {\n            \"companyId\": \"<integer>\"\n          }\n        ]\n      },\n      {\n        \"bankId\": \"<integer>\",\n        \"company\": [\n          {\n            \"companyId\": \"<integer>\"\n          },\n          {\n            \"companyId\": \"<integer>\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": {\n      \"adhoc\": \"<string>\",\n      \"numberOfRecords\": \"<integer>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "535dd803-320b-4d59-b34f-d4f48a0e2f2d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cdsapi",
+                    "commercial",
+                    "v1",
+                    "ob",
+                    "starterdata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuer\": {\n    \"bank\": [\n      {\n        \"bankId\": \"200\",\n        \"company\": [\n          {\n            \"companyId\": \"8888800000\"\n          }\n        ]\n      }\n    ],\n    \"metadata\": {\n      \"numberOfRecords\": 300,\n      \"adhoc\": \"true\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"starterData\": {\n    \"starterDataRecords\": {\n      \"cardHolder\": [],\n      \"company\": [\n        {\n          \"city\": \"RICHMOND\",\n          \"effectiveDt\": 1233014400000,\n          \"orgHierManagementInd\": 0,\n          \"optFld1\": \"\",\n          \"optFld2\": \"\",\n          \"isParticipating\": \"Y\",\n          \"spendingLimit\": 18250014,\n          \"processorId\": 1,\n          \"companyNm\": \"207-UVA\",\n          \"stateProvCd\": \"VA\",\n          \"federalInd\": 0,\n          \"optFld3\": \"\",\n          \"optFld4\": \"\",\n          \"mnrGroupId\": null,\n          \"address3\": null,\n          \"address2\": \"101 N 14TH ST 2ND FL\",\n          \"address1\": \"DEPARTMENT OF ACCOUNTS\",\n          \"isoCtryCd\": 840,\n          \"prmyCntcFirstNm\": null,\n          \"prmyIndustryClsfnCd\": 0,\n          \"cardType\": 2,\n          \"postalCd\": \"232193684\",\n          \"sctrCd\": null,\n          \"memberBankId\": \"6040\",\n          \"dnbNum\": 0,\n          \"websiteUrlAddr\": null,\n          \"companyId\": \"3011207\",\n          \"reportingIsoCurrCd\": null,\n          \"regionId\": 1,\n          \"prmyCntcLastNm\": null,\n          \"emailAddr\": null,\n          \"companyBid\": null,\n          \"secyIndustryClsfnCd\": null,\n          \"issuerNm\": \"BANK OF AMERICA\",\n          \"logoId\": null,\n          \"conversionIsoCurrCd\": null\n        },\n        {\n          \"city\": \"HARTSVILLE\",\n          \"effectiveDt\": 1115856000000,\n          \"orgHierManagementInd\": 0,\n          \"optFld1\": null,\n          \"optFld2\": null,\n          \"isParticipating\": \"N\",\n          \"spendingLimit\": 37358470,\n          \"processorId\": 1,\n          \"companyNm\": \"SONOCO PRODUCTS COMPANY                                                         \",\n          \"stateProvCd\": \"SC  \",\n          \"federalInd\": 0,\n          \"optFld3\": null,\n          \"optFld4\": null,\n          \"mnrGroupId\": null,\n          \"address3\": null,\n          \"address2\": \"MS J25\",\n          \"address1\": \"NORTH 2ND ST\",\n          \"isoCtryCd\": 840,\n          \"prmyCntcFirstNm\": null,\n          \"prmyIndustryClsfnCd\": null,\n          \"cardType\": 2,\n          \"postalCd\": \"29550330001\",\n          \"sctrCd\": null,\n          \"memberBankId\": \"6040\",\n          \"dnbNum\": null,\n          \"websiteUrlAddr\": null,\n          \"companyId\": \"6603824\",\n          \"reportingIsoCurrCd\": null,\n          \"regionId\": 1,\n          \"prmyCntcLastNm\": null,\n          \"emailAddr\": null,\n          \"companyBid\": null,\n          \"secyIndustryClsfnCd\": null,\n          \"issuerNm\": \"FIA CARD SERVICES, N.A.\",\n          \"logoId\": null,\n          \"conversionIsoCurrCd\": null\n        },\n        {\n          \"city\": \"BRANTFORD\",\n          \"effectiveDt\": 1225152000000,\n          \"orgHierManagementInd\": 0,\n          \"optFld1\": null,\n          \"optFld2\": null,\n          \"isParticipating\": \"N\",\n          \"spendingLimit\": 2699964,\n          \"processorId\": 1,\n          \"companyNm\": \"SONOCO CANADA CORPORATION                                                       \",\n          \"stateProvCd\": \"ON  \",\n          \"federalInd\": 0,\n          \"optFld3\": null,\n          \"optFld4\": null,\n          \"mnrGroupId\": null,\n          \"address3\": null,\n          \"address2\": null,\n          \"address1\": \"33 PARK AVE EAST\",\n          \"isoCtryCd\": 124,\n          \"prmyCntcFirstNm\": null,\n          \"prmyIndustryClsfnCd\": null,\n          \"cardType\": 2,\n          \"postalCd\": \"N3T 5T5\",\n          \"sctrCd\": null,\n          \"memberBankId\": \"6040\",\n          \"dnbNum\": null,\n          \"websiteUrlAddr\": null,\n          \"companyId\": \"6613474\",\n          \"reportingIsoCurrCd\": null,\n          \"regionId\": 1,\n          \"prmyCntcLastNm\": null,\n          \"emailAddr\": null,\n          \"companyBid\": null,\n          \"secyIndustryClsfnCd\": null,\n          \"issuerNm\": \"FIA CARD SERVICES, N.A.\",\n          \"logoId\": null,\n          \"conversionIsoCurrCd\": null\n        },\n        {\n          \"mgrPhoneNum\": null,\n          \"effectiveDt\": 253402214400000,\n          \"parentHierNode\": 30704581,\n          \"glSubAcctCd\": \"                                                                            \",\n          \"partIsoCtryCd\": 840,\n          \"description\": \"HENDERSON                               \",\n          \"partPostalCd\": \"29550         \",\n          \"costCtrCd\": null,\n          \"optFld1\": null,\n          \"partAddr2\": null,\n          \"optFld2\": null,\n          \"partAddr3\": null,\n          \"secondHierNodeRep\": \"0000200\",\n          \"mgrLastNm\": null,\n          \"partAddr1\": \"1 N. 2ND ST. MS J22\",\n          \"processorId\": 1,\n          \"partFaxNum\": \"                \",\n          \"taskOrderNum\": null,\n          \"partStateCd\": \"SC\",\n          \"mgrTrainingDt\": 253402214400000,\n          \"partFirstNm\": \"SHEILA\",\n          \"optFld3\": null,\n          \"optFld4\": null,\n          \"mgrFirstNm\": null,\n          \"pHiernodeIsNum\": 191002135,\n          \"partPhoneNum\": \"8433837045      \",\n          \"memberBankId\": \"6040\",\n          \"partLastNm\": \"MULLIS\",\n          \"thirdHierNodeRep\": \"0000021\",\n          \"treeId\": null,\n          \"companyId\": \"6603824\",\n          \"partCity\": \"HARTSVILLE\",\n          \"regionId\": 1,\n          \"partEmailAddr\": null,\n          \"mgrTitle\": null,\n          \"hierNode\": \"000000000040704567\"\n        }\n      ],\n      \"cardAccount\": []\n    },\n    \"responseMetadata\": {\n      \"startIndex\": 1,\n      \"requestId\": 10302,\n      \"numberOfRecordsFetched\": 300,\n      \"nextIndex\": 288,\n      \"remainingStarterRecCount\": 2126752\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "571c19c0-e2a4-4537-9cd9-bc104b496cd4",
+    "name": "Foreign Exchange Rates Business Data Corporate Setup API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API.",
+      "type": "text/plain"
+    }
+  }
+}

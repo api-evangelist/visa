@@ -1,0 +1,379 @@
+{
+  "item": [
+    {
+      "id": "56c010ca-260a-4c0f-8d15-df58029b1f9e",
+      "name": "VCS Enrollment API",
+      "description": {
+        "content": "The API is used to onboard and register companies, users and cards in Commercial Space",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0834072a-859c-49c9-9f46-f2465e3215e9",
+          "name": "VCS Registration",
+          "request": {
+            "name": "VCS Registration",
+            "description": {
+              "content": "The Register endpoint is used to add additional cards and users and provide assopciations required",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vocs",
+                "v1",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientCompanyId\": \"<string>\",\n  \"language\": \"<string>\",\n  \"messageId\": \"<integer>\",\n  \"service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cardInfo\": [\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    },\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    }\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\",\n        \"key_4\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    },\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e20b1d6-9464-4a24-b978-c4dacb6230a4",
+              "name": "Returns correlationId with Success/Failure status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vocs",
+                    "v1",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"language\": \"en_us\",\n  \"messageId\": 649833257,\n  \"service\": [\n    \"VSCB\",\n    \"VSCB\"\n  ],\n  \"cardInfo\": [\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    },\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    }\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    },\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"messageId\": \"9854765\",\n  \"correlationId\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"cardInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    }\n  ],\n  \"userInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    }\n  ],\n  \"associationResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1532e86a-b665-49a0-8928-cff68418a1d2",
+          "name": "VCS Registration",
+          "request": {
+            "name": "VCS Registration",
+            "description": {
+              "content": "The Register endpoint is used for registration of corporate companies, cards, users and association between user and card. For the request to be valid, we need company details and primary card",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vocs",
+                "v1",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"zipCode\": \"<string>\",\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\"\n  },\n  \"cardInfo\": [\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    },\n    {\n      \"primary\": \"<boolean>\",\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"cardAccNumber\": \"<string>\",\n      \"cardExpiryDate\": \"<string>\"\n    }\n  ],\n  \"clientCompanyId\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"companyPhoneNumber\": \"<integer>\",\n  \"language\": \"<string>\",\n  \"messageId\": \"<integer>\",\n  \"service\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\"\n      },\n      \"lastName\": \"<string>\",\n      \"serialNo\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"federationMappingId\": \"<string>\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    },\n    {\n      \"serialNo\": \"<string>\",\n      \"emailAddress\": \"<string>\",\n      \"cardAccNumber\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb29cbe7-3c69-4c14-97df-aadccf728e1c",
+              "name": "Returns correlationId with Success/Failure status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vocs",
+                    "v1",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"FC1\",\n    \"state\": \"WA\",\n    \"country\": \"840\",\n    \"zipCode\": \"12234\",\n    \"addressLine1\": \"AddressLine1\",\n    \"addressLine2\": \"AddressLine2\"\n  },\n  \"cardInfo\": [\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    },\n    {\n      \"primary\": true,\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"cardAccNumber\": \"4111115773850213\",\n      \"cardExpiryDate\": \"02/2024\"\n    }\n  ],\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"companyName\": \"TestCompany10220270\",\n  \"companyPhoneNumber\": 99197904935,\n  \"language\": \"en_us\",\n  \"messageId\": 649833257,\n  \"service\": [\n    \"VSCB\",\n    \"VSCB\"\n  ],\n  \"userInfo\": [\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    },\n    {\n      \"roles\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"lastName\": \"LastName1\",\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"firstName\": \"FirstName1\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"federationMappingId\": \"testemail10220270\"\n    }\n  ],\n  \"association\": [\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    },\n    {\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\",\n      \"cardAccNumber\": \"4111115773850213\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"SUCCESS\",\n  \"messageId\": \"9854765\",\n  \"correlationId\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n  \"clientCompanyId\": \"1n78gbqw56\",\n  \"cardInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"cardAccNumber\": \"4XXXXX5773850213\",\n      \"cardIdentifier\": \"267625\"\n    }\n  ],\n  \"userInfoResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\",\n      \"emailAddress\": \"testemail10220270@gmail.com\"\n    }\n  ],\n  \"associationResponses\": [\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    },\n    {\n      \"status\": \"SUCCESS\",\n      \"messages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"serialNo\": \"a05568c3-e4a1-4634-9190-b2bb3744effd\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd73be3a-6701-4bbf-b76f-5ebb5930134f",
+          "name": "Get Status",
+          "request": {
+            "name": "Get Status",
+            "description": {
+              "content": "The Issuer passes userEmail and service to check user creation status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CPRWeb",
+                "getUserStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userEmail",
+                  "value": "<string>",
+                  "description": "(Required) Email Id of the registered user."
+                },
+                {
+                  "disabled": false,
+                  "key": "service",
+                  "value": "<string>",
+                  "description": "(Required) This is the service code correspond to the service you want to subscribe to. Code is VSCB for Visa Spand Clarity for Business."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) As part of the onboarding the clientId will be provided by Visa. Please pass the same clientId for every request.",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd7a084d-0678-4a95-94b4-8abac022e799",
+              "name": "Returns status of the user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRWeb",
+                    "getUserStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) As part of the onboarding the clientId will be provided by Visa. Please pass the same clientId for every request.",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"\",\n  \"status\": \"COMPLETED\",\n  \"correlationId\": \"1675674574_089_79_l73q003m_CPRWEB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1280f9c-6929-416d-ae3c-81c5fa28c737",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRWeb",
+                    "getUserStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userEmail",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "service",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) As part of the onboarding the clientId will be provided by Visa. Please pass the same clientId for every request.",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"VDP Client not Onboarded for Registration API\",\n  \"status\": \"400 BAD_REQUEST\",\n  \"correlationId\": \"1678954277_707_63_l73q003m_CPRWEB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "55579777-9aed-42d6-aee4-8f85a6642a73",
+    "name": "Foreign Exchange Rates VCS Enrollment API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The API is used to onboard and register companies, users and cards in Commercial Space",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,496 @@
+{
+  "item": [
+    {
+      "id": "420388a5-9987-4195-bffe-1e56017cb2c7",
+      "name": "Single BIN Lookup",
+      "description": {
+        "content": "Lookup BIN Attributes for a single Payment Account or BIN",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4275c990-16de-4571-b439-8fdeaae9b086",
+          "name": "PAN TOKEN Lookup Using POST",
+          "request": {
+            "name": "PAN TOKEN Lookup Using POST",
+            "description": {
+              "content": "Get all the values related to PAN/TOKEN",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "paymentAccountLookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestData\": {\n    \"paymentAccount\": \"<string>\",\n    \"paymentAccountType\": \"<string>\"\n  },\n  \"requestHeader\": {\n    \"requestMessageID\": \"<string>\",\n    \"requestTS\": \"<YYYY-MM-DDThh:mm:ss.sss>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "184dc4c0-8863-4b5b-a446-c5f8b7b271ef",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wsStatus\": {\n    \"statusDesc\": \"Success\",\n    \"statusCode\": \"CDI000\"\n  },\n  \"responseData\": {\n    \"platformCd\": \"GV\",\n    \"accountFundingSourceCd\": \"R\",\n    \"accountBusName\": \"ABD & COMPANY\",\n    \"productID\": \"S2\",\n    \"paymentAccountType\": \"P\",\n    \"accountRegionCode\": \"06\",\n    \"issuerBillingCurrCd\": \"MRO\",\n    \"accountCtryAlpha2Code\": \"MR\",\n    \"issuerBin\": \"425907\",\n    \"productIDName\": \"Visa Government Purchasing\",\n    \"accountFundingSourceSubtypeCd\": \"N\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8955833-527b-4ff5-8962-2bc3ef676b6c",
+              "name": "Requesting Client IP is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Multiple Choices",
+              "code": 300,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24c1d6eb-f748-4d45-abe9-a1fc2f7d913a",
+              "name": "Request Data Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e8c87be-3fda-425c-bd75-2352fbec675c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a09822f4-7232-437c-9dd9-f4236396ed6d",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CDI001\": {},\n  \"CDI012\": {},\n  \"CDI052\": {},\n  \"CDI071\": {},\n  \"CDI248\": {},\n  \"CDI249\": {},\n  \"CDI250\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f524e7a1-bba4-4c33-887d-17ff48d3e339",
+          "name": "PAN TOKEN Lookup Using POST V2",
+          "request": {
+            "name": "PAN TOKEN Lookup Using POST V2",
+            "description": {
+              "content": "Get all the values related to PAN/TOKEN<br><br>Access to Visa BIN Attributes such as Issuer BIN, Issuer Country , Issuer Billing Currency and Product Identifiers such as Product ID/name, Product Platform, Card type, Card Subtype for any single payment account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "paymentAccountLookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestData\": {\n    \"paymentAccount\": \"<string>\",\n    \"paymentAccountType\": \"<string>\"\n  },\n  \"requestHeader\": {\n    \"requestMessageID\": \"<string>\",\n    \"requestTS\": \"<YYYY-MM-DDThh:mm:ss.sss>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "007470b8-1f63-4d1e-8414-9fc2faf33a37",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wsStatus\": {\n    \"statusDesc\": \"Success\",\n    \"statusCode\": \"CDI000\"\n  },\n  \"responseData\": {\n    \"commrclCrdLvl3EnhInd\": \"N\",\n    \"accountFundingSourceCd\": \"R\",\n    \"binLength\": \"6\",\n    \"productID\": \"S2\",\n    \"paymentAccountType\": \"P\",\n    \"accountRegionCode\": \"06\",\n    \"accountCtryAlpha2Code\": \"MR\",\n    \"posDomesticOnlyInd\": \"N\",\n    \"onlineGamblBlockInd\": \"Y\",\n    \"comboCrdCd\": \"N\",\n    \"accountFundingSourceSubtypeCd\": \"N\",\n    \"commrclCrdLvl2Ind\": \"N\",\n    \"platformCd\": \"GV\",\n    \"accountBusName\": \"ABD & COMPANY\",\n    \"multiAccountAccessInd\": \"N\",\n    \"issuerBillingCurrCd\": \"MRO\",\n    \"almInd\": \"N\",\n    \"vauInd\": \"N\",\n    \"brandCd\": \"VISA\",\n    \"autoSubstntnInd\": \"N\",\n    \"issuerBin\": \"425907\",\n    \"sharedBinInd\": \"Y\",\n    \"productIDName\": \"Visa Government Purchasing\",\n    \"regulatedBinCd\": \"R\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4dc8405-649b-4d54-9570-d866525b582c",
+              "name": "Request Data Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d756f40e-bd67-4d1f-8109-83d1b7fc3344",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ddba7c22-6128-4cd2-8f61-b9f83ee9f684",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "paymentAccountLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-15T22:05:00.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\",\n    \"paymentAccount\": \"4259077000001230\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CDI001\": {},\n  \"CDI012\": {},\n  \"CDI052\": {},\n  \"CDI071\": {},\n  \"CDI248\": {},\n  \"CDI249\": {},\n  \"CDI250\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "da9a3c79-b0b1-4c4c-a981-0110c0f39863",
+    "name": "Foreign Exchange Rates Single BIN Lookup API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Lookup BIN Attributes for a single Payment Account or BIN",
+      "type": "text/plain"
+    }
+  }
+}

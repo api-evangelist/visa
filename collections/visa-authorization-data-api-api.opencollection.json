@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Authorization Data API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization Data API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Authorization Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vbs/dapi/v1/transactions/auth",
+            "headers": [
+              {
+                "name": "clientId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Authorization Data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates VCS Enrollment API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VCS Enrollment API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "VCS Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vocs/v1/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Register endpoint is used for registration of corporate companies, cards, users and association between user and card. For the request to be valid, we need company details and primary card"
+        },
+        {
+          "info": {
+            "name": "VCS Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.api.visa.com/vocs/v1/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Register endpoint is used to add additional cards and users and provide assopciations required"
+        },
+        {
+          "info": {
+            "name": "Get Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/CPRWeb/getUserStatus",
+            "headers": [
+              {
+                "name": "clientId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userEmail",
+                "value": "",
+                "type": "query",
+                "description": "Email Id of the registered user."
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "This is the service code correspond to the service you want to subscribe to. Code is VSCB for Visa Spand Clarity for Business."
+              }
+            ]
+          },
+          "docs": "The Issuer passes userEmail and service to check user creation status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

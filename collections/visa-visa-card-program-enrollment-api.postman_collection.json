@@ -1,0 +1,363 @@
+{
+  "item": [
+    {
+      "id": "86846330-614d-4b3c-923d-01bbd1d94588",
+      "name": "Visa Card Program Enrollment ",
+      "description": {
+        "content": "VCPE supports issuers that want to offer instant/digital issuance or re-issuance; as well as allow their cardholders to upgrade and downgrade cards in their banking app and enjoy new rewards programs in near real-time without needing a physical card and without changing their 16-digit card number.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2999c02f-58b0-45f7-a7a5-362e4ebcc200",
+          "name": "Enrollment",
+          "request": {
+            "name": "Enrollment",
+            "description": {
+              "content": "Process enrollment and handover message to ALM.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vcpe",
+                "v2",
+                "pan",
+                "enrollment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "List of acceptable languages for the response. Defaults to en-US if not present. Example- en-US",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The language of the request body. Defaults to en-US if not present. Example- en-US",
+                "key": "Content-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"operationType\": \"<string>\",\n  \"updateReferenceID\": \"<string>\",\n  \"enrollmentInfo\": {\n    \"cardholderInfo\": {\n      \"primaryAccountNumber\": \"<string>\"\n    },\n    \"accountLevelInfo\": {\n      \"productID\": \"<string>\",\n      \"linkEnrollment\": {\n        \"group\": [\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          },\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          }\n        ]\n      },\n      \"rpinEnrollment\": {\n        \"rpin\": \"<string>\",\n        \"action\": \"<string>\",\n        \"accountOpenDate\": \"<string>\",\n        \"rpinEffectiveDate\": \"<string>\"\n      },\n      \"replaceEnrollment\": {\n        \"linkReasonCode\": \"<string>\",\n        \"unlinkIndicator\": \"<string>\",\n        \"oldAccountNumber\": \"<string>\"\n      },\n      \"customerContactInfo\": {\n        \"email\": \"<string>\",\n        \"action\": \"<string>\",\n        \"address\": {\n          \"zip\": \"<string>\",\n          \"city\": \"<string>\",\n          \"line1\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"state\": \"<string>\",\n          \"companyName\": \"<string>\"\n        },\n        \"lastName\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"namePrefix\": \"<string>\",\n        \"nameSuffix\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"middleInitial\": \"<string>\",\n        \"prefMethodOfContact\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e35df8b-f202-443e-8b62-4418dfa86c78",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcpe",
+                    "v2",
+                    "pan",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Content-Types that are acceptable for the response. Example- application/json",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "List of acceptable languages for the response. Defaults to en-US if not present. Example- en-US",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The type of the request body. Example- application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language of the request body. Defaults to en-US if not present. Example- en-US",
+                    "key": "Content-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operationType\": \"<string>\",\n  \"updateReferenceID\": \"<string>\",\n  \"enrollmentInfo\": {\n    \"cardholderInfo\": {\n      \"primaryAccountNumber\": \"<string>\"\n    },\n    \"accountLevelInfo\": {\n      \"productID\": \"<string>\",\n      \"linkEnrollment\": {\n        \"group\": [\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          },\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          }\n        ]\n      },\n      \"rpinEnrollment\": {\n        \"rpin\": \"<string>\",\n        \"action\": \"<string>\",\n        \"accountOpenDate\": \"<string>\",\n        \"rpinEffectiveDate\": \"<string>\"\n      },\n      \"replaceEnrollment\": {\n        \"linkReasonCode\": \"<string>\",\n        \"unlinkIndicator\": \"<string>\",\n        \"oldAccountNumber\": \"<string>\"\n      },\n      \"customerContactInfo\": {\n        \"email\": \"<string>\",\n        \"action\": \"<string>\",\n        \"address\": {\n          \"zip\": \"<string>\",\n          \"city\": \"<string>\",\n          \"line1\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"state\": \"<string>\",\n          \"companyName\": \"<string>\"\n        },\n        \"lastName\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"namePrefix\": \"<string>\",\n        \"nameSuffix\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"middleInitial\": \"<string>\",\n        \"prefMethodOfContact\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e188fb6-3658-44de-8d39-f7009701cb8e",
+              "name": "Accepted. Request successfully persisted to queue.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcpe",
+                    "v2",
+                    "pan",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Content-Types that are acceptable for the response. Example- application/json",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "List of acceptable languages for the response. Defaults to en-US if not present. Example- en-US",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The type of the request body. Example- application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language of the request body. Defaults to en-US if not present. Example- en-US",
+                    "key": "Content-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operationType\": \"<string>\",\n  \"updateReferenceID\": \"<string>\",\n  \"enrollmentInfo\": {\n    \"cardholderInfo\": {\n      \"primaryAccountNumber\": \"<string>\"\n    },\n    \"accountLevelInfo\": {\n      \"productID\": \"<string>\",\n      \"linkEnrollment\": {\n        \"group\": [\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          },\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          }\n        ]\n      },\n      \"rpinEnrollment\": {\n        \"rpin\": \"<string>\",\n        \"action\": \"<string>\",\n        \"accountOpenDate\": \"<string>\",\n        \"rpinEffectiveDate\": \"<string>\"\n      },\n      \"replaceEnrollment\": {\n        \"linkReasonCode\": \"<string>\",\n        \"unlinkIndicator\": \"<string>\",\n        \"oldAccountNumber\": \"<string>\"\n      },\n      \"customerContactInfo\": {\n        \"email\": \"<string>\",\n        \"action\": \"<string>\",\n        \"address\": {\n          \"zip\": \"<string>\",\n          \"city\": \"<string>\",\n          \"line1\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"state\": \"<string>\",\n          \"companyName\": \"<string>\"\n        },\n        \"lastName\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"namePrefix\": \"<string>\",\n        \"nameSuffix\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"middleInitial\": \"<string>\",\n        \"prefMethodOfContact\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "277df2b6-a2b1-4dc0-a4d1-fcdfb3141277",
+              "name": "Bad request. Incorrect parameters supplied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcpe",
+                    "v2",
+                    "pan",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Content-Types that are acceptable for the response. Example- application/json",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "List of acceptable languages for the response. Defaults to en-US if not present. Example- en-US",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The type of the request body. Example- application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language of the request body. Defaults to en-US if not present. Example- en-US",
+                    "key": "Content-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operationType\": \"<string>\",\n  \"updateReferenceID\": \"<string>\",\n  \"enrollmentInfo\": {\n    \"cardholderInfo\": {\n      \"primaryAccountNumber\": \"<string>\"\n    },\n    \"accountLevelInfo\": {\n      \"productID\": \"<string>\",\n      \"linkEnrollment\": {\n        \"group\": [\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          },\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          }\n        ]\n      },\n      \"rpinEnrollment\": {\n        \"rpin\": \"<string>\",\n        \"action\": \"<string>\",\n        \"accountOpenDate\": \"<string>\",\n        \"rpinEffectiveDate\": \"<string>\"\n      },\n      \"replaceEnrollment\": {\n        \"linkReasonCode\": \"<string>\",\n        \"unlinkIndicator\": \"<string>\",\n        \"oldAccountNumber\": \"<string>\"\n      },\n      \"customerContactInfo\": {\n        \"email\": \"<string>\",\n        \"action\": \"<string>\",\n        \"address\": {\n          \"zip\": \"<string>\",\n          \"city\": \"<string>\",\n          \"line1\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"state\": \"<string>\",\n          \"companyName\": \"<string>\"\n        },\n        \"lastName\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"namePrefix\": \"<string>\",\n        \"nameSuffix\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"middleInitial\": \"<string>\",\n        \"prefMethodOfContact\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "777b3c44-0495-41b5-9268-a36b181b3031",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vcpe",
+                    "v2",
+                    "pan",
+                    "enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Content-Types that are acceptable for the response. Example- application/json",
+                    "key": "Accept",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "List of acceptable languages for the response. Defaults to en-US if not present. Example- en-US",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The type of the request body. Example- application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language of the request body. Defaults to en-US if not present. Example- en-US",
+                    "key": "Content-Language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"operationType\": \"<string>\",\n  \"updateReferenceID\": \"<string>\",\n  \"enrollmentInfo\": {\n    \"cardholderInfo\": {\n      \"primaryAccountNumber\": \"<string>\"\n    },\n    \"accountLevelInfo\": {\n      \"productID\": \"<string>\",\n      \"linkEnrollment\": {\n        \"group\": [\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          },\n          {\n            \"action\": \"<string>\",\n            \"groupID\": \"<string>\",\n            \"groupType\": \"<string>\",\n            \"isPrimaryAccount\": \"<string>\"\n          }\n        ]\n      },\n      \"rpinEnrollment\": {\n        \"rpin\": \"<string>\",\n        \"action\": \"<string>\",\n        \"accountOpenDate\": \"<string>\",\n        \"rpinEffectiveDate\": \"<string>\"\n      },\n      \"replaceEnrollment\": {\n        \"linkReasonCode\": \"<string>\",\n        \"unlinkIndicator\": \"<string>\",\n        \"oldAccountNumber\": \"<string>\"\n      },\n      \"customerContactInfo\": {\n        \"email\": \"<string>\",\n        \"action\": \"<string>\",\n        \"address\": {\n          \"zip\": \"<string>\",\n          \"city\": \"<string>\",\n          \"line1\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"state\": \"<string>\",\n          \"companyName\": \"<string>\"\n        },\n        \"lastName\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"namePrefix\": \"<string>\",\n        \"nameSuffix\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"middleInitial\": \"<string>\",\n        \"prefMethodOfContact\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4b50335f-4003-4bb8-b40c-c9d0265fa06a",
+    "name": "Foreign Exchange Rates Visa Card Program Enrollment  API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "VCPE supports issuers that want to offer instant/digital issuance or re-issuance; as well as allow their cardholders to upgrade and downgrade cards in their banking app and enjoy new rewards programs in near real-time without needing a physical card and without changing their 16-digit card number.",
+      "type": "text/plain"
+    }
+  }
+}

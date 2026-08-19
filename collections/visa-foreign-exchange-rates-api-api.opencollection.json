@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Foreign Exchange Rates API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Foreign Exchange Rates API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Foreign Exchange Rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/forexrates/v2/foreignexchangerates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API returns Visa's conversion rates for a given currency pair. <br> <ul><li>A request with rateProductCode = \"A\" returns indicative daily rates that apply to transactions with card as the payment instrument. This is an indicative rate and may be different from the actual rate for settlement of transaction.<br></li> <li> A request with rateProductCode = \"B\" returns indicative daily rates that apply to transactions with bank-account as the payment instrument. This is an indicative rate and ma"
+        },
+        {
+          "info": {
+            "name": "Foreign Exchange Rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/forexrates/v1/foreignexchangerates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provide Visa daily currency conversion rate for a given currency pair based on amount"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

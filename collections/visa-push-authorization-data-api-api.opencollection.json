@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Push Authorization Data API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Push Authorization Data API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Auth Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/Any_Client_URL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authorization Push"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

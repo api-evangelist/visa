@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Supplier Service API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Supplier Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Disable Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/DisableSupplier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disable Supplier"
+        },
+        {
+          "info": {
+            "name": "ManageSupplierAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/ManageSupplierAccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ManageSupplierAccount"
+        },
+        {
+          "info": {
+            "name": "Get Supplier Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/supplier/GetSupplierDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Supplier Details"
+        },
+        {
+          "info": {
+            "name": "Get Supplier Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/GetSupplierDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Supplier Details"
+        },
+        {
+          "info": {
+            "name": "Update Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/UpdateSupplier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Supplier"
+        },
+        {
+          "info": {
+            "name": "Create Supplier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/supplier/CreateSupplier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Supplier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

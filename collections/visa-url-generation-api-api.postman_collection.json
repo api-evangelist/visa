@@ -1,0 +1,401 @@
+{
+  "item": [
+    {
+      "id": "4f5495a9-3a8c-4106-b6be-c5b657dd1d14",
+      "name": "URL Generation API",
+      "description": {
+        "content": "URL Generation API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "110f69a4-3366-4cae-92fb-04316f4dbfbf",
+          "name": "Generate VDE Lite app URL",
+          "request": {
+            "name": "Generate VDE Lite app URL",
+            "description": {
+              "content": "Create app clip or instant app URL for given payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inapp",
+                "provision",
+                "appclip",
+                "url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) VDP client ID via Service Context",
+                "key": "x-client-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appId\": \"<string>\",\n  \"payload\": {\n    \"accountNumber\": \"<string>\",\n    \"cardBrand\": \"<string>\",\n    \"cardType\": \"<string>\",\n    \"expirationMonth\": \"<string>\",\n    \"expirationYear\": \"<string>\",\n    \"nameOnAccount\": \"<string>\",\n    \"user\": {\n      \"email\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"lastname\": \"<string>\",\n      \"firstname\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"source\": \"<string>\",\n    \"billingAddress\": {\n      \"addressLine1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvinceCode\": \"<string>\",\n      \"addressLine2\": \"<string>\",\n      \"addressLine3\": \"<string>\"\n    }\n  },\n  \"emailLookupEnable\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc3f6c3b-8844-4a0a-8715-7a98e3fceadd",
+              "name": "Success Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provision",
+                    "appclip",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) VDP client ID via Service Context",
+                    "key": "x-client-id",
+                    "value": "86da0f74-19f0-4a20-9dde-3e83dfa6bf83"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailLookupEnable\": true,\n  \"payload\": {\n    \"cardId\": \"x123&\",\n    \"cardIdMetadata\": [\n      {\n        \"clientId\": \"C2\"\n      },\n      {\n        \"customerId\": \"C122\"\n      }\n    ],\n    \"cardIdProvider\": \"FWD\",\n    \"source\": \"X123\",\n    \"user\": {\n      \"lastName\": \"Doe\",\n      \"firstName\": \"John\",\n      \"phoneNumber\": \"+13352226060\",\n      \"locale\": \"en-US\",\n      \"email\": \"jdoe@visa.com\"\n    }\n  },\n  \"appId\": \"d071aeff-9a39-c1b3-4482-1cbb9d300f01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"https://domain.visa.com/dlink/push?payload=abc\",\n  \"notified\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e3ca045-8aea-4044-a146-c878065219c6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provision",
+                    "appclip",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) VDP client ID via Service Context",
+                    "key": "x-client-id",
+                    "value": "86da0f74-19f0-4a20-9dde-3e83dfa6bf83"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailLookupEnable\": true,\n  \"payload\": {\n    \"cardId\": \"x123&\",\n    \"cardIdMetadata\": [\n      {\n        \"clientId\": \"C2\"\n      },\n      {\n        \"customerId\": \"C122\"\n      }\n    ],\n    \"cardIdProvider\": \"FWD\",\n    \"source\": \"X123\",\n    \"user\": {\n      \"lastName\": \"Doe\",\n      \"firstName\": \"John\",\n      \"phoneNumber\": \"+13352226060\",\n      \"locale\": \"en-US\",\n      \"email\": \"jdoe@visa.com\"\n    }\n  },\n  \"appId\": \"d071aeff-9a39-c1b3-4482-1cbb9d300f01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatus\": \"400\",\n  \"message\": \"string\",\n  \"reason\": \"string\",\n  \"requestId\": \"string\",\n  \"correlationId\": \"string\",\n  \"errorMessages\": [\n    {\n      \"message\": \"string\",\n      \"location\": \"string\",\n      \"attribute\": \"string\"\n    },\n    {\n      \"message\": \"string\",\n      \"location\": \"string\",\n      \"attribute\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59a58d4b-858f-4cda-9b56-6a317214af46",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provision",
+                    "appclip",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) VDP client ID via Service Context",
+                    "key": "x-client-id",
+                    "value": "86da0f74-19f0-4a20-9dde-3e83dfa6bf83"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailLookupEnable\": true,\n  \"payload\": {\n    \"cardId\": \"x123&\",\n    \"cardIdMetadata\": [\n      {\n        \"clientId\": \"C2\"\n      },\n      {\n        \"customerId\": \"C122\"\n      }\n    ],\n    \"cardIdProvider\": \"FWD\",\n    \"source\": \"X123\",\n    \"user\": {\n      \"lastName\": \"Doe\",\n      \"firstName\": \"John\",\n      \"phoneNumber\": \"+13352226060\",\n      \"locale\": \"en-US\",\n      \"email\": \"jdoe@visa.com\"\n    }\n  },\n  \"appId\": \"d071aeff-9a39-c1b3-4482-1cbb9d300f01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"reason\": \"string\",\n  \"requestId\": \"string\",\n  \"correlationId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63f8cba3-1b65-4917-b7d4-5b397d8a5864",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provision",
+                    "appclip",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) VDP client ID via Service Context",
+                    "key": "x-client-id",
+                    "value": "86da0f74-19f0-4a20-9dde-3e83dfa6bf83"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailLookupEnable\": true,\n  \"payload\": {\n    \"cardId\": \"x123&\",\n    \"cardIdMetadata\": [\n      {\n        \"clientId\": \"C2\"\n      },\n      {\n        \"customerId\": \"C122\"\n      }\n    ],\n    \"cardIdProvider\": \"FWD\",\n    \"source\": \"X123\",\n    \"user\": {\n      \"lastName\": \"Doe\",\n      \"firstName\": \"John\",\n      \"phoneNumber\": \"+13352226060\",\n      \"locale\": \"en-US\",\n      \"email\": \"jdoe@visa.com\"\n    }\n  },\n  \"appId\": \"d071aeff-9a39-c1b3-4482-1cbb9d300f01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"reason\": \"string\",\n  \"requestId\": \"string\",\n  \"correlationId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caf573b5-3aeb-4616-b535-5cece691490a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provision",
+                    "appclip",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) VDP client ID via Service Context",
+                    "key": "x-client-id",
+                    "value": "86da0f74-19f0-4a20-9dde-3e83dfa6bf83"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailLookupEnable\": true,\n  \"payload\": {\n    \"cardId\": \"x123&\",\n    \"cardIdMetadata\": [\n      {\n        \"clientId\": \"C2\"\n      },\n      {\n        \"customerId\": \"C122\"\n      }\n    ],\n    \"cardIdProvider\": \"FWD\",\n    \"source\": \"X123\",\n    \"user\": {\n      \"lastName\": \"Doe\",\n      \"firstName\": \"John\",\n      \"phoneNumber\": \"+13352226060\",\n      \"locale\": \"en-US\",\n      \"email\": \"jdoe@visa.com\"\n    }\n  },\n  \"appId\": \"d071aeff-9a39-c1b3-4482-1cbb9d300f01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"reason\": \"string\",\n  \"requestId\": \"string\",\n  \"correlationId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d86e54d7-5724-44a1-b745-dde89516d4e0",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provision",
+                    "appclip",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) VDP client ID via Service Context",
+                    "key": "x-client-id",
+                    "value": "86da0f74-19f0-4a20-9dde-3e83dfa6bf83"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailLookupEnable\": true,\n  \"payload\": {\n    \"cardId\": \"x123&\",\n    \"cardIdMetadata\": [\n      {\n        \"clientId\": \"C2\"\n      },\n      {\n        \"customerId\": \"C122\"\n      }\n    ],\n    \"cardIdProvider\": \"FWD\",\n    \"source\": \"X123\",\n    \"user\": {\n      \"lastName\": \"Doe\",\n      \"firstName\": \"John\",\n      \"phoneNumber\": \"+13352226060\",\n      \"locale\": \"en-US\",\n      \"email\": \"jdoe@visa.com\"\n    }\n  },\n  \"appId\": \"d071aeff-9a39-c1b3-4482-1cbb9d300f01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"reason\": \"string\",\n  \"requestId\": \"string\",\n  \"correlationId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1a0ae7e8-5582-4a2b-b3b0-a94c2cf49060",
+    "name": "Foreign Exchange Rates URL Generation API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "URL Generation API",
+      "type": "text/plain"
+    }
+  }
+}

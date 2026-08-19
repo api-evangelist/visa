@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "5581b08b-5132-4736-b236-08808fa0360b",
+      "name": "Issuer Stop Advice API",
+      "description": {
+        "content": "Issuers can place stop advices in VAU to block specific merchants from receiving an automatic VAU credential update (e.g., following reported fraud) while still allowing their cardholder to transact with the merchant where appropriately authorized.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b220232-5a3a-430e-a1cb-19a7dbad49c3",
+          "name": "Issuer Stop Advice API",
+          "request": {
+            "name": "Issuer Stop Advice API",
+            "description": {
+              "content": "Issuer can place stop advice by providing following requested information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vau",
+                "issuer-api",
+                "v1",
+                "stopadvices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuerSegmentId\": \"<integer>\",\n  \"stopadvices\": [\n    {\n      \"cardAcceptorId\": \"<string>\",\n      \"cardholderAccountNumber\": \"<string>\",\n      \"merchantName\": \"<string>\",\n      \"startDate\": \"<date>\"\n    },\n    {\n      \"cardAcceptorId\": \"<string>\",\n      \"cardholderAccountNumber\": \"<string>\",\n      \"merchantName\": \"<string>\",\n      \"startDate\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f305ed51-a254-436a-83a8-20d1fda1badb",
+              "name": "This response code will be returned in scenarios where the stop advice is successful, all possible response codes are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "issuer-api",
+                    "v1",
+                    "stopadvices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerSegmentId\": 2,\n  \"stopadvices\": [\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    },\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"issuerSegmentId\": 2,\n  \"rejects\": [\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"2011-12-28\",\n      \"rejectCode\": \"G\",\n      \"rejectMessage\": \"Account Number contains non-numeric characters or is blank\"\n    },\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"1970-05-14\",\n      \"rejectCode\": \"G\",\n      \"rejectMessage\": \"Account Number contains non-numeric characters or is blank\"\n    }\n  ],\n  \"responses\": [\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"1986-08-26\",\n      \"responseCode\": \"1\",\n      \"responseMessage\": \"Stop advice applied in both RTVAU and VAU\"\n    },\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"2014-08-22\",\n      \"responseCode\": \"1\",\n      \"responseMessage\": \"Stop advice applied in both RTVAU and VAU\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5047e652-7c47-41c1-a492-c4bd28bd57dd",
+              "name": "This response code will be returned in scenarios where the stop advice is badly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "issuer-api",
+                    "v1",
+                    "stopadvices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerSegmentId\": 2,\n  \"stopadvices\": [\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    },\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Request is badly formatted and/or the required field(s) is (are) missing\",\n  \"rejectReasonCode\": \"B\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a4d3e65-3a5d-4c55-a5a6-a1cc85aebec7",
+              "name": "This response code will be returned in scenarios where the stop advice is rejected, all possible reasons for request rejection are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "issuer-api",
+                    "v1",
+                    "stopadvices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerSegmentId\": 2,\n  \"stopadvices\": [\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    },\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"issuerSegmentId\": 2,\n  \"rejectReason\": \"Issuer segment is not enrolled\",\n  \"rejectReasonCode\": \"A\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3595f894-078a-4321-9645-13730bccc0c7",
+              "name": "This response code will be returned in scenarios where the stop advice could not be sucessfully processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "issuer-api",
+                    "v1",
+                    "stopadvices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerSegmentId\": 2,\n  \"stopadvices\": [\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    },\n    {\n      \"cardAcceptorId\": \"89389898\",\n      \"cardholderAccountNumber\": \"400000XX00000000\",\n      \"merchantName\": \"TestMerchant\",\n      \"startDate\": \"<date>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Internal Server Error, please try again after sometime\",\n  \"rejectReasonCode\": \"E\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9fcd1f1a-5f63-4b06-9431-4f91140307b3",
+    "name": "Foreign Exchange Rates Issuer Stop Advice API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Issuers can place stop advices in VAU to block specific merchants from receiving an automatic VAU credential update (e.g., following reported fraud) while still allowing their cardholder to transact with the merchant where appropriately authorized.",
+      "type": "text/plain"
+    }
+  }
+}

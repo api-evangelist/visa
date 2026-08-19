@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Single BIN Lookup API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Single BIN Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PAN TOKEN Lookup Using POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v1/paymentAccountLookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all the values related to PAN/TOKEN"
+        },
+        {
+          "info": {
+            "name": "PAN TOKEN Lookup Using POST V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v2/paymentAccountLookup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all the values related to PAN/TOKEN<br><br>Access to Visa BIN Attributes such as Issuer BIN, Issuer Country , Issuer Billing Currency and Product Identifiers such as Product ID/name, Product Platform, Card type, Card Subtype for any single payment account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

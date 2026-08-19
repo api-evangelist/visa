@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Reference Data API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Offer Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/referencedata/v1/categories",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of available offer categories used for filtering offers."
+        },
+        {
+          "info": {
+            "name": "Get Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/referencedata/v1/countries",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of countries where merchant offers are available."
+        },
+        {
+          "info": {
+            "name": "Get Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/vmorc/referencedata/v1/merchants",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of merchants that have offers available in the VMORC system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

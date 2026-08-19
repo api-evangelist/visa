@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Visa Card Program Enrollment  API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visa Card Program Enrollment ",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vcpe/v2/pan/enrollment",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "Content-Language",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Process enrollment and handover message to ALM."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

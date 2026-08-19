@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Nearby Merchants API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Nearby Merchants API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find Nearby Merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/merchantsearch/v1/nearbymerchants",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finds Visa-accepting merchants near a specified geographic location. This operation supports location-based merchant discovery for consumer applications and services."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

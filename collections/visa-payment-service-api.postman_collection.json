@@ -1,0 +1,1004 @@
+{
+  "item": [
+    {
+      "id": "0520168f-0ec2-4c00-ba5c-0a701e036aa3",
+      "name": "Payment Service",
+      "description": {
+        "content": "The Payment web service is used for processing payments and sending payment remittance information to the appropriate suppliers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf8cc359-1fd4-41a9-ad83-74d5edb5d818",
+          "name": "Get Payment Detail URL",
+          "request": {
+            "name": "Get Payment Detail URL",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "payment",
+                "GetPaymentDetailURL"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"originalMessageId\": \"<string>\",\n  \"accountNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a82fe6fe-0f35-408d-838a-b30ddaec8067",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "GetPaymentDetailURL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"originalMessageId\": 1486634011147,\n  \"buyerId\": 9999,\n  \"accountNumber\": 411111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GetPaymentURLResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"url\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38d6f3a2-0169-4c8b-a651-1b3b742b3d36",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "GetPaymentDetailURL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"originalMessageId\": 1486634011147,\n  \"buyerId\": 9999,\n  \"accountNumber\": 411111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GURL001\": {},\n  \"GURL003\": {},\n  \"GURL004\": {},\n  \"GURL005\": {},\n  \"GURL025\": {},\n  \"GURL030\": {},\n  \"GURL035\": {},\n  \"GURL043\": {},\n  \"GURL161\": {},\n  \"GURL165\": {},\n  \"GURL166\": {},\n  \"GURL167\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75d81086-5277-4c34-94e8-9589ae46d8a9",
+          "name": "Get Payment Details",
+          "request": {
+            "name": "Get Payment Details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "payment",
+                "GetPaymentDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"resultSetNo\": \"<string>\",\n  \"status\": \"<string>\",\n  \"toDate\": \"<string>\",\n  \"fromDate\": \"<string>\",\n  \"trackingNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d671fad-cd01-48e1-9e10-d77a8396edc5",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "GetPaymentDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fromDate\": 2082017,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"toDate\": 2082017,\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"resultSetNo\": \"1\",\n  \"buyerId\": 9999,\n  \"trackingNumber\": 9999999958,\n  \"status\": \"A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GetPaymentResponse\": {\n    \"hasMoreElements\": \"s\",\n    \"messageId\": \"string\",\n    \"resultSetNo\": \"str\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"totalRecordCount\": \"string\",\n    \"payments\": {\n      \"accountNumber\": \"string\",\n      \"currencyCode\": \"str\",\n      \"paymentExpiryDate\": \"string\",\n      \"paymentGrossAmount\": \"string\",\n      \"invoices\": [\n        {\n          \"invoiceDate\": \"string\",\n          \"invoiceAmount\": 8419.97624145734,\n          \"invoiceNumber\": \"string\",\n          \"purchaseOrderDate\": \"string\",\n          \"purchaseOrderNumber\": \"string\",\n          \"partialPaymentIndicator\": \"str\"\n        },\n        {\n          \"invoiceDate\": \"string\",\n          \"invoiceAmount\": 2070.677462418967,\n          \"invoiceNumber\": \"string\",\n          \"purchaseOrderDate\": \"string\",\n          \"purchaseOrderNumber\": \"string\",\n          \"partialPaymentIndicator\": \"str\"\n        }\n      ],\n      \"supplier\": {\n        \"supplierID\": \"string\",\n        \"supplierName\": \"string\",\n        \"primaryEmailAddress\": \"string\",\n        \"alternateEmailAddresses\": [\n          {\n            \"localAlternateEmailAddress\": \"string\"\n          },\n          {\n            \"localAlternateEmailAddress\": \"string\"\n          }\n        ]\n      },\n      \"paymentType\": \"s\",\n      \"manualMatchStatus\": \"string\",\n      \"systemMatchStatus\": \"string\",\n      \"paymentDescription\": \"string\",\n      \"paymentRequestDate\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bd248da-4483-447b-8304-bc28266b919e",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "GetPaymentDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fromDate\": 2082017,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"toDate\": 2082017,\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"resultSetNo\": \"1\",\n  \"buyerId\": 9999,\n  \"trackingNumber\": 9999999958,\n  \"status\": \"A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GPD002\": {},\n  \"GPD005\": {},\n  \"GPD006\": {},\n  \"GPD007\": {},\n  \"GPD008\": {},\n  \"GPD009\": {},\n  \"GPD010\": {},\n  \"GPD011\": {},\n  \"GPD012\": {},\n  \"GPD013\": {},\n  \"GPD539\": {},\n  \"GPD540\": {},\n  \"GPD541\": {},\n  \"GPD542\": {},\n  \"GPD543\": {},\n  \"GPD544\": {},\n  \"GPD545\": {},\n  \"GPD546\": {},\n  \"GPD547\": {},\n  \"GPD548\": {},\n  \"GPD549\": {},\n  \"GPD550\": {},\n  \"GPD551\": {},\n  \"GPD552\": {},\n  \"GPD553\": {},\n  \"GPD554\": {},\n  \"GPD555\": {},\n  \"GPD556\": {},\n  \"GPD602\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f7036c9-e9fe-4316-bb32-2fe59b3866ef",
+          "name": "Resend Payment",
+          "request": {
+            "name": "Resend Payment",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "payment",
+                "ResendPayment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"originalMessageId\": \"<string>\",\n  \"emailNotes\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"expirationDate\": \"<string>\",\n  \"primaryEmailAddress\": \"<string>\",\n  \"alternateEmailAddresses\": [\n    {\n      \"localAlternateEmailAddress\": \"<string>\"\n    },\n    {\n      \"localAlternateEmailAddress\": \"<string>\"\n    }\n  ],\n  \"supplierProfileUpdateIndicator\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dacd187a-f9c4-4fc9-90a2-683a737786c9",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "ResendPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alternateEmailAddresses\": [\n    {\n      \"alternateEmailAddress\": \"aaa1@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa2@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa3@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa4@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa5@bbb.com\"\n    }\n  ],\n  \"emailNotes\": \"resend payment\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierProfileUpdateIndicator\": \"Y\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"originalMessageId\": 1486626459243,\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111,\n  \"primaryEmailAddress\": \"aaa@bbb.com\",\n  \"expirationDate\": \"2017-03-30\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ResendResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "484aaec7-edc1-47fd-98f2-54b6a8b8e681",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "ResendPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alternateEmailAddresses\": [\n    {\n      \"alternateEmailAddress\": \"aaa1@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa2@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa3@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa4@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa5@bbb.com\"\n    }\n  ],\n  \"emailNotes\": \"resend payment\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierProfileUpdateIndicator\": \"Y\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"originalMessageId\": 1486626459243,\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111,\n  \"primaryEmailAddress\": \"aaa@bbb.com\",\n  \"expirationDate\": \"2017-03-30\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RSP001\": {},\n  \"RSP003\": {},\n  \"RSP004\": {},\n  \"RSP005\": {},\n  \"RSP012\": {},\n  \"RSP013\": {},\n  \"RSP025\": {},\n  \"RSP029\": {},\n  \"RSP030\": {},\n  \"RSP035\": {},\n  \"RSP043\": {},\n  \"RSP049\": {},\n  \"RSP161\": {},\n  \"RSP162\": {},\n  \"RSP163\": {},\n  \"RSP167\": {},\n  \"RSP173\": {},\n  \"RSP182\": {},\n  \"RSP186\": {},\n  \"RSP029a\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c90aab2b-4c7c-47ca-a61d-c39d5e17f03e",
+          "name": "Process Payment - Recipe",
+          "request": {
+            "name": "Process Payment - Recipe",
+            "description": {
+              "content": "ProcessPayment Recipe API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pop",
+                "v1",
+                "recipes",
+                "processPayment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actionType\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"corporate_internal_id\": \"<string>\",\n  \"payment\": {\n    \"currencyCode\": \"<string>\",\n    \"paymentGrossAmount\": \"<string>\",\n    \"invoices\": [\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      },\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierID\": \"<string>\",\n      \"emailNotes\": \"<string>\",\n      \"supplierCity\": \"<string>\",\n      \"supplierName\": \"<string>\",\n      \"supplierState\": \"<string>\",\n      \"supplierPostalCode\": \"<string>\",\n      \"primaryEmailAddress\": \"<string>\",\n      \"supplierCountryCode\": \"<string>\",\n      \"supplierAddressLine1\": \"<string>\",\n      \"supplierAddressLine2\": \"<string>\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"<string>\"\n        },\n        {\n          \"alternateEmailAddress\": \"<string>\"\n        }\n      ]\n    },\n    \"accountType\": \"<string>\",\n    \"paymentType\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"paymentExpiryDate\": \"<string>\",\n    \"paymentRequestDate\": \"<string>\",\n    \"cardAccountExpiryDate\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8dc4120-e528-416a-8b7c-b56f8e218ec5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "processPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"payment\": {\n    \"cardAccountExpiryDate\": \"10/2025\",\n    \"paymentExpiryDate\": \"2025-03-10\",\n    \"accountLimit\": 100,\n    \"invoices\": [\n      {\n        \"purchaseOrderDate\": \"2017-02-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV01\",\n        \"invoiceAmount\": 100,\n        \"invoiceDate\": \"2017-02-01\"\n      },\n      {\n        \"purchaseOrderDate\": \"2017-03-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV02\",\n        \"invoiceAmount\": 200,\n        \"invoiceDate\": \"2017-03-01\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierName\": \"TestVPASupplier111111\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"aaa1@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa2@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa3@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa4@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa5@bbb.com\"\n        }\n      ],\n      \"emailNotes\": \"Email Notes\",\n      \"supplierID\": 111111,\n      \"supplierCity\": \"Austin\",\n      \"supplierAddressLine2\": \"Address2\",\n      \"supplierAddressLine1\": \"Address1\",\n      \"supplierState\": \"TX\",\n      \"supplierCountryCode\": \"USA\",\n      \"supplierPostalCode\": 78759,\n      \"primaryEmailAddress\": \"aaa@bbb.com\"\n    },\n    \"accountType\": 1,\n    \"accountNumber\": \"48X7XXXX6XX7XX369\",\n    \"currencyCode\": \"USD\",\n    \"paymentGrossAmount\": 300,\n    \"paymentRequestDate\": \"2017-02-01\",\n    \"paymentType\": \"CCC\"\n  },\n  \"buyerId\": 11181\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ed99fe7-1925-4413-9af7-678f4155d9f8",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "processPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"payment\": {\n    \"cardAccountExpiryDate\": \"10/2025\",\n    \"paymentExpiryDate\": \"2025-03-10\",\n    \"accountLimit\": 100,\n    \"invoices\": [\n      {\n        \"purchaseOrderDate\": \"2017-02-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV01\",\n        \"invoiceAmount\": 100,\n        \"invoiceDate\": \"2017-02-01\"\n      },\n      {\n        \"purchaseOrderDate\": \"2017-03-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV02\",\n        \"invoiceAmount\": 200,\n        \"invoiceDate\": \"2017-03-01\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierName\": \"TestVPASupplier111111\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"aaa1@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa2@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa3@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa4@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa5@bbb.com\"\n        }\n      ],\n      \"emailNotes\": \"Email Notes\",\n      \"supplierID\": 111111,\n      \"supplierCity\": \"Austin\",\n      \"supplierAddressLine2\": \"Address2\",\n      \"supplierAddressLine1\": \"Address1\",\n      \"supplierState\": \"TX\",\n      \"supplierCountryCode\": \"USA\",\n      \"supplierPostalCode\": 78759,\n      \"primaryEmailAddress\": \"aaa@bbb.com\"\n    },\n    \"accountType\": 1,\n    \"accountNumber\": \"48X7XXXX6XX7XX369\",\n    \"currencyCode\": \"USD\",\n    \"paymentGrossAmount\": 300,\n    \"paymentRequestDate\": \"2017-02-01\",\n    \"paymentType\": \"CCC\"\n  },\n  \"buyerId\": 11181\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bc874d2-5afd-48dd-abf2-3509035e49c2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "processPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"payment\": {\n    \"cardAccountExpiryDate\": \"10/2025\",\n    \"paymentExpiryDate\": \"2025-03-10\",\n    \"accountLimit\": 100,\n    \"invoices\": [\n      {\n        \"purchaseOrderDate\": \"2017-02-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV01\",\n        \"invoiceAmount\": 100,\n        \"invoiceDate\": \"2017-02-01\"\n      },\n      {\n        \"purchaseOrderDate\": \"2017-03-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV02\",\n        \"invoiceAmount\": 200,\n        \"invoiceDate\": \"2017-03-01\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierName\": \"TestVPASupplier111111\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"aaa1@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa2@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa3@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa4@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa5@bbb.com\"\n        }\n      ],\n      \"emailNotes\": \"Email Notes\",\n      \"supplierID\": 111111,\n      \"supplierCity\": \"Austin\",\n      \"supplierAddressLine2\": \"Address2\",\n      \"supplierAddressLine1\": \"Address1\",\n      \"supplierState\": \"TX\",\n      \"supplierCountryCode\": \"USA\",\n      \"supplierPostalCode\": 78759,\n      \"primaryEmailAddress\": \"aaa@bbb.com\"\n    },\n    \"accountType\": 1,\n    \"accountNumber\": \"48X7XXXX6XX7XX369\",\n    \"currencyCode\": \"USD\",\n    \"paymentGrossAmount\": 300,\n    \"paymentRequestDate\": \"2017-02-01\",\n    \"paymentType\": \"CCC\"\n  },\n  \"buyerId\": 11181\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "355dd319-6fae-417d-9cce-0a7a0f406dcc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "processPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"payment\": {\n    \"cardAccountExpiryDate\": \"10/2025\",\n    \"paymentExpiryDate\": \"2025-03-10\",\n    \"accountLimit\": 100,\n    \"invoices\": [\n      {\n        \"purchaseOrderDate\": \"2017-02-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV01\",\n        \"invoiceAmount\": 100,\n        \"invoiceDate\": \"2017-02-01\"\n      },\n      {\n        \"purchaseOrderDate\": \"2017-03-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV02\",\n        \"invoiceAmount\": 200,\n        \"invoiceDate\": \"2017-03-01\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierName\": \"TestVPASupplier111111\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"aaa1@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa2@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa3@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa4@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa5@bbb.com\"\n        }\n      ],\n      \"emailNotes\": \"Email Notes\",\n      \"supplierID\": 111111,\n      \"supplierCity\": \"Austin\",\n      \"supplierAddressLine2\": \"Address2\",\n      \"supplierAddressLine1\": \"Address1\",\n      \"supplierState\": \"TX\",\n      \"supplierCountryCode\": \"USA\",\n      \"supplierPostalCode\": 78759,\n      \"primaryEmailAddress\": \"aaa@bbb.com\"\n    },\n    \"accountType\": 1,\n    \"accountNumber\": \"48X7XXXX6XX7XX369\",\n    \"currencyCode\": \"USD\",\n    \"paymentGrossAmount\": 300,\n    \"paymentRequestDate\": \"2017-02-01\",\n    \"paymentType\": \"CCC\"\n  },\n  \"buyerId\": 11181\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "897c8207-d458-472d-a2fa-c3eaa3b3b84a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "processPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"payment\": {\n    \"cardAccountExpiryDate\": \"10/2025\",\n    \"paymentExpiryDate\": \"2025-03-10\",\n    \"accountLimit\": 100,\n    \"invoices\": [\n      {\n        \"purchaseOrderDate\": \"2017-02-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV01\",\n        \"invoiceAmount\": 100,\n        \"invoiceDate\": \"2017-02-01\"\n      },\n      {\n        \"purchaseOrderDate\": \"2017-03-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV02\",\n        \"invoiceAmount\": 200,\n        \"invoiceDate\": \"2017-03-01\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierName\": \"TestVPASupplier111111\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"aaa1@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa2@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa3@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa4@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa5@bbb.com\"\n        }\n      ],\n      \"emailNotes\": \"Email Notes\",\n      \"supplierID\": 111111,\n      \"supplierCity\": \"Austin\",\n      \"supplierAddressLine2\": \"Address2\",\n      \"supplierAddressLine1\": \"Address1\",\n      \"supplierState\": \"TX\",\n      \"supplierCountryCode\": \"USA\",\n      \"supplierPostalCode\": 78759,\n      \"primaryEmailAddress\": \"aaa@bbb.com\"\n    },\n    \"accountType\": 1,\n    \"accountNumber\": \"48X7XXXX6XX7XX369\",\n    \"currencyCode\": \"USD\",\n    \"paymentGrossAmount\": 300,\n    \"paymentRequestDate\": \"2017-02-01\",\n    \"paymentType\": \"CCC\"\n  },\n  \"buyerId\": 11181\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce7822ef-e0ce-4458-8133-8c5ea11df7bb",
+          "name": "Cancel Payment",
+          "request": {
+            "name": "Cancel Payment",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "payment",
+                "CancelPayment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"originalMessageId\": \"<string>\",\n  \"cancelReason\": \"<string>\",\n  \"accountNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc18125c-baf5-47e1-9599-c2be5f939311",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "CancelPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"originalMessageId\": 9999999958,\n  \"buyerId\": 9999,\n  \"cancelReason\": \"cancel payment\",\n  \"accountNumber\": 4111111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CancelResponse\": {\n    \"grossAmount\": \"string\",\n    \"messageID\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"supplierName\": \"string\",\n    \"supplierID\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "415a4c09-7917-4ff5-940d-d320d9c007ac",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "CancelPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"originalMessageId\": 9999999958,\n  \"buyerId\": 9999,\n  \"cancelReason\": \"cancel payment\",\n  \"accountNumber\": 4111111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CP002\": {},\n  \"CP003\": {},\n  \"CP004\": {},\n  \"CP025\": {},\n  \"CP029\": {},\n  \"CP030\": {},\n  \"CP031\": {},\n  \"CP032\": {},\n  \"CP037\": {},\n  \"CP038\": {},\n  \"CP161\": {},\n  \"CP162\": {},\n  \"CP167\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62f91495-84df-43ab-bc3f-14b88ccf56b6",
+          "name": "Process Payments",
+          "request": {
+            "name": "Process Payments",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "payment",
+                "ProcessPayments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actionType\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"payment\": {\n    \"currencyCode\": \"<string>\",\n    \"paymentGrossAmount\": \"<string>\",\n    \"invoices\": [\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"referenceFields\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\",\n        \"partialPaymentIndicator\": \"<string>\"\n      },\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"referenceFields\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\",\n        \"partialPaymentIndicator\": \"<string>\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierID\": \"<string>\",\n      \"STPID\": \"<string>\",\n      \"emailNotes\": \"<string>\",\n      \"supplierCity\": \"<string>\",\n      \"supplierName\": \"<string>\",\n      \"supplierState\": \"<string>\",\n      \"eftAchSupplierID\": \"<string>\",\n      \"supplierPostalCode\": \"<string>\",\n      \"primaryEmailAddress\": \"<string>\",\n      \"supplierCountryCode\": \"<string>\",\n      \"supplierAddressLine1\": \"<string>\",\n      \"supplierAddressLine2\": \"<string>\",\n      \"alternateEmailAddresses\": [\n        {\n          \"localAlternateEmailAddress\": \"<string>\"\n        },\n        {\n          \"localAlternateEmailAddress\": \"<string>\"\n        }\n      ],\n      \"supplierProfileUpdateIndicator\": \"<string>\"\n    },\n    \"accountType\": \"<string>\",\n    \"paymentType\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"expirationDate\": \"<string>\",\n    \"paymentExpiryDate\": \"<string>\",\n    \"paymentDescription\": \"<string>\",\n    \"paymentRequestDate\": \"<string>\"\n  },\n  \"paymentDescription\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "937fee44-3654-4ed5-8c13-472265aff7c3",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "ProcessPayments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"payment\": {\n    \"cardAccountExpiryDate\": \"10/2022\",\n    \"paymentExpiryDate\": \"2017-03-10\",\n    \"accountLimit\": 100,\n    \"invoices\": [\n      {\n        \"purchaseOrderDate\": \"2017-02-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV01\",\n        \"invoiceAmount\": 100,\n        \"invoiceDate\": \"2017-02-01\"\n      },\n      {\n        \"purchaseOrderDate\": \"2017-03-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV02\",\n        \"invoiceAmount\": 200,\n        \"invoiceDate\": \"2017-03-01\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierName\": \"TestVPASupplier111111\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"aaa1@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa2@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa3@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa4@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa5@bbb.com\"\n        }\n      ],\n      \"emailNotes\": \"Email Notes\",\n      \"supplierID\": 111111,\n      \"supplierCity\": \"Austin\",\n      \"supplierAddressLine2\": \"Address2\",\n      \"supplierAddressLine1\": \"Address1\",\n      \"supplierState\": \"TX\",\n      \"supplierCountryCode\": \"USA\",\n      \"supplierPostalCode\": 78759,\n      \"primaryEmailAddress\": \"aaa@bbb.com\"\n    },\n    \"accountType\": 2,\n    \"accountNumber\": 4111111111111111,\n    \"currencyCode\": \"USD\",\n    \"paymentGrossAmount\": 200,\n    \"paymentRequestDate\": \"2017-02-01\",\n    \"paymentType\": \"CCC\"\n  },\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ProcessResponse\": {\n    \"expirationDate\": \"string\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"accountNumber\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c5b7334-bf05-4cd4-ae8b-5069cc98f35c",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "payment",
+                    "ProcessPayments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"payment\": {\n    \"cardAccountExpiryDate\": \"10/2022\",\n    \"paymentExpiryDate\": \"2017-03-10\",\n    \"accountLimit\": 100,\n    \"invoices\": [\n      {\n        \"purchaseOrderDate\": \"2017-02-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV01\",\n        \"invoiceAmount\": 100,\n        \"invoiceDate\": \"2017-02-01\"\n      },\n      {\n        \"purchaseOrderDate\": \"2017-03-01\",\n        \"purchaseOrderNumber\": \"PO1234\",\n        \"invoiceNumber\": \"INV02\",\n        \"invoiceAmount\": 200,\n        \"invoiceDate\": \"2017-03-01\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierName\": \"TestVPASupplier111111\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": \"aaa1@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa2@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa3@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa4@bbb.com\"\n        },\n        {\n          \"alternateEmailAddress\": \"aaa5@bbb.com\"\n        }\n      ],\n      \"emailNotes\": \"Email Notes\",\n      \"supplierID\": 111111,\n      \"supplierCity\": \"Austin\",\n      \"supplierAddressLine2\": \"Address2\",\n      \"supplierAddressLine1\": \"Address1\",\n      \"supplierState\": \"TX\",\n      \"supplierCountryCode\": \"USA\",\n      \"supplierPostalCode\": 78759,\n      \"primaryEmailAddress\": \"aaa@bbb.com\"\n    },\n    \"accountType\": 2,\n    \"accountNumber\": 4111111111111111,\n    \"currencyCode\": \"USD\",\n    \"paymentGrossAmount\": 200,\n    \"paymentRequestDate\": \"2017-02-01\",\n    \"paymentType\": \"CCC\"\n  },\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"PP001\": {},\n  \"PP002\": {},\n  \"PP003\": {},\n  \"PP004\": {},\n  \"PP005\": {},\n  \"PP006\": {},\n  \"PP007\": {},\n  \"PP008\": {},\n  \"PP009\": {},\n  \"PP010\": {},\n  \"PP011\": {},\n  \"PP012\": {},\n  \"PP013\": {},\n  \"PP014\": {},\n  \"PP015\": {},\n  \"PP016\": {},\n  \"PP019\": {},\n  \"PP020\": {},\n  \"PP021\": {},\n  \"PP022\": {},\n  \"PP024\": {},\n  \"PP025\": {},\n  \"PP027\": {},\n  \"PP031\": {},\n  \"PP032\": {},\n  \"PP035\": {},\n  \"PP036\": {},\n  \"PP037\": {},\n  \"PP038\": {},\n  \"PP039\": {},\n  \"PP040\": {},\n  \"PP041\": {},\n  \"PP042\": {},\n  \"PP046\": {},\n  \"PP047\": {},\n  \"PP049\": {},\n  \"PP050\": {},\n  \"PP051\": {},\n  \"PP052\": {},\n  \"PP053\": {},\n  \"PP055\": {},\n  \"PP056\": {},\n  \"PP057\": {},\n  \"PP058\": {},\n  \"PP059\": {},\n  \"PP060\": {},\n  \"PP061\": {},\n  \"PP062\": {},\n  \"PP063\": {},\n  \"PP064\": {},\n  \"PP065\": {},\n  \"PP066\": {},\n  \"PP067\": {},\n  \"PP068\": {},\n  \"PP069\": {},\n  \"PP075\": {},\n  \"PP076\": {},\n  \"PP077\": {},\n  \"PP078\": {},\n  \"PP079\": {},\n  \"PP080\": {},\n  \"PP081\": {},\n  \"PP082\": {},\n  \"PP083\": {},\n  \"PP084\": {},\n  \"PP085\": {},\n  \"PP086\": {},\n  \"PP087\": {},\n  \"PP088\": {},\n  \"PP096\": {},\n  \"PP097\": {},\n  \"PP098\": {},\n  \"PP163\": {},\n  \"PP170\": {},\n  \"PP171\": {},\n  \"PP174\": {},\n  \"PP175\": {},\n  \"PP176\": {},\n  \"PP177\": {},\n  \"PP178\": {},\n  \"PP179\": {},\n  \"PP181\": {},\n  \"PP182\": {},\n  \"PP183\": {},\n  \"PP184\": {},\n  \"PP185\": {},\n  \"PP186\": {},\n  \"PP561\": {},\n  \"PP562\": {},\n  \"PP563\": {},\n  \"PP564\": {},\n  \"PP565\": {},\n  \"PP566\": {},\n  \"PP567\": {},\n  \"PP568\": {},\n  \"PP569\": {},\n  \"PP576\": {},\n  \"PP577\": {},\n  \"PP582\": {},\n  \"PP586\": {},\n  \"PP587\": {},\n  \"PP589\": {},\n  \"PP590\": {},\n  \"PP591\": {},\n  \"PP594\": {},\n  \"PP595\": {},\n  \"PP596\": {},\n  \"PP069a\": {},\n  \"PP069b\": {},\n  \"PP069c\": {},\n  \"PP069d\": {},\n  \"PP069e\": {},\n  \"PP088a\": {},\n  \"PP088b\": {},\n  \"PP088c\": {},\n  \"PP088d\": {},\n  \"PP088e\": {},\n  \"PP088f\": {},\n  \"PP088g\": {},\n  \"PP567a\": {},\n  \"PP5967\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c61dbedb-7dba-40c1-acdb-ef8d352aad52",
+    "name": "Foreign Exchange Rates Payment Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Payment web service is used for processing payments and sending payment remittance information to the appropriate suppliers.",
+      "type": "text/plain"
+    }
+  }
+}

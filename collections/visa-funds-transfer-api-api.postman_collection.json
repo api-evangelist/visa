@@ -1,0 +1,947 @@
+{
+  "item": [
+    {
+      "id": "8a078860-b58e-4ecc-a146-35d89da5134f",
+      "name": "Funds Transfer API",
+      "description": {
+        "content": "Push and pull funds to and from Visa accounts for real-time money movement use cases including person-to-person transfers, business disbursements, and account funding transactions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "874d8e8b-471f-45a6-80c4-10600ea7ca55",
+          "name": "Push Funds Transaction",
+          "request": {
+            "name": "Push Funds Transaction",
+            "description": {
+              "content": "Pushes funds to a recipient's Visa account. This operation is used to deliver money to a recipient in real-time, supporting use cases such as person-to-person payments, payroll disbursements, insurance claims, and government benefits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visadirect",
+                "fundstransfer",
+                "v1",
+                "pushfundstransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"recipientPrimaryAccountNumber\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"senderAddress\": \"<string>\",\n  \"senderCity\": \"<string>\",\n  \"senderCountryCode\": \"<string>\",\n  \"recipientName\": \"<string>\",\n  \"businessApplicationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4cc526a8-9606-4d2f-8745-6e54f8cbc32f",
+              "name": "Push funds transaction processed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "pushfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"recipientPrimaryAccountNumber\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"senderAddress\": \"<string>\",\n  \"senderCity\": \"<string>\",\n  \"senderCountryCode\": \"<string>\",\n  \"recipientName\": \"<string>\",\n  \"businessApplicationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionIdentifier\": 3771,\n  \"actionCode\": \"string\",\n  \"approvalCode\": \"string\",\n  \"responseCode\": \"string\",\n  \"transmissionDateTime\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41931260-0ea9-432d-b8cb-cccf5f9838d1",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "pushfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"recipientPrimaryAccountNumber\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"senderAddress\": \"<string>\",\n  \"senderCity\": \"<string>\",\n  \"senderCountryCode\": \"<string>\",\n  \"recipientName\": \"<string>\",\n  \"businessApplicationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af183dbe-2da0-4089-97a9-33f99891a716",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "pushfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"recipientPrimaryAccountNumber\": \"<string>\",\n  \"senderName\": \"<string>\",\n  \"senderAddress\": \"<string>\",\n  \"senderCity\": \"<string>\",\n  \"senderCountryCode\": \"<string>\",\n  \"recipientName\": \"<string>\",\n  \"businessApplicationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1203cfe-1832-444f-9ee2-f33a9380c7ac",
+          "name": "Pull Funds Transaction",
+          "request": {
+            "name": "Pull Funds Transaction",
+            "description": {
+              "content": "Pulls funds from a sender's Visa account. This operation debits funds from the sender's account, typically as the first step in a two-step funds transfer where funds are subsequently pushed to a recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visadirect",
+                "fundstransfer",
+                "v1",
+                "pullfundstransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderPrimaryAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"senderCardExpiryDate\": \"<string>\",\n  \"cardAcceptor\": {\n    \"name\": \"<string>\",\n    \"terminalId\": \"<string>\",\n    \"idCode\": \"<string>\",\n    \"address\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\",\n      \"zipCode\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "460e562e-930c-471e-88ae-9f7ee246ff2a",
+              "name": "Pull funds transaction processed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "pullfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderPrimaryAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"senderCardExpiryDate\": \"<string>\",\n  \"cardAcceptor\": {\n    \"name\": \"<string>\",\n    \"terminalId\": \"<string>\",\n    \"idCode\": \"<string>\",\n    \"address\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\",\n      \"zipCode\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionIdentifier\": 6571,\n  \"actionCode\": \"string\",\n  \"approvalCode\": \"string\",\n  \"responseCode\": \"string\",\n  \"transmissionDateTime\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b06fa71-7b17-4c50-8219-5aada358a1ea",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "pullfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderPrimaryAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"senderCardExpiryDate\": \"<string>\",\n  \"cardAcceptor\": {\n    \"name\": \"<string>\",\n    \"terminalId\": \"<string>\",\n    \"idCode\": \"<string>\",\n    \"address\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\",\n      \"zipCode\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec41818e-4449-4867-8895-abb9862bf0ec",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "pullfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"senderPrimaryAccountNumber\": \"<string>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"senderCardExpiryDate\": \"<string>\",\n  \"cardAcceptor\": {\n    \"name\": \"<string>\",\n    \"terminalId\": \"<string>\",\n    \"idCode\": \"<string>\",\n    \"address\": {\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"city\": \"<string>\",\n      \"zipCode\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9653da43-f9b0-4946-a76b-d7a1e83cc35f",
+          "name": "Multi Push Funds Transaction",
+          "request": {
+            "name": "Multi Push Funds Transaction",
+            "description": {
+              "content": "Pushes funds to multiple recipient Visa accounts in a single request. This batch operation enables efficient disbursement to many recipients simultaneously.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visadirect",
+                "fundstransfer",
+                "v1",
+                "multipushfundstransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2d72611-f45b-41f6-a014-96e9b4f9a5d8",
+              "name": "Multi push funds transaction processed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "multipushfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": [\n    {\n      \"transactionIdentifier\": 1227,\n      \"actionCode\": \"string\",\n      \"approvalCode\": \"string\",\n      \"responseCode\": \"string\",\n      \"transmissionDateTime\": \"string\"\n    },\n    {\n      \"transactionIdentifier\": 4024,\n      \"actionCode\": \"string\",\n      \"approvalCode\": \"string\",\n      \"responseCode\": \"string\",\n      \"transmissionDateTime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5356e0b-4145-4db8-9743-b23edf8052fe",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "multipushfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7123da76-f478-44de-98ee-83364fefa21a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "multipushfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"recipientPrimaryAccountNumber\": \"<string>\",\n      \"senderName\": \"<string>\",\n      \"senderAddress\": \"<string>\",\n      \"senderCity\": \"<string>\",\n      \"senderCountryCode\": \"<string>\",\n      \"recipientName\": \"<string>\",\n      \"businessApplicationId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "008cc902-ffef-4640-a046-ae536efdb90a",
+          "name": "Multi Pull Funds Transaction",
+          "request": {
+            "name": "Multi Pull Funds Transaction",
+            "description": {
+              "content": "Pulls funds from multiple sender Visa accounts in a single request. This batch operation supports scenarios requiring funds collection from many accounts simultaneously.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visadirect",
+                "fundstransfer",
+                "v1",
+                "multipullfundstransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59f4897a-015d-4c8e-af10-c0a3ab9bbad6",
+              "name": "Multi pull funds transaction processed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "multipullfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response\": [\n    {\n      \"transactionIdentifier\": 4340,\n      \"actionCode\": \"string\",\n      \"approvalCode\": \"string\",\n      \"responseCode\": \"string\",\n      \"transmissionDateTime\": \"string\"\n    },\n    {\n      \"transactionIdentifier\": 8710,\n      \"actionCode\": \"string\",\n      \"approvalCode\": \"string\",\n      \"responseCode\": \"string\",\n      \"transmissionDateTime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a76f601-1cf2-4445-b660-8e055c3ccc7c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "multipullfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d72115ed-509c-4e2a-b6b1-64ad9a1adbce",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "multipullfundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"request\": [\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"systemsTraceAuditNumber\": \"<string>\",\n      \"retrievalReferenceNumber\": \"<string>\",\n      \"acquiringBin\": \"<string>\",\n      \"acquirerCountryCode\": \"<string>\",\n      \"senderPrimaryAccountNumber\": \"<string>\",\n      \"transactionCurrencyCode\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"senderCardExpiryDate\": \"<string>\",\n      \"cardAcceptor\": {\n        \"name\": \"<string>\",\n        \"terminalId\": \"<string>\",\n        \"idCode\": \"<string>\",\n        \"address\": {\n          \"country\": \"<string>\",\n          \"state\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zipCode\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b2b2e01-8b18-41c6-858b-d22d89a2fe6f",
+          "name": "Reverse Funds Transaction",
+          "request": {
+            "name": "Reverse Funds Transaction",
+            "description": {
+              "content": "Reverses a previously completed push or pull funds transaction. This operation is used to return funds in cases of errors, disputes, or refund scenarios.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visadirect",
+                "fundstransfer",
+                "v1",
+                "reversefundstransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"transactionIdentifier\": \"<integer>\",\n  \"amount\": \"<double>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"originalDataElements\": {\n    \"systemsTraceAuditNumber\": \"<string>\",\n    \"transmissionDateTime\": \"<string>\",\n    \"acquiringBin\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8aef66eb-4fdc-487f-89b4-344501cbd459",
+              "name": "Reverse funds transaction processed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "reversefundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"transactionIdentifier\": \"<integer>\",\n  \"amount\": \"<double>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"originalDataElements\": {\n    \"systemsTraceAuditNumber\": \"<string>\",\n    \"transmissionDateTime\": \"<string>\",\n    \"acquiringBin\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionIdentifier\": 5814,\n  \"actionCode\": \"string\",\n  \"approvalCode\": \"string\",\n  \"responseCode\": \"string\",\n  \"transmissionDateTime\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43873f6d-5eec-4121-8f95-1ab1906e67a6",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "reversefundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"transactionIdentifier\": \"<integer>\",\n  \"amount\": \"<double>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"originalDataElements\": {\n    \"systemsTraceAuditNumber\": \"<string>\",\n    \"transmissionDateTime\": \"<string>\",\n    \"acquiringBin\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbc6bb7f-78b4-4eab-aaac-4c1df32eeb6a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visadirect",
+                    "fundstransfer",
+                    "v1",
+                    "reversefundstransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"transactionIdentifier\": \"<integer>\",\n  \"amount\": \"<double>\",\n  \"transactionCurrencyCode\": \"<string>\",\n  \"originalDataElements\": {\n    \"systemsTraceAuditNumber\": \"<string>\",\n    \"transmissionDateTime\": \"<string>\",\n    \"acquiringBin\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c34fd18-be39-44f7-beff-022174e31680",
+    "name": "Foreign Exchange Rates Funds Transfer API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Push and pull funds to and from Visa accounts for real-time money movement use cases including person-to-person transfers, business disbursements, and account funding transactions.",
+      "type": "text/plain"
+    }
+  }
+}

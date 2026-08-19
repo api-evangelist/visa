@@ -1,0 +1,376 @@
+{
+  "item": [
+    {
+      "id": "2e643a05-0843-4fcb-8d6a-68634bc040fc",
+      "name": "Funds Transfer Attributes Inquiry API",
+      "description": {
+        "content": "The Funds Transfer Attributes Inquiry API is often used with a funds transfer to/from a Visa payment account to determine key characteristics of a recipient card before initiating the transfer like country, card-type, block status, etc.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c96af1fd-64a9-41ee-94b2-321ca6287841",
+          "name": "Funds Transfer Inquiry",
+          "request": {
+            "name": "Funds Transfer Inquiry",
+            "description": {
+              "content": "Retrieve the attributes, which determine the key characteristics of a recipient payment account before initiating a funds transfer, by providing the Primary Account Number (PAN) or Token for both Visa and Non-Visa cards",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paai",
+                "fundstransferattinq",
+                "v5",
+                "cardattributes",
+                "fundstransferinquiry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"acquiringBin\": \"<integer>\",\n  \"sharingGroupCode\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9c98c11-d750-4f81-ab1a-d01f50898424",
+              "name": "Funds Transfer Inquiry Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paai",
+                    "fundstransferattinq",
+                    "v5",
+                    "cardattributes",
+                    "fundstransferinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"451018\",\n  \"primaryAccountNumber\": \"4060320000000127\",\n  \"retrievalReferenceNumber\": \"412770452025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ppgsNetworkInfo\": [\n    {\n      \"billingCurrencyMinorDigits\": 0,\n      \"octDomParticipant\": \"string\",\n      \"octXbParticipant\": \"string\",\n      \"aftXbParticipant\": \"string\",\n      \"networkId\": 0,\n      \"aftDomParticipant\": \"string\",\n      \"cardIssuerCountryCode\": 0,\n      \"billingCurrencyCode\": 0\n    },\n    {\n      \"billingCurrencyMinorDigits\": 0,\n      \"octDomParticipant\": \"string\",\n      \"octXbParticipant\": \"string\",\n      \"aftXbParticipant\": \"string\",\n      \"networkId\": 0,\n      \"aftDomParticipant\": \"string\",\n      \"cardIssuerCountryCode\": 0,\n      \"billingCurrencyCode\": 0\n    }\n  ],\n  \"visaNetworkInfo\": [\n    {\n      \"nonMoneyTransferFastFundsDomestic\": \"string\",\n      \"moneyTransferPushFundsDomestic\": \"string\",\n      \"nonMoneyTransferPushFundsDomestic\": \"string\",\n      \"nonMoneyTransferPushFundsCrossBorder\": \"string\",\n      \"issuerName\": \"string\",\n      \"moneyTransferFastFundsDomestic\": \"string\",\n      \"issuerCountryCode\": 0,\n      \"comboCardRange\": \"string\",\n      \"billingCurrencyCodeMinorDigits\": \"string\",\n      \"onlineGamblingFastFundsDomestic\": \"string\",\n      \"onlineGamblingPushFundsDomestic\": \"string\",\n      \"onlineGamblingFastFundsCrossBorder\": \"string\",\n      \"billingCurrency\": 0,\n      \"moneyTransferFastFundsCrossBorder\": \"string\",\n      \"cardPlatformCode\": \"string\",\n      \"cardSubTypeCode\": \"string\",\n      \"cardProductType\": \"string\",\n      \"onlineGamblingPushFundsCrossBorder\": \"string\",\n      \"moneyTransferPushFundsCrossBorder\": \"string\",\n      \"nonMoneyTransferFastFundsCrossBorder\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ee08052-ebda-4cb8-a6c7-176192607ba4",
+              "name": "Invalid request parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paai",
+                    "fundstransferattinq",
+                    "v5",
+                    "cardattributes",
+                    "fundstransferinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"451018\",\n  \"primaryAccountNumber\": \"4060320000000127\",\n  \"retrievalReferenceNumber\": \"412770452025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"invalidParameter\",\n    \"message\": \"Unable to find any participating network information for the provided account.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ab128d3-ebfc-4d64-a91d-a6af7b369529",
+          "name": "Funds Transfer Inquiry",
+          "request": {
+            "name": "Funds Transfer Inquiry",
+            "description": {
+              "content": "Retrieve the attributes, which determine the key characteristics of a recipient payment account before initiating a funds transfer, by providing the Primary Account Number (PAN)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paai",
+                "fundstransferattinq",
+                "v2",
+                "cardattributes",
+                "fundstransferinquiry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"acquiringBin\": \"<integer>\",\n  \"sharingGroupCode\": \"<string>\",\n  \"acquirerCountryCode\": \"<string>\",\n  \"showComboCardRangeIndicator\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dfeab3f6-f03c-4408-ba92-98526bde408b",
+              "name": "Funds Transfer Inquiry Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paai",
+                    "fundstransferattinq",
+                    "v2",
+                    "cardattributes",
+                    "fundstransferinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"451018\",\n  \"primaryAccountNumber\": \"4060320000000127\",\n  \"retrievalReferenceNumber\": \"412770452025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ppgsNetworkInfo\": [\n    {\n      \"billingCurrencyMinorDigits\": 0,\n      \"octDomParticipant\": \"string\",\n      \"octXbParticipant\": \"string\",\n      \"aftXbParticipant\": \"string\",\n      \"networkId\": 0,\n      \"aftDomParticipant\": \"string\",\n      \"cardIssuerCountryCode\": 0,\n      \"billingCurrencyCode\": 0\n    },\n    {\n      \"billingCurrencyMinorDigits\": 0,\n      \"octDomParticipant\": \"string\",\n      \"octXbParticipant\": \"string\",\n      \"aftXbParticipant\": \"string\",\n      \"networkId\": 0,\n      \"aftDomParticipant\": \"string\",\n      \"cardIssuerCountryCode\": 0,\n      \"billingCurrencyCode\": 0\n    }\n  ],\n  \"visaNetworkInfo\": [\n    {\n      \"billingCurrencyMinorDigits\": 0,\n      \"onlineGambingBlockIndicator\": \"string\",\n      \"pushFundsBlockIndicator\": \"string\",\n      \"issuerName\": \"string\",\n      \"cardTypeCode\": \"string\",\n      \"fastFundsIndicator\": \"string\",\n      \"cardIssuerCountryCode\": 0,\n      \"billingCurrencyCode\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b78d4fff-7cda-4bab-baae-857952a84d24",
+          "name": "Funds Transfer Inquiry",
+          "request": {
+            "name": "Funds Transfer Inquiry",
+            "description": {
+              "content": "Retrieve the attributes, which determine the key characteristics of a recipient payment account before   initiating a funds transfer, by providing the Primary Account Number (PAN)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paai",
+                "fundstransferattinq",
+                "v1",
+                "cardattributes",
+                "fundstransferinquiry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"acquiringBin\": \"<integer>\",\n  \"cardPlatformCode\": \"<string>\",\n  \"sharingGroupCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66418f53-6b8a-47f8-bfaa-e16b8ade8e98",
+              "name": "Funds Transfer Inquiry Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paai",
+                    "fundstransferattinq",
+                    "v1",
+                    "cardattributes",
+                    "fundstransferinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"451018\",\n  \"primaryAccountNumber\": \"4060320000000127\",\n  \"retrievalReferenceNumber\": \"412770452025\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"billingCurrencyMinorDigits\": 0,\n  \"onlineGambingBlockIndicator\": \"string\",\n  \"pushFundsBlockIndicator\": \"string\",\n  \"issuerName\": \"string\",\n  \"cardTypeCode\": \"string\",\n  \"fastFundsIndicator\": \"string\",\n  \"cardIssuerCountryCode\": \"string\",\n  \"billingCurrencyCode\": 0,\n  \"geoRestrictionInd\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8a25da97-db58-41c4-afd1-274d58c93cb8",
+    "name": "Foreign Exchange Rates Funds Transfer Attributes Inquiry API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Funds Transfer Attributes Inquiry API is often used with a funds transfer to/from a Visa payment account to determine key characteristics of a recipient card before initiating the transfer like country, card-type, block status, etc.",
+      "type": "text/plain"
+    }
+  }
+}

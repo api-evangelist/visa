@@ -1,0 +1,600 @@
+{
+  "item": [
+    {
+      "id": "6aeb9326-1c79-475b-8cda-7fafd9d163b3",
+      "name": "In-App Provisioning for Google Pay",
+      "description": {
+        "content": "In-App Provisioning for Google Pay",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9b33843-0ab6-40db-ba23-6434cf564a0a",
+          "name": "Create Card Data Google Pay",
+          "request": {
+            "name": "Create Card Data Google Pay",
+            "description": {
+              "content": "Card data for provisioning a Visa Token in GooglePay using vCardId or encrypted card as input",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inapp",
+                "provisioning",
+                "cardData",
+                "googlePay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) API key from Visa Developer Platform (VDP)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                "key": "x-pay-token",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientCustomerID\": \"<string>\",\n  \"deviceID\": \"<string>\",\n  \"encCard\": \"<string>\",\n  \"vCardID\": \"<string>\",\n  \"signingKeyID\": \"<string>\",\n  \"encryptionKeyID\": \"<string>\",\n  \"tokenServiceProvider\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5770ffac-d783-4eec-bab3-bfb8f77576c5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last4\": \"4008\",\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"opaquePaymentCard\": \"eyJhdWQiOiIxODk5NzZhNi0yZmFjLTRlZDEtOTM0ZS03MjY5NmVhMDgxMzEiLCJraWQiOiJYS1ZYNUlHNTVDWTFRM0FVR0JLQTExbV9VNGR2b2FROVVzZ3lESUxqQjNUempCYmU4IiwiaXNzIjoiODM3NjVhZjUtZGZhZS0zNWI0LTViNGItMWM5OWJhN2EwZDAxIiwidHlwIjoiSk9TRSIsImNoYW5uZWxTZWN1cml0eUNvbnRleHQiOiJTSEFSRURfU0VDUkVUIiwiZW5jIjoiQTI1NkdDTSIsInRhZyI6ImVvN3d5eDFXU29EQVZUWm9jZlc3N3ciLCJpYXQiOjE1ODgyNDM1NjAsImFsZyI6IkEyNTZHQ01LVyIsIml2IjoiaHN5TWwwbEp3Qk5rbWxtUiJ9.GL-_-PaVQ8xQzv7s6VNC4t75dfa7ZzglsvQG1S1BfL8.9W0-tgfN0eOEWnY7.a9XxDeQsDr55HXsHdIOjmdytTvTv3CFDHo668K-fe9Bk6p8eqbSz3QwwbjB3pRdwpBkzhqjqhKW6C-_Fe1RUliN01z648XBLYYW4VGoT1LxS4eCnucTGaTj-J7xTl3MGCCjrnL38sqpXGs-jWgwaHYpjZ4PlMG9dPeLiUxkodArI98Ph953VYHE_0UPLzB-bkUGKc_y86VH8DYuFTxYAE6LAr0J3R5o6Var7YnseUZrXMvQCf_yHisFNjHkCW4EY8xIWEoiK1vYvPJXOHr9KdAYgdFBJKDoCgs3Vb7AuI_zDEh4jNtkSauQuKZUjD_WCNDcSl75xDiSzT1nX3BMcGLXUbaWvzHARqYheZQ_fKQ8D3xI38yTklf0oJVYLE-Id1XuN437ECyaKHtyxz1L3fXk_n4xpD80f3gy_xwqJelzZFtSlZQVhG925YhQsYjKZjNt_pIFz9RYeDPSP8tflMEx3huFRBmbjNXS9c6jdMk6z5kskOci9p0ur4J3gcKqGjetrp-0bVDJYnpr6d1RffiEvXDuRBIaabMjr5iRuxuGCIT0w0_sL9VcClKxg10MoacGXV3jcnYU2XjUe3aqOZJwbwLnQPWn_V3ke7xvdAdd_52rdiaoJ.P3YDNNCCX5sVgD2QVcDGoQ\",\n  \"encAddress\": \"eyJraWQiOiIyRjNDOUZEMyIsImVuYyI6IkEyNTZHQ00iLCJhbGciOiJSU0EtT0FFUC0yNTYifQ.HBI8Vcz7VGXuHLSoPwWKu_X8vVhIZjCxcnk3trpBHPfWv17WeIgtxLMfrBBcZA7sLEESyEPjCsZuuiYtNHQ-CGdQ5XaMVTN2pQNJ8DAk2swELjYU0ukxphosI1WduUZbUUIaCuaUnFxVps8n8QnjHoYcl5S2QCoSjIDAaq6UFhVMPTl5Z8h80VE0BJUufwpFn60ccxflmTFtZcbA03Zib74OJtwBWDYVFqUoPeDVI4-eTyOQVvUNfsFRd6C4wQhbcGsehqnHZpxVV_dadPvv884Udim5Vi8QOFXBE7k9Q-9JZV9VKPtz7TErIP5iWDP0cb2GBu6A6X8RwXIhSfOxcw.mTT0c2QP5L9zJ7ys.GOBZF8wHW9HaSMjuZhvCW1PAl15r616BsbG6LsKt5Uo9rFiKCUnM5mXPKjvFKspmjyDxARVgW1q3mkO4uFGICnFljM5XLBhHHBok9dy_8gm9gGbjT9XeIdEb0-nscXyMeV8MI4e5NvQ1zCw1hAvzSIqqR_xYmN3aLjPoxTE-GZBBDVIw4QUdSlaZfw.TCoV1n8rlJU3hg8_IXbHUQ\",\n  \"expirationDate\": {\n    \"month\": \"01\",\n    \"year\": \"2020\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c529bfe5-701d-4cd0-84ba-ed84aeb26668",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"string\",\n    \"status\": 4698,\n    \"details\": [\n      {\n        \"message\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"message\": \"string\",\n        \"location\": \"string\"\n      }\n    ],\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "301746bf-9792-4e3f-a609-dac53f06bef0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"string\",\n    \"status\": 8571,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d3546a1-7b71-4b45-847a-4fefdc4044a8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"string\",\n    \"status\": 8571,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2869f27a-27a6-4436-b8db-967040287493",
+              "name": "Name on Card not Available. The card referenced in this request is already enrolled but has no nameOnCard value. And, there is no Customer associated with this card so that the nameOnCard can not be derived from Customer name.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"string\",\n    \"status\": 8571,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d4e0a93-b090-4a91-9713-42c7638dc428",
+              "name": "Bad Gateway",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"string\",\n    \"status\": 8571,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8aa58fa3-77b3-40e0-a614-79882d3b79af",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"string\",\n    \"status\": 8571,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9320aa9b-1d4a-4858-93fa-f38d34284b5e",
+              "name": "Gateway Timeout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inapp",
+                    "provisioning",
+                    "cardData",
+                    "googlePay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) application/json",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Key-Shared Secret Authentication. Please refer to https://developer.visa.com/pages/working-with-visa-apis/x-pay-token for more details.",
+                    "key": "x-pay-token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vCardID\": \"v-123-ac7aa6f4-3d84-4fa1-8243-790a90ea5b02\",\n  \"encCard\": \"eyJraWQiOiJOT0xRRjhHNjE0QkozUVpVNE1CMjExdEg0cURjNWx6Y28tWF94bWNEREZjNGpBRlhjIiwiZW5jIjoiQTI1NkdDTSIsImFsZyI6IlJTQS1PQUVQLTI1NiJ9.ITlIHG7yOZBXehlNY_WeFTu-6JuP3OVub89MRdYFmnMABEBFKTYrAuDny1ru1HCeI3nP8_xwP88zlk9S4KSKBBYoHme-rEdiRlM-OHNcegEVorElCRCS1yU_C4jJIrexRYmmsr5Kv__7wsyfpVimhBncMsz0JLT33uwk_6WPNd_y7fZOC0p9KiMHX2hlIXkU-EuA_My_SNgoDahEbOFSvab97iYXBz-a7zK-xLk73Jjm90WKGCcxJgmbUdLHJ_FKttcQA5HCliwbzR8DLtJpJMXjicEz3rjrUgKMp-SekVrILHVaie_iDojhW8yRnyjJni_JnD2IBolqcHogTieFdQ.UYTvbk6ha9jwj6_i.g2fejtkRSVaFUvYeUmWJETF5tRkGeN1B5zqATfIpwBZVhICt6M2gEFzHz_0zZtBwuyVIp1hBijtfcIchXrg0dVOb1znO0l3m-iGFcNduByqYwODHfz2yxmOXE0OCHl9HAZY6AGPl5xrqLx03gytJnfHUwDqYtuYL8LDBl-AxaOL73QAc0hBdOgITACKiEudd09TnmwWLhgHytluenOUkIQ-S0SLn2Cu5TqGu2y63L8CHZ8EhFQYE794KuyHtZUAlrNxQDHw5NBQtpuVyMuWWgIZAobI6xznv3BOhskPoSCKVY--nMPeSpBLJ7zjTW1jCgModDoExxUPJasJmu4vUj_rYtmiOhs5YOlxhaAyqnX_eOCHwmUTTVUpKVetQ4T_IxiokRabRi8e0aw.lF9yuWYaGTTCnULlS6KI_A\",\n  \"deviceID\": \"uztEQocBRFrbK5hCgcDbxqw_\",\n  \"clientCustomerID\": \"dead-beef-123\",\n  \"tokenServiceProvider\": \"V\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"reason\": \"string\",\n    \"status\": 8571,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ba4d2f45-e5a1-4e75-8d63-564cb64d94c4",
+    "name": "Foreign Exchange Rates In-App Provisioning for Google Pay API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "In-App Provisioning for Google Pay",
+      "type": "text/plain"
+    }
+  }
+}

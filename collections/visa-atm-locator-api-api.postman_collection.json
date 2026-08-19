@@ -1,0 +1,569 @@
+{
+  "item": [
+    {
+      "id": "e2403df6-90c5-4895-8826-643a03f4cc5d",
+      "name": "ATM Locator API",
+      "description": {
+        "content": "Search for Visa and Plus ATM locations by geographic coordinates, address, or other criteria to help cardholders find nearby cash access points.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10dc59b0-176d-4c7d-9cd5-68e0734f6024",
+          "name": "Find Nearby ATM Totals",
+          "request": {
+            "name": "Find Nearby ATM Totals",
+            "description": {
+              "content": "Returns the number of ATMs nearest to a given location based on search criteria. Provides subtotals of the number of ATMs matching each filter criteria included in the request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "atmlocator",
+                "v1",
+                "findnearbytotals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f89f4ebb-258e-4a33-9ee9-fe3b2ad4986b",
+              "name": "ATM totals retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findnearbytotals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wsResponseHeaderV2\": {\n    \"responseMessageId\": \"string\",\n    \"numOfRowsReturned\": 6456\n  },\n  \"responseData\": {\n    \"totalATMCount\": 1225,\n    \"atmFilterTotals\": [\n      {\n        \"filterName\": \"string\",\n        \"count\": 7386\n      },\n      {\n        \"filterName\": \"string\",\n        \"count\": 1408\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b819b29-41df-4067-9a86-fde170642083",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findnearbytotals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c059241-3f91-4c0e-9783-19a2e90e1df1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findnearbytotals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "275b4d10-46e0-4e66-a716-966553347f4b",
+          "name": "Find Nearby ATMs",
+          "request": {
+            "name": "Find Nearby ATMs",
+            "description": {
+              "content": "Retrieves all details of ATMs near a given area based on search criteria. Returns ATM location details including address, operating hours, supported features, and distance from the search location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "atmlocator",
+                "v1",
+                "findnearbyatms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\",\n    \"maxRecords\": \"<integer>\",\n    \"startIndex\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59ea9bb8-e5ec-4be6-b5b7-1943fc02f4df",
+              "name": "Nearby ATMs retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findnearbyatms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\",\n    \"maxRecords\": \"<integer>\",\n    \"startIndex\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wsResponseHeaderV2\": {\n    \"responseMessageId\": \"string\",\n    \"numOfRowsReturned\": 4705\n  },\n  \"responseData\": {\n    \"totalATMCount\": 9893,\n    \"atmLocations\": [\n      {\n        \"atmId\": \"string\",\n        \"terminalId\": \"string\",\n        \"ownerBusinessName\": \"string\",\n        \"address\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"coordinates\": {\n          \"latitude\": 3947.9173343709704,\n          \"longitude\": 7378.9151366048645\n        },\n        \"distance\": 9006.555654549444,\n        \"distanceUnit\": \"string\",\n        \"isAvailable24Hours\": false,\n        \"supportedServices\": [\n          \"string\",\n          \"string\"\n        ],\n        \"networkAlliance\": \"string\"\n      },\n      {\n        \"atmId\": \"string\",\n        \"terminalId\": \"string\",\n        \"ownerBusinessName\": \"string\",\n        \"address\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"coordinates\": {\n          \"latitude\": 3172.736568260457,\n          \"longitude\": 7620.724340781222\n        },\n        \"distance\": 8335.334101794419,\n        \"distanceUnit\": \"string\",\n        \"isAvailable24Hours\": false,\n        \"supportedServices\": [\n          \"string\",\n          \"string\"\n        ],\n        \"networkAlliance\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2796f9c2-5e80-429c-bf01-a2b3f3b5892e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findnearbyatms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\",\n    \"maxRecords\": \"<integer>\",\n    \"startIndex\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1db33af8-5583-42ee-995c-f3aac4515520",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findnearbyatms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"location\": {\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"placeName\": \"<string>\"\n    },\n    \"options\": {\n      \"operationName\": \"<string>\",\n      \"findFilters\": [\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        },\n        {\n          \"filterName\": \"<string>\",\n          \"filterValue\": \"<string>\"\n        }\n      ]\n    },\n    \"distance\": \"<double>\",\n    \"distanceUnit\": \"<string>\",\n    \"maxRecords\": \"<integer>\",\n    \"startIndex\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5942dd7f-99d0-4517-89a4-ad051e5c5243",
+          "name": "Find Geocodes",
+          "request": {
+            "name": "Find Geocodes",
+            "description": {
+              "content": "Returns latitude and longitude coordinates based on an input address. This geocoding operation can be used to convert addresses to coordinates before searching for nearby ATMs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "atmlocator",
+                "v1",
+                "findgeocodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce447893-54a1-4589-a0cb-7438e91a66ed",
+              "name": "Geocode results returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findgeocodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wsResponseHeaderV2\": {\n    \"responseMessageId\": \"string\",\n    \"numOfRowsReturned\": 111\n  },\n  \"responseData\": {\n    \"geocodes\": [\n      {\n        \"latitude\": 8345.265845154141,\n        \"longitude\": 3912.9826575702973,\n        \"formattedAddress\": \"string\"\n      },\n      {\n        \"latitude\": 1393.2601551773416,\n        \"longitude\": 7878.973533778592,\n        \"formattedAddress\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5922a4a8-e1da-4107-8003-0f82badfc51b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findgeocodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "113fd7f5-fb8c-48bb-9302-3d0317df47f2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "atmlocator",
+                    "v1",
+                    "findgeocodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"wsRequestHeaderV2\": {\n    \"applicationId\": \"<string>\",\n    \"requestMessageId\": \"<string>\"\n  },\n  \"requestData\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f9884690-c4c1-439e-bd23-b912ccefad85",
+    "name": "Foreign Exchange Rates ATM Locator API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Search for Visa and Plus ATM locations by geographic coordinates, address, or other criteria to help cardholders find nearby cash access points.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "item": [
+    {
+      "id": "661e307f-1fdb-4e0a-af95-609736f47a1d",
+      "name": "Visa Account Updater Acquirer API",
+      "description": {
+        "content": "Visa Account Updater Acquirer API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69f1730b-d3fb-48cc-8af1-9254a76734a0",
+          "name": "Acquirer API for PANs Inquiry",
+          "request": {
+            "name": "Acquirer API for PANs Inquiry",
+            "description": {
+              "content": "Retrieve the new PANs information for requested old PANs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vau",
+                "acquirer-api",
+                "v1",
+                "inquiry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquirerSegmentId\": \"<integer>\",\n  \"inquiries\": [\n    {\n      \"cardholderAccountNumber\": \"<string>\",\n      \"expirationDate\": \"<string>\"\n    },\n    {\n      \"cardholderAccountNumber\": \"<string>\",\n      \"expirationDate\": \"<string>\"\n    }\n  ],\n  \"merchantId\": \"<string>\",\n  \"subMerchantName\": \"<string>\",\n  \"acquirerOrMerchantProprietaryInfo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfd01bb1-fc1a-4417-ad49-84b130ea6d0d",
+              "name": "This response code will be returned in scenarios where the inquiry is successful, all possible response codes are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "acquirer-api",
+                    "v1",
+                    "inquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inquiries\": [\n    {\n      \"cardholderAccountNumber\": \"a4X3933787254355\",\n      \"expirationDate\": \"2609\"\n    }\n  ],\n  \"acquirerSegmentId\": 2,\n  \"merchantId\": \"00000067625P\",\n  \"acquirerOrMerchantProprietaryInfo\": \"\",\n  \"subMerchantName\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejects\": [\n    {\n      \"cardholderAccountNumber\": \"a4X3933787254355\",\n      \"rejectReason\": \"Account Number contains non-numeric characters or is blank\",\n      \"rejectReasonCode\": \"3\",\n      \"expirationDate\": \"2609\"\n    }\n  ],\n  \"acquirerSegmentId\": 2,\n  \"merchantId\": \"00000067625P\",\n  \"responses\": [],\n  \"acquirerOrMerchantProprietaryInfo\": \"\",\n  \"subMerchantName\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9792df8b-754e-4209-a847-5b61bf682b39",
+              "name": "This response code will be returned in scenarios where the inquiry is badly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "acquirer-api",
+                    "v1",
+                    "inquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inquiries\": [\n    {\n      \"cardholderAccountNumber\": \"a4X3933787254355\",\n      \"expirationDate\": \"2609\"\n    }\n  ],\n  \"acquirerSegmentId\": 2,\n  \"merchantId\": \"00000067625P\",\n  \"acquirerOrMerchantProprietaryInfo\": \"\",\n  \"subMerchantName\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Request is badly formatted and/or the required field(s) is (are) missing\",\n  \"rejectReasonCode\": \"B\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10b2b468-859c-494a-a55d-a0c8c1e1eebb",
+              "name": "This response code will be returned in scenarios where the inquiry is rejected, all possible reasons for request rejection are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "acquirer-api",
+                    "v1",
+                    "inquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inquiries\": [\n    {\n      \"cardholderAccountNumber\": \"a4X3933787254355\",\n      \"expirationDate\": \"2609\"\n    }\n  ],\n  \"acquirerSegmentId\": 2,\n  \"merchantId\": \"00000067625P\",\n  \"acquirerOrMerchantProprietaryInfo\": \"\",\n  \"subMerchantName\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acquirerSegmentId\": 9992,\n  \"merchantId\": \"string\",\n  \"rejectReason\": \"Acquirer segment is not enrolled\",\n  \"subMerchantName\": \"SUB-MERCHANT-NAME\",\n  \"rejectReasonCode\": \"A\",\n  \"acquirerInformation\": \"180720216995565000113            XXXXAIBR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e26577f-2a5d-477e-bd38-565f23306370",
+              "name": "This response code will be returned in scenarios where the inquiry could not be sucessfully processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "acquirer-api",
+                    "v1",
+                    "inquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inquiries\": [\n    {\n      \"cardholderAccountNumber\": \"a4X3933787254355\",\n      \"expirationDate\": \"2609\"\n    }\n  ],\n  \"acquirerSegmentId\": 2,\n  \"merchantId\": \"00000067625P\",\n  \"acquirerOrMerchantProprietaryInfo\": \"\",\n  \"subMerchantName\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Internal Server Error, please try again after sometime\",\n  \"rejectReasonCode\": \"E\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ac73bf5-815b-4454-ab35-9aab76754376",
+    "name": "Foreign Exchange Rates Visa Account Updater Acquirer API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Visa Account Updater Acquirer API",
+      "type": "text/plain"
+    }
+  }
+}

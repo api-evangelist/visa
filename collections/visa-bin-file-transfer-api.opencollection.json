@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates BIN File Transfer API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BIN File Transfer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BIN File Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/filedeliveryservice/v1/binFileTransfer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get access to a BIN Account/Token Range file in csv format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,496 @@
+{
+  "item": [
+    {
+      "id": "87060be1-1b79-40cc-8f59-8dadc0648f59",
+      "name": "Full BIN List",
+      "description": {
+        "content": "Access a complete list of all of the Visa BINs and their associated BIN Attributes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1692824d-6f80-4c54-b0ba-e4d31ba7e951",
+          "name": "Bin Range Details Using POST V2",
+          "request": {
+            "name": "Bin Range Details Using POST V2",
+            "description": {
+              "content": "The Full BIN List API provides access to Visa BIN Attributes such as Issuer BIN, Issuer Country, Issuer Billing Currency and Product Identifiers such as Product ID/name, Product Platform, Card type , Card Subtype",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "binRangeDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestData\": {\n    \"binRangeCount\": \"<string>\",\n    \"binRangeSearchIndex\": \"<string>\",\n    \"paymentAccountType\": \"<string>\"\n  },\n  \"requestHeader\": {\n    \"requestMessageID\": \"<string>\",\n    \"requestTS\": \"<YYYY-MM-DDThh:mm:ss.sss>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1b46cfa-b8a7-4172-af41-c98b9744ee57",
+              "name": "BinRangeDetails Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"paymentAccountType\": \"P\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numRecordsReturned\": \"100\",\n  \"areNextOffsetRecordsAvailable\": \"Y\",\n  \"responseHeader\": {\n    \"responseMessageID\": \"34CACCTDTL2750820220617223228171\"\n  },\n  \"responseData\": [\n    {\n      \"binRangeMaxNum\": \"401975999999999999999\",\n      \"productID\": \"B\",\n      \"binRangePaymentAccountType\": \"P\",\n      \"accountRegionCode\": \"01\",\n      \"accountCtryAlpha2Code\": \"TL\",\n      \"posDomesticOnlyInd\": \"N\",\n      \"comboCrdCd\": \"A\",\n      \"accountFundingSourceSubtypeCd\": \"N\",\n      \"multiAccountAccessInd\": \"N\",\n      \"issuerBillingCurrCd\": \"TPE\",\n      \"autoSubstntnInd\": \"Y\",\n      \"issuerBin\": \"401975\",\n      \"productIDName\": \"Visa Infinite Privilege\",\n      \"commrclCrdLvl3EnhInd\": \"N\",\n      \"accountFundingSourceCd\": \"R\",\n      \"binLength\": \"6\",\n      \"onlineGamblBlockInd\": \"N\",\n      \"binRangeMinNum\": \"401975000000000000000\",\n      \"commrclCrdLvl2Ind\": \"N\",\n      \"platformCd\": \"CN\",\n      \"accountBusName\": \"A2B2 BANK\",\n      \"almInd\": \"N\",\n      \"vauInd\": \"Y\",\n      \"brandCd\": \"VISA\",\n      \"sharedBinInd\": \"N\",\n      \"regulatedBinCd\": \"N\"\n    },\n    {\n      \"binRangeMaxNum\": \"402201050999999999999\",\n      \"productID\": \"E\",\n      \"binRangePaymentAccountType\": \"P\",\n      \"accountRegionCode\": \"04\",\n      \"accountCtryAlpha2Code\": \"US\",\n      \"posDomesticOnlyInd\": \"N\",\n      \"comboCrdCd\": \"C\",\n      \"accountFundingSourceSubtypeCd\": \"\",\n      \"multiAccountAccessInd\": \"N\",\n      \"issuerBillingCurrCd\": \"USD\",\n      \"autoSubstntnInd\": \"N\",\n      \"issuerBin\": \"402201\",\n      \"productIDName\": \"Visa Business\",\n      \"commrclCrdLvl3EnhInd\": \"N\",\n      \"accountFundingSourceCd\": \"D\",\n      \"binLength\": \"6\",\n      \"onlineGamblBlockInd\": \"N\",\n      \"binRangeMinNum\": \"402201050000000000000\",\n      \"commrclCrdLvl2Ind\": \"N\",\n      \"platformCd\": \"BZ\",\n      \"accountBusName\": \"ABD MARKETING\",\n      \"almInd\": \"N\",\n      \"vauInd\": \"N\",\n      \"brandCd\": \"PROP\",\n      \"sharedBinInd\": \"N\",\n      \"regulatedBinCd\": \"N\"\n    },\n    {\n      \"binRangeMaxNum\": \"414718009999999999999\",\n      \"productID\": \"S5\",\n      \"binRangePaymentAccountType\": \"P\",\n      \"accountRegionCode\": \"05\",\n      \"accountCtryAlpha2Code\": \"PE\",\n      \"posDomesticOnlyInd\": \"N\",\n      \"comboCrdCd\": \"N\",\n      \"accountFundingSourceSubtypeCd\": \"N\",\n      \"multiAccountAccessInd\": \"S\",\n      \"issuerBillingCurrCd\": \"PEN\",\n      \"autoSubstntnInd\": \"N\",\n      \"issuerBin\": \"41471800\",\n      \"productIDName\": \"Visa Signature\",\n      \"commrclCrdLvl3EnhInd\": \"N\",\n      \"accountFundingSourceCd\": \"R\",\n      \"binLength\": \"8\",\n      \"onlineGamblBlockInd\": \"N\",\n      \"binRangeMinNum\": \"414718000000000000000\",\n      \"commrclCrdLvl2Ind\": \"N\",\n      \"platformCd\": \"CO\",\n      \"accountBusName\": \"ABD BANK, NATIONAL ASSOCIATION\",\n      \"almInd\": \"N\",\n      \"vauInd\": \"N\",\n      \"brandCd\": \"VISA\",\n      \"sharedBinInd\": \"N\",\n      \"regulatedBinCd\": \"N\"\n    }\n  ],\n  \"responseStatus\": {\n    \"statusDescription\": \"Success\",\n    \"statusCode\": \"CDI000\"\n  },\n  \"totalRecordsCount\": \"8203810\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b906f80-e9bc-456d-aaa5-e1869b502b43",
+              "name": "Request Data Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"paymentAccountType\": \"P\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b175be73-5de2-4772-bd54-db29213309ce",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"paymentAccountType\": \"P\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1af1bf23-a713-4250-9a57-d62a0820ebcb",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-01-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"paymentAccountType\": \"P\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CDI001\": {},\n  \"CDI002\": {},\n  \"CDI012\": {},\n  \"CDI052\": {},\n  \"CDI071\": {},\n  \"CDI246\": {},\n  \"CDI247\": {},\n  \"CDI249\": {},\n  \"CDI250\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dafdcefe-ff74-476c-b992-2985aad88242",
+          "name": "Bin Range Details Using POST",
+          "request": {
+            "name": "Bin Range Details Using POST",
+            "description": {
+              "content": "Full Bin List",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "binRangeDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestData\": {\n    \"binRangeCount\": \"<string>\",\n    \"binRangeSearchIndex\": \"<string>\"\n  },\n  \"requestHeader\": {\n    \"requestMessageID\": \"<string>\",\n    \"requestTS\": \"<YYYY-MM-DDThh:mm:ss.sss>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d81fccc-0289-47ee-8761-df836ba8bdac",
+              "name": "BinRangeDetails Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-02-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"numRecordsReturned\": \"100\",\n  \"areNextOffsetRecordsAvailable\": \"Y\",\n  \"responseHeader\": {\n    \"responseMessageID\": \"34CACCTDTL2750820220617223228171\"\n  },\n  \"responseData\": [\n    {\n      \"binRangeMaxNum\": \"401975999999999999999\",\n      \"accountFundingSourceCd\": \"R\",\n      \"productID\": \"B\",\n      \"binRangePaymentAccountType\": \"P\",\n      \"accountRegionCode\": \"01\",\n      \"accountCtryAlpha2Code\": \"TL\",\n      \"binRangeMinNum\": \"401975000000000000000\",\n      \"accountFundingSourceSubtypeCd\": \"N\",\n      \"platformCd\": \"CN\",\n      \"accountBusName\": \"A2B2 BANK\",\n      \"issuerBillingCurrCd\": \"TPE\",\n      \"issuerBin\": \"401975\",\n      \"productIDName\": \"Visa Infinite Privilege\"\n    },\n    {\n      \"binRangeMaxNum\": \"402201050999999999999\",\n      \"accountFundingSourceCd\": \"D\",\n      \"productID\": \"E\",\n      \"binRangePaymentAccountType\": \"P\",\n      \"accountRegionCode\": \"04\",\n      \"accountCtryAlpha2Code\": \"US\",\n      \"binRangeMinNum\": \"402201050000000000000\",\n      \"accountFundingSourceSubtypeCd\": \"\",\n      \"platformCd\": \"BZ\",\n      \"accountBusName\": \"ABD MARKETING\",\n      \"issuerBillingCurrCd\": \"USD\",\n      \"issuerBin\": \"402201\",\n      \"productIDName\": \"Visa Business\"\n    },\n    {\n      \"binRangeMaxNum\": \"414718009999999999999\",\n      \"accountFundingSourceCd\": \"R\",\n      \"productID\": \"S5\",\n      \"binRangePaymentAccountType\": \"P\",\n      \"accountRegionCode\": \"05\",\n      \"accountCtryAlpha2Code\": \"PE\",\n      \"binRangeMinNum\": \"414718000000000000000\",\n      \"accountFundingSourceSubtypeCd\": \"N\",\n      \"platformCd\": \"CO\",\n      \"accountBusName\": \"ABD BANK, NATIONAL ASSOCIATION\",\n      \"issuerBillingCurrCd\": \"PEN\",\n      \"issuerBin\": \"41471800\",\n      \"productIDName\": \"Visa Signature\"\n    }\n  ],\n  \"responseStatus\": {\n    \"statusDescription\": \"Success\",\n    \"statusCode\": \"CDI000\"\n  },\n  \"totalRecordsCount\": \"8203810\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71d08862-34ea-42b9-8e4f-ab6555732370",
+              "name": "Requesting Client IP is invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-02-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Multiple Choices",
+              "code": 300,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c62e623-b3e8-4ca5-95fb-a9c59de3160c",
+              "name": "Request Data Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-02-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb87bc4b-c106-46cb-858a-f5456bed6e04",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-02-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4a5a984-756d-4ad6-8cdc-53d5824a7a83",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "binRangeDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2024-02-01T23:10:41.000\",\n    \"requestMessageID\": \"test123\"\n  },\n  \"requestData\": {\n    \"binRangeSearchIndex\": \"0\",\n    \"binRangeCount\": \"100\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CDI001\": {},\n  \"CDI002\": {},\n  \"CDI012\": {},\n  \"CDI052\": {},\n  \"CDI071\": {},\n  \"CDI246\": {},\n  \"CDI247\": {},\n  \"CDI249\": {},\n  \"CDI250\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5d61c61b-b985-4041-9d59-a1677a027509",
+    "name": "Foreign Exchange Rates Full BIN List API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access a complete list of all of the Visa BINs and their associated BIN Attributes",
+      "type": "text/plain"
+    }
+  }
+}

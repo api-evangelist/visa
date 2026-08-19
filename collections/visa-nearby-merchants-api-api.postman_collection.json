@@ -1,0 +1,211 @@
+{
+  "item": [
+    {
+      "id": "f6b8241d-2031-4540-a413-d5f83525fc68",
+      "name": "Nearby Merchants API",
+      "description": {
+        "content": "Discover nearby Visa-accepting merchants based on geographic coordinates or address information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc6f87ca-dc56-469b-b757-c5661587b2d7",
+          "name": "Find Nearby Merchants",
+          "request": {
+            "name": "Find Nearby Merchants",
+            "description": {
+              "content": "Finds Visa-accepting merchants near a specified geographic location. This operation supports location-based merchant discovery for consumer applications and services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "merchantsearch",
+                "v1",
+                "nearbymerchants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "222b2122-45b5-4fd4-8184-47d888aaf1d7",
+              "name": "Nearby merchants found successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "nearbymerchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merchantSearchServiceResponse\": {\n    \"response\": [\n      {\n        \"visaMerchantId\": \"string\",\n        \"visaStoreId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantCategoryCode\": \"string\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"matchScore\": 2346.5260087002316\n      },\n      {\n        \"visaMerchantId\": \"string\",\n        \"visaStoreId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantCategoryCode\": \"string\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"matchScore\": 6818.723671921668\n      }\n    ],\n    \"totalCount\": 9380\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9eaa1967-2355-492c-bd6e-a8b274280a04",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "nearbymerchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2e207b4-3860-4153-80c8-86ca6d83ef6a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "nearbymerchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"searchRadius\": \"<double>\",\n  \"searchRadiusUnit\": \"<string>\",\n  \"merchantCategoryCode\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxRecords\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dbcb3f88-ca28-48e5-93f1-30f7a102e454",
+    "name": "Foreign Exchange Rates Nearby Merchants API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Discover nearby Visa-accepting merchants based on geographic coordinates or address information.",
+      "type": "text/plain"
+    }
+  }
+}

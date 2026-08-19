@@ -1,0 +1,826 @@
+{
+  "item": [
+    {
+      "id": "8dea8d68-e173-4c1c-b6de-ed29ba869a60",
+      "name": "Single Use Account Pool Maintenance Service",
+      "description": {
+        "content": "The Proxy web service is used for managing a pool of Single-Use Accounts (SUAs) linked to a proxy. With this web service, you can create proxy pool(s) for a buyer, update details of the proxy, delete unused pools and get details about an existing pool(e.g. number of available accounts).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e846ee1-3ee9-43b2-80c0-e75f49aff2e2",
+          "name": "Update Proxy Pool",
+          "request": {
+            "name": "Update Proxy Pool",
+            "description": {
+              "content": "The Update operation, allows the consumer to update the details of a proxy pool.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "proxy",
+                "UpdateProxyPool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"proxyAccountNumber\": \"<string>\",\n  \"creditLimit\": \"<string>\",\n  \"reOrderCount\": \"<string>\",\n  \"proxyPoolType\": \"<string>\",\n  \"proxyAccountType\": \"<string>\",\n  \"initialOrderCount\": \"<string>\",\n  \"authControlEnabled\": \"<boolean>\",\n  \"fundingAccountNumber\": \"<string>\",\n  \"minAvailableAccounts\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2e9c1e3-83bc-4b1a-a475-72b8684d5e5c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "UpdateProxyPool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authControlEnabled\": true,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"proxyAccountType\": \"2\",\n  \"reOrderCount\": \"2\",\n  \"minAvailableAccounts\": \"3\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"proxyPoolType\": \"1\",\n  \"messageId\": \"2020-03-01T03:47:20.000Z\",\n  \"creditLimit\": \"10\",\n  \"buyerId\": \"9999\",\n  \"fundingAccountNumber\": \"4111111111111111\",\n  \"initialOrderCount\": \"5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusDesc\": \"Proxypool account updated successfully.\",\n  \"proxyAccountNumber\": \"TestA53\",\n  \"messageId\": \"1578984254588\",\n  \"statusCode\": \"PMUP000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e6d3eae-6ce3-4878-b83b-feeab8f27413",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#update_proxy_pool\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "UpdateProxyPool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authControlEnabled\": true,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"proxyAccountType\": \"2\",\n  \"reOrderCount\": \"2\",\n  \"minAvailableAccounts\": \"3\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"proxyPoolType\": \"1\",\n  \"messageId\": \"2020-03-01T03:47:20.000Z\",\n  \"creditLimit\": \"10\",\n  \"buyerId\": \"9999\",\n  \"fundingAccountNumber\": \"4111111111111111\",\n  \"initialOrderCount\": \"5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "297d099d-9966-4222-aed4-74d4da6713e5",
+          "name": "Get Proxy Pool",
+          "request": {
+            "name": "Get Proxy Pool",
+            "description": {
+              "content": "The Get operation allows the consumer to get the details of a proxy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "proxy",
+                "GetProxyPool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"proxyAccountNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "69243c51-c7c1-4dcd-84de-710d617d7b68",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#get_proxy_pool\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "GetProxyPool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"messageId\": \"2020-03-01T03:47:20.000Z\",\n  \"buyerId\": \"9999\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"proxyList\": [\n    {\n      \"deletedCards\": \"0\",\n      \"authControlEnabled\": \"True\",\n      \"usedCards\": \"3\",\n      \"proxyAccountType\": \"2\",\n      \"minAvailableAccounts\": \"3\",\n      \"proxyAccountNumber\": \"TestProxyPool\",\n      \"proxyPoolType\": \"2\",\n      \"creditLimit\": \"10\",\n      \"availableCards\": \"19\",\n      \"reorderCount\": \"2\",\n      \"totalCards\": \"22\",\n      \"initialOrderCount\": \"5\"\n    }\n  ],\n  \"statusDesc\": \"Get Proxy Pool Details retieved successfully\",\n  \"messageId\": \"2020-02-11T19:03:02.000Z\",\n  \"statusCode\": \"GP000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb07df3a-316b-41dd-8d54-2f0da5eb4b60",
+          "name": "Manage Proxy",
+          "request": {
+            "name": "Manage Proxy",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "proxy",
+                "ManageProxy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actionType\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"proxyAccountDetails\": {\n    \"proxyNumber\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"expirationDate\": \"<string>\",\n    \"totalAccountsRequested\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a06afc5-7e49-406c-ace1-bad0b258c5bf",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "ManageProxy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"proxyAccountDetails\": {\n    \"accountLimit\": 100,\n    \"proxyNumber\": 10000000000000000,\n    \"accountNumber\": 4111111111111111,\n    \"expirationDate\": \"10/2020\"\n  },\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ManageProxyResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"accountRequestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f1bac6e-ebe1-4888-bf49-4c146abfc902",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "ManageProxy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": 1,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"proxyAccountDetails\": {\n    \"accountLimit\": 100,\n    \"proxyNumber\": 10000000000000000,\n    \"accountNumber\": 4111111111111111,\n    \"expirationDate\": \"10/2020\"\n  },\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MPA001\": {},\n  \"MPA002\": {},\n  \"MPA003\": {},\n  \"MPA004\": {},\n  \"MPA005\": {},\n  \"MPA006\": {},\n  \"MPA007\": {},\n  \"MPA008\": {},\n  \"MPA009\": {},\n  \"MPA010\": {},\n  \"MPA011\": {},\n  \"MPA012\": {},\n  \"MPA013\": {},\n  \"MPA502\": {},\n  \"MPA503\": {},\n  \"MPA504\": {},\n  \"MPA505\": {},\n  \"MPA506\": {},\n  \"MPA507\": {},\n  \"MPA508\": {},\n  \"MPA509\": {},\n  \"MPA510\": {},\n  \"MPA511\": {},\n  \"MPA512\": {},\n  \"MPA513\": {},\n  \"MPA514\": {},\n  \"MPA515\": {},\n  \"MPA516\": {},\n  \"MPA517\": {},\n  \"MPA518\": {},\n  \"MPA519\": {},\n  \"MPA520\": {},\n  \"MPA521\": {},\n  \"MPA522\": {},\n  \"MPA523\": {},\n  \"MPA524\": {},\n  \"MPA525\": {},\n  \"MPA527\": {},\n  \"MPA531\": {},\n  \"MPA532\": {},\n  \"MPA533\": {},\n  \"MPA534\": {},\n  \"MPA535\": {},\n  \"MPA536\": {},\n  \"MPA537\": {},\n  \"MPA538\": {},\n  \"MPA539\": {},\n  \"MPA540\": {},\n  \"MPA541\": {},\n  \"MPA560\": {},\n  \"MPA566\": {},\n  \"MPA567\": {},\n  \"MPA503a\": {},\n  \"MPA503b\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb89f8d1-4a52-41b7-ab03-4821690eb107",
+          "name": "SUA Get Account Status",
+          "request": {
+            "name": "SUA Get Account Status",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "proxy",
+                "GetAccountStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ProxyNumber\": \"<string>\",\n  \"accountRequestID\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "78a8f4ac-1914-476b-a4b6-f97897a9c439",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "GetAccountStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountRequestId\": 11423656,\n  \"clientId\": \"B2BWS_1_1_1940\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 88888,\n  \"proxyNumber\": 10000000000000000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GetAccountResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"totalAccountsRequested\": \"str\",\n    \"totalRequestsFailed\": \"str\",\n    \"totalRequestsPending\": \"str\",\n    \"totalRequestsSucceeded\": \"str\",\n    \"accountDetails\": [\n      {\n        \"accountLimit\": \"string\",\n        \"accountNumber\": \"string\",\n        \"expirationDate\": \"string\"\n      },\n      {\n        \"accountLimit\": \"string\",\n        \"accountNumber\": \"string\",\n        \"expirationDate\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f52e28d6-0e6e-4f5a-a4d9-9fb90344735d",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "GetAccountStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountRequestId\": 11423656,\n  \"clientId\": \"B2BWS_1_1_1940\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 88888,\n  \"proxyNumber\": 10000000000000000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GAS005\": {},\n  \"GAS006\": {},\n  \"GAS007\": {},\n  \"GAS008\": {},\n  \"GAS009\": {},\n  \"GAS010\": {},\n  \"GAS011\": {},\n  \"GAS012\": {},\n  \"GAS013\": {},\n  \"GAS511\": {},\n  \"GAS512\": {},\n  \"GAS517\": {},\n  \"GAS531\": {},\n  \"GAS532\": {},\n  \"GAS533\": {},\n  \"GAS534\": {},\n  \"GAS535\": {},\n  \"GAS536\": {},\n  \"GAS537\": {},\n  \"GAS538\": {},\n  \"GAS539\": {},\n  \"GAS727\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53ea4dbf-5c78-4e74-b6b1-0ca7b2c86905",
+          "name": "Delete Proxy Pool",
+          "request": {
+            "name": "Delete Proxy Pool",
+            "description": {
+              "content": "The Delete operation allows the consumer to delete a proxy pool from a buyer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "proxy",
+                "DeleteProxyPool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"proxyAccountNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9adc8716-1e50-4d5e-b3a4-454d96c6a0e2",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "DeleteProxyPool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"messageId\": \"2020-03-01T03:47:20.000Z\",\n  \"buyerId\": \"9999\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusDesc\": \"Proxy Pool Account deleted successfully\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"messageId\": \"2020-02-11T19:11:03.000Z\",\n  \"statusCode\": \"DP000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c90c2d68-eeae-476b-9eb5-21b5978db3ec",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#delete_proxy_pool\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "DeleteProxyPool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"messageId\": \"2020-03-01T03:47:20.000Z\",\n  \"buyerId\": \"9999\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "594ab90b-0d10-4379-833e-d10bb6f52f20",
+          "name": "Create Proxy Pool",
+          "request": {
+            "name": "Create Proxy Pool",
+            "description": {
+              "content": "The Create operation allows the consumer to create a new proxy pool for a buyer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "proxy",
+                "CreateProxyPool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"proxyAccountNumber\": \"<string>\",\n  \"creditLimit\": \"<string>\",\n  \"reOrderCount\": \"<string>\",\n  \"proxyPoolType\": \"<string>\",\n  \"proxyAccountType\": \"<string>\",\n  \"initialOrderCount\": \"<string>\",\n  \"authControlEnabled\": \"<boolean>\",\n  \"fundingAccountNumber\": \"<string>\",\n  \"minAvailableAccounts\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "014cdbbd-633d-48af-9649-d5306dd55598",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "CreateProxyPool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authControlEnabled\": true,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"proxyAccountType\": \"2\",\n  \"reOrderCount\": \"2\",\n  \"minAvailableAccounts\": \"3\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"proxyPoolType\": \"1\",\n  \"messageId\": \"2020-03-01T03:47:20.000Z\",\n  \"buyerId\": \"9999\",\n  \"fundingAccountNumber\": \"4111111111111111\",\n  \"initialOrderCount\": \"5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusDesc\": \"Proxy Pool account created successfully\",\n  \"proxyAccountNumber\": \"1234567898\",\n  \"messageId\": \"1536776321\",\n  \"statusCode\": \"CP000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e724aba-ad00-4f9e-a271-d938af1a6d38",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#create_proxy_pool\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "proxy",
+                    "CreateProxyPool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authControlEnabled\": true,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"proxyAccountType\": \"2\",\n  \"reOrderCount\": \"2\",\n  \"minAvailableAccounts\": \"3\",\n  \"proxyAccountNumber\": \"TestProxyPool\",\n  \"proxyPoolType\": \"1\",\n  \"messageId\": \"2020-03-01T03:47:20.000Z\",\n  \"buyerId\": \"9999\",\n  \"fundingAccountNumber\": \"4111111111111111\",\n  \"initialOrderCount\": \"5\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f8a9f79a-1e1e-468c-86a1-0914f6c6e3ab",
+    "name": "Foreign Exchange Rates Single Use Account Pool Maintenance Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Proxy web service is used for managing a pool of Single-Use Accounts (SUAs) linked to a proxy. With this web service, you can create proxy pool(s) for a buyer, update details of the proxy, delete unused pools and get details about an existing pool(e.g. number of available accounts).",
+      "type": "text/plain"
+    }
+  }
+}

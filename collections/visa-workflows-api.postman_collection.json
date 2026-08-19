@@ -1,0 +1,969 @@
+{
+  "item": [
+    {
+      "id": "ea5a2667-643e-4c02-931d-759ddc4a5d83",
+      "name": "Workflows",
+      "description": {
+        "content": "Workflows",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3fd1548d-02f0-4bba-a1e3-ed1a8cb71627",
+          "name": "Health Check Service",
+          "request": {
+            "name": "Health Check Service",
+            "description": {
+              "content": "API for checking Health Check of the Application",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "http",
+              "path": [
+                "pop",
+                "v1",
+                "hcs",
+                "healthCheckService"
+              ],
+              "host": [
+                "health-check-qa1",
+                "oce-np-sm-dpd-b-en",
+                "trusted",
+                "visa",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e30c98db-ace4-4955-b344-7a7f28c17bd3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "path": [
+                    "pop",
+                    "v1",
+                    "hcs",
+                    "healthCheckService"
+                  ],
+                  "host": [
+                    "health-check-qa1",
+                    "oce-np-sm-dpd-b-en",
+                    "trusted",
+                    "visa",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"All services are up and running\",\n  \"overallStatus\": \"UP, DOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "156389c5-86c5-4a7b-96a8-125cd7c00f7f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "http",
+                  "path": [
+                    "pop",
+                    "v1",
+                    "hcs",
+                    "healthCheckService"
+                  ],
+                  "host": [
+                    "health-check-qa1",
+                    "oce-np-sm-dpd-b-en",
+                    "trusted",
+                    "visa",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db86a3d4-539f-47a3-8a02-ad452c7b684b",
+          "name": "Payments Recipe",
+          "request": {
+            "name": "Payments Recipe",
+            "description": {
+              "content": "Composite API which handles process, resend and cancel payments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pop",
+                "v1",
+                "recipes",
+                "Payment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Describes what payment action is to be performed. It can be process, resend or cancel",
+                "key": "X-Payment-Action-Type",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Describes what iPaaS is the source system for this request",
+                "key": "X-IPaaS",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountingSoftware\": \"<string>\",\n  \"accountingSoftwareEntityId\": \"<string>\",\n  \"actionType\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"payment\": {\n    \"currencyCode\": \"<string>\",\n    \"paymentGrossAmount\": \"<string>\",\n    \"invoices\": [\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      },\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierID\": \"<string>\",\n      \"supplierName\": \"<string>\",\n      \"emailNotes\": \"<string>\",\n      \"supplierCity\": \"<string>\",\n      \"supplierState\": \"<string>\",\n      \"supplierPostalCode\": \"<string>\",\n      \"primaryEmailAddress\": \"<string>\",\n      \"supplierCountryCode\": \"<string>\",\n      \"supplierAddressLine1\": \"<string>\",\n      \"supplierAddressLine2\": \"<string>\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"alternateEmailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    \"accountType\": \"<string>\",\n    \"paymentType\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"paymentExpiryDate\": \"<string>\",\n    \"paymentRequestDate\": \"<string>\",\n    \"cardAccountExpiryDate\": \"<string>\"\n  },\n  \"clientKey\": \"<string>\",\n  \"codeChallenge\": \"<string>\",\n  \"paymentDescription\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be7ce39f-744d-4c43-ae2f-4518131b292d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "Payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what payment action is to be performed. It can be process, resend or cancel",
+                    "key": "X-Payment-Action-Type",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what iPaaS is the source system for this request",
+                    "key": "X-IPaaS",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountingSoftware\": \"<string>\",\n  \"accountingSoftwareEntityId\": \"bill Id with respect to QuickBooks Online(QBO)\",\n  \"actionType\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"payment\": {\n    \"currencyCode\": \"<string>\",\n    \"paymentGrossAmount\": \"<string>\",\n    \"invoices\": [\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      },\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierID\": \"<string>\",\n      \"supplierName\": \"<string>\",\n      \"emailNotes\": \"<string>\",\n      \"supplierCity\": \"<string>\",\n      \"supplierState\": \"<string>\",\n      \"supplierPostalCode\": \"<string>\",\n      \"primaryEmailAddress\": \"<string>\",\n      \"supplierCountryCode\": \"<string>\",\n      \"supplierAddressLine1\": \"<string>\",\n      \"supplierAddressLine2\": \"<string>\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"alternateEmailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    \"accountType\": \"<string>\",\n    \"paymentType\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"paymentExpiryDate\": \"<string>\",\n    \"paymentRequestDate\": \"<string>\",\n    \"cardAccountExpiryDate\": \"<string>\"\n  },\n  \"clientKey\": \"<string>\",\n  \"codeChallenge\": \"<string>\",\n  \"paymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"expirationDate\": \"string\",\n  \"messageId\": \"string\",\n  \"statusCode\": \"string\",\n  \"statusDesc\": \"string\",\n  \"accountNumber\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54058f7b-2b92-401c-b9a4-90008d6f5091",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "Payment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what payment action is to be performed. It can be process, resend or cancel",
+                    "key": "X-Payment-Action-Type",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what iPaaS is the source system for this request",
+                    "key": "X-IPaaS",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountingSoftware\": \"<string>\",\n  \"accountingSoftwareEntityId\": \"bill Id with respect to QuickBooks Online(QBO)\",\n  \"actionType\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"payment\": {\n    \"currencyCode\": \"<string>\",\n    \"paymentGrossAmount\": \"<string>\",\n    \"invoices\": [\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      },\n      {\n        \"invoiceDate\": \"<string>\",\n        \"invoiceAmount\": \"<string>\",\n        \"invoiceNumber\": \"<string>\",\n        \"purchaseOrderDate\": \"<string>\",\n        \"purchaseOrderNumber\": \"<string>\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierID\": \"<string>\",\n      \"supplierName\": \"<string>\",\n      \"emailNotes\": \"<string>\",\n      \"supplierCity\": \"<string>\",\n      \"supplierState\": \"<string>\",\n      \"supplierPostalCode\": \"<string>\",\n      \"primaryEmailAddress\": \"<string>\",\n      \"supplierCountryCode\": \"<string>\",\n      \"supplierAddressLine1\": \"<string>\",\n      \"supplierAddressLine2\": \"<string>\",\n      \"alternateEmailAddresses\": [\n        {\n          \"alternateEmailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"alternateEmailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    \"accountType\": \"<string>\",\n    \"paymentType\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"paymentExpiryDate\": \"<string>\",\n    \"paymentRequestDate\": \"<string>\",\n    \"cardAccountExpiryDate\": \"<string>\"\n  },\n  \"clientKey\": \"<string>\",\n  \"codeChallenge\": \"<string>\",\n  \"paymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageId\": \"string\",\n  \"statusCode\": 0,\n  \"errorResponse\": {\n    \"errorItems\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"statusDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cc8c6de-0285-4ed3-a52f-166abde3768f",
+          "name": "Get Payment Details - Recipe",
+          "request": {
+            "name": "Get Payment Details - Recipe",
+            "description": {
+              "content": "GetPaymentDetails Recipe API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pop",
+                "v1",
+                "recipes",
+                "getPaymentDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Describes what iPaaS is the source system for this request",
+                "key": "X-IPaaS",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"toDate\": \"<string>\",\n  \"fromDate\": \"<string>\",\n  \"clientKey\": \"<string>\",\n  \"resultSetNo\": \"<string>\",\n  \"codeChallenge\": \"<string>\",\n  \"trackingNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "acf21603-dbc5-48d7-b11c-7fb5b79fce71",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "getPaymentDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what iPaaS is the source system for this request",
+                    "key": "X-IPaaS",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fromDate\": \"\",\n  \"toDate\": \"\",\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"resultSetNo\": \"1\",\n  \"buyerId\": 11181,\n  \"trackingNumber\": 1691683534,\n  \"status\": \"A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payments\": {\n    \"invoices\": [\n      {\n        \"invoiceDate\": \"string\",\n        \"invoiceAmount\": 5695,\n        \"invoiceNumber\": \"string\",\n        \"purchaseOrderDate\": \"string\",\n        \"purchaseOrderNumber\": \"string\",\n        \"partialPaymentIndicator\": \"string\"\n      },\n      {\n        \"invoiceDate\": \"string\",\n        \"invoiceAmount\": 4101,\n        \"invoiceNumber\": \"string\",\n        \"purchaseOrderDate\": \"string\",\n        \"purchaseOrderNumber\": \"string\",\n        \"partialPaymentIndicator\": \"string\"\n      }\n    ],\n    \"supplier\": {\n      \"supplierID\": \"string\",\n      \"supplierName\": \"string\",\n      \"primaryEmailAddress\": \"string\",\n      \"alternateEmailAddresses\": [\n        {\n          \"localAlternateEmailAddress\": \"string\"\n        },\n        {\n          \"localAlternateEmailAddress\": \"string\"\n        }\n      ]\n    },\n    \"paymentType\": \"string\",\n    \"currencyCode\": \"string\",\n    \"accountNumber\": \"string\",\n    \"manualMatchStatus\": \"string\",\n    \"paymentExpiryDate\": \"string\",\n    \"systemMatchStatus\": \"string\",\n    \"paymentDescription\": \"string\",\n    \"paymentGrossAmount\": \"string\",\n    \"paymentRequestDate\": \"string\"\n  },\n  \"messageId\": \"string\",\n  \"statusCode\": \"string\",\n  \"statusDesc\": \"string\",\n  \"resultSetNo\": \"string\",\n  \"hasMoreElements\": \"string\",\n  \"totalRecordCount\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e45ea986-1be7-4287-a0d4-6425536d4796",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "getPaymentDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what iPaaS is the source system for this request",
+                    "key": "X-IPaaS",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fromDate\": \"\",\n  \"toDate\": \"\",\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"resultSetNo\": \"1\",\n  \"buyerId\": 11181,\n  \"trackingNumber\": 1691683534,\n  \"status\": \"A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"errorItems\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"messageId\": \"string\",\n  \"statusCode\": 5680,\n  \"statusDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3451137d-82a3-4f20-af10-288c7629137d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "getPaymentDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what iPaaS is the source system for this request",
+                    "key": "X-IPaaS",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fromDate\": \"\",\n  \"toDate\": \"\",\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"resultSetNo\": \"1\",\n  \"buyerId\": 11181,\n  \"trackingNumber\": 1691683534,\n  \"status\": \"A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4cd20047-f3e1-4d58-9262-e4600ef4631d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "getPaymentDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what iPaaS is the source system for this request",
+                    "key": "X-IPaaS",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fromDate\": \"\",\n  \"toDate\": \"\",\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"resultSetNo\": \"1\",\n  \"buyerId\": 11181,\n  \"trackingNumber\": 1691683534,\n  \"status\": \"A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "321bcc7b-d3a9-403a-a9b8-34fd5beb2a98",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "recipes",
+                    "getPaymentDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Describes what iPaaS is the source system for this request",
+                    "key": "X-IPaaS",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fromDate\": \"\",\n  \"toDate\": \"\",\n  \"corporate_internal_id\": \"1-2-3029-11181\",\n  \"resultSetNo\": \"1\",\n  \"buyerId\": 11181,\n  \"trackingNumber\": 1691683534,\n  \"status\": \"A\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "749707d0-c678-429e-873b-af1679bd7744",
+          "name": "Client Registration",
+          "request": {
+            "name": "Client Registration",
+            "description": {
+              "content": "This endpoint is used to enable auth for the client",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pop",
+                "v1",
+                "register",
+                "client"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountingSoftware\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "94197cf9-8d97-4598-a796-74efdbe16925",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "register",
+                    "client"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerId\": \"1-1-1940\",\n  \"accountingSoftware\": \"QBO\",\n  \"messageId\": \"12121\",\n  \"buyerId\": \"111812\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"clientKey\": \"string\",\n  \"messageId\": \"string\",\n  \"errorMessage\": \"string\",\n  \"codeChallenge\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6631a189-c849-4611-ac40-b667e9344fb7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pop",
+                    "v1",
+                    "register",
+                    "client"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"issuerId\": \"1-1-1940\",\n  \"accountingSoftware\": \"QBO\",\n  \"messageId\": \"12121\",\n  \"buyerId\": \"111812\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageId\": \"string\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "acbbbb70-6544-4171-8c86-a7075eb39da0",
+          "name": "Generate Notification",
+          "request": {
+            "name": "Generate Notification",
+            "description": {
+              "content": "Generate notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "pop",
+                "v1",
+                "notification",
+                "generate"
+              ],
+              "host": [
+                "api-orchestration-qa",
+                "oce-np-sm-dpd-b-en",
+                "trusted",
+                "visa",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"notificationType\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"source\": \"<string>\",\n  \"language\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"schedule\": {\n    \"frequencyType\": \"<string>\",\n    \"scheduledTime\": \"<string>\"\n  },\n  \"parameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"recipients\": {\n    \"sms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"templateId\": \"<string>\",\n  \"notificationStatus\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee1a9224-bb1c-4f71-9353-021207e3797f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "pop",
+                    "v1",
+                    "notification",
+                    "generate"
+                  ],
+                  "host": [
+                    "api-orchestration-qa",
+                    "oce-np-sm-dpd-b-en",
+                    "trusted",
+                    "visa",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"notificationType\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"source\": \"<string>\",\n  \"language\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"schedule\": {\n    \"frequencyType\": \"<string>\",\n    \"scheduledTime\": \"<string>\"\n  },\n  \"parameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"recipients\": {\n    \"sms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"templateId\": \"<string>\",\n  \"notificationStatus\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageId\": \"string\",\n  \"statusCode\": 7067,\n  \"statusDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c132e02a-bd96-463c-9b11-78b1572447ed",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "pop",
+                    "v1",
+                    "notification",
+                    "generate"
+                  ],
+                  "host": [
+                    "api-orchestration-qa",
+                    "oce-np-sm-dpd-b-en",
+                    "trusted",
+                    "visa",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"buyerId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"notificationType\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"source\": \"<string>\",\n  \"language\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"schedule\": {\n    \"frequencyType\": \"<string>\",\n    \"scheduledTime\": \"<string>\"\n  },\n  \"parameters\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"recipients\": {\n    \"sms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"email\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"templateId\": \"<string>\",\n  \"notificationStatus\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageId\": \"string\",\n  \"statusCode\": 0,\n  \"errorResponse\": {\n    \"errorItems\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"statusDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "32b93d8f-7563-431c-a18d-f8defe70800e",
+    "name": "Foreign Exchange Rates Workflows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Workflows",
+      "type": "text/plain"
+    }
+  }
+}

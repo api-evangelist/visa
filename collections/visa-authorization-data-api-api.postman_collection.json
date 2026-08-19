@@ -1,0 +1,445 @@
+{
+  "item": [
+    {
+      "id": "20c0cf72-479a-4061-b64f-7a01447b9d80",
+      "name": "Authorization Data API",
+      "description": {
+        "content": "Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7712a0aa-b113-4885-bd73-877266b5a277",
+          "name": "Get Authorization Data",
+          "request": {
+            "name": "Get Authorization Data",
+            "description": {
+              "content": "Get Authorization Data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vbs",
+                "dapi",
+                "v1",
+                "transactions",
+                "auth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) clientId",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authEndDateTime\": \"<dateTime>\",\n  \"authStartDateTime\": \"<dateTime>\",\n  \"companyId\": \"<string>\",\n  \"issuerId\": \"<string>\",\n  \"processorId\": \"<string>\",\n  \"regionId\": \"<string>\",\n  \"filters\": [\n    {\n      \"filterBy\": \"<string>\",\n      \"filterValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"filterBy\": \"<string>\",\n      \"filterValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"pageNum\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"accountList\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2f421d6-e077-4dbd-8fb2-6e6e77a7fd84",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metaData\": {\n    \"totalMatchedRecords\": 2,\n    \"pageNum\": 1\n  },\n  \"authTransactions\": [\n    {\n      \"tranId\": \"973839033642644\",\n      \"mrchCatgCd\": \"9399\",\n      \"stipAdvcCd\": \"5\",\n      \"msgType\": \"0100\",\n      \"isoTranAmt\": \"100.04\",\n      \"vpcPropActnCd\": \" \",\n      \"crdhBillAmt\": \"100.04\",\n      \"authTime\": \"12:11:22\",\n      \"stipSwtchRsnCd\": \" \",\n      \"tokenIndicator\": \"0\",\n      \"issuer\": \"4444\",\n      \"trgrSvcDesc\": \"Airline merchants restriction\",\n      \"trgrSvcType\": \"AIR\",\n      \"uniqSeqId\": \"5464545355453454\",\n      \"vpcActTknCd\": \" \",\n      \"authCatgCd\": \"99\",\n      \"authCatgDesc\": \"PROCESSING ERROR\",\n      \"company\": \"90001\",\n      \"partialAuthAmt\": \"100.04\",\n      \"preAuth\": \"Yes\",\n      \"mrchNm\": \"Amazon\",\n      \"tranProcCd\": \" \",\n      \"mrchStatePrvCd\": \" \",\n      \"crdTypCd\": \"4\",\n      \"isoTranCurrCd\": \"840\",\n      \"authStatusCode\": \"80\",\n      \"mrchCtryCd\": \"COLUMBIA\",\n      \"msgTypeDesc\": \"AUTHORIZATION REQUEST\",\n      \"acctNum\": \"4000000000000003\",\n      \"crdAcptrId\": \" \",\n      \"authRsnDesc\": \"NO FINANCIAL IMPACT\",\n      \"crdhBillCurrCd\": \"840\",\n      \"processor\": \"2\",\n      \"crdhBillAmtUsd\": \"100.04\",\n      \"authDt\": \"20220901\",\n      \"mrchZipCd\": \"29201\",\n      \"authIdResp\": \" \",\n      \"tokenNumber\": \"                \",\n      \"stipSwtchRsnDesc\": \"Not Applicable\",\n      \"mrchCity\": \"San Jose\",\n      \"region\": \"1\"\n    },\n    {\n      \"tranId\": \"973492303180772\",\n      \"mrchCatgCd\": \"9399\",\n      \"stipAdvcCd\": \"5\",\n      \"msgType\": \"0100\",\n      \"isoTranAmt\": \"100.04\",\n      \"vpcPropActnCd\": \" \",\n      \"crdhBillAmt\": \"100.04\",\n      \"authTime\": \"12:11:22\",\n      \"stipSwtchRsnCd\": \" \",\n      \"tokenIndicator\": \"0\",\n      \"issuer\": \"4444\",\n      \"trgrSvcDesc\": \"Airline merchants restriction\",\n      \"trgrSvcType\": \"AIR\",\n      \"uniqSeqId\": \"43454543534545\",\n      \"vpcActTknCd\": \" \",\n      \"authCatgCd\": \"99\",\n      \"authCatgDesc\": \"PROCESSING ERROR\",\n      \"company\": \"90001\",\n      \"partialAuthAmt\": \"100.04\",\n      \"preAuth\": \"Yes\",\n      \"mrchNm\": \"Amazon\",\n      \"tranProcCd\": \" \",\n      \"mrchStatePrvCd\": \" \",\n      \"crdTypCd\": \"4\",\n      \"isoTranCurrCd\": \"840\",\n      \"authStatusCode\": \"56\",\n      \"mrchCtryCd\": \"COLUMBIA\",\n      \"msgTypeDesc\": \"AUTHORIZATION REQUEST\",\n      \"acctNum\": \"4000000000000014\",\n      \"crdAcptrId\": \" \",\n      \"authRsnDesc\": \"UNABLE TO LOCATE RECORD\",\n      \"crdhBillCurrCd\": \"840\",\n      \"processor\": \"2\",\n      \"crdhBillAmtUsd\": \"100.04\",\n      \"authDt\": \"20220901\",\n      \"mrchZipCd\": \"29201\",\n      \"authIdResp\": \" \",\n      \"tokenNumber\": \"                \",\n      \"stipSwtchRsnDesc\": \"Not Applicable\",\n      \"mrchCity\": \"San Jose\",\n      \"region\": \"1\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fd0d93d-e270-4711-92bd-05e76e336bb9",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a645bd0-7c10-459e-9bd9-e57aab371984",
+              "name": "One or more fields were in incorrect format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45102af3-875f-4da8-bd28-d748272353e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6fb338e4-a20c-4df7-a896-1549db424966",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "50efcd8b-7854-4d54-a79d-4310f68ff159",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5688210-8bd8-4635-a9e9-376417a4f9b8",
+              "name": "Something went wrong. Please try again later",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transactions",
+                    "auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) clientId",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authEndDateTime\": \"2022-09-30T01:40:00\",\n  \"issuerId\": \"4444\",\n  \"companyId\": \"90001\",\n  \"processorId\": \"2\",\n  \"regionId\": \"1\",\n  \"accountList\": [],\n  \"pageSize\": 25,\n  \"filters\": [\n    {\n      \"filterValues\": [\n        99\n      ],\n      \"filterBy\": \"authCatgCd\"\n    },\n    {\n      \"filterValues\": [\n        \"0100\"\n      ],\n      \"filterBy\": \"msgType\"\n    }\n  ],\n  \"pageNum\": \"1\",\n  \"authStartDateTime\": \"2022-09-01T01:40:00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"message\": \"string\"\n    },\n    {\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2b7200ea-e5fb-4a3d-90e6-9665eeb305b5",
+    "name": "Foreign Exchange Rates Authorization Data API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)",
+      "type": "text/plain"
+    }
+  }
+}

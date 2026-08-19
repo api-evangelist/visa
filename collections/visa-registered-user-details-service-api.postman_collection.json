@@ -1,0 +1,172 @@
+{
+  "item": [
+    {
+      "id": "56a10aa6-268a-4356-9ca7-b539134c5a30",
+      "name": "Registered User Details Service",
+      "description": {
+        "content": "Self Registration web services are used to register the new users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "712b6be9-7457-4982-8a5c-b91d5b2b3c15",
+          "name": "RegisteredUserDetails",
+          "request": {
+            "name": "RegisteredUserDetails",
+            "description": {
+              "content": "RegisteredUserDetails",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CPRAPI",
+                "v1",
+                "registeredUserDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"pagination\": {\n    \"current_page\": \"<string>\"\n  },\n  \"endDate\": \"<string>\",\n  \"startDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfcdd352-d625-4132-97bb-e423a8654d1e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRAPI",
+                    "v1",
+                    "registeredUserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"1\",\n  \"pagination\": {\n    \"current_page\": 1\n  },\n  \"endDate\": \"2019/01/01\",\n  \"messageId\": \"3734508035777106.5\",\n  \"startDate\": \"2016/02/18\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"total_records\": \"462\",\n    \"total_pages\": \"10\",\n    \"current_page\": \"1\"\n  },\n  \"statusDesc\": \"SUCCESS\",\n  \"userDetails\": [\n    {\n      \"lastName\": \"jorege\",\n      \"firstName\": \"alex\",\n      \"bankID\": \"1980\",\n      \"companyID\": \"1336\",\n      \"address\": {\n        \"country\": \"1\",\n        \"zipCode\": \"94404\",\n        \"city\": \"foster city\",\n        \"addressLine1\": \"800 metro center blv\",\n        \"addressLine2\": \"\",\n        \"state\": \"CA\"\n      },\n      \"loginId\": \"jinashah@visa.com\",\n      \"regionID\": \"1\",\n      \"companyName\": \"visa\",\n      \"bankName\": \"PNC Bank-1980\",\n      \"phnNum\": \"1234567891\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7d44a30-c714-4cda-84c6-35d8a2818ae6",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CPRAPI",
+                    "v1",
+                    "registeredUserDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"1\",\n  \"pagination\": {\n    \"current_page\": 1\n  },\n  \"endDate\": \"2019/01/01\",\n  \"messageId\": \"3734508035777106.5\",\n  \"startDate\": \"2016/02/18\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CP050\": {},\n  \"CP051\": {},\n  \"CP052\": {},\n  \"CP053\": {},\n  \"KK001\": {},\n  \"KK002\": {},\n  \"KK006\": {},\n  \"KK007\": {},\n  \"KK012\": {},\n  \"KK013\": {},\n  \"KK014\": {},\n  \"KK015\": {},\n  \"KK016\": {},\n  \"KK017\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "db721aa8-52f6-46cf-9a89-8e989dd09b68",
+    "name": "Foreign Exchange Rates Registered User Details Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Self Registration web services are used to register the new users.",
+      "type": "text/plain"
+    }
+  }
+}

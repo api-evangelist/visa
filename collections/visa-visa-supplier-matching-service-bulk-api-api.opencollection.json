@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Visa Supplier Matching Service Bulk API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visa Supplier Matching Service Bulk API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/visasuppliermatchingservice/v1/status",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "query",
+                "description": "Otf Id of request file "
+              }
+            ]
+          },
+          "docs": "Supplier Matching Service Bulk File Status"
+        },
+        {
+          "info": {
+            "name": "Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasuppliermatchingservice/v1/upload",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Default Country Code for this file"
+              }
+            ]
+          },
+          "docs": "Supplier Matching Service Bulk upload"
+        },
+        {
+          "info": {
+            "name": "Download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/visasuppliermatchingservice/v1/download",
+            "params": [
+              {
+                "name": "inputFileId",
+                "value": "",
+                "type": "query",
+                "description": "Id of request file supplied at time of upload"
+              }
+            ]
+          },
+          "docs": "Supplier Matching Service Bulk Match download"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

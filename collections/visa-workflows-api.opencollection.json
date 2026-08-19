@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Workflows API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health Check Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/hcs/healthCheckService",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API for checking Health Check of the Application"
+        },
+        {
+          "info": {
+            "name": "Payments Recipe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/recipes/Payment",
+            "headers": [
+              {
+                "name": "X-Payment-Action-Type",
+                "value": ""
+              },
+              {
+                "name": "X-IPaaS",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Composite API which handles process, resend and cancel payments."
+        },
+        {
+          "info": {
+            "name": "Get Payment Details - Recipe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/recipes/getPaymentDetails",
+            "headers": [
+              {
+                "name": "X-IPaaS",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetPaymentDetails Recipe API"
+        },
+        {
+          "info": {
+            "name": "Client Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/register/client",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to enable auth for the client"
+        },
+        {
+          "info": {
+            "name": "Generate Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pop/v1/notification/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate notification"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

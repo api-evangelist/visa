@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Account Management service API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Management service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Security Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/GetSecurityCode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Security Code"
+        },
+        {
+          "info": {
+            "name": "Get Requisition Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/getRequisitionDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Requisition Details request and response"
+        },
+        {
+          "info": {
+            "name": "Get Payment Controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/accountManagement/getPaymentControls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This version is recommended for buyers subscribed to Visa payment Control(VPC)  and supporting mcgRuleAction field."
+        },
+        {
+          "info": {
+            "name": "Manage Payment Controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/ManagePaymentControls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Manage Payment Controls"
+        },
+        {
+          "info": {
+            "name": "Get Account Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/GetAccountStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Account Status"
+        },
+        {
+          "info": {
+            "name": "Get Funding AccountDetails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/fundingAccount/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Funding AccountDetails"
+        },
+        {
+          "info": {
+            "name": "Request Virtual Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/requisitionService",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requisition API Request and Response"
+        },
+        {
+          "info": {
+            "name": "Virtual Card Requisition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/VirtualCardRequisition",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Virtual Card Requisition"
+        },
+        {
+          "info": {
+            "name": "List Payment Control",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/ListPaymentControl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Payment Control"
+        },
+        {
+          "info": {
+            "name": "Update Funding Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/fundingAccount/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Funding Account"
+        },
+        {
+          "info": {
+            "name": "Get Payment Controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/getPaymentControls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Payment Controls"
+        },
+        {
+          "info": {
+            "name": "Add Funding Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/accountManagement/fundingAccount/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Funding Account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

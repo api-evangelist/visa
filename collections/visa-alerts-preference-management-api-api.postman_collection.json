@@ -1,0 +1,215 @@
+{
+  "item": [
+    {
+      "id": "490dd7c6-7ba5-4212-97cb-7e9aa253f7e1",
+      "name": "Alerts Preference Management API",
+      "description": {
+        "content": "Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "68ca750d-c60d-40aa-b164-168d8c5114fd",
+          "name": "Manage Alerts Preference",
+          "request": {
+            "name": "Manage Alerts Preference",
+            "description": {
+              "content": "Configures the cardholder's alert delivery preferences including mobile number, email address, and device identifiers that Visa will use to send all alert notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "alertspreference",
+                "v1",
+                "managealertspreference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2af384de-783f-41f4-83ae-b76c1e411ffc",
+              "name": "Alert preferences configured successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alertspreference",
+                    "v1",
+                    "managealertspreference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"alertDeliveryChannel\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1650d9e-3630-4270-b346-5fadf9d9b9a0",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alertspreference",
+                    "v1",
+                    "managealertspreference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f9d9c48-e5db-4aef-8dcd-ae21b9df5651",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alertspreference",
+                    "v1",
+                    "managealertspreference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"emailAddress\": \"<email>\",\n  \"deviceId\": \"<string>\",\n  \"alertDeliveryChannel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "38d8a6ce-33a1-4d57-8c68-f67f6d306eaf",
+    "name": "Foreign Exchange Rates Alerts Preference Management API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.",
+      "type": "text/plain"
+    }
+  }
+}

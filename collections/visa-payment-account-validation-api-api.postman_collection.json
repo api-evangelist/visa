@@ -1,0 +1,127 @@
+{
+  "item": [
+    {
+      "id": "12caab91-f86c-4344-9c5f-3905d37bf784",
+      "name": "Payment Account Validation API",
+      "description": {
+        "content": "The Payment Account Validation API allows applications to run validations of the payment account before processing a transaction ensuring greater probability of success and allowing for a more seamless transaction flow.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe07ff9c-d68e-4b8d-85f7-ab84629fc456",
+          "name": "Card Validation",
+          "request": {
+            "name": "Card Validation",
+            "description": {
+              "content": "Perform validations of the payment account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pav",
+                "v1",
+                "cardvalidation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquirerCountryCode\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"primaryAccountNumber\": \"<string>\",\n  \"tavv\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"cardAcceptor\": {\n    \"idCode\": \"<string>\",\n    \"name\": \"<string>\",\n    \"address\": {\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string>\",\n      \"country\": \"<string>\",\n      \"zipCode\": \"<string>\"\n    },\n    \"terminalId\": \"<string>\"\n  },\n  \"cardCvv2Value\": \"<string>\",\n  \"cardExpiryDate\": \"<string>\",\n  \"cardCurrencyCode\": \"<string>\",\n  \"pointOfServiceData\": {\n    \"motoECIIndicator\": \"<string>\",\n    \"panEntryMode\": \"<integer>\",\n    \"posConditionCode\": \"<integer>\",\n    \"posEnvironment\": \"<string>\",\n    \"specialConditionIndicatorMerchant\": \"<string>\"\n  },\n  \"identityVerification\": {\n    \"identities\": [\n      {\n        \"identityType\": \"<string>\",\n        \"identityValue\": \"<string>\"\n      },\n      {\n        \"identityType\": \"<string>\",\n        \"identityValue\": \"<string>\"\n      }\n    ]\n  },\n  \"cardHolderPhoneNumber\": \"<string>\",\n  \"cardHolderEmailAddress\": \"<string>\",\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"pointOfServiceCapability\": {\n    \"posTerminalType\": \"<integer>\",\n    \"posTerminalEntryCapability\": \"<integer>\"\n  },\n  \"retrievalReferenceNumber\": \"<string>\",\n  \"addressVerificationResults\": {\n    \"postalCode\": \"<string>\",\n    \"street\": \"<string>\"\n  },\n  \"cardHolderNameVerification\": {\n    \"lastName\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"ownerType\": \"<string>\",\n    \"middleName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b44a456-b083-41c7-81e7-a78296f09870",
+              "name": "Card Validation Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pav",
+                    "v1",
+                    "cardvalidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"743720\",\n  \"cardCvv2Value\": \"022\",\n  \"cardAcceptor\": {\n    \"address\": {\n      \"country\": \"US\",\n      \"zipCode\": \"94404\",\n      \"city\": \"fostr city\",\n      \"state\": \"CA\"\n    },\n    \"idCode\": \"111111\",\n    \"name\": \"ABC Corp\",\n    \"terminalId\": \"12345678\"\n  },\n  \"acquirerCountryCode\": \"840\",\n  \"primaryAccountNumber\": \"4957030420210462\",\n  \"acquiringBin\": \"408999\",\n  \"retrievalReferenceNumber\": \"015221743720\",\n  \"cardExpiryDate\": \"2020-10\",\n  \"addressVerificationResults\": {\n    \"street\": \"801 Metro Center Blv\",\n    \"postalCode\": \"94404\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actionCode\": \"st\",\n  \"responseCode\": \"s\",\n  \"transactionIdentifier\": \"stringstringstr\",\n  \"approvalCode\": \"string\",\n  \"cvv2ResultCode\": \"s\",\n  \"identityVerification\": {\n    \"identities\": [\n      {\n        \"identityType\": \"string\",\n        \"identityVerificationResult\": \"s\"\n      },\n      {\n        \"identityType\": \"string\",\n        \"identityVerificationResult\": \"s\"\n      }\n    ]\n  },\n  \"cardVerificationResults\": \"s\",\n  \"cardAuthenticationResults\": \"s\",\n  \"addressVerificationResults\": \"s\",\n  \"cardHolderNameVerificationResult\": {\n    \"nameResult\": \"st\",\n    \"nameMatchDecision\": \"st\",\n    \"lastNameAccountMatchDecision\": \"st\",\n    \"firstNameAccountMatchDecision\": \"st\",\n    \"middleNameAccountMatchDecision\": \"st\"\n  },\n  \"cardHolderPhoneNumberVerificationResults\": \"s\",\n  \"cardHolderEmailAddressVerificationResults\": \"s\",\n  \"cardholderAuthenticationVerificationResults\": \"s\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "74a67b5f-5e27-42b6-a7bd-48b9869e3ddc",
+    "name": "Foreign Exchange Rates Payment Account Validation API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Payment Account Validation API allows applications to run validations of the payment account before processing a transaction ensuring greater probability of success and allowing for a more seamless transaction flow.",
+      "type": "text/plain"
+    }
+  }
+}

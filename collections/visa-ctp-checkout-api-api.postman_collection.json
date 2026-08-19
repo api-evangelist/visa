@@ -1,0 +1,422 @@
+{
+  "item": [
+    {
+      "id": "75c0a06f-56a2-4210-8793-79af0ffdc57d",
+      "name": "CTP Checkout API",
+      "description": {
+        "content": "The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a seamless and secure payment experience.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "022a181f-2e08-4588-83e4-d84120990fd2",
+          "name": "Initiate Checkout",
+          "request": {
+            "name": "Initiate Checkout",
+            "description": {
+              "content": "Initiates a Click to Pay checkout session for a consumer transaction. This operation creates a checkout context that allows the consumer to select from their stored payment credentials and complete the purchase.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasrci",
+                "v1",
+                "checkout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"<string>\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0475478-212e-48f1-89b1-b7f91c426c76",
+              "name": "Checkout session initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkoutId\": \"string\",\n  \"status\": \"PENDING\",\n  \"checkoutUrl\": \"http://mEsbKQTaAwZhxYcQrDgImLTEIiIXkfisl.xlzqivNJCZDw,t0Up8DyfWSMOU-tGeuqwrYBj0WueTVOpM9Ss+5MJTcOA2EPU0a52XISqqq6x\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "693c3ea8-6540-430c-9232-31ca782b30ed",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd731770-a167-4760-9cbe-d88c127e7eff",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03054f80-3594-4cff-823b-3c95007ef49f",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"merchantId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"USD\",\n  \"consumerIdentity\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"returnUrl\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b0f2fed-ee7d-4a79-9b1a-217b492b1a09",
+          "name": "Get Checkout Status",
+          "request": {
+            "name": "Get Checkout Status",
+            "description": {
+              "content": "Retrieves the current status and details of an existing Click to Pay checkout session identified by the checkout ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visasrci",
+                "v1",
+                "checkout",
+                ":checkoutId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "checkoutId",
+                  "description": "(Required) Unique identifier for the checkout session"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60767825-372c-4d6c-bb1f-7e86c6c127ae",
+              "name": "Checkout status retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout",
+                    ":checkoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "checkoutId",
+                      "description": "(Required) Unique identifier for the checkout session"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checkoutId\": \"string\",\n  \"status\": \"INITIATED\",\n  \"transactionId\": \"string\",\n  \"paymentToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26853876-23fe-47fe-b5df-3944677e4a3c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout",
+                    ":checkoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "checkoutId",
+                      "description": "(Required) Unique identifier for the checkout session"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f63ee475-340d-4f54-9ec2-843cb58fbe06",
+              "name": "Checkout session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visasrci",
+                    "v1",
+                    "checkout",
+                    ":checkoutId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "checkoutId",
+                      "description": "(Required) Unique identifier for the checkout session"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e39ecc42-dde4-43ab-889a-ed8c7853ce91",
+    "name": "Foreign Exchange Rates CTP Checkout API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a seamless and secure payment experience.",
+      "type": "text/plain"
+    }
+  }
+}

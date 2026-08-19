@@ -1,0 +1,728 @@
+{
+  "item": [
+    {
+      "id": "9d747220-166c-4654-b103-3d8ecb0ddb0c",
+      "name": "Offers Data API",
+      "description": {
+        "content": "Retrieve offer data available to the caller, filtered by various offer attributes such as merchant, category, location, and date range.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a085012a-0f78-4c35-b5fb-625afbee19ae",
+          "name": "Get All Offers",
+          "request": {
+            "name": "Get All Offers",
+            "description": {
+              "content": "Retrieves all available merchant offers. Results can be filtered by various attributes including merchant, category, country, and offer type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vmorc",
+                "offers",
+                "v1",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "en-us",
+                  "description": "Language code for offer content"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_index",
+                  "value": "<integer>",
+                  "description": "Starting index for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_offers",
+                  "value": "<integer>",
+                  "description": "Maximum number of offers to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Offer category filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<integer>",
+                  "description": "Country code filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "merchant",
+                  "value": "<string>",
+                  "description": "Merchant name filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7675653-6a51-40de-b9f7-bace9b85e871",
+              "name": "Offers retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    },
+                    {
+                      "key": "start_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_offers",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalFoundResults\": 8955,\n  \"returnedResults\": 5434,\n  \"offers\": [\n    {\n      \"offerId\": 8263,\n      \"offerTitle\": \"string\",\n      \"offerShortDescription\": \"string\",\n      \"offerLongDescription\": \"string\",\n      \"merchantName\": \"string\",\n      \"merchantAddress\": \"string\",\n      \"category\": \"string\",\n      \"validityStartDate\": \"1968-06-05\",\n      \"validityEndDate\": \"1962-11-24\",\n      \"redemptionUrl\": \"https://BOMNvnEJCkNZKBkxVhetPzVj.dpfFUPmPlKEW7sJedh7RohxMlrcPjj1kuMAkTYkkNkWUC7cH,n+JOp6BXcL8nH\",\n      \"imageUrl\": \"http://mTHlctlsBFyrldqkZhcBHgcgeCnef.pyljkcZek3ggzbEPslEwFMG1khOXVHlFM\",\n      \"termsAndConditions\": \"string\",\n      \"countryCode\": \"string\",\n      \"promotionChannel\": \"string\"\n    },\n    {\n      \"offerId\": 7270,\n      \"offerTitle\": \"string\",\n      \"offerShortDescription\": \"string\",\n      \"offerLongDescription\": \"string\",\n      \"merchantName\": \"string\",\n      \"merchantAddress\": \"string\",\n      \"category\": \"string\",\n      \"validityStartDate\": \"1992-06-06\",\n      \"validityEndDate\": \"1966-09-14\",\n      \"redemptionUrl\": \"https://vHjDxPWfFvrRAGVFg.xcykePbzq22omiq4gjH9BOBE+nqE-rSV8j+Qx626P\",\n      \"imageUrl\": \"http://VY.lyalSyhamZFaQarRzn4bucbwNoXCUheX8m.3MtA2WtGvT704pKNOPMh+w22qrPwnT77pkz\",\n      \"termsAndConditions\": \"string\",\n      \"countryCode\": \"string\",\n      \"promotionChannel\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a68322f8-02f8-4ea4-8406-d832e2435b7c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    },
+                    {
+                      "key": "start_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_offers",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53782328-f0eb-4077-a894-ed23bfb1b1f3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    },
+                    {
+                      "key": "start_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_offers",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "000c873b-c638-4769-b0ca-18c3ca465a85",
+          "name": "Get Offer By ID",
+          "request": {
+            "name": "Get Offer By ID",
+            "description": {
+              "content": "Retrieves detailed information about a specific merchant offer identified by its offer ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vmorc",
+                "offers",
+                "v1",
+                "byofferid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offerid",
+                  "value": "<integer>",
+                  "description": "(Required) Unique identifier of the offer"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "en-us",
+                  "description": "Language code for offer content"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66f26515-d4cc-4edc-8c97-be146e3800f5",
+              "name": "Offer retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "byofferid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offerid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"offer\": {\n    \"offerId\": 439,\n    \"offerTitle\": \"string\",\n    \"offerShortDescription\": \"string\",\n    \"offerLongDescription\": \"string\",\n    \"merchantName\": \"string\",\n    \"merchantAddress\": \"string\",\n    \"category\": \"string\",\n    \"validityStartDate\": \"1971-01-29\",\n    \"validityEndDate\": \"2022-06-03\",\n    \"redemptionUrl\": \"https://FZElazaXKbkQcnpM.qajus8Ji6Pfq0knseM5.wHEVMxHcdOdDRmVXOKoAi+sovRlqpboc\",\n    \"imageUrl\": \"https://mhsXlIpmEYbkESmiZYWultHxydQ.rzgL12cOlO\",\n    \"termsAndConditions\": \"string\",\n    \"countryCode\": \"string\",\n    \"promotionChannel\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "666cd97f-c0c2-4135-a9e4-f894ce7725ed",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "byofferid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offerid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cbef0e8-ed69-4d42-9ff6-e8351239c28a",
+              "name": "Offer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "byofferid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offerid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6b962b4-bbd6-4766-bd92-52e221dafdec",
+          "name": "Get Offers By Filter",
+          "request": {
+            "name": "Get Offers By Filter",
+            "description": {
+              "content": "Retrieves merchant offers filtered by specified criteria such as business segment, card product type, and promotion channel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vmorc",
+                "offers",
+                "v1",
+                "byfilter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "en-us",
+                  "description": "Language code for offer content"
+                },
+                {
+                  "disabled": false,
+                  "key": "business_segment",
+                  "value": "<integer>",
+                  "description": "Business segment filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "card_product_type",
+                  "value": "<string>",
+                  "description": "Card product type filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "promotion_channel",
+                  "value": "<string>",
+                  "description": "Promotion channel filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_index",
+                  "value": "<integer>",
+                  "description": "Starting index for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_offers",
+                  "value": "<integer>",
+                  "description": "Maximum number of offers to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f6d5e6d-2995-47d7-9af8-3dafb05342f9",
+              "name": "Offers retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "byfilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    },
+                    {
+                      "key": "business_segment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "card_product_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promotion_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_offers",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalFoundResults\": 4924,\n  \"returnedResults\": 4351,\n  \"offers\": [\n    {\n      \"offerId\": 4027,\n      \"offerTitle\": \"string\",\n      \"offerShortDescription\": \"string\",\n      \"offerLongDescription\": \"string\",\n      \"merchantName\": \"string\",\n      \"merchantAddress\": \"string\",\n      \"category\": \"string\",\n      \"validityStartDate\": \"1986-09-22\",\n      \"validityEndDate\": \"2025-05-18\",\n      \"redemptionUrl\": \"http://hXmzWHIRI.apsfQ1oX9VX9UWgRfVudHD4RmR4V\",\n      \"imageUrl\": \"https://Cps.bgdhHtqaGsC8kp4kkE-KTOLspll99\",\n      \"termsAndConditions\": \"string\",\n      \"countryCode\": \"string\",\n      \"promotionChannel\": \"string\"\n    },\n    {\n      \"offerId\": 7610,\n      \"offerTitle\": \"string\",\n      \"offerShortDescription\": \"string\",\n      \"offerLongDescription\": \"string\",\n      \"merchantName\": \"string\",\n      \"merchantAddress\": \"string\",\n      \"category\": \"string\",\n      \"validityStartDate\": \"1949-12-04\",\n      \"validityEndDate\": \"1985-07-15\",\n      \"redemptionUrl\": \"https://DbjeTKunBwkrnTfkkGaauiCMTKOLBHxQU.bwuewaLEnM3w967\",\n      \"imageUrl\": \"https://reaAMavGa.ywyRVHpQYZQgZ.+\",\n      \"termsAndConditions\": \"string\",\n      \"countryCode\": \"string\",\n      \"promotionChannel\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4a329b4-bd72-49a7-9b66-55f604d56ea8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "byfilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    },
+                    {
+                      "key": "business_segment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "card_product_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promotion_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_offers",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e52cf7f-da00-4db4-a172-f2155d8dd692",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vmorc",
+                    "offers",
+                    "v1",
+                    "byfilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "en-us"
+                    },
+                    {
+                      "key": "business_segment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "card_product_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promotion_channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "max_offers",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1ae2edaf-83f3-49c4-9aff-f4d39524d126",
+    "name": "Foreign Exchange Rates Offers Data API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve offer data available to the caller, filtered by various offer attributes such as merchant, category, location, and date range.",
+      "type": "text/plain"
+    }
+  }
+}

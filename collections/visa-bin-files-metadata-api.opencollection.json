@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates BIN Files Metadata API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BIN Files Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BIN Files Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/filedeliveryservice/v1/binFilesMetadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get BIN Files Metadata including number of files, file names, sizes, checksum, creation date."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

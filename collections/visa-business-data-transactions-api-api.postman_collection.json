@@ -1,0 +1,356 @@
+{
+  "item": [
+    {
+      "id": "0c40d2cf-bf7a-4928-9eed-7f4a85c81c4a",
+      "name": "Business Data Transactions API",
+      "description": {
+        "content": "Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1- Transaction API, 2- Enhanced Data API, 3- Starter Data API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f12fb8c3-adf9-49ca-8707-0afd1487ac9e",
+          "name": "Get card transaction data",
+          "request": {
+            "name": "Get card transaction data",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cdsapi",
+                "commercial",
+                "v1",
+                "ob",
+                "trxndata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Client Identification Code",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"issuer\": {\n    \"bank\": [\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      },\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"endDate\": \"<string>\",\n      \"endTime\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"startTime\": \"<string>\",\n      \"startIndex\": \"<string>\"\n    }\n  },\n  \"accountRequest\": {\n    \"bank\": [\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      },\n      {\n        \"bankId\": \"<string>\",\n        \"company\": [\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          },\n          {\n            \"acctList\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"companyId\": \"<string>\"\n          }\n        ],\n        \"regionId\": \"<string>\",\n        \"processorId\": \"<string>\"\n      }\n    ],\n    \"metadata\": {\n      \"endDate\": \"<string>\",\n      \"endTime\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"startTime\": \"<string>\",\n      \"startIndex\": \"<string>\"\n    }\n  },\n  \"transactionRecordFields\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3fae7692-49a1-4481-aa5b-9ae3d1009ed2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cdsapi",
+                    "commercial",
+                    "v1",
+                    "ob",
+                    "trxndata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Client Identification Code",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bank\": [\n    {\n      \"bankId\": \"999999\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionData\": {\n    \"starterInfo\": {},\n    \"responseMetadata\": {\n      \"endIndex\": 323,\n      \"nextIndex\": 9172,\n      \"requestId\": 4723,\n      \"startIndex\": 5335,\n      \"remainingTrxnRecCount\": 4644,\n      \"numberOfRecordsFetched\": 6101\n    },\n    \"transactionRecords\": [\n      {\n        \"gmrId\": \"string\",\n        \"matId\": \"string\",\n        \"mpsId\": \"string\",\n        \"ddaNbr\": \"string\",\n        \"feeAmt\": \"string\",\n        \"loadCd\": \"string\",\n        \"source\": \"string\",\n        \"tipAmt\": \"string\",\n        \"vatAmt\": \"string\",\n        \"acctNum\": \"string\",\n        \"acqrBin\": \"string\",\n        \"authNbr\": \"string\",\n        \"buyerId\": \"string\",\n        \"feeDesc\": \"string\",\n        \"optFld1\": \"string\",\n        \"optFld2\": \"string\",\n        \"optFld3\": \"string\",\n        \"optFld4\": \"string\",\n        \"psngrNm\": \"string\",\n        \"purchId\": \"string\",\n        \"tax2Amt\": \"string\",\n        \"transDt\": \"string\",\n        \"transTm\": \"string\",\n        \"usageCd\": \"string\",\n        \"regionId\": \"string\",\n        \"supplier\": {\n          \"atId\": \"string\",\n          \"vmid\": \"string\",\n          \"matId\": \"string\",\n          \"mpsId\": \"string\",\n          \"hbcInd\": \"string\",\n          \"mailSt\": \"string\",\n          \"dsblInd\": \"string\",\n          \"dunsNum\": \"string\",\n          \"frchsCd\": \"string\",\n          \"txpyrNm\": \"string\",\n          \"b2MrchNm\": \"string\",\n          \"b2MrchSt\": \"string\",\n          \"busLglNm\": \"string\",\n          \"incStaCd\": \"string\",\n          \"mailAddr\": \"string\",\n          \"mailCity\": \"string\",\n          \"prmSicCd\": \"string\",\n          \"secSicCd\": \"string\",\n          \"tinTypCd\": \"string\",\n          \"wbencInd\": \"string\",\n          \"altMrchNm\": \"string\",\n          \"altMrchSt\": \"string\",\n          \"emailAddr\": \"string\",\n          \"expir8ADt\": \"string\",\n          \"isoCtryCd\": \"string\",\n          \"mailZipCd\": \"string\",\n          \"optOutInd\": \"string\",\n          \"smlBusInd\": \"string\",\n          \"tinMtchCd\": \"string\",\n          \"wmnOwnInd\": \"string\",\n          \"annlSlsVol\": \"string\",\n          \"b2MrchCity\": \"string\",\n          \"busSizeInd\": \"string\",\n          \"clsfn8AInd\": \"string\",\n          \"infoRfslDt\": \"string\",\n          \"mrchCatgCd\": \"string\",\n          \"mrchFaxNum\": \"string\",\n          \"mrchPhnNum\": \"string\",\n          \"nonPrftInd\": \"string\",\n          \"outOfBusDt\": \"string\",\n          \"prmNaicsCd\": \"string\",\n          \"secNaicsCd\": \"string\",\n          \"txpyrIdNum\": \"string\",\n          \"veteranInd\": \"string\",\n          \"altMrchCity\": \"string\",\n          \"altSuppCtry\": \"string\",\n          \"atMrchTypCd\": \"string\",\n          \"b2MrchZipCd\": \"string\",\n          \"incStaChgDt\": \"string\",\n          \"infoRfslInd\": \"string\",\n          \"lvl2CertInd\": \"string\",\n          \"lvl2CptrInd\": \"string\",\n          \"mnrtyVndrCd\": \"string\",\n          \"mrchStrAddr\": \"string\",\n          \"rsrvnPhnNum\": \"string\",\n          \"sbaRgstrInd\": \"string\",\n          \"altMrchZipCd\": \"string\",\n          \"latestEmpCnt\": \"string\",\n          \"lvl3Tier1Ind\": \"string\",\n          \"lvl3Tier2Ind\": \"string\",\n          \"lvl3Tier3Ind\": \"string\",\n          \"lvl3Tier4Ind\": \"string\",\n          \"mrchntQualCd\": \"string\",\n          \"ownrshpChgDt\": \"string\",\n          \"wmnSmlBusInd\": \"string\",\n          \"ccdrAdjMrchNm\": \"string\",\n          \"ccdrAdjMrchSt\": \"string\",\n          \"hubzoneBusInd\": \"string\",\n          \"mailZipSffxCd\": \"string\",\n          \"mailingCtryCd\": \"string\",\n          \"vtrnSmlBusInd\": \"string\",\n          \"dVtrnSmlBusInd\": \"string\",\n          \"dotDisadBusInd\": \"string\",\n          \"dsblVeteranInd\": \"string\",\n          \"smlDisadBusInd\": \"string\",\n          \"akNativeCorpInd\": \"string\",\n          \"b2MrchZipSffxCd\": \"string\",\n          \"ccdrAdjMrchCity\": \"string\",\n          \"smlBusSrceCd1Nm\": \"string\",\n          \"smlBusSrceCd2Nm\": \"string\",\n          \"smlBusSrceCd3Nm\": \"string\",\n          \"solePrptrLastNm\": \"string\",\n          \"airprtDisadvdInd\": \"string\",\n          \"altMrchZipSffxCd\": \"string\",\n          \"caDeptGenlSvcInd\": \"string\",\n          \"certdTexasGsaInd\": \"string\",\n          \"level3CaptureInd\": \"string\",\n          \"smlBusCertfcn1Dt\": \"string\",\n          \"smlBusCertfcn2Dt\": \"string\",\n          \"smlBusCertfcn3Dt\": \"string\",\n          \"smlBusSrceLvl1Cd\": \"string\",\n          \"smlBusSrceLvl2Cd\": \"string\",\n          \"smlBusSrceLvl3Cd\": \"string\",\n          \"solePrptrFirstNm\": \"string\",\n          \"solePrptrMdlInit\": \"string\",\n          \"mrchLocnLatitdVal\": \"string\",\n          \"smlBusCertfcn1Num\": \"string\",\n          \"smlBusCertfcn2Num\": \"string\",\n          \"smlBusCertfcn3Num\": \"string\",\n          \"vietnamVeteranInd\": \"string\",\n          \"airprtDisadvdCd1Nm\": \"string\",\n          \"airprtDisadvdCd2Nm\": \"string\",\n          \"airprtDisadvdCd3Nm\": \"string\",\n          \"airprtDisadvdCd4Nm\": \"string\",\n          \"airprtDisadvdCd5Nm\": \"string\",\n          \"mrchLocnLongitdVal\": \"string\",\n          \"sbaSmlBusRgstryInd\": \"string\",\n          \"airprtDisadvdLvl1Cd\": \"string\",\n          \"airprtDisadvdLvl2Cd\": \"string\",\n          \"airprtDisadvdLvl3Cd\": \"string\",\n          \"airprtDisadvdLvl4Cd\": \"string\",\n          \"airprtDisadvdLvl5Cd\": \"string\",\n          \"certdDnbNmsdcDocInd\": \"string\",\n          \"patrActExclpartyind\": \"string\",\n          \"airprtDisadvdCtry1Cd\": \"string\",\n          \"airprtDisadvdCtry2Cd\": \"string\",\n          \"airprtDisadvdCtry3Cd\": \"string\",\n          \"airprtDisadvdCtry4Cd\": \"string\",\n          \"airprtDisadvdCtry5Cd\": \"string\",\n          \"airprtDisadvdTerr1Nm\": \"string\",\n          \"airprtDisadvdTerr2Nm\": \"string\",\n          \"airprtDisadvdTerr3Nm\": \"string\",\n          \"airprtDisadvdTerr4Nm\": \"string\",\n          \"airprtDisadvdTerr5Nm\": \"string\",\n          \"visaCommerceSellerId\": \"string\",\n          \"histBlkCollegeInstInd\": \"string\",\n          \"smlBusCertfcnExpirnDt\": \"string\",\n          \"smlBusCertfcnExpirn2Dt\": \"string\",\n          \"smlBusCertfcnExpirn3Dt\": \"string\"\n        },\n        \"carrierCd\": \"string\",\n        \"companyId\": \"string\",\n        \"custCdCri\": \"string\",\n        \"disputeDt\": \"string\",\n        \"extractId\": \"string\",\n        \"matchedId\": \"string\",\n        \"messageId\": \"string\",\n        \"postingDt\": \"string\",\n        \"refundNum\": \"string\",\n        \"rvaStatus\": \"string\",\n        \"sourceAmt\": \"string\",\n        \"ticketNum\": \"string\",\n        \"tokenType\": \"string\",\n        \"userData1\": \"string\",\n        \"userData2\": \"string\",\n        \"userData3\": \"string\",\n        \"userData4\": \"string\",\n        \"userData5\": \"string\",\n        \"billingAmt\": \"string\",\n        \"custVatNum\": \"string\",\n        \"disputeAmt\": \"string\",\n        \"origlMccCd\": \"string\",\n        \"routingNbr\": \"string\",\n        \"rvaEndDate\": \"string\",\n        \"supplierNm\": \"string\",\n        \"tranIdntfn\": \"string\",\n        \"addendumKey\": \"string\",\n        \"commodityCd\": \"string\",\n        \"fltDepartDt\": \"string\",\n        \"memoPostFlg\": \"string\",\n        \"merchCatgCd\": \"string\",\n        \"orderTypeCd\": \"string\",\n        \"processorId\": \"string\",\n        \"rvaTimezone\": \"string\",\n        \"rvaUniqueId\": \"string\",\n        \"salesTaxAmt\": \"string\",\n        \"statementDt\": \"string\",\n        \"transRefNum\": \"string\",\n        \"transTypeCd\": \"string\",\n        \"disputeRsnCd\": \"string\",\n        \"memberBankId\": \"string\",\n        \"rvaStartDate\": \"string\",\n        \"sourceCurrCd\": \"string\",\n        \"supplierCity\": \"string\",\n        \"billingCurrCd\": \"string\",\n        \"billingPeriod\": \"string\",\n        \"ddaSavingsNbr\": \"string\",\n        \"purchIdFormat\": \"string\",\n        \"userData1Desc\": \"string\",\n        \"userData2Desc\": \"string\",\n        \"userData3Desc\": \"string\",\n        \"userData4Desc\": \"string\",\n        \"userData5Desc\": \"string\",\n        \"vmpdLtMtchInd\": \"string\",\n        \"accountExpDate\": \"string\",\n        \"billingAcctNbr\": \"string\",\n        \"cardAcceptorId\": \"string\",\n        \"disputeStateCd\": \"string\",\n        \"enrichedTxnFlg\": \"string\",\n        \"exchgRtDcmlNum\": \"string\",\n        \"fgnTranExchgRt\": \"string\",\n        \"origSupplierNm\": \"string\",\n        \"reservedField1\": \"string\",\n        \"reservedField2\": \"string\",\n        \"reservedField3\": \"string\",\n        \"reservedField4\": \"string\",\n        \"supplierCtryCd\": \"string\",\n        \"supplierVatNum\": \"string\",\n        \"cardTransSeqNum\": \"string\",\n        \"lineitemMatchId\": \"string\",\n        \"origTransRefNum\": \"string\",\n        \"pCardTransIsNum\": \"string\",\n        \"taxAmtIncludeCd\": \"string\",\n        \"origlSuplrCityNm\": \"string\",\n        \"origlSuplrCtryCd\": \"string\",\n        \"origlSuplrPstlCd\": \"string\",\n        \"supplierOrderNum\": \"string\",\n        \"supplierPostalCd\": \"string\",\n        \"taxAmt2IncludeCd\": \"string\",\n        \"destnAirprtCityCd\": \"string\",\n        \"rvaClientMessageId\": \"string\",\n        \"vpaProxyPoolNumber\": \"string\",\n        \"origlSuplrStPrvncCd\": \"string\",\n        \"supplierStateProvCd\": \"string\",\n        \"visaCommerceBatchId\": \"string\",\n        \"issuerDefinedUsageCd\": \"string\",\n        \"cardHolderTxnApproval\": \"string\",\n        \"visaCommerPymntInstdt\": \"string\",\n        \"supplierNameJapaneseKanji\": \"string\",\n        \"supplierNameJapaneseKatakana\": \"string\"\n      },\n      {\n        \"gmrId\": \"string\",\n        \"matId\": \"string\",\n        \"mpsId\": \"string\",\n        \"ddaNbr\": \"string\",\n        \"feeAmt\": \"string\",\n        \"loadCd\": \"string\",\n        \"source\": \"string\",\n        \"tipAmt\": \"string\",\n        \"vatAmt\": \"string\",\n        \"acctNum\": \"string\",\n        \"acqrBin\": \"string\",\n        \"authNbr\": \"string\",\n        \"buyerId\": \"string\",\n        \"feeDesc\": \"string\",\n        \"optFld1\": \"string\",\n        \"optFld2\": \"string\",\n        \"optFld3\": \"string\",\n        \"optFld4\": \"string\",\n        \"psngrNm\": \"string\",\n        \"purchId\": \"string\",\n        \"tax2Amt\": \"string\",\n        \"transDt\": \"string\",\n        \"transTm\": \"string\",\n        \"usageCd\": \"string\",\n        \"regionId\": \"string\",\n        \"supplier\": {\n          \"atId\": \"string\",\n          \"vmid\": \"string\",\n          \"matId\": \"string\",\n          \"mpsId\": \"string\",\n          \"hbcInd\": \"string\",\n          \"mailSt\": \"string\",\n          \"dsblInd\": \"string\",\n          \"dunsNum\": \"string\",\n          \"frchsCd\": \"string\",\n          \"txpyrNm\": \"string\",\n          \"b2MrchNm\": \"string\",\n          \"b2MrchSt\": \"string\",\n          \"busLglNm\": \"string\",\n          \"incStaCd\": \"string\",\n          \"mailAddr\": \"string\",\n          \"mailCity\": \"string\",\n          \"prmSicCd\": \"string\",\n          \"secSicCd\": \"string\",\n          \"tinTypCd\": \"string\",\n          \"wbencInd\": \"string\",\n          \"altMrchNm\": \"string\",\n          \"altMrchSt\": \"string\",\n          \"emailAddr\": \"string\",\n          \"expir8ADt\": \"string\",\n          \"isoCtryCd\": \"string\",\n          \"mailZipCd\": \"string\",\n          \"optOutInd\": \"string\",\n          \"smlBusInd\": \"string\",\n          \"tinMtchCd\": \"string\",\n          \"wmnOwnInd\": \"string\",\n          \"annlSlsVol\": \"string\",\n          \"b2MrchCity\": \"string\",\n          \"busSizeInd\": \"string\",\n          \"clsfn8AInd\": \"string\",\n          \"infoRfslDt\": \"string\",\n          \"mrchCatgCd\": \"string\",\n          \"mrchFaxNum\": \"string\",\n          \"mrchPhnNum\": \"string\",\n          \"nonPrftInd\": \"string\",\n          \"outOfBusDt\": \"string\",\n          \"prmNaicsCd\": \"string\",\n          \"secNaicsCd\": \"string\",\n          \"txpyrIdNum\": \"string\",\n          \"veteranInd\": \"string\",\n          \"altMrchCity\": \"string\",\n          \"altSuppCtry\": \"string\",\n          \"atMrchTypCd\": \"string\",\n          \"b2MrchZipCd\": \"string\",\n          \"incStaChgDt\": \"string\",\n          \"infoRfslInd\": \"string\",\n          \"lvl2CertInd\": \"string\",\n          \"lvl2CptrInd\": \"string\",\n          \"mnrtyVndrCd\": \"string\",\n          \"mrchStrAddr\": \"string\",\n          \"rsrvnPhnNum\": \"string\",\n          \"sbaRgstrInd\": \"string\",\n          \"altMrchZipCd\": \"string\",\n          \"latestEmpCnt\": \"string\",\n          \"lvl3Tier1Ind\": \"string\",\n          \"lvl3Tier2Ind\": \"string\",\n          \"lvl3Tier3Ind\": \"string\",\n          \"lvl3Tier4Ind\": \"string\",\n          \"mrchntQualCd\": \"string\",\n          \"ownrshpChgDt\": \"string\",\n          \"wmnSmlBusInd\": \"string\",\n          \"ccdrAdjMrchNm\": \"string\",\n          \"ccdrAdjMrchSt\": \"string\",\n          \"hubzoneBusInd\": \"string\",\n          \"mailZipSffxCd\": \"string\",\n          \"mailingCtryCd\": \"string\",\n          \"vtrnSmlBusInd\": \"string\",\n          \"dVtrnSmlBusInd\": \"string\",\n          \"dotDisadBusInd\": \"string\",\n          \"dsblVeteranInd\": \"string\",\n          \"smlDisadBusInd\": \"string\",\n          \"akNativeCorpInd\": \"string\",\n          \"b2MrchZipSffxCd\": \"string\",\n          \"ccdrAdjMrchCity\": \"string\",\n          \"smlBusSrceCd1Nm\": \"string\",\n          \"smlBusSrceCd2Nm\": \"string\",\n          \"smlBusSrceCd3Nm\": \"string\",\n          \"solePrptrLastNm\": \"string\",\n          \"airprtDisadvdInd\": \"string\",\n          \"altMrchZipSffxCd\": \"string\",\n          \"caDeptGenlSvcInd\": \"string\",\n          \"certdTexasGsaInd\": \"string\",\n          \"level3CaptureInd\": \"string\",\n          \"smlBusCertfcn1Dt\": \"string\",\n          \"smlBusCertfcn2Dt\": \"string\",\n          \"smlBusCertfcn3Dt\": \"string\",\n          \"smlBusSrceLvl1Cd\": \"string\",\n          \"smlBusSrceLvl2Cd\": \"string\",\n          \"smlBusSrceLvl3Cd\": \"string\",\n          \"solePrptrFirstNm\": \"string\",\n          \"solePrptrMdlInit\": \"string\",\n          \"mrchLocnLatitdVal\": \"string\",\n          \"smlBusCertfcn1Num\": \"string\",\n          \"smlBusCertfcn2Num\": \"string\",\n          \"smlBusCertfcn3Num\": \"string\",\n          \"vietnamVeteranInd\": \"string\",\n          \"airprtDisadvdCd1Nm\": \"string\",\n          \"airprtDisadvdCd2Nm\": \"string\",\n          \"airprtDisadvdCd3Nm\": \"string\",\n          \"airprtDisadvdCd4Nm\": \"string\",\n          \"airprtDisadvdCd5Nm\": \"string\",\n          \"mrchLocnLongitdVal\": \"string\",\n          \"sbaSmlBusRgstryInd\": \"string\",\n          \"airprtDisadvdLvl1Cd\": \"string\",\n          \"airprtDisadvdLvl2Cd\": \"string\",\n          \"airprtDisadvdLvl3Cd\": \"string\",\n          \"airprtDisadvdLvl4Cd\": \"string\",\n          \"airprtDisadvdLvl5Cd\": \"string\",\n          \"certdDnbNmsdcDocInd\": \"string\",\n          \"patrActExclpartyind\": \"string\",\n          \"airprtDisadvdCtry1Cd\": \"string\",\n          \"airprtDisadvdCtry2Cd\": \"string\",\n          \"airprtDisadvdCtry3Cd\": \"string\",\n          \"airprtDisadvdCtry4Cd\": \"string\",\n          \"airprtDisadvdCtry5Cd\": \"string\",\n          \"airprtDisadvdTerr1Nm\": \"string\",\n          \"airprtDisadvdTerr2Nm\": \"string\",\n          \"airprtDisadvdTerr3Nm\": \"string\",\n          \"airprtDisadvdTerr4Nm\": \"string\",\n          \"airprtDisadvdTerr5Nm\": \"string\",\n          \"visaCommerceSellerId\": \"string\",\n          \"histBlkCollegeInstInd\": \"string\",\n          \"smlBusCertfcnExpirnDt\": \"string\",\n          \"smlBusCertfcnExpirn2Dt\": \"string\",\n          \"smlBusCertfcnExpirn3Dt\": \"string\"\n        },\n        \"carrierCd\": \"string\",\n        \"companyId\": \"string\",\n        \"custCdCri\": \"string\",\n        \"disputeDt\": \"string\",\n        \"extractId\": \"string\",\n        \"matchedId\": \"string\",\n        \"messageId\": \"string\",\n        \"postingDt\": \"string\",\n        \"refundNum\": \"string\",\n        \"rvaStatus\": \"string\",\n        \"sourceAmt\": \"string\",\n        \"ticketNum\": \"string\",\n        \"tokenType\": \"string\",\n        \"userData1\": \"string\",\n        \"userData2\": \"string\",\n        \"userData3\": \"string\",\n        \"userData4\": \"string\",\n        \"userData5\": \"string\",\n        \"billingAmt\": \"string\",\n        \"custVatNum\": \"string\",\n        \"disputeAmt\": \"string\",\n        \"origlMccCd\": \"string\",\n        \"routingNbr\": \"string\",\n        \"rvaEndDate\": \"string\",\n        \"supplierNm\": \"string\",\n        \"tranIdntfn\": \"string\",\n        \"addendumKey\": \"string\",\n        \"commodityCd\": \"string\",\n        \"fltDepartDt\": \"string\",\n        \"memoPostFlg\": \"string\",\n        \"merchCatgCd\": \"string\",\n        \"orderTypeCd\": \"string\",\n        \"processorId\": \"string\",\n        \"rvaTimezone\": \"string\",\n        \"rvaUniqueId\": \"string\",\n        \"salesTaxAmt\": \"string\",\n        \"statementDt\": \"string\",\n        \"transRefNum\": \"string\",\n        \"transTypeCd\": \"string\",\n        \"disputeRsnCd\": \"string\",\n        \"memberBankId\": \"string\",\n        \"rvaStartDate\": \"string\",\n        \"sourceCurrCd\": \"string\",\n        \"supplierCity\": \"string\",\n        \"billingCurrCd\": \"string\",\n        \"billingPeriod\": \"string\",\n        \"ddaSavingsNbr\": \"string\",\n        \"purchIdFormat\": \"string\",\n        \"userData1Desc\": \"string\",\n        \"userData2Desc\": \"string\",\n        \"userData3Desc\": \"string\",\n        \"userData4Desc\": \"string\",\n        \"userData5Desc\": \"string\",\n        \"vmpdLtMtchInd\": \"string\",\n        \"accountExpDate\": \"string\",\n        \"billingAcctNbr\": \"string\",\n        \"cardAcceptorId\": \"string\",\n        \"disputeStateCd\": \"string\",\n        \"enrichedTxnFlg\": \"string\",\n        \"exchgRtDcmlNum\": \"string\",\n        \"fgnTranExchgRt\": \"string\",\n        \"origSupplierNm\": \"string\",\n        \"reservedField1\": \"string\",\n        \"reservedField2\": \"string\",\n        \"reservedField3\": \"string\",\n        \"reservedField4\": \"string\",\n        \"supplierCtryCd\": \"string\",\n        \"supplierVatNum\": \"string\",\n        \"cardTransSeqNum\": \"string\",\n        \"lineitemMatchId\": \"string\",\n        \"origTransRefNum\": \"string\",\n        \"pCardTransIsNum\": \"string\",\n        \"taxAmtIncludeCd\": \"string\",\n        \"origlSuplrCityNm\": \"string\",\n        \"origlSuplrCtryCd\": \"string\",\n        \"origlSuplrPstlCd\": \"string\",\n        \"supplierOrderNum\": \"string\",\n        \"supplierPostalCd\": \"string\",\n        \"taxAmt2IncludeCd\": \"string\",\n        \"destnAirprtCityCd\": \"string\",\n        \"rvaClientMessageId\": \"string\",\n        \"vpaProxyPoolNumber\": \"string\",\n        \"origlSuplrStPrvncCd\": \"string\",\n        \"supplierStateProvCd\": \"string\",\n        \"visaCommerceBatchId\": \"string\",\n        \"issuerDefinedUsageCd\": \"string\",\n        \"cardHolderTxnApproval\": \"string\",\n        \"visaCommerPymntInstdt\": \"string\",\n        \"supplierNameJapaneseKanji\": \"string\",\n        \"supplierNameJapaneseKatakana\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4e9a1a7-9da7-4ae9-aa12-e58cf434ffb5",
+          "name": "Get Transaction and Enhanced Data",
+          "request": {
+            "name": "Get Transaction and Enhanced Data",
+            "description": {
+              "content": "Get Transaction & Enhanced Data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vbs",
+                "dapi",
+                "v1",
+                "transaction_enhanced"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "clientId",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"companyId\": \"<string>\",\n  \"filters\": {\n    \"key_0\": {\n      \"filterType\": \"<string>\",\n      \"filterValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"issuerId\": \"<string>\",\n  \"pagination\": {\n    \"pageNum\": \"<integer>\",\n    \"pageSize\": \"<integer>\"\n  },\n  \"processorId\": \"<string>\",\n  \"regionId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rejectedSettlements\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e8e7a53-d035-4b26-b3f8-4a7a0c10443a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transaction_enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"clientId\": \"1111\",\n    \"x-correlation-id\": \"XXXX-111111-222222-333333\"\n  },\n  \"requestData\": {\n    \"issuerId\": \"9999\",\n    \"companyId\": \"11112222\",\n    \"pagination\": {\n      \"pageSize\": 10,\n      \"pageNum\": \"1\"\n    },\n    \"processorId\": \"1\",\n    \"regionId\": \"1\",\n    \"filters\": {\n      \"enhancedData\": {\n        \"filterValues\": [\n          \"supplier\",\n          \"airline\"\n        ],\n        \"filterType\": \"ENHN_CAT\"\n      },\n      \"transactionDateTime\": {\n        \"filterValues\": [\n          \"2023-07-01T01:59:59\",\n          \"2023-07-30T10:59:59\"\n        ],\n        \"filterType\": \"BETWN\"\n      }\n    },\n    \"type\": \"TRAN_ENHN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseHeader\": {\n    \"Keep-Alive\": \"timeout=60\",\n    \"X-Frame-Options\": \"DENY\",\n    \"Strict-Transport-Security\": \"max-age=31536000 ; includeSubDomains\",\n    \"Cache-Control\": \"no-cache, no-store, max-age=0, must-revalidate\",\n    \"X-Correlation-Id\": \"XXXX-111111-222222-333333\",\n    \"X-Content-Type-Options\": \"nosniff\",\n    \"Pragma\": \"no-cache\",\n    \"Expires\": \"0\",\n    \"Content-Length\": \"149596\",\n    \"X-XSS-Protection\": \"0\",\n    \"Date\": \"Thu, 31 Aug 2023 20:58:04 GMT\",\n    \"Content-Type\": \"application/json\"\n  },\n  \"responseData\": [\n    {\n      \"originalMccCode\": 3333,\n      \"period\": 23072,\n      \"virtual\": {},\n      \"bilingPeriodCheckIndicator\": 0,\n      \"userData\": {},\n      \"billingAmount\": 53,\n      \"enhancedData\": {\n        \"lodging\": {\n          \"lodgingSummary\": [\n            {\n              \"itemSequenceNumber\": 1,\n              \"totalMiniBarCharges\": 111,\n              \"totalMovieCharges\": 543,\n              \"healthClubCharges\": 324,\n              \"totalValetParkingCharges\": 123,\n              \"totalLaundryCharges\": 23,\n              \"totalFoodOrBeverageCharges\": 765,\n              \"totalGiftShopPurchases\": 0,\n              \"sourceAmount\": 23.5,\n              \"totalNonRoomCharges\": 9876,\n              \"lodgingNights\": 1,\n              \"netValue\": 123,\n              \"totalRoomTaxAmount\": 100,\n              \"dailyRoomRate\": 1987,\n              \"totalPrepaidExpenses\": 424.75,\n              \"totalTelephoneCharges\": 0,\n              \"taxValue\": 765,\n              \"grossValue\": 99,\n              \"noShowIndicator\": 0,\n              \"totalBusinessCenterCharges\": 564,\n              \"merchantCategoryCode\": 3040,\n              \"totalDiscount\": 10,\n              \"totalOtherCharges\": 24.5,\n              \"totalTaxAmount\": 99,\n              \"totalFolioCashAdvances\": 323\n            }\n          ],\n          \"lodgingDetail\": [\n            {\n              \"discountRate\": 0,\n              \"itemSequenceNumber\": 1,\n              \"foodOrBeverageCharges\": 123,\n              \"valetParkingCharges\": 545,\n              \"laundryCharges\": 0,\n              \"roomTax4Amount\": 232,\n              \"healthClubCharges\": 324,\n              \"roomTax3Amount\": 0,\n              \"roomRate\": 0,\n              \"telephoneCharges\": 666,\n              \"otherCharge\": 87,\n              \"businessCenterCharges\": 213,\n              \"miniBarCharges\": 0,\n              \"folioCashAdvances\": 454,\n              \"roomTaxAmount\": 0,\n              \"movieCharges\": 54,\n              \"sourceAmount\": 23.5,\n              \"roomTax2Amount\": 0,\n              \"giftShopPurchases\": 1\n            }\n          ]\n        }\n      },\n      \"memoPostFlag\": 0,\n      \"supplierIsoCountryCode\": 840,\n      \"sourceCurrencyCode\": 840,\n      \"billingCurrencyCode\": 124,\n      \"vatAmount\": 0,\n      \"originalSupplierCountryCode\": 250,\n      \"preprocessId\": 8,\n      \"bussinessNameSpace\": {\n        \"regionIdentification\": 1,\n        \"processorIdentification\": 902\n      },\n      \"merchantCategoryCode\": 3028,\n      \"sourceLineNumber\": 0,\n      \"base2GmrIdentification\": {\n        \"$numberLong\": \"31023473433\"\n      },\n      \"sourceAmount\": 29,\n      \"_id\": {\n        \"$oid\": \"645a7a55553bbbc444444f9b\"\n      },\n      \"transAudit\": {\n        \"kafkaMongoKey\": \"2023-05-09_2023-05-09\",\n        \"createTime\": \"Tue May 09 11:53:06 CDT 2023\",\n        \"totalProcessTime\": 0,\n        \"transHotStoreProcessTime\": 0,\n        \"upStreamProcessTime\": 0,\n        \"rpicStampingProcessTime\": 0,\n        \"authUnixTime\": {\n          \"$numberLong\": \"1683608400000\"\n        }\n      },\n      \"taxAmount\": 0,\n      \"key\": {\n        \"sequenceNumber\": 297,\n        \"recordKey\": 10007130\n      }\n    },\n    {\n      \"originalMccCode\": 3007,\n      \"period\": 23072,\n      \"virtual\": {},\n      \"bilingPeriodCheckIndicator\": 0,\n      \"userData\": {},\n      \"billingAmount\": 53,\n      \"enhancedData\": {\n        \"lodging\": {\n          \"lodgingSummary\": [\n            {\n              \"itemSequenceNumber\": 1,\n              \"totalMiniBarCharges\": 111,\n              \"totalMovieCharges\": 543,\n              \"healthClubCharges\": 324,\n              \"totalValetParkingCharges\": 123,\n              \"totalLaundryCharges\": 23,\n              \"totalFoodOrBeverageCharges\": 765,\n              \"totalGiftShopPurchases\": 0,\n              \"sourceAmount\": 23.5,\n              \"totalNonRoomCharges\": 9876,\n              \"lodgingNights\": 1,\n              \"netValue\": 123,\n              \"totalRoomTaxAmount\": 100,\n              \"dailyRoomRate\": 1987,\n              \"totalPrepaidExpenses\": 424.75,\n              \"totalTelephoneCharges\": 0,\n              \"taxValue\": 765,\n              \"grossValue\": 99,\n              \"noShowIndicator\": 0,\n              \"totalBusinessCenterCharges\": 564,\n              \"merchantCategoryCode\": 3040,\n              \"totalDiscount\": 10,\n              \"totalOtherCharges\": 24.5,\n              \"totalTaxAmount\": 99,\n              \"totalFolioCashAdvances\": 323\n            }\n          ],\n          \"lodgingDetail\": [\n            {\n              \"discountRate\": 0,\n              \"itemSequenceNumber\": 1,\n              \"foodOrBeverageCharges\": 123,\n              \"valetParkingCharges\": 545,\n              \"laundryCharges\": 0,\n              \"roomTax4Amount\": 232,\n              \"healthClubCharges\": 324,\n              \"roomTax3Amount\": 0,\n              \"roomRate\": 0,\n              \"telephoneCharges\": 666,\n              \"otherCharge\": 87,\n              \"businessCenterCharges\": 213,\n              \"miniBarCharges\": 0,\n              \"folioCashAdvances\": 454,\n              \"roomTaxAmount\": 0,\n              \"movieCharges\": 54,\n              \"sourceAmount\": 23.5,\n              \"roomTax2Amount\": 0,\n              \"giftShopPurchases\": 1\n            }\n          ]\n        },\n        \"fleet\": {\n          \"fleetService\": [\n            {\n              \"serviceType\": \" \",\n              \"cityMotorFuelTaxExemptionIndicator\": 0,\n              \"fuelNetAmount\": 0,\n              \"itemSequenceNumber\": null,\n              \"matchType\": \"P\",\n              \"nonFuelNetAmount\": 0,\n              \"fuelQuantity\": 0,\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"countyFuelSalesTaxAmount\": 0,\n              \"processorFinancialKey\": \"\",\n              \"secondaryStateFuelTaxExemptionIndicator\": 0,\n              \"fleetAdditionalPromptedData1\": \"\",\n              \"fleetAdditionalPromptedData2\": \"\",\n              \"optionalField1\": \"                          \",\n              \"checkOutDate\": null,\n              \"fuelMiscellaneousTaxAmount\": 0,\n              \"vatOrTaxRate\": 40,\n              \"optionalField4\": \"                          \",\n              \"nonFuelGrossAmount\": 0,\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"cityFuelSalesTaxExemptionIndicator\": 0,\n              \"merchantSourceCode\": \"PCR\",\n              \"matchReferenceKey\": \"                                                  \",\n              \"countyFuelSalesTaxExemptionIndicator\": 0,\n              \"fuelFederalExciseTaxAmount\": 0,\n              \"cityFuelSalesTaxAmount\": 0,\n              \"countyMotorFuelTaxAmount\": 0,\n              \"stateMotorFuelTaxExemptionIndicator\": 0,\n              \"nonFuelStateAndLocalSalesTaxAmount\": 0,\n              \"supplierPostalCode\": \"12345\",\n              \"fuelFederalExciseTaxExemptionIndicator\": 0,\n              \"allocationSequenceNumber\": null,\n              \"fileDatePartition\": \"20230826\",\n              \"nonFuelMiscellaneousTaxAmount\": 0,\n              \"stateMotorFuelTaxAmount\": 0,\n              \"fuelUnitCost\": 0,\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"countyMotorFuelTaxExemptionIndicator\": 0,\n              \"fuelMiscellaneousTaxExemptionIndicator\": 0,\n              \"purchaseId\": \"3333                                              \",\n              \"cityMotorFuelTaxAmount\": 0,\n              \"fuelGrossAmount\": 0,\n              \"tokenIndicator\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": 2,\n              \"fleetEmployeeNumber\": \"\",\n              \"nonFuelFederalExciseTaxExemptionIndicator\": 0,\n              \"nonFuelStateAndLocalSalesTaxExemptInd\": 0,\n              \"sourceAmount\": 27.98,\n              \"productSequenceNumber\": null,\n              \"expandedFuelType\": \"\",\n              \"federalSalesTaxAmount\": 0,\n              \"supplierName\": \"CARQUEST 3333\",\n              \"legNumber\": null,\n              \"odometerReading\": \"0000000\",\n              \"fuelUnitOfMeasureCode\": \"G\",\n              \"nonFuelFederalExciseTaxAmount\": 0,\n              \"fleetTrailerNumber\": \"\",\n              \"roomRate\": null,\n              \"secondaryStateFuelTaxAmount\": 0,\n              \"fuelType\": \"00\",\n              \"merchantCategoryCode\": 5555,\n              \"nonFuelMiscellaneousTaxExemptionIndicator\": 0,\n              \"numberOfLegs\": null,\n              \"businessFormatCode\": \"\",\n              \"originationAirportCode\": \"\",\n              \"federalSalesTaxExemptionIndicator\": 0\n            }\n          ],\n          \"fleetProduct\": [\n            {\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"itemSequenceNumber\": null,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"3333                                             \",\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"                          \",\n              \"checkOutDate\": null,\n              \"sourceAmount\": 27.98,\n              \"productSequenceNumber\": 1,\n              \"optionalField4\": \"                          \",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"supplierName\": \"CARQUEST 3333\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": null,\n              \"matchReferenceKey\": \"                                                  \",\n              \"supplierPostalCode\": \"12345\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"productCode\": \"00\",\n              \"fuelType\": \"\",\n              \"fileDatePartition\": \"20230826\",\n              \"merchantCategoryCode\": \"5555\",\n              \"numberOfLegs\": null,\n              \"businessFormatCode\": \"\",\n              \"originationAirportCode\": \"\"\n            }\n          ]\n        },\n        \"carRental\": {\n          \"carRentalSummary\": [\n            {\n              \"insuranceCharges\": 0,\n              \"itemSequenceNumber\": null,\n              \"corporateIdentification\": \"\",\n              \"matchType\": \"P\",\n              \"otherCharges\": 0,\n              \"extraMileageCharges\": 0,\n              \"processorAddendumKey\": \"4444555566668461   22223333444455559293673 08882222 \",\n              \"mileageOrKmAtCheckOut\": null,\n              \"extraChargeCode\": \"\",\n              \"carCompanyCode\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"taBookingReferenceNumber\": \"\",\n              \"optionalField1\": \"                          \",\n              \"totalTaxOrVat\": 0,\n              \"checkOutDate\": \"2023-08-13\",\n              \"vehicleGroupCharge\": \"\",\n              \"dropOffStationCode\": \"\",\n              \"optionalField4\": \"                          \",\n              \"vehicleType\": \"\",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"merchantSourceCode\": \"PCR\",\n              \"dailyRentalRate\": 0,\n              \"matchReferenceKey\": \"\",\n              \"mileageOrKmDriven\": null,\n              \"netValue\": null,\n              \"costCenter\": \"\",\n              \"glCode\": \"\",\n              \"locationRentedFrom\": \"\",\n              \"oneWayDropCharges\": 0,\n              \"supplierPostalCode\": \"12345\",\n              \"lateReturnChargesOrHourlyRate\": 0,\n              \"allocationSequenceNumber\": null,\n              \"unitOfDistance\": \"\",\n              \"autoTowing\": 0,\n              \"grossValue\": null,\n              \"noShowIndicator\": 0,\n              \"fileDatePartition\": \"20230826\",\n              \"regularMileageCharges\": 0,\n              \"additionalServices\": \"\",\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"returnLocation\": \"\",\n              \"clientReferenceField6\": \"\",\n              \"clientReferenceField7\": \"\",\n              \"clientReferenceField9\": \"\",\n              \"tokenIndicator\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"clientReferenceField5\": \"\",\n              \"clientReferenceField16\": \"\",\n              \"clientReferenceField15\": \"\",\n              \"clientReferenceField14\": \"\",\n              \"clientReferenceField13\": \"\",\n              \"clientReferenceField12\": \"\",\n              \"clientReferenceField11\": \"\",\n              \"clientReferenceField10\": \"\",\n              \"sourceAmount\": 123.45,\n              \"productSequenceNumber\": null,\n              \"renterName\": \"TEMP NAME\",\n              \"mileageOrKmAtCheckIn\": null,\n              \"fuelCharges\": 0,\n              \"checkInDateAndTime\": \"\",\n              \"supplierName\": \"TEMP CAR SUPPLIER\",\n              \"classCode\": \"\",\n              \"legNumber\": null,\n              \"weeklyRentalRate\": 0,\n              \"daysRented\": 0,\n              \"pick_UpStationCode\": \"\",\n              \"employeeId\": \"\",\n              \"businessNumber\": \"\",\n              \"locationReturnedTo\": \"\",\n              \"checkOutDateAndTime\": \"\",\n              \"vehicleRegistrationNumber\": \"\",\n              \"roomRate\": null,\n              \"telephoneCharges\": 0,\n              \"productCode\": \"\",\n              \"fuelType\": \"\",\n              \"taxValue\": null,\n              \"merchantCategoryCode\": 3333,\n              \"totalDiscount\": null,\n              \"reservationNumber\": \"\",\n              \"numberOfLegs\": null,\n              \"originationAirportCode\": \"\"\n            }\n          ],\n          \"carRentalDetail\": []\n        },\n        \"purchase\": {\n          \"purchaseSummary\": [\n            {\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"itemSequenceNumber\": null,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"3333\",\n              \"destinationCountryCode\": 840,\n              \"discountAmount\": 0,\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"                          \",\n              \"sourceStateOrProvince\": \" \",\n              \"checkOutDate\": null,\n              \"freightOrShippingVatOrTaxAmount\": 0,\n              \"sourceAmount\": 27.98,\n              \"productSequenceNumber\": null,\n              \"optionalField4\": \"                          \",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"supplierName\": \"CARQUEST 3901\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": null,\n              \"matchReferenceKey\": \"                                                  \",\n              \"freightAmount\": 0,\n              \"freightOrShippingVatOrTaxRate\": 0,\n              \"supplierPostalCode\": \"12345\",\n              \"vatReferenceNumber\": \"\",\n              \"sourcePostalCode\": \"\",\n              \"serviceIdentifier\": \"PURCHA\",\n              \"allocationSequenceNumber\": null,\n              \"destinationStateOrProvince\": \" \",\n              \"roomRate\": null,\n              \"sourceCountryCode\": 9000,\n              \"destinationPostalCode\": \"\",\n              \"fuelType\": \"\",\n              \"fileDatePartition\": \"20230826\",\n              \"merchantCategoryCode\": 5555,\n              \"numberOfLegs\": null,\n              \"originationAirportCode\": \"\",\n              \"orderDate\": \"\",\n              \"dutyAmount\": 0\n            }\n          ],\n          \"purchaseDetail\": [\n            {\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"destinationAirportCode\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"itemLevelUsageCode\": \"\",\n              \"matchType\": \"P\",\n              \"purchaseId\": \"3362\",\n              \"lineItemSource\": \"VI\",\n              \"typeSupply\": \"0\",\n              \"processorAddendumKey\": \"3333444455556666802                                 \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"                          \",\n              \"itemDiscountAmount\": 0,\n              \"checkOutDate\": null,\n              \"vatOrTaxRate\": 0,\n              \"sourceAmount\": 27.98,\n              \"lastItemIndicator\": 1,\n              \"productSequenceNumber\": null,\n              \"optionalField4\": \"                          \",\n              \"optionalField2\": \"                          \",\n              \"optionalField3\": \"                          \",\n              \"supplierName\": \"CARQUEST 3901\",\n              \"itemDescriptor\": \"TEMP Merchandise\",\n              \"itemCommodityCode\": \"\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": null,\n              \"matchReferenceKey\": \"                                                  \",\n              \"quantity\": 1,\n              \"itemTotalAmount\": 27.98,\n              \"lineItemSalesTaxChargedFlag\": 0,\n              \"itemProductCode\": \"72\",\n              \"supplierPostalCode\": \"12345\",\n              \"unitMeasure\": \"\",\n              \"vatOrTaxAmount\": 0,\n              \"serviceIdentifier\": \"PURCHL\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"fuelType\": \"\",\n              \"unitCost\": 27.98,\n              \"fileDatePartition\": \"20230826\",\n              \"merchantCategoryCode\": 5555,\n              \"numberOfLegs\": null,\n              \"originationAirportCode\": \"\"\n            }\n          ]\n        },\n        \"airline\": {\n          \"airlineDetail\": [\n            {\n              \"departureTime\": \"0000\",\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"domesticOrInternationalIndicator\": 0,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"\",\n              \"destinationOrAirportCode\": \"XXX\",\n              \"dateOfTravel\": \"2023-08-24\",\n              \"primaryTicketNumber\": \"\",\n              \"processorAddendumKey\": \"475144811112222333344445555666677778888999912003    \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"\",\n              \"checkOutDate\": null,\n              \"arrivalTime\": \"0000\",\n              \"sectorArrivalDateScheduled\": \"\",\n              \"sectorNumber\": 0,\n              \"conjunctionTicketNumber\": \"\",\n              \"sourceAmount\": 497.8,\n              \"productSequenceNumber\": null,\n              \"stopoverCode\": 1,\n              \"optionalField4\": \"\",\n              \"optionalField2\": \"\",\n              \"optionalField3\": \"\",\n              \"supplierName\": \"TEMP AIR  000011112222\",\n              \"originationAirportOrRailroadCode\": \"XXX\",\n              \"merchantSourceCode\": \"XXX\",\n              \"legNumber\": 1,\n              \"matchReferenceKey\": \"\",\n              \"couponNumber\": 0,\n              \"serviceClass\": \"L\",\n              \"supplierPostalCode\": \"123450000\",\n              \"arrivalDate\": \"\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"departureTax\": 0,\n              \"fuelType\": \"\",\n              \"fareBasis\": \"\",\n              \"carrierCode\": \"XX\",\n              \"fileDatePartition\": \"20230825\",\n              \"merchantCategoryCode\": 3256,\n              \"numberOfLegs\": null,\n              \"sectorFareAmount\": 0,\n              \"carrierReferenceNumber\": \"\",\n              \"sectorRefundIndicator\": \"\"\n            },\n            {\n              \"departureTime\": \"0000\",\n              \"ticketNumber\": \"\",\n              \"passengerName\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"domesticOrInternationalIndicator\": 0,\n              \"matchType\": \"P\",\n              \"purchaseId\": \"\",\n              \"destinationOrAirportCode\": \"XXX\",\n              \"dateOfTravel\": \"2023-08-24\",\n              \"primaryTicketNumber\": \"\",\n              \"processorAddendumKey\": \"475200011112222333344445555666677778888999912003    \",\n              \"tokenIndicator\": \"\",\n              \"processorFinancialKey\": \"\",\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"optionalField1\": \"\",\n              \"checkOutDate\": null,\n              \"arrivalTime\": \"0000\",\n              \"sectorArrivalDateScheduled\": \"\",\n              \"sectorNumber\": 0,\n              \"conjunctionTicketNumber\": \"\",\n              \"sourceAmount\": 497.8,\n              \"productSequenceNumber\": null,\n              \"stopoverCode\": 1,\n              \"optionalField4\": \"\",\n              \"optionalField2\": \"\",\n              \"optionalField3\": \"\",\n              \"supplierName\": \"TEMP AIR  0000111122223\",\n              \"originationAirportOrRailroadCode\": \"SFO\",\n              \"merchantSourceCode\": \"PCR\",\n              \"legNumber\": 2,\n              \"matchReferenceKey\": \"\",\n              \"couponNumber\": 0,\n              \"serviceClass\": \"B\",\n              \"supplierPostalCode\": \"123450000\",\n              \"arrivalDate\": \"\",\n              \"allocationSequenceNumber\": null,\n              \"roomRate\": null,\n              \"departureTax\": 0,\n              \"fuelType\": \"\",\n              \"fareBasis\": \"\",\n              \"carrierCode\": \"AS\",\n              \"fileDatePartition\": \"20230825\",\n              \"merchantCategoryCode\": 1111,\n              \"numberOfLegs\": null,\n              \"sectorFareAmount\": 0,\n              \"carrierReferenceNumber\": \"\",\n              \"sectorRefundIndicator\": \"\"\n            }\n          ],\n          \"airlineSummary\": [\n            {\n              \"clientReference7\": \"\",\n              \"clientReference6\": \"\",\n              \"itemSequenceNumber\": 1,\n              \"endorsementOrRestrictions\": \"                    \",\n              \"matchType\": \"P\",\n              \"documentNumber\": \"\",\n              \"processorAddendumKey\": \"475200011112222333344445555666677778888999912004    \",\n              \"processorFinancialKey\": \"\",\n              \"clientReference9\": \"\",\n              \"primaryCarrierCode\": \"\",\n              \"domesticTicketIndicator\": \"\",\n              \"clientReference16\": \"\",\n              \"clientReference15\": \"\",\n              \"checkOutDate\": null,\n              \"travelAgencyName\": \"\",\n              \"clientReference14\": \"\",\n              \"clientReference13\": \"\",\n              \"clientReference12\": \"\",\n              \"clientReference11\": \"\",\n              \"pnrReferenceNumber\": \"\",\n              \"consultantCode\": \"\",\n              \"optionalField4\": \"\",\n              \"optionalField3\": \"\",\n              \"merchantSourceCode\": \"PCR\",\n              \"enhancedDataSupplierName\": \"\",\n              \"exchangeTicketNumber\": \"\",\n              \"passengerSpecificData\": \"\",\n              \"clientReference10\": \"\",\n              \"airportTax\": 0,\n              \"supplierPostalCode\": \"123450000\",\n              \"securityTax\": 0,\n              \"allocationSequenceNumber\": null,\n              \"ticketIndicator\": 0,\n              \"ancillaryService\": \"\",\n              \"travelAgencyCode\": \"55260004\",\n              \"salesTaxOrGst\": 0,\n              \"fileDatePartition\": \"20230825\",\n              \"exchangeTicketAmount\": 0,\n              \"internetIndicator\": 0,\n              \"totalTaxAmount\": 0,\n              \"travelObligationNumber\": \"\",\n              \"ticketNumber\": \"1000111122223\",\n              \"passengerName\": \"TEMPNAME/LNAME\",\n              \"destinationAirportCode\": \"\",\n              \"createdByProcessCode\": \"N\",\n              \"routingId\": \"\",\n              \"ticketIssueDate\": \"\",\n              \"tcnPassengerName\": \"\",\n              \"overallFlightClass\": \"\",\n              \"purchaseId\": \"\",\n              \"exchangeTicketNumber1\": \"\",\n              \"exchangeTicketNumber2\": \"\",\n              \"ticketFareCurrencyCode\": null,\n              \"tokenIndicator\": \"\",\n              \"eTicketIndicator\": 0,\n              \"checkInDate\": null,\n              \"purchaseType\": null,\n              \"provincialTax\": 0,\n              \"sourceAmount\": 497.8,\n              \"productSequenceNumber\": null,\n              \"departureDate\": \"2023-08-24\",\n              \"supplierName\": \"TEMP AIR  1000111122223\",\n              \"legNumber\": null,\n              \"countrySpecificTax1\": 0,\n              \"countrySpecificTax2\": 0,\n              \"totalFeeAmount\": 0,\n              \"businessNumber\": \"\",\n              \"clientNumber\": \"\",\n              \"matchReferenceField\": \"\",\n              \"roomRate\": null,\n              \"fuelType\": \"\",\n              \"totalFareAmount\": 0,\n              \"merchantCategoryCode\": 3256,\n              \"numberOfLegs\": 2,\n              \"tripDestination\": \"\",\n              \"originationAirportCode\": \"\",\n              \"refundNoticeNumber\": \"\"\n            }\n          ]\n        }\n      },\n      \"memoPostFlag\": 0,\n      \"supplierIsoCountryCode\": 840,\n      \"sourceCurrencyCode\": 840,\n      \"billingCurrencyCode\": 124,\n      \"vatAmount\": 0,\n      \"originalSupplierCountryCode\": 250,\n      \"preprocessId\": 8,\n      \"bussinessNameSpace\": {\n        \"regionIdentification\": 1,\n        \"processorIdentification\": 902\n      },\n      \"merchantCategoryCode\": 3028,\n      \"sourceLineNumber\": 0,\n      \"base2GmrIdentification\": {\n        \"$numberLong\": \"31023473433\"\n      },\n      \"sourceAmount\": 29,\n      \"_id\": {\n        \"$oid\": \"644a4a44444bbbc555566667\"\n      },\n      \"transAudit\": {\n        \"kafkaMongoKey\": \"2023-05-09_2023-05-09\",\n        \"createTime\": \"Tue May 09 11:53:20 CDT 2023\",\n        \"totalProcessTime\": 0,\n        \"transHotStoreProcessTime\": 0,\n        \"upStreamProcessTime\": 0,\n        \"rpicStampingProcessTime\": 0,\n        \"authUnixTime\": {\n          \"$numberLong\": \"1683608400000\"\n        }\n      },\n      \"taxAmount\": 0,\n      \"key\": {\n        \"sequenceNumber\": 297,\n        \"recordKey\": 10007130\n      }\n    }\n  ],\n  \"responseStatus\": {\n    \"statusDescription\": \"Success\",\n    \"statusCode\": \"200\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7e3eeb8-387b-4901-8109-fd597a7430b2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transaction_enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"clientId\": \"1111\",\n    \"x-correlation-id\": \"XXXX-111111-222222-333333\"\n  },\n  \"requestData\": {\n    \"issuerId\": \"9999\",\n    \"companyId\": \"11112222\",\n    \"pagination\": {\n      \"pageSize\": 10,\n      \"pageNum\": \"1\"\n    },\n    \"processorId\": \"1\",\n    \"regionId\": \"1\",\n    \"filters\": {\n      \"enhancedData\": {\n        \"filterValues\": [\n          \"supplier\",\n          \"airline\"\n        ],\n        \"filterType\": \"ENHN_CAT\"\n      },\n      \"transactionDateTime\": {\n        \"filterValues\": [\n          \"2023-07-01T01:59:59\",\n          \"2023-07-30T10:59:59\"\n        ],\n        \"filterType\": \"BETWN\"\n      }\n    },\n    \"type\": \"TRAN_ENHN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70afbc20-6192-45ab-9b34-cfe37d407a7a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbs",
+                    "dapi",
+                    "v1",
+                    "transaction_enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "clientId",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"clientId\": \"1111\",\n    \"x-correlation-id\": \"XXXX-111111-222222-333333\"\n  },\n  \"requestData\": {\n    \"issuerId\": \"9999\",\n    \"companyId\": \"11112222\",\n    \"pagination\": {\n      \"pageSize\": 10,\n      \"pageNum\": \"1\"\n    },\n    \"processorId\": \"1\",\n    \"regionId\": \"1\",\n    \"filters\": {\n      \"enhancedData\": {\n        \"filterValues\": [\n          \"supplier\",\n          \"airline\"\n        ],\n        \"filterType\": \"ENHN_CAT\"\n      },\n      \"transactionDateTime\": {\n        \"filterValues\": [\n          \"2023-07-01T01:59:59\",\n          \"2023-07-30T10:59:59\"\n        ],\n        \"filterType\": \"BETWN\"\n      }\n    },\n    \"type\": \"TRAN_ENHN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c03678fd-d09c-469a-b012-8830e10903ba",
+    "name": "Foreign Exchange Rates Business Data Transactions API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1- Transaction API, 2- Enhanced Data API, 3- Starter Data API",
+      "type": "text/plain"
+    }
+  }
+}

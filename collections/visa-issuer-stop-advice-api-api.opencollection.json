@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Issuer Stop Advice API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Issuer Stop Advice API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issuer Stop Advice API",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vau/issuer-api/v1/stopadvices",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Issuer can place stop advice by providing following requested information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Full BIN List API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Full BIN List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bin Range Details Using POST V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v2/binRangeDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Full BIN List API provides access to Visa BIN Attributes such as Issuer BIN, Issuer Country, Issuer Billing Currency and Product Identifiers such as Product ID/name, Product Platform, Card type , Card Subtype"
+        },
+        {
+          "info": {
+            "name": "Bin Range Details Using POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/v1/binRangeDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Full Bin List"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Business Data Corporate Setup API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Data Corporate Setup API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get starter data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.comcdsapi/commercial/v1/ob/starterdata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get starter data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

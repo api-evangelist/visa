@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Visa Account Updater Merchant API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visa Account Updater Merchant API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Merchant Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vau/onboard-api/acquirer/v1/merchants/search",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merchants can be searched by providing following requested information"
+        },
+        {
+          "info": {
+            "name": "Merchant Enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vau/onboard-api/acquirer/v1/merchants",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enroll new merchants by providing following requested information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

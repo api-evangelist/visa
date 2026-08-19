@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Registered User Details Service API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Registered User Details Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RegisteredUserDetails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/CPRAPI/v1/registeredUserDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "RegisteredUserDetails"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

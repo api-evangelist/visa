@@ -1,0 +1,211 @@
+{
+  "item": [
+    {
+      "id": "ad129192-58ef-4671-b039-4c187955dfea",
+      "name": "Transaction Enrichment API",
+      "description": {
+        "content": "Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "815c0fd3-b142-4b09-a888-f5d4de1f40e5",
+          "name": "Enrich Transaction",
+          "request": {
+            "name": "Enrich Transaction",
+            "description": {
+              "content": "Enriches transaction data with enhanced merchant information such as merchant street address, website URL, logo, and contact information. This operation helps improve the cardholder experience by providing clearer and more recognizable merchant details on statements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "merchantsearch",
+                "v1",
+                "transactionenrichment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "449e72d5-621b-434e-8298-713d24fd9990",
+              "name": "Transaction enriched successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "transactionenrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merchantSearchServiceResponse\": {\n    \"response\": [\n      {\n        \"visaMerchantId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantUrl\": \"https://fNeCXMU.ubz6icmKG.Tf65QD3.HgLeRohW2Qxh2\",\n        \"merchantLogoUrl\": \"http://eOAPXVmowCIRthGLBSvmoEY.xtvgu\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"merchantCategoryCode\": \"string\",\n        \"phoneNumber\": \"string\"\n      },\n      {\n        \"visaMerchantId\": \"string\",\n        \"merchantName\": \"string\",\n        \"merchantUrl\": \"http://LxkuZPNWDzxIPIclwlBejhEvxUkeAOw.wmnaP+-Ay8aTfA3oFV80rIpG40Njope\",\n        \"merchantLogoUrl\": \"https://TpRloyRUUByWmoTBaIl.hzau+k2s-Jtydnl4TelxhjThDWo0Zd8.EKbZ4qI,bm-HJS5UbkQec\",\n        \"merchantAddress\": {\n          \"street\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"merchantCategoryCode\": \"string\",\n        \"phoneNumber\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79c4e083-7cdc-4639-90e7-5ddc2cff87da",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "transactionenrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16044fee-7468-4b76-a72c-6120ff0ed877",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "merchantsearch",
+                    "v1",
+                    "transactionenrichment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerCardAcceptorId\": \"<string>\",\n  \"acquiringBin\": \"<string>\",\n  \"merchantName\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "98b0891d-0bcc-49a9-9358-811bad7a2a62",
+    "name": "Foreign Exchange Rates Transaction Enrichment API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.",
+      "type": "text/plain"
+    }
+  }
+}

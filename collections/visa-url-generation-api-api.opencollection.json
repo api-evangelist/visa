@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates URL Generation API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "URL Generation API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate VDE Lite app URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/inapp/provision/appclip/url",
+            "headers": [
+              {
+                "name": "x-client-id",
+                "value": "86da0f74-19f0-4a20-9dde-3e83dfa6bf83"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create app clip or instant app URL for given payload."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

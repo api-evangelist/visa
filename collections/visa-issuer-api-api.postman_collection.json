@@ -1,0 +1,438 @@
+{
+  "item": [
+    {
+      "id": "e7e75aac-775b-484b-84d9-3f4998a4a2ff",
+      "name": "Issuer API",
+      "description": {
+        "content": "API that enables issuers to source acquirer BIN data directly from Visa",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48ccb065-f277-4816-9df6-1914cd5a18d6",
+          "name": "Files Metadata",
+          "request": {
+            "name": "Files Metadata",
+            "description": {
+              "content": "Get the metadata for the VBASS files including the count of files, file names, size, checksum and creation date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vbass",
+                "v1",
+                "files",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestData\": {\n    \"fileType\": \"<string>\"\n  },\n  \"requestHeader\": {\n    \"requestMessageId\": \"<string>\",\n    \"requestTS\": \"<YYYY-MM-DDThh:mm:ss.sss>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a2ed2d6-69d0-429b-865a-d3814428bc5f",
+              "name": "VBASSFilesMetadata Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbass",
+                    "v1",
+                    "files",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2022-12-01T21:26:52.021\",\n    \"requestMessageId\": \"TestGenFilesMetadata\"\n  },\n  \"requestData\": {\n    \"fileType\": \"ACQ\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseHeader\": {\n    \"responseTS\": \"2024-02-08T23:54:24.245\",\n    \"responseMessageId\": \"108VDP41105220240208235424237\",\n    \"requestMessageId\": \"TestGenFilesMetadata\"\n  },\n  \"responseData\": {\n    \"fileDetails\": [\n      {\n        \"fileName\": \"VBASS_ACQ_02082024_1.csv\",\n        \"fileSize\": 2411325,\n        \"checkSum\": \"ae0d04247d2bb5fc0fb0f711af51ef29\",\n        \"rowCount\": 25318\n      }\n    ],\n    \"totalNumberOfFiles\": 1,\n    \"filesCreationDate\": \"2024-02-08\",\n    \"fileType\": \"ACQ\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "730b0bcf-0835-471f-97ac-e525dc8497a6",
+              "name": "Request Data Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbass",
+                    "v1",
+                    "files",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2022-12-01T21:26:52.021\",\n    \"requestMessageId\": \"TestGenFilesMetadata\"\n  },\n  \"requestData\": {\n    \"fileType\": \"ACQ\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21acdc0a-ae54-4fad-bd05-83f51d13f458",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbass",
+                    "v1",
+                    "files",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2022-12-01T21:26:52.021\",\n    \"requestMessageId\": \"TestGenFilesMetadata\"\n  },\n  \"requestData\": {\n    \"fileType\": \"ACQ\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CDI001\": {},\n  \"CDI003\": {},\n  \"CDI012\": {},\n  \"CDI071\": {},\n  \"CDI092\": {},\n  \"CDI098\": {},\n  \"CDI251\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "110ecb1d-cee7-4b73-bf74-139a08373da1",
+          "name": "File Transfer",
+          "request": {
+            "name": "File Transfer",
+            "description": {
+              "content": "The VBASS File Transfer API endpoint allows the download of VBASS File",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vbass",
+                "v1",
+                "files",
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestData\": {\n    \"fileName\": \"<string>\"\n  },\n  \"requestHeader\": {\n    \"requestMessageId\": \"<string>\",\n    \"requestTS\": \"<YYYY-MM-DDThh:mm:ss.sss>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c27c8b58-e241-4190-bbf7-1d0792de43df",
+              "name": "VBASS File Transfer Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbass",
+                    "v1",
+                    "files",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2021-02-10T21:26:52.021\",\n    \"requestMessageId\": \"TestGenFileTransfers\"\n  },\n  \"requestData\": {\n    \"fileName\": \"VBASS_ACQ_02082024_1.csv\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"Sample response will contain csv file in a comma-separated format\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6565a06-c5e0-4b98-93b5-5511f5381a5b",
+              "name": "Request Data Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbass",
+                    "v1",
+                    "files",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2021-02-10T21:26:52.021\",\n    \"requestMessageId\": \"TestGenFileTransfers\"\n  },\n  \"requestData\": {\n    \"fileName\": \"VBASS_ACQ_02082024_1.csv\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "229beb5b-8cea-45e0-88be-10c2636df637",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbass",
+                    "v1",
+                    "files",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2021-02-10T21:26:52.021\",\n    \"requestMessageId\": \"TestGenFileTransfers\"\n  },\n  \"requestData\": {\n    \"fileName\": \"VBASS_ACQ_02082024_1.csv\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1dead3de-114b-40a8-8f55-9d0c94581a77",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vbass",
+                    "v1",
+                    "files",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2021-02-10T21:26:52.021\",\n    \"requestMessageId\": \"TestGenFileTransfers\"\n  },\n  \"requestData\": {\n    \"fileName\": \"VBASS_ACQ_02082024_1.csv\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CDI001\": {},\n  \"CDI002\": {},\n  \"CDI012\": {},\n  \"CDI052\": {},\n  \"CDI071\": {},\n  \"CDI249\": {},\n  \"CDI250\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "94082168-5b09-4e3a-89d9-0a590585904d",
+    "name": "Foreign Exchange Rates Issuer API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API that enables issuers to source acquirer BIN data directly from Visa",
+      "type": "text/plain"
+    }
+  }
+}

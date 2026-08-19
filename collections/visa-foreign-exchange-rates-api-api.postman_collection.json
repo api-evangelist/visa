@@ -1,0 +1,357 @@
+{
+  "item": [
+    {
+      "id": "3f4ed9a8-c80b-42b6-bf0e-b67ec8d55092",
+      "name": "Foreign Exchange Rates API",
+      "description": {
+        "content": "The Foreign Exchange Rates API provides an easy access to the Visas currency conversion rate for a given currency pair. ",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e210579e-6617-46c1-999c-7f83aa510dc2",
+          "name": "Foreign Exchange Rates",
+          "request": {
+            "name": "Foreign Exchange Rates",
+            "description": {
+              "content": "This API returns Visa's conversion rates for a given currency pair. <br> <ul><li>A request with rateProductCode = \"A\" returns indicative daily rates that apply to transactions with card as the payment instrument. This is an indicative rate and may be different from the actual rate for settlement of transaction.<br></li> <li> A request with rateProductCode = \"B\" returns indicative daily rates that apply to transactions with bank-account as the payment instrument. This is an indicative rate and may be different from the actual rate for settlement of transaction. <br></li> <li> A request with rateProductCode = \"BANK\" returns real-time rates that apply to transactions with bank-account as the payment instrument. This option is only available to clients integrating with Visa Direct Account and Wallet Send API bundle.  <br></li> <li> A request with rateProductCode = \"WALLET\" returns real-time rates that apply to transactions with wallet as the payment instrument. This option is only available to clients integrating with Visa Direct Account and Wallet Send API bundle. <br> </li></ul>  The following 3 use cases are supported on the new BANK and WALLET flows:  <ol><li>Provide a currency pair and set quoteIdRequired=true in the FX Request; the response returns a quote ID that can be used on all payout transactions for the same currency pair, until the quote expires. <br></li> <li>Provide a currency pair and an amount value in source currency in the FX Request; the response returns a rate and destination amount. This rate and destination amount is only indicative, and not guaranteed to be the same at the time of the payout transaction. <br></li> <li>Provide a currency pair and an amount value in destination currency in the FX Request; the response returns a rate and source amount. This rate and source amount is only indicative, and not guaranteed to be the same at the time of the payout transaction. <br><br></li></ol>  <small><i>Please note that the API specifications have been upgraded from swagger 2.0 to OpenAPI 3.0, and clients who have already been accessing this page for Foreign Exchange Rates V2 API documentation may now see a difference in the documentation rendering. However, the API functionality for A & B rateProductCodes has not changed. </i></small>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forexrates",
+                "v2",
+                "foreignexchangerates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationCurrencyCode\": \"<string>\",\n  \"rateProductCode\": \"<string>\",\n  \"sourceAmount\": \"<string>\",\n  \"sourceCurrencyCode\": \"<string>\",\n  \"markupRate\": \"<string>\",\n  \"acquirerDetails\": {\n    \"bin\": \"<double>\",\n    \"settlement\": {\n      \"currencyCode\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "deb3b444-0fa4-4532-865e-ecad27ace02f",
+              "name": "FX response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forexrates",
+                    "v2",
+                    "foreignexchangerates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"initiatingPartyId\": 1002,\n  \"rateProductCode\": \"BANK\",\n  \"destinationCurrencyCode\": \"USD\",\n  \"sourceCurrencyCode\": \"EUR\",\n  \"quoteIdRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rateProductCode\": \"string\",\n  \"destinationCurrencyCode\": \"string\",\n  \"quoteIdExpiryDateTime\": \"string\",\n  \"sourceCurrencyCode\": \"string\",\n  \"conversionRate\": \"string\",\n  \"quoteId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62f28591-b082-41b7-8308-ac117c0a88aa",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forexrates",
+                    "v2",
+                    "foreignexchangerates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"initiatingPartyId\": 1002,\n  \"rateProductCode\": \"BANK\",\n  \"destinationCurrencyCode\": \"USD\",\n  \"sourceCurrencyCode\": \"EUR\",\n  \"quoteIdRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"message\": \"Missing or Invalid Request Parameters\",\n    \"reason\": \"3001\",\n    \"status\": \"400\",\n    \"details\": [\n      {\n        \"message\": \"Missing or Invalid content\",\n        \"location\": \"destinationCurrencyCode\"\n      },\n      {\n        \"message\": \"Missing or Invalid content\",\n        \"location\": \"destinationCurrencyCode\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab55aa45-0196-4e5d-bacf-6e6f7b79ea6c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forexrates",
+                    "v2",
+                    "foreignexchangerates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"initiatingPartyId\": 1002,\n  \"rateProductCode\": \"BANK\",\n  \"destinationCurrencyCode\": \"USD\",\n  \"sourceCurrencyCode\": \"EUR\",\n  \"quoteIdRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"message\": \"Product code value B indicating pay-to-account rates is not supported with current subscription.\",\n    \"reason\": \"4001\",\n    \"status\": \"403\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c306b595-96ca-4487-b651-f2fa3db9a7dc",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forexrates",
+                    "v2",
+                    "foreignexchangerates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"initiatingPartyId\": 1002,\n  \"rateProductCode\": \"BANK\",\n  \"destinationCurrencyCode\": \"USD\",\n  \"sourceCurrencyCode\": \"EUR\",\n  \"quoteIdRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorResponse\": {\n    \"message\": \"An error occurred while processing the request. Please contact your Visa Representative\",\n    \"reason\": \"3004\",\n    \"status\": \"500\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc990cd1-e074-4938-b754-36bb3ce2741d",
+          "name": "Foreign Exchange Rates",
+          "request": {
+            "name": "Foreign Exchange Rates",
+            "description": {
+              "content": "Provide Visa daily currency conversion rate for a given currency pair based on amount",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forexrates",
+                "v1",
+                "foreignexchangerates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationCurrencyCode\": \"<string>\",\n  \"sourceAmount\": \"<string>\",\n  \"sourceCurrencyCode\": \"<string>\",\n  \"markupRate\": \"<string>\",\n  \"acquiringBin\": \"<integer>\",\n  \"cardAcceptor\": {\n    \"name\": \"<string>\",\n    \"idCode\": \"<string>\",\n    \"address\": {\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"county\": \"<string>\",\n      \"country\": \"<string>\",\n      \"zipCode\": \"<string>\"\n    },\n    \"terminalId\": \"<string>\"\n  },\n  \"acquirerCountryCode\": \"<string>\",\n  \"systemsTraceAuditNumber\": \"<string>\",\n  \"retrievalReferenceNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b96a462d-7fff-4442-a7ea-1de59a8103a5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forexrates",
+                    "v1",
+                    "foreignexchangerates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemsTraceAuditNumber\": \"350421\",\n  \"destinationCurrencyCode\": \"840\",\n  \"markUpRate\": \"1\",\n  \"cardAcceptor\": {\n    \"address\": {\n      \"country\": \"RU\",\n      \"zipCode\": \"94404\",\n      \"city\": \"Foster City\",\n      \"county\": \"San Mateo\",\n      \"state\": \"CA\"\n    },\n    \"idCode\": \"ABCD1234ABCD123\",\n    \"name\": \"ABCD\",\n    \"terminalId\": \"ABCD1234\"\n  },\n  \"sourceAmount\": \"100\",\n  \"retrievalReferenceNumber\": \"201010101031\",\n  \"sourceCurrencyCode\": \"643\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conversionRate\": \"0.07\",\n  \"destinationAmount\": \"75.85\",\n  \"markUpRateApplied\": \"0.07\",\n  \"originalDestnAmtBeforeMarkUp\": \"81.16\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2eeed757-c798-4a16-b144-8e0d2f358f23",
+    "name": "Foreign Exchange Rates Foreign Exchange Rates API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Foreign Exchange Rates API provides an easy access to the Visas currency conversion rate for a given currency pair. ",
+      "type": "text/plain"
+    }
+  }
+}

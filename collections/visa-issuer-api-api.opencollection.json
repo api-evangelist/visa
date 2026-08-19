@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Issuer API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Issuer API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Files Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vbass/v1/files/metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the metadata for the VBASS files including the count of files, file names, size, checksum and creation date."
+        },
+        {
+          "info": {
+            "name": "File Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vbass/v1/files/transfers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The VBASS File Transfer API endpoint allows the download of VBASS File"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

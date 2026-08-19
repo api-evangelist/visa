@@ -1,0 +1,422 @@
+{
+  "item": [
+    {
+      "id": "c478fbfa-766e-47c5-a164-29039b34d29e",
+      "name": "Data Tokens API",
+      "description": {
+        "content": "Retrieve tokenized data signals and insights from Visa's payment network for use in personalization, risk assessment, and business analytics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e520c72c-697f-4a5a-890e-0e64d8de3725",
+          "name": "Request Data Token",
+          "request": {
+            "name": "Request Data Token",
+            "description": {
+              "content": "Requests a data token containing aggregated and anonymized insights for the specified criteria. The token encapsulates spending signals, predictive scores, or historical patterns that can be used for personalization, risk assessment, or business analytics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vdt",
+                "v1",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tokenType\": \"<string>\",\n  \"primaryAccountNumber\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\",\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"geography\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e85ef0de-195b-4d17-a54a-18fab0bf6cce",
+              "name": "Data token generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vdt",
+                    "v1",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tokenType\": \"<string>\",\n  \"primaryAccountNumber\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\",\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"geography\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tokenId\": \"string\",\n  \"tokenType\": \"string\",\n  \"status\": \"PROCESSING\",\n  \"expiresAt\": \"2005-02-15T05:24:03.018Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec67f53f-0d35-4023-bb64-284fe2181dac",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vdt",
+                    "v1",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tokenType\": \"<string>\",\n  \"primaryAccountNumber\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\",\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"geography\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50754179-1e2f-49fe-8fc3-622ad071ea9f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vdt",
+                    "v1",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tokenType\": \"<string>\",\n  \"primaryAccountNumber\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\",\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"geography\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87339b20-4906-4771-9169-b03f7420b4ff",
+              "name": "Forbidden - insufficient permissions for the requested token type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vdt",
+                    "v1",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tokenType\": \"<string>\",\n  \"primaryAccountNumber\": \"<string>\",\n  \"merchantCategoryCode\": \"<string>\",\n  \"dateRange\": {\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\"\n  },\n  \"geography\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef826127-b295-4bcf-b585-76617218d034",
+          "name": "Retrieve Data Token",
+          "request": {
+            "name": "Retrieve Data Token",
+            "description": {
+              "content": "Retrieves the details and insights associated with a previously generated data token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vdt",
+                "v1",
+                "tokens",
+                ":tokenId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tokenId",
+                  "description": "(Required) Unique identifier of the data token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad5c91ed-dbff-4f49-9771-6453c30d0929",
+              "name": "Data token details retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vdt",
+                    "v1",
+                    "tokens",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tokenId",
+                      "description": "(Required) Unique identifier of the data token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tokenId\": \"string\",\n  \"tokenType\": \"string\",\n  \"insights\": {\n    \"spendingIndex\": 8245.959362877386,\n    \"trendDirection\": \"STABLE\",\n    \"confidenceScore\": 0.3764339747359944,\n    \"categoryBreakdown\": [\n      {\n        \"category\": \"string\",\n        \"percentage\": 5833.405003500431\n      },\n      {\n        \"category\": \"string\",\n        \"percentage\": 1996.7024473008332\n      }\n    ]\n  },\n  \"status\": \"string\",\n  \"createdAt\": \"1997-07-23T09:46:13.476Z\",\n  \"expiresAt\": \"1963-11-25T14:30:05.914Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22678705-d797-412b-8734-88ccea61a7f5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vdt",
+                    "v1",
+                    "tokens",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tokenId",
+                      "description": "(Required) Unique identifier of the data token"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f72b6875-3edc-4496-af23-639ca9b7dc47",
+              "name": "Data token not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vdt",
+                    "v1",
+                    "tokens",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tokenId",
+                      "description": "(Required) Unique identifier of the data token"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9085345a-378d-4c2b-b5db-f555204cfd25",
+    "name": "Foreign Exchange Rates Data Tokens API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve tokenized data signals and insights from Visa's payment network for use in personalization, risk assessment, and business analytics.",
+      "type": "text/plain"
+    }
+  }
+}

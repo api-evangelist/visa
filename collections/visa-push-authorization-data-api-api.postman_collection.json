@@ -1,0 +1,335 @@
+{
+  "item": [
+    {
+      "id": "dc59c495-26e9-468e-9a15-cd8efc2958dc",
+      "name": "Push Authorization Data API",
+      "description": {
+        "content": "PushNotification is a generic data channel to send Commercial Data to the end user over VDP. This API has capability to send Authorization data sets, Enhanced Data , Transaction data and Starter Data sets. Each push notification sent through VDP will have ONLY ONE of above data set i.e. auth or enhanced or transaction or starter data not a combined data sets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46d28040-7f82-4958-8ed1-4f42aa1bb98d",
+          "name": "Send Auth Data",
+          "request": {
+            "name": "Send Auth Data",
+            "description": {
+              "content": "Authorization Push",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Any_Client_URL"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d352505-42c1-49d8-a457-e92c941dd086",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5c6fcf5-ce35-4eae-95c6-e115444c8415",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6580a13-d1a6-4eeb-81d3-428553cc16a4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc40fb4c-cbfe-4bd9-b05f-5ce34c92004f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d5202b4-be57-4f8e-a1e7-8e6decfb4257",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "042e64f2-6b2e-4f73-924a-111f2707f2a3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d5e6faf-f3d8-4d13-b2fa-b46ff64cfbc1",
+              "name": "Something went wrong. Please try again later",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Any_Client_URL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authDt\": \"<string>\",\n  \"issuer\": \"<string>\",\n  \"mrchNm\": \"<string>\",\n  \"region\": \"<string>\",\n  \"tranId\": \"<string>\",\n  \"acctNum\": \"<string>\",\n  \"company\": \"<string>\",\n  \"msgType\": \"<string>\",\n  \"preAuth\": \"<string>\",\n  \"authTime\": \"<string>\",\n  \"crdTypCd\": \"<string>\",\n  \"mrchCity\": \"<string>\",\n  \"mrchZipCd\": \"<string>\",\n  \"processor\": \"<string>\",\n  \"uniqSeqId\": \"<string>\",\n  \"authCatgCd\": \"<string>\",\n  \"authIdResp\": \"<string>\",\n  \"crdAcptrId\": \"<string>\",\n  \"isoTranAmt\": \"<string>\",\n  \"mrchCatgCd\": \"<string>\",\n  \"mrchCtryCd\": \"<string>\",\n  \"stipAdvcCd\": \"<string>\",\n  \"tranProcCd\": \"<string>\",\n  \"authRsnDesc\": \"<string>\",\n  \"crdhBillAmt\": \"<string>\",\n  \"msgTypeDesc\": \"<string>\",\n  \"tokenNumber\": \"<string>\",\n  \"trgrSvcDesc\": \"<string>\",\n  \"trgrSvcType\": \"<string>\",\n  \"vpcActTknCd\": \"<string>\",\n  \"authCatgDesc\": \"<string>\",\n  \"isoTranCurrCd\": \"<string>\",\n  \"vpcPropActnCd\": \"<string>\",\n  \"authStatusCode\": \"<string>\",\n  \"crdhBillAmtUsd\": \"<string>\",\n  \"crdhBillCurrCd\": \"<string>\",\n  \"mrchStatePrvCd\": \"<string>\",\n  \"partialAuthAmt\": \"<string>\",\n  \"stipSwtchRsnCd\": \"<string>\",\n  \"tokenIndicator\": \"<string>\",\n  \"stipSwtchRsnDesc\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c586914-df8b-4c11-a8e8-6066968ff00e",
+    "name": "Foreign Exchange Rates Push Authorization Data API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "PushNotification is a generic data channel to send Commercial Data to the end user over VDP. This API has capability to send Authorization data sets, Enhanced Data , Transaction data and Starter Data sets. Each push notification sent through VDP will have ONLY ONE of above data set i.e. auth or enhanced or transaction or starter data not a combined data sets.",
+      "type": "text/plain"
+    }
+  }
+}

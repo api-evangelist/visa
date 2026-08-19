@@ -1,0 +1,1200 @@
+{
+  "item": [
+    {
+      "id": "6e18d73f-1ed6-4055-8bba-2481205c3e35",
+      "name": "Buyer Management Service",
+      "description": {
+        "content": "The Buyer Service provides self-service capabilities that simplify and reduce the implementation process for new VPA buyers (and other downstream systems). Buyers can be created from scratch or from a pre-defined Buyer Template. Either way, these APIs help streamline the process and increase the speed of buyer deployments, as well as provide third parties with insight into the buyers configurations for troubleshooting. For more details about the requirements for creating a buyer, please reference the <a href=\"/pages/B2B-virtual-account-payment-method-codes#buyer_setup_details\">Buyer Setup Details</a> page.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c8a559e-0659-47b6-bd09-bd2d8ac45936",
+          "name": "Get Buyer Template",
+          "request": {
+            "name": "Get Buyer Template",
+            "description": {
+              "content": "Obtain all current parameters for an existing buyer template. Optional and default values will be provided as well as the ability to obtain a full picture of the buyer configurations. This is helpful for troubleshooting or to see the details of a template before many any changes to it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v2",
+                "buyerManagement",
+                "buyerTemplate",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"templateId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e82409d-172d-438c-9859-7ecd771c2f95",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_Region_Bank_9999\",\n  \"messageId\": \"107970185555\",\n  \"templateId\": \"1_3_9999_811\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseObject\": {\n    \"responseFileConfig\": null,\n    \"proxyConfig\": {\n      \"holdDays\": \"30\",\n      \"bucketedProxyEnabled\": false,\n      \"autoRefreshEnabled\": true\n    },\n    \"boostPaymentConfig\": {\n      \"boostPaymentEnabled\": false\n    },\n    \"contactInfo\": {\n      \"implementationType\": 2,\n      \"emailAddress\": \"nigandhe@visa.com\",\n      \"phone1\": \"99999977\"\n    },\n    \"buyerFeatureConfig\": {\n      \"fullAccountViewEnabled\": true,\n      \"cardMaskingDigitsOnline\": \"12\",\n      \"vcfDataFeedIndicator\": \"Y\",\n      \"onlinePaymentInstructionEnabled\": true,\n      \"onlinePaymentRequisitionEnabled\": true,\n      \"cardMaskingDigits\": \"7\",\n      \"pseudoAccountsEnabled\": false\n    },\n    \"rvaReconciliationFileConfig\": null,\n    \"billingConfig\": {\n      \"billingType\": \"I\",\n      \"billingBID\": \"10048816840\"\n    },\n    \"stripePaymentConfig\": {\n      \"remittanceNotificationEnabled\": true,\n      \"stripePaymentEnabled\": true\n    },\n    \"vanConfig\": {\n      \"fcsBankId\": \"F286\",\n      \"vanEnabled\": true\n    },\n    \"stpPaymentConfig\": {\n      \"remittanceNotificationEnabled\": true,\n      \"stpPaymentEnabled\": true\n    },\n    \"webServicesConfig\": {\n      \"apiCodes\": null,\n      \"webServicesEnabled\": false,\n      \"clientId\": null,\n      \"suppressSupplierNotification\": null,\n      \"vbdsClientId\": null\n    },\n    \"templateId\": \"1_3_9999_811\",\n    \"paymentConfig\": {\n      \"securityCodeRequired\": true,\n      \"allowableCurrencies\": [\n        \"USD\"\n      ],\n      \"expirationDays\": \"30\",\n      \"billingCurrency\": \"USD\",\n      \"expirationBufferDays\": \"5\",\n      \"paymentAdviceOption\": \"C\"\n    },\n    \"paymentFileCommConfig\": null,\n    \"paymentSecurityConfig\": {\n      \"defaultSecurityFieldCode\": \"1\",\n      \"defaultSecurityQuestion\": \"Credential Text\",\n      \"customSecurityQuestions\": [\n        \"What is Security answer?\",\n        \"What is SSN Number?\"\n      ],\n      \"customSecurityQuestionsEnabled\": true\n    },\n    \"approvalWorkflowConfig\": {\n      \"workflowFunctionCodes\": [\n        \"AUCL\",\n        \"PYIN\"\n      ],\n      \"workflowConfigEnabled\": true\n    },\n    \"authorizationControlConfig\": {\n      \"issuerHoldingBID\": \"10000290\",\n      \"authControlEnabled\": true,\n      \"alertsEnabled\": true\n    },\n    \"paymentNotificationConfig\": {\n      \"defaultBuyerLanguageCode\": \"en_US\",\n      \"supplierReminderNotificationDays\": \"12\",\n      \"dateFormat\": \"MMDDYYYY\",\n      \"supplierReminderNotificationEnabled\": true,\n      \"attachRemittanceFileDetails\": true\n    },\n    \"templateName\": \"VPP-APITemplate-vcfInd-Null23\",\n    \"templateDescription\": \"VPP-APITemplate-vcfInd-Null23_Updated\",\n    \"reconciliationFileConfig\": {\n      \"adhocReconciliationReportEnabled\": false,\n      \"commFileId\": null,\n      \"templateName\": null,\n      \"onlinePaymentReconciliationEnabled\": false\n    },\n    \"processorConfig\": {\n      \"closeAccount\": true\n    }\n  },\n  \"responseStatus\": {\n    \"statusDesc\": \"Buyer template details retrieved successfully.\",\n    \"messageId\": \"107970185555\",\n    \"status\": \"success\",\n    \"statusCode\": \"BSGT0000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66a98da8-a5c8-4f70-addd-3e78c3cdaeaf",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#get_buyer_template\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_Region_Bank_9999\",\n  \"messageId\": \"107970185555\",\n  \"templateId\": \"1_3_9999_811\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2dc6236-bc19-43c4-8fa1-1a21ee7dcc1c",
+          "name": "Get Buyer Details",
+          "request": {
+            "name": "Get Buyer Details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "buyerManagement",
+                "buyer",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dcb17295-c84e-484d-92e4-8abfe14944dc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyer",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"messageId\": \"107970184447\",\n  \"buyerId\": \"200031032\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseObject\": {\n    \"responseFileConfig\": {\n      \"fileLevel\": null,\n      \"recipientLoginIds\": null,\n      \"commFileId\": null,\n      \"fileFormat\": null\n    },\n    \"proxyConfig\": {\n      \"holdDays\": \"180\",\n      \"bucketedProxyEnabled\": false,\n      \"autoRefreshEnabled\": false\n    },\n    \"boostPaymentConfig\": {\n      \"boostPaymentEnabled\": false\n    },\n    \"contactInfo\": {\n      \"zipCode\": \"78750\",\n      \"phone1Ext\": null,\n      \"city\": \"Austin\",\n      \"contactName\": \"VisaCompany\",\n      \"phone2Ext\": null,\n      \"phone3Ext\": null,\n      \"phone2\": null,\n      \"phone3\": null,\n      \"buyerId\": \"200031032\",\n      \"buyerName\": \"2000131032\",\n      \"templateId\": null,\n      \"phone1\": \"1234567890\",\n      \"implementationType\": 2,\n      \"companyId\": \"2000131032\",\n      \"emailAddress\": \"visab2bvpaqa1@visa.com\",\n      \"countryCode\": \"USA\",\n      \"addressLine1\": \"addr1\",\n      \"addressLine2\": null,\n      \"state\": \"TX\",\n      \"addressLine3\": null\n    },\n    \"buyerFeatureConfig\": {\n      \"fullAccountViewEnabled\": false,\n      \"cardMaskingDigitsOnline\": \"12\",\n      \"vcfDataFeedIndicator\": \"Y\",\n      \"onlinePaymentInstructionEnabled\": true,\n      \"onlinePaymentRequisitionEnabled\": true,\n      \"cardMaskingDigits\": \"4\",\n      \"pseudoAccountsEnabled\": false\n    },\n    \"rvaReconciliationFileConfig\": {\n      \"fileLevel\": \"\",\n      \"recipientLoginIds\": [],\n      \"commFileId\": \"\",\n      \"deliveryTime\": \"\",\n      \"deliveryFrequency\": null,\n      \"templateId\": \"\",\n      \"fileFormat\": null\n    },\n    \"paymentFileConfig\": {\n      \"edi824FileId\": null,\n      \"edi997FileId\": null,\n      \"inboundFileId\": null\n    },\n    \"billingConfig\": {\n      \"billingType\": \"I\",\n      \"billingBID\": \"10048816840\"\n    },\n    \"stripePaymentConfig\": {\n      \"remittanceNotificationEnabled\": false,\n      \"stripePaymentEnabled\": false\n    },\n    \"vanConfig\": {\n      \"fcsBankId\": null,\n      \"processingType\": null,\n      \"aceClientId\": null,\n      \"admClientId\": null,\n      \"visaADMOptionId\": null,\n      \"mcADMOptionId\": null,\n      \"vanEnabled\": false,\n      \"settlementExpirationDays\": null\n    },\n    \"stpPaymentConfig\": {\n      \"accountHolderFirstName\": null,\n      \"remittanceNotificationEnabled\": false,\n      \"stpPaymentEnabled\": false,\n      \"accountHolderLastName\": null\n    },\n    \"webServicesConfig\": {\n      \"apiCodes\": null,\n      \"webServicesEnabled\": false,\n      \"clientId\": null,\n      \"suppressSupplierNotification\": false,\n      \"vbdsClientId\": \"\"\n    },\n    \"paymentConfig\": {\n      \"securityCodeRequired\": true,\n      \"allowableCurrencies\": [\n        \"INR\",\n        \"USD\"\n      ],\n      \"expirationDays\": \"25\",\n      \"billingCurrency\": \"USD\",\n      \"expirationBufferDays\": \"5\",\n      \"defaultSecurityCode\": true,\n      \"paymentAdviceOption\": \"C\"\n    },\n    \"paymentSecurityConfig\": {\n      \"defaultSecurityFieldCode\": \"1\",\n      \"defaultSecurityQuestion\": \"Credential Text\",\n      \"customSecurityQuestions\": [],\n      \"customSecurityQuestionsEnabled\": false\n    },\n    \"approvalWorkflowConfig\": {\n      \"workflowFunctionCodes\": [],\n      \"workflowConfigEnabled\": false\n    },\n    \"authorizationControlConfig\": {\n      \"authControlPaymentTemplate\": \"Custom_Standard\",\n      \"issuerHoldingBID\": \"\",\n      \"authControlEnabled\": false,\n      \"defaultAuthControlEnabled\": false,\n      \"alertsEnabled\": false\n    },\n    \"paymentNotificationConfig\": {\n      \"defaultBuyerLanguageCode\": \"en_US\",\n      \"supplierReminderNotificationDays\": \"7\",\n      \"paymentAdviceTemplate\": \"Custom_Standard\",\n      \"settlementSource\": \"1\",\n      \"dateFormat\": \"DDMMYYYY\",\n      \"defaultSupplierReminderNotificationEnabled\": true,\n      \"defaultAttachRemittanceDetailsFile\": true,\n      \"supplierReminderNotificationEnabled\": true,\n      \"attachRemittanceDetailsFile\": true\n    },\n    \"reconciliationFileConfig\": {\n      \"fileLevel\": \"\",\n      \"recipientLoginIds\": [],\n      \"adhocReconciliationReportEnabled\": false,\n      \"commFileId\": \"\",\n      \"deliveryTime\": \"\",\n      \"templateName\": null,\n      \"deliveryFrequency\": null,\n      \"onlinePaymentReconciliationEnabled\": false,\n      \"fileFormat\": null\n    },\n    \"processorConfig\": {\n      \"embossedLine2\": \"<<Buyer Name>> \",\n      \"closeAccountEnabled\": true,\n      \"processorFields\": {\n        \"aceOptionSet\": \"1111\",\n        \"accountIdOptionSet\": \"1111\",\n        \"mailerIdOptionSet\": \"1111\",\n        \"companyNumber\": \"1111111\",\n        \"cycleFrequencyCode\": \"15\",\n        \"cmidDefaultValue\": \"\",\n        \"unitId\": \"1000000\",\n        \"agentNumber\": \"0000\",\n        \"cycleFrequencyType\": \"Monthly\"\n      },\n      \"suaEmbossedLine1\": \"<<Buyer Name>>~1\",\n      \"lodgedEmbossedLine1\": \"<<Supplier Name>>~1\"\n    }\n  },\n  \"responseStatus\": {\n    \"statusDesc\": \"Successfully retrieved the buyer\",\n    \"messageId\": \"1686861552\",\n    \"status\": \"success\",\n    \"statusCode\": \"BSGB0000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2702906-797b-4c5f-8e85-4642432e51a8",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#get_buyer_details\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyer",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"messageId\": \"107970184447\",\n  \"buyerId\": \"200031032\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "844ebeed-28a1-4ec7-842d-6c0346cbaa3c",
+          "name": "Create Buyer Template",
+          "request": {
+            "name": "Create Buyer Template",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "buyerManagement",
+                "buyerTemplate",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"paymentConfig\": {\n    \"billingCurrency\": \"<string>\",\n    \"expirationDays\": \"<string>\",\n    \"allowableCurrencies\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"paymentAdviceOption\": \"<string>\",\n    \"expirationBufferDays\": \"<string>\",\n    \"securityCodeRequired\": \"<boolean>\"\n  },\n  \"paymentNotificationConfig\": {\n    \"dateFormat\": \"<string>\",\n    \"defaultBuyerLanguageCode\": \"<string>\",\n    \"attachRemittanceFileDetails\": \"<boolean>\",\n    \"supplierReminderNotificationDays\": \"<string>\",\n    \"supplierReminderNotificationEnabled\": \"<boolean>\"\n  },\n  \"templateName\": \"<string>\",\n  \"vanConfig\": {\n    \"fcsBankId\": \"<string>\",\n    \"vanEnabled\": \"<boolean>\"\n  },\n  \"contactInfo\": {\n    \"phone1\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"implementationType\": \"<integer>\"\n  },\n  \"proxyConfig\": {\n    \"holdDays\": \"<string>\",\n    \"autoRefreshEnabled\": \"<boolean>\",\n    \"bucketedProxyEnabled\": \"<boolean>\"\n  },\n  \"billingConfig\": {\n    \"billingBID\": \"<string>\",\n    \"billingType\": \"<string>\"\n  },\n  \"processorConfig\": {\n    \"closeAccount\": \"<boolean>\"\n  },\n  \"stpPaymentConfig\": {\n    \"stpPaymentEnabled\": \"<boolean>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"clientId\": \"<string>\",\n    \"vbdsClientId\": \"<string>\",\n    \"webServicesEnabled\": \"<boolean>\",\n    \"suppressSupplierNotification\": \"<boolean>\"\n  },\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": \"<boolean>\"\n  },\n  \"buyerFeatureConfig\": {\n    \"cardMaskingDigits\": \"<string>\",\n    \"vcfDataFeedIndicator\": \"<string>\",\n    \"pseudoAccountsEnabled\": \"<boolean>\",\n    \"fullAccountViewEnabled\": \"<boolean>\",\n    \"cardMaskingDigitsOnline\": \"<string>\",\n    \"onlinePaymentInstructionEnabled\": \"<boolean>\",\n    \"onlinePaymentRequisitionEnabled\": \"<boolean>\"\n  },\n  \"responseFileConfig\": {\n    \"commFileId\": \"<string>\"\n  },\n  \"stripePaymentConfig\": {\n    \"stripePaymentEnabled\": \"<boolean>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"templateDescription\": \"<string>\",\n  \"paymentFileCommConfig\": {\n    \"edi824FileId\": \"<string>\",\n    \"edi997FileId\": \"<string>\",\n    \"inboundFileId\": \"<string>\"\n  },\n  \"paymentSecurityConfig\": {\n    \"customSecurityQuestions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaultSecurityQuestion\": \"<string>\",\n    \"defaultSecurityFieldCode\": \"<string>\",\n    \"customSecurityQuestionsEnabled\": \"<boolean>\"\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowConfigEnabled\": \"<boolean>\",\n    \"workflowFunctionCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"reconciliationFileConfig\": {\n    \"commFileId\": \"<string>\",\n    \"templateName\": \"<string>\",\n    \"adhocReconciliationReportEnabled\": \"<boolean>\",\n    \"onlinePaymentReconciliationEnabled\": \"<boolean>\"\n  },\n  \"authorizationControlConfig\": {\n    \"alertsEnabled\": \"<boolean>\",\n    \"issuerHoldingBID\": \"<string>\",\n    \"authControlEnabled\": \"<boolean>\"\n  },\n  \"rvaReconciliationFileConfig\": {\n    \"commFileId\": \"<string>\",\n    \"templateId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab79b44a-4ce4-457a-bf0b-3f7ca03910db",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"responseFileConfig\": null,\n  \"proxyConfig\": {\n    \"holdDays\": 2,\n    \"bucketedProxyEnabled\": false,\n    \"autoRefreshEnabled\": false\n  },\n  \"clientId\": \"B2BWS_1_2_3029\",\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": false\n  },\n  \"contactInfo\": null,\n  \"buyerFeatureConfig\": null,\n  \"rvaReconciliationFileConfig\": null,\n  \"stripePaymentConfig\": {\n    \"remittanceNotificationEnabled\": null,\n    \"stripePaymentEnabled\": false\n  },\n  \"messageId\": \"1579603814600\",\n  \"vanConfig\": null,\n  \"stpPaymentConfig\": {\n    \"remittanceNotificationEnabled\": false,\n    \"stpPaymentEnabled\": false\n  },\n  \"webServicesConfig\": null,\n  \"paymentConfig\": {\n    \"securityCodeRequired\": false,\n    \"allowableCurrencies\": [\n      \"USD\"\n    ],\n    \"expirationDays\": 30,\n    \"billingCurrency\": \"USD\",\n    \"expirationBufferDays\": 5,\n    \"paymentAdviceOption\": \"C\"\n  },\n  \"paymentFileCommConfig\": null,\n  \"paymentSecurityConfig\": {\n    \"defaultSecurityFieldCode\": 1,\n    \"defaultSecurityQuestion\": \"Credential Text\",\n    \"customSecurityQuestions\": null,\n    \"customSecurityQuestionsEnabled\": false\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowFunctionCodes\": [\n      \"AUCL\",\n      \"LCRC\",\n      \"PYIN\",\n      \"PYRN\"\n    ],\n    \"workflowConfigEnabled\": true\n  },\n  \"authorizationControlConfig\": {\n    \"issuerHoldingBID\": \"10029012\",\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": false\n  },\n  \"paymentNotificationConfig\": {\n    \"defaultBuyerLanguageCode\": \"en_US\",\n    \"supplierReminderNotificationDays\": 7,\n    \"dateFormat\": \"DDMMYYYY\",\n    \"supplierReminderNotificationEnabled\": true,\n    \"attachRemittanceFileDetails\": false\n  },\n  \"templateName\": \"1579603814600\",\n  \"templateDescription\": \"VPP Template\",\n  \"reconciliationFileConfig\": null,\n  \"processorConfig\": {\n    \"closeAccount\": null\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"templateId\": \"1_2_3029_50\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29eeee4e-ba40-41f9-8df2-e7b788f926ab",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#create_buyer_template\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"responseFileConfig\": null,\n  \"proxyConfig\": {\n    \"holdDays\": 2,\n    \"bucketedProxyEnabled\": false,\n    \"autoRefreshEnabled\": false\n  },\n  \"clientId\": \"B2BWS_1_2_3029\",\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": false\n  },\n  \"contactInfo\": null,\n  \"buyerFeatureConfig\": null,\n  \"rvaReconciliationFileConfig\": null,\n  \"stripePaymentConfig\": {\n    \"remittanceNotificationEnabled\": null,\n    \"stripePaymentEnabled\": false\n  },\n  \"messageId\": \"1579603814600\",\n  \"vanConfig\": null,\n  \"stpPaymentConfig\": {\n    \"remittanceNotificationEnabled\": false,\n    \"stpPaymentEnabled\": false\n  },\n  \"webServicesConfig\": null,\n  \"paymentConfig\": {\n    \"securityCodeRequired\": false,\n    \"allowableCurrencies\": [\n      \"USD\"\n    ],\n    \"expirationDays\": 30,\n    \"billingCurrency\": \"USD\",\n    \"expirationBufferDays\": 5,\n    \"paymentAdviceOption\": \"C\"\n  },\n  \"paymentFileCommConfig\": null,\n  \"paymentSecurityConfig\": {\n    \"defaultSecurityFieldCode\": 1,\n    \"defaultSecurityQuestion\": \"Credential Text\",\n    \"customSecurityQuestions\": null,\n    \"customSecurityQuestionsEnabled\": false\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowFunctionCodes\": [\n      \"AUCL\",\n      \"LCRC\",\n      \"PYIN\",\n      \"PYRN\"\n    ],\n    \"workflowConfigEnabled\": true\n  },\n  \"authorizationControlConfig\": {\n    \"issuerHoldingBID\": \"10029012\",\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": false\n  },\n  \"paymentNotificationConfig\": {\n    \"defaultBuyerLanguageCode\": \"en_US\",\n    \"supplierReminderNotificationDays\": 7,\n    \"dateFormat\": \"DDMMYYYY\",\n    \"supplierReminderNotificationEnabled\": true,\n    \"attachRemittanceFileDetails\": false\n  },\n  \"templateName\": \"1579603814600\",\n  \"templateDescription\": \"VPP Template\",\n  \"reconciliationFileConfig\": null,\n  \"processorConfig\": {\n    \"closeAccount\": null\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee75f45f-ed81-4540-b5a2-44ec9344b16c",
+          "name": "Update Buyer Template",
+          "request": {
+            "name": "Update Buyer Template",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "buyerManagement",
+                "buyerTemplate",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"templateId\": \"<string>\",\n  \"vanConfig\": {\n    \"fcsBankId\": \"<string>\",\n    \"vanEnabled\": \"<boolean>\"\n  },\n  \"contactInfo\": {\n    \"phone1\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"implementationType\": \"<integer>\"\n  },\n  \"proxyConfig\": {\n    \"holdDays\": \"<string>\",\n    \"autoRefreshEnabled\": \"<boolean>\",\n    \"bucketedProxyEnabled\": \"<boolean>\"\n  },\n  \"templateName\": \"<string>\",\n  \"billingConfig\": {\n    \"billingBID\": \"<string>\",\n    \"billingType\": \"<string>\"\n  },\n  \"paymentConfig\": {\n    \"expirationDays\": \"<string>\",\n    \"billingCurrency\": \"<string>\",\n    \"allowableCurrencies\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"paymentAdviceOption\": \"<string>\",\n    \"expirationBufferDays\": \"<string>\",\n    \"securityCodeRequired\": \"<boolean>\"\n  },\n  \"processorConfig\": {\n    \"closeAccount\": \"<boolean>\"\n  },\n  \"stpPaymentConfig\": {\n    \"stpPaymentEnabled\": \"<boolean>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"syncBuyerProfiles\": \"<boolean>\",\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"clientId\": \"<string>\",\n    \"vbdsClientId\": \"<string>\",\n    \"webServicesEnabled\": \"<boolean>\",\n    \"suppressSupplierNotification\": \"<boolean>\"\n  },\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": \"<boolean>\"\n  },\n  \"buyerFeatureConfig\": {\n    \"cardMaskingDigits\": \"<string>\",\n    \"vcfDataFeedIndicator\": \"<string>\",\n    \"pseudoAccountsEnabled\": \"<boolean>\",\n    \"fullAccountViewEnabled\": \"<boolean>\",\n    \"cardMaskingDigitsOnline\": \"<string>\",\n    \"onlinePaymentInstructionEnabled\": \"<boolean>\",\n    \"onlinePaymentRequisitionEnabled\": \"<boolean>\"\n  },\n  \"stripePaymentConfig\": {\n    \"stripePaymentEnabled\": \"<boolean>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"templateDescription\": \"<string>\",\n  \"paymentSecurityConfig\": {\n    \"customSecurityQuestions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaultSecurityQuestion\": \"<string>\",\n    \"defaultSecurityFieldCode\": \"<string>\",\n    \"customSecurityQuestionsEnabled\": \"<boolean>\"\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowConfigEnabled\": \"<boolean>\",\n    \"workflowFunctionCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"reconciliationFileConfig\": {\n    \"adhocReconciliationReportEnabled\": \"<boolean>\",\n    \"onlinePaymentReconciliationEnabled\": \"<boolean>\"\n  },\n  \"paymentNotificationConfig\": {\n    \"dateFormat\": \"<string>\",\n    \"defaultBuyerLanguageCode\": \"<string>\",\n    \"attachRemittanceFileDetails\": \"<boolean>\",\n    \"supplierReminderNotificationDays\": \"<string>\",\n    \"supplierReminderNotificationEnabled\": \"<boolean>\"\n  },\n  \"authorizationControlConfig\": {\n    \"alertsEnabled\": \"<boolean>\",\n    \"issuerHoldingBID\": \"<string>\",\n    \"authControlEnabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a3934f5-3831-444e-8737-f9d3e0e683e2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"proxyConfig\": \"\",\n  \"clientId\": \"B2BWS_1_Region_Bank_19401\",\n  \"boostPaymentConfig\": \"\",\n  \"contactInfo\": \"\",\n  \"buyerFeatureConfig\": \"\",\n  \"stripePaymentConfig\": \"\",\n  \"messageId\": \"1579804800637\",\n  \"vanConfig\": \"\",\n  \"stpPaymentConfig\": \"\",\n  \"webServicesConfig\": \"\",\n  \"templateId\": \"1_1_1940_81\",\n  \"syncBuyerProfiles\": true,\n  \"paymentConfig\": \"\",\n  \"paymentSecurityConfig\": \"\",\n  \"approvalWorkflowConfig\": \"\",\n  \"authorizationControlConfig\": {\n    \"issuerHoldingBID\": \"12345678\",\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": \"\"\n  },\n  \"paymentNotificationConfig\": \"\",\n  \"templateName\": \"1579804800637\",\n  \"templateDescription\": \"This ise first test template\",\n  \"reconciliationFileConfig\": \"\",\n  \"processorConfig\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"templateId\": \"1_1_1940_81\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18454169-d111-4a44-a366-246b9eaa6731",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#update_buyer_template\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"proxyConfig\": \"\",\n  \"clientId\": \"B2BWS_1_Region_Bank_19401\",\n  \"boostPaymentConfig\": \"\",\n  \"contactInfo\": \"\",\n  \"buyerFeatureConfig\": \"\",\n  \"stripePaymentConfig\": \"\",\n  \"messageId\": \"1579804800637\",\n  \"vanConfig\": \"\",\n  \"stpPaymentConfig\": \"\",\n  \"webServicesConfig\": \"\",\n  \"templateId\": \"1_1_1940_81\",\n  \"syncBuyerProfiles\": true,\n  \"paymentConfig\": \"\",\n  \"paymentSecurityConfig\": \"\",\n  \"approvalWorkflowConfig\": \"\",\n  \"authorizationControlConfig\": {\n    \"issuerHoldingBID\": \"12345678\",\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": \"\"\n  },\n  \"paymentNotificationConfig\": \"\",\n  \"templateName\": \"1579804800637\",\n  \"templateDescription\": \"This ise first test template\",\n  \"reconciliationFileConfig\": \"\",\n  \"processorConfig\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "171319bf-31ba-47f3-a00d-fce97607fcb9",
+          "name": "Update Buyer",
+          "request": {
+            "name": "Update Buyer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "buyerManagement",
+                "buyer",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"contactInfo\": {\n    \"buyerId\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"phone1\": \"<string>\",\n    \"phone2\": \"<string>\",\n    \"phone3\": \"<string>\",\n    \"zipCode\": \"<string>\",\n    \"phone1Ext\": \"<string>\",\n    \"phone2Ext\": \"<string>\",\n    \"phone3Ext\": \"<string>\",\n    \"contactName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"addressLine3\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"implementationType\": \"<integer>\"\n  },\n  \"messageId\": \"<string>\",\n  \"vanConfig\": {\n    \"fcsBankId\": \"<string>\",\n    \"vanEnabled\": \"<boolean>\",\n    \"admClientId\": \"<string>\",\n    \"mcADMOptionId\": \"<string>\",\n    \"processingType\": \"<string>\",\n    \"visaADMOptionId\": \"<string>\"\n  },\n  \"proxyConfig\": {\n    \"holdDays\": \"<string>\",\n    \"autoRefreshEnabled\": \"<boolean>\",\n    \"bucketedProxyEnabled\": \"<boolean>\"\n  },\n  \"billingConfig\": {\n    \"billingBID\": \"<string>\",\n    \"billingType\": \"<string>\"\n  },\n  \"paymentConfig\": {\n    \"expirationDays\": \"<string>\",\n    \"billingCurrency\": \"<string>\",\n    \"allowableCurrencies\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"paymentAdviceOption\": \"<string>\",\n    \"expirationBufferDays\": \"<string>\",\n    \"securityCodeRequired\": \"<boolean>\"\n  },\n  \"processorConfig\": {\n    \"processorFields\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"closeAccountEnabled\": \"<boolean>\"\n  },\n  \"stpPaymentConfig\": {\n    \"stpPaymentEnabled\": \"<boolean>\",\n    \"accountHolderLastName\": \"<string>\",\n    \"accountHolderFirstName\": \"<string>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"paymentFileConfig\": {\n    \"edi824FileId\": \"<string>\",\n    \"edi997FileId\": \"<string>\",\n    \"inboundFileId\": \"<string>\"\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"clientId\": \"<string>\",\n    \"vbdsClientId\": \"<string>\",\n    \"webServicesEnabled\": \"<boolean>\",\n    \"vbdsDataSubscription\": [\n      {\n        \"dataSubscriptionType\": \"<number>\",\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          },\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"dataSubscriptionType\": \"<number>\",\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          },\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"suppressSupplierNotification\": \"<boolean>\"\n  },\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": \"<boolean>\"\n  },\n  \"buyerFeatureConfig\": {\n    \"cardMaskingDigits\": \"<string>\",\n    \"pseudoAccountsEnabled\": \"<boolean>\",\n    \"fullAccountViewEnabled\": \"<boolean>\",\n    \"cardMaskingDigitsOnline\": \"<string>\",\n    \"onlinePaymentInstructionEnabled\": \"<boolean>\",\n    \"onlinePaymentRequisitionEnabled\": \"<boolean>\"\n  },\n  \"responseFileConfig\": {\n    \"fileLevel\": \"<string>\",\n    \"commFileId\": \"<string>\",\n    \"fileFormat\": \"<integer>\",\n    \"recipientLoginIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"stripePaymentConfig\": {\n    \"stripePaymentEnabled\": \"<boolean>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"paymentSecurityConfig\": {\n    \"customSecurityQuestions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaultSecurityQuestion\": \"<string>\",\n    \"defaultSecurityFieldCode\": \"<string>\",\n    \"customSecurityQuestionsEnabled\": \"<boolean>\"\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowConfigEnabled\": \"<boolean>\",\n    \"workflowFunctionCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"reconciliationFileConfig\": {\n    \"fileLevel\": \"<string>\",\n    \"commFileId\": \"<string>\",\n    \"fileFormat\": \"<integer>\",\n    \"deliveryTime\": \"<string>\",\n    \"templateName\": \"<string>\",\n    \"deliveryFrequency\": \"<integer>\",\n    \"recipientLoginIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"adhocReconciliationReportEnabled\": \"<boolean>\",\n    \"onlinePaymentReconciliationEnabled\": \"<boolean>\"\n  },\n  \"paymentNotificationConfig\": {\n    \"dateFormat\": \"<date>\",\n    \"defaultBuyerLanguageCode\": \"<string>\",\n    \"attachRemittanceDetailsFile\": \"<boolean>\",\n    \"supplierReminderNotificationDays\": \"<string>\",\n    \"supplierReminderNotificationEnabled\": \"<boolean>\"\n  },\n  \"authorizationControlConfig\": {\n    \"alertsEnabled\": \"<boolean>\",\n    \"issuerHoldingBID\": \"<string>\",\n    \"authControlEnabled\": \"<boolean>\"\n  },\n  \"rvaReconciliationFileConfig\": {\n    \"fileLevel\": \"<string>\",\n    \"commFileId\": \"<string>\",\n    \"fileFormat\": \"<integer>\",\n    \"templateId\": \"<string>\",\n    \"deliveryTime\": \"<string>\",\n    \"deliveryFrequency\": \"<integer>\",\n    \"recipientLoginIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b59d044-0eea-4e25-b83e-35523c5e0b1c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyer",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"proxyConfig\": {\n    \"holdDays\": 3,\n    \"bucketedProxyEnabled\": false,\n    \"autoRefreshEnabled\": false\n  },\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": false\n  },\n  \"contactInfo\": {\n    \"zipCode\": \"78759\",\n    \"phoneExt3\": \"\",\n    \"city\": \"Austin\",\n    \"contactName\": \"VisaCompany\",\n    \"phone2\": \"\",\n    \"phone3\": \"\",\n    \"defaultCurrencyCode\": \"USD\",\n    \"buyerId\": \"151785\",\n    \"buyerName\": \"TestPaymentFile\",\n    \"templateId\": \"1988\",\n    \"phone1\": \"8888888888\",\n    \"companyId\": \"151785\",\n    \"emailAddress\": \"visab2bvpaqa1@visa.com\",\n    \"countryCode\": \"USA\",\n    \"addressLine1\": \"12301ResearchBlvd23\",\n    \"phoneExt1\": \"\",\n    \"addressLine2\": \"Build#33\",\n    \"state\": \"TX\",\n    \"phoneExt2\": \"\",\n    \"addressLine3\": \"4thfloor\"\n  },\n  \"buyerFeatureConfig\": {\n    \"fullAccountViewEnabled\": false,\n    \"cardMaskingDigitsOnline\": 12,\n    \"onlinePaymentInstructionEnabled\": false,\n    \"onlinePaymentRequisitionEnabled\": false,\n    \"cardMaskingDigits\": 12,\n    \"pseudoAccountsEnabled\": false\n  },\n  \"stripePaymentConfig\": {\n    \"remittanceNotificationEnabled\": false,\n    \"stripePaymentEnabled\": false\n  },\n  \"messageId\": \"1579589087445\",\n  \"vanConfig\": {\n    \"processingType\": \"1\",\n    \"admClientId\": \"1234\",\n    \"mcADMOptionId\": \"12345\",\n    \"vanEnabled\": false\n  },\n  \"stpPaymentConfig\": {\n    \"accountHolderFirstName\": \"Visa\",\n    \"remittanceNotificationEnabled\": false,\n    \"stpPaymentEnabled\": false,\n    \"accountHolderLastName\": \"Card\"\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"SMGS\"\n    ],\n    \"webServicesEnabled\": true,\n    \"clientId\": \"B2BWS_1_1_1111\",\n    \"vbdsDataSubscription\": [\n      {\n        \"dataSubscriptionType\": 5001,\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": true,\n            \"accountType\": \"MEMO\"\n          },\n          {\n            \"subscribed\": true,\n            \"accountType\": \"NVPA\"\n          }\n        ]\n      }\n    ],\n    \"suppressSupplierNotification\": false,\n    \"vbdsClientId\": \"12345\"\n  },\n  \"paymentConfig\": {\n    \"securityCodeRequired\": false,\n    \"allowableCurrencies\": [\n      \"USD\"\n    ],\n    \"expirationDays\": 30,\n    \"billingCurrency\": \"USD\",\n    \"expirationBufferDays\": 5,\n    \"paymentAdviceOption\": \"C\"\n  },\n  \"paymentSecurityConfig\": {\n    \"defaultSecurityFieldCode\": 1,\n    \"defaultSecurityQuestion\": \"\",\n    \"customSecurityQuestions\": [\n      \"birthday\"\n    ],\n    \"customSecurityQuestionsEnabled\": true\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowFunctionCodes\": [\n      \"AUCL\",\n      \"PYRN\",\n      \"LCRC\",\n      \"PYIN\"\n    ],\n    \"workflowConfigEnabled\": true\n  },\n  \"authorizationControlConfig\": {\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": false\n  },\n  \"paymentNotificationConfig\": {\n    \"supplierReminderNotificationDays\": 2,\n    \"dateFormat\": \"DDMMYYYY\",\n    \"attachRemittanceDetails\": false,\n    \"supplierReminderNotificationEnabled\": true,\n    \"defaultLanguageCode\": \"en_us\"\n  },\n  \"processorConfig\": {\n    \"processorFields\": {\n      \"aceOptionSet\": \"34d2\",\n      \"corporationId\": \"2r\",\n      \"bin\": \"sd2\",\n      \"cmidDefaultValue\": \"245d3534\",\n      \"agentNumber\": \"3453\",\n      \"principalNumber\": \"66\",\n      \"accountIDOptionSet\": \"3482\",\n      \"companyNumber\": \"12344\",\n      \"authorizationStrategyCode\": \"hh66\",\n      \"pricingStrategy\": \"66hh\",\n      \"unitId\": \"prop1\",\n      \"mapId\": \"66hh\",\n      \"processType\": 9,\n      \"productCodes\": \"sdjssd\",\n      \"user4Code\": \"345u\",\n      \"hierarchyNode\": \"s3\",\n      \"plasticCode\": \"9866\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseStatus\": {\n    \"statusDesc\": \"Successfully updated the buyer\",\n    \"messageId\": \"1686772964\",\n    \"status\": \"success\",\n    \"statusCode\": \"BSUB0000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "498f0bf3-ca8d-48cf-b6ab-a8932f380a57",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#update_buyer\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyer",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"proxyConfig\": {\n    \"holdDays\": 3,\n    \"bucketedProxyEnabled\": false,\n    \"autoRefreshEnabled\": false\n  },\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": false\n  },\n  \"contactInfo\": {\n    \"zipCode\": \"78759\",\n    \"phoneExt3\": \"\",\n    \"city\": \"Austin\",\n    \"contactName\": \"VisaCompany\",\n    \"phone2\": \"\",\n    \"phone3\": \"\",\n    \"defaultCurrencyCode\": \"USD\",\n    \"buyerId\": \"151785\",\n    \"buyerName\": \"TestPaymentFile\",\n    \"templateId\": \"1988\",\n    \"phone1\": \"8888888888\",\n    \"companyId\": \"151785\",\n    \"emailAddress\": \"visab2bvpaqa1@visa.com\",\n    \"countryCode\": \"USA\",\n    \"addressLine1\": \"12301ResearchBlvd23\",\n    \"phoneExt1\": \"\",\n    \"addressLine2\": \"Build#33\",\n    \"state\": \"TX\",\n    \"phoneExt2\": \"\",\n    \"addressLine3\": \"4thfloor\"\n  },\n  \"buyerFeatureConfig\": {\n    \"fullAccountViewEnabled\": false,\n    \"cardMaskingDigitsOnline\": 12,\n    \"onlinePaymentInstructionEnabled\": false,\n    \"onlinePaymentRequisitionEnabled\": false,\n    \"cardMaskingDigits\": 12,\n    \"pseudoAccountsEnabled\": false\n  },\n  \"stripePaymentConfig\": {\n    \"remittanceNotificationEnabled\": false,\n    \"stripePaymentEnabled\": false\n  },\n  \"messageId\": \"1579589087445\",\n  \"vanConfig\": {\n    \"processingType\": \"1\",\n    \"admClientId\": \"1234\",\n    \"mcADMOptionId\": \"12345\",\n    \"vanEnabled\": false\n  },\n  \"stpPaymentConfig\": {\n    \"accountHolderFirstName\": \"Visa\",\n    \"remittanceNotificationEnabled\": false,\n    \"stpPaymentEnabled\": false,\n    \"accountHolderLastName\": \"Card\"\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"SMGS\"\n    ],\n    \"webServicesEnabled\": true,\n    \"clientId\": \"B2BWS_1_1_1111\",\n    \"vbdsDataSubscription\": [\n      {\n        \"dataSubscriptionType\": 5001,\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": true,\n            \"accountType\": \"MEMO\"\n          },\n          {\n            \"subscribed\": true,\n            \"accountType\": \"NVPA\"\n          }\n        ]\n      }\n    ],\n    \"suppressSupplierNotification\": false,\n    \"vbdsClientId\": \"12345\"\n  },\n  \"paymentConfig\": {\n    \"securityCodeRequired\": false,\n    \"allowableCurrencies\": [\n      \"USD\"\n    ],\n    \"expirationDays\": 30,\n    \"billingCurrency\": \"USD\",\n    \"expirationBufferDays\": 5,\n    \"paymentAdviceOption\": \"C\"\n  },\n  \"paymentSecurityConfig\": {\n    \"defaultSecurityFieldCode\": 1,\n    \"defaultSecurityQuestion\": \"\",\n    \"customSecurityQuestions\": [\n      \"birthday\"\n    ],\n    \"customSecurityQuestionsEnabled\": true\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowFunctionCodes\": [\n      \"AUCL\",\n      \"PYRN\",\n      \"LCRC\",\n      \"PYIN\"\n    ],\n    \"workflowConfigEnabled\": true\n  },\n  \"authorizationControlConfig\": {\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": false\n  },\n  \"paymentNotificationConfig\": {\n    \"supplierReminderNotificationDays\": 2,\n    \"dateFormat\": \"DDMMYYYY\",\n    \"attachRemittanceDetails\": false,\n    \"supplierReminderNotificationEnabled\": true,\n    \"defaultLanguageCode\": \"en_us\"\n  },\n  \"processorConfig\": {\n    \"processorFields\": {\n      \"aceOptionSet\": \"34d2\",\n      \"corporationId\": \"2r\",\n      \"bin\": \"sd2\",\n      \"cmidDefaultValue\": \"245d3534\",\n      \"agentNumber\": \"3453\",\n      \"principalNumber\": \"66\",\n      \"accountIDOptionSet\": \"3482\",\n      \"companyNumber\": \"12344\",\n      \"authorizationStrategyCode\": \"hh66\",\n      \"pricingStrategy\": \"66hh\",\n      \"unitId\": \"prop1\",\n      \"mapId\": \"66hh\",\n      \"processType\": 9,\n      \"productCodes\": \"sdjssd\",\n      \"user4Code\": \"345u\",\n      \"hierarchyNode\": \"s3\",\n      \"plasticCode\": \"9866\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a75ec0b7-c8ea-437f-a561-cca262e33a56",
+          "name": "Create Buyer",
+          "request": {
+            "name": "Create Buyer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "buyerManagement",
+                "buyer",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"contactInfo\": {\n    \"addressLine1\": \"<string>\",\n    \"buyerName\": \"<string>\",\n    \"city\": \"<string>\",\n    \"companyId\": \"<string>\",\n    \"contactName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipCode\": \"<string>\",\n    \"phone1\": \"<string>\",\n    \"phone2\": \"<string>\",\n    \"phone3\": \"<string>\",\n    \"buyerId\": \"<string>\",\n    \"phone1Ext\": \"<string>\",\n    \"phone2Ext\": \"<string>\",\n    \"phone3Ext\": \"<string>\",\n    \"templateId\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"addressLine3\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"implementationType\": \"<integer>\"\n  },\n  \"messageId\": \"<string>\",\n  \"vanConfig\": {\n    \"fcsBankId\": \"<string>\",\n    \"vanEnabled\": \"<boolean>\",\n    \"admClientId\": \"<string>\",\n    \"mcADMOptionId\": \"<string>\",\n    \"processingType\": \"<string>\",\n    \"visaADMOptionId\": \"<string>\"\n  },\n  \"proxyConfig\": {\n    \"holdDays\": \"<string>\",\n    \"autoRefreshEnabled\": \"<boolean>\",\n    \"bucketedProxyEnabled\": \"<boolean>\"\n  },\n  \"billingConfig\": {\n    \"billingBID\": \"<string>\",\n    \"billingType\": \"<string>\"\n  },\n  \"paymentConfig\": {\n    \"expirationDays\": \"<string>\",\n    \"billingCurrency\": \"<string>\",\n    \"allowableCurrencies\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"paymentAdviceOption\": \"<string>\",\n    \"expirationBufferDays\": \"<string>\",\n    \"securityCodeRequired\": \"<boolean>\"\n  },\n  \"processorConfig\": {\n    \"processorFields\": {\n      \"key_0\": {}\n    },\n    \"closeAccountEnabled\": \"<boolean>\"\n  },\n  \"stpPaymentConfig\": {\n    \"stpPaymentEnabled\": \"<boolean>\",\n    \"accountHolderLastName\": \"<string>\",\n    \"accountHolderFirstName\": \"<string>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"paymentFileConfig\": {\n    \"edi824FileId\": \"<string>\",\n    \"edi997FileId\": \"<string>\",\n    \"inboundFileId\": \"<string>\"\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"clientId\": \"<string>\",\n    \"vbdsClientId\": \"<string>\",\n    \"webServicesEnabled\": \"<boolean>\",\n    \"vbdsDataSubscription\": [\n      {\n        \"dataSubscriptionType\": \"<number>\",\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          },\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"dataSubscriptionType\": \"<number>\",\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          },\n          {\n            \"subscribed\": \"<boolean>\",\n            \"accountType\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"suppressSupplierNotification\": \"<boolean>\"\n  },\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": \"<boolean>\"\n  },\n  \"buyerFeatureConfig\": {\n    \"cardMaskingDigits\": \"<string>\",\n    \"vcfDataFeedIndicator\": \"<string>\",\n    \"pseudoAccountsEnabled\": \"<boolean>\",\n    \"fullAccountViewEnabled\": \"<boolean>\",\n    \"cardMaskingDigitsOnline\": \"<string>\",\n    \"onlinePaymentInstructionEnabled\": \"<boolean>\",\n    \"onlinePaymentRequisitionEnabled\": \"<boolean>\"\n  },\n  \"responseFileConfig\": {\n    \"fileLevel\": \"<string>\",\n    \"commFileId\": \"<string>\",\n    \"fileFormat\": \"<integer>\",\n    \"recipientLoginIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"stripePaymentConfig\": {\n    \"stripePaymentEnabled\": \"<boolean>\",\n    \"remittanceNotificationEnabled\": \"<boolean>\"\n  },\n  \"paymentSecurityConfig\": {\n    \"customSecurityQuestions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"defaultSecurityQuestion\": \"<string>\",\n    \"defaultSecurityFieldCode\": \"<string>\",\n    \"customSecurityQuestionsEnabled\": \"<boolean>\"\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowConfigEnabled\": \"<boolean>\",\n    \"workflowFunctionCodes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"reconciliationFileConfig\": {\n    \"fileLevel\": \"<string>\",\n    \"commFileId\": \"<string>\",\n    \"fileFormat\": \"<integer>\",\n    \"deliveryTime\": \"<string>\",\n    \"templateName\": \"<string>\",\n    \"deliveryFrequency\": \"<integer>\",\n    \"recipientLoginIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"adhocReconciliationReportEnabled\": \"<boolean>\",\n    \"onlinePaymentReconciliationEnabled\": \"<boolean>\"\n  },\n  \"paymentNotificationConfig\": {\n    \"dateFormat\": \"<date>\",\n    \"defaultBuyerLanguageCode\": \"<string>\",\n    \"attachRemittanceDetailsFile\": \"<boolean>\",\n    \"supplierReminderNotificationDays\": \"<string>\",\n    \"supplierReminderNotificationEnabled\": \"<boolean>\"\n  },\n  \"authorizationControlConfig\": {\n    \"alertsEnabled\": \"<boolean>\",\n    \"issuerHoldingBID\": \"<string>\",\n    \"authControlEnabled\": \"<boolean>\"\n  },\n  \"rvaReconciliationFileConfig\": {\n    \"fileLevel\": \"<string>\",\n    \"commFileId\": \"<string>\",\n    \"fileFormat\": \"<integer>\",\n    \"templateId\": \"<string>\",\n    \"deliveryTime\": \"<string>\",\n    \"deliveryFrequency\": \"<integer>\",\n    \"recipientLoginIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "339d8ba5-9065-4ee5-ba91-c3104f7ad02f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyer",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"proxyConfig\": {\n    \"holdDays\": 3,\n    \"bucketedProxyEnabled\": false,\n    \"autoRefreshEnabled\": false\n  },\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": false\n  },\n  \"contactInfo\": {\n    \"zipCode\": \"78759\",\n    \"phoneExt3\": \"\",\n    \"city\": \"Austin\",\n    \"contactName\": \"VisaCompany\",\n    \"phone2\": \"\",\n    \"phone3\": \"\",\n    \"defaultCurrencyCode\": \"USD\",\n    \"buyerId\": \"8887773\",\n    \"buyerName\": \"TestPaymentFileLijie14\",\n    \"phone1\": \"8888888888\",\n    \"companyId\": \"8887773\",\n    \"emailAddress\": \"visab2bvpaqa1@visa.com\",\n    \"countryCode\": \"USA\",\n    \"addressLine1\": \"12301 ResearchBlvd23\",\n    \"phoneExt1\": \"\",\n    \"addressLine2\": \"Build#33\",\n    \"state\": \"TX\",\n    \"phoneExt2\": \"\",\n    \"addressLine3\": \"4th floor\"\n  },\n  \"buyerFeatureConfig\": {\n    \"fullAccountViewEnabled\": false,\n    \"cardMaskingDigitsOnline\": 12,\n    \"onlinePaymentInstructionEnabled\": false,\n    \"onlinePaymentRequisitionEnabled\": false,\n    \"cardMaskingDigits\": 12,\n    \"pseudoAccountsEnabled\": false\n  },\n  \"paymentFileConfig\": {\n    \"inboundFileId\": \"700147\"\n  },\n  \"stripePaymentConfig\": {\n    \"remittanceNotificationEnabled\": false,\n    \"stripePaymentEnabled\": false\n  },\n  \"messageId\": \"1579589087445\",\n  \"stpPaymentConfig\": {\n    \"accountHolderFirstName\": \"Visa\",\n    \"remittanceNotificationEnabled\": false,\n    \"stpPaymentEnabled\": false,\n    \"accountHolderLastName\": \"Card\"\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"SMGS\"\n    ],\n    \"webServicesEnabled\": true,\n    \"clientId\": \"B2BWS_1_1_1111\",\n    \"vbdsDataSubscription\": [\n      {\n        \"dataSubscriptionType\": 5001,\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": true,\n            \"accountType\": \"MEMO\"\n          },\n          {\n            \"subscribed\": true,\n            \"accountType\": \"NVPA\"\n          }\n        ]\n      }\n    ],\n    \"suppressSupplierNotification\": false,\n    \"vbdsClientId\": \"12345\"\n  },\n  \"paymentConfig\": {\n    \"securityCodeRequired\": false,\n    \"allowableCurrencies\": [\n      \"USD\"\n    ],\n    \"expirationDays\": 30,\n    \"billingCurrency\": \"USD\",\n    \"expirationBufferDays\": 5,\n    \"paymentAdviceOption\": \"C\"\n  },\n  \"paymentSecurityConfig\": {\n    \"defaultSecurityFieldCode\": 1,\n    \"customSecurityQuestions\": [\n      \"birthday\"\n    ],\n    \"customSecurityQuestionsEnabled\": true\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowFunctionCodes\": [\n      \"AUCL\"\n    ],\n    \"workflowConfigEnabled\": true\n  },\n  \"authorizationControlConfig\": {\n    \"issuerHoldingBID\": \"12345678\",\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": false\n  },\n  \"paymentNotificationConfig\": {\n    \"supplierReminderNotificationDays\": 2,\n    \"dateFormat\": \"DDMMYYYY\",\n    \"attachRemittanceDetails\": false,\n    \"supplierReminderNotificationEnabled\": true,\n    \"defaultLanguageCode\": \"en_us\"\n  },\n  \"reconciliationFileConfig\": {\n    \"fileLevel\": \"B\",\n    \"commFileId\": \"700144\"\n  },\n  \"processorConfig\": {\n    \"processorFields\": {\n      \"aceOptionSet\": \"34d2\",\n      \"subProductCode\": \"REG\",\n      \"corporationId\": \"2r\",\n      \"cycleFrequencyCode\": \"5\",\n      \"bin\": \"sd2\",\n      \"hierarchyLevel\": \"2\",\n      \"cmidDefaultValue\": \"245d3534\",\n      \"agentNumber\": \"3453\",\n      \"principalNumber\": \"66\",\n      \"productCode\": \"VPU\",\n      \"accountIDOptionSet\": \"3482\",\n      \"companyNumber\": \"12344\",\n      \"cycleFrequency\": \"Bi-weekly\",\n      \"authorizationStrategyCode\": \"hh66\",\n      \"pricingStrategy\": \"66hh\",\n      \"unitId\": \"prop1\",\n      \"mapId\": \"66hh\",\n      \"processType\": 9,\n      \"user4Code\": \"345u\",\n      \"hierarchyNode\": \"s3\",\n      \"plasticCode\": \"9866\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseStatus\": {\n    \"statusDesc\": \"Successfully created the buyer\",\n    \"messageId\": \"1686772964\",\n    \"status\": \"success\",\n    \"statusCode\": \"BSUB0000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59b1021e-8525-4da1-b0b2-471c23f74796",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#create_buyer\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyer",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"proxyConfig\": {\n    \"holdDays\": 3,\n    \"bucketedProxyEnabled\": false,\n    \"autoRefreshEnabled\": false\n  },\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": false\n  },\n  \"contactInfo\": {\n    \"zipCode\": \"78759\",\n    \"phoneExt3\": \"\",\n    \"city\": \"Austin\",\n    \"contactName\": \"VisaCompany\",\n    \"phone2\": \"\",\n    \"phone3\": \"\",\n    \"defaultCurrencyCode\": \"USD\",\n    \"buyerId\": \"8887773\",\n    \"buyerName\": \"TestPaymentFileLijie14\",\n    \"phone1\": \"8888888888\",\n    \"companyId\": \"8887773\",\n    \"emailAddress\": \"visab2bvpaqa1@visa.com\",\n    \"countryCode\": \"USA\",\n    \"addressLine1\": \"12301 ResearchBlvd23\",\n    \"phoneExt1\": \"\",\n    \"addressLine2\": \"Build#33\",\n    \"state\": \"TX\",\n    \"phoneExt2\": \"\",\n    \"addressLine3\": \"4th floor\"\n  },\n  \"buyerFeatureConfig\": {\n    \"fullAccountViewEnabled\": false,\n    \"cardMaskingDigitsOnline\": 12,\n    \"onlinePaymentInstructionEnabled\": false,\n    \"onlinePaymentRequisitionEnabled\": false,\n    \"cardMaskingDigits\": 12,\n    \"pseudoAccountsEnabled\": false\n  },\n  \"paymentFileConfig\": {\n    \"inboundFileId\": \"700147\"\n  },\n  \"stripePaymentConfig\": {\n    \"remittanceNotificationEnabled\": false,\n    \"stripePaymentEnabled\": false\n  },\n  \"messageId\": \"1579589087445\",\n  \"stpPaymentConfig\": {\n    \"accountHolderFirstName\": \"Visa\",\n    \"remittanceNotificationEnabled\": false,\n    \"stpPaymentEnabled\": false,\n    \"accountHolderLastName\": \"Card\"\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"SMGS\"\n    ],\n    \"webServicesEnabled\": true,\n    \"clientId\": \"B2BWS_1_1_1111\",\n    \"vbdsDataSubscription\": [\n      {\n        \"dataSubscriptionType\": 5001,\n        \"dataSubscriptionAccountType\": [\n          {\n            \"subscribed\": true,\n            \"accountType\": \"MEMO\"\n          },\n          {\n            \"subscribed\": true,\n            \"accountType\": \"NVPA\"\n          }\n        ]\n      }\n    ],\n    \"suppressSupplierNotification\": false,\n    \"vbdsClientId\": \"12345\"\n  },\n  \"paymentConfig\": {\n    \"securityCodeRequired\": false,\n    \"allowableCurrencies\": [\n      \"USD\"\n    ],\n    \"expirationDays\": 30,\n    \"billingCurrency\": \"USD\",\n    \"expirationBufferDays\": 5,\n    \"paymentAdviceOption\": \"C\"\n  },\n  \"paymentSecurityConfig\": {\n    \"defaultSecurityFieldCode\": 1,\n    \"customSecurityQuestions\": [\n      \"birthday\"\n    ],\n    \"customSecurityQuestionsEnabled\": true\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowFunctionCodes\": [\n      \"AUCL\"\n    ],\n    \"workflowConfigEnabled\": true\n  },\n  \"authorizationControlConfig\": {\n    \"issuerHoldingBID\": \"12345678\",\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": false\n  },\n  \"paymentNotificationConfig\": {\n    \"supplierReminderNotificationDays\": 2,\n    \"dateFormat\": \"DDMMYYYY\",\n    \"attachRemittanceDetails\": false,\n    \"supplierReminderNotificationEnabled\": true,\n    \"defaultLanguageCode\": \"en_us\"\n  },\n  \"reconciliationFileConfig\": {\n    \"fileLevel\": \"B\",\n    \"commFileId\": \"700144\"\n  },\n  \"processorConfig\": {\n    \"processorFields\": {\n      \"aceOptionSet\": \"34d2\",\n      \"subProductCode\": \"REG\",\n      \"corporationId\": \"2r\",\n      \"cycleFrequencyCode\": \"5\",\n      \"bin\": \"sd2\",\n      \"hierarchyLevel\": \"2\",\n      \"cmidDefaultValue\": \"245d3534\",\n      \"agentNumber\": \"3453\",\n      \"principalNumber\": \"66\",\n      \"productCode\": \"VPU\",\n      \"accountIDOptionSet\": \"3482\",\n      \"companyNumber\": \"12344\",\n      \"cycleFrequency\": \"Bi-weekly\",\n      \"authorizationStrategyCode\": \"hh66\",\n      \"pricingStrategy\": \"66hh\",\n      \"unitId\": \"prop1\",\n      \"mapId\": \"66hh\",\n      \"processType\": 9,\n      \"user4Code\": \"345u\",\n      \"hierarchyNode\": \"s3\",\n      \"plasticCode\": \"9866\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f23d907-470f-4b20-bc2f-7104cac53232",
+          "name": "Get Buyer Details",
+          "request": {
+            "name": "Get Buyer Details",
+            "description": {
+              "content": "Retrieve all of the current parameters of an existing buyers’ profile. Use this for troubleshooting or to get the full buyer profile details before updating a buyer. Enables the addition, update or deletion of new company template and profiles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v2",
+                "buyerManagement",
+                "buyer",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1b6872d-1757-428b-8f1d-15c8da3bdc59",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "buyerManagement",
+                    "buyer",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"messageId\": \"107970184447\",\n  \"buyerId\": \"200031032\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseObject\": {\n    \"responseFileConfig\": {\n      \"fileLevel\": null,\n      \"recipientLoginIds\": null,\n      \"commFileId\": null,\n      \"fileFormat\": null\n    },\n    \"proxyConfig\": {\n      \"holdDays\": \"180\",\n      \"bucketedProxyEnabled\": false,\n      \"autoRefreshEnabled\": false\n    },\n    \"boostPaymentConfig\": {\n      \"boostPaymentEnabled\": false\n    },\n    \"contactInfo\": {\n      \"zipCode\": \"78750\",\n      \"phone1Ext\": null,\n      \"city\": \"Austin\",\n      \"contactName\": \"VisaCompany\",\n      \"phone2Ext\": null,\n      \"phone3Ext\": null,\n      \"phone2\": null,\n      \"phone3\": null,\n      \"buyerId\": \"200031032\",\n      \"buyerName\": \"2000131032\",\n      \"templateId\": null,\n      \"phone1\": \"1234567890\",\n      \"implementationType\": 2,\n      \"companyId\": \"2000131032\",\n      \"emailAddress\": \"visab2bvpaqa1@visa.com\",\n      \"countryCode\": \"USA\",\n      \"addressLine1\": \"addr1\",\n      \"addressLine2\": null,\n      \"state\": \"TX\",\n      \"addressLine3\": null\n    },\n    \"buyerFeatureConfig\": {\n      \"fullAccountViewEnabled\": false,\n      \"cardMaskingDigitsOnline\": \"12\",\n      \"vcfDataFeedIndicator\": \"Y\",\n      \"onlinePaymentInstructionEnabled\": true,\n      \"onlinePaymentRequisitionEnabled\": true,\n      \"cardMaskingDigits\": \"4\",\n      \"pseudoAccountsEnabled\": false\n    },\n    \"rvaReconciliationFileConfig\": {\n      \"fileLevel\": \"\",\n      \"recipientLoginIds\": [],\n      \"commFileId\": \"\",\n      \"deliveryTime\": \"\",\n      \"deliveryFrequency\": null,\n      \"templateId\": \"\",\n      \"fileFormat\": null\n    },\n    \"paymentFileConfig\": {\n      \"edi824FileId\": null,\n      \"edi997FileId\": null,\n      \"inboundFileId\": null\n    },\n    \"billingConfig\": {\n      \"billingType\": \"I\",\n      \"billingBID\": \"10048816840\"\n    },\n    \"stripePaymentConfig\": {\n      \"remittanceNotificationEnabled\": false,\n      \"stripePaymentEnabled\": false\n    },\n    \"vanConfig\": {\n      \"fcsBankId\": null,\n      \"processingType\": null,\n      \"aceClientId\": null,\n      \"admClientId\": null,\n      \"visaADMOptionId\": null,\n      \"mcADMOptionId\": null,\n      \"vanEnabled\": false,\n      \"settlementExpirationDays\": null\n    },\n    \"stpPaymentConfig\": {\n      \"accountHolderFirstName\": null,\n      \"remittanceNotificationEnabled\": false,\n      \"stpPaymentEnabled\": false,\n      \"accountHolderLastName\": null\n    },\n    \"webServicesConfig\": {\n      \"apiCodes\": null,\n      \"webServicesEnabled\": false,\n      \"clientId\": null,\n      \"vbdsDataSubscription\": [\n        {\n          \"dataSubscriptionType\": 5001,\n          \"dataSubscriptionAccountType\": [\n            {\n              \"subscribed\": true,\n              \"accountType\": \"MEMO\"\n            },\n            {\n              \"subscribed\": true,\n              \"accountType\": \"NVPA\"\n            }\n          ]\n        }\n      ],\n      \"suppressSupplierNotification\": false,\n      \"vbdsClientId\": \"12345\"\n    },\n    \"paymentConfig\": {\n      \"securityCodeRequired\": true,\n      \"allowableCurrencies\": [\n        \"INR\",\n        \"USD\"\n      ],\n      \"expirationDays\": \"25\",\n      \"billingCurrency\": \"USD\",\n      \"expirationBufferDays\": \"5\",\n      \"defaultSecurityCode\": true,\n      \"paymentAdviceOption\": \"C\"\n    },\n    \"paymentSecurityConfig\": {\n      \"defaultSecurityFieldCode\": \"1\",\n      \"defaultSecurityQuestion\": \"Credential Text\",\n      \"customSecurityQuestions\": [],\n      \"customSecurityQuestionsEnabled\": false\n    },\n    \"approvalWorkflowConfig\": {\n      \"workflowFunctionCodes\": [],\n      \"workflowConfigEnabled\": false\n    },\n    \"authorizationControlConfig\": {\n      \"authControlPaymentTemplate\": \"Custom_Standard\",\n      \"issuerHoldingBID\": \"\",\n      \"authControlEnabled\": false,\n      \"defaultAuthControlEnabled\": false,\n      \"alertsEnabled\": false\n    },\n    \"paymentNotificationConfig\": {\n      \"defaultBuyerLanguageCode\": \"en_US\",\n      \"supplierReminderNotificationDays\": \"7\",\n      \"paymentAdviceTemplate\": \"Custom_Standard\",\n      \"settlementSource\": \"1\",\n      \"dateFormat\": \"DDMMYYYY\",\n      \"defaultSupplierReminderNotificationEnabled\": true,\n      \"defaultAttachRemittanceDetailsFile\": true,\n      \"supplierReminderNotificationEnabled\": true,\n      \"attachRemittanceDetailsFile\": true\n    },\n    \"reconciliationFileConfig\": {\n      \"fileLevel\": \"\",\n      \"recipientLoginIds\": [],\n      \"adhocReconciliationReportEnabled\": false,\n      \"commFileId\": \"\",\n      \"deliveryTime\": \"\",\n      \"templateName\": null,\n      \"deliveryFrequency\": null,\n      \"onlinePaymentReconciliationEnabled\": false,\n      \"fileFormat\": null\n    },\n    \"processorConfig\": {\n      \"embossedLine2\": \"<<Buyer Name>> \",\n      \"closeAccountEnabled\": true,\n      \"processorFields\": {\n        \"aceOptionSet\": \"1111\",\n        \"accountIdOptionSet\": \"1111\",\n        \"mailerIdOptionSet\": \"1111\",\n        \"companyNumber\": \"1111111\",\n        \"cycleFrequencyCode\": \"15\",\n        \"cmidDefaultValue\": \"\",\n        \"unitId\": \"1000000\",\n        \"agentNumber\": \"0000\",\n        \"cycleFrequencyType\": \"Monthly\"\n      },\n      \"suaEmbossedLine1\": \"<<Buyer Name>>~1\",\n      \"lodgedEmbossedLine1\": \"<<Supplier Name>>~1\"\n    }\n  },\n  \"responseStatus\": {\n    \"statusDesc\": \"Successfully retrieved the buyer\",\n    \"messageId\": \"1686861552\",\n    \"status\": \"success\",\n    \"statusCode\": \"BSGB0000\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2867b675-59ec-447f-a739-cb97de378801",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#get_buyer_details\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "buyerManagement",
+                    "buyer",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_1111\",\n  \"messageId\": \"107970184447\",\n  \"buyerId\": \"200031032\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af7a443b-b53c-4ad6-bb81-09e02385eb85",
+          "name": "Get Buyer Template",
+          "request": {
+            "name": "Get Buyer Template",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "buyerManagement",
+                "buyerTemplate",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"templateId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91f54093-e5be-4815-9faa-b0250cc8d784",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_Region_Bank_9999\",\n  \"messageId\": \"1579791844475\",\n  \"templateId\": \"1_3_9999_110\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseFileConfig\": null,\n  \"proxyConfig\": {\n    \"holdDays\": \"2\",\n    \"bucketedProxyEnabled\": false,\n    \"autoRefreshEnabled\": true\n  },\n  \"boostPaymentConfig\": {\n    \"boostPaymentEnabled\": true\n  },\n  \"contactInfo\": {\n    \"emailAddress\": \"visab2bvpaqa1@visa.com\",\n    \"phone1\": \"8888888888\"\n  },\n  \"buyerFeatureConfig\": {\n    \"fullAccountViewEnabled\": true,\n    \"cardMaskingDigitsOnline\": \"12\",\n    \"onlinePaymentInstructionEnabled\": true,\n    \"onlinePaymentRequisitionEnabled\": true,\n    \"cardMaskingDigits\": \"12\",\n    \"pseudoAccountsEnabled\": false\n  },\n  \"rvaReconciliationFileConfig\": null,\n  \"stripePaymentConfig\": {\n    \"remittanceNotificationEnabled\": true,\n    \"stripePaymentEnabled\": true\n  },\n  \"vanConfig\": {\n    \"fcsBankId\": \"F285\",\n    \"vanEnabled\": true\n  },\n  \"stpPaymentConfig\": {\n    \"remittanceNotificationEnabled\": true,\n    \"stpPaymentEnabled\": true\n  },\n  \"webServicesConfig\": {\n    \"apiCodes\": [\n      \"ALL\"\n    ],\n    \"webServicesEnabled\": true,\n    \"clientId\": \"B2BWS_1_Region_Bank_9999\",\n    \"suppressSupplierNotification\": false,\n    \"vbdsClientId\": \"6677\"\n  },\n  \"templateId\": \"1_3_9999_110\",\n  \"paymentConfig\": {\n    \"securityCodeRequired\": true,\n    \"allowableCurrencies\": [\n      \"USD\"\n    ],\n    \"expirationDays\": \"30\",\n    \"billingCurrency\": \"USD\",\n    \"expirationBufferDays\": \"5\",\n    \"paymentAdviceOption\": \"C\"\n  },\n  \"paymentFileCommConfig\": null,\n  \"paymentSecurityConfig\": {\n    \"defaultSecurityFieldCode\": \"1\",\n    \"defaultSecurityQuestion\": \"Credential Text\",\n    \"customSecurityQuestions\": null,\n    \"customSecurityQuestionsEnabled\": false\n  },\n  \"approvalWorkflowConfig\": {\n    \"workflowFunctionCodes\": [\n      \"AUCL\",\n      \"LCRC\",\n      \"PYIN\",\n      \"PYRN\"\n    ],\n    \"workflowConfigEnabled\": true\n  },\n  \"authorizationControlConfig\": {\n    \"issuerHoldingBID\": null,\n    \"authControlEnabled\": true,\n    \"alertsEnabled\": false\n  },\n  \"paymentNotificationConfig\": {\n    \"defaultBuyerLanguageCode\": \"en_US\",\n    \"supplierReminderNotificationDays\": \"7\",\n    \"dateFormat\": \"DDMMYYYY\",\n    \"supplierReminderNotificationEnabled\": true,\n    \"attachRemittanceFileDetails\": false\n  },\n  \"templateName\": \"1579774641311\",\n  \"templateDescription\": \"VPP Template\",\n  \"reconciliationFileConfig\": {\n    \"adhocReconciliationReportEnabled\": false,\n    \"commFileId\": null,\n    \"templateName\": null,\n    \"onlinePaymentReconciliationEnabled\": false\n  },\n  \"processorConfig\": {\n    \"closeAccount\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8638101-2747-4727-93dd-932ced27fb28",
+              "name": "Refer to the <a href=\"/pages/B2B-virtual-account-payment-method-error-codes#get_buyer_template\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "buyerManagement",
+                    "buyerTemplate",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_Region_Bank_9999\",\n  \"messageId\": \"1579791844475\",\n  \"templateId\": \"1_3_9999_110\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorObject\": {\n    \"errorList\": [\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      },\n      {\n        \"errorCode\": \"string\",\n        \"errorDescription\": \"string\"\n      }\n    ]\n  },\n  \"responseStatus\": {\n    \"status\": \"success\",\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a17f30cd-6e93-46c8-b552-7f25d488e529",
+    "name": "Foreign Exchange Rates Buyer Management Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Buyer Service provides self-service capabilities that simplify and reduce the implementation process for new VPA buyers (and other downstream systems). Buyers can be created from scratch or from a pre-defined Buyer Template. Either way, these APIs help streamline the process and increase the speed of buyer deployments, as well as provide third parties with insight into the buyers configurations for troubleshooting. For more details about the requirements for creating a buyer, please reference the <a href=\"/pages/B2B-virtual-account-payment-method-codes#buyer_setup_details\">Buyer Setup Details</a> page.",
+      "type": "text/plain"
+    }
+  }
+}

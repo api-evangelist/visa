@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates CTP Consumer Management API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CTP Consumer Management API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enroll Consumer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasrci/v1/consumers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enrolls a new consumer into the Click to Pay ecosystem, creating a profile that can store payment credentials for streamlined checkout experiences across participating merchants."
+        },
+        {
+          "info": {
+            "name": "Add Consumer Credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/visasrci/v1/consumers/:consumerId/credentials",
+            "params": [
+              {
+                "name": "consumerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the enrolled consumer"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new payment credential to an existing consumer profile. The credential is tokenized and stored securely for use in future Click to Pay transactions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

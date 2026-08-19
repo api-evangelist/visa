@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates In-App Provisioning for Apple Pay API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "In-App Provisioning for Apple Pay",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Card Data Apple Pay",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/inapp/provisioning/cardData/applePay",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Card data for provisioning a Visa Token in ApplePay using vCardId or encrypted card as input"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

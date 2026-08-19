@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Payment Account Validation API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Account Validation API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Card Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/pav/v1/cardvalidation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Perform validations of the payment account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

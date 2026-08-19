@@ -1,0 +1,215 @@
+{
+  "item": [
+    {
+      "id": "647a64f2-fd4e-43cc-bd9a-d1a97840ee9e",
+      "name": "Alert History API",
+      "description": {
+        "content": "Retrieve notification history for accounts and manage customer profiles for alert delivery.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e4239f6-3e8e-4d3c-888c-efd7cb7292e0",
+          "name": "Get Alert History",
+          "request": {
+            "name": "Get Alert History",
+            "description": {
+              "content": "Retrieves the VTC notification history for a registered account, including details of all alerts generated based on the consumer's configured rules and thresholds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "alerthistory",
+                "v1",
+                "alerthistoryinquiry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b73199ab-d153-4c46-a6ae-6dd9c4a91191",
+              "name": "Alert history retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alerthistory",
+                    "v1",
+                    "alerthistoryinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"alerts\": [\n    {\n      \"alertId\": \"string\",\n      \"alertType\": \"string\",\n      \"transactionAmount\": 6440.378061028077,\n      \"merchantName\": \"string\",\n      \"alertDateTime\": \"1972-11-18T23:06:03.840Z\",\n      \"controlType\": \"string\",\n      \"actionTaken\": \"DECLINE\"\n    },\n    {\n      \"alertId\": \"string\",\n      \"alertType\": \"string\",\n      \"transactionAmount\": 9236.671868503918,\n      \"merchantName\": \"string\",\n      \"alertDateTime\": \"1964-05-23T23:53:38.270Z\",\n      \"controlType\": \"string\",\n      \"actionTaken\": \"ALERT\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d095a8f-5808-4738-a2be-bfc3fc077bb8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alerthistory",
+                    "v1",
+                    "alerthistoryinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bce3fcb9-3192-4e7d-bab1-90887954ce80",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "alerthistory",
+                    "v1",
+                    "alerthistoryinquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ee413463-c57c-4346-9f68-12dd2a7b5596",
+    "name": "Foreign Exchange Rates Alert History API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve notification history for accounts and manage customer profiles for alert delivery.",
+      "type": "text/plain"
+    }
+  }
+}

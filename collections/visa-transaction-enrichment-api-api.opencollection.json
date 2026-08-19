@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Transaction Enrichment API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transaction Enrichment API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enrich Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/merchantsearch/v1/transactionenrichment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enriches transaction data with enhanced merchant information such as merchant street address, website URL, logo, and contact information. This operation helps improve the cardholder experience by providing clearer and more recognizable merchant details on statements."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

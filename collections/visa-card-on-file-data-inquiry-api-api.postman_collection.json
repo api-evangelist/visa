@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "e92564c0-b4c0-4109-a063-524770d44030",
+      "name": "Card on File Data Inquiry API",
+      "description": {
+        "content": "Retrieve information about where a cardholder's Visa payment credentials are stored on file with participating merchants.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "399ab7c5-dda6-429f-9349-f1a4e4674be9",
+          "name": "Inquire Card on File Data",
+          "request": {
+            "name": "Inquire Card on File Data",
+            "description": {
+              "content": "Retrieves a list of merchants that have the specified Visa card stored on file. This allows issuers to provide cardholders with visibility into where their credentials are being used for recurring or stored-credential transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cofds",
+                "v1",
+                "dataInquiry"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"paymentAccountReference\": \"<string>\",\n  \"requestTimeStamp\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7499e85-3e7f-470e-a8de-9e72aadd3408",
+              "name": "Card on file data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cofds",
+                    "v1",
+                    "dataInquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"paymentAccountReference\": \"<string>\",\n  \"requestTimeStamp\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"NO_DATA_FOUND\",\n  \"merchants\": [\n    {\n      \"merchantName\": \"string\",\n      \"merchantId\": \"string\",\n      \"merchantCategoryCode\": \"9849\",\n      \"lastTransactionDate\": \"2024-05-09\",\n      \"enrollmentDate\": \"1985-08-05\",\n      \"transactionType\": \"RECURRING\"\n    },\n    {\n      \"merchantName\": \"string\",\n      \"merchantId\": \"string\",\n      \"merchantCategoryCode\": \"4069\",\n      \"lastTransactionDate\": \"1977-03-15\",\n      \"enrollmentDate\": \"1957-12-08\",\n      \"transactionType\": \"UNSCHEDULED\"\n    }\n  ],\n  \"totalCount\": 1675\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2ba8431-1d29-4c3e-ac30-88e4d828cb93",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cofds",
+                    "v1",
+                    "dataInquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"paymentAccountReference\": \"<string>\",\n  \"requestTimeStamp\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45de07a7-2d04-40f7-95a8-d4e5f187c2d5",
+              "name": "Unauthorized - authentication failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cofds",
+                    "v1",
+                    "dataInquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"paymentAccountReference\": \"<string>\",\n  \"requestTimeStamp\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b026e8fd-0dc7-4347-bd40-d3a20b13e40d",
+              "name": "No card on file data found for the specified account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cofds",
+                    "v1",
+                    "dataInquiry"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"paymentAccountReference\": \"<string>\",\n  \"requestTimeStamp\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ecc095fb-a2f5-4ac7-a4d9-8dcd3abf60f6",
+    "name": "Foreign Exchange Rates Card on File Data Inquiry API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve information about where a cardholder's Visa payment credentials are stored on file with participating merchants.",
+      "type": "text/plain"
+    }
+  }
+}

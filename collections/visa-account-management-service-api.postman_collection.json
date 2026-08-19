@@ -1,0 +1,1474 @@
+{
+  "item": [
+    {
+      "id": "04b630b1-9b57-4c6c-bbfe-35bdfcebfef7",
+      "name": "Account Management service",
+      "description": {
+        "content": "The Account Management web services are used to manage payment controls for existing card accounts and to request virtual accounts while setting controls. The endpoints allow the user to retrieve the status of new account requests, view authorization rules, submit virtual card requisitions for an employee , and retrieve security code (CVV2) details of an existing account.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bdd46cec-c267-48a3-a00b-2a65d7348298",
+          "name": "Get Security Code",
+          "request": {
+            "name": "Get Security Code",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "GetSecurityCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"expirationDate\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b347e17-ae36-4791-b112-a8f969d32427",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "GetSecurityCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111,\n  \"expirationDate\": \"10/2022\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GetSecurityResponse\": {\n    \"messageID\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"securityCode\": \"str\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "078afa2d-b4ad-456d-84f7-72da73c8adff",
+              "name": "Refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_security_code\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "GetSecurityCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111,\n  \"expirationDate\": \"10/2022\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageId\": \"string\",\n  \"statusCode\": \"string\",\n  \"statusDesc\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e170f1a3-8ed6-4cc7-9d41-2c3db3257cd2",
+          "name": "Get Requisition Details",
+          "request": {
+            "name": "Get Requisition Details",
+            "description": {
+              "content": "Get Requisition Details request and response",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "getRequisitionDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "460d5a0f-b47f-4da3-87ea-318658cdaabc",
+              "name": "In case of error please refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#request_virtual_account\">Response Codes</a> page for this api",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "getRequisitionDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountNumber\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GetRequisitionDetailsResponse\": {\n    \"rules\": [\n      {\n        \"ruleCode\": \"string\",\n        \"overrides\": [\n          {\n            \"sequence\": \"str\",\n            \"overrideCode\": \"string\",\n            \"overrideValue\": \"string\"\n          },\n          {\n            \"sequence\": \"str\",\n            \"overrideCode\": \"string\",\n            \"overrideValue\": \"string\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"string\",\n        \"overrides\": [\n          {\n            \"sequence\": \"str\",\n            \"overrideCode\": \"string\",\n            \"overrideValue\": \"string\"\n          },\n          {\n            \"sequence\": \"str\",\n            \"overrideCode\": \"string\",\n            \"overrideValue\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"buyerId\": \"string\",\n    \"endDate\": \"string\",\n    \"clientId\": \"string\",\n    \"timeZone\": \"string\",\n    \"messageId\": \"string\",\n    \"responses\": [\n      {\n        \"responseCode\": \"string\",\n        \"responseDescription\": \"string\"\n      },\n      {\n        \"responseCode\": \"string\",\n        \"responseDescription\": \"string\"\n      }\n    ],\n    \"startDate\": \"string\",\n    \"optionalInfo\": [\n      {\n        \"optionalFieldName\": \"string\",\n        \"optionalFieldValue\": \"string\"\n      },\n      {\n        \"optionalFieldName\": \"string\",\n        \"optionalFieldValue\": \"string\"\n      }\n    ],\n    \"accountNumber\": \"string\",\n    \"mcgRuleAction\": \"strin\",\n    \"expirationDate\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7da1333-4870-4457-b1ce-5fcce931b879",
+          "name": "Get Payment Controls",
+          "request": {
+            "name": "Get Payment Controls",
+            "description": {
+              "content": "This version is recommended for buyers subscribed to Visa payment Control(VPC)  and supporting mcgRuleAction field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v2",
+                "accountManagement",
+                "getPaymentControls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a344a0b-798c-487f-bf66-c3f8b9663726",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "accountManagement",
+                    "getPaymentControls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"B2BWS_84994_1940\",\n  \"messageId\": \"{{$timestamp}}\",\n  \"buyerID\": \"84994\",\n  \"accountNumber\": \"4715338901038473\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusDesc\": \"Payment control details retrieved successfully.\",\n  \"messageId\": \"{{$timestamp}}\",\n  \"rules\": [\n    {\n      \"ruleCode\": \"AIR\"\n    },\n    {\n      \"ruleCode\": \"AUTO\"\n    },\n    {\n      \"ruleCode\": \"REST\"\n    },\n    {\n      \"ruleCode\": \"SPV\",\n      \"overrides\": [\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"spendLimitAmount\",\n          \"overrideValue\": \"1000.00\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"maxAuth\",\n          \"overrideValue\": \"10\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"recurringDay\",\n          \"overrideValue\": \"15\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"amountCurrencyCode\",\n          \"overrideValue\": \"840\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"rangeType\",\n          \"overrideValue\": \"1\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"consumedAmount\",\n          \"overrideValue\": \"263.39\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"consumedAuthCount\",\n          \"overrideValue\": \"1\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"balanceAuthAmount\",\n          \"overrideValue\": \"736.61\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"balanceAuthCount\",\n          \"overrideValue\": \"9\"\n        }\n      ]\n    }\n  ],\n  \"statusCode\": \"AMGP000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d8ebce0-5083-434a-9536-b3fb5d795ebe",
+              "name": "In case of error please refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_payment_controls\">Error Codes</a> page for this api",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "accountManagement",
+                    "getPaymentControls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"B2BWS_84994_1940\",\n  \"messageId\": \"{{$timestamp}}\",\n  \"buyerID\": \"84994\",\n  \"accountNumber\": \"4715338901038473\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"statusDesc\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"statusDesc\": \"string\"\n    }\n  ],\n  \"messageId\": \"string\",\n  \"statusCode\": \"string\",\n  \"statusDesc\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8229208-4c47-4ef9-b417-c85b41a883c9",
+          "name": "Manage Payment Controls",
+          "request": {
+            "name": "Manage Payment Controls",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "ManagePaymentControls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"source\": \"<string>\",\n  \"eMailId\": \"<string>\",\n  \"invoices\": [\n    {\n      \"invoiceDate\": \"<string>\",\n      \"invoiceAmount\": \"<string>\",\n      \"invoiceNumber\": \"<string>\"\n    },\n    {\n      \"invoiceDate\": \"<string>\",\n      \"invoiceAmount\": \"<string>\",\n      \"invoiceNumber\": \"<string>\"\n    }\n  ],\n  \"companyAdminEMailId\": \"<string>\",\n  \"paymentControlDetails\": [\n    {\n      \"endDate\": \"<string>\",\n      \"rulesSet\": [\n        {\n          \"rules\": [\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            }\n          ],\n          \"action\": \"<string>\"\n        },\n        {\n          \"rules\": [\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            }\n          ],\n          \"action\": \"<string>\"\n        }\n      ],\n      \"timeZone\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"mcgRuleAction\": \"<string>\"\n    },\n    {\n      \"endDate\": \"<string>\",\n      \"rulesSet\": [\n        {\n          \"rules\": [\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            }\n          ],\n          \"action\": \"<string>\"\n        },\n        {\n          \"rules\": [\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"ruleCode\": \"<string>\",\n              \"overrides\": [\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                },\n                {\n                  \"Sequence\": \"<string>\",\n                  \"overrideCode\": \"<string>\",\n                  \"overrideValue\": \"<string>\"\n                }\n              ]\n            }\n          ],\n          \"action\": \"<string>\"\n        }\n      ],\n      \"timeZone\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"mcgRuleAction\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1cb7750e-22be-47dc-8b60-19abfd920cd8",
+              "name": "In case of error please refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#manage_payment_controls\">Error Codes</a> page for this api",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "ManagePaymentControls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"invoices\": [\n    {\n      \"invoiceNumber\": \"INV0001\",\n      \"invoiceAmount\": 500,\n      \"invoiceDate\": \"2017-02-01\"\n    }\n  ],\n  \"eMailId\": \"aaa@bbb.com\",\n  \"paymentControlDetails\": [\n    {\n      \"rulesSet\": [\n        {\n          \"action\": \"A\",\n          \"rules\": [\n            {\n              \"ruleCode\": \"VPAS\",\n              \"overrides\": [\n                {\n                  \"sequence\": 0,\n                  \"overrideCode\": \"amount\",\n                  \"overrideValue\": 840\n                },\n                {\n                  \"sequence\": 0,\n                  \"overrideCode\": \"amount\",\n                  \"overrideValue\": 55\n                }\n              ]\n            }\n          ]\n        }\n      ],\n      \"endDate\": \"2020-03-01\",\n      \"timeZone\": \"UTC-6\",\n      \"startDate\": \"2017-03-01\"\n    }\n  ],\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"source\": \"VVAM\",\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111,\n  \"companyAdminEMailId\": \"compAdmin@bbb.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ManagePaymentResponse\": {\n    \"messageID\": \"string\",\n    \"responses\": {\n      \"response\": {\n        \"responseCode\": \"string\",\n        \"responseDescription\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a6722fa-03be-4cff-be5d-c5938436d67e",
+          "name": "Get Account Status",
+          "request": {
+            "name": "Get Account Status",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "GetAccountStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountRequestID\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"supplierId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9b4af74-d9f5-4646-bba5-ce823b47aa93",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "GetAccountStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountRequestId\": 1203780061142,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": \"TestSupplierTen\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GetAccountResponse\": {\n    \"accountNumber\": \"string\",\n    \"expirationDate\": \"string\",\n    \"messageID\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0181094-01cd-457d-b8ca-119d61132bcb",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "GetAccountStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountRequestId\": 1203780061142,\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": \"TestSupplierTen\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MC001\": {},\n  \"MC002\": {},\n  \"MC003\": {},\n  \"MC004\": {},\n  \"MC008\": {},\n  \"MC025\": {},\n  \"MC035\": {},\n  \"MC059\": {},\n  \"MC060\": {},\n  \"MC061\": {},\n  \"MC062\": {},\n  \"MC063\": {},\n  \"MC064\": {},\n  \"MC065\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d0c47fa-2085-471b-a0eb-ddd9bb343216",
+          "name": "Get Funding AccountDetails",
+          "request": {
+            "name": "Get Funding AccountDetails",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "fundingAccount",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<integer>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14dd37dd-ef79-493f-8df9-78a809153384",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "fundingAccount",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_FDR_5126\",\n  \"messageId\": \"{{$timestamp}}\",\n  \"buyerId\": \"107777\",\n  \"accountNumber\": \"480733000718  3252\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"availableLimit\": 0,\n  \"default\": true,\n  \"statusDesc\": \"Funding Account has been retrieved successfully\",\n  \"blockPurchases\": true,\n  \"currentBalance\": 0,\n  \"messageId\": \"1620851413\",\n  \"creditLimit\": 10,\n  \"accountNumber\": \"XXXXXXXXXXXX3252\",\n  \"currencyCode\": \"USD\",\n  \"statusCode\": \"AMGF000\",\n  \"expirationDate\": \"2023-05-01\",\n  \"activePseudoAccounts\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7e83eab-7d4d-41fc-ba56-c380fa499d6f",
+          "name": "Request Virtual Account",
+          "request": {
+            "name": "Request Virtual Account",
+            "description": {
+              "content": "Requisition API Request and Response",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "requisitionService"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"buyerID\": \"<string>\",\n  \"clientID\": \"<string>\",\n  \"messageID\": \"<string>\",\n  \"proxyPoolID\": \"<string>\",\n  \"OptionalInfo\": [\n    {\n      \"optionalFieldName\": \"<string>\",\n      \"optionalFieldValue\": \"<string>\"\n    },\n    {\n      \"optionalFieldName\": \"<string>\",\n      \"optionalFieldValue\": \"<string>\"\n    }\n  ],\n  \"accountNumber\": \"<string>\",\n  \"numberOfCards\": \"<string>\",\n  \"requisitionDetails\": {\n    \"rules\": [\n      {\n        \"ruleCode\": \"<string>\",\n        \"overrides\": [\n          {\n            \"sequence\": \"<string>\",\n            \"overrideCode\": \"<string>\",\n            \"overrideValue\": \"<string>\"\n          },\n          {\n            \"sequence\": \"<string>\",\n            \"overrideCode\": \"<string>\",\n            \"overrideValue\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"<string>\",\n        \"overrides\": [\n          {\n            \"sequence\": \"<string>\",\n            \"overrideCode\": \"<string>\",\n            \"overrideValue\": \"<string>\"\n          },\n          {\n            \"sequence\": \"<string>\",\n            \"overrideCode\": \"<string>\",\n            \"overrideValue\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"endDate\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"startDate\": \"<string>\",\n    \"mcgRuleAction\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2feec5ce-1987-47c9-a7d0-53616e243caa",
+              "name": "In case of error please refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#request_virtual_account\">Response Codes</a> page for this api",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "requisitionService"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"requisitionDetails\": {\n    \"endDate\": \"2018-05-20\",\n    \"timeZone\": \"UTC-8\",\n    \"rules\": [\n      {\n        \"ruleCode\": \"SPV\",\n        \"overrides\": [\n          {\n            \"sequence\": \"1\",\n            \"overrideCode\": \"spendLimitAmount\",\n            \"overrideValue\": \"55.45\"\n          },\n          {\n            \"sequence\": \"2\",\n            \"overrideCode\": \"maxAuth\",\n            \"overrideValue\": \"10\"\n          },\n          {\n            \"sequence\": \"3\",\n            \"overrideCode\": \"amountCurrencyCode\",\n            \"overrideValue\": \"840\"\n          },\n          {\n            \"sequence\": \"4\",\n            \"overrideCode\": \"rangeType\",\n            \"overrideValue\": \"3\"\n          },\n          {\n            \"sequence\": \"5\",\n            \"overrideCode\": \"startDate\",\n            \"overrideValue\": \"05/11/2018\"\n          },\n          {\n            \"sequence\": \"5\",\n            \"overrideCode\": \"endDate\",\n            \"overrideValue\": \"05/20/2018\"\n          },\n          {\n            \"sequence\": \"7\",\n            \"overrideCode\": \"updateFlag\",\n            \"overrideValue\": \"NOCHANGE\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"PUR\",\n        \"overrides\": [\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountCurrencyCode\",\n            \"overrideValue\": \"840\"\n          },\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountValue\",\n            \"overrideValue\": \"55\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"EAM\",\n        \"overrides\": [\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountCurrencyCode\",\n            \"overrideValue\": \"840\"\n          },\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountValue\",\n            \"overrideValue\": \"55\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"XBRA\",\n        \"overrides\": [\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountCurrencyCode\",\n            \"overrideValue\": \"840\"\n          },\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountValue\",\n            \"overrideValue\": \"55\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"ATML\",\n        \"overrides\": [\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountCurrencyCode\",\n            \"overrideValue\": \"840\"\n          },\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountValue\",\n            \"overrideValue\": \"55\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"TOLRNC\",\n        \"overrides\": [\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountCurrencyCode\",\n            \"overrideValue\": \"840\"\n          },\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"minValue\",\n            \"overrideValue\": \"1\"\n          },\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"maxValue\",\n            \"overrideValue\": \"50\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"CAID\",\n        \"overrides\": [\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"CAIDValue\",\n            \"overrideValue\": \"123456\"\n          }\n        ]\n      },\n      {\n        \"ruleCode\": \"ATM\"\n      },\n      {\n        \"ruleCode\": \"ECOM\"\n      },\n      {\n        \"ruleCode\": \"CNP\"\n      },\n      {\n        \"ruleCode\": \"NOC\"\n      },\n      {\n        \"ruleCode\": \"ADT\"\n      },\n      {\n        \"ruleCode\": \"XBR\"\n      },\n      {\n        \"ruleCode\": \"FUEL\"\n      },\n      {\n        \"ruleCode\": \"HOT\"\n      },\n      {\n        \"ruleCode\": \"AUTO\"\n      },\n      {\n        \"ruleCode\": \"AIR\"\n      },\n      {\n        \"ruleCode\": \"REST\"\n      },\n      {\n        \"ruleCode\": \"JEWL\"\n      },\n      {\n        \"ruleCode\": \"ELEC\"\n      },\n      {\n        \"ruleCode\": \"ALC\"\n      },\n      {\n        \"ruleCode\": \"GTM\"\n      },\n      {\n        \"ruleCode\": \"OSS\"\n      },\n      {\n        \"ruleCode\": \"GROC\"\n      },\n      {\n        \"ruleCode\": \"ENT\"\n      },\n      {\n        \"ruleCode\": \"UTIL\"\n      },\n      {\n        \"ruleCode\": \"CLOTH\"\n      },\n      {\n        \"ruleCode\": \"MED\"\n      },\n      {\n        \"ruleCode\": \"VPAS\",\n        \"overrides\": [\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountCurrencyCode\",\n            \"overrideValue\": \"840\"\n          },\n          {\n            \"sequence\": \"0\",\n            \"overrideCode\": \"amountValue\",\n            \"overrideValue\": \"55.45\"\n          }\n        ]\n      }\n    ],\n    \"startDate\": \"2018-05-11\"\n  },\n  \"proxyPoolId\": \"Proxy12345\",\n  \"optionalInfo\": [\n    {\n      \"optionalFieldValue\": \"12345678901234567\",\n      \"optionalFieldName\": \"TWOTest\"\n    },\n    {\n      \"optionalFieldValue\": \"12345112\",\n      \"optionalFieldName\": \"12345\"\n    }\n  ],\n  \"action\": \"A\",\n  \"messageId\": \"1526077012761\",\n  \"numberOfCards\": \"1\",\n  \"buyerId\": \"9999\",\n  \"accountNumber\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequisitionVirtualAccountResponse\": {\n    \"messageID\": \"string\",\n    \"responses\": [\n      {\n        \"responseCode\": \"string\",\n        \"responseDescription\": \"string\"\n      },\n      {\n        \"responseCode\": \"string\",\n        \"responseDescription\": \"string\"\n      }\n    ],\n    \"accountNumber\": \"string\",\n    \"expirationDate\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50d2fb26-1f1b-447b-b371-da07a245af0a",
+          "name": "Virtual Card Requisition",
+          "request": {
+            "name": "Virtual Card Requisition",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "VirtualCardRequisition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<number>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"employee\": {\n    \"companyAdminEMailId\": \"<string>\",\n    \"eMailId\": \"<string>\",\n    \"employeeId\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"GL\": \"<string>\",\n    \"address\": {\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"addressline1\": \"<string>\",\n      \"addressline2\": \"<string>\"\n    },\n    \"costCenter\": \"<string>\"\n  },\n  \"messageId\": \"<string>\",\n  \"proxyPoolId\": \"<string>\",\n  \"requisitionDetails\": [\n    {\n      \"rules\": [\n        {\n          \"ruleCode\": \"<string>\",\n          \"overrides\": [\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            },\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"ruleCode\": \"<string>\",\n          \"overrides\": [\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            },\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"endDate\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"startDate\": \"<string>\"\n    },\n    {\n      \"rules\": [\n        {\n          \"ruleCode\": \"<string>\",\n          \"overrides\": [\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            },\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            }\n          ]\n        },\n        {\n          \"ruleCode\": \"<string>\",\n          \"overrides\": [\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            },\n            {\n              \"Sequence\": \"<string>\",\n              \"overrideCode\": \"<string>\",\n              \"overrideValue\": \"<string>\"\n            }\n          ]\n        }\n      ],\n      \"endDate\": \"<string>\",\n      \"timeZone\": \"<string>\",\n      \"startDate\": \"<string>\"\n    }\n  ],\n  \"optionalfield1\": \"<string>\",\n  \"optionalfield2\": \"<string>\",\n  \"optionalfield3\": \"<string>\",\n  \"optionalfield4\": \"<string>\",\n  \"optionalfield5\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba307670-ef7e-4c8a-ace1-529238f812f9",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "VirtualCardRequisition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"optionalField1\": \"optionalField1\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"requisitionDetails\": [\n    {\n      \"endDate\": \"2020-03-01\",\n      \"timeZone\": \"UTC-6\",\n      \"rules\": [\n        {\n          \"ruleCode\": \"VPAS\",\n          \"overrides\": [\n            {\n              \"sequence\": 0,\n              \"overrideCode\": \"amount\",\n              \"overrideValue\": 840\n            },\n            {\n              \"sequence\": 0,\n              \"overrideCode\": \"amount\",\n              \"overrideValue\": 55\n            }\n          ]\n        }\n      ],\n      \"startDate\": \"2017-02-01\"\n    }\n  ],\n  \"proxyPoolId\": \"M7test\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"employee\": {\n    \"lastName\": \"lname\",\n    \"firstName\": \"fname\",\n    \"address\": {\n      \"city\": \"FC\",\n      \"countryCode\": \"USA\",\n      \"postalCode\": 94404,\n      \"addressLine1\": \"Address1\",\n      \"addressLine2\": \"Address2\",\n      \"state\": \"CA\"\n    },\n    \"gl\": 12,\n    \"eMailId\": \"aaa1@bbb.com\",\n    \"costCenter\": 12,\n    \"employeeId\": 772288,\n    \"companyAdminEMailId\": \"compAdmin@bbb.com\"\n  },\n  \"accountNumber\": 4111111111111111,\n  \"optionalField4\": \"optionalField4\",\n  \"optionalField5\": \"optionalField5\",\n  \"optionalField2\": \"optionalField2\",\n  \"optionalField3\": \"optionalField3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"VCardRequistionResponse\": {\n    \"messageID\": \"string\",\n    \"responses\": {\n      \"response\": {\n        \"responseCode\": \"string\",\n        \"responseDescription\": \"string\"\n      }\n    },\n    \"accountNumber\": \"string\",\n    \"requisitionId\": \"string\",\n    \"expirationDate\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f9d831c-0c1c-4b38-ae16-7c08bf61ce28",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "VirtualCardRequisition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"optionalField1\": \"optionalField1\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"requisitionDetails\": [\n    {\n      \"endDate\": \"2020-03-01\",\n      \"timeZone\": \"UTC-6\",\n      \"rules\": [\n        {\n          \"ruleCode\": \"VPAS\",\n          \"overrides\": [\n            {\n              \"sequence\": 0,\n              \"overrideCode\": \"amount\",\n              \"overrideValue\": 840\n            },\n            {\n              \"sequence\": 0,\n              \"overrideCode\": \"amount\",\n              \"overrideValue\": 55\n            }\n          ]\n        }\n      ],\n      \"startDate\": \"2017-02-01\"\n    }\n  ],\n  \"proxyPoolId\": \"M7test\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"employee\": {\n    \"lastName\": \"lname\",\n    \"firstName\": \"fname\",\n    \"address\": {\n      \"city\": \"FC\",\n      \"countryCode\": \"USA\",\n      \"postalCode\": 94404,\n      \"addressLine1\": \"Address1\",\n      \"addressLine2\": \"Address2\",\n      \"state\": \"CA\"\n    },\n    \"gl\": 12,\n    \"eMailId\": \"aaa1@bbb.com\",\n    \"costCenter\": 12,\n    \"employeeId\": 772288,\n    \"companyAdminEMailId\": \"compAdmin@bbb.com\"\n  },\n  \"accountNumber\": 4111111111111111,\n  \"optionalField4\": \"optionalField4\",\n  \"optionalField5\": \"optionalField5\",\n  \"optionalField2\": \"optionalField2\",\n  \"optionalField3\": \"optionalField3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"2\": {},\n  \"4\": {},\n  \"6\": {},\n  \"12\": {},\n  \"25\": {},\n  \"35\": {},\n  \"71\": {},\n  \"93\": {},\n  \"516\": {},\n  \"72801\": {},\n  \"72802\": {},\n  \"72803\": {},\n  \"72804\": {},\n  \"72805\": {},\n  \"72806\": {},\n  \"72807\": {},\n  \"72808\": {},\n  \"72809\": {},\n  \"72810\": {},\n  \"72811\": {},\n  \"72812\": {},\n  \"72813\": {},\n  \"72814\": {},\n  \"72815\": {},\n  \"72816\": {},\n  \"72817\": {},\n  \"72818\": {},\n  \"72819\": {},\n  \"72820\": {},\n  \"72821\": {},\n  \"72822\": {},\n  \"72823\": {},\n  \"72824\": {},\n  \"72825\": {},\n  \"72826\": {},\n  \"72827\": {},\n  \"72828\": {},\n  \"72829\": {},\n  \"72830\": {},\n  \"72831\": {},\n  \"72832\": {},\n  \"72833\": {},\n  \"72834\": {},\n  \"72835\": {},\n  \"72836\": {},\n  \"72837\": {},\n  \"72838\": {},\n  \"72839\": {},\n  \"72840\": {},\n  \"72841\": {},\n  \"72842\": {},\n  \"72843\": {},\n  \"72844\": {},\n  \"72845\": {},\n  \"72846\": {},\n  \"72847\": {},\n  \"72848\": {},\n  \"72849\": {},\n  \"72850\": {},\n  \"72851\": {},\n  \"72852\": {},\n  \"72853\": {},\n  \"72854\": {},\n  \"72855\": {},\n  \"72856\": {},\n  \"72858\": {},\n  \"72860\": {},\n  \"72861\": {},\n  \"72891\": {},\n  \"72892\": {},\n  \"72893\": {},\n  \"72894\": {},\n  \"72895\": {},\n  \"72896\": {},\n  \"72897\": {},\n  \"72898\": {},\n  \"72900\": {},\n  \"72902\": {},\n  \"72905\": {},\n  \"72906\": {},\n  \"72927\": {},\n  \"72928\": {},\n  \"72929\": {},\n  \"728321\": {},\n  \"729061\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55394a79-08c1-4e46-8951-20394920752c",
+          "name": "List Payment Control",
+          "request": {
+            "name": "List Payment Control",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "ListPaymentControl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e349152-4327-4065-be49-79429a9694e9",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "ListPaymentControl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ListPaymentResponse\": {\n    \"alertRequired\": \"s\",\n    \"messageID\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"channel\": {\n      \"channelType\": \"s\",\n      \"channelValue\": \"string\"\n    },\n    \"trigger\": [\n      {\n        \"amount\": \"string\",\n        \"triggerType\": \"string\",\n        \"currencyCode\": \"str\"\n      },\n      {\n        \"amount\": \"string\",\n        \"triggerType\": \"string\",\n        \"currencyCode\": \"str\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2155dd9-48b8-4000-a7b7-cc28f7f56f98",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "ListPaymentControl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GP001\": {},\n  \"GP002\": {},\n  \"GP003\": {},\n  \"GP004\": {},\n  \"GP005\": {},\n  \"GP010\": {},\n  \"GP011\": {},\n  \"GP016\": {},\n  \"GP017\": {},\n  \"GP018\": {},\n  \"GP019\": {},\n  \"GP020\": {},\n  \"GP021\": {},\n  \"GP025\": {},\n  \"GP027\": {},\n  \"GP033\": {},\n  \"GP035\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2680b7c-21ff-4dc7-952d-897d9e21c598",
+          "name": "Update Funding Account",
+          "request": {
+            "name": "Update Funding Account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "fundingAccount",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<integer>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"action\": \"<string>\",\n  \"creditLimit\": \"<integer>\",\n  \"blockPurchases\": \"<boolean>\",\n  \"defaultAccount\": \"<boolean>\",\n  \"expirationDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c880b771-e8c1-4f8d-8dcb-437ad904fbb1",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "fundingAccount",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_FDR_5126\",\n  \"blockPurchases\": \"false\",\n  \"messageId\": \"{{$timestamp}}\",\n  \"defaultAccount\": \"true\",\n  \"buyerId\": \"107777\",\n  \"accountNumber\": 4807330007183252\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusDesc\": \"Funding Account has been updated successfully\",\n  \"messageId\": \"1620851509\",\n  \"accountNumber\": \"XXXXXXXXXXXX3252\",\n  \"statusCode\": \"AMUF000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20151a2f-000f-4207-b98a-e9bce6300581",
+          "name": "Get Payment Controls",
+          "request": {
+            "name": "Get Payment Controls",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "getPaymentControls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<string>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "39b19228-eb80-4d8e-b910-0a23e52ce40c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "getPaymentControls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusDesc\": \"Payment control details retrieved successfully.\",\n  \"messageId\": \"1591133872\",\n  \"rules\": [\n    {\n      \"ruleCode\": \"ADT\"\n    },\n    {\n      \"ruleCode\": \"AIR\"\n    },\n    {\n      \"ruleCode\": \"ATM\"\n    },\n    {\n      \"ruleCode\": \"ATML\",\n      \"overrides\": [\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"amountValue\",\n          \"parentOverrideCode\": \"amountOverride\",\n          \"overrideValue\": \"1\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"amountCurrencyCode\",\n          \"parentOverrideCode\": \"amountOverride\",\n          \"overrideValue\": \"840\"\n        }\n      ]\n    },\n    {\n      \"ruleCode\": \"AUTO\"\n    },\n    {\n      \"ruleCode\": \"BUS\",\n      \"overrides\": [\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"timezone\",\n          \"overrideValue\": \"Alaskan Standard Time\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"weekDayEffective\",\n          \"parentOverrideCode\": \"timeRange\",\n          \"overrideValue\": \"SUN\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"timeEffectiveStart\",\n          \"parentOverrideCode\": \"timeRange\",\n          \"overrideValue\": \"01:00\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"timeEffectiveEnd\",\n          \"parentOverrideCode\": \"timeRange\",\n          \"overrideValue\": \"15:00\"\n        }\n      ]\n    },\n    {\n      \"ruleCode\": \"CAID\",\n      \"overrides\": [\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"CAIDValue\",\n          \"parentOverrideCode\": \"CAIDOverride\",\n          \"overrideValue\": \"847833\"\n        }\n      ]\n    },\n    {\n      \"ruleCode\": \"CLOTH\"\n    },\n    {\n      \"ruleCode\": \"ECOM\"\n    },\n    {\n      \"ruleCode\": \"FUEL\"\n    },\n    {\n      \"ruleCode\": \"GTM\"\n    },\n    {\n      \"ruleCode\": \"HOT\"\n    },\n    {\n      \"ruleCode\": \"NOTFUEL\"\n    },\n    {\n      \"ruleCode\": \"VPAS\",\n      \"overrides\": [\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"amountValue\",\n          \"parentOverrideCode\": \"amountOverride\",\n          \"overrideValue\": \"1.00\"\n        },\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"amountCurrencyCode\",\n          \"parentOverrideCode\": \"amountOverride\",\n          \"overrideValue\": \"840\"\n        }\n      ]\n    },\n    {\n      \"ruleCode\": \"XBR\"\n    },\n    {\n      \"ruleCode\": \"XBRX\",\n      \"overrides\": [\n        {\n          \"sequence\": \"0\",\n          \"overrideCode\": \"jurisdictionMerchantCountry\",\n          \"parentOverrideCode\": \"countries\",\n          \"overrideValue\": \"124\"\n        }\n      ]\n    }\n  ],\n  \"statusCode\": \"AMGP000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6f36ce7-af58-4565-bb7f-20d4b4cd8100",
+              "name": "In case of error please refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_payment_controls\">Error Codes</a> page for this api",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "getPaymentControls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999,\n  \"accountNumber\": 4111111111111111\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"string\",\n      \"statusDesc\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"statusDesc\": \"string\"\n    }\n  ],\n  \"messageId\": \"string\",\n  \"statusCode\": \"string\",\n  \"statusDesc\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa8d4024-1c90-4e97-82cb-7f7ef4b480de",
+          "name": "Add Funding Account",
+          "request": {
+            "name": "Add Funding Account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "accountManagement",
+                "fundingAccount",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountNumber\": \"<integer>\",\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"creditLimit\": \"<integer>\",\n  \"blockPurchases\": \"<boolean>\",\n  \"defaultAccount\": \"<boolean>\",\n  \"expirationDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19516144-7502-4de2-90ad-d2a6c4ffd800",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "accountManagement",
+                    "fundingAccount",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_FDR_5126\",\n  \"blockPurchases\": false,\n  \"messageId\": \"{{$timestamp}}\",\n  \"defaultAccount\": \"true\",\n  \"buyerId\": \"107777\",\n  \"accountNumber\": 4807330007183252,\n  \"currencyCode\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusDesc\": \"Funding Account has been created successfully\",\n  \"messageId\": \"1620851268\",\n  \"accountNumber\": \"XXXXXXXXXXXX3252\",\n  \"statusCode\": \"AMCF000\",\n  \"expirationDate\": \"2023-05-01\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d23816c5-1de3-42e7-9545-d33a2e941dca",
+    "name": "Foreign Exchange Rates Account Management service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Account Management web services are used to manage payment controls for existing card accounts and to request virtual accounts while setting controls. The endpoints allow the user to retrieve the status of new account requests, view authorization rules, submit virtual card requisitions for an employee , and retrieve security code (CVV2) details of an existing account.",
+      "type": "text/plain"
+    }
+  }
+}

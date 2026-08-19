@@ -1,0 +1,300 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Universal Card Enrollment API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Universal Card Enrollment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/universal/core/customers",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new `Customer` object for which `Card` object will belong to"
+        },
+        {
+          "info": {
+            "name": "Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/universal/core/customers/:vCustomerID",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              },
+              {
+                "name": "vCustomerID",
+                "value": "",
+                "type": "path",
+                "description": "ID (UUID) of the `Customer`"
+              }
+            ]
+          },
+          "docs": "Retrieve a Customer"
+        },
+        {
+          "info": {
+            "name": "Update Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sandbox.api.visa.com/universal/core/customers/:vCustomerID",
+            "headers": [
+              {
+                "name": "API Key",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "X-Pay Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "vCustomerID",
+                "value": "",
+                "type": "path",
+                "description": "ID (UUID) of the `Customer`"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Customer"
+        },
+        {
+          "info": {
+            "name": "Delete Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.visa.com/universal/core/customers/:vCustomerID",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              },
+              {
+                "name": "vCustomerID",
+                "value": "",
+                "type": "path",
+                "description": "ID (UUID) of the `Customer`"
+              }
+            ]
+          },
+          "docs": "Delete a Customer"
+        },
+        {
+          "info": {
+            "name": "Retrieve Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox.api.visa.com/universal/core/cards/:vCardID",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              },
+              {
+                "name": "vCardID",
+                "value": "",
+                "type": "path",
+                "description": "Visa-defined unique ID of the card"
+              }
+            ]
+          },
+          "docs": "Retrieve a Card"
+        },
+        {
+          "info": {
+            "name": "Delete Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://sandbox.api.visa.com/universal/core/cards/:vCardID",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              },
+              {
+                "name": "vCardID",
+                "value": "",
+                "type": "path",
+                "description": "Visa-defined unique ID of the card"
+              }
+            ]
+          },
+          "docs": "Delete enrolled card"
+        },
+        {
+          "info": {
+            "name": "Enroll Card for Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/universal/core/customers/:vCustomerID/cards",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              },
+              {
+                "name": "vCustomerID",
+                "value": "",
+                "type": "path",
+                "description": "`Customer` object ID (UUID) of Customer object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enroll Card for a Customer"
+        },
+        {
+          "info": {
+            "name": "Enroll Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/universal/core/cards",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "x-pay-token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "API key from Visa Developer Platform (VDP)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enroll a Card"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

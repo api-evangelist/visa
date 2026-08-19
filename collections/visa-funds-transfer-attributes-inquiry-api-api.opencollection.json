@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Funds Transfer Attributes Inquiry API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Funds Transfer Attributes Inquiry API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Funds Transfer Inquiry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/paai/fundstransferattinq/v5/cardattributes/fundstransferinquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the attributes, which determine the key characteristics of a recipient payment account before initiating a funds transfer, by providing the Primary Account Number (PAN) or Token for both Visa and Non-Visa cards"
+        },
+        {
+          "info": {
+            "name": "Funds Transfer Inquiry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/paai/fundstransferattinq/v2/cardattributes/fundstransferinquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the attributes, which determine the key characteristics of a recipient payment account before initiating a funds transfer, by providing the Primary Account Number (PAN)"
+        },
+        {
+          "info": {
+            "name": "Funds Transfer Inquiry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/paai/fundstransferattinq/v1/cardattributes/fundstransferinquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the attributes, which determine the key characteristics of a recipient payment account before   initiating a funds transfer, by providing the Primary Account Number (PAN)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

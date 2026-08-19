@@ -1,0 +1,710 @@
+{
+  "item": [
+    {
+      "id": "e62ece81-838b-4127-9ca3-cb1fa61d296a",
+      "name": "Customer Rules API",
+      "description": {
+        "content": "Register consumer accounts and manage payment rules and thresholds that define which transaction types to block or alert on.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fed05a41-50c1-47fc-89ae-cd2dd57cd965",
+          "name": "Create Customer Rules",
+          "request": {
+            "name": "Create Customer Rules",
+            "description": {
+              "content": "Registers a consumer's payment account to the VTC service and establishes the payment rules and thresholds that define which transaction types the consumer wants to block or receive alerts about.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8280ca95-95ec-40b9-b50d-0d10b28f61fb",
+              "name": "Customer rules created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primaryAccountNumber\": \"string\",\n  \"status\": \"string\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d813cd57-aca3-47af-b05f-c6799dda6153",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21951bb4-dfbc-4e92-86a8-c0bcf0e6b747",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "355754d3-3138-4f8f-85ff-7e8f767b62ec",
+          "name": "Get Customer Rules",
+          "request": {
+            "name": "Get Customer Rules",
+            "description": {
+              "content": "Retrieves the current transaction control rules configured for a registered consumer account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "primaryAccountNumber",
+                  "value": "<string>",
+                  "description": "(Required) Primary account number of the registered card"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2da9ff06-ab73-481a-b4ad-bbada67568a4",
+              "name": "Customer rules retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primaryAccountNumber\": \"string\",\n  \"status\": \"string\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c22ab3b-882e-4ccb-9e3f-9fd5a457f92a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2ef23b4-c176-4119-b873-83b557ce4fbf",
+              "name": "No rules found for the specified account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0b1421c-a9fe-4dd1-b376-58832a4411dc",
+          "name": "Update Customer Rules",
+          "request": {
+            "name": "Update Customer Rules",
+            "description": {
+              "content": "Updates the transaction control rules for an existing registered consumer account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bb6774d-8623-4711-8a1d-195e8b85c30d",
+              "name": "Customer rules updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"primaryAccountNumber\": \"string\",\n  \"status\": \"string\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9500110-cf76-4540-908e-d1f0e6018d47",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14e9c3a8-55bd-49cd-96be-37b1ac4e3ef7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"primaryAccountNumber\": \"<string>\",\n  \"controls\": [\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"controlType\": \"<string>\",\n      \"isDeclinedEnabled\": \"<boolean>\",\n      \"isAlertEnabled\": \"<boolean>\",\n      \"merchantCategoryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"countryCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"thresholdAmount\": \"<double>\",\n      \"transactionTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8806a8b6-6580-4c93-9f00-16d7f5205c64",
+          "name": "Delete Customer Rules",
+          "request": {
+            "name": "Delete Customer Rules",
+            "description": {
+              "content": "Removes transaction control rules and unregisters a consumer account from the VTC service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vctc",
+                "customerrules",
+                "v1",
+                "consumertransactioncontrols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "primaryAccountNumber",
+                  "value": "<string>",
+                  "description": "(Required) Primary account number to deregister"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a7caf77-240f-4add-babf-6e62b5587f30",
+              "name": "Customer rules deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b56f1d5b-2c27-4842-ad0d-c1935174520b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6442f419-41af-408c-8310-ab2f183ea7b0",
+              "name": "Account not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vctc",
+                    "customerrules",
+                    "v1",
+                    "consumertransactioncontrols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "primaryAccountNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "53529c9a-1c58-460c-8a6c-d30898c018e4",
+    "name": "Foreign Exchange Rates Customer Rules API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Register consumer accounts and manage payment rules and thresholds that define which transaction types to block or alert on.",
+      "type": "text/plain"
+    }
+  }
+}

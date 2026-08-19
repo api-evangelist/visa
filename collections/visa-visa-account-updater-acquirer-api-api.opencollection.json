@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Visa Account Updater Acquirer API API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visa Account Updater Acquirer API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Acquirer API for PANs Inquiry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vau/acquirer-api/v1/inquiry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the new PANs information for requested old PANs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

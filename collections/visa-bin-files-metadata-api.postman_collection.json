@@ -1,0 +1,211 @@
+{
+  "item": [
+    {
+      "id": "02ac4f4b-90e5-4b30-b87c-d6288d6963f1",
+      "name": "BIN Files Metadata",
+      "description": {
+        "content": "Get Bin Files Metadata including number of files, file names, sizes, checksum, creation date.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8f874bc-4ccb-4097-a604-694b35b04ae1",
+          "name": "BIN Files Metadata",
+          "request": {
+            "name": "BIN Files Metadata",
+            "description": {
+              "content": "Get BIN Files Metadata including number of files, file names, sizes, checksum, creation date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filedeliveryservice",
+                "v1",
+                "binFilesMetadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestData\": {\n    \"paymentAccountType\": \"<string>\"\n  },\n  \"requestHeader\": {\n    \"requestMessageId\": \"<string>\",\n    \"requestTS\": \"<YYYY-MM-DDThh:mm:ss.sss>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ead1840-9c3f-4a81-97bc-30b761051046",
+              "name": "BinFilesMetadata Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filedeliveryservice",
+                    "v1",
+                    "binFilesMetadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2021-02-10T12:26:50.002\",\n    \"requestMessageId\": \"reqstMsgID1\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responseData\": {\n    \"fileDetails\": [\n      {\n        \"checkSum\": \"bb8e4c75d51001dd35b40dc6209eccc2\",\n        \"fileName\": \"VBASS_AR_LEVEL1_04282021_20.csv\",\n        \"fileSize\": 1770048,\n        \"rowCount\": 30000\n      },\n      {\n        \"checkSum\": \"bb8e4c75d51001dd35b40dc6209eccc2\",\n        \"fileName\": \"VBASS_AR_LEVEL1_04282021_20.csv\",\n        \"fileSize\": 1770048,\n        \"rowCount\": 30000\n      }\n    ],\n    \"filesCreationDate\": \"2023-02-17\",\n    \"paymentAccountType\": \"P\",\n    \"totalNumberOfFiles\": 1\n  },\n  \"responseHeader\": {\n    \"responseTS\": \"2023-02-17T06:31:31.194\",\n    \"requestMessageId\": \"reqMsgId456\",\n    \"responseMessageId\": \"stringstringstringstringstringstr\"\n  },\n  \"responseStatus\": {\n    \"statusCode\": \"CDI000\",\n    \"statusDescription\": \"Success\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ac300bc-ef4d-45b7-afd6-3a7ae743e805",
+              "name": "Request Data Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filedeliveryservice",
+                    "v1",
+                    "binFilesMetadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2021-02-10T12:26:50.002\",\n    \"requestMessageId\": \"reqstMsgID1\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e53b71b0-5eea-4084-9a1c-9f1a64511126",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filedeliveryservice",
+                    "v1",
+                    "binFilesMetadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestHeader\": {\n    \"requestTS\": \"2021-02-10T12:26:50.002\",\n    \"requestMessageId\": \"reqstMsgID1\"\n  },\n  \"requestData\": {\n    \"paymentAccountType\": \"P\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CDI001\": {},\n  \"CDI003\": {},\n  \"CDI012\": {},\n  \"CDI071\": {},\n  \"CDI092\": {},\n  \"CDI098\": {},\n  \"CDI251\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8b2c32f4-e7a4-4bed-8106-4687fbd7f842",
+    "name": "Foreign Exchange Rates BIN Files Metadata API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Get Bin Files Metadata including number of files, file names, sizes, checksum, creation date.",
+      "type": "text/plain"
+    }
+  }
+}

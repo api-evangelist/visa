@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "b7aa29b1-f1cd-4661-a4e8-caf218959dc7",
+      "name": "Visa Account Updater Merchant API",
+      "description": {
+        "content": "Visa Account Updater Merchant API for merchant enrollment and search.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1852f7cd-0638-4862-a488-6e296df1eda0",
+          "name": "Merchant Search",
+          "request": {
+            "name": "Merchant Search",
+            "description": {
+              "content": "Merchants can be searched by providing following requested information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vau",
+                "onboard-api",
+                "acquirer",
+                "v1",
+                "merchants",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquirerSegmentId\": \"<integer>\",\n  \"merchants\": [\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8556d3c1-3d21-4179-b8f4-54db42e7d334",
+              "name": "This response code will be returned in scenarios where the merchant search is successful, all possible response codes are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"merchantId\": \"string\",\n      \"merchantStatus\": \"Success\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"countryCode\": \"840\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"cardAcceptorId\": \"8403435453\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantLineBusiness\": \"Online Service\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ]\n    },\n    {\n      \"merchantId\": \"string\",\n      \"merchantStatus\": \"Success\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"countryCode\": \"840\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"cardAcceptorId\": \"8403435453\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantLineBusiness\": \"Online Service\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bddf2fb8-8c71-45e9-86a9-36fbf6f2f18c",
+              "name": "This response code will be returned in scenarios where the merchant search is badly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Request is badly formatted and/or the required field(s) is (are) missing\",\n  \"rejectReasonCode\": \"B\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92eccc62-7efe-4e32-a71a-37fe5bc9ebe0",
+              "name": "This response code will be returned in scenarios where the merchant search is rejected, all possible reasons for request rejection are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acquirerSegmentId\": 9992,\n  \"rejectCode\": \"A\",\n  \"rejectReason\": \"Acquirer segment is not enrolled\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32a81920-7daa-44cd-a5b3-0c848708979a",
+              "name": "This response code will be returned in scenarios where the merchant search could not be sucessfully processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    },\n    {\n      \"merchantId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Internal Server Error, please try again after sometime\",\n  \"rejectReasonCode\": \"E\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "724d1d0c-4f21-49c4-a2bc-258f65886a87",
+          "name": "Merchant Enrollment",
+          "request": {
+            "name": "Merchant Enrollment",
+            "description": {
+              "content": "Enroll new merchants by providing following requested information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vau",
+                "onboard-api",
+                "acquirer",
+                "v1",
+                "merchants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acquirerSegmentId\": \"<integer>\",\n  \"merchants\": [\n    {\n      \"cardAcceptorId\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"merchantAcquiringIdentifiers\": [\n        \"<string>\"\n      ],\n      \"merchantCategoryCode\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"contactEmail\": \"<string>\",\n      \"contactPhone\": \"<string>\",\n      \"parentCompany\": \"<string>\",\n      \"streetAddress1\": \"<string>\",\n      \"streetAddress2\": \"<string>\",\n      \"internetAddress\": \"<string>\",\n      \"merchantDescriptor\": \"<string>\",\n      \"merchantLineBusiness\": \"<string>\"\n    },\n    {\n      \"cardAcceptorId\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"merchantAcquiringIdentifiers\": [\n        \"<string>\"\n      ],\n      \"merchantCategoryCode\": \"<string>\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"contactName\": \"<string>\",\n      \"contactEmail\": \"<string>\",\n      \"contactPhone\": \"<string>\",\n      \"parentCompany\": \"<string>\",\n      \"streetAddress1\": \"<string>\",\n      \"streetAddress2\": \"<string>\",\n      \"internetAddress\": \"<string>\",\n      \"merchantDescriptor\": \"<string>\",\n      \"merchantLineBusiness\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c730f1c4-d135-4296-b16f-09cea0d4149e",
+              "name": "This response code will be returned in scenarios where the merchant enrolment is successful, all possible response codes are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    },\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"enrollStatus\": \"Reject\",\n      \"reject\": {\n        \"rejectCode\": \"M\",\n        \"rejectMessage\": \"Merchant Id already exists for this Acquirer Segment\"\n      },\n      \"merchantId\": \"string\",\n      \"merchantName\": \"GS PERFORMANCE\"\n    },\n    {\n      \"enrollStatus\": \"Reject\",\n      \"reject\": {\n        \"rejectCode\": \"M\",\n        \"rejectMessage\": \"Merchant Id already exists for this Acquirer Segment\"\n      },\n      \"merchantId\": \"string\",\n      \"merchantName\": \"GS PERFORMANCE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da4c7179-6f31-431b-b9d9-1c8e7f4ed367",
+              "name": "This response code will be returned in scenarios where the merchant enrolment is badly formatted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    },\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Request is badly formatted and/or the required field(s) is (are) missing\",\n  \"rejectReasonCode\": \"B\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f34b206c-aa2b-4fb2-876b-eebab5cb9415",
+              "name": "This response code will be returned in scenarios where the merchant enrolment is rejected, all possible reasons for request rejection are explained below in the model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    },\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acquirerSegmentId\": 9992,\n  \"rejectCode\": \"A\",\n  \"rejectReason\": \"Acquirer segment is not enrolled\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e194705-816a-4bb9-954e-19e42b900ae9",
+              "name": "This response code will be returned in scenarios where the merchant enrolment could not be sucessfully processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vau",
+                    "onboard-api",
+                    "acquirer",
+                    "v1",
+                    "merchants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept",
+                    "value": "application/json",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acquirerSegmentId\": 2,\n  \"merchants\": [\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    },\n    {\n      \"cardAcceptorId\": \"8405445454\",\n      \"countryCode\": \"840\",\n      \"merchantAcquiringIdentifiers\": [\n        \"312345\",\n        \"312344\"\n      ],\n      \"merchantCategoryCode\": \"5735\",\n      \"merchantId\": \"<string>\",\n      \"merchantName\": \"GS PERFORMANCE\",\n      \"city\": \"Dallas\",\n      \"state\": \"TX\",\n      \"postalCode\": \"75231\",\n      \"contactName\": \"John\",\n      \"contactEmail\": \"john@glockstor.com\",\n      \"contactPhone\": \"840909090\",\n      \"parentCompany\": \"GS PERFORMANCE\",\n      \"streetAddress1\": \"8144 Walnut Hill Lane\",\n      \"streetAddress2\": \"4th cross\",\n      \"internetAddress\": \"https://www.glockstor.com\",\n      \"merchantDescriptor\": \"GS PERFORMANCE\",\n      \"merchantLineBusiness\": \"Online Service\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rejectReason\": \"Internal Server Error, please try again after sometime\",\n  \"rejectReasonCode\": \"E\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "059e43a7-d7ca-4a53-b77d-7e3ebd5f8274",
+    "name": "Foreign Exchange Rates Visa Account Updater Merchant API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Visa Account Updater Merchant API for merchant enrollment and search.",
+      "type": "text/plain"
+    }
+  }
+}

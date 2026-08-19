@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Foreign Exchange Rates Buyer Management Service API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Buyer Management Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/buyerManagement/buyerTemplate/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Obtain all current parameters for an existing buyer template. Optional and default values will be provided as well as the ability to obtain a full picture of the buyer configurations. This is helpful for troubleshooting or to see the details of a template before many any changes to it."
+        },
+        {
+          "info": {
+            "name": "Get Buyer Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyer/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Buyer Details"
+        },
+        {
+          "info": {
+            "name": "Create Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyerTemplate/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Buyer Template"
+        },
+        {
+          "info": {
+            "name": "Update Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyerTemplate/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Buyer Template"
+        },
+        {
+          "info": {
+            "name": "Update Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyer/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Buyer"
+        },
+        {
+          "info": {
+            "name": "Create Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyer/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Buyer"
+        },
+        {
+          "info": {
+            "name": "Get Buyer Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v2/buyerManagement/buyer/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve all of the current parameters of an existing buyers’ profile. Use this for troubleshooting or to get the full buyer profile details before updating a buyer. Enables the addition, update or deletion of new company template and profiles."
+        },
+        {
+          "info": {
+            "name": "Get Buyer Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox.api.visa.com/vpa/v1/buyerManagement/buyerTemplate/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Buyer Template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

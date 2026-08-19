@@ -1,0 +1,860 @@
+{
+  "item": [
+    {
+      "id": "68141fdc-23dd-41f8-bd04-a21d39666926",
+      "name": "Supplier Service",
+      "description": {
+        "content": "The Supplier web service is used for creating and maintaining a supplier.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "98c6a44c-cf2b-486f-9ef8-0e214e312a60",
+          "name": "Disable Supplier",
+          "request": {
+            "name": "Disable Supplier",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "supplier",
+                "DisableSupplier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"disableReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "056fe51a-6ea7-4c3b-b661-98244ecb37a2",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "DisableSupplier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disableReason\": \"Disabling the supplier\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": 111111,\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DisableSupplierResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a880cb7d-8e03-4e3d-9ab6-016686cdc62b",
+              "name": "Refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#disable_supplier\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "DisableSupplier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"disableReason\": \"Disabling the supplier\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": 111111,\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d096c34f-b0b3-4d4d-aa74-10ff5549111d",
+          "name": "ManageSupplierAccount",
+          "request": {
+            "name": "ManageSupplierAccount",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "supplier",
+                "ManageSupplierAccount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"cardDetails\": {\n    \"accountType\": \"<string>\",\n    \"actiontype\": \"<string>\",\n    \"proxyNumber\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"expirationDate\": \"<string>\",\n    \"defaultIndicator\": \"<string>\"\n  },\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"disableReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0fbcf20c-c927-4ae5-af25-4a77a0a9b544",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "ManageSupplierAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": 111111,\n  \"cardDetails\": {\n    \"actionType\": 2,\n    \"accountLimit\": 100,\n    \"accountType\": 2,\n    \"accountNumber\": 4111111111111111,\n    \"currencyCode\": \"USD\",\n    \"expirationDate\": \"12/2025\"\n  },\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ManageSupplierAccountResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"accountNumber\": \"string\",\n    \"expirationDate\": \"string\",\n    \"accountRequestID\": \"string\",\n    \"defaultIndicator\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25873231-3310-4ad6-aa3f-c5c5cb9b7acf",
+              "name": "Refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#manage_supplier_account\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "ManageSupplierAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": 111111,\n  \"cardDetails\": {\n    \"actionType\": 2,\n    \"accountLimit\": 100,\n    \"accountType\": 2,\n    \"accountNumber\": 4111111111111111,\n    \"currencyCode\": \"USD\",\n    \"expirationDate\": \"12/2025\"\n  },\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c2502f3-57d4-4b19-9944-fe970dc7f5f4",
+          "name": "Get Supplier Details",
+          "request": {
+            "name": "Get Supplier Details",
+            "description": {
+              "content": "Get Supplier Details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v2",
+                "supplier",
+                "GetSupplierDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"accountNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09c7f7e8-4f00-492e-a18f-3a072a27364a",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "supplier",
+                    "GetSupplierDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"B2BWS_1_Region_Bank_3029\",\n  \"supplierId\": \"Memo_prat_2221_11\",\n  \"messageId\": \"{{$timestamp}}\",\n  \"buyerID\": \"11181\",\n  \"AccountNumber\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"supplierCity\": \"Foster city\",\n  \"supplierAddressLine2\": \"10th avenue\",\n  \"supplierAddressLine1\": \"800 metro drive\",\n  \"supplierDate\": \"YYYYMMDD\",\n  \"messageID\": \"1646235257\",\n  \"defaultCurrencyCode\": \"USD\",\n  \"enablePin\": \"N\",\n  \"supplierLanguage\": \"en_US\",\n  \"primaryEmailAddress\": \"amrudesa@visa.com\",\n  \"securityCodeRequired\": \"Y\",\n  \"supplierGLCode\": \"56789\",\n  \"invoiceAttachmentRequired\": \"N\",\n  \"securityAnswers\": [\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"blue\",\n        \"questionNumber\": \"1\"\n      }\n    }\n  ],\n  \"supplierName\": \"Memo_prat22namepk7\",\n  \"suaExactMatchRule\": \"N\",\n  \"statusDesc\": \"Supplier and Account Information Received\",\n  \"supplierID\": \"Memo_prat_2221_11\",\n  \"supplierPostalCode\": \"94404\",\n  \"alternateEmailAddresses\": {\n    \"alternateEmailAddress\": [\n      \"chandank@visa.com\",\n      \"johsiu@visa.com\"\n    ]\n  },\n  \"reminderNotificationRequired\": \"N\",\n  \"accountDetails\": [\n    {\n      \"accountLimit\": \"100.00\",\n      \"accountType\": \"2\",\n      \"defaultIndicator\": \"Y\",\n      \"accountNumber\": \"4807060600772991\",\n      \"currencyCode\": \"USD\",\n      \"expirationDate\": \"2022-05-06\"\n    }\n  ],\n  \"paymentControlRequired\": \"N\",\n  \"supplierState\": \"CA\",\n  \"supplierCountryCode\": \"US\",\n  \"supplierType\": \"VPA\",\n  \"statusCode\": \"ASR060\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a9ec777-d16b-4cc5-ad36-03b9b052ea94",
+              "name": "Refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#get_supplier_details\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v2",
+                    "supplier",
+                    "GetSupplierDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientID\": \"B2BWS_1_Region_Bank_3029\",\n  \"supplierId\": \"Memo_prat_2221_11\",\n  \"messageId\": \"{{$timestamp}}\",\n  \"buyerID\": \"11181\",\n  \"AccountNumber\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e64ab3b-ae02-4454-8006-473e681fd0a4",
+          "name": "Get Supplier Details",
+          "request": {
+            "name": "Get Supplier Details",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "supplier",
+                "GetSupplierDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"accountNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c75119f4-64d3-4b9e-af73-f5b42f3a967d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "GetSupplierDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": 111111,\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"GetSupplierResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"supplierAddressLine1\": \"string\",\n    \"supplierCity\": \"string\",\n    \"supplierCountryCode\": \"str\",\n    \"supplierId\": \"string\",\n    \"supplierLanguage\": \"strin\",\n    \"supplierName\": \"string\",\n    \"supplierType\": \"string\",\n    \"stpId\": 4511,\n    \"enablePin\": \"s\",\n    \"supplierDate\": \"string\",\n    \"supplierState\": \"string\",\n    \"accountDetails\": [\n      {\n        \"accountType\": \"s\",\n        \"accountLimit\": \"string\",\n        \"currencyCode\": \"str\",\n        \"accountNumber\": \"string\",\n        \"expirationDate\": \"string\",\n        \"defaultIndicator\": \"s\"\n      },\n      {\n        \"accountType\": \"s\",\n        \"accountLimit\": \"string\",\n        \"currencyCode\": \"str\",\n        \"accountNumber\": \"string\",\n        \"expirationDate\": \"string\",\n        \"defaultIndicator\": \"s\"\n      }\n    ],\n    \"supplierGLCode\": \"string\",\n    \"securityAnswers\": [\n      {\n        \"questionAnswer\": {\n          \"questionNumber\": \"s\",\n          \"securityAnswer\": \"string\"\n        }\n      },\n      {\n        \"questionAnswer\": {\n          \"questionNumber\": \"s\",\n          \"securityAnswer\": \"string\"\n        }\n      }\n    ],\n    \"supplierPostalCode\": \"string\",\n    \"defaultCurrencyCode\": \"str\",\n    \"primaryEmailAddress\": \"string\",\n    \"securityCodeRequired\": \"s\",\n    \"supplierAddressLine2\": \"string\",\n    \"paymentExpirationDays\": \"str\",\n    \"paymentControlRequired\": \"s\",\n    \"alternateEmailAddresses\": {},\n    \"reminderNotificationDays\": \"st\",\n    \"invoiceAttachmentRequired\": \"s\",\n    \"reminderNotificationRequired\": \"s\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff79f059-4032-4905-ba9d-9284ee92455b",
+              "name": "Error Codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "GetSupplierDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": 111111,\n  \"messageId\": \"2017-04-06T03:47:20.000Z\",\n  \"buyerId\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"601\": {},\n  \"651\": {},\n  \"7023\": {},\n  \"7297\": {},\n  \"7299\": {},\n  \"7304\": {},\n  \"7358\": {},\n  \"7359\": {},\n  \"7360\": {},\n  \"7361\": {},\n  \"7362\": {},\n  \"7363\": {},\n  \"7365\": {},\n  \"7366\": {},\n  \"7370\": {},\n  \"7372\": {},\n  \"7376\": {},\n  \"7377\": {},\n  \"7382\": {},\n  \"7406\": {},\n  \"7412\": {},\n  \"7439\": {},\n  \"7445\": {},\n  \"7446\": {},\n  \"7447\": {},\n  \"7448\": {},\n  \"7449\": {},\n  \"7457\": {},\n  \"7458\": {},\n  \"7459\": {},\n  \"7460\": {},\n  \"7461\": {},\n  \"7465\": {},\n  \"7466\": {},\n  \"7467\": {},\n  \"7468\": {},\n  \"7469\": {},\n  \"7470\": {},\n  \"7471\": {},\n  \"7472\": {},\n  \"7473\": {},\n  \"7474\": {},\n  \"7475\": {},\n  \"7476\": {},\n  \"7477\": {},\n  \"7478\": {},\n  \"7479\": {},\n  \"7480\": {},\n  \"7481\": {},\n  \"7482\": {},\n  \"7483\": {},\n  \"7484\": {},\n  \"7486\": {},\n  \"7487\": {},\n  \"7488\": {},\n  \"7489\": {},\n  \"7490\": {},\n  \"7491\": {},\n  \"7494\": {},\n  \"7607\": {},\n  \"8365\": {},\n  \"7023a\": {},\n  \"ASR001\": {},\n  \"ASR060\": {},\n  \"ASR099\": {},\n  \"ASR001a\": {},\n  \"ASR060a\": {},\n  \"ASR060b\": {},\n  \"ASR060c\": {},\n  \"ASR060d\": {},\n  \"ASR060e\": {},\n  \"ASR060f\": {},\n  \"ASR060g\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81413d39-ca27-4815-9618-e62e3849eaf9",
+          "name": "Update Supplier",
+          "request": {
+            "name": "Update Supplier",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "supplier",
+                "UpdateSupplier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"stpId\": \"<string>\",\n  \"enablePin\": \"<string>\",\n  \"supplierCity\": \"<string>\",\n  \"supplierDate\": \"<string>\",\n  \"supplierName\": \"<string>\",\n  \"supplierType\": \"<string>\",\n  \"supplierState\": \"<string>\",\n  \"supplierGLCode\": \"<string>\",\n  \"securityAnswers\": [\n    {\n      \"questionAnswer\": {\n        \"questionNumber\": \"<string>\",\n        \"securityAnswer\": \"<string>\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"questionNumber\": \"<string>\",\n        \"securityAnswer\": \"<string>\"\n      }\n    }\n  ],\n  \"supplierLanguage\": \"<string>\",\n  \"suaExactMatchRule\": \"<string>\",\n  \"supplierPostalCode\": \"<string>\",\n  \"defaultCurrencyCode\": \"<string>\",\n  \"primaryEmailAddress\": \"<string>\",\n  \"supplierCountryCode\": \"<string>\",\n  \"securityCodeRequired\": \"<string>\",\n  \"supplierAddressLine1\": \"<string>\",\n  \"supplierAddressLine2\": \"<string>\",\n  \"paymentExpirationDays\": \"<string>\",\n  \"paymentControlRequired\": \"<string>\",\n  \"alternateEmailAddresses\": [\n    {\n      \"alternateEmailAddress\": \"<string>\"\n    },\n    {\n      \"alternateEmailAddress\": \"<string>\"\n    }\n  ],\n  \"reminderNotificationDays\": \"<string>\",\n  \"invoiceAttachmentRequired\": \"<string>\",\n  \"reminderNotificationRequired\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d944ced-9a27-4825-94c2-3c9717138e61",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "UpdateSupplier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplierName\": \"APISupp-103\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": \"APISupp-105\",\n  \"supplierCity\": \"Austin\",\n  \"supplierAddressLine2\": \"Address2\",\n  \"supplierAddressLine1\": \"Address1\",\n  \"paymentExpirationDays\": 0,\n  \"supplierDate\": \"MMDDYYYY\",\n  \"messageId\": \"2019-02-24T04:05:45.000X\",\n  \"buyerId\": \"9999\",\n  \"supplierLanguage\": \"en_US\",\n  \"supplierPostalCode\": 78759,\n  \"primaryEmailAddress\": \"aaa@bbb.com\",\n  \"securityCodeRequired\": \"N\",\n  \"alternateEmailAddresses\": [\n    {\n      \"alternateEmailAddress\": \"aaa1@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa2@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa3@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa4@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa5@bbb.com\"\n    }\n  ],\n  \"reminderNotificationDays\": 0,\n  \"reminderNotificationRequired\": \"N\",\n  \"paymentControlRequired\": \"N\",\n  \"invoiceAttachmentRequired\": \"N\",\n  \"supplierState\": \"TX\",\n  \"supplierCountryCode\": \"USA\",\n  \"supplierType\": \"VPA\",\n  \"securityAnswers\": [\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"Test\",\n        \"questionNumber\": \"1\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test2\",\n        \"questionNumber\": \"2\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test3\",\n        \"questionNumber\": \"3\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"UpdateSupplierResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73077717-47e1-4986-8ac8-73afa90e8130",
+              "name": "Refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#update_supplier\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "UpdateSupplier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplierName\": \"APISupp-103\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"supplierId\": \"APISupp-105\",\n  \"supplierCity\": \"Austin\",\n  \"supplierAddressLine2\": \"Address2\",\n  \"supplierAddressLine1\": \"Address1\",\n  \"paymentExpirationDays\": 0,\n  \"supplierDate\": \"MMDDYYYY\",\n  \"messageId\": \"2019-02-24T04:05:45.000X\",\n  \"buyerId\": \"9999\",\n  \"supplierLanguage\": \"en_US\",\n  \"supplierPostalCode\": 78759,\n  \"primaryEmailAddress\": \"aaa@bbb.com\",\n  \"securityCodeRequired\": \"N\",\n  \"alternateEmailAddresses\": [\n    {\n      \"alternateEmailAddress\": \"aaa1@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa2@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa3@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa4@bbb.com\"\n    },\n    {\n      \"alternateEmailAddress\": \"aaa5@bbb.com\"\n    }\n  ],\n  \"reminderNotificationDays\": 0,\n  \"reminderNotificationRequired\": \"N\",\n  \"paymentControlRequired\": \"N\",\n  \"invoiceAttachmentRequired\": \"N\",\n  \"supplierState\": \"TX\",\n  \"supplierCountryCode\": \"USA\",\n  \"supplierType\": \"VPA\",\n  \"securityAnswers\": [\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"Test\",\n        \"questionNumber\": \"1\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test2\",\n        \"questionNumber\": \"2\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test3\",\n        \"questionNumber\": \"3\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e29f303-2df1-46aa-9568-c2008a03bf3e",
+          "name": "Create Supplier",
+          "request": {
+            "name": "Create Supplier",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vpa",
+                "v1",
+                "supplier",
+                "CreateSupplier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerId\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"messageId\": \"<string>\",\n  \"supplierAddressLine1\": \"<string>\",\n  \"supplierCity\": \"<string>\",\n  \"supplierCountryCode\": \"<string>\",\n  \"supplierId\": \"<string>\",\n  \"supplierName\": \"<string>\",\n  \"supplierType\": \"<string>\",\n  \"stpId\": \"<string>\",\n  \"enablePin\": \"<string>\",\n  \"cardDetails\": {\n    \"actionType\": \"<string>\",\n    \"accountType\": \"<string>\",\n    \"proxyNumber\": \"<string>\",\n    \"accountLimit\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"expirationDate\": \"<string>\"\n  },\n  \"supplierDate\": \"<string>\",\n  \"supplierState\": \"<string>\",\n  \"supplierGLCode\": \"<string>\",\n  \"securityAnswers\": [\n    {\n      \"questionAnswer\": {\n        \"questionNumber\": \"<string>\",\n        \"securityAnswer\": \"<string>\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"questionNumber\": \"<string>\",\n        \"securityAnswer\": \"<string>\"\n      }\n    }\n  ],\n  \"supplierLanguage\": \"<string>\",\n  \"suaExactMatchRule\": \"<string>\",\n  \"supplierPostalCode\": \"<string>\",\n  \"defaultCurrencyCode\": \"<string>\",\n  \"primaryEmailAddress\": \"<string>\",\n  \"securityCodeRequired\": \"<string>\",\n  \"supplierAddressLine2\": \"<string>\",\n  \"paymentExpirationDays\": \"<string>\",\n  \"paymentControlRequired\": \"<string>\",\n  \"alternateEmailAddresses\": [\n    {\n      \"alternateEmailAddress\": \"<string>\"\n    },\n    {\n      \"alternateEmailAddress\": \"<string>\"\n    }\n  ],\n  \"reminderNotificationDays\": \"<string>\",\n  \"invoiceAttachmentRequired\": \"<string>\",\n  \"reminderNotificationRequired\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44d334d2-0780-403b-8ad7-b7b865f4f6ec",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "CreateSupplier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplierId\": \"APISupp-102\",\n  \"supplierCity\": \"FC\",\n  \"supplierAddressLine2\": \"Address2\",\n  \"supplierAddressLine1\": \"Address1\",\n  \"supplierDate\": \"MMDDYYYY\",\n  \"defaultCurrencyCode\": \"USD\",\n  \"enablePin\": \"\",\n  \"buyerId\": \"9210101012\",\n  \"supplierLanguage\": \"en_US\",\n  \"primaryEmailAddress\": \"test@visa.com\",\n  \"securityCodeRequired\": \"Y\",\n  \"supplierGLCode\": \"12345\",\n  \"cardDetails\": {\n    \"actionType\": \"1\",\n    \"accountLimit\": \"100\",\n    \"accountType\": \"1\",\n    \"proxyNumber\": \"\",\n    \"accountNumber\": \"\",\n    \"currencyCode\": \"\",\n    \"expirationDate\": \"\"\n  },\n  \"invoiceAttachmentRequired\": \"Y\",\n  \"ccEmailAddresses\": [\n    \"test1@visa.com\",\n    \"test2@visa.com\",\n    \"test3@visa.com\",\n    \"aaa@bb.com\",\n    \"aaaa1@cc.com\"\n  ],\n  \"securityAnswers\": [\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"Test\",\n        \"questionNumber\": \"1\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test2\",\n        \"questionNumber\": \"2\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test3\",\n        \"questionNumber\": \"3\"\n      }\n    }\n  ],\n  \"stpId\": \"\",\n  \"supplierName\": \"APISupp-102\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"paymentExpirationDays\": \"10\",\n  \"messageId\": \"1525731018854\",\n  \"supplierPostalCode\": \"94404\",\n  \"reminderNotificationDays\": \"9\",\n  \"reminderNotificationRequired\": \"Y\",\n  \"paymentControlRequired\": \"Y\",\n  \"supplierState\": \"CA\",\n  \"supplierCountryCode\": \"USA\",\n  \"supplierType\": \"VPA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CreateSupplierResponse\": {\n    \"messageId\": \"string\",\n    \"statusCode\": \"string\",\n    \"statusDesc\": \"string\",\n    \"accountNumber\": \"string\",\n    \"expirationDate\": \"string\",\n    \"accountRequestID\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5e632a6-04d9-4937-a4e9-e8d8851c62e3",
+              "name": "Refer to the <a href=\"https://developer.visa.com/pages/B2B-virtual-account-payment-method-error-codes#create_supplier\">Error Codes</a> page for the list of error codes for this API.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vpa",
+                    "v1",
+                    "supplier",
+                    "CreateSupplier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplierId\": \"APISupp-102\",\n  \"supplierCity\": \"FC\",\n  \"supplierAddressLine2\": \"Address2\",\n  \"supplierAddressLine1\": \"Address1\",\n  \"supplierDate\": \"MMDDYYYY\",\n  \"defaultCurrencyCode\": \"USD\",\n  \"enablePin\": \"\",\n  \"buyerId\": \"9210101012\",\n  \"supplierLanguage\": \"en_US\",\n  \"primaryEmailAddress\": \"test@visa.com\",\n  \"securityCodeRequired\": \"Y\",\n  \"supplierGLCode\": \"12345\",\n  \"cardDetails\": {\n    \"actionType\": \"1\",\n    \"accountLimit\": \"100\",\n    \"accountType\": \"1\",\n    \"proxyNumber\": \"\",\n    \"accountNumber\": \"\",\n    \"currencyCode\": \"\",\n    \"expirationDate\": \"\"\n  },\n  \"invoiceAttachmentRequired\": \"Y\",\n  \"ccEmailAddresses\": [\n    \"test1@visa.com\",\n    \"test2@visa.com\",\n    \"test3@visa.com\",\n    \"aaa@bb.com\",\n    \"aaaa1@cc.com\"\n  ],\n  \"securityAnswers\": [\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"Test\",\n        \"questionNumber\": \"1\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test2\",\n        \"questionNumber\": \"2\"\n      }\n    },\n    {\n      \"questionAnswer\": {\n        \"securityAnswer\": \"test3\",\n        \"questionNumber\": \"3\"\n      }\n    }\n  ],\n  \"stpId\": \"\",\n  \"supplierName\": \"APISupp-102\",\n  \"clientId\": \"B2BWS_1_1_9999\",\n  \"paymentExpirationDays\": \"10\",\n  \"messageId\": \"1525731018854\",\n  \"supplierPostalCode\": \"94404\",\n  \"reminderNotificationDays\": \"9\",\n  \"reminderNotificationRequired\": \"Y\",\n  \"paymentControlRequired\": \"Y\",\n  \"supplierState\": \"CA\",\n  \"supplierCountryCode\": \"USA\",\n  \"supplierType\": \"VPA\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox.api.visa.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "aa0d17b4-016b-47f2-9954-646a59a632a4",
+    "name": "Foreign Exchange Rates Supplier Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Supplier web service is used for creating and maintaining a supplier.",
+      "type": "text/plain"
+    }
+  }
+}

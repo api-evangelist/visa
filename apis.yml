@@ -5956,6 +5956,8 @@ apis:
     in near real-time without needing a physical card and without changing their 16-digit card number.
   humanURL: https://developer.visa.com/capabilities/visa-government-insights-hub
   tags:
+  - Visa Card Program Enrollment
+  tags_raw:
   - 'Visa Card Program Enrollment '
   properties:
   - type: OpenAPI
@@ -6588,6 +6590,20 @@ apis:
     url: https://developer.visa.com/capabilities/vctc/docs
 name: Visa
 tags:
+- Account
+- Banking
+- Credit Cards
+- Digital Commerce
+- Digital Wallet
+- Fintech
+- Foreign Exchange
+- Fraud Prevention
+- Merchants
+- Money Movement
+- Payments
+- Tokenization
+- Fortune 500
+tags_raw:
 - Accounts
 - Banking
 - Credit Cards

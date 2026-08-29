@@ -1,5 +1,7 @@
 aid: visa
 url: https://raw.githubusercontent.com/api-search/visa/refs/heads/main/apis.yml
+x-api-posture: partner-gated
+x-api-posture-basis: observed
 apis:
 - aid: visa:visa-government-insights-hub
   name: Visa Government Insights Hub

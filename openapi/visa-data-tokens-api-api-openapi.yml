@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Data Tokens API API
-  description: Retrieve tokenized data signals and insights from Visa's payment network for use in personalization, risk assessment, and business analytics.
+  title: Visa Data Tokens Data Tokens API
+  description: The Visa Data Tokens API provides access to tokenized, aggregated, and anonymized transaction data insights derived from Visa's global payment network. Data tokens enable businesses to leverage historical spending signals, predictive analytics, and personalization capabilities without exposing individual cardholder information.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/visa-data-tokens/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Data Tokens API
   description: Retrieve tokenized data signals and insights from Visa's payment network for use in personalization, risk assessment, and business analytics.
@@ -69,70 +76,6 @@ paths:
           description: Data token not found
 components:
   schemas:
-    DataTokenResponse:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          description: Unique identifier for the generated data token
-        tokenType:
-          type: string
-          description: Type of data token generated
-        status:
-          type: string
-          description: Token generation status
-          enum:
-          - READY
-          - PROCESSING
-          - EXPIRED
-        expiresAt:
-          type: string
-          format: date-time
-          description: Expiration timestamp for the data token
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    DataTokenRequest:
-      type: object
-      required:
-      - tokenType
-      properties:
-        tokenType:
-          type: string
-          description: Type of data token to generate
-          enum:
-          - SPENDING_SIGNAL
-          - PREDICTIVE_SCORE
-          - HISTORICAL_PATTERN
-          - PERSONALIZATION
-        primaryAccountNumber:
-          type: string
-          description: PAN for account-level insights (anonymized in response)
-        merchantCategoryCode:
-          type: string
-          description: Filter insights by merchant category code
-          pattern: ^\d{4}$
-        dateRange:
-          type: object
-          description: Date range for historical data
-          properties:
-            startDate:
-              type: string
-              format: date
-              description: Start date for the data range
-            endDate:
-              type: string
-              format: date
-              description: End date for the data range
-        geography:
-          type: string
-          description: ISO 3166-1 alpha-2 country code for geographic filtering
     DataTokenDetailResponse:
       type: object
       properties:
@@ -187,7 +130,74 @@ components:
           type: string
           format: date-time
           description: Expiration timestamp
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+    DataTokenRequest:
+      type: object
+      required:
+      - tokenType
+      properties:
+        tokenType:
+          type: string
+          description: Type of data token to generate
+          enum:
+          - SPENDING_SIGNAL
+          - PREDICTIVE_SCORE
+          - HISTORICAL_PATTERN
+          - PERSONALIZATION
+        primaryAccountNumber:
+          type: string
+          description: PAN for account-level insights (anonymized in response)
+        merchantCategoryCode:
+          type: string
+          description: Filter insights by merchant category code
+          pattern: ^\d{4}$
+        dateRange:
+          type: object
+          description: Date range for historical data
+          properties:
+            startDate:
+              type: string
+              format: date
+              description: Start date for the data range
+            endDate:
+              type: string
+              format: date
+              description: End date for the data range
+        geography:
+          type: string
+          description: ISO 3166-1 alpha-2 country code for geographic filtering
+    DataTokenResponse:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          description: Unique identifier for the generated data token
+        tokenType:
+          type: string
+          description: Type of data token generated
+        status:
+          type: string
+          description: Token generation status
+          enum:
+          - READY
+          - PROCESSING
+          - EXPIRED
+        expiresAt:
+          type: string
+          format: date-time
+          description: Expiration timestamp for the data token
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Visa Data Tokens Documentation
+  url: https://developer.visa.com/capabilities/visa-data-tokens

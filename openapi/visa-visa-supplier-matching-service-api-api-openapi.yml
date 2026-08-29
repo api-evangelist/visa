@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Visa Supplier Matching Service API API
-  description: Visa Supplier Matching Service
+  title: Visa Supplier Matching Service API
+  description: The Visa Supplier Matching Service is the fast, efficient way to identify suppliers that accept Visa Commercial payment products, so you can reduce time-consuming and labor-intensive paper-based invoice processing and check writing.null
   version: '1'
 servers:
 - url: https://sandbox.api.visa.com
@@ -138,4 +138,5 @@ paths:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Visa Supplier Matching Service API
+  - Visa Supplier Matching Service Bulk API

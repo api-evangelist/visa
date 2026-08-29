@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Universal Card Enrollment API
+  title: Visa In-App Provisioning Universal Card Enrollment API
   description: Universal Card Enrollment
   version: '1'
 servers:
@@ -890,63 +890,35 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    Expiry-1:
-      title: Expiry
-      required:
-      - month
-      - year
+    ErrorDetails:
+      title: ErrorDetails
       type: object
       properties:
-        year:
+        message:
           type: string
-          description: 4-digit expiration year
-        month:
+          description: The specific error for this field.
+        location:
           type: string
-          description: 2-digit card expiration month
-    CustomerRequest:
-      title: CustomerRequest
-      required:
-      - locale
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+    Error:
+      title: Error
       type: object
       properties:
-        locale:
-          maxLength: 5
-          minLength: 5
+        reason:
           type: string
-          description: Users preferred locale.
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
         status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
           type: string
-          description: 'Enum Values: ACTIVE, ONHOLD
-
-            '
-        lastName:
-          maxLength: 40
-          minLength: 2
-          type: string
-          description: Customer's last name.
-        firstName:
-          maxLength: 40
-          minLength: 2
-          type: string
-          description: Customer's first name.
-        encAddress:
-          type: string
-          description: "<div><p>JWE Base64 format encrypted <code>Address</code></p> <h4>Example</h4> <pre><code> {\n  \"name\": \"Digital Issuance\",\n  \"line1\": \"12301 Research Boulevard\",\n  \"line2\": \"Research Boulevard\",\n  \"line3\": \"Visa USA\",\n  \"city\": \"Austin\",\n  \"state\": \"TX\",\n  \"countryCode\": \"US\",\n  \"postalCode\": \"78759\"\n} </code></pre> <h4>Address Schema</h4> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \"TX\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
-        encEmailAddress:
-          type: string
-          description: Encrypted Customer's email address.
-        encMobileNumber:
-          type: string
-          description: "<div><p>JWE Base64 format encrypted <code>Phone Number</code></p> <h3>Example</h3> <pre><code> {\n  \"countryCode\": \"65\",\n  \"phoneNumber\": \"5128653617\"\n} </code></pre> <h3>Phone Number Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>countryCode</td><td>string<br>required<br>maxLength: 10</td><td>Phone number Country code</td></tr> <tr><td>phoneNumber</td><td>string<br>required<br>maxLength: 25</td><td>Phone Numbers without any special characters</td></tr> <tr><td>extension</td><td>string<br>optional<br>maxLength: 10</td><td>Phone number extension</td></tr> </tbody> </table> </div>\n"
-        clientCustomerID:
-          maxLength: 36
-          minLength: 36
-          type: string
-          description: This is the (external) unique identifier of the customer in the Digital Wallet Client System. This ID is unique in the clients system.
-        vParentCustomerID:
-          maxLength: 36
-          minLength: 36
-          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
     BasicCardInfo-4:
       title: BasicCardInfo
       required:
@@ -972,73 +944,28 @@ components:
           minLength: 29
           type: string
           description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
-    ValidationError:
-      title: ValidationError
+    Expiry-1:
+      title: Expiry
+      required:
+      - month
+      - year
       type: object
       properties:
-        reason:
+        year:
           type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        details:
-          type: array
-          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
-          items:
-            $ref: '#/components/schemas/ErrorDetails'
-        message:
+          description: 4-digit expiration year
+        month:
           type: string
-          description: Message describing the error condition with additional information wherever applicable.
+          description: 2-digit card expiration month
+    EncryptedCard:
+      type: string
+      description: "<div>\n<p>Encrypted <code>CardInfo</code></p> <h3>Example</h3> <pre><code>{\n  \"accountNumber\": \"4000000000000000\",\n  \"nameOnCard\": \"Digital Issuance\",\n  \"cvv2\": \"123\",\n  \"expirationDate\": {\n      \"month\": \"01\",\n      \"year\": \"2021\"\n  },\n  \"billingAddress\": {\n    \"name\": \"Digital Issuance\",\n    \"line1\": \"12301 Research Boulevard\",\n    \"line2\": \"Research Boulevard\",\n    \"line3\": \"Visa USA\",\n    \"city\": \"Austin\",\n    \"state\": \"TX\",\n    \"countryCode\": \"US\",\n    \"postalCode\": \"78759\"\n  }\n} </code></pre> <h3>CardInfo Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>accountNumber</td><td>string<br>required<br>minLength: 12<br>maxLength: 18</td><td>PAN (Primary Account Number) of the card to be provisioned or enrolled</td></tr> <tr><td>paymentAccountReference</td><td>string<br>optional</td><td>A Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN</td></tr> <tr><td>cvv2</td><td>string<br>conditional<br>minLength: 3<br>maxLength: 3</td><td>CVV2 value associated with the PAN on the card</td></tr> <tr><td>nameOnCard</td><td>string<br>conditional<br>minLength: 0<br>maxLength: 256</td><td>The full name on the card associated with the issued/enrolled card</td></tr> <tr><td>expirationDate</td><td><code>ExpirationDate</code><br>required</td><td>Cards expiration date</td></tr> <tr><td>billingAddress</td><td><code>Address</code><br>optional</td><td>Billing address associated with the card</td></tr> </tbody> </table> <h3>ExpirationDate Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>month</td><td>string<br>required<br>minLength: 2<br>maxLength: 2</td><td>The month that the card is set to expire</td></tr> <tr><td>year</td><td>string<br>required<br>minLength: 4<br>maxLength: 4</td><td>The year that the card is set to expire</td></tr> </tbody> </table> <h3>Address Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \\\"TX\\\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
     ValidationErrorResponse:
       type: object
       properties:
         errorResponse:
           $ref: '#/components/schemas/ValidationError'
-    EnrollCardRequest:
-      title: EnrollCardRequest
-      required:
-      - encCard
-      type: object
-      properties:
-        encCard:
-          $ref: '#/components/schemas/EncryptedCard'
-        clientCustomerID:
-          maxLength: 36
-          minLength: 36
-          type: string
-          description: This is the (external) unique identifier of the customer in the Digital Wallet Client System. This ID is unique in the clients system.
-        vClientIDForPartner:
-          maxLength: 36
-          minLength: 36
-          type: string
-          description: This is the vClientID of the Digital Wallet Client on-behalf of whom this call is being made by the issuer partner. This field is required only when the Enroll card API is being made on-behalf of another partner.
-        vCustomerIDForPartner:
-          maxLength: 36
-          minLength: 36
-          type: string
-          description: This is the Visa generated unique identifier of the customer of the Digital Wallet Provider Client
-    EnrollCardForCustomerRequest:
-      title: EnrollCardForCustomerRequest
-      type: object
-      properties:
-        encCard:
-          $ref: '#/components/schemas/EncryptedCard'
-        vCardID:
-          maxLength: 42
-          minLength: 42
-          type: string
-          description: The ID of the card that is to be associated with the given customer ID.
-    ErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/Error'
-    EncryptedCard:
-      type: string
-      description: "<div>\n<p>Encrypted <code>CardInfo</code></p> <h3>Example</h3> <pre><code>{\n  \"accountNumber\": \"4000000000000000\",\n  \"nameOnCard\": \"Digital Issuance\",\n  \"cvv2\": \"123\",\n  \"expirationDate\": {\n      \"month\": \"01\",\n      \"year\": \"2021\"\n  },\n  \"billingAddress\": {\n    \"name\": \"Digital Issuance\",\n    \"line1\": \"12301 Research Boulevard\",\n    \"line2\": \"Research Boulevard\",\n    \"line3\": \"Visa USA\",\n    \"city\": \"Austin\",\n    \"state\": \"TX\",\n    \"countryCode\": \"US\",\n    \"postalCode\": \"78759\"\n  }\n} </code></pre> <h3>CardInfo Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>accountNumber</td><td>string<br>required<br>minLength: 12<br>maxLength: 18</td><td>PAN (Primary Account Number) of the card to be provisioned or enrolled</td></tr> <tr><td>paymentAccountReference</td><td>string<br>optional</td><td>A Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN</td></tr> <tr><td>cvv2</td><td>string<br>conditional<br>minLength: 3<br>maxLength: 3</td><td>CVV2 value associated with the PAN on the card</td></tr> <tr><td>nameOnCard</td><td>string<br>conditional<br>minLength: 0<br>maxLength: 256</td><td>The full name on the card associated with the issued/enrolled card</td></tr> <tr><td>expirationDate</td><td><code>ExpirationDate</code><br>required</td><td>Cards expiration date</td></tr> <tr><td>billingAddress</td><td><code>Address</code><br>optional</td><td>Billing address associated with the card</td></tr> </tbody> </table> <h3>ExpirationDate Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>month</td><td>string<br>required<br>minLength: 2<br>maxLength: 2</td><td>The month that the card is set to expire</td></tr> <tr><td>year</td><td>string<br>required<br>minLength: 4<br>maxLength: 4</td><td>The year that the card is set to expire</td></tr> </tbody> </table> <h3>Address Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \\\"TX\\\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
-    BasicCardInfo-3:
+    BasicCardInfo-5:
       title: BasicCardInfo
       required:
       - expirationDate
@@ -1120,7 +1047,104 @@ components:
           maxLength: 36
           minLength: 36
           type: string
-    BasicCardInfo-5:
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    EnrollCardForCustomerRequest:
+      title: EnrollCardForCustomerRequest
+      type: object
+      properties:
+        encCard:
+          $ref: '#/components/schemas/EncryptedCard'
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: The ID of the card that is to be associated with the given customer ID.
+    EnrollCardRequest:
+      title: EnrollCardRequest
+      required:
+      - encCard
+      type: object
+      properties:
+        encCard:
+          $ref: '#/components/schemas/EncryptedCard'
+        clientCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the (external) unique identifier of the customer in the Digital Wallet Client System. This ID is unique in the clients system.
+        vClientIDForPartner:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the vClientID of the Digital Wallet Client on-behalf of whom this call is being made by the issuer partner. This field is required only when the Enroll card API is being made on-behalf of another partner.
+        vCustomerIDForPartner:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the Visa generated unique identifier of the customer of the Digital Wallet Provider Client
+    CustomerRequest:
+      title: CustomerRequest
+      required:
+      - locale
+      type: object
+      properties:
+        locale:
+          maxLength: 5
+          minLength: 5
+          type: string
+          description: Users preferred locale.
+        status:
+          type: string
+          description: 'Enum Values: ACTIVE, ONHOLD
+
+            '
+        lastName:
+          maxLength: 40
+          minLength: 2
+          type: string
+          description: Customer's last name.
+        firstName:
+          maxLength: 40
+          minLength: 2
+          type: string
+          description: Customer's first name.
+        encAddress:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Address</code></p> <h4>Example</h4> <pre><code> {\n  \"name\": \"Digital Issuance\",\n  \"line1\": \"12301 Research Boulevard\",\n  \"line2\": \"Research Boulevard\",\n  \"line3\": \"Visa USA\",\n  \"city\": \"Austin\",\n  \"state\": \"TX\",\n  \"countryCode\": \"US\",\n  \"postalCode\": \"78759\"\n} </code></pre> <h4>Address Schema</h4> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>name</td><td>string<br>optional<br>maxLength: 100</td><td>The name of the addressee</td></tr> <tr><td>line1</td><td>string<br>optional<br>maxLength: 140</td><td>First line of the address</td></tr> <tr><td>line2</td><td>string<br>optional<br>maxLength: 140</td><td>Second line of the address</td></tr> <tr><td>line3</td><td>string<br>optional<br>maxLength: 140</td><td>Third line of the address</td></tr> <tr><td>city</td><td>string<br>optional<br>maxLength: 100</td><td>Name of the city</td></tr> <tr><td>state</td><td>string<br>conditional</td><td>Second part of the country-subdivision (State or Province) code in ISO 3166-2 format of the country, eg \"TX\"</td></tr> <tr><td>postalCode</td><td>string<br>optional<br>minLength: 3<br>maxLength: 16</td><td>The postal code associated with the address, such as zip code</td></tr> <tr><td>countryCode</td><td>string<br>required</td><td>ISO 3166-1 alpha-2 formatted country code associated with the address</td></tr> </tbody> </table> </div>\n"
+        encEmailAddress:
+          type: string
+          description: Encrypted Customer's email address.
+        encMobileNumber:
+          type: string
+          description: "<div><p>JWE Base64 format encrypted <code>Phone Number</code></p> <h3>Example</h3> <pre><code> {\n  \"countryCode\": \"65\",\n  \"phoneNumber\": \"5128653617\"\n} </code></pre> <h3>Phone Number Schema</h3> <table style=\"border-collapse: collapse;\"> <thead> <tr><th>Field</th><th>Type</th><th>Description</th></tr> </thead> <tbody> <tr><td>countryCode</td><td>string<br>required<br>maxLength: 10</td><td>Phone number Country code</td></tr> <tr><td>phoneNumber</td><td>string<br>required<br>maxLength: 25</td><td>Phone Numbers without any special characters</td></tr> <tr><td>extension</td><td>string<br>optional<br>maxLength: 10</td><td>Phone number extension</td></tr> </tbody> </table> </div>\n"
+        clientCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+          description: This is the (external) unique identifier of the customer in the Digital Wallet Client System. This ID is unique in the clients system.
+        vParentCustomerID:
+          maxLength: 36
+          minLength: 36
+          type: string
+    BasicCardInfo-3:
       title: BasicCardInfo
       required:
       - expirationDate
@@ -1145,31 +1169,10 @@ components:
           minLength: 29
           type: string
           description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
-    ErrorDetails:
-      title: ErrorDetails
-      type: object
-      properties:
-        message:
-          type: string
-          description: The specific error for this field.
-        location:
-          type: string
-          description: The value of this field is using XPATH expression to point to the field, which failed validation.
-    Error:
-      title: Error
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - In-App Provisioning for Apple Pay
+  - In-App Provisioning for Google Pay
+  - In-App Provisioning for Samsung Pay
+  - Universal Card Enrollment

@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Funds Transfer API API
-  description: Push and pull funds to and from Visa accounts for real-time money movement use cases including person-to-person transfers, business disbursements, and account funding transactions.
+  title: Visa Direct Funds Transfer API
+  description: The Visa Direct API enables real-time push payments to Visa accounts worldwide. The Funds Transfer API supports pulling funds from a sender's account and pushing funds to a recipient's account, enabling use cases such as person-to-person transfers, business disbursements, and account funding.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/visa_direct/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Funds Transfer API
   description: Push and pull funds to and from Visa accounts for real-time money movement use cases including person-to-person transfers, business disbursements, and account funding transactions.
@@ -158,48 +165,33 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    PullFundsRequest:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    MultiPullFundsRequest:
       type: object
       required:
-      - systemsTraceAuditNumber
-      - retrievalReferenceNumber
       - acquiringBin
       - acquirerCountryCode
-      - senderPrimaryAccountNumber
-      - transactionCurrencyCode
-      - amount
+      - request
       properties:
-        systemsTraceAuditNumber:
-          type: string
-          description: A unique six-digit value assigned by the acquirer to identify a transaction
-          maxLength: 6
-        retrievalReferenceNumber:
-          type: string
-          description: A 12-character retrieval reference number
-          maxLength: 12
         acquiringBin:
           type: string
           description: Bank Identification Number of the acquiring institution
         acquirerCountryCode:
           type: string
           description: ISO numeric country code of the acquirer
-          pattern: ^\d{3}$
-        senderPrimaryAccountNumber:
-          type: string
-          description: Primary account number of the sender
-        senderCardExpiryDate:
-          type: string
-          description: Expiration date of the sender's card in YYYY-MM format
-        transactionCurrencyCode:
-          type: string
-          description: ISO 4217 numeric currency code
-          pattern: ^\d{3}$
-        amount:
-          type: number
-          format: double
-          description: Transaction amount in the specified currency
-        cardAcceptor:
-          $ref: '#/components/schemas/CardAcceptor'
+        request:
+          type: array
+          description: Array of individual pull funds requests
+          items:
+            $ref: '#/components/schemas/PullFundsRequest'
     MultiPushFundsRequest:
       type: object
       required:
@@ -266,6 +258,40 @@ components:
             acquiringBin:
               type: string
               description: Original acquiring BIN
+    PushFundsResponse:
+      type: object
+      properties:
+        transactionIdentifier:
+          type: integer
+          description: Unique identifier assigned by Visa to the transaction
+        actionCode:
+          type: string
+          description: Response code indicating the result of the transaction
+        approvalCode:
+          type: string
+          description: Authorization code from the issuer
+        responseCode:
+          type: string
+          description: Response code from the issuer
+        transmissionDateTime:
+          type: string
+          description: Date and time of the transaction transmission
+    MultiPullFundsResponse:
+      type: object
+      properties:
+        response:
+          type: array
+          description: Array of individual pull funds responses
+          items:
+            $ref: '#/components/schemas/PullFundsResponse'
+    MultiPushFundsResponse:
+      type: object
+      properties:
+        response:
+          type: array
+          description: Array of individual push funds responses
+          items:
+            $ref: '#/components/schemas/PushFundsResponse'
     PushFundsRequest:
       type: object
       required:
@@ -371,77 +397,6 @@ components:
             zipCode:
               type: string
               description: Postal code
-    ReverseFundsResponse:
-      type: object
-      properties:
-        transactionIdentifier:
-          type: integer
-          description: Unique identifier for the reversal transaction
-        actionCode:
-          type: string
-          description: Response code indicating the result
-        approvalCode:
-          type: string
-          description: Authorization code
-        responseCode:
-          type: string
-          description: Response code from the issuer
-        transmissionDateTime:
-          type: string
-          description: Date and time of the reversal transmission
-    PushFundsResponse:
-      type: object
-      properties:
-        transactionIdentifier:
-          type: integer
-          description: Unique identifier assigned by Visa to the transaction
-        actionCode:
-          type: string
-          description: Response code indicating the result of the transaction
-        approvalCode:
-          type: string
-          description: Authorization code from the issuer
-        responseCode:
-          type: string
-          description: Response code from the issuer
-        transmissionDateTime:
-          type: string
-          description: Date and time of the transaction transmission
-    MultiPushFundsResponse:
-      type: object
-      properties:
-        response:
-          type: array
-          description: Array of individual push funds responses
-          items:
-            $ref: '#/components/schemas/PushFundsResponse'
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    MultiPullFundsRequest:
-      type: object
-      required:
-      - acquiringBin
-      - acquirerCountryCode
-      - request
-      properties:
-        acquiringBin:
-          type: string
-          description: Bank Identification Number of the acquiring institution
-        acquirerCountryCode:
-          type: string
-          description: ISO numeric country code of the acquirer
-        request:
-          type: array
-          description: Array of individual pull funds requests
-          items:
-            $ref: '#/components/schemas/PullFundsRequest'
     PullFundsResponse:
       type: object
       properties:
@@ -460,15 +415,70 @@ components:
         transmissionDateTime:
           type: string
           description: Date and time of the transaction transmission
-    MultiPullFundsResponse:
+    ReverseFundsResponse:
       type: object
       properties:
-        response:
-          type: array
-          description: Array of individual pull funds responses
-          items:
-            $ref: '#/components/schemas/PullFundsResponse'
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+        transactionIdentifier:
+          type: integer
+          description: Unique identifier for the reversal transaction
+        actionCode:
+          type: string
+          description: Response code indicating the result
+        approvalCode:
+          type: string
+          description: Authorization code
+        responseCode:
+          type: string
+          description: Response code from the issuer
+        transmissionDateTime:
+          type: string
+          description: Date and time of the reversal transmission
+    PullFundsRequest:
+      type: object
+      required:
+      - systemsTraceAuditNumber
+      - retrievalReferenceNumber
+      - acquiringBin
+      - acquirerCountryCode
+      - senderPrimaryAccountNumber
+      - transactionCurrencyCode
+      - amount
+      properties:
+        systemsTraceAuditNumber:
+          type: string
+          description: A unique six-digit value assigned by the acquirer to identify a transaction
+          maxLength: 6
+        retrievalReferenceNumber:
+          type: string
+          description: A 12-character retrieval reference number
+          maxLength: 12
+        acquiringBin:
+          type: string
+          description: Bank Identification Number of the acquiring institution
+        acquirerCountryCode:
+          type: string
+          description: ISO numeric country code of the acquirer
+          pattern: ^\d{3}$
+        senderPrimaryAccountNumber:
+          type: string
+          description: Primary account number of the sender
+        senderCardExpiryDate:
+          type: string
+          description: Expiration date of the sender's card in YYYY-MM format
+        transactionCurrencyCode:
+          type: string
+          description: ISO 4217 numeric currency code
+          pattern: ^\d{3}$
+        amount:
+          type: number
+          format: double
+          description: Transaction amount in the specified currency
+        cardAcceptor:
+          $ref: '#/components/schemas/CardAcceptor'
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Visa Direct Documentation
+  url: https://developer.visa.com/capabilities/visa_direct/docs

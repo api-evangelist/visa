@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates CTP Checkout API API
-  description: The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a seamless and secure payment experience.
+  title: Visa Click to Pay CTP Checkout API
+  description: The Visa Click to Pay API enables merchants and payment service providers to integrate Visa's secure remote commerce checkout experience. Based on EMV Secure Remote Commerce (SRC) standards, Click to Pay provides a streamlined online checkout flow where consumers can pay with stored Visa credentials without re-entering card details for each purchase.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/visa-secure-remote-commerce/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: CTP Checkout API
   description: The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a seamless and secure payment experience.
@@ -72,24 +79,6 @@ components:
       schema:
         type: string
   schemas:
-    CheckoutResponse:
-      type: object
-      properties:
-        checkoutId:
-          type: string
-          description: Unique identifier for the initiated checkout session
-        status:
-          type: string
-          description: Current status of the checkout session
-          enum:
-          - INITIATED
-          - PENDING
-          - COMPLETED
-          - EXPIRED
-        checkoutUrl:
-          type: string
-          format: uri
-          description: URL to redirect the consumer for checkout completion
     ErrorResponse:
       type: object
       properties:
@@ -110,6 +99,27 @@ components:
               message:
                 type: string
                 description: Detail about the field error
+    CheckoutStatusResponse:
+      type: object
+      properties:
+        checkoutId:
+          type: string
+          description: Unique identifier for the checkout session
+        status:
+          type: string
+          description: Current status of the checkout session
+          enum:
+          - INITIATED
+          - PENDING
+          - COMPLETED
+          - EXPIRED
+          - CANCELLED
+        transactionId:
+          type: string
+          description: Transaction identifier assigned after successful payment
+        paymentToken:
+          type: string
+          description: Tokenized payment credential used for the transaction
     CheckoutRequest:
       type: object
       required:
@@ -139,12 +149,12 @@ components:
           type: string
           format: uri
           description: URL to redirect the consumer after checkout completion
-    CheckoutStatusResponse:
+    CheckoutResponse:
       type: object
       properties:
         checkoutId:
           type: string
-          description: Unique identifier for the checkout session
+          description: Unique identifier for the initiated checkout session
         status:
           type: string
           description: Current status of the checkout session
@@ -153,14 +163,14 @@ components:
           - PENDING
           - COMPLETED
           - EXPIRED
-          - CANCELLED
-        transactionId:
+        checkoutUrl:
           type: string
-          description: Transaction identifier assigned after successful payment
-        paymentToken:
-          type: string
-          description: Tokenized payment credential used for the transaction
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+          format: uri
+          description: URL to redirect the consumer for checkout completion
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Visa Click to Pay Documentation
+  url: https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs

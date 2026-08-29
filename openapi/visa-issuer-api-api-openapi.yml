@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Issuer API API
+  title: Visa BIN Attribute Sharing Service Issuer API
   description: API that enables issuers to source acquirer BIN data directly from Visa
   version: '1'
 servers:
@@ -127,9 +127,104 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    vbassFileTransferResponse:
-      title: vbassFileTransferResponse
+    responseStatus:
+      title: responseStatus
       type: object
+      properties:
+        statusCode:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: Status Code of the Service Request
+          example: CDI000
+        statusDescription:
+          maxLength: 250
+          minLength: 0
+          type: string
+          description: A description of the Status Code. A brief description indicating the result of the Service Request
+          example: Success
+    fileDetails-1:
+      title: fileDetails
+      required:
+      - checkSum
+      - fileName
+      - fileSize
+      - rowCount
+      type: object
+      properties:
+        checkSum:
+          maxLength: 32
+          minLength: 32
+          type: string
+          description: File checksum
+          example: bb8e4c75d51001dd35b40dc6209eccc2
+        fileName:
+          maxLength: 255
+          minLength: 30
+          type: string
+          description: File Name
+          example: VBASS_ACQ_01282024_1.csv
+        fileSize:
+          minimum: 0
+          type: number
+          description: File Size in bytes (from Linux OS)
+          example: 1770048
+        rowCount:
+          minimum: 0
+          type: number
+          description: Number of records in the file (excludes the column header record at the top of the csv file)
+          example: 30000
+    vbassFileTransferRequest:
+      title: vbassFileTransferRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData-2'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-2'
+    requestData-2:
+      title: requestData
+      required:
+      - fileName
+      type: object
+      properties:
+        fileName:
+          maxLength: 255
+          minLength: 1
+          type: string
+          description: Name of the file
+    responseData-1:
+      title: responseData
+      required:
+      - fileDetails
+      - fileType
+      - filesCreationDate
+      - totalNumberOfFiles
+      type: object
+      properties:
+        fileType:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: File Type for which file details have been retrieved, i.e., Acquirer (ACQ)
+          example: ACQ
+        fileDetails:
+          type: array
+          description: List of VBASS Files MetaData
+          items:
+            $ref: '#/components/schemas/fileDetails-1'
+        filesCreationDate:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: Files creation date in YYYY-MM-DD Format
+          format: YYYY-MM-DD
+          example: '2024-01-17'
+        totalNumberOfFiles:
+          minimum: 0
+          type: integer
+          description: Total number of files for a requested payment account type
+          example: 1
     requestHeader-2:
       title: requestHeader
       required:
@@ -148,22 +243,9 @@ components:
           minLength: 1
           type: string
           description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-    responseStatus:
-      title: responseStatus
+    vbassFileTransferResponse:
+      title: vbassFileTransferResponse
       type: object
-      properties:
-        statusCode:
-          maxLength: 6
-          minLength: 6
-          type: string
-          description: Status Code of the Service Request
-          example: CDI000
-        statusDescription:
-          maxLength: 250
-          minLength: 0
-          type: string
-          description: A description of the Status Code. A brief description indicating the result of the Service Request
-          example: Success
     requestHeader-1:
       title: requestHeader
       required:
@@ -184,14 +266,6 @@ components:
           type: string
           description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
           example: reqMsgId135
-    vbassFilesMetadataRequest:
-      title: VBASSFilesMetadataRequest
-      type: object
-      properties:
-        requestData:
-          $ref: '#/components/schemas/requestData-1'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader-1'
     errorCodes-1:
       title: errorCodes
       type: object
@@ -240,47 +314,6 @@ components:
           type: string
           description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
           example: 106VDP87035320230217063131177
-    fileDetails-1:
-      title: fileDetails
-      required:
-      - checkSum
-      - fileName
-      - fileSize
-      - rowCount
-      type: object
-      properties:
-        checkSum:
-          maxLength: 32
-          minLength: 32
-          type: string
-          description: File checksum
-          example: bb8e4c75d51001dd35b40dc6209eccc2
-        fileName:
-          maxLength: 255
-          minLength: 30
-          type: string
-          description: File Name
-          example: VBASS_ACQ_01282024_1.csv
-        fileSize:
-          minimum: 0
-          type: number
-          description: File Size in bytes (from Linux OS)
-          example: 1770048
-        rowCount:
-          minimum: 0
-          type: number
-          description: Number of records in the file (excludes the column header record at the top of the csv file)
-          example: 30000
-    vbassFilesMetadataResponse:
-      title: VBASSFilesMetadataResponse
-      type: object
-      properties:
-        responseData:
-          $ref: '#/components/schemas/responseData-1'
-        responseHeader:
-          $ref: '#/components/schemas/responseHeader-1'
-        responseStatus:
-          $ref: '#/components/schemas/responseStatus'
     errorCodes:
       title: ErrorCodes
       type: object
@@ -306,17 +339,14 @@ components:
         CDI251:
           type: object
           description: Client configuration incomplete, reach out to BINAttributes@visa.com
-    requestData-2:
-      title: requestData
-      required:
-      - fileName
+    vbassFilesMetadataRequest:
+      title: VBASSFilesMetadataRequest
       type: object
       properties:
-        fileName:
-          maxLength: 255
-          minLength: 1
-          type: string
-          description: Name of the file
+        requestData:
+          $ref: '#/components/schemas/requestData-1'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-1'
     requestData-1:
       title: requestData
       required:
@@ -329,47 +359,21 @@ components:
           type: string
           description: File Type Identifier
           example: ACQ
-    responseData-1:
-      title: responseData
-      required:
-      - fileDetails
-      - fileType
-      - filesCreationDate
-      - totalNumberOfFiles
+    vbassFilesMetadataResponse:
+      title: VBASSFilesMetadataResponse
       type: object
       properties:
-        fileType:
-          maxLength: 100
-          minLength: 1
-          type: string
-          description: File Type for which file details have been retrieved, i.e., Acquirer (ACQ)
-          example: ACQ
-        fileDetails:
-          type: array
-          description: List of VBASS Files MetaData
-          items:
-            $ref: '#/components/schemas/fileDetails-1'
-        filesCreationDate:
-          maxLength: 10
-          minLength: 0
-          type: string
-          description: Files creation date in YYYY-MM-DD Format
-          format: YYYY-MM-DD
-          example: '2024-01-17'
-        totalNumberOfFiles:
-          minimum: 0
-          type: integer
-          description: Total number of files for a requested payment account type
-          example: 1
-    vbassFileTransferRequest:
-      title: vbassFileTransferRequest
-      type: object
-      properties:
-        requestData:
-          $ref: '#/components/schemas/requestData-2'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader-2'
+        responseData:
+          $ref: '#/components/schemas/responseData-1'
+        responseHeader:
+          $ref: '#/components/schemas/responseHeader-1'
+        responseStatus:
+          $ref: '#/components/schemas/responseStatus'
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - BIN File Transfer
+  - BIN Files Metadata
+  - Full BIN List
+  - Issuer API
+  - Single BIN Lookup

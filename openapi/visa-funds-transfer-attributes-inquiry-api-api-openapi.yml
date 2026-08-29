@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Funds Transfer Attributes Inquiry API API
+  title: Payment Account Attributes Inquiry Funds Transfer Attributes Inquiry API
   description: The Funds Transfer Attributes Inquiry API is often used with a funds transfer to/from a Visa payment account to determine key characteristics of a recipient card before initiating the transfer like country, card-type, block status, etc.
   version: '1'
 servers:
@@ -470,6 +470,41 @@ paths:
         <acnl:AcnlV2V2Request xmlns:acnl="http://www.visa.com/vpp/api/acnl" xmlns:dd="http://www.visa.com/vpp/api/dd"><systemsTraceAuditNumber xmlns="">451006</systemsTraceAuditNumber><retrievalReferenceNumber xmlns="">330000550000</retrievalReferenceNumber><primaryAccountNumber xmlns="">4957030420210512</primaryAccountNumber></acnl:AcnlV2V2Request>'
 components:
   schemas:
+    FundsTransferInquiryRequest-1:
+      required:
+      - primaryAccountNumber
+      - retrievalReferenceNumber
+      - systemsTraceAuditNumber
+      type: object
+      properties:
+        acquiringBin:
+          type: integer
+          description: The Bank Identification Number (BIN) under which your Funds Transfer application is registered. This must match the information provided during enrollment.
+        cardPlatformCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: Indicates the type of card. This is a 2-character alphabetic code.<br>BZ -  Business.<br>CN -  Consumer.<br>CO -  Commercial.<br>GV -  Government.
+        sharingGroupCode:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: This field is optionally used by Push Payments Gateway participants (merchants and acquirers) to get the attributes for specified networks only. The networks specified in this field must be a subset of the information provided during program enrollment. Refer to <a href="/request_response_codes#network_id_and_sharing_group_code"> Sharing Group Code </a><br>Note:<br>Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        primaryAccountNumber:
+          maxLength: 19
+          minLength: 13
+          type: string
+          description: The primary account number for which account attributes are being requested
+        systemsTraceAuditNumber:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: A unique value should be used for each API method where this is required. If this is used for funds transfer, please refer to <a href="/capabilities/visa_direct/reference#visa_direct__funds_transfer__v1__pullfunds" > PullFundsTransactions POST</a> Funds Transfer API for more details.
+        retrievalReferenceNumber:
+          maxLength: 12
+          minLength: 12
+          type: string
+          description: 'A value used to tie together service calls related to a single financial transaction.<br>Recommended Format: ydddhhnnnnnn<br>The first fours digits must be a valid yddd date in the Julian date format, where the first digit = 0-9 (last digit of current year) and the next three digits = 001-366 (number of the day in the year).<br>hh can be the two digit hour in a 24 hour clock (00-23) during which the transaction is performed.<br> nnnnnn can be the SystemsTraceAuditNumber or any 6 digit number.'
     FundsTransferInquiryResponse-1:
       type: object
       properties:
@@ -538,84 +573,6 @@ components:
           minLength: 1
           type: string
           description: Identifies the number of decimal positions that should be present in any amounts for the requested card's billing currency.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-    FundsTransferInquiryRequest:
-      required:
-      - primaryAccountNumber
-      - retrievalReferenceNumber
-      - systemsTraceAuditNumber
-      type: object
-      properties:
-        accountType:
-          maxLength: 6
-          minLength: 5
-          type: string
-          description: This is used to identify the account type of the recipientPrimaryAccountNumber in the request. Below are the possible values. <br><br><b>DEBIT</b><br><b>CREDIT</b><br><br> Processing codes for Debit account Type <br>10-Saving account<br>20-Checking account<br><br>Processing codes for Credit account Type<br>30-Credit card account<br><br> If accountType is not provided for Combo Card, then response will display<br><br>10 or 20 for Combo Card  <br>30 for Combo Card
-          enum:
-          - DEBIT
-          - CREDIT
-        acquiringBin:
-          type: integer
-          description: 'This is an optional field. The Bank Identification Number (BIN) under which your Funds Transfer application is registered. This must match the information provided during enrollment.<br><br> <b> NOTE: </b> <br> PAN check digit validation only occurs for mVisa BIN<br>If acquiring BIN is not passed in request there is no length/check digit validation even for mvisa'
-        sharingGroupCode:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: This field is optionally used by Push Payments Gateway participants (merchants and acquirers) to get the attributes for specified networks only. The networks specified in this field must be a subset of the information provided during program enrollment. Refer to <a href="/request_response_codes#network_id_and_sharing_group_code"> Sharing Group Code</a>.<br>Note:<br>Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        acquirerCountryCode:
-          maxLength: 3
-          minLength: 3
-          type: string
-          description: This is an optional field. <br>Use a 3-digit numeric country code for the country where the Funds Transfer solution is registered. This must match the information provided during program enrollment.
-        primaryAccountNumber:
-          maxLength: 19
-          minLength: 13
-          type: string
-          description: The primary account number or Token for which account attributes are being requested
-        systemsTraceAuditNumber:
-          maxLength: 6
-          minLength: 6
-          type: string
-          description: A numeric value is required.
-        retrievalReferenceNumber:
-          maxLength: 12
-          minLength: 12
-          type: string
-          description: A numeric value is required.
-    FundsTransferInquiryRequest-1:
-      required:
-      - primaryAccountNumber
-      - retrievalReferenceNumber
-      - systemsTraceAuditNumber
-      type: object
-      properties:
-        acquiringBin:
-          type: integer
-          description: The Bank Identification Number (BIN) under which your Funds Transfer application is registered. This must match the information provided during enrollment.
-        cardPlatformCode:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: Indicates the type of card. This is a 2-character alphabetic code.<br>BZ -  Business.<br>CN -  Consumer.<br>CO -  Commercial.<br>GV -  Government.
-        sharingGroupCode:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: This field is optionally used by Push Payments Gateway participants (merchants and acquirers) to get the attributes for specified networks only. The networks specified in this field must be a subset of the information provided during program enrollment. Refer to <a href="/request_response_codes#network_id_and_sharing_group_code"> Sharing Group Code </a><br>Note:<br>Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        primaryAccountNumber:
-          maxLength: 19
-          minLength: 13
-          type: string
-          description: The primary account number for which account attributes are being requested
-        systemsTraceAuditNumber:
-          maxLength: 6
-          minLength: 6
-          type: string
-          description: A unique value should be used for each API method where this is required. If this is used for funds transfer, please refer to <a href="/capabilities/visa_direct/reference#visa_direct__funds_transfer__v1__pullfunds" > PullFundsTransactions POST</a> Funds Transfer API for more details.
-        retrievalReferenceNumber:
-          maxLength: 12
-          minLength: 12
-          type: string
-          description: 'A value used to tie together service calls related to a single financial transaction.<br>Recommended Format: ydddhhnnnnnn<br>The first fours digits must be a valid yddd date in the Julian date format, where the first digit = 0-9 (last digit of current year) and the next three digits = 001-366 (number of the day in the year).<br>hh can be the two digit hour in a 24 hour clock (00-23) during which the transaction is performed.<br> nnnnnn can be the SystemsTraceAuditNumber or any 6 digit number.'
     FundsTransferInquiryResponse:
       required:
       - ppgsNetworkInfo
@@ -829,7 +786,50 @@ components:
                 minLength: 1
                 type: string
                 description: Indicates whether cross-border  non-money transfer OCTs (push funds) are allowed.<br>Y - Cross-border non-money transfer OCTs are allowed.<br>N - Cross-border non-money transfer OCTs are blocked.
+    FundsTransferInquiryRequest:
+      required:
+      - primaryAccountNumber
+      - retrievalReferenceNumber
+      - systemsTraceAuditNumber
+      type: object
+      properties:
+        accountType:
+          maxLength: 6
+          minLength: 5
+          type: string
+          description: This is used to identify the account type of the recipientPrimaryAccountNumber in the request. Below are the possible values. <br><br><b>DEBIT</b><br><b>CREDIT</b><br><br> Processing codes for Debit account Type <br>10-Saving account<br>20-Checking account<br><br>Processing codes for Credit account Type<br>30-Credit card account<br><br> If accountType is not provided for Combo Card, then response will display<br><br>10 or 20 for Combo Card  <br>30 for Combo Card
+          enum:
+          - DEBIT
+          - CREDIT
+        acquiringBin:
+          type: integer
+          description: 'This is an optional field. The Bank Identification Number (BIN) under which your Funds Transfer application is registered. This must match the information provided during enrollment.<br><br> <b> NOTE: </b> <br> PAN check digit validation only occurs for mVisa BIN<br>If acquiring BIN is not passed in request there is no length/check digit validation even for mvisa'
+        sharingGroupCode:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: This field is optionally used by Push Payments Gateway participants (merchants and acquirers) to get the attributes for specified networks only. The networks specified in this field must be a subset of the information provided during program enrollment. Refer to <a href="/request_response_codes#network_id_and_sharing_group_code"> Sharing Group Code</a>.<br>Note:<br>Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        acquirerCountryCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: This is an optional field. <br>Use a 3-digit numeric country code for the country where the Funds Transfer solution is registered. This must match the information provided during program enrollment.
+        primaryAccountNumber:
+          maxLength: 19
+          minLength: 13
+          type: string
+          description: The primary account number or Token for which account attributes are being requested
+        systemsTraceAuditNumber:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: A numeric value is required.
+        retrievalReferenceNumber:
+          maxLength: 12
+          minLength: 12
+          type: string
+          description: A numeric value is required.
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Funds Transfer Attributes Inquiry API

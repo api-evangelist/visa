@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Single Use Account Pool Maintenance Service API
+  title: B2B Virtual Account Payment Method Single Use Account Pool Maintenance Service API
   description: The Proxy web service is used for managing a pool of Single-Use Accounts (SUAs) linked to a proxy. With this web service, you can create proxy pool(s) for a buyer, update details of the proxy, delete unused pools and get details about an existing pool(e.g. number of available accounts).
   version: '1'
 servers:
@@ -1063,4 +1063,9 @@ paths:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Account Management service
+  - Buyer Management Service
+  - Payment Service
+  - Single Use Account Pool Maintenance Service
+  - Supplier Service
+  - Workflows

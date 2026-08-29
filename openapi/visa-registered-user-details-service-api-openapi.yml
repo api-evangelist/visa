@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Registered User Details Service API
+  title: Visa Business Data Solutions Registered User Details Service API
   description: Self Registration web services are used to register the new users.
   version: '1'
 servers:
@@ -252,4 +252,9 @@ paths:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Authorization Data API
+  - Business Data Corporate Setup API
+  - Business Data Transactions API
+  - Push Authorization Data API
+  - Registered User Details Service
+  - VCS Enrollment API

@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Nearby Merchants API API
-  description: Discover nearby Visa-accepting merchants based on geographic coordinates or address information.
+  title: Visa Merchant Search Nearby Merchants API
+  description: The Visa Merchant Search API provides enriched and precise merchant data to create a more transparent and effective transaction process. The API supports transaction enrichment with enhanced merchant information, generic merchant search by name and location, and nearby merchant discovery for Visa-accepting locations.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/merchant_search/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Nearby Merchants API
   description: Discover nearby Visa-accepting merchants based on geographic coordinates or address information.
@@ -42,6 +49,44 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    NearbyMerchantsRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude coordinate
+        longitude:
+          type: number
+          format: double
+          description: Longitude coordinate
+        searchRadius:
+          type: number
+          format: double
+          description: Search radius in kilometers
+        searchRadiusUnit:
+          type: string
+          description: Unit of measurement for search radius
+          enum:
+          - KM
+          - MI
+        merchantCategoryCode:
+          type: array
+          description: Filter by Merchant Category Codes
+          items:
+            type: string
+        maxRecords:
+          type: integer
+          description: Maximum number of records to return
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     MerchantRecord:
       type: object
       properties:
@@ -93,45 +138,10 @@ components:
             totalCount:
               type: integer
               description: Total matching merchants
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    NearbyMerchantsRequest:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          description: Latitude coordinate
-        longitude:
-          type: number
-          format: double
-          description: Longitude coordinate
-        searchRadius:
-          type: number
-          format: double
-          description: Search radius in kilometers
-        searchRadiusUnit:
-          type: string
-          description: Unit of measurement for search radius
-          enum:
-          - KM
-          - MI
-        merchantCategoryCode:
-          type: array
-          description: Filter by Merchant Category Codes
-          items:
-            type: string
-        maxRecords:
-          type: integer
-          description: Maximum number of records to return
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Merchant Search Documentation
+  url: https://developer.visa.com/capabilities/merchant_search/docs

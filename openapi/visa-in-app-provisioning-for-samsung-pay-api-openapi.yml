@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates In-App Provisioning for Samsung Pay API
+  title: Visa In-App Provisioning In-App Provisioning for Samsung Pay API
   description: In-App Provisioning for Samsung Pay
   version: '1'
 servers:
@@ -125,6 +125,67 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    SamsungPayProvisioningResponse:
+      title: SamsungPayProvisioningResponse
+      required:
+      - last4
+      - opaquePaymentCard
+      - vCardID
+      type: object
+      properties:
+        last4:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: Last 4 digits of the card.
+        vCardID:
+          maxLength: 42
+          minLength: 42
+          type: string
+          description: Visa-defined unique ID of the card
+        cardType:
+          type: string
+          description: Enum indicating the supported card type. It will be provided only for Visa cards.
+          enum:
+          - CREDIT
+          - DEBIT
+        opaquePaymentCard:
+          type: string
+          description: This is the opaque card data that is needed by SamsungPay for tokenization.
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
+    ErrorDetails:
+      title: ErrorDetails
+      type: object
+      properties:
+        message:
+          type: string
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
     SamsungPayProvisioningRequest:
       title: SamsungPayProvisioningRequest
       required:
@@ -166,6 +227,11 @@ components:
           enum:
           - V
           - M
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       type: object
@@ -185,73 +251,10 @@ components:
         message:
           type: string
           description: Message describing the error condition with additional information wherever applicable.
-    ValidationErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/ValidationError'
-    ErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/Error'
-    SamsungPayProvisioningResponse:
-      title: SamsungPayProvisioningResponse
-      required:
-      - last4
-      - opaquePaymentCard
-      - vCardID
-      type: object
-      properties:
-        last4:
-          maxLength: 4
-          minLength: 4
-          type: string
-          description: Last 4 digits of the card.
-        vCardID:
-          maxLength: 42
-          minLength: 42
-          type: string
-          description: Visa-defined unique ID of the card
-        cardType:
-          type: string
-          description: Enum indicating the supported card type. It will be provided only for Visa cards.
-          enum:
-          - CREDIT
-          - DEBIT
-        opaquePaymentCard:
-          type: string
-          description: This is the opaque card data that is needed by SamsungPay for tokenization.
-        paymentAccountReference:
-          maxLength: 29
-          minLength: 29
-          type: string
-          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
-    ErrorDetails:
-      title: ErrorDetails
-      type: object
-      properties:
-        message:
-          type: string
-          description: The specific error for this field.
-        location:
-          type: string
-          description: The value of this field is using XPATH expression to point to the field, which failed validation.
-    Error:
-      title: Error
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - In-App Provisioning for Apple Pay
+  - In-App Provisioning for Google Pay
+  - In-App Provisioning for Samsung Pay
+  - Universal Card Enrollment

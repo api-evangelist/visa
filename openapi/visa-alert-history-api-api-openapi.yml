@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Alert History API API
-  description: Retrieve notification history for accounts and manage customer profiles for alert delivery.
+  title: Visa Transaction Controls Alert History API
+  description: The Visa Transaction Controls (VTC) API enables issuers to offer their cardholders the ability to set spending rules and receive real-time alerts on their Visa payment cards. Cardholders can define rules to block or alert on specific transaction types, merchant categories, geographic locations, spending thresholds, and more.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/vctc/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Alert History API
   description: Retrieve notification history for accounts and manage customer profiles for alert delivery.
@@ -42,6 +49,15 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     AlertHistoryResponse:
       type: object
       properties:
@@ -93,16 +109,10 @@ components:
           type: string
           format: date
           description: End date for the history query
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Visa Transaction Controls Documentation
+  url: https://developer.visa.com/capabilities/vctc/docs

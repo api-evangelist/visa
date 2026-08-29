@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Business Data Corporate Setup API API
+  title: Visa Business Data Solutions Business Data Corporate Setup API
   description: 'Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API.'
   version: '1'
 servers:
@@ -293,4 +293,9 @@ paths:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Authorization Data API
+  - Business Data Corporate Setup API
+  - Business Data Transactions API
+  - Push Authorization Data API
+  - Registered User Details Service
+  - VCS Enrollment API

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates VCS Enrollment API API
+  title: Visa Business Data Solutions VCS Enrollment API
   description: The API is used to onboard and register companies, users and cards in Commercial Space
   version: '1'
 servers:
@@ -171,6 +171,207 @@ paths:
       x-sortOrder: 0
 components:
   schemas:
+    RequestPutPayload:
+      required:
+      - clientCompanyId
+      - language
+      - messageId
+      - service
+      type: object
+      properties:
+        service:
+          type: array
+          description: Services to be subscribed
+          items:
+            type: string
+            example: VSCB
+        cardInfo:
+          type: array
+          description: Card Details to be register.
+          items:
+            type: object
+            properties:
+              primary:
+                type: boolean
+                description: To identify card as primary.
+                example: true
+              lastName:
+                maxLength: 50
+                type: string
+                description: Card Holder Last Name.
+                example: LastName1
+              serialNo:
+                maxLength: 100
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              firstName:
+                maxLength: 50
+                type: string
+                description: Card Holder First Name.
+                example: FirstName1
+              cardAccNumber:
+                maxLength: 16
+                type: string
+                description: Card Number.
+                example: '4111115773850213'
+              cardExpiryDate:
+                maxLength: 100
+                type: string
+                description: Card Expiry Date with basic month and card validation..
+                example: 02/2024
+        language:
+          maxLength: 10
+          type: string
+          description: Supported Languages are en_us,en_gb,fr_ca,es_xl,pt_br,ja_jp,ar_sa,ru_ru,it_it,de_de,fr_fr,pl_pl,nl_nl,sk_sk,vi_vn
+          example: en_us
+        userInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              roles:
+                type: object
+                additionalProperties:
+                  type: string
+              lastName:
+                maxLength: 50
+                type: string
+                description: Card Holder Last Name.
+                example: LastName1
+              serialNo:
+                maxLength: 100
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              firstName:
+                maxLength: 50
+                type: string
+                description: Card Holder First Name.
+                example: FirstName1
+              emailAddress:
+                maxLength: 50
+                minLength: 6
+                type: string
+                description: Email Address.
+                example: testemail10220270@gmail.com
+              federationMappingId:
+                maxLength: 64
+                type: string
+                description: Federation Mapping Id. Mandatory if bank enabled for SSO.
+                example: testemail10220270
+        messageId:
+          type: integer
+          description: Message Id
+          example: 649833257
+        association:
+          type: array
+          items:
+            type: object
+            properties:
+              serialNo:
+                maxLength: 100
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              emailAddress:
+                maxLength: 50
+                minLength: 6
+                type: string
+                description: Email Address.
+                example: testemail10220270@gmail.com
+              cardAccNumber:
+                maxLength: 16
+                type: string
+                description: Card Number.
+                example: '4111115773850213'
+        clientCompanyId:
+          maxLength: 20
+          type: string
+          description: Client Company Id
+          example: 1n78gbqw56
+    ResponsePayload:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Overall registration Status. Either Success or Failure or Partial Success.
+          example: SUCCESS
+        messageId:
+          type: string
+          description: Message Id
+          example: '9854765'
+        correlationId:
+          type: string
+          description: CorrelationId
+          example: a05568c3-e4a1-4634-9190-b2bb3744effd
+        clientCompanyId:
+          type: string
+          description: Client Company Id
+          example: 1n78gbqw56
+        cardInfoResponses:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Overall registration Status. Either Success or Failure
+                example: SUCCESS
+              messages:
+                type: array
+                items:
+                  type: string
+              serialNo:
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              cardAccNumber:
+                type: string
+                description: Card Number.
+                example: 4XXXXX5773850213
+              cardIdentifier:
+                type: string
+                description: Card Identifier.
+                example: '267625'
+        userInfoResponses:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Overall registration Status. Either Success or Failure
+                example: SUCCESS
+              messages:
+                type: array
+                items:
+                  type: string
+              serialNo:
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              emailAddress:
+                type: string
+                description: Email Address.
+                example: testemail10220270@gmail.com
+        associationResponses:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Overall registration Status. Either Success or Failure
+                example: SUCCESS
+              messages:
+                type: array
+                items:
+                  type: string
+              serialNo:
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
     RequestPayload:
       required:
       - address
@@ -336,208 +537,12 @@ components:
           type: integer
           description: Company Phone Number
           example: 99197904935
-    ResponsePayload:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Overall registration Status. Either Success or Failure or Partial Success.
-          example: SUCCESS
-        messageId:
-          type: string
-          description: Message Id
-          example: '9854765'
-        correlationId:
-          type: string
-          description: CorrelationId
-          example: a05568c3-e4a1-4634-9190-b2bb3744effd
-        clientCompanyId:
-          type: string
-          description: Client Company Id
-          example: 1n78gbqw56
-        cardInfoResponses:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: Overall registration Status. Either Success or Failure
-                example: SUCCESS
-              messages:
-                type: array
-                items:
-                  type: string
-              serialNo:
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              cardAccNumber:
-                type: string
-                description: Card Number.
-                example: 4XXXXX5773850213
-              cardIdentifier:
-                type: string
-                description: Card Identifier.
-                example: '267625'
-        userInfoResponses:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: Overall registration Status. Either Success or Failure
-                example: SUCCESS
-              messages:
-                type: array
-                items:
-                  type: string
-              serialNo:
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              emailAddress:
-                type: string
-                description: Email Address.
-                example: testemail10220270@gmail.com
-        associationResponses:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: Overall registration Status. Either Success or Failure
-                example: SUCCESS
-              messages:
-                type: array
-                items:
-                  type: string
-              serialNo:
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-    RequestPutPayload:
-      required:
-      - clientCompanyId
-      - language
-      - messageId
-      - service
-      type: object
-      properties:
-        service:
-          type: array
-          description: Services to be subscribed
-          items:
-            type: string
-            example: VSCB
-        cardInfo:
-          type: array
-          description: Card Details to be register.
-          items:
-            type: object
-            properties:
-              primary:
-                type: boolean
-                description: To identify card as primary.
-                example: true
-              lastName:
-                maxLength: 50
-                type: string
-                description: Card Holder Last Name.
-                example: LastName1
-              serialNo:
-                maxLength: 100
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              firstName:
-                maxLength: 50
-                type: string
-                description: Card Holder First Name.
-                example: FirstName1
-              cardAccNumber:
-                maxLength: 16
-                type: string
-                description: Card Number.
-                example: '4111115773850213'
-              cardExpiryDate:
-                maxLength: 100
-                type: string
-                description: Card Expiry Date with basic month and card validation..
-                example: 02/2024
-        language:
-          maxLength: 10
-          type: string
-          description: Supported Languages are en_us,en_gb,fr_ca,es_xl,pt_br,ja_jp,ar_sa,ru_ru,it_it,de_de,fr_fr,pl_pl,nl_nl,sk_sk,vi_vn
-          example: en_us
-        userInfo:
-          type: array
-          items:
-            type: object
-            properties:
-              roles:
-                type: object
-                additionalProperties:
-                  type: string
-              lastName:
-                maxLength: 50
-                type: string
-                description: Card Holder Last Name.
-                example: LastName1
-              serialNo:
-                maxLength: 100
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              firstName:
-                maxLength: 50
-                type: string
-                description: Card Holder First Name.
-                example: FirstName1
-              emailAddress:
-                maxLength: 50
-                minLength: 6
-                type: string
-                description: Email Address.
-                example: testemail10220270@gmail.com
-              federationMappingId:
-                maxLength: 64
-                type: string
-                description: Federation Mapping Id. Mandatory if bank enabled for SSO.
-                example: testemail10220270
-        messageId:
-          type: integer
-          description: Message Id
-          example: 649833257
-        association:
-          type: array
-          items:
-            type: object
-            properties:
-              serialNo:
-                maxLength: 100
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              emailAddress:
-                maxLength: 50
-                minLength: 6
-                type: string
-                description: Email Address.
-                example: testemail10220270@gmail.com
-              cardAccNumber:
-                maxLength: 16
-                type: string
-                description: Card Number.
-                example: '4111115773850213'
-        clientCompanyId:
-          maxLength: 20
-          type: string
-          description: Client Company Id
-          example: 1n78gbqw56
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Authorization Data API
+  - Business Data Corporate Setup API
+  - Business Data Transactions API
+  - Push Authorization Data API
+  - Registered User Details Service
+  - VCS Enrollment API

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Supplier Service API
+  title: B2B Virtual Account Payment Method Supplier Service API
   description: The Supplier web service is used for creating and maintaining a supplier.
   version: '1'
 servers:
@@ -1497,4 +1497,9 @@ paths:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Account Management service
+  - Buyer Management Service
+  - Payment Service
+  - Single Use Account Pool Maintenance Service
+  - Supplier Service
+  - Workflows

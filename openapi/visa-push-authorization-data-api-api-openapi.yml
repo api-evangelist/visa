@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Push Authorization Data API API
+  title: Visa Business Data Solutions Push Authorization Data API
   description: PushNotification is a generic data channel to send Commercial Data to the end user over VDP. This API has capability to send Authorization data sets, Enhanced Data , Transaction data and Starter Data sets. Each push notification sent through VDP will have ONLY ONE of above data set i.e. auth or enhanced or transaction or starter data not a combined data sets.
   version: '1'
 servers:
@@ -135,4 +135,9 @@ components:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Authorization Data API
+  - Business Data Corporate Setup API
+  - Business Data Transactions API
+  - Push Authorization Data API
+  - Registered User Details Service
+  - VCS Enrollment API

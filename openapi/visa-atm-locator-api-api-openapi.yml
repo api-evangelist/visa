@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates ATM Locator API API
-  description: Search for Visa and Plus ATM locations by geographic coordinates, address, or other criteria to help cardholders find nearby cash access points.
+  title: Visa Global ATM Locator ATM Locator API
+  description: The Visa Global ATM Locator API enables cardholders to search for Visa and Plus ATM locations around the world. With access to over 2 million ATMs in more than 200 countries, the API helps consumers find convenient cash access points via web or mobile applications.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/atmlocator/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: ATM Locator API
   description: Search for Visa and Plus ATM locations by geographic coordinates, address, or other criteria to help cardholders find nearby cash access points.
@@ -100,6 +107,137 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    FindNearbyAtmsResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            totalATMCount:
+              type: integer
+              description: Total number of ATMs matching criteria
+            atmLocations:
+              type: array
+              description: List of ATM locations
+              items:
+                $ref: '#/components/schemas/AtmLocation'
+    FindNearbyTotalsResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            totalATMCount:
+              type: integer
+              description: Total number of ATMs found
+            atmFilterTotals:
+              type: array
+              description: Subtotals by filter criteria
+              items:
+                type: object
+                properties:
+                  filterName:
+                    type: string
+                    description: Name of the filter
+                  count:
+                    type: integer
+                    description: Number of ATMs matching this filter
+    FindGeocodesRequest:
+      type: object
+      required:
+      - wsRequestHeaderV2
+      - requestData
+      properties:
+        wsRequestHeaderV2:
+          $ref: '#/components/schemas/RequestHeader'
+        requestData:
+          type: object
+          properties:
+            address:
+              type: string
+              description: Street address to geocode
+            city:
+              type: string
+              description: City name
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal or ZIP code
+            country:
+              type: string
+              description: Country name or ISO code
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude coordinate
+        longitude:
+          type: number
+          format: double
+          description: Longitude coordinate
+        placeName:
+          type: string
+          description: Place name or address
+    SearchOptions:
+      type: object
+      properties:
+        operationName:
+          type: string
+          description: Name of the search operation
+        findFilters:
+          type: array
+          description: Search filter criteria
+          items:
+            type: object
+            properties:
+              filterName:
+                type: string
+                description: Name of the filter
+              filterValue:
+                type: string
+                description: Value for the filter
+    FindGeocodesResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            geocodes:
+              type: array
+              description: Geocoded results
+              items:
+                type: object
+                properties:
+                  latitude:
+                    type: number
+                    format: double
+                    description: Latitude coordinate
+                  longitude:
+                    type: number
+                    format: double
+                    description: Longitude coordinate
+                  formattedAddress:
+                    type: string
+                    description: Formatted address string
     AtmLocation:
       type: object
       properties:
@@ -159,43 +297,6 @@ components:
         networkAlliance:
           type: string
           description: ATM network alliance
-    Location:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          description: Latitude coordinate
-        longitude:
-          type: number
-          format: double
-          description: Longitude coordinate
-        placeName:
-          type: string
-          description: Place name or address
-    FindNearbyTotalsResponse:
-      type: object
-      properties:
-        wsResponseHeaderV2:
-          $ref: '#/components/schemas/ResponseHeader'
-        responseData:
-          type: object
-          properties:
-            totalATMCount:
-              type: integer
-              description: Total number of ATMs found
-            atmFilterTotals:
-              type: array
-              description: Subtotals by filter criteria
-              items:
-                type: object
-                properties:
-                  filterName:
-                    type: string
-                    description: Name of the filter
-                  count:
-                    type: integer
-                    description: Number of ATMs matching this filter
     FindNearbyAtmsRequest:
       type: object
       required:
@@ -229,75 +330,15 @@ components:
             startIndex:
               type: integer
               description: Starting index for pagination
-    FindGeocodesRequest:
-      type: object
-      required:
-      - wsRequestHeaderV2
-      - requestData
-      properties:
-        wsRequestHeaderV2:
-          $ref: '#/components/schemas/RequestHeader'
-        requestData:
-          type: object
-          properties:
-            address:
-              type: string
-              description: Street address to geocode
-            city:
-              type: string
-              description: City name
-            state:
-              type: string
-              description: State or province
-            postalCode:
-              type: string
-              description: Postal or ZIP code
-            country:
-              type: string
-              description: Country name or ISO code
-    SearchOptions:
+    RequestHeader:
       type: object
       properties:
-        operationName:
+        applicationId:
           type: string
-          description: Name of the search operation
-        findFilters:
-          type: array
-          description: Search filter criteria
-          items:
-            type: object
-            properties:
-              filterName:
-                type: string
-                description: Name of the filter
-              filterValue:
-                type: string
-                description: Value for the filter
-    FindGeocodesResponse:
-      type: object
-      properties:
-        wsResponseHeaderV2:
-          $ref: '#/components/schemas/ResponseHeader'
-        responseData:
-          type: object
-          properties:
-            geocodes:
-              type: array
-              description: Geocoded results
-              items:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                    format: double
-                    description: Latitude coordinate
-                  longitude:
-                    type: number
-                    format: double
-                    description: Longitude coordinate
-                  formattedAddress:
-                    type: string
-                    description: Formatted address string
+          description: Application identifier
+        requestMessageId:
+          type: string
+          description: Unique message identifier for the request
     FindNearbyTotalsRequest:
       type: object
       required:
@@ -323,15 +364,6 @@ components:
               enum:
               - KM
               - MI
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     ResponseHeader:
       type: object
       properties:
@@ -341,32 +373,10 @@ components:
         numOfRowsReturned:
           type: integer
           description: Number of rows in the response
-    RequestHeader:
-      type: object
-      properties:
-        applicationId:
-          type: string
-          description: Application identifier
-        requestMessageId:
-          type: string
-          description: Unique message identifier for the request
-    FindNearbyAtmsResponse:
-      type: object
-      properties:
-        wsResponseHeaderV2:
-          $ref: '#/components/schemas/ResponseHeader'
-        responseData:
-          type: object
-          properties:
-            totalATMCount:
-              type: integer
-              description: Total number of ATMs matching criteria
-            atmLocations:
-              type: array
-              description: List of ATM locations
-              items:
-                $ref: '#/components/schemas/AtmLocation'
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Visa Global ATM Locator Documentation
+  url: https://developer.visa.com/capabilities/atmlocator/docs

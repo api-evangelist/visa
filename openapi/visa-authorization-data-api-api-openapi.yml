@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Authorization Data API API
+  title: Visa Business Data Solutions Authorization Data API
   description: 'Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)'
   version: '1'
 servers:
@@ -261,32 +261,6 @@ components:
           type: string
         stipSwtchRsnDesc:
           type: string
-    MetaData:
-      title: MetaData
-      type: object
-      properties:
-        pageNum:
-          type: integer
-          format: int32
-        totalMatchedRecords:
-          type: integer
-          format: int32
-    ApiError:
-      title: ApiError
-      type: object
-      properties:
-        message:
-          type: string
-    AuthResponseBody:
-      title: AuthResponseBody
-      type: object
-      properties:
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-        authTransactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthTransactionFormat'
     AuthRequestBody:
       title: AuthRequestBody
       required:
@@ -350,14 +324,22 @@ components:
           description: Transaction Auth time in GMT. Sample value --> 2022-09-01T01:40:00
           format: date-time
       description: Authorization Pull API Request format
-    ApiErrors:
-      title: ApiErrors
+    MetaData:
+      title: MetaData
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApiError'
+        pageNum:
+          type: integer
+          format: int32
+        totalMatchedRecords:
+          type: integer
+          format: int32
+    ApiError:
+      title: ApiError
+      type: object
+      properties:
+        message:
+          type: string
     AuthRequestFilters:
       title: AuthRequestFilters
       type: object
@@ -370,7 +352,30 @@ components:
           items:
             type: string
       description: A List of optional filters
+    ApiErrors:
+      title: ApiErrors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiError'
+    AuthResponseBody:
+      title: AuthResponseBody
+      type: object
+      properties:
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        authTransactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthTransactionFormat'
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Authorization Data API
+  - Business Data Corporate Setup API
+  - Business Data Transactions API
+  - Push Authorization Data API
+  - Registered User Details Service
+  - VCS Enrollment API

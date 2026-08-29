@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Merchant Search API API
-  description: Search for merchants by name and location to retrieve Visa merchant identifiers and related details.
+  title: Visa Merchant Search Merchant Search API
+  description: The Visa Merchant Search API provides enriched and precise merchant data to create a more transparent and effective transaction process. The API supports transaction enrichment with enhanced merchant information, generic merchant search by name and location, and nearby merchant discovery for Visa-accepting locations.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/merchant_search/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Merchant Search API
   description: Search for merchants by name and location to retrieve Visa merchant identifiers and related details.
@@ -42,66 +49,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    MerchantSearchResponse:
-      type: object
-      properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: List of matching merchants
-              items:
-                $ref: '#/components/schemas/MerchantRecord'
-            totalCount:
-              type: integer
-              description: Total number of matching records
-    MerchantRecord:
-      type: object
-      properties:
-        visaMerchantId:
-          type: string
-          description: Visa-assigned merchant identifier
-        visaStoreId:
-          type: string
-          description: Visa-assigned store identifier
-        merchantName:
-          type: string
-          description: Name of the merchant
-        merchantCategoryCode:
-          type: string
-          description: Merchant Category Code
-        merchantAddress:
-          type: object
-          properties:
-            street:
-              type: string
-              description: Street address
-            city:
-              type: string
-              description: City
-            state:
-              type: string
-              description: State or province
-            postalCode:
-              type: string
-              description: Postal code
-            country:
-              type: string
-              description: Country code
-        matchScore:
-          type: number
-          format: double
-          description: Confidence score of the match
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     MerchantSearchRequest:
       type: object
       required:
@@ -143,7 +90,70 @@ components:
             matchScore:
               type: boolean
               description: Include match confidence score in results
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+    MerchantSearchResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of matching merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total number of matching records
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    MerchantRecord:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        visaStoreId:
+          type: string
+          description: Visa-assigned store identifier
+        merchantName:
+          type: string
+          description: Name of the merchant
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        matchScore:
+          type: number
+          format: double
+          description: Confidence score of the match
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Merchant Search Documentation
+  url: https://developer.visa.com/capabilities/merchant_search/docs

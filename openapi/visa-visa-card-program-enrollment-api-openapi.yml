@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Visa Card Program Enrollment  API
+  title: Visa Card Program Management Visa Card Program Enrollment API
   description: VCPE supports issuers that want to offer instant/digital issuance or re-issuance; as well as allow their cardholders to upgrade and downgrade cards in their banking app and enjoy new rewards programs in near real-time without needing a physical card and without changing their 16-digit card number.
   version: '1'
 servers:
@@ -232,4 +232,4 @@ paths:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - 'Visa Card Program Enrollment '

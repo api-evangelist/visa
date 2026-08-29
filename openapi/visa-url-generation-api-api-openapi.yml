@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates URL Generation API API
-  description: URL Generation API
+  title: Visa Digital Enablement Lite App URL Generation API
+  description: The Visa Digital Enablement (VDE) Lite App is a standalone, white-label solution that enables cardholders to push card credentials into Apple Pay (for iOS users) or Google Wallet (for Android users) without the need to download a client's mobile app. This efficient user experience facilitates quick and seamless execution of targeted tasks like provisioning to a digital wallet, thereby enabling immediate use of the card.
   version: '1'
 servers:
 - url: https://sandbox.api.visa.com
@@ -115,54 +115,7 @@ paths:
         default: false
       x-hideTryIt: true
 components:
-  parameters:
-    clientId:
-      name: x-client-id
-      in: header
-      description: VDP client ID via Service Context
-      required: true
-      explode: false
-      schema:
-        type: string
-      example: 86da0f74-19f0-4a20-9dde-3e83dfa6bf83
   schemas:
-    BadRequestResponse:
-      required:
-      - httpStatus
-      - message
-      - reason
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Error Code for the error condition.
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
-        requestId:
-          type: string
-          description: Request unix timestamp, for debugging purpose.
-        httpStatus:
-          type: string
-          description: HTTP Status code
-          example: '400'
-        correlationId:
-          type: string
-          description: Request trace id, for debugging purpose.
-        errorMessages:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-                description: Detailed error message if any.
-              location:
-                type: string
-                description: Detailed error location if any.
-              attribute:
-                type: string
-                description: Detailed error attribute if any.
     ErrorResponse:
       required:
       - httpStatus
@@ -331,6 +284,43 @@ components:
           type: boolean
           description: Enable search by email.
           example: true
+    BadRequestResponse:
+      required:
+      - httpStatus
+      - message
+      - reason
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Error Code for the error condition.
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+        requestId:
+          type: string
+          description: Request unix timestamp, for debugging purpose.
+        httpStatus:
+          type: string
+          description: HTTP Status code
+          example: '400'
+        correlationId:
+          type: string
+          description: Request trace id, for debugging purpose.
+        errorMessages:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Detailed error message if any.
+              location:
+                type: string
+                description: Detailed error location if any.
+              attribute:
+                type: string
+                description: Detailed error attribute if any.
     CreateUrlResponse:
       type: object
       properties:
@@ -342,7 +332,17 @@ components:
           type: boolean
           description: Notification status if enabled. By default
           example: false
+  parameters:
+    clientId:
+      name: x-client-id
+      in: header
+      description: VDP client ID via Service Context
+      required: true
+      explode: false
+      schema:
+        type: string
+      example: 86da0f74-19f0-4a20-9dde-3e83dfa6bf83
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - URL Generation API

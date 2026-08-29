@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Payment Service API
+  title: B2B Virtual Account Payment Method Payment Service API
   description: The Payment web service is used for processing payments and sending payment remittance information to the appropriate suppliers.
   version: '1'
 servers:
@@ -1509,11 +1509,22 @@ paths:
         default: false
 components:
   schemas:
-    AlternateEmailAddr:
-      title: AlternateEmailAddr
+    ProcessPaymentRequestDTO:
+      title: ProcessPaymentRequestDTO
+      required:
+      - actionType
+      - buyerId
+      - corporate_internal_id
+      - payment
       type: object
       properties:
-        alternateEmailAddress:
+        buyerId:
+          type: string
+        payment:
+          $ref: '#/components/schemas/Payment-1'
+        actionType:
+          type: string
+        corporate_internal_id:
           type: string
     Supplier-1:
       title: Supplier
@@ -1545,23 +1556,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlternateEmailAddr'
-    ProcessPaymentRequestDTO:
-      title: ProcessPaymentRequestDTO
-      required:
-      - actionType
-      - buyerId
-      - corporate_internal_id
-      - payment
-      type: object
-      properties:
-        buyerId:
-          type: string
-        payment:
-          $ref: '#/components/schemas/Payment-1'
-        actionType:
-          type: string
-        corporate_internal_id:
-          type: string
     Invoices-1:
       title: Invoices
       type: object
@@ -1607,7 +1601,18 @@ components:
           type: string
         cardAccountExpiryDate:
           type: string
+    AlternateEmailAddr:
+      title: AlternateEmailAddr
+      type: object
+      properties:
+        alternateEmailAddress:
+          type: string
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Account Management service
+  - Buyer Management Service
+  - Payment Service
+  - Single Use Account Pool Maintenance Service
+  - Supplier Service
+  - Workflows

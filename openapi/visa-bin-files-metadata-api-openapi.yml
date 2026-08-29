@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates BIN Files Metadata API
+  title: Visa BIN Attribute Sharing Service BIN Files Metadata API
   description: Get Bin Files Metadata including number of files, file names, sizes, checksum, creation date.
   version: '1'
 servers:
@@ -65,18 +65,6 @@ paths:
       x-codegen-request-body-name: Bin Files Metadata Request
 components:
   schemas:
-    requestData:
-      title: requestData
-      required:
-      - paymentAccountType
-      type: object
-      properties:
-        paymentAccountType:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Identifier for whether account is a PAN ('P') or Token ('T')
-          example: P
     responseStatus:
       title: responseStatus
       type: object
@@ -93,6 +81,58 @@ components:
           type: string
           description: A description of the Status Code. A brief description indicating the result of the Service Request
           example: Success
+    binFilesMetadataRequest:
+      title: BinFilesMetadataRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader'
+    responseData:
+      title: responseData
+      required:
+      - fileDetails
+      - filesCreationDate
+      - paymentAccountType
+      - totalNumberOfFiles
+      type: object
+      properties:
+        fileDetails:
+          type: array
+          description: List of BinFiles MetaData
+          items:
+            $ref: '#/components/schemas/fileDetails'
+        filesCreationDate:
+          maxLength: 10
+          minLength: 0
+          type: string
+          description: Files creation date in YYYY-MM-DD Format
+          format: YYYY-MM-DD
+          example: '2023-02-17'
+        paymentAccountType:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Account Type for which file details have been retrieved, i.e., Account Range (PAN) or Token Range, Possible values - P or T
+          example: P
+        totalNumberOfFiles:
+          minimum: 0
+          type: integer
+          description: Total number of files for a requested payment account type
+          example: 1
+    requestData:
+      title: requestData
+      required:
+      - paymentAccountType
+      type: object
+      properties:
+        paymentAccountType:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Identifier for whether account is a PAN ('P') or Token ('T')
+          example: P
     binFilesMetadataResponse:
       title: BinFilesMetadataResponse
       type: object
@@ -134,38 +174,6 @@ components:
           type: number
           description: Number of records in the file (excludes the column header record at the top of the csv file)
           example: 30000
-    responseData:
-      title: responseData
-      required:
-      - fileDetails
-      - filesCreationDate
-      - paymentAccountType
-      - totalNumberOfFiles
-      type: object
-      properties:
-        fileDetails:
-          type: array
-          description: List of BinFiles MetaData
-          items:
-            $ref: '#/components/schemas/fileDetails'
-        filesCreationDate:
-          maxLength: 10
-          minLength: 0
-          type: string
-          description: Files creation date in YYYY-MM-DD Format
-          format: YYYY-MM-DD
-          example: '2023-02-17'
-        paymentAccountType:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Account Type for which file details have been retrieved, i.e., Account Range (PAN) or Token Range, Possible values - P or T
-          example: P
-        totalNumberOfFiles:
-          minimum: 0
-          type: integer
-          description: Total number of files for a requested payment account type
-          example: 1
     requestHeader:
       title: requestHeader
       required:
@@ -186,37 +194,6 @@ components:
           type: string
           description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
           example: reqMsgId456
-    responseHeader:
-      title: responseHeader
-      type: object
-      properties:
-        responseTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: Date and time at which Response is sent (up to milliseconds in UTC)
-          format: YYYY-MM-DDThh:mm:ss.sss
-          example: '2023-02-17T06:31:31.194'
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-          example: reqMsgId456
-        responseMessageId:
-          maxLength: 33
-          minLength: 33
-          type: string
-          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
-          example: 106VDP87035320230217063131177
-    binFilesMetadataRequest:
-      title: BinFilesMetadataRequest
-      type: object
-      properties:
-        requestData:
-          $ref: '#/components/schemas/requestData'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader'
     errorCodes:
       title: ErrorCodes
       type: object
@@ -242,7 +219,34 @@ components:
         CDI251:
           type: object
           description: Client configuration incomplete, reach out to BINAttributes@visa.com
+    responseHeader:
+      title: responseHeader
+      type: object
+      properties:
+        responseTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: Date and time at which Response is sent (up to milliseconds in UTC)
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2023-02-17T06:31:31.194'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId456
+        responseMessageId:
+          maxLength: 33
+          minLength: 33
+          type: string
+          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
+          example: 106VDP87035320230217063131177
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - BIN File Transfer
+  - BIN Files Metadata
+  - Full BIN List
+  - Issuer API
+  - Single BIN Lookup

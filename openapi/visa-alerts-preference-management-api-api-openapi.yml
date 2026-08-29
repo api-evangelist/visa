@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Alerts Preference Management API API
-  description: Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.
+  title: Visa Transaction Controls Alerts Preference Management API
+  description: The Visa Transaction Controls (VTC) API enables issuers to offer their cardholders the ability to set spending rules and receive real-time alerts on their Visa payment cards. Cardholders can define rules to block or alert on specific transaction types, merchant categories, geographic locations, spending thresholds, and more.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/vctc/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Alerts Preference Management API
   description: Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.
@@ -42,6 +49,15 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     AlertsPreferenceRequest:
       type: object
       required:
@@ -67,15 +83,6 @@ components:
           - SMS
           - EMAIL
           - PUSH
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     AlertsPreferenceResponse:
       type: object
       properties:
@@ -85,7 +92,10 @@ components:
         alertDeliveryChannel:
           type: string
           description: Configured delivery channel
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Visa Transaction Controls Documentation
+  url: https://developer.visa.com/capabilities/vctc/docs

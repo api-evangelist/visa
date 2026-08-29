@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates B2B Connect API API
-  description: Initiate, track, and manage large-value cross-border B2B payment transactions with direct settlement capabilities.
+  title: Visa B2B Connect B2B Connect API
+  description: The Visa B2B Connect API provides direct settlement capabilities for large-value business-to-business cross-border transactions. Built on Visa's core payments infrastructure with distributed ledger technology, B2B Connect helps financial institutions and their clients overcome costly processes and geographic barriers for international B2B payments.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/vba/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: B2B Connect API
   description: Initiate, track, and manage large-value cross-border B2B payment transactions with direct settlement capabilities.
@@ -88,60 +95,6 @@ paths:
           description: Payment not found
 components:
   schemas:
-    PaymentInitiationResponse:
-      type: object
-      properties:
-        paymentId:
-          type: string
-          description: Unique identifier assigned to the payment
-        status:
-          type: string
-          description: Current payment status
-          enum:
-          - INITIATED
-          - PROCESSING
-          - SETTLED
-          - REJECTED
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was created
-    PaymentStatusResponse:
-      type: object
-      properties:
-        paymentId:
-          type: string
-          description: Unique identifier for the payment
-        status:
-          type: string
-          description: Current payment status
-          enum:
-          - INITIATED
-          - PROCESSING
-          - SETTLED
-          - REJECTED
-          - ACKNOWLEDGED
-        originatorBIC:
-          type: string
-          description: SWIFT BIC of the originator
-        beneficiaryBIC:
-          type: string
-          description: SWIFT BIC of the beneficiary
-        amount:
-          type: number
-          format: double
-          description: Payment amount
-        currency:
-          type: string
-          description: Payment currency
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was created
-        settledAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was settled
     ErrorResponse:
       type: object
       properties:
@@ -195,7 +148,64 @@ components:
           type: string
           format: date
           description: Requested settlement date
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+    PaymentStatusResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: Unique identifier for the payment
+        status:
+          type: string
+          description: Current payment status
+          enum:
+          - INITIATED
+          - PROCESSING
+          - SETTLED
+          - REJECTED
+          - ACKNOWLEDGED
+        originatorBIC:
+          type: string
+          description: SWIFT BIC of the originator
+        beneficiaryBIC:
+          type: string
+          description: SWIFT BIC of the beneficiary
+        amount:
+          type: number
+          format: double
+          description: Payment amount
+        currency:
+          type: string
+          description: Payment currency
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was created
+        settledAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was settled
+    PaymentInitiationResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: Unique identifier assigned to the payment
+        status:
+          type: string
+          description: Current payment status
+          enum:
+          - INITIATED
+          - PROCESSING
+          - SETTLED
+          - REJECTED
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was created
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Visa B2B Connect Documentation
+  url: https://developer.visa.com/capabilities/vba/docs

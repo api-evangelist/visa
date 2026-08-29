@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates BIN File Transfer API
+  title: Visa BIN Attribute Sharing Service BIN File Transfer API
   description: Transfer Account/Token Range File
   version: '1'
 servers:
@@ -65,6 +65,46 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    BinFileTransferRequest:
+      title: BinFileTransferRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData-2'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-5'
+    requestData-2:
+      title: requestData
+      required:
+      - fileName
+      type: object
+      properties:
+        fileName:
+          maxLength: 255
+          minLength: 1
+          type: string
+          description: Name of the file
+    BinFileTransferResponse:
+      title: BinFileTransferResponse
+      type: object
+    requestHeader-5:
+      title: requestHeader
+      required:
+      - requestMessageId
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
     errorCodes-1:
       title: errorCodes
       type: object
@@ -90,47 +130,11 @@ components:
         CDI250:
           type: object
           description: Atleast one of the required/mandatory fields is missing in the request
-    BinFileTransferRequest:
-      title: BinFileTransferRequest
-      type: object
-      properties:
-        requestData:
-          $ref: '#/components/schemas/requestData-2'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader-5'
-    requestHeader-5:
-      title: requestHeader
-      required:
-      - requestMessageId
-      - requestTS
-      type: object
-      properties:
-        requestTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
-          format: YYYY-MM-DDThh:mm:ss.sss
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-    requestData-2:
-      title: requestData
-      required:
-      - fileName
-      type: object
-      properties:
-        fileName:
-          maxLength: 255
-          minLength: 1
-          type: string
-          description: Name of the file
-    BinFileTransferResponse:
-      title: BinFileTransferResponse
-      type: object
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - BIN File Transfer
+  - BIN Files Metadata
+  - Full BIN List
+  - Issuer API
+  - Single BIN Lookup

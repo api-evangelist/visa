@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Offers Data API API
-  description: Retrieve offer data available to the caller, filtered by various offer attributes such as merchant, category, location, and date range.
+  title: Visa Merchant Offers Resource Center Offers Data API
+  description: The Visa Merchant Offers Resource Center (VMORC) API provides developers a quick and easy way to retrieve offer information from Visa's central offer repository. VMORC is a multilingual application used to store and distribute merchant offers, providing access to the latest offers as soon as they become available.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/vmorc/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Offers Data API
   description: Retrieve offer data available to the caller, filtered by various offer attributes such as merchant, category, location, and date range.
@@ -152,34 +159,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    OffersResponse:
-      type: object
-      properties:
-        totalFoundResults:
-          type: integer
-          description: Total number of offers matching the criteria
-        returnedResults:
-          type: integer
-          description: Number of offers returned in this response
-        offers:
-          type: array
-          description: List of merchant offers
-          items:
-            $ref: '#/components/schemas/Offer'
-    OfferDetailResponse:
-      type: object
-      properties:
-        offer:
-          $ref: '#/components/schemas/Offer'
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     Offer:
       type: object
       properties:
@@ -229,7 +208,38 @@ components:
         promotionChannel:
           type: string
           description: Channel through which the offer is promoted
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+    OfferDetailResponse:
+      type: object
+      properties:
+        offer:
+          $ref: '#/components/schemas/Offer'
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    OffersResponse:
+      type: object
+      properties:
+        totalFoundResults:
+          type: integer
+          description: Total number of offers matching the criteria
+        returnedResults:
+          type: integer
+          description: Number of offers returned in this response
+        offers:
+          type: array
+          description: List of merchant offers
+          items:
+            $ref: '#/components/schemas/Offer'
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: VMORC Documentation
+  url: https://developer.visa.com/capabilities/vmorc/docs

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Account Management service API
+  title: B2B Virtual Account Payment Method Account Management service API
   description: The Account Management web services are used to manage payment controls for existing card accounts and to request virtual accounts while setting controls. The endpoints allow the user to retrieve the status of new account requests, view authorization rules, submit virtual card requisitions for an employee , and retrieve security code (CVV2) details of an existing account.
   version: '1'
 servers:
@@ -2356,4 +2356,9 @@ paths:
 x-tagGroups:
 - name: API Reference
   tags:
-  - Foreign Exchange Rates API
+  - Account Management service
+  - Buyer Management Service
+  - Payment Service
+  - Single Use Account Pool Maintenance Service
+  - Supplier Service
+  - Workflows

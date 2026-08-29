@@ -1,12 +1,19 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Foreign Exchange Rates Transaction Enrichment API API
-  description: Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.
+  title: Visa Merchant Search Transaction Enrichment API
+  description: The Visa Merchant Search API provides enriched and precise merchant data to create a more transparent and effective transaction process. The API supports transaction enrichment with enhanced merchant information, generic merchant search by name and location, and nearby merchant discovery for Visa-accepting locations.
   version: '1'
+  contact:
+    name: Visa Developer Support
+    url: https://developer.visa.com/support
+  termsOfService: https://developer.visa.com/capabilities/merchant_search/product-terms
 servers:
 - url: https://sandbox.api.visa.com
-  description: Sandbox server
-security: []
+  description: Sandbox Server
+- url: https://api.visa.com
+  description: Production Server
+security:
+- mutualTLS: []
 tags:
 - name: Transaction Enrichment API
   description: Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.
@@ -42,6 +49,23 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    TransactionEnrichmentRequest:
+      type: object
+      required:
+      - acquirerCardAcceptorId
+      properties:
+        acquirerCardAcceptorId:
+          type: string
+          description: Card acceptor ID from the transaction
+        acquiringBin:
+          type: string
+          description: Acquiring bank identification number
+        merchantName:
+          type: string
+          description: Merchant name from the transaction
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code from the transaction
     TransactionEnrichmentResponse:
       type: object
       properties:
@@ -53,6 +77,15 @@ components:
               description: Enriched merchant information
               items:
                 $ref: '#/components/schemas/EnrichedMerchant'
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     EnrichedMerchant:
       type: object
       properties:
@@ -94,33 +127,10 @@ components:
         phoneNumber:
           type: string
           description: Merchant phone number
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    TransactionEnrichmentRequest:
-      type: object
-      required:
-      - acquirerCardAcceptorId
-      properties:
-        acquirerCardAcceptorId:
-          type: string
-          description: Card acceptor ID from the transaction
-        acquiringBin:
-          type: string
-          description: Acquiring bank identification number
-        merchantName:
-          type: string
-          description: Merchant name from the transaction
-        merchantCategoryCode:
-          type: string
-          description: Merchant Category Code from the transaction
-x-tagGroups:
-- name: API Reference
-  tags:
-  - Foreign Exchange Rates API
+  securitySchemes:
+    mutualTLS:
+      type: mutualTLS
+      description: Two-way SSL mutual authentication using a PKI certificate issued by Visa.
+externalDocs:
+  description: Merchant Search Documentation
+  url: https://developer.visa.com/capabilities/merchant_search/docs

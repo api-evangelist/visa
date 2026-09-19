@@ -5957,6 +5957,7 @@ apis:
     url: https://developer.visa.com/capabilities/vctc/docs
 name: Visa
 tags:
+- Visa
 - Account
 - Banking
 - Credit Cards
@@ -5970,8 +5971,8 @@ tags:
 - Payments
 - Tokenization
 - Fortune 500
-- Visa
 tags_raw:
+- Visa
 - Accounts
 - Banking
 - Credit Cards

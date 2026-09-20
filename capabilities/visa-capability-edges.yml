@@ -1,0 +1,176 @@
+slug: visa
+provider: Visa
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 16
+edges:
+- tag: B2B Connect API
+  spec_file: visa-b2b-connect-api-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.92
+  evidence: direct settlement capabilities for large-value business-to-business cross-border transactions
+    ... POST /vba/v1/payments  Initiate Payment
+  reason: Explicit cross-border payment initiation and settlement operations.
+- tag: 'Visa Card Program Enrollment '
+  spec_file: visa-visa-card-program-enrollment-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.85
+  evidence: '"VCPE supports issuers that want to offer instant/digital issuance or re-issuance; as well
+    as allow their cardholders to upgrade and downgrade cards"; POST /vcpe/v2/pan/enrollment — "Enrollment"'
+  reason: Issuer-facing enrolment of PANs for instant/digital card issuance and re-issuance, which is
+    precisely card issuance management (production, activation, re-issue).
+- tag: CTP Checkout API
+  spec_file: visa-ctp-checkout-api-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.8
+  evidence: POST /visasrci/v1/checkout  initiateCheckout  Initiate Checkout ... streamlined online checkout
+    flow where consumers can pay with stored Visa credentials
+  reason: Checkout initiation and status for remote commerce payments = payment instruction capture and
+    authorisation.
+- tag: Payment Service
+  spec_file: visa-payment-service-api-openapi.yml
+  capability_id: BC-1340.20
+  capability_id_l1: BC-1340
+  capability_name: Payment Processing Management
+  confidence: 0.8
+  evidence: '"The Payment web service is used for processing payments and sending payment remittance information
+    to the appropriate suppliers"; POST /vpa/v1/payment/ProcessPayments "Process Payments"'
+  reason: Operations process, resend, cancel and retrieve B2B payments with remittance data — payment
+    processing. Sub-capability choice between initiation and processing is somewhat open.
+- tag: Authorization Data API
+  spec_file: visa-authorization-data-api-api-openapi.yml
+  capability_id: BC-1340.70
+  capability_id_l1: BC-1340
+  capability_name: Card Transaction Processing Management
+  confidence: 0.75
+  evidence: Authorization Data API is an on-demand web service which delivers the authorization details
+    (approved/declined) to the end consumer for registered card accounts (PAN)
+  reason: Operations retrieve card authorization (approved/declined) data for registered PANs — card transaction
+    processing/authorisation domain, exposed as a data inquiry service.
+- tag: Customer Rules API
+  spec_file: visa-customer-rules-api-api-openapi.yml
+  capability_id: BC-1340.70
+  capability_id_l1: BC-1340
+  capability_name: Card Transaction Processing Management
+  confidence: 0.75
+  evidence: enables issuers to offer their cardholders the ability to set spending rules and receive real-time
+    alerts on their Visa payment cards ... rules to block or alert on specific transaction types
+  reason: Cardholder-defined controls that block or alert on card transactions — sits in card transaction
+    authorisation/fraud screening control.
+- tag: Funds Transfer API
+  spec_file: visa-funds-transfer-api-api-openapi.yml
+  capability_id: BC-1340.50
+  capability_id_l1: BC-1340
+  capability_name: Real-Time Payment Management
+  confidence: 0.75
+  evidence: '"The Visa Direct API enables real-time push payments to Visa accounts worldwide"; POST /visadirect/fundstransfer/v1/pushfundstransactions
+    "Push Funds Transaction"'
+  reason: Operations push, pull and reverse funds over a real-time push-payment rail; explicit "real-time
+    push payments" statement supports Real-Time Payment Management, though it also touches initiation/processing.
+- tag: In-App Provisioning for Apple Pay
+  spec_file: visa-in-app-provisioning-for-apple-pay-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.75
+  evidence: POST /inapp/provisioning/cardData/applePay "Create Card Data Apple Pay"; schema ApplePayProvisioningRequest
+  reason: Provisioning card credentials into a mobile wallet is digital card issuance/personalisation
+    and activation, mapping to Card Issuance Management.
+- tag: In-App Provisioning for Google Pay
+  spec_file: visa-in-app-provisioning-for-google-pay-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.75
+  evidence: POST /inapp/provisioning/cardData/googlePay "Create Card Data Google Pay"; schema GooglePayProvisioningRequest
+  reason: 'Same as Apple Pay variant: issuing/provisioning card credentials to a wallet is card issuance
+    and activation.'
+- tag: In-App Provisioning for Samsung Pay
+  spec_file: visa-in-app-provisioning-for-samsung-pay-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.75
+  evidence: POST /inapp/provisioning/cardData/samsungPay "Create Card Data Samsung Pay"; schema SamsungPayProvisioningRequest
+  reason: Digital card credential provisioning into a wallet — card issuance/personalisation and activation.
+- tag: Payment Account Validation API
+  spec_file: visa-payment-account-validation-api-api-openapi.yml
+  capability_id: BC-1340.70
+  capability_id_l1: BC-1340
+  capability_name: Card Transaction Processing Management
+  confidence: 0.75
+  evidence: '"determine if a particular Visa account is valid and in good standing ... Account Verification,
+    the Address Verification Service (AVS), Card Verification Value (CVV2) Validation"; POST /pav/v1/cardvalidation
+    "Card Validation"'
+  reason: Operations validate a Visa card account via AVS/CVV2/account verification — card-level verification
+    performed as part of card transaction authorisation processing. Some ambiguity between card transaction
+    processing and payment initiation validation, hence 0.75.
+- tag: Single Use Account Pool Maintenance Service
+  spec_file: visa-single-use-account-pool-maintenance-service-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.72
+  evidence: '"managing a pool of Single-Use Accounts (SUAs) linked to a proxy ... create proxy pool(s)
+    for a buyer, update details of the proxy, delete unused pools"; "SUA Get Account Status"'
+  reason: Creating, maintaining and deleting pools of single-use virtual card accounts and checking account
+    status is virtual card account issuance/provisioning. Some chance this is better read as account lifecycle
+    operations, so 0.72.
+- tag: Universal Card Enrollment
+  spec_file: visa-universal-card-enrollment-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.72
+  evidence: POST /universal/core/customers/{vCustomerID}/cards "Enroll Card for Customer"; POST /universal/core/cards
+    "Enroll Card on behalf of Partner"; schema EncryptedCard
+  reason: Operations enroll and manage cards (and their cardholder records) for in-app digital provisioning
+    — card enrolment/activation within card issuance. Customer CRUD adds slight ambiguity toward customer
+    information management.
+- tag: ATM Locator API
+  spec_file: visa-atm-locator-api-api-openapi.yml
+  capability_id: BC-1300.50
+  capability_id_l1: BC-1300
+  capability_name: Banking Channels Management
+  confidence: 0.7
+  evidence: '''findNearbyAtms  Find Nearby ATMs''; ''enables cardholders to search for Visa and Plus ATM
+    locations around the world ... find convenient cash access points'''
+  reason: ATM location discovery for cardholders — self-service access to the ATM channel, which falls
+    under Banking Channels Management (ATM channel). Not payment processing itself.
+- tag: Account Management service
+  spec_file: visa-account-management-service-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.7
+  evidence: '''Virtual Card Requisition''; ''Request Virtual Account''; ''submit virtual card requisitions
+    for an employee''; ''retrieve security code (CVV2) details of an existing account'''
+  reason: Operations create/requisition virtual card accounts, retrieve account status and CVV2, and manage
+    funding accounts — i.e. issuance and provisioning of card credentials. Payment-control management
+    also present, which adds some ambiguity with product parameter configuration.
+- tag: Workflows
+  spec_file: visa-workflows-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: POST /pop/v1/recipes/Payment — "Payments Recipe"; schemas ProcessPaymentRequest, CancelPaymentRequest,
+    ResendPaymentRequest, Invoices, Supplier
+  reason: Despite the generic 'Workflows' tag, the operations initiate, retrieve and cancel B2B virtual-account
+    payments against invoices/suppliers — payment instruction capture and initiation. Health check and
+    client registration are plumbing.

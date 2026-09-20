@@ -6015,6 +6015,10 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/visa.png
 access: 3rd-Party
 common:
+- type: Pricing
+  url: https://rapidapi.com/hakr/api/visa-list/pricing
+- type: Plans
+  url: plans/visa-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/visa-capability-edges.yml
   name: Visa Business Capability Map

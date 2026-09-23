@@ -779,18 +779,6 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    TransRequestFilters:
-      required:
-      - filterType
-      - filterValues
-      type: object
-      properties:
-        filterType:
-          type: string
-        filterValues:
-          type: array
-          items:
-            type: string
     TransactionResponse:
       type: object
       properties:
@@ -1572,6 +1560,16 @@ components:
                     description: Japanese Katakana supplier Name
           description: response object
       description: Json response object
+    Pagination:
+      type: object
+      properties:
+        pageNum:
+          minimum: 1
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
     trxnRequest:
       type: object
       properties:
@@ -1670,16 +1668,18 @@ components:
           type: string
           description: List of comma separated field names
       description: Json request object. (Either of issuer or accountRequest is required and not both )
-    Pagination:
+    TransRequestFilters:
+      required:
+      - filterType
+      - filterValues
       type: object
       properties:
-        pageNum:
-          minimum: 1
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
+        filterType:
+          type: string
+        filterValues:
+          type: array
+          items:
+            type: string
     TransRequest:
       required:
       - companyId

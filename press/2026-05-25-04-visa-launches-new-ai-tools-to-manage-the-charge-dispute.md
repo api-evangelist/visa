@@ -1,7 +1,9 @@
 ---
 title: Visa launches new AI tools to manage the charge dispute ...
 url: https://www.cnbc.com/2026/04/01/visa-ai-tools-dispute-management.html
-date: '2026-05-25'
+published: '2026-04-01'
+date_basis: url-derived
+harvested: '2026-05-25'
 query: '"Visa" press release artificial intelligence'
 position: 4
 source: serpapi-google

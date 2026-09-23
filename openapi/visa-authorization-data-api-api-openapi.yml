@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Visa Business Data Solutions Authorization Data API
-  description: 'Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)'
+  description: Data API will provide the APIs to expose the commercial data (i.e.
   version: '1'
 servers:
 - url: https://sandbox.api.visa.com
@@ -9,14 +9,13 @@ servers:
 security: []
 tags:
 - name: Authorization Data API
-  description: 'Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data and authorization data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API, 4:Authorization Data (Authorization Data API is an on-demand web service which delivers the authorization details (approved/declined) to the end consumer for registered card accounts (PAN).)'
+  description: Data API will provide the APIs to expose the commercial data (i.e.
 paths:
   /vbs/dapi/v1/transactions/auth:
     post:
       tags:
       - Authorization Data API
       summary: Get Authorization Data
-      description: Get Authorization Data
       operationId: getAuthDataUsingPOST
       parameters:
       - name: clientId
@@ -175,6 +174,99 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    AuthResponseBody:
+      title: AuthResponseBody
+      type: object
+      properties:
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        authTransactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthTransactionFormat'
+    AuthRequestFilters:
+      title: AuthRequestFilters
+      type: object
+      properties:
+        filterBy:
+          type: string
+          description: filter by clause. Supported values are authCatgCd and msgType
+        filterValues:
+          type: array
+          items:
+            type: string
+      description: A List of optional filters
+    ApiErrors:
+      title: ApiErrors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiError'
+    AuthRequestBody:
+      title: AuthRequestBody
+      required:
+      - authEndDateTime
+      - authStartDateTime
+      - companyId
+      - issuerId
+      - processorId
+      - regionId
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthRequestFilters'
+        pageNum:
+          maximum: 250
+          minimum: 20
+          type: integer
+          description: page Number associated with API call.
+          format: int32
+        issuerId:
+          maxLength: 15
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: issuerId/bankId associated with the account
+        pageSize:
+          type: integer
+          description: page Size associated with API call.
+          format: int32
+        regionId:
+          maxLength: 5
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: regionId associated with the account
+        companyId:
+          maxLength: 25
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: companyId associated with the account
+        accountList:
+          type: array
+          description: A list of account numbers
+          items:
+            type: string
+        processorId:
+          maxLength: 10
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+          description: processorId associated with the account
+        authEndDateTime:
+          type: string
+          description: Transaction Auth time in GMT. Sample value --> 2022-09-01T01:40:00
+          format: date-time
+        authStartDateTime:
+          type: string
+          description: Transaction Auth time in GMT. Sample value --> 2022-09-01T01:40:00
+          format: date-time
+      description: Authorization Pull API Request format
     AuthTransactionFormat:
       title: AuthTransactionFormat
       type: object
@@ -261,69 +353,6 @@ components:
           type: string
         stipSwtchRsnDesc:
           type: string
-    AuthRequestBody:
-      title: AuthRequestBody
-      required:
-      - authEndDateTime
-      - authStartDateTime
-      - companyId
-      - issuerId
-      - processorId
-      - regionId
-      type: object
-      properties:
-        filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthRequestFilters'
-        pageNum:
-          maximum: 250
-          minimum: 20
-          type: integer
-          description: page Number associated with API call.
-          format: int32
-        issuerId:
-          maxLength: 15
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-          description: issuerId/bankId associated with the account
-        pageSize:
-          type: integer
-          description: page Size associated with API call.
-          format: int32
-        regionId:
-          maxLength: 5
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-          description: regionId associated with the account
-        companyId:
-          maxLength: 25
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-          description: companyId associated with the account
-        accountList:
-          type: array
-          description: A list of account numbers
-          items:
-            type: string
-        processorId:
-          maxLength: 10
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-          description: processorId associated with the account
-        authEndDateTime:
-          type: string
-          description: Transaction Auth time in GMT. Sample value --> 2022-09-01T01:40:00
-          format: date-time
-        authStartDateTime:
-          type: string
-          description: Transaction Auth time in GMT. Sample value --> 2022-09-01T01:40:00
-          format: date-time
-      description: Authorization Pull API Request format
     MetaData:
       title: MetaData
       type: object
@@ -340,36 +369,6 @@ components:
       properties:
         message:
           type: string
-    AuthRequestFilters:
-      title: AuthRequestFilters
-      type: object
-      properties:
-        filterBy:
-          type: string
-          description: filter by clause. Supported values are authCatgCd and msgType
-        filterValues:
-          type: array
-          items:
-            type: string
-      description: A List of optional filters
-    ApiErrors:
-      title: ApiErrors
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ApiError'
-    AuthResponseBody:
-      title: AuthResponseBody
-      type: object
-      properties:
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-        authTransactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuthTransactionFormat'
 x-tagGroups:
 - name: API Reference
   tags:

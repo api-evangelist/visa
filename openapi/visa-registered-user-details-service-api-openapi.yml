@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Visa Business Data Solutions Registered User Details Service API
+  title: Visa Business Data Solutions Registered User Details…
   description: Self Registration web services are used to register the new users.
   version: '1'
 servers:
@@ -16,7 +16,6 @@ paths:
       tags:
       - Registered User Details Service
       summary: RegisteredUserDetails
-      description: RegisteredUserDetails
       operationId: RegisteredUserDetails
       requestBody:
         content:

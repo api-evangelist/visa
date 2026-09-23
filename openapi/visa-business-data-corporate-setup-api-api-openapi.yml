@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Visa Business Data Solutions Business Data Corporate Setup API
+  title: Visa Business Data Solutions Business Data Corporate Setup…
   description: 'Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create an Enterprise Service with Restful architecture, which is robust, secured, scalable and high performance API. Data API provides functionality to fetch commercial data through following API. 1: Transaction API, 2: Enhanced Data API, 3: Starter Data API.'
   version: '1'
 servers:

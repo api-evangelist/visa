@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: B2B Virtual Account Payment Method Account Management service API
+  title: B2B Virtual Account Payment Method Account Management…
   description: The Account Management web services are used to manage payment controls for existing card accounts and to request virtual accounts while setting controls. The endpoints allow the user to retrieve the status of new account requests, view authorization rules, submit virtual card requisitions for an employee , and retrieve security code (CVV2) details of an existing account.
   version: '1'
 servers:
@@ -268,7 +268,7 @@ paths:
       tags:
       - Account Management service
       summary: Get Payment Controls
-      description: This version is recommended for buyers subscribed to Visa payment Control(VPC)  and supporting mcgRuleAction field.
+      description: This version is recommended for buyers subscribed to Visa payment Control(VPC) and supporting mcgRuleAction field.
       operationId: Get Payment Controls
       requestBody:
         description: Get Payment Controls Request

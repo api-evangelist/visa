@@ -16,7 +16,6 @@ paths:
       tags:
       - Visa Supplier Matching Service API
       summary: Match suppliers to Visa merchants
-      description: Match suppliers to Visa merchants
       operationId: Match suppliers to Visa merchants
       parameters:
       - name: supplierName

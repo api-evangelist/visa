@@ -18,7 +18,7 @@ paths:
       summary: Revoke Consent
       description: 'This API revokes a current consent.
 
-        A consent may be revoked if it is in either ACTIVE or PAUSED state. Attempting to revoke a consent in any other state results in a 409 error with <code>invalidConsentStateTransition</code> reason.'
+        A consent may be revoked if it is in either ACTIVE or PAUSED state. Attempting to revoke a consent in any other state results in a 409 error with invalidConsentStateTransition reason.'
       parameters:
       - name: X-Correlation-Id
         in: header
@@ -1833,6 +1833,8 @@ paths:
         operationPointer: '#/paths/~1vcms~1v1~1consents~1{consentID}~1revoke/post'
         default: false
       x-hideTryIt: true
+      operationId: postVcmsV1ConsentsByConsentIDRevoke
+      x-operation-id-source: derived
   /vcms/v1/consents/{consentID}/constraints/remainingNumberUses:
     put:
       tags:
@@ -1844,7 +1846,7 @@ paths:
 
         + This API is idempotent.
 
-        + For an active consent, this value may be set to less than or equal to the current value, and only if maxNumberUses is set as non-zero on the consent. Any violation of the above conditions will result in a 409 error with <code>invalidConsentModification</code> reason. If set to zero, the status of the consent changes to CONSUMED and is no longer active.'
+        + For an active consent, this value may be set to less than or equal to the current value, and only if maxNumberUses is set as non-zero on the consent. Any violation of the above conditions will result in a 409 error with invalidConsentModification reason. If set to zero, the status of the consent changes to CONSUMED and is no longer active.'
       parameters:
       - name: X-Correlation-Id
         in: header
@@ -3180,6 +3182,8 @@ paths:
         operationPointer: '#/paths/~1vcms~1v1~1consents~1{consentID}~1constraints~1remainingNumberUses/put'
         default: false
       x-hideTryIt: true
+      operationId: putVcmsV1ConsentsByConsentIDConstraintsRemainingNumberUses
+      x-operation-id-source: derived
   /vcms/v1/consents:
     post:
       tags:
@@ -4877,6 +4881,8 @@ paths:
         operationPointer: '#/paths/~1vcms~1v1~1consents/post'
         default: false
       x-hideTryIt: true
+      operationId: postVcmsV1Consents
+      x-operation-id-source: derived
   /vcms/v1/consents/{consentID}:
     get:
       tags:
@@ -6564,11 +6570,12 @@ paths:
         operationPointer: '#/paths/~1vcms~1v1~1consents~1{consentID}/get'
         default: false
       x-hideTryIt: true
+      operationId: getVcmsV1ConsentsByConsentID
+      x-operation-id-source: derived
     patch:
       tags:
       - Visa Consent Management API
       summary: Update Consent
-      description: Update Consent
       parameters:
       - name: X-Correlation-Id
         in: header
@@ -8625,6 +8632,8 @@ paths:
         operationPointer: '#/paths/~1vcms~1v1~1consents~1{consentID}/patch'
         default: false
       x-hideTryIt: true
+      operationId: patchVcmsV1ConsentsByConsentID
+      x-operation-id-source: derived
   /vcms/v1/consents/{consentID}/validate:
     post:
       tags:
@@ -10464,12 +10473,24 @@ paths:
         operationPointer: '#/paths/~1vcms~1v1~1consents~1{consentID}~1validate/post'
         default: false
       x-hideTryIt: true
+      operationId: postVcmsV1ConsentsByConsentIDValidate
+      x-operation-id-source: derived
   /vcms/v1/consents/{consentID}/status:
     put:
       tags:
       - Visa Consent Management API
       summary: Update Consent Status
-      description: "API for Visa partners (Consent Requestors) to update consent status.\nNotes:\nStatus may be set in accordance with the following state transitions, with invalid transitions resulting in a 409 error with <code>invalidConsentStateTransition</code> reason.\n  + ACTIVE -> PAUSED\n  + PAUSED -> ACTIVE\n  + ACTIVE -> CONSUMED"
+      description: 'API for Visa partners (Consent Requestors) to update consent status.
+
+        Notes:
+
+        Status may be set in accordance with the following state transitions, with invalid transitions resulting in a 409 error with invalidConsentStateTransition reason.
+
+        + ACTIVE -> PAUSED
+
+        + PAUSED -> ACTIVE
+
+        + ACTIVE -> CONSUMED'
       parameters:
       - name: X-Correlation-Id
         in: header
@@ -11805,6 +11826,8 @@ paths:
         operationPointer: '#/paths/~1vcms~1v1~1consents~1{consentID}~1status/put'
         default: false
       x-hideTryIt: true
+      operationId: putVcmsV1ConsentsByConsentIDStatus
+      x-operation-id-source: derived
 x-tagGroups:
 - name: API Reference
   tags:

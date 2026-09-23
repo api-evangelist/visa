@@ -76,60 +76,6 @@ paths:
           description: Data token not found
 components:
   schemas:
-    DataTokenDetailResponse:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          description: Unique identifier for the data token
-        tokenType:
-          type: string
-          description: Type of data token
-        insights:
-          type: object
-          description: Aggregated and anonymized insight data
-          properties:
-            spendingIndex:
-              type: number
-              format: double
-              description: Normalized spending index value
-            trendDirection:
-              type: string
-              description: Direction of spending trend
-              enum:
-              - INCREASING
-              - STABLE
-              - DECREASING
-            confidenceScore:
-              type: number
-              format: double
-              description: Confidence score for the insight
-              minimum: 0
-              maximum: 1
-            categoryBreakdown:
-              type: array
-              description: Spending breakdown by category
-              items:
-                type: object
-                properties:
-                  category:
-                    type: string
-                    description: Merchant category description
-                  percentage:
-                    type: number
-                    format: double
-                    description: Percentage of total spending
-        status:
-          type: string
-          description: Current status of the data token
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the token was created
-        expiresAt:
-          type: string
-          format: date-time
-          description: Expiration timestamp
     DataTokenRequest:
       type: object
       required:
@@ -194,6 +140,60 @@ components:
         message:
           type: string
           description: Human-readable error description
+    DataTokenDetailResponse:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          description: Unique identifier for the data token
+        tokenType:
+          type: string
+          description: Type of data token
+        insights:
+          type: object
+          description: Aggregated and anonymized insight data
+          properties:
+            spendingIndex:
+              type: number
+              format: double
+              description: Normalized spending index value
+            trendDirection:
+              type: string
+              description: Direction of spending trend
+              enum:
+              - INCREASING
+              - STABLE
+              - DECREASING
+            confidenceScore:
+              type: number
+              format: double
+              description: Confidence score for the insight
+              minimum: 0
+              maximum: 1
+            categoryBreakdown:
+              type: array
+              description: Spending breakdown by category
+              items:
+                type: object
+                properties:
+                  category:
+                    type: string
+                    description: Merchant category description
+                  percentage:
+                    type: number
+                    format: double
+                    description: Percentage of total spending
+        status:
+          type: string
+          description: Current status of the data token
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the token was created
+        expiresAt:
+          type: string
+          format: date-time
+          description: Expiration timestamp
   securitySchemes:
     mutualTLS:
       type: mutualTLS

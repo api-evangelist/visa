@@ -1,7 +1,9 @@
 ---
 title: Visa's 30-Year AI Legacy Fuels Launch of New Global AI ...
 url: https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.20076.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Visa" press release artificial intelligence'
 position: 1
 source: serpapi-google

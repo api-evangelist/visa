@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Visa In-App Provisioning In-App Provisioning for Samsung Pay API
+  title: Visa In-App Provisioning In-App Provisioning for Samsung…
   description: In-App Provisioning for Samsung Pay
   version: '1'
 servers:
@@ -125,8 +125,8 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    Error:
-      title: Error
+    ValidationError:
+      title: ValidationError
       type: object
       properties:
         reason:
@@ -136,6 +136,11 @@ components:
           type: integer
           description: 3-digit HTTP Status Code
           format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
         message:
           type: string
           description: Message describing the error condition with additional information wherever applicable.
@@ -171,11 +176,6 @@ components:
           minLength: 29
           type: string
           description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
-    ErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/Error'
     ErrorDetails:
       title: ErrorDetails
       type: object
@@ -232,8 +232,8 @@ components:
       properties:
         errorResponse:
           $ref: '#/components/schemas/ValidationError'
-    ValidationError:
-      title: ValidationError
+    Error:
+      title: Error
       type: object
       properties:
         reason:
@@ -243,14 +243,14 @@ components:
           type: integer
           description: 3-digit HTTP Status Code
           format: int32
-        details:
-          type: array
-          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
-          items:
-            $ref: '#/components/schemas/ErrorDetails'
         message:
           type: string
           description: Message describing the error condition with additional information wherever applicable.
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
 x-tagGroups:
 - name: API Reference
   tags:

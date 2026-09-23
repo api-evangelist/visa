@@ -80,25 +80,18 @@ paths:
           description: Consumer not found
 components:
   schemas:
-    Address:
+    ConsumerEnrollmentResponse:
       type: object
       properties:
-        street:
+        consumerId:
           type: string
-          description: Street address
-        city:
+          description: Unique identifier assigned to the newly enrolled consumer
+        status:
           type: string
-          description: City name
-        state:
-          type: string
-          description: State or province code
-        postalCode:
-          type: string
-          description: Postal or ZIP code
-        country:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-          pattern: ^[A-Z]{2}$
+          description: Enrollment status
+          enum:
+          - ENROLLED
+          - PENDING_VERIFICATION
     ConsumerEnrollmentRequest:
       type: object
       required:
@@ -118,6 +111,43 @@ components:
           type: string
           description: Consumer mobile phone number in E.164 format
         countryCode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          pattern: ^[A-Z]{2}$
+    AddCredentialRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      - cardExpiryDate
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number of the Visa card
+        cardExpiryDate:
+          type: string
+          description: Card expiration date in YYYY-MM format
+          pattern: ^\d{4}-\d{2}$
+        cardholderName:
+          type: string
+          description: Name as it appears on the card
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          description: Street address
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State or province code
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
           type: string
           description: ISO 3166-1 alpha-2 country code
           pattern: ^[A-Z]{2}$
@@ -141,18 +171,6 @@ components:
               message:
                 type: string
                 description: Detail about the field error
-    ConsumerEnrollmentResponse:
-      type: object
-      properties:
-        consumerId:
-          type: string
-          description: Unique identifier assigned to the newly enrolled consumer
-        status:
-          type: string
-          description: Enrollment status
-          enum:
-          - ENROLLED
-          - PENDING_VERIFICATION
     AddCredentialResponse:
       type: object
       properties:
@@ -168,24 +186,6 @@ components:
           enum:
           - ACTIVE
           - PENDING_VERIFICATION
-    AddCredentialRequest:
-      type: object
-      required:
-      - primaryAccountNumber
-      - cardExpiryDate
-      properties:
-        primaryAccountNumber:
-          type: string
-          description: Primary account number of the Visa card
-        cardExpiryDate:
-          type: string
-          description: Card expiration date in YYYY-MM format
-          pattern: ^\d{4}-\d{2}$
-        cardholderName:
-          type: string
-          description: Name as it appears on the card
-        billingAddress:
-          $ref: '#/components/schemas/Address'
   parameters:
     ConsumerIdParam:
       name: consumerId

@@ -65,6 +65,26 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    GenericErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Internal Server Error, please try again after sometime
+
+            '
+          example: Internal Server Error, please try again after sometime
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * E
+
+            '
+          example: E
+      description: '[Reject Request]'
     SuccessfulStopAdviceResponse:
       required:
       - cardAcceptorId
@@ -113,6 +133,29 @@ components:
           description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover).]'
           example: 400000XX00000000
       description: '[SuccessfulStopAdviceResponse body]'
+    StopAdviceResponse:
+      required:
+      - issuerSegmentId
+      - rejects
+      - responses
+      type: object
+      properties:
+        rejects:
+          type: array
+          description: '[List of rejected stop advice responses]'
+          items:
+            $ref: '#/components/schemas/RejectedStopAdviceResponse'
+        responses:
+          type: array
+          description: '[List of successful stop advice responses]'
+          items:
+            $ref: '#/components/schemas/SuccessfulStopAdviceResponse'
+        issuerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU issuer segment id.]'
+          format: int32
+          example: 2
+      description: '[Issuer-stop-advice-api response body]'
     stopAdvice:
       required:
       - cardAcceptorId
@@ -137,49 +180,6 @@ components:
           description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover).]'
           example: 400000XX00000000
       description: '[Stop advice fields]'
-    StopAdviceResponse:
-      required:
-      - issuerSegmentId
-      - rejects
-      - responses
-      type: object
-      properties:
-        rejects:
-          type: array
-          description: '[List of rejected stop advice responses]'
-          items:
-            $ref: '#/components/schemas/RejectedStopAdviceResponse'
-        responses:
-          type: array
-          description: '[List of successful stop advice responses]'
-          items:
-            $ref: '#/components/schemas/SuccessfulStopAdviceResponse'
-        issuerSegmentId:
-          type: integer
-          description: '[This field must contain a valid VAU issuer segment id.]'
-          format: int32
-          example: 2
-      description: '[Issuer-stop-advice-api response body]'
-    GenericErrorMessage:
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Internal Server Error, please try again after sometime
-
-            '
-          example: Internal Server Error, please try again after sometime
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * E
-
-            '
-          example: E
-      description: '[Reject Request]'
     stopAdviceRequest:
       required:
       - issuerSegmentId
@@ -197,26 +197,6 @@ components:
           format: int32
           example: 2
       description: stopAdviceRequest
-    BadFormattedErrorMessage:
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Request is badly formatted and/or the required field(s) is (are) missing
-
-            '
-          example: Request is badly formatted and/or the required field(s) is (are) missing
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * B
-
-            '
-          example: B
-      description: '[Inquiry is badly formatted]'
     RejectedStopAdviceRequestResponse:
       required:
       - issuerSegmentId
@@ -336,6 +316,26 @@ components:
           description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover).]'
           example: 400000XX00000000
       description: '[RejectedStopAdviceResponse]'
+    BadFormattedErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Request is badly formatted and/or the required field(s) is (are) missing
+
+            '
+          example: Request is badly formatted and/or the required field(s) is (are) missing
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * B
+
+            '
+          example: B
+      description: '[Inquiry is badly formatted]'
 x-tagGroups:
 - name: API Reference
   tags:

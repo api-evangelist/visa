@@ -49,6 +49,20 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    NearbyMerchantsResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of nearby merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total matching merchants
     NearbyMerchantsRequest:
       type: object
       properties:
@@ -124,20 +138,6 @@ components:
           type: number
           format: double
           description: Confidence score of the match
-    NearbyMerchantsResponse:
-      type: object
-      properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: List of nearby merchants
-              items:
-                $ref: '#/components/schemas/MerchantRecord'
-            totalCount:
-              type: integer
-              description: Total matching merchants
   securitySchemes:
     mutualTLS:
       type: mutualTLS

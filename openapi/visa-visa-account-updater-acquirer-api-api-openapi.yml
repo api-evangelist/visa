@@ -115,6 +115,100 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    GenericErrorMessage-1:
+      title: GenericErrorMessage
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Internal Server Error, please try again after sometime
+
+            '
+          example: Internal Server Error, please try again after sometime
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * E
+
+            '
+          example: E
+      description: '[Reject Request]'
+    BadFormattedErrorMessage-1:
+      title: BadFormattedErrorMessage
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Request is badly formatted and/or the required field(s) is (are) missing
+
+            '
+          example: Request is badly formatted and/or the required field(s) is (are) missing
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * B
+
+            '
+          example: B
+      description: '[Inquiry is badly formatted]'
+    Response:
+      title: Response
+      required:
+      - acquirerSegmentId
+      - merchantId
+      - rejects
+      - responses
+      type: object
+      properties:
+        rejects:
+          type: array
+          description: '[List of Rejected Inquiry Response]'
+          items:
+            $ref: '#/components/schemas/RejectedInquiryResponse'
+        responses:
+          type: array
+          description: '[List of Successful Inquiry Responses]'
+          items:
+            $ref: '#/components/schemas/SuccessfulInquiryResponse'
+        merchantId:
+          type: string
+          description: '[This field contains the VAU Merchant ID that was submitted in the associated Acquirer Inquiry Request.]'
+          example: 000000705853
+        subMerchantName:
+          type: string
+          description: '[This field contains the sub merchant name that was submitted in the associated Acquirer Inquiry Request.]'
+          example: SUB-MERCHANT-NAME
+        acquirerSegmentId:
+          type: integer
+          description: '[This field contains the VAU Acquirer Segment ID of the associated Acquirer Inquiry Request.]'
+          format: int32
+          example: 2
+        acquirerOrMerchantProprietaryInfo:
+          type: string
+          description: '[This field contains the Acquirer or merchant Proprietary information that was submitted in the associated Acquirer Inquiry Request.]'
+          example: 180720216995565000113            XXXXAIBR
+      description: '[Acquirer-api response body]'
+    Inquiry:
+      title: Inquiry
+      required:
+      - cardholderAccountNumber
+      type: object
+      properties:
+        expirationDate:
+          type: string
+          description: '[If provided, it must contain the expiration date of the account on file at the merchant for billing purposes. The date must be in YYMM format]'
+          example: '2204'
+        cardholderAccountNumber:
+          type: string
+          description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover) that is on file at the merchant for billing purposes.]'
+          example: 400000XX00000000
+      description: '[Pan inquiry consists of two fields, the cardholder account number and it''s expiration date.]'
     RejectedRequestResponse:
       title: RejectedRequestResponse
       required:
@@ -170,58 +264,39 @@ components:
           description: '[If provided, it contains acquirer or merchant proprietary information such as a customer ID that is carried in the merchants back-end system.]'
           example: 180720216995565000113            XXXXAIBR
       description: '[Reject Request]'
-    Inquiry:
-      title: Inquiry
-      required:
-      - cardholderAccountNumber
-      type: object
-      properties:
-        expirationDate:
-          type: string
-          description: '[If provided, it must contain the expiration date of the account on file at the merchant for billing purposes. The date must be in YYMM format]'
-          example: '2204'
-        cardholderAccountNumber:
-          type: string
-          description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover) that is on file at the merchant for billing purposes.]'
-          example: 400000XX00000000
-      description: '[Pan inquiry consists of two fields, the cardholder account number and it''s expiration date.]'
-    Response:
-      title: Response
+    Request:
+      title: Request
       required:
       - acquirerSegmentId
+      - inquiries
       - merchantId
-      - rejects
-      - responses
       type: object
       properties:
-        rejects:
+        inquiries:
           type: array
-          description: '[List of Rejected Inquiry Response]'
+          description: '[List of Inquiries]'
           items:
-            $ref: '#/components/schemas/RejectedInquiryResponse'
-        responses:
-          type: array
-          description: '[List of Successful Inquiry Responses]'
-          items:
-            $ref: '#/components/schemas/SuccessfulInquiryResponse'
+            $ref: '#/components/schemas/Inquiry'
         merchantId:
           type: string
-          description: '[This field contains the VAU Merchant ID that was submitted in the associated Acquirer Inquiry Request.]'
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID.]'
           example: 000000705853
         subMerchantName:
           type: string
-          description: '[This field contains the sub merchant name that was submitted in the associated Acquirer Inquiry Request.]'
+          description: '[If inquiry is submitted by a merchant, then this field must be empty.
+
+            If inquiry is submitted by a third-party aggregator on behalf of a merchant, then this field must be populated with the sub-merchant name. Acquirers and processors must pass the value to Visa. No special characters are allowed.]'
           example: SUB-MERCHANT-NAME
         acquirerSegmentId:
           type: integer
-          description: '[This field contains the VAU Acquirer Segment ID of the associated Acquirer Inquiry Request.]'
+          description: '[This field must contain a valid VAU Acquirer Segment ID.]'
           format: int32
           example: 2
         acquirerOrMerchantProprietaryInfo:
           type: string
-          description: '[This field contains the Acquirer or merchant Proprietary information that was submitted in the associated Acquirer Inquiry Request.]'
+          description: '[If provided, it contains acquirer or merchant proprietary information such as a customer ID that is carried in the merchants back-end system.]'
           example: 180720216995565000113            XXXXAIBR
-      description: '[Acquirer-api response body]'
+      description: '[Acquirer-api request body]'
     RejectedInquiryResponse:
       title: RejectedInquiryResponse
       required:
@@ -265,60 +340,6 @@ components:
           description: '[This field contains the account number that was submitted in the associated Acquirer Inquiry Request.]'
           example: 800000XX00000000
       description: '[Rejected Inquiry Response body]'
-    GenericErrorMessage-1:
-      title: GenericErrorMessage
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Internal Server Error, please try again after sometime
-
-            '
-          example: Internal Server Error, please try again after sometime
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * E
-
-            '
-          example: E
-      description: '[Reject Request]'
-    Request:
-      title: Request
-      required:
-      - acquirerSegmentId
-      - inquiries
-      - merchantId
-      type: object
-      properties:
-        inquiries:
-          type: array
-          description: '[List of Inquiries]'
-          items:
-            $ref: '#/components/schemas/Inquiry'
-        merchantId:
-          type: string
-          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID.]'
-          example: 000000705853
-        subMerchantName:
-          type: string
-          description: '[If inquiry is submitted by a merchant, then this field must be empty.
-
-            If inquiry is submitted by a third-party aggregator on behalf of a merchant, then this field must be populated with the sub-merchant name. Acquirers and processors must pass the value to Visa. No special characters are allowed.]'
-          example: SUB-MERCHANT-NAME
-        acquirerSegmentId:
-          type: integer
-          description: '[This field must contain a valid VAU Acquirer Segment ID.]'
-          format: int32
-          example: 2
-        acquirerOrMerchantProprietaryInfo:
-          type: string
-          description: '[If provided, it contains acquirer or merchant proprietary information such as a customer ID that is carried in the merchants back-end system.]'
-          example: 180720216995565000113            XXXXAIBR
-      description: '[Acquirer-api request body]'
     SuccessfulInquiryResponse:
       title: SuccessfulInquiryResponse
       required:
@@ -351,27 +372,6 @@ components:
           description: '[This field contains the account number that was submitted in the associated Acquirer Inquiry Request.]'
           example: 400000XX00000000
       description: '[Successful Inquiry Response body]'
-    BadFormattedErrorMessage-1:
-      title: BadFormattedErrorMessage
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Request is badly formatted and/or the required field(s) is (are) missing
-
-            '
-          example: Request is badly formatted and/or the required field(s) is (are) missing
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * B
-
-            '
-          example: B
-      description: '[Inquiry is badly formatted]'
 x-tagGroups:
 - name: API Reference
   tags:

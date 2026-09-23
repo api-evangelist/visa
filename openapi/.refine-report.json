@@ -100,7 +100,8 @@
     "visa-merchant-screening.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "visa-merchant-search.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "visa-supplier-matching-service.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "visa-transaction-controls.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "visa-transaction-controls.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "visa-account-management-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",

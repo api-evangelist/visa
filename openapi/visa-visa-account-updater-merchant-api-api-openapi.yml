@@ -145,62 +145,6 @@ components:
           description: '[Name of Merchant]'
           example: GS PERFORMANCE
       description: '[Merchant Response]'
-    RejectedMerchantEnrollmentResponse:
-      required:
-      - acquirerSegmentId
-      type: object
-      properties:
-        rejectCode:
-          type: string
-          description: '[This field contains one of the following codes:
-
-            * AAcquirer segment is not enrolled
-
-            * VNo data found in inquiry field
-
-            * X-Acquirer status is in test mode, please contact client services representative
-
-            * TMax merchants threshold passed for single request, current threshold is:100.]
-
-            '
-          example: A
-        rejectReason:
-          type: string
-          description: '[This field contains the description of the reject code:
-
-            * AAcquirer segment is not enrolled
-
-            * VNo data found in inquiry field
-
-            * X-Acquirer status is in test mode, please contact client services representative
-
-            * TMax merchants threshold passed for single request, current threshold is:100.]
-
-            '
-          example: Acquirer segment is not enrolled
-        acquirerSegmentId:
-          type: integer
-          description: '[This field  must contain a valid VAU Acquirer Segment ID.]'
-          format: int32
-          example: 9992
-      description: '[Reject Request]'
-    MerchantSearchResponse:
-      required:
-      - acquirerSegmentId
-      - merchants
-      type: object
-      properties:
-        merchants:
-          type: array
-          description: '[List of merchant search results]'
-          items:
-            $ref: '#/components/schemas/Merchant'
-        acquirerSegmentId:
-          type: integer
-          description: '[This field  must contain a valid VAU acquirer segment Id.]'
-          format: int32
-          example: 2
-      description: '[Merchant Search Response]'
     MerchantEnrolmentResponse:
       required:
       - acquirerSegmentId
@@ -321,7 +265,71 @@ components:
             description: '[Merchant acquiring identifier]'
             example: '["312345","312344"]'
       description: '[List of merchant enrolment]'
-    RejectedMerchantSearchResponse:
+    GenericErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Internal Server Error, please try again after sometime
+
+            '
+          example: Internal Server Error, please try again after sometime
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * E
+
+            '
+          example: E
+      description: '[Reject Request]'
+    MerchantSearchResponse:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: '[List of merchant search results]'
+          items:
+            $ref: '#/components/schemas/Merchant'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field  must contain a valid VAU acquirer segment Id.]'
+          format: int32
+          example: 2
+      description: '[Merchant Search Response]'
+    MerchantId:
+      required:
+      - merchantId
+      type: object
+      properties:
+        merchantId:
+          type: string
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID of 12 characters.]'
+          example: 000000705853
+      description: '[List of merchants to search]'
+    merchantEnrolmentRequest:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: '[List of merchant enrolment]'
+          items:
+            $ref: '#/components/schemas/MerchantRequest'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU acquirer segment id]'
+          format: int32
+          example: 2
+      description: merchantEnrolment
+    RejectedMerchantEnrollmentResponse:
       required:
       - acquirerSegmentId
       type: object
@@ -360,155 +368,6 @@ components:
           format: int32
           example: 9992
       description: '[Reject Request]'
-    MerchantId:
-      required:
-      - merchantId
-      type: object
-      properties:
-        merchantId:
-          type: string
-          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID of 12 characters.]'
-          example: 000000705853
-      description: '[List of merchants to search]'
-    GenericErrorMessage:
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Internal Server Error, please try again after sometime
-
-            '
-          example: Internal Server Error, please try again after sometime
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * E
-
-            '
-          example: E
-      description: '[Reject Request]'
-    BadFormattedErrorMessage:
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Request is badly formatted and/or the required field(s) is (are) missing
-
-            '
-          example: Request is badly formatted and/or the required field(s) is (are) missing
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * B
-
-            '
-          example: B
-      description: '[Inquiry is badly formatted]'
-    RejectMerchant:
-      required:
-      - rejectCode
-      - rejectMessage
-      type: object
-      properties:
-        rejectCode:
-          type: string
-          description: '[This field contains one of the following reject codes:
-
-            * C-Mandatory field Card Acceptor Id missing or invalid or having value zero
-
-            * D-Duplicate Merchant ID in Request
-
-            * F-Merchant name exceeds the maximum length of 75 characters
-
-            * G-Mandatory Field Merchant Country Code missing or must be 3 digit ISO code(including leading zeros)
-
-            * H-Merchant Acquiring Identifier must be numeric of length 6 or 8
-
-            * I-Merchant ID must be 12 characters
-
-            * J-Merchant name having non english characters or ''|'' unsupported character
-
-            * K-Max number of Merchant Acquiring Identifiers supported is 18
-
-            * L-Internet Address exceeds the maximum length of 100 characters
-
-            * M-Merchant Id already exists for this Acquirer Segment
-
-            * N-Mandatory Field Merchant Name missing
-
-            * O-Parent Company name having non english characters or ''|'' unsupported character
-
-            * P-Mandatory Field Merchant Category Code missing or must be numeric
-
-            * Q-Mandatory Field Merchant Acquiring Identifier(s) missing or invalid
-
-            * R-Mandatory Field Merchant ID missing
-
-            * S-Merchant Country  should be in same region as acquirer
-
-            * U-Card Acceptor Id exceeds the maximum length of 15 characters
-
-            * W-Merchant Category Code exceeds the maximum length of 4 digits
-
-            * Y-Merchant did not qualify for compliance check
-
-            * Z-Merchant Category Code is Ineligible for Merchant enrollment]
-
-            '
-          example: M
-        rejectMessage:
-          type: string
-          description: '[This field contains the description of reject message:
-
-            * C-Mandatory field Card Acceptor Id missing or invalid or having value zero
-
-            * D-Duplicate Merchant ID in Request
-
-            * F-Merchant name exceeds the maximum length of 75 characters
-
-            * G-Mandatory Field Merchant Country Code missing or must be 3 digit ISO code(including leading zeros)
-
-            * H-Merchant Acquiring Identifier must be numeric of length 6 or 8
-
-            * I-Merchant ID must be 12 characters
-
-            * J-Merchant name having non english characters or ''|'' unsupported character
-
-            * K-Max number of Merchant Acquiring Identifiers supported is 18
-
-            * L-Internet Address exceeds the maximum length of 100 characters
-
-            * M-Merchant Id already exists for this Acquirer Segment
-
-            * N-Mandatory Field Merchant Name missing
-
-            * O-Parent Company name having non english characters or ''|'' unsupported character
-
-            * P-Mandatory Field Merchant Category Code missing or must be numeric
-
-            * Q-Mandatory Field Merchant Acquiring Identifier(s) missing or invalid
-
-            * R-Mandatory Field Merchant ID missing
-
-            * S-Merchant Country  should be in same region as acquirer
-
-            * U-Card Acceptor Id exceeds the maximum length of 15 characters
-
-            * W-Merchant Category Code exceeds the maximum length of 4 digits
-
-            * Y-Merchant did not qualify for compliance check
-
-            * Z-Merchant Category Code is Ineligible for Merchant enrollment]
-
-            '
-          example: Merchant Id already exists for this Acquirer Segment
-      description: '[RejectMerchant]'
     Merchant:
       required:
       - merchantId
@@ -612,6 +471,105 @@ components:
             description: '[Merchant acquiring identifier]'
             example: '["312345","312344"]'
       description: '[Merchant Object]'
+    RejectMerchant:
+      required:
+      - rejectCode
+      - rejectMessage
+      type: object
+      properties:
+        rejectCode:
+          type: string
+          description: '[This field contains one of the following reject codes:
+
+            * C-Mandatory field Card Acceptor Id missing or invalid or having value zero
+
+            * D-Duplicate Merchant ID in Request
+
+            * F-Merchant name exceeds the maximum length of 75 characters
+
+            * G-Mandatory Field Merchant Country Code missing or must be 3 digit ISO code(including leading zeros)
+
+            * H-Merchant Acquiring Identifier must be numeric of length 6 or 8
+
+            * I-Merchant ID must be 12 characters
+
+            * J-Merchant name having non english characters or ''|'' unsupported character
+
+            * K-Max number of Merchant Acquiring Identifiers supported is 18
+
+            * L-Internet Address exceeds the maximum length of 100 characters
+
+            * M-Merchant Id already exists for this Acquirer Segment
+
+            * N-Mandatory Field Merchant Name missing
+
+            * O-Parent Company name having non english characters or ''|'' unsupported character
+
+            * P-Mandatory Field Merchant Category Code missing or must be numeric
+
+            * Q-Mandatory Field Merchant Acquiring Identifier(s) missing or invalid
+
+            * R-Mandatory Field Merchant ID missing
+
+            * S-Merchant Country  should be in same region as acquirer
+
+            * U-Card Acceptor Id exceeds the maximum length of 15 characters
+
+            * W-Merchant Category Code exceeds the maximum length of 4 digits
+
+            * Y-Merchant did not qualify for compliance check
+
+            * Z-Merchant Category Code is Ineligible for Merchant enrollment]
+
+            '
+          example: M
+        rejectMessage:
+          type: string
+          description: '[This field contains the description of reject message:
+
+            * C-Mandatory field Card Acceptor Id missing or invalid or having value zero
+
+            * D-Duplicate Merchant ID in Request
+
+            * F-Merchant name exceeds the maximum length of 75 characters
+
+            * G-Mandatory Field Merchant Country Code missing or must be 3 digit ISO code(including leading zeros)
+
+            * H-Merchant Acquiring Identifier must be numeric of length 6 or 8
+
+            * I-Merchant ID must be 12 characters
+
+            * J-Merchant name having non english characters or ''|'' unsupported character
+
+            * K-Max number of Merchant Acquiring Identifiers supported is 18
+
+            * L-Internet Address exceeds the maximum length of 100 characters
+
+            * M-Merchant Id already exists for this Acquirer Segment
+
+            * N-Mandatory Field Merchant Name missing
+
+            * O-Parent Company name having non english characters or ''|'' unsupported character
+
+            * P-Mandatory Field Merchant Category Code missing or must be numeric
+
+            * Q-Mandatory Field Merchant Acquiring Identifier(s) missing or invalid
+
+            * R-Mandatory Field Merchant ID missing
+
+            * S-Merchant Country  should be in same region as acquirer
+
+            * U-Card Acceptor Id exceeds the maximum length of 15 characters
+
+            * W-Merchant Category Code exceeds the maximum length of 4 digits
+
+            * Y-Merchant did not qualify for compliance check
+
+            * Z-Merchant Category Code is Ineligible for Merchant enrollment]
+
+            '
+          example: Merchant Id already exists for this Acquirer Segment
+      description: '[RejectMerchant]'
     merchantSearchRequest:
       required:
       - acquirerSegmentId
@@ -631,23 +589,65 @@ components:
           format: int32
           example: 2
       description: merchantSearch
-    merchantEnrolmentRequest:
-      required:
-      - acquirerSegmentId
-      - merchants
+    BadFormattedErrorMessage:
       type: object
       properties:
-        merchants:
-          type: array
-          description: '[List of merchant enrolment]'
-          items:
-            $ref: '#/components/schemas/MerchantRequest'
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Request is badly formatted and/or the required field(s) is (are) missing
+
+            '
+          example: Request is badly formatted and/or the required field(s) is (are) missing
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * B
+
+            '
+          example: B
+      description: '[Inquiry is badly formatted]'
+    RejectedMerchantSearchResponse:
+      required:
+      - acquirerSegmentId
+      type: object
+      properties:
+        rejectCode:
+          type: string
+          description: '[This field contains one of the following codes:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: A
+        rejectReason:
+          type: string
+          description: '[This field contains the description of the reject code:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: Acquirer segment is not enrolled
         acquirerSegmentId:
           type: integer
-          description: '[This field must contain a valid VAU acquirer segment id]'
+          description: '[This field  must contain a valid VAU Acquirer Segment ID.]'
           format: int32
-          example: 2
-      description: merchantEnrolment
+          example: 9992
+      description: '[Reject Request]'
 x-tagGroups:
 - name: API Reference
   tags:

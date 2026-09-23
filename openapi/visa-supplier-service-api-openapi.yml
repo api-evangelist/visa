@@ -245,7 +245,6 @@ paths:
       tags:
       - Supplier Service
       summary: Get Supplier Details
-      description: Get Supplier Details
       operationId: Get Supplier Details
       requestBody:
         content:

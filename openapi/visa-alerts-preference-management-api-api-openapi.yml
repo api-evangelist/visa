@@ -49,15 +49,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     AlertsPreferenceRequest:
       type: object
       required:
@@ -92,6 +83,15 @@ components:
         alertDeliveryChannel:
           type: string
           description: Configured delivery channel
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
   securitySchemes:
     mutualTLS:
       type: mutualTLS

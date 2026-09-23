@@ -36,6 +36,8 @@ paths:
         operationPointer: '#/paths/~1vocs~1v1~1register/put'
         default: false
       x-hideTryIt: true
+      operationId: putVocsV1Register
+      x-operation-id-source: derived
     post:
       tags:
       - VCS Enrollment API
@@ -60,6 +62,8 @@ paths:
         operationPointer: '#/paths/~1vocs~1v1~1register/post'
         default: false
       x-hideTryIt: true
+      operationId: postVocsV1Register
+      x-operation-id-source: derived
   /CPRWeb/getUserStatus:
     get:
       tags:
@@ -169,8 +173,175 @@ paths:
         default: false
       x-hideTryIt: true
       x-sortOrder: 0
+      operationId: getCPRWebGetUserStatus
+      x-operation-id-source: derived
 components:
   schemas:
+    RequestPayload:
+      required:
+      - address
+      - cardInfo
+      - clientCompanyId
+      - companyName
+      - companyPhoneNumber
+      - language
+      - messageId
+      - service
+      type: object
+      properties:
+        address:
+          type: object
+          properties:
+            city:
+              maxLength: 60
+              type: string
+              description: City.
+              example: FC1
+            state:
+              maxLength: 12
+              type: string
+              description: State.
+              example: WA
+            country:
+              maxLength: 3
+              type: string
+              description: Country. Valid ISO code required for this field.
+              example: '840'
+            zipCode:
+              maxLength: 100
+              type: string
+              description: ZIP/Postal Code.
+              example: '12234'
+            addressLine1:
+              maxLength: 100
+              type: string
+              description: Address Line1.
+              example: AddressLine1
+            addressLine2:
+              maxLength: 100
+              type: string
+              description: Address Line2.
+              example: AddressLine2
+        service:
+          type: array
+          description: Services to be subscribed
+          items:
+            type: string
+            example: VSCB
+        cardInfo:
+          type: array
+          description: Card Details to be register.
+          items:
+            type: object
+            properties:
+              primary:
+                type: boolean
+                description: To identify card as primary.
+                example: true
+              lastName:
+                maxLength: 50
+                type: string
+                description: Card Holder Last Name.
+                example: LastName1
+              serialNo:
+                maxLength: 100
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              firstName:
+                maxLength: 50
+                type: string
+                description: Card Holder First Name.
+                example: FirstName1
+              cardAccNumber:
+                maxLength: 16
+                type: string
+                description: Card Number.
+                example: '4111115773850213'
+              cardExpiryDate:
+                maxLength: 100
+                type: string
+                description: Card Expiry Date with basic month and card validation..
+                example: 02/2024
+        language:
+          maxLength: 10
+          type: string
+          description: Supported Languages are en_us,en_gb,fr_ca,es_xl,pt_br,ja_jp,ar_sa,ru_ru,it_it,de_de,fr_fr,pl_pl,nl_nl,sk_sk,vi_vn
+          example: en_us
+        userInfo:
+          type: array
+          items:
+            type: object
+            properties:
+              roles:
+                type: object
+                additionalProperties:
+                  type: string
+              lastName:
+                maxLength: 50
+                type: string
+                description: Card Holder Last Name.
+                example: LastName1
+              serialNo:
+                maxLength: 100
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              firstName:
+                maxLength: 50
+                type: string
+                description: Card Holder First Name.
+                example: FirstName1
+              emailAddress:
+                maxLength: 50
+                minLength: 6
+                type: string
+                description: Email Address.
+                example: testemail10220270@gmail.com
+              federationMappingId:
+                maxLength: 64
+                type: string
+                description: Federation Mapping Id. Mandatory if bank enabled for SSO.
+                example: testemail10220270
+        messageId:
+          type: integer
+          description: Message Id
+          example: 649833257
+        association:
+          type: array
+          items:
+            type: object
+            properties:
+              serialNo:
+                maxLength: 100
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              emailAddress:
+                maxLength: 50
+                minLength: 6
+                type: string
+                description: Email Address.
+                example: testemail10220270@gmail.com
+              cardAccNumber:
+                maxLength: 16
+                type: string
+                description: Card Number.
+                example: '4111115773850213'
+        companyName:
+          maxLength: 80
+          type: string
+          description: Company Name
+          example: TestCompany10220270
+        clientCompanyId:
+          maxLength: 20
+          type: string
+          description: Client Company Id
+          example: 1n78gbqw56
+        companyPhoneNumber:
+          type: integer
+          description: Company Phone Number
+          example: 99197904935
     RequestPutPayload:
       required:
       - clientCompanyId
@@ -372,171 +543,6 @@ components:
                 type: string
                 description: Serial No.
                 example: a05568c3-e4a1-4634-9190-b2bb3744effd
-    RequestPayload:
-      required:
-      - address
-      - cardInfo
-      - clientCompanyId
-      - companyName
-      - companyPhoneNumber
-      - language
-      - messageId
-      - service
-      type: object
-      properties:
-        address:
-          type: object
-          properties:
-            city:
-              maxLength: 60
-              type: string
-              description: City.
-              example: FC1
-            state:
-              maxLength: 12
-              type: string
-              description: State.
-              example: WA
-            country:
-              maxLength: 3
-              type: string
-              description: Country. Valid ISO code required for this field.
-              example: '840'
-            zipCode:
-              maxLength: 100
-              type: string
-              description: ZIP/Postal Code.
-              example: '12234'
-            addressLine1:
-              maxLength: 100
-              type: string
-              description: Address Line1.
-              example: AddressLine1
-            addressLine2:
-              maxLength: 100
-              type: string
-              description: Address Line2.
-              example: AddressLine2
-        service:
-          type: array
-          description: Services to be subscribed
-          items:
-            type: string
-            example: VSCB
-        cardInfo:
-          type: array
-          description: Card Details to be register.
-          items:
-            type: object
-            properties:
-              primary:
-                type: boolean
-                description: To identify card as primary.
-                example: true
-              lastName:
-                maxLength: 50
-                type: string
-                description: Card Holder Last Name.
-                example: LastName1
-              serialNo:
-                maxLength: 100
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              firstName:
-                maxLength: 50
-                type: string
-                description: Card Holder First Name.
-                example: FirstName1
-              cardAccNumber:
-                maxLength: 16
-                type: string
-                description: Card Number.
-                example: '4111115773850213'
-              cardExpiryDate:
-                maxLength: 100
-                type: string
-                description: Card Expiry Date with basic month and card validation..
-                example: 02/2024
-        language:
-          maxLength: 10
-          type: string
-          description: Supported Languages are en_us,en_gb,fr_ca,es_xl,pt_br,ja_jp,ar_sa,ru_ru,it_it,de_de,fr_fr,pl_pl,nl_nl,sk_sk,vi_vn
-          example: en_us
-        userInfo:
-          type: array
-          items:
-            type: object
-            properties:
-              roles:
-                type: object
-                additionalProperties:
-                  type: string
-              lastName:
-                maxLength: 50
-                type: string
-                description: Card Holder Last Name.
-                example: LastName1
-              serialNo:
-                maxLength: 100
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              firstName:
-                maxLength: 50
-                type: string
-                description: Card Holder First Name.
-                example: FirstName1
-              emailAddress:
-                maxLength: 50
-                minLength: 6
-                type: string
-                description: Email Address.
-                example: testemail10220270@gmail.com
-              federationMappingId:
-                maxLength: 64
-                type: string
-                description: Federation Mapping Id. Mandatory if bank enabled for SSO.
-                example: testemail10220270
-        messageId:
-          type: integer
-          description: Message Id
-          example: 649833257
-        association:
-          type: array
-          items:
-            type: object
-            properties:
-              serialNo:
-                maxLength: 100
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              emailAddress:
-                maxLength: 50
-                minLength: 6
-                type: string
-                description: Email Address.
-                example: testemail10220270@gmail.com
-              cardAccNumber:
-                maxLength: 16
-                type: string
-                description: Card Number.
-                example: '4111115773850213'
-        companyName:
-          maxLength: 80
-          type: string
-          description: Company Name
-          example: TestCompany10220270
-        clientCompanyId:
-          maxLength: 20
-          type: string
-          description: Client Company Id
-          example: 1n78gbqw56
-        companyPhoneNumber:
-          type: integer
-          description: Company Phone Number
-          example: 99197904935
 x-tagGroups:
 - name: API Reference
   tags:

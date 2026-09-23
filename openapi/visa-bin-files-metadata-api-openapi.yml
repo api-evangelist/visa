@@ -65,30 +65,85 @@ paths:
       x-codegen-request-body-name: Bin Files Metadata Request
 components:
   schemas:
-    responseStatus:
-      title: responseStatus
+    responseHeader:
+      title: responseHeader
       type: object
       properties:
-        statusCode:
-          maxLength: 6
-          minLength: 6
+        responseTS:
+          maxLength: 23
+          minLength: 23
           type: string
-          description: Status Code of the Service Request
-          example: CDI000
-        statusDescription:
-          maxLength: 250
-          minLength: 0
+          description: Date and time at which Response is sent (up to milliseconds in UTC)
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2023-02-17T06:31:31.194'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
           type: string
-          description: A description of the Status Code. A brief description indicating the result of the Service Request
-          example: Success
-    binFilesMetadataRequest:
-      title: BinFilesMetadataRequest
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId456
+        responseMessageId:
+          maxLength: 33
+          minLength: 33
+          type: string
+          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
+          example: 106VDP87035320230217063131177
+    errorCodes:
+      title: ErrorCodes
       type: object
       properties:
-        requestData:
-          $ref: '#/components/schemas/requestData'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader'
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI003:
+          type: object
+          description: Missing Required Attributes
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI071:
+          type: object
+          description: Request data invalid
+        CDI092:
+          type: object
+          description: No data
+        CDI098:
+          type: object
+          description: Invalid RequestTS format
+        CDI251:
+          type: object
+          description: Client configuration incomplete, reach out to BINAttributes@visa.com
+    fileDetails:
+      title: fileDetails
+      required:
+      - checkSum
+      - fileName
+      - fileSize
+      - rowCount
+      type: object
+      properties:
+        checkSum:
+          maxLength: 32
+          minLength: 32
+          type: string
+          description: File checksum
+          example: bb8e4c75d51001dd35b40dc6209eccc2
+        fileName:
+          maxLength: 255
+          minLength: 30
+          type: string
+          description: File Name
+          example: VBASS_AR_LEVEL1_04282021_20.csv
+        fileSize:
+          minimum: 0
+          type: number
+          description: File Size in bytes (from Linux OS)
+          example: 1770048
+        rowCount:
+          minimum: 0
+          type: number
+          description: Number of records in the file (excludes the column header record at the top of the csv file)
+          example: 30000
     responseData:
       title: responseData
       required:
@@ -133,47 +188,22 @@ components:
           type: string
           description: Identifier for whether account is a PAN ('P') or Token ('T')
           example: P
-    binFilesMetadataResponse:
-      title: BinFilesMetadataResponse
+    responseStatus:
+      title: responseStatus
       type: object
       properties:
-        responseData:
-          $ref: '#/components/schemas/responseData'
-        responseHeader:
-          $ref: '#/components/schemas/responseHeader'
-        responseStatus:
-          $ref: '#/components/schemas/responseStatus'
-    fileDetails:
-      title: fileDetails
-      required:
-      - checkSum
-      - fileName
-      - fileSize
-      - rowCount
-      type: object
-      properties:
-        checkSum:
-          maxLength: 32
-          minLength: 32
+        statusCode:
+          maxLength: 6
+          minLength: 6
           type: string
-          description: File checksum
-          example: bb8e4c75d51001dd35b40dc6209eccc2
-        fileName:
-          maxLength: 255
-          minLength: 30
+          description: Status Code of the Service Request
+          example: CDI000
+        statusDescription:
+          maxLength: 250
+          minLength: 0
           type: string
-          description: File Name
-          example: VBASS_AR_LEVEL1_04282021_20.csv
-        fileSize:
-          minimum: 0
-          type: number
-          description: File Size in bytes (from Linux OS)
-          example: 1770048
-        rowCount:
-          minimum: 0
-          type: number
-          description: Number of records in the file (excludes the column header record at the top of the csv file)
-          example: 30000
+          description: A description of the Status Code. A brief description indicating the result of the Service Request
+          example: Success
     requestHeader:
       title: requestHeader
       required:
@@ -194,54 +224,24 @@ components:
           type: string
           description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
           example: reqMsgId456
-    errorCodes:
-      title: ErrorCodes
+    binFilesMetadataResponse:
+      title: BinFilesMetadataResponse
       type: object
       properties:
-        CDI001:
-          type: object
-          description: Internal service failure
-        CDI003:
-          type: object
-          description: Missing Required Attributes
-        CDI012:
-          type: object
-          description: Request header length is invalid
-        CDI071:
-          type: object
-          description: Request data invalid
-        CDI092:
-          type: object
-          description: No data
-        CDI098:
-          type: object
-          description: Invalid RequestTS format
-        CDI251:
-          type: object
-          description: Client configuration incomplete, reach out to BINAttributes@visa.com
-    responseHeader:
-      title: responseHeader
+        responseData:
+          $ref: '#/components/schemas/responseData'
+        responseHeader:
+          $ref: '#/components/schemas/responseHeader'
+        responseStatus:
+          $ref: '#/components/schemas/responseStatus'
+    binFilesMetadataRequest:
+      title: BinFilesMetadataRequest
       type: object
       properties:
-        responseTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: Date and time at which Response is sent (up to milliseconds in UTC)
-          format: YYYY-MM-DDThh:mm:ss.sss
-          example: '2023-02-17T06:31:31.194'
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-          example: reqMsgId456
-        responseMessageId:
-          maxLength: 33
-          minLength: 33
-          type: string
-          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
-          example: 106VDP87035320230217063131177
+        requestData:
+          $ref: '#/components/schemas/requestData'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader'
 x-tagGroups:
 - name: API Reference
   tags:

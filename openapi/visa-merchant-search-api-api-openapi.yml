@@ -49,6 +49,20 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    MerchantSearchResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of matching merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total number of matching records
     MerchantSearchRequest:
       type: object
       required:
@@ -90,20 +104,6 @@ components:
             matchScore:
               type: boolean
               description: Include match confidence score in results
-    MerchantSearchResponse:
-      type: object
-      properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: List of matching merchants
-              items:
-                $ref: '#/components/schemas/MerchantRecord'
-            totalCount:
-              type: integer
-              description: Total number of matching records
     ErrorResponse:
       type: object
       properties:

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Visa In-App Provisioning In-App Provisioning for Apple Pay API
+  title: Visa In-App Provisioning In-App Provisioning for Apple Pay…
   description: In-App Provisioning for Apple Pay
   version: '1'
 servers:
@@ -131,35 +131,40 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    Error:
-      title: Error
+    ApplePayProvisioningResponse:
+      title: ApplePayProvisioningResponse
+      required:
+      - activationData
+      - encryptedPassData
+      - ephemeralPublicKey
+      - vCardID
       type: object
       properties:
-        reason:
+        vCardID:
+          maxLength: 42
+          minLength: 42
           type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        message:
+          description: Visa-defined unique ID of the card to produce the provisioning card data for.
+        activationData:
+          maxLength: 8192
+          minLength: 0
           type: string
-          description: Message describing the error condition with additional information wherever applicable.
-    ErrorDetails:
-      title: ErrorDetails
-      type: object
-      properties:
-        message:
+          description: Activation data consisting of encrypted nonce, noncesignature, and authCode in base64 format.
+        encryptedPassData:
+          maxLength: 8192
+          minLength: 0
           type: string
-          description: The specific error for this field.
-        location:
+          description: Authentication data consisting of encrypted PAN, expiry and datetime in base64 format.
+        ephemeralPublicKey:
+          maxLength: 8192
+          minLength: 0
           type: string
-          description: The value of this field is using XPATH expression to point to the field, which failed validation.
-    ErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/Error'
+          description: VISA.ECC.ePK generated while creating MBPAD encryptedInformation. EC point with P-256 curve and uncompressed format. Base64 format.
+        paymentAccountReference:
+          maxLength: 29
+          minLength: 29
+          type: string
+          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
     ApplePayProvisioningRequest:
       title: ApplePayProvisioningRequest
       required:
@@ -204,45 +209,6 @@ components:
           enum:
           - V
           - M
-    ValidationErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/ValidationError'
-    ApplePayProvisioningResponse:
-      title: ApplePayProvisioningResponse
-      required:
-      - activationData
-      - encryptedPassData
-      - ephemeralPublicKey
-      - vCardID
-      type: object
-      properties:
-        vCardID:
-          maxLength: 42
-          minLength: 42
-          type: string
-          description: Visa-defined unique ID of the card to produce the provisioning card data for.
-        activationData:
-          maxLength: 8192
-          minLength: 0
-          type: string
-          description: Activation data consisting of encrypted nonce, noncesignature, and authCode in base64 format.
-        encryptedPassData:
-          maxLength: 8192
-          minLength: 0
-          type: string
-          description: Authentication data consisting of encrypted PAN, expiry and datetime in base64 format.
-        ephemeralPublicKey:
-          maxLength: 8192
-          minLength: 0
-          type: string
-          description: VISA.ECC.ePK generated while creating MBPAD encryptedInformation. EC point with P-256 curve and uncompressed format. Base64 format.
-        paymentAccountReference:
-          maxLength: 29
-          minLength: 29
-          type: string
-          description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
     ValidationError:
       title: ValidationError
       type: object
@@ -262,6 +228,40 @@ components:
         message:
           type: string
           description: Message describing the error condition with additional information wherever applicable.
+    ErrorDetails:
+      title: ErrorDetails
+      type: object
+      properties:
+        message:
+          type: string
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/ValidationError'
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
 x-tagGroups:
 - name: API Reference
   tags:

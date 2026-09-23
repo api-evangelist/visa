@@ -80,15 +80,6 @@ components:
           - INSTALLMENT
           - UNSCHEDULED
           - SUBSCRIPTION
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     CardOnFileInquiryResponse:
       type: object
       properties:
@@ -107,6 +98,15 @@ components:
         totalCount:
           type: integer
           description: Total number of merchants with the card on file
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     CardOnFileInquiryRequest:
       type: object
       required:

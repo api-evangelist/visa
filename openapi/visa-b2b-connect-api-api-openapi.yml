@@ -95,59 +95,6 @@ paths:
           description: Payment not found
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    PaymentInitiationRequest:
-      type: object
-      required:
-      - originatorBIC
-      - beneficiaryBIC
-      - amount
-      - currency
-      - originatorReference
-      properties:
-        originatorBIC:
-          type: string
-          description: SWIFT BIC code of the originating financial institution
-          pattern: ^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$
-        beneficiaryBIC:
-          type: string
-          description: SWIFT BIC code of the beneficiary financial institution
-          pattern: ^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$
-        amount:
-          type: number
-          format: double
-          description: Payment amount
-        currency:
-          type: string
-          description: ISO 4217 currency code
-          pattern: ^[A-Z]{3}$
-        originatorReference:
-          type: string
-          description: Originator's unique reference for the payment
-        originatorName:
-          type: string
-          description: Name of the originating party
-        beneficiaryName:
-          type: string
-          description: Name of the beneficiary party
-        beneficiaryAccountNumber:
-          type: string
-          description: Account number of the beneficiary
-        purposeOfPayment:
-          type: string
-          description: Purpose or reason for the payment
-        valueDate:
-          type: string
-          format: date
-          description: Requested settlement date
     PaymentStatusResponse:
       type: object
       properties:
@@ -202,6 +149,59 @@ components:
           type: string
           format: date-time
           description: Timestamp when the payment was created
+    PaymentInitiationRequest:
+      type: object
+      required:
+      - originatorBIC
+      - beneficiaryBIC
+      - amount
+      - currency
+      - originatorReference
+      properties:
+        originatorBIC:
+          type: string
+          description: SWIFT BIC code of the originating financial institution
+          pattern: ^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$
+        beneficiaryBIC:
+          type: string
+          description: SWIFT BIC code of the beneficiary financial institution
+          pattern: ^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$
+        amount:
+          type: number
+          format: double
+          description: Payment amount
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          pattern: ^[A-Z]{3}$
+        originatorReference:
+          type: string
+          description: Originator's unique reference for the payment
+        originatorName:
+          type: string
+          description: Name of the originating party
+        beneficiaryName:
+          type: string
+          description: Name of the beneficiary party
+        beneficiaryAccountNumber:
+          type: string
+          description: Account number of the beneficiary
+        purposeOfPayment:
+          type: string
+          description: Purpose or reason for the payment
+        valueDate:
+          type: string
+          format: date
+          description: Requested settlement date
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
   securitySchemes:
     mutualTLS:
       type: mutualTLS

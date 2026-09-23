@@ -159,6 +159,11 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    OfferDetailResponse:
+      type: object
+      properties:
+        offer:
+          $ref: '#/components/schemas/Offer'
     Offer:
       type: object
       properties:
@@ -208,11 +213,6 @@ components:
         promotionChannel:
           type: string
           description: Channel through which the offer is promoted
-    OfferDetailResponse:
-      type: object
-      properties:
-        offer:
-          $ref: '#/components/schemas/Offer'
     ErrorResponse:
       type: object
       properties:

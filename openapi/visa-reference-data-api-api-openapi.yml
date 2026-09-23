@@ -89,6 +89,21 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    MerchantsResponse:
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: List of merchants with available offers
+          items:
+            type: object
+            properties:
+              merchantId:
+                type: integer
+                description: Unique identifier for the merchant
+              merchantName:
+                type: string
+                description: Name of the merchant
     CountriesResponse:
       type: object
       properties:
@@ -107,21 +122,6 @@ components:
               countryCode:
                 type: string
                 description: ISO country code
-    MerchantsResponse:
-      type: object
-      properties:
-        merchants:
-          type: array
-          description: List of merchants with available offers
-          items:
-            type: object
-            properties:
-              merchantId:
-                type: integer
-                description: Unique identifier for the merchant
-              merchantName:
-                type: string
-                description: Name of the merchant
     CategoriesResponse:
       type: object
       properties:

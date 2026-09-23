@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: B2B Virtual Account Payment Method Single Use Account Pool Maintenance Service API
+  title: B2B Virtual Account Payment Method Single Use Account Pool…
   description: The Proxy web service is used for managing a pool of Single-Use Accounts (SUAs) linked to a proxy. With this web service, you can create proxy pool(s) for a buyer, update details of the proxy, delete unused pools and get details about an existing pool(e.g. number of available accounts).
   version: '1'
 servers:

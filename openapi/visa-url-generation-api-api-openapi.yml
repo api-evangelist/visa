@@ -114,9 +114,11 @@ paths:
         operationPointer: '#/paths/~1inapp~1provision~1appclip~1url/post'
         default: false
       x-hideTryIt: true
+      operationId: postInappProvisionAppclipUrl
+      x-operation-id-source: derived
 components:
   schemas:
-    ErrorResponse:
+    BadRequestResponse:
       required:
       - httpStatus
       - message
@@ -135,9 +137,24 @@ components:
         httpStatus:
           type: string
           description: HTTP Status code
+          example: '400'
         correlationId:
           type: string
           description: Request trace id, for debugging purpose.
+        errorMessages:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Detailed error message if any.
+              location:
+                type: string
+                description: Detailed error location if any.
+              attribute:
+                type: string
+                description: Detailed error attribute if any.
     CreateUrlRequest:
       required:
       - appId
@@ -284,7 +301,18 @@ components:
           type: boolean
           description: Enable search by email.
           example: true
-    BadRequestResponse:
+    CreateUrlResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          description: URL generated
+          example: https://domain.visa.com/dlink/push?payload=abc
+        notified:
+          type: boolean
+          description: Notification status if enabled. By default
+          example: false
+    ErrorResponse:
       required:
       - httpStatus
       - message
@@ -303,35 +331,9 @@ components:
         httpStatus:
           type: string
           description: HTTP Status code
-          example: '400'
         correlationId:
           type: string
           description: Request trace id, for debugging purpose.
-        errorMessages:
-          type: array
-          items:
-            type: object
-            properties:
-              message:
-                type: string
-                description: Detailed error message if any.
-              location:
-                type: string
-                description: Detailed error location if any.
-              attribute:
-                type: string
-                description: Detailed error attribute if any.
-    CreateUrlResponse:
-      type: object
-      properties:
-        url:
-          type: string
-          description: URL generated
-          example: https://domain.visa.com/dlink/push?payload=abc
-        notified:
-          type: boolean
-          description: Notification status if enabled. By default
-          example: false
   parameters:
     clientId:
       name: x-client-id

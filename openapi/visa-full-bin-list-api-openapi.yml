@@ -256,53 +256,6 @@ paths:
       x-codegen-request-body-name: Bin Range Details Request
 components:
   schemas:
-    requestDataV2:
-      title: requestDataV2
-      required:
-      - binRangeCount
-      - binRangeSearchIndex
-      type: object
-      properties:
-        binRangeCount:
-          minLength: 1
-          type: string
-          description: Number of records being requested (maximum number of records to be displayed)
-        paymentAccountType:
-          maxLength: 1
-          minLength: 0
-          type: string
-          description: Identifier for whether account is a PAN ('P') or Token ('T')
-        binRangeSearchIndex:
-          minLength: 1
-          type: string
-          description: Starting index - to be used for paginating through the records. Starting possible values are 0, 100, 200, &,500 (multiples of hundred)
-    requestDataV1-1:
-      title: requestDataV1
-      required:
-      - binRangeCount
-      - binRangeSearchIndex
-      type: object
-      properties:
-        binRangeCount:
-          type: string
-          description: Number of records being requested(maximum number of records to be displayed)
-        binRangeSearchIndex:
-          type: string
-          description: Starting index - to be used for paginating through the records. Starting possible values are 0, 100, 200, &, 500(multiples of hundred)
-    responseStatus-3:
-      title: responseStatus
-      type: object
-      properties:
-        statusCode:
-          maxLength: 6
-          minLength: 6
-          type: string
-          description: Status Code of the Service Request
-        statusDescription:
-          maxLength: 250
-          minLength: 10
-          type: string
-          description: A description of the StatusCode. A brief description indicating the result of the Service Request
     responseDataV2-2:
       title: responseData
       required:
@@ -441,15 +394,16 @@ components:
           minLength: 0
           type: string
           description: The code for account funding source subtype, such as reloadable and non-reloadable.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#section2">Account Funding Source Subtype</a>
-    responseHeader-2:
-      title: responseHeader
+    responseStatus-4:
+      title: responseStatus
       type: object
       properties:
-        responseMessageId:
-          maxLength: 33
-          minLength: 33
+        statusCode:
           type: string
-          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
+          description: Status Code of the Service Request
+        statusDescription:
+          type: string
+          description: A description of the StatusCode. A brief description indicating the result of the Service Request
     responseHeader-3:
       title: responseHeader
       type: object
@@ -457,45 +411,6 @@ components:
         responseMessageId:
           type: string
           description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
-    requestHeader-4:
-      title: requestHeader
-      required:
-      - requestMessageID
-      - requestTS
-      type: object
-      properties:
-        requestTS:
-          maxLength: 23
-          type: string
-          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
-          format: YYYY-MM-DDThh:mm:ss.sss
-        requestMessageID:
-          maxLength: 50
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-    BinRangeDetailsResponseV1-1:
-      title: BinRangeDetailsResponse
-      required:
-      - areNextOffsetRecordsAvailable
-      - numRecordsReturned
-      - totalRecordsCount
-      type: object
-      properties:
-        responseData:
-          $ref: '#/components/schemas/responseDataV1-3'
-        responseHeader:
-          $ref: '#/components/schemas/responseHeader-3'
-        responseStatus:
-          $ref: '#/components/schemas/responseStatus-4'
-        totalRecordsCount:
-          type: string
-          description: total number of records present
-        numRecordsReturned:
-          type: string
-          description: number of records returned
-        areNextOffsetRecordsAvailable:
-          type: string
-          description: more records available?
     requestHeader-3:
       title: requestHeader
       required:
@@ -522,6 +437,59 @@ components:
           $ref: '#/components/schemas/requestDataV2'
         requestHeader:
           $ref: '#/components/schemas/requestHeader-3'
+    BinRangeDetailsRequestV1-1:
+      title: BinRangeDetailsRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestDataV1-1'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-4'
+    errorCodes-3:
+      title: errorCodes
+      type: object
+      properties:
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI002:
+          type: object
+          description: XML Parsing Failure
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI052:
+          type: object
+          description: Client Authentication failed
+        CDI071:
+          type: object
+          description: Exception in Group level entitlement process
+        CDI246:
+          type: object
+          description: Bin Range Search Index validation failure
+        CDI247:
+          type: object
+          description: Bin Range Count validation failure
+        CDI249:
+          type: object
+          description: Payment Account Type validation failure
+        CDI250:
+          type: object
+          description: Atleast one of the required/mandatory fields is missing in the request
+    responseStatus-3:
+      title: responseStatus
+      type: object
+      properties:
+        statusCode:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: Status Code of the Service Request
+        statusDescription:
+          maxLength: 250
+          minLength: 10
+          type: string
+          description: A description of the StatusCode. A brief description indicating the result of the Service Request
     BinRangeDetailsResponseV2:
       title: BinRangeDetailsResponse
       required:
@@ -549,6 +517,58 @@ components:
           minLength: 1
           type: string
           description: more records available?
+    BinRangeDetailsResponseV1-1:
+      title: BinRangeDetailsResponse
+      required:
+      - areNextOffsetRecordsAvailable
+      - numRecordsReturned
+      - totalRecordsCount
+      type: object
+      properties:
+        responseData:
+          $ref: '#/components/schemas/responseDataV1-3'
+        responseHeader:
+          $ref: '#/components/schemas/responseHeader-3'
+        responseStatus:
+          $ref: '#/components/schemas/responseStatus-4'
+        totalRecordsCount:
+          type: string
+          description: total number of records present
+        numRecordsReturned:
+          type: string
+          description: number of records returned
+        areNextOffsetRecordsAvailable:
+          type: string
+          description: more records available?
+    requestHeader-4:
+      title: requestHeader
+      required:
+      - requestMessageID
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageID:
+          maxLength: 50
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+    requestDataV1-1:
+      title: requestDataV1
+      required:
+      - binRangeCount
+      - binRangeSearchIndex
+      type: object
+      properties:
+        binRangeCount:
+          type: string
+          description: Number of records being requested(maximum number of records to be displayed)
+        binRangeSearchIndex:
+          type: string
+          description: Starting index - to be used for paginating through the records. Starting possible values are 0, 100, 200, &, 500(multiples of hundred)
     responseDataV1-3:
       title: responseData
       required:
@@ -596,55 +616,35 @@ components:
         accountFundingSourceSubtypeCd:
           type: string
           description: The code for account funding source subtype, such as reloadable and non-reloadable.<br>Refer to <a href="/capabilities/visa-bin-attribute-sharing-service/docs-request-response-codes#accountfundingsourcesubtype">Account Funding Source Subtype</a>
-    BinRangeDetailsRequestV1-1:
-      title: BinRangeDetailsRequest
+    requestDataV2:
+      title: requestDataV2
+      required:
+      - binRangeCount
+      - binRangeSearchIndex
       type: object
       properties:
-        requestData:
-          $ref: '#/components/schemas/requestDataV1-1'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader-4'
-    responseStatus-4:
-      title: responseStatus
-      type: object
-      properties:
-        statusCode:
+        binRangeCount:
+          minLength: 1
           type: string
-          description: Status Code of the Service Request
-        statusDescription:
+          description: Number of records being requested (maximum number of records to be displayed)
+        paymentAccountType:
+          maxLength: 1
+          minLength: 0
           type: string
-          description: A description of the StatusCode. A brief description indicating the result of the Service Request
-    errorCodes-3:
-      title: errorCodes
+          description: Identifier for whether account is a PAN ('P') or Token ('T')
+        binRangeSearchIndex:
+          minLength: 1
+          type: string
+          description: Starting index - to be used for paginating through the records. Starting possible values are 0, 100, 200, &,500 (multiples of hundred)
+    responseHeader-2:
+      title: responseHeader
       type: object
       properties:
-        CDI001:
-          type: object
-          description: Internal service failure
-        CDI002:
-          type: object
-          description: XML Parsing Failure
-        CDI012:
-          type: object
-          description: Request header length is invalid
-        CDI052:
-          type: object
-          description: Client Authentication failed
-        CDI071:
-          type: object
-          description: Exception in Group level entitlement process
-        CDI246:
-          type: object
-          description: Bin Range Search Index validation failure
-        CDI247:
-          type: object
-          description: Bin Range Count validation failure
-        CDI249:
-          type: object
-          description: Payment Account Type validation failure
-        CDI250:
-          type: object
-          description: Atleast one of the required/mandatory fields is missing in the request
+        responseMessageId:
+          maxLength: 33
+          minLength: 33
+          type: string
+          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
 x-tagGroups:
 - name: API Reference
   tags:

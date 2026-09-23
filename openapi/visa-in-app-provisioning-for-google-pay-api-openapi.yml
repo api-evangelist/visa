@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Visa In-App Provisioning In-App Provisioning for Google Pay API
+  title: Visa In-App Provisioning In-App Provisioning for Google Pay…
   description: In-App Provisioning for Google Pay
   version: '1'
 servers:
@@ -135,6 +135,25 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
     Expiry:
       title: Expiry
       required:
@@ -150,35 +169,6 @@ components:
           pattern: ^(0[1-9]|1[0-2])
           type: string
           description: 2-digit card expiration month
-    Error:
-      title: Error
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
-    ErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/Error'
-    ErrorDetails:
-      title: ErrorDetails
-      type: object
-      properties:
-        message:
-          type: string
-          description: The specific error for this field.
-        location:
-          type: string
-          description: The value of this field is using XPATH expression to point to the field, which failed validation.
     GooglePayProvisioningRequest:
       title: GooglePayProvisioningRequest
       required:
@@ -222,30 +212,16 @@ components:
           enum:
           - V
           - M
-    ValidationErrorResponse:
+    ErrorDetails:
+      title: ErrorDetails
       type: object
       properties:
-        errorResponse:
-          $ref: '#/components/schemas/ValidationError'
-    ValidationError:
-      title: ValidationError
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        details:
-          type: array
-          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
-          items:
-            $ref: '#/components/schemas/ErrorDetails'
         message:
           type: string
-          description: Message describing the error condition with additional information wherever applicable.
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
     GooglePayProvisioningResponse:
       title: GooglePayProvisioningResponse
       required:
@@ -281,6 +257,30 @@ components:
           minLength: 29
           type: string
           description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/ValidationError'
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
 x-tagGroups:
 - name: API Reference
   tags:

@@ -15,8 +15,6 @@ apis:
     type: Documentation
     description: Visa Government Insights Hub enable tailored, efficient, and agile decision-making with
       a differentiated payments insights solution.
-  - url: graphql/visa-graphql.md
-    type: GraphQL
   description: The Visa Government Insights Hub is a platform that provides government agencies with valuable
     information and resources to help them make informed decisions and improve their operations. Through
     data-driven analysis and research, the hub offers insights into consumer spending behavior, trends
@@ -5971,6 +5969,7 @@ tags:
 - Payments
 - Tokenization
 - Fortune 500
+- Agentic Commerce
 tags_raw:
 - Visa
 - Accounts
@@ -5986,6 +5985,7 @@ tags_raw:
 - Payments
 - Tokenization
 - Fortune 500
+- Agentic Commerce
 kind: contract
 deliveryModel:
   model: saas

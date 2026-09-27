@@ -16,7 +16,7 @@ paths:
       tags:
       - Visa Supplier Matching Service API
       summary: Match suppliers to Visa merchants
-      operationId: Match suppliers to Visa merchants
+      operationId: MatchSuppliersToVisaMerchants
       parameters:
       - name: supplierName
         in: query
@@ -134,6 +134,8 @@ paths:
         operationPointer: '#/paths/~1visasuppliermatchingservice~1v1~1search/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Match suppliers to Visa merchants
 x-tagGroups:
 - name: API Reference
   tags:

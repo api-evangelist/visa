@@ -17,7 +17,7 @@ paths:
       - BIN File Transfer
       summary: BIN File Transfer
       description: Get access to a BIN Account/Token Range file in csv format
-      operationId: Bin File Transfer - POST
+      operationId: BinFileTransfer-POST
       requestBody:
         description: BIN File Transfer request payload
         content:
@@ -63,6 +63,8 @@ paths:
         default: false
       x-codegen-request-body-name: BIN File Transfer Request
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Bin File Transfer - POST
 components:
   schemas:
     errorCodes-1:
@@ -90,17 +92,9 @@ components:
         CDI250:
           type: object
           description: Atleast one of the required/mandatory fields is missing in the request
-    requestData-2:
-      title: requestData
-      required:
-      - fileName
+    BinFileTransferResponse:
+      title: BinFileTransferResponse
       type: object
-      properties:
-        fileName:
-          maxLength: 255
-          minLength: 1
-          type: string
-          description: Name of the file
     BinFileTransferRequest:
       title: BinFileTransferRequest
       type: object
@@ -109,9 +103,6 @@ components:
           $ref: '#/components/schemas/requestData-2'
         requestHeader:
           $ref: '#/components/schemas/requestHeader-5'
-    BinFileTransferResponse:
-      title: BinFileTransferResponse
-      type: object
     requestHeader-5:
       title: requestHeader
       required:
@@ -130,6 +121,17 @@ components:
           minLength: 1
           type: string
           description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+    requestData-2:
+      title: requestData
+      required:
+      - fileName
+      type: object
+      properties:
+        fileName:
+          maxLength: 255
+          minLength: 1
+          type: string
+          description: Name of the file
 x-tagGroups:
 - name: API Reference
   tags:

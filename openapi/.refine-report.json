@@ -89,6 +89,7 @@
     "visa-bin-attribute-sharing.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "visa-business-data-solutions.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "visa-card-program-management.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "visa-card-program-management.yml: declared missing tag: Visa Card Program Enrollment",
     "visa-click-to-pay.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "visa-consent-management-service.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "visa-data-tokens.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",

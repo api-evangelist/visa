@@ -159,11 +159,29 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    OfferDetailResponse:
+    ErrorResponse:
       type: object
       properties:
-        offer:
-          $ref: '#/components/schemas/Offer'
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    OffersResponse:
+      type: object
+      properties:
+        totalFoundResults:
+          type: integer
+          description: Total number of offers matching the criteria
+        returnedResults:
+          type: integer
+          description: Number of offers returned in this response
+        offers:
+          type: array
+          description: List of merchant offers
+          items:
+            $ref: '#/components/schemas/Offer'
     Offer:
       type: object
       properties:
@@ -213,29 +231,11 @@ components:
         promotionChannel:
           type: string
           description: Channel through which the offer is promoted
-    ErrorResponse:
+    OfferDetailResponse:
       type: object
       properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    OffersResponse:
-      type: object
-      properties:
-        totalFoundResults:
-          type: integer
-          description: Total number of offers matching the criteria
-        returnedResults:
-          type: integer
-          description: Number of offers returned in this response
-        offers:
-          type: array
-          description: List of merchant offers
-          items:
-            $ref: '#/components/schemas/Offer'
+        offer:
+          $ref: '#/components/schemas/Offer'
   securitySchemes:
     mutualTLS:
       type: mutualTLS

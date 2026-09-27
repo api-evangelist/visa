@@ -95,60 +95,15 @@ paths:
           description: Payment not found
 components:
   schemas:
-    PaymentStatusResponse:
+    ErrorResponse:
       type: object
       properties:
-        paymentId:
+        errorCode:
           type: string
-          description: Unique identifier for the payment
-        status:
+          description: Machine-readable error code
+        message:
           type: string
-          description: Current payment status
-          enum:
-          - INITIATED
-          - PROCESSING
-          - SETTLED
-          - REJECTED
-          - ACKNOWLEDGED
-        originatorBIC:
-          type: string
-          description: SWIFT BIC of the originator
-        beneficiaryBIC:
-          type: string
-          description: SWIFT BIC of the beneficiary
-        amount:
-          type: number
-          format: double
-          description: Payment amount
-        currency:
-          type: string
-          description: Payment currency
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was created
-        settledAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was settled
-    PaymentInitiationResponse:
-      type: object
-      properties:
-        paymentId:
-          type: string
-          description: Unique identifier assigned to the payment
-        status:
-          type: string
-          description: Current payment status
-          enum:
-          - INITIATED
-          - PROCESSING
-          - SETTLED
-          - REJECTED
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was created
+          description: Human-readable error description
     PaymentInitiationRequest:
       type: object
       required:
@@ -193,15 +148,60 @@ components:
           type: string
           format: date
           description: Requested settlement date
-    ErrorResponse:
+    PaymentInitiationResponse:
       type: object
       properties:
-        errorCode:
+        paymentId:
           type: string
-          description: Machine-readable error code
-        message:
+          description: Unique identifier assigned to the payment
+        status:
           type: string
-          description: Human-readable error description
+          description: Current payment status
+          enum:
+          - INITIATED
+          - PROCESSING
+          - SETTLED
+          - REJECTED
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was created
+    PaymentStatusResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: Unique identifier for the payment
+        status:
+          type: string
+          description: Current payment status
+          enum:
+          - INITIATED
+          - PROCESSING
+          - SETTLED
+          - REJECTED
+          - ACKNOWLEDGED
+        originatorBIC:
+          type: string
+          description: SWIFT BIC of the originator
+        beneficiaryBIC:
+          type: string
+          description: SWIFT BIC of the beneficiary
+        amount:
+          type: number
+          format: double
+          description: Payment amount
+        currency:
+          type: string
+          description: Payment currency
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was created
+        settledAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was settled
   securitySchemes:
     mutualTLS:
       type: mutualTLS

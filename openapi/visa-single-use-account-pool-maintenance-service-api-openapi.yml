@@ -17,7 +17,7 @@ paths:
       - Single Use Account Pool Maintenance Service
       summary: Update Proxy Pool
       description: The Update operation, allows the consumer to update the details of a proxy pool.
-      operationId: Update Proxy Pool
+      operationId: UpdateProxyPool
       requestBody:
         content:
           application/json:
@@ -159,13 +159,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1proxy~1UpdateProxyPool/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Update Proxy Pool
   /vpa/v1/proxy/GetProxyPool:
     post:
       tags:
       - Single Use Account Pool Maintenance Service
       summary: Get Proxy Pool
       description: The Get operation allows the consumer to get the details of a proxy.
-      operationId: Get Proxy Pool
+      operationId: GetProxyPool
       requestBody:
         description: Get Proxy Pool Request
         content:
@@ -338,13 +340,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1proxy~1GetProxyPool/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Proxy Pool
   /vpa/v1/proxy/ManageProxy:
     post:
       tags:
       - Single Use Account Pool Maintenance Service
       summary: Manage Proxy
       description: ''
-      operationId: Manage Proxy
+      operationId: ManageProxy
       requestBody:
         content:
           application/json:
@@ -616,13 +620,15 @@ paths:
       - label: v1 - Latest
         operationPointer: '#/paths/~1vpa~1v1~1proxy~1ManageProxy/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Manage Proxy
   /vpa/v1/proxy/GetAccountStatus:
     post:
       tags:
       - Single Use Account Pool Maintenance Service
       summary: SUA Get Account Status
       description: ''
-      operationId: SUA Get Account Status
+      operationId: SUAGetAccountStatus
       requestBody:
         content:
           application/json:
@@ -809,13 +815,15 @@ paths:
       - label: v1 - Latest
         operationPointer: '#/paths/~1vpa~1v1~1proxy~1GetAccountStatus/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: SUA Get Account Status
   /vpa/v1/proxy/DeleteProxyPool:
     delete:
       tags:
       - Single Use Account Pool Maintenance Service
       summary: Delete Proxy Pool
       description: The Delete operation allows the consumer to delete a proxy pool from a buyer.
-      operationId: Delete Proxy Pool
+      operationId: DeleteProxyPool
       requestBody:
         content:
           application/json:
@@ -913,13 +921,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1proxy~1DeleteProxyPool/delete'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Delete Proxy Pool
   /vpa/v1/proxy/CreateProxyPool:
     post:
       tags:
       - Single Use Account Pool Maintenance Service
       summary: Create Proxy Pool
       description: The Create operation allows the consumer to create a new proxy pool for a buyer.
-      operationId: Create Proxy Pool
+      operationId: CreateProxyPool
       requestBody:
         content:
           application/json:
@@ -1060,6 +1070,8 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1proxy~1CreateProxyPool/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Proxy Pool
 x-tagGroups:
 - name: API Reference
   tags:

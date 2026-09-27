@@ -107,7 +107,39 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    FindNearbyTotalsRequest:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    FindNearbyTotalsResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            totalATMCount:
+              type: integer
+              description: Total number of ATMs found
+            atmFilterTotals:
+              type: array
+              description: Subtotals by filter criteria
+              items:
+                type: object
+                properties:
+                  filterName:
+                    type: string
+                    description: Name of the filter
+                  count:
+                    type: integer
+                    description: Number of ATMs matching this filter
+    FindGeocodesRequest:
       type: object
       required:
       - wsRequestHeaderV2
@@ -118,20 +150,37 @@ components:
         requestData:
           type: object
           properties:
-            location:
-              $ref: '#/components/schemas/Location'
-            options:
-              $ref: '#/components/schemas/SearchOptions'
-            distance:
-              type: number
-              format: double
-              description: Search radius
-            distanceUnit:
+            address:
               type: string
-              description: Unit of distance measurement
-              enum:
-              - KM
-              - MI
+              description: Street address to geocode
+            city:
+              type: string
+              description: City name
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal or ZIP code
+            country:
+              type: string
+              description: Country name or ISO code
+    FindNearbyAtmsResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            totalATMCount:
+              type: integer
+              description: Total number of ATMs matching criteria
+            atmLocations:
+              type: array
+              description: List of ATM locations
+              items:
+                $ref: '#/components/schemas/AtmLocation'
     AtmLocation:
       type: object
       properties:
@@ -191,29 +240,6 @@ components:
         networkAlliance:
           type: string
           description: ATM network alliance
-    FindNearbyTotalsResponse:
-      type: object
-      properties:
-        wsResponseHeaderV2:
-          $ref: '#/components/schemas/ResponseHeader'
-        responseData:
-          type: object
-          properties:
-            totalATMCount:
-              type: integer
-              description: Total number of ATMs found
-            atmFilterTotals:
-              type: array
-              description: Subtotals by filter criteria
-              items:
-                type: object
-                properties:
-                  filterName:
-                    type: string
-                    description: Name of the filter
-                  count:
-                    type: integer
-                    description: Number of ATMs matching this filter
     RequestHeader:
       type: object
       properties:
@@ -223,6 +249,97 @@ components:
         requestMessageId:
           type: string
           description: Unique message identifier for the request
+    ResponseHeader:
+      type: object
+      properties:
+        responseMessageId:
+          type: string
+          description: Unique message identifier for the response
+        numOfRowsReturned:
+          type: integer
+          description: Number of rows in the response
+    FindNearbyTotalsRequest:
+      type: object
+      required:
+      - wsRequestHeaderV2
+      - requestData
+      properties:
+        wsRequestHeaderV2:
+          $ref: '#/components/schemas/RequestHeader'
+        requestData:
+          type: object
+          properties:
+            location:
+              $ref: '#/components/schemas/Location'
+            options:
+              $ref: '#/components/schemas/SearchOptions'
+            distance:
+              type: number
+              format: double
+              description: Search radius
+            distanceUnit:
+              type: string
+              description: Unit of distance measurement
+              enum:
+              - KM
+              - MI
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude coordinate
+        longitude:
+          type: number
+          format: double
+          description: Longitude coordinate
+        placeName:
+          type: string
+          description: Place name or address
+    SearchOptions:
+      type: object
+      properties:
+        operationName:
+          type: string
+          description: Name of the search operation
+        findFilters:
+          type: array
+          description: Search filter criteria
+          items:
+            type: object
+            properties:
+              filterName:
+                type: string
+                description: Name of the filter
+              filterValue:
+                type: string
+                description: Value for the filter
+    FindGeocodesResponse:
+      type: object
+      properties:
+        wsResponseHeaderV2:
+          $ref: '#/components/schemas/ResponseHeader'
+        responseData:
+          type: object
+          properties:
+            geocodes:
+              type: array
+              description: Geocoded results
+              items:
+                type: object
+                properties:
+                  latitude:
+                    type: number
+                    format: double
+                    description: Latitude coordinate
+                  longitude:
+                    type: number
+                    format: double
+                    description: Longitude coordinate
+                  formattedAddress:
+                    type: string
+                    description: Formatted address string
     FindNearbyAtmsRequest:
       type: object
       required:
@@ -256,123 +373,6 @@ components:
             startIndex:
               type: integer
               description: Starting index for pagination
-    Location:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          description: Latitude coordinate
-        longitude:
-          type: number
-          format: double
-          description: Longitude coordinate
-        placeName:
-          type: string
-          description: Place name or address
-    FindGeocodesResponse:
-      type: object
-      properties:
-        wsResponseHeaderV2:
-          $ref: '#/components/schemas/ResponseHeader'
-        responseData:
-          type: object
-          properties:
-            geocodes:
-              type: array
-              description: Geocoded results
-              items:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                    format: double
-                    description: Latitude coordinate
-                  longitude:
-                    type: number
-                    format: double
-                    description: Longitude coordinate
-                  formattedAddress:
-                    type: string
-                    description: Formatted address string
-    FindGeocodesRequest:
-      type: object
-      required:
-      - wsRequestHeaderV2
-      - requestData
-      properties:
-        wsRequestHeaderV2:
-          $ref: '#/components/schemas/RequestHeader'
-        requestData:
-          type: object
-          properties:
-            address:
-              type: string
-              description: Street address to geocode
-            city:
-              type: string
-              description: City name
-            state:
-              type: string
-              description: State or province
-            postalCode:
-              type: string
-              description: Postal or ZIP code
-            country:
-              type: string
-              description: Country name or ISO code
-    SearchOptions:
-      type: object
-      properties:
-        operationName:
-          type: string
-          description: Name of the search operation
-        findFilters:
-          type: array
-          description: Search filter criteria
-          items:
-            type: object
-            properties:
-              filterName:
-                type: string
-                description: Name of the filter
-              filterValue:
-                type: string
-                description: Value for the filter
-    FindNearbyAtmsResponse:
-      type: object
-      properties:
-        wsResponseHeaderV2:
-          $ref: '#/components/schemas/ResponseHeader'
-        responseData:
-          type: object
-          properties:
-            totalATMCount:
-              type: integer
-              description: Total number of ATMs matching criteria
-            atmLocations:
-              type: array
-              description: List of ATM locations
-              items:
-                $ref: '#/components/schemas/AtmLocation'
-    ResponseHeader:
-      type: object
-      properties:
-        responseMessageId:
-          type: string
-          description: Unique message identifier for the response
-        numOfRowsReturned:
-          type: integer
-          description: Number of rows in the response
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
   securitySchemes:
     mutualTLS:
       type: mutualTLS

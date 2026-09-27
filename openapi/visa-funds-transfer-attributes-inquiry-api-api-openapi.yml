@@ -17,7 +17,7 @@ paths:
       - Funds Transfer Attributes Inquiry API
       summary: Funds Transfer Inquiry
       description: Retrieve the attributes, which determine the key characteristics of a recipient payment account before initiating a funds transfer, by providing the Primary Account Number (PAN) or Token for both Visa and Non-Visa cards
-      operationId: Funds Transfer Inquiry
+      operationId: FundsTransferInquiry
       requestBody:
         description: Request body for Funds Transfer Inquiry
         content:
@@ -167,13 +167,15 @@ paths:
       - label: v5 - Latest
         operationPointer: '#/paths/~1paai~1fundstransferattinq~1v5~1cardattributes~1fundstransferinquiry/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Funds Transfer Inquiry
   /paai/fundstransferattinq/v2/cardattributes/fundstransferinquiry:
     post:
       tags:
       - Funds Transfer Attributes Inquiry API
       summary: Funds Transfer Inquiry
       description: Retrieve the attributes, which determine the key characteristics of a recipient payment account before initiating a funds transfer, by providing the Primary Account Number (PAN)
-      operationId: Funds Transfer Inquiry
+      operationId: postPaaiFundstransferattinqV2CardattributesFundstransferinquiry
       requestBody:
         description: Request body for Funds Transfer Inquiry
         content:
@@ -381,6 +383,8 @@ paths:
                       cardIssuerCountryCode: 0
                       billingCurrencyCode: 0
       x-codegen-request-body-name: fundsTransferInquiryPayload
+      x-operation-id-source: normalized
+      x-operation-id-original: Funds Transfer Inquiry
   /paai/fundstransferattinq/v1/cardattributes/fundstransferinquiry:
     post:
       tags:
@@ -470,6 +474,74 @@ paths:
         <acnl:AcnlV2V2Request xmlns:acnl="http://www.visa.com/vpp/api/acnl" xmlns:dd="http://www.visa.com/vpp/api/dd"><systemsTraceAuditNumber xmlns="">451006</systemsTraceAuditNumber><retrievalReferenceNumber xmlns="">330000550000</retrievalReferenceNumber><primaryAccountNumber xmlns="">4957030420210512</primaryAccountNumber></acnl:AcnlV2V2Request>'
 components:
   schemas:
+    FundsTransferInquiryResponse-1:
+      type: object
+      properties:
+        issuerName:
+          maxLength: 240
+          type: string
+          description: Name of the recipient issuer.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
+        cardTypeCode:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: The code of account funding source for the card, e.g. Credit, Debit, Prepaid, Charge, Deferred Debit.<br>Refer to <a href="/.  request_response_codes#card_type">cardTypeCode</a>
+        aftXbParticipant:
+          type: string
+          description: Pull Funds(AFT) Cross Border Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        octXbParticipant:
+          type: string
+          description: Push Funds(OCT) Cross Border Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        aftDomParticipant:
+          type: string
+          description: Pull Funds(AFT) Domestic Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        geoRestrictionInd:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: This field will determine if the recipient issuer can accept transactions from the Originator country.<br>Y - Transactions cannot be accepted from the sender country.<br>N - Transactions are allowed..<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
+        octDomParticipant:
+          type: string
+          description: Push Funds(OCT) Domestic Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        fastFundsIndicator:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Indicates the funds delivery speed of the primaryAccountNumber submitted in the request. If the value is 'B', 'C', or 'D', funds will be available to the recipient within 30 minutes of successful transfer. If the value is 'N', the funds will be available within 2 business days of successful transfer.<br>Refer to <a href="/.  request_response_codes#fast_funds_indicator">fastFundsIndicator</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
+        billingCurrencyCode:
+          type: integer
+          description: Use a 3-digit numeric currency code for the card billing currency of the PAN.<br>Refer to <a href="/request_response_codes#currency_codes">ISO Codes</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
+        cardIssuerCountryCode:
+          type: integer
+          description: Refer to <a href="/request_response_codes#iso_country_codes">ISO Codes</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
+        numberOfMinorUnitsUsed:
+          type: integer
+          description: Identifies the number of decimal positions that should be present in any amounts for the requested card's billing currency.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        currencyCodeDestination:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: Use a 3-digit numeric currency code for the card billing currency of the primaryAccountNumber. Refer to <a href="/request_response_codes#iso_country_codes">ISO Codes</a><br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        pushFundsBlockIndicator:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Indicates whether the PAN submitted in the request can receive Push Funds(OCTs).<br>Refer to <a href="/request_response_codes#pushFundsIndicator">pushFundsBlockIndicator</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
+        onlineGambingBlockIndicator:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Indicates whether the primaryAccountNumber submitted in the request can receive Push Funds(OCTs) for gambling-type transactions. If the value is "Y", then the account cannot receive gambling Push Funds (OCTs). If the value is "N", the account can receive gambling Push Funds (OCTs).<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
+        countryCodeIssuingInstitution:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: Refer to <a href="/request_response_codes#iso_country_codes">ISO Codes</a><br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
+        billingCurrencyCodeMinorDigits:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Identifies the number of decimal positions that should be present in any amounts for the requested card's billing currency.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
     FundsTransferInquiryResponse:
       required:
       - ppgsNetworkInfo
@@ -683,74 +755,6 @@ components:
                 minLength: 1
                 type: string
                 description: Indicates whether cross-border  non-money transfer OCTs (push funds) are allowed.<br>Y - Cross-border non-money transfer OCTs are allowed.<br>N - Cross-border non-money transfer OCTs are blocked.
-    FundsTransferInquiryResponse-1:
-      type: object
-      properties:
-        issuerName:
-          maxLength: 240
-          type: string
-          description: Name of the recipient issuer.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-        cardTypeCode:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: The code of account funding source for the card, e.g. Credit, Debit, Prepaid, Charge, Deferred Debit.<br>Refer to <a href="/.  request_response_codes#card_type">cardTypeCode</a>
-        aftXbParticipant:
-          type: string
-          description: Pull Funds(AFT) Cross Border Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        octXbParticipant:
-          type: string
-          description: Push Funds(OCT) Cross Border Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        aftDomParticipant:
-          type: string
-          description: Pull Funds(AFT) Domestic Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        geoRestrictionInd:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: This field will determine if the recipient issuer can accept transactions from the Originator country.<br>Y - Transactions cannot be accepted from the sender country.<br>N - Transactions are allowed..<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-        octDomParticipant:
-          type: string
-          description: Push Funds(OCT) Domestic Indicator.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        fastFundsIndicator:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Indicates the funds delivery speed of the primaryAccountNumber submitted in the request. If the value is 'B', 'C', or 'D', funds will be available to the recipient within 30 minutes of successful transfer. If the value is 'N', the funds will be available within 2 business days of successful transfer.<br>Refer to <a href="/.  request_response_codes#fast_funds_indicator">fastFundsIndicator</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-        billingCurrencyCode:
-          type: integer
-          description: Use a 3-digit numeric currency code for the card billing currency of the PAN.<br>Refer to <a href="/request_response_codes#currency_codes">ISO Codes</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-        cardIssuerCountryCode:
-          type: integer
-          description: Refer to <a href="/request_response_codes#iso_country_codes">ISO Codes</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-        numberOfMinorUnitsUsed:
-          type: integer
-          description: Identifies the number of decimal positions that should be present in any amounts for the requested card's billing currency.<br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        currencyCodeDestination:
-          maxLength: 3
-          minLength: 3
-          type: string
-          description: Use a 3-digit numeric currency code for the card billing currency of the primaryAccountNumber. Refer to <a href="/request_response_codes#iso_country_codes">ISO Codes</a><br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        pushFundsBlockIndicator:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Indicates whether the PAN submitted in the request can receive Push Funds(OCTs).<br>Refer to <a href="/request_response_codes#pushFundsIndicator">pushFundsBlockIndicator</a>.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-        onlineGambingBlockIndicator:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Indicates whether the primaryAccountNumber submitted in the request can receive Push Funds(OCTs) for gambling-type transactions. If the value is "Y", then the account cannot receive gambling Push Funds (OCTs). If the value is "N", the account can receive gambling Push Funds (OCTs).<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
-        countryCodeIssuingInstitution:
-          maxLength: 3
-          minLength: 3
-          type: string
-          description: Refer to <a href="/request_response_codes#iso_country_codes">ISO Codes</a><br> <b> Note:</b>  <br> Supported only in US for domestic transactions involving Push Payments Gateway Service.
-        billingCurrencyCodeMinorDigits:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Identifies the number of decimal positions that should be present in any amounts for the requested card's billing currency.<br> <b> Note:</b>  <br> This field is only applicable for Visa networks.
     FundsTransferInquiryRequest-1:
       required:
       - primaryAccountNumber

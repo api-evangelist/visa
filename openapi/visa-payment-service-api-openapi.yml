@@ -17,7 +17,7 @@ paths:
       - Payment Service
       summary: Get Payment Detail URL
       description: ''
-      operationId: Get Payment Detail URL
+      operationId: GetPaymentDetailURL
       requestBody:
         content:
           application/json:
@@ -140,13 +140,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1payment~1GetPaymentDetailURL/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Payment Detail URL
   /vpa/v1/payment/GetPaymentDetails:
     post:
       tags:
       - Payment Service
       summary: Get Payment Details
       description: ''
-      operationId: Get Payment Details
+      operationId: GetPaymentDetails
       requestBody:
         content:
           application/json:
@@ -446,13 +448,15 @@ paths:
       - label: v1 - Latest
         operationPointer: '#/paths/~1vpa~1v1~1payment~1GetPaymentDetails/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Payment Details
   /vpa/v1/payment/ResendPayment:
     post:
       tags:
       - Payment Service
       summary: Resend Payment
       description: ''
-      operationId: Resend Payment
+      operationId: ResendPayment
       requestBody:
         content:
           application/json:
@@ -630,6 +634,8 @@ paths:
       - label: v1 - Latest
         operationPointer: '#/paths/~1vpa~1v1~1payment~1ResendPayment/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Resend Payment
   /pop/v1/recipes/processPayment:
     post:
       tags:
@@ -721,7 +727,7 @@ paths:
       - Payment Service
       summary: Cancel Payment
       description: ''
-      operationId: Cancel Payment
+      operationId: CancelPayment
       requestBody:
         content:
           application/json:
@@ -861,13 +867,15 @@ paths:
       - label: v1 - Latest
         operationPointer: '#/paths/~1vpa~1v1~1payment~1CancelPayment/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Cancel Payment
   /vpa/v1/payment/ProcessPayments:
     post:
       tags:
       - Payment Service
       summary: Process Payments
       description: ''
-      operationId: Process Payments
+      operationId: ProcessPayments
       requestBody:
         content:
           application/json:
@@ -1509,55 +1517,10 @@ paths:
       - label: v1 - Latest
         operationPointer: '#/paths/~1vpa~1v1~1payment~1ProcessPayments/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Process Payments
 components:
   schemas:
-    Supplier-1:
-      title: Supplier
-      required:
-      - supplierID
-      type: object
-      properties:
-        emailNotes:
-          type: string
-        supplierID:
-          type: string
-        supplierCity:
-          type: string
-        supplierName:
-          type: string
-        supplierState:
-          type: string
-        supplierPostalCode:
-          type: string
-        primaryEmailAddress:
-          type: string
-        supplierCountryCode:
-          type: string
-        supplierAddressLine1:
-          type: string
-        supplierAddressLine2:
-          type: string
-        alternateEmailAddresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlternateEmailAddr'
-    ProcessPaymentRequestDTO:
-      title: ProcessPaymentRequestDTO
-      required:
-      - actionType
-      - buyerId
-      - corporate_internal_id
-      - payment
-      type: object
-      properties:
-        buyerId:
-          type: string
-        payment:
-          $ref: '#/components/schemas/Payment-1'
-        actionType:
-          type: string
-        corporate_internal_id:
-          type: string
     Payment-1:
       title: Payment
       required:
@@ -1589,12 +1552,36 @@ components:
           type: string
         cardAccountExpiryDate:
           type: string
-    AlternateEmailAddr:
-      title: AlternateEmailAddr
+    Supplier-1:
+      title: Supplier
+      required:
+      - supplierID
       type: object
       properties:
-        alternateEmailAddress:
+        emailNotes:
           type: string
+        supplierID:
+          type: string
+        supplierCity:
+          type: string
+        supplierName:
+          type: string
+        supplierState:
+          type: string
+        supplierPostalCode:
+          type: string
+        primaryEmailAddress:
+          type: string
+        supplierCountryCode:
+          type: string
+        supplierAddressLine1:
+          type: string
+        supplierAddressLine2:
+          type: string
+        alternateEmailAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlternateEmailAddr'
     Invoices-1:
       title: Invoices
       type: object
@@ -1608,6 +1595,29 @@ components:
         purchaseOrderDate:
           type: string
         purchaseOrderNumber:
+          type: string
+    AlternateEmailAddr:
+      title: AlternateEmailAddr
+      type: object
+      properties:
+        alternateEmailAddress:
+          type: string
+    ProcessPaymentRequestDTO:
+      title: ProcessPaymentRequestDTO
+      required:
+      - actionType
+      - buyerId
+      - corporate_internal_id
+      - payment
+      type: object
+      properties:
+        buyerId:
+          type: string
+        payment:
+          $ref: '#/components/schemas/Payment-1'
+        actionType:
+          type: string
+        corporate_internal_id:
           type: string
 x-tagGroups:
 - name: API Reference

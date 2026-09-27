@@ -80,6 +80,26 @@ paths:
           description: Consumer not found
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field that caused the error
+              message:
+                type: string
+                description: Detail about the field error
     ConsumerEnrollmentResponse:
       type: object
       properties:
@@ -92,6 +112,25 @@ components:
           enum:
           - ENROLLED
           - PENDING_VERIFICATION
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          description: Street address
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State or province code
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          pattern: ^[A-Z]{2}$
     ConsumerEnrollmentRequest:
       type: object
       required:
@@ -132,45 +171,6 @@ components:
           description: Name as it appears on the card
         billingAddress:
           $ref: '#/components/schemas/Address'
-    Address:
-      type: object
-      properties:
-        street:
-          type: string
-          description: Street address
-        city:
-          type: string
-          description: City name
-        state:
-          type: string
-          description: State or province code
-        postalCode:
-          type: string
-          description: Postal or ZIP code
-        country:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-          pattern: ^[A-Z]{2}$
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-                description: Field that caused the error
-              message:
-                type: string
-                description: Detail about the field error
     AddCredentialResponse:
       type: object
       properties:

@@ -17,7 +17,7 @@ paths:
       - Supplier Service
       summary: Disable Supplier
       description: ''
-      operationId: Disable Supplier
+      operationId: DisableSupplier
       requestBody:
         content:
           application/json:
@@ -95,6 +95,8 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1supplier~1DisableSupplier/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Disable Supplier
   /vpa/v1/supplier/ManageSupplierAccount:
     post:
       tags:
@@ -245,7 +247,7 @@ paths:
       tags:
       - Supplier Service
       summary: Get Supplier Details
-      operationId: Get Supplier Details
+      operationId: GetSupplierDetails
       requestBody:
         content:
           application/json:
@@ -523,13 +525,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v2~1supplier~1GetSupplierDetails/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Supplier Details
   /vpa/v1/supplier/GetSupplierDetails:
     post:
       tags:
       - Supplier Service
       summary: Get Supplier Details
       description: ''
-      operationId: Get Supplier Details
+      operationId: postVpaV1SupplierGetSupplierDetails
       requestBody:
         content:
           application/json:
@@ -975,13 +979,15 @@ paths:
                     type: object
                     description: Manage Card Accounts failed
       x-codegen-request-body-name: getsupplierdetails
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Supplier Details
   /vpa/v1/supplier/UpdateSupplier:
     post:
       tags:
       - Supplier Service
       summary: Update Supplier
       description: ''
-      operationId: Update Supplier
+      operationId: UpdateSupplier
       requestBody:
         content:
           application/json:
@@ -1204,13 +1210,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1supplier~1UpdateSupplier/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Update Supplier
   /vpa/v1/supplier/CreateSupplier:
     post:
       tags:
       - Supplier Service
       summary: Create Supplier
       description: ''
-      operationId: Create Supplier
+      operationId: CreateSupplier
       requestBody:
         content:
           application/json:
@@ -1493,6 +1501,8 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1supplier~1CreateSupplier/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Create Supplier
 x-tagGroups:
 - name: API Reference
   tags:

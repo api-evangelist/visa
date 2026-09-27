@@ -49,6 +49,52 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    MerchantRecord:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        visaStoreId:
+          type: string
+          description: Visa-assigned store identifier
+        merchantName:
+          type: string
+          description: Name of the merchant
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        matchScore:
+          type: number
+          format: double
+          description: Confidence score of the match
     MerchantSearchResponse:
       type: object
       properties:
@@ -104,52 +150,6 @@ components:
             matchScore:
               type: boolean
               description: Include match confidence score in results
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    MerchantRecord:
-      type: object
-      properties:
-        visaMerchantId:
-          type: string
-          description: Visa-assigned merchant identifier
-        visaStoreId:
-          type: string
-          description: Visa-assigned store identifier
-        merchantName:
-          type: string
-          description: Name of the merchant
-        merchantCategoryCode:
-          type: string
-          description: Merchant Category Code
-        merchantAddress:
-          type: object
-          properties:
-            street:
-              type: string
-              description: Street address
-            city:
-              type: string
-              description: City
-            state:
-              type: string
-              description: State or province
-            postalCode:
-              type: string
-              description: Postal code
-            country:
-              type: string
-              description: Country code
-        matchScore:
-          type: number
-          format: double
-          description: Confidence score of the match
   securitySchemes:
     mutualTLS:
       type: mutualTLS

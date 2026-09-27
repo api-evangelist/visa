@@ -49,6 +49,26 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    TransactionEnrichmentResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: Enriched merchant information
+              items:
+                $ref: '#/components/schemas/EnrichedMerchant'
     EnrichedMerchant:
       type: object
       properties:
@@ -90,26 +110,6 @@ components:
         phoneNumber:
           type: string
           description: Merchant phone number
-    TransactionEnrichmentResponse:
-      type: object
-      properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: Enriched merchant information
-              items:
-                $ref: '#/components/schemas/EnrichedMerchant'
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     TransactionEnrichmentRequest:
       type: object
       required:

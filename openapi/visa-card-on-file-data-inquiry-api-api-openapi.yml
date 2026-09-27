@@ -80,6 +80,32 @@ components:
           - INSTALLMENT
           - UNSCHEDULED
           - SUBSCRIPTION
+    CardOnFileInquiryRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: The 16-digit primary account number (PAN) of the Visa card to inquire about
+          minLength: 13
+          maxLength: 19
+        paymentAccountReference:
+          type: string
+          description: Payment Account Reference (PAR) as an alternative identifier to the PAN
+        requestTimeStamp:
+          type: string
+          format: date-time
+          description: Timestamp of the inquiry request in ISO 8601 format
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     CardOnFileInquiryResponse:
       type: object
       properties:
@@ -98,32 +124,6 @@ components:
         totalCount:
           type: integer
           description: Total number of merchants with the card on file
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    CardOnFileInquiryRequest:
-      type: object
-      required:
-      - primaryAccountNumber
-      properties:
-        primaryAccountNumber:
-          type: string
-          description: The 16-digit primary account number (PAN) of the Visa card to inquire about
-          minLength: 13
-          maxLength: 19
-        paymentAccountReference:
-          type: string
-          description: Payment Account Reference (PAR) as an alternative identifier to the PAN
-        requestTimeStamp:
-          type: string
-          format: date-time
-          description: Timestamp of the inquiry request in ISO 8601 format
   securitySchemes:
     mutualTLS:
       type: mutualTLS

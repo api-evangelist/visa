@@ -17,7 +17,7 @@ paths:
       - Business Data Corporate Setup API
       summary: Get starter data
       description: ''
-      operationId: Get starter data
+      operationId: GetStarterData
       requestBody:
         description: Get starter data
         content:
@@ -290,6 +290,8 @@ paths:
         operationPointer: '#/paths/cdsapi~1commercial~1v1~1ob~1starterdata/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get starter data
 x-tagGroups:
 - name: API Reference
   tags:

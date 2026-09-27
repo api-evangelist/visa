@@ -17,7 +17,7 @@ paths:
       - Account Management service
       summary: Get Security Code
       description: ''
-      operationId: Get Security Code
+      operationId: GetSecurityCode
       requestBody:
         description: Get Security Code Request
         content:
@@ -117,13 +117,15 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1GetSecurityCode/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Security Code
   /vpa/v1/getRequisitionDetails:
     post:
       tags:
       - Account Management service
       summary: Get Requisition Details
       description: Get Requisition Details request and response
-      operationId: Get Requisition Details
+      operationId: GetRequisitionDetails
       requestBody:
         description: Get Requisition Details Request
         content:
@@ -263,13 +265,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1getRequisitionDetails/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Requisition Details
   /vpa/v2/accountManagement/getPaymentControls:
     post:
       tags:
       - Account Management service
       summary: Get Payment Controls
       description: This version is recommended for buyers subscribed to Visa payment Control(VPC) and supporting mcgRuleAction field.
-      operationId: Get Payment Controls
+      operationId: GetPaymentControls
       requestBody:
         description: Get Payment Controls Request
         content:
@@ -443,13 +447,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v2~1accountManagement~1getPaymentControls/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Payment Controls
   /vpa/v1/accountManagement/ManagePaymentControls:
     post:
       tags:
       - Account Management service
       summary: Manage Payment Controls
       description: ''
-      operationId: Manage Payment Controls
+      operationId: ManagePaymentControls
       requestBody:
         content:
           application/json:
@@ -638,13 +644,15 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1ManagePaymentControls/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Manage Payment Controls
   /vpa/v1/accountManagement/GetAccountStatus:
     post:
       tags:
       - Account Management service
       summary: Get Account Status
       description: ''
-      operationId: Get Account Status
+      operationId: GetAccountStatus
       requestBody:
         content:
           application/json:
@@ -779,13 +787,15 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1GetAccountStatus/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Account Status
   /vpa/v1/accountManagement/fundingAccount/get:
     post:
       tags:
       - Account Management service
       summary: Get Funding AccountDetails
       description: ''
-      operationId: Get Funding AccountDetails
+      operationId: GetFundingAccountDetails
       requestBody:
         content:
           application/json:
@@ -930,13 +940,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1fundingAccount~1get/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Funding AccountDetails
   /vpa/v1/requisitionService:
     post:
       tags:
       - Account Management service
       summary: Request Virtual Account
       description: Requisition API Request and Response
-      operationId: Request Virtual Account
+      operationId: RequestVirtualAccount
       requestBody:
         description: Requisition Request
         content:
@@ -1204,13 +1216,15 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1requisitionService/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Request Virtual Account
   /vpa/v1/accountManagement/VirtualCardRequisition:
     post:
       tags:
       - Account Management service
       summary: Virtual Card Requisition
       description: ''
-      operationId: Virtual Card Requisition
+      operationId: VirtualCardRequisition
       requestBody:
         content:
           application/json:
@@ -1734,13 +1748,15 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1VirtualCardRequisition/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: Virtual Card Requisition
   /vpa/v1/accountManagement/ListPaymentControl:
     post:
       tags:
       - Account Management service
       summary: List Payment Control
       description: ''
-      operationId: List Payment Control
+      operationId: ListPaymentControl
       requestBody:
         content:
           application/json:
@@ -1903,13 +1919,15 @@ paths:
       - label: v1
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1ListPaymentControl/post'
         default: false
+      x-operation-id-source: normalized
+      x-operation-id-original: List Payment Control
   /vpa/v1/accountManagement/fundingAccount/update:
     post:
       tags:
       - Account Management service
       summary: Update Funding Account
       description: ''
-      operationId: Update Funding Account
+      operationId: UpdateFundingAccount
       requestBody:
         content:
           application/json:
@@ -2028,13 +2046,15 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1fundingAccount~1update/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Update Funding Account
   /vpa/v1/accountManagement/getPaymentControls:
     post:
       tags:
       - Account Management service
       summary: Get Payment Controls
       description: ''
-      operationId: Get Payment Controls
+      operationId: postVpaV1AccountManagementGetPaymentControls
       requestBody:
         description: Get Payment Controls Request
         content:
@@ -2225,13 +2245,15 @@ paths:
                     description: Status description of the response.
       x-codegen-request-body-name: GetPaymentControls
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Payment Controls
   /vpa/v1/accountManagement/fundingAccount/create:
     post:
       tags:
       - Account Management service
       summary: Add Funding Account
       description: ''
-      operationId: Add Funding Account
+      operationId: AddFundingAccount
       requestBody:
         content:
           application/json:
@@ -2353,6 +2375,8 @@ paths:
         operationPointer: '#/paths/~1vpa~1v1~1accountManagement~1fundingAccount~1create/post'
         default: false
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: Add Funding Account
 x-tagGroups:
 - name: API Reference
   tags:

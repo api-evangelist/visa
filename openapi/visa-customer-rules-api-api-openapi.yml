@@ -121,6 +121,15 @@ paths:
           description: Account not found
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     TransactionControl:
       type: object
       properties:
@@ -163,19 +172,6 @@ components:
             - ECOMMERCE
             - IN_STORE
             - INTERNATIONAL
-    CustomerRulesRequest:
-      type: object
-      required:
-      - primaryAccountNumber
-      properties:
-        primaryAccountNumber:
-          type: string
-          description: Primary account number to register or update
-        controls:
-          type: array
-          description: List of transaction controls to apply
-          items:
-            $ref: '#/components/schemas/TransactionControl'
     CustomerRulesResponse:
       type: object
       properties:
@@ -190,15 +186,19 @@ components:
           description: Active controls on the account
           items:
             $ref: '#/components/schemas/TransactionControl'
-    ErrorResponse:
+    CustomerRulesRequest:
       type: object
+      required:
+      - primaryAccountNumber
       properties:
-        errorCode:
+        primaryAccountNumber:
           type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
+          description: Primary account number to register or update
+        controls:
+          type: array
+          description: List of transaction controls to apply
+          items:
+            $ref: '#/components/schemas/TransactionControl'
   securitySchemes:
     mutualTLS:
       type: mutualTLS

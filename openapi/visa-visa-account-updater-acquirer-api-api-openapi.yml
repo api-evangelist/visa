@@ -115,85 +115,6 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    GenericErrorMessage-1:
-      title: GenericErrorMessage
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Internal Server Error, please try again after sometime
-
-            '
-          example: Internal Server Error, please try again after sometime
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * E
-
-            '
-          example: E
-      description: '[Reject Request]'
-    BadFormattedErrorMessage-1:
-      title: BadFormattedErrorMessage
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Request is badly formatted and/or the required field(s) is (are) missing
-
-            '
-          example: Request is badly formatted and/or the required field(s) is (are) missing
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * B
-
-            '
-          example: B
-      description: '[Inquiry is badly formatted]'
-    Response:
-      title: Response
-      required:
-      - acquirerSegmentId
-      - merchantId
-      - rejects
-      - responses
-      type: object
-      properties:
-        rejects:
-          type: array
-          description: '[List of Rejected Inquiry Response]'
-          items:
-            $ref: '#/components/schemas/RejectedInquiryResponse'
-        responses:
-          type: array
-          description: '[List of Successful Inquiry Responses]'
-          items:
-            $ref: '#/components/schemas/SuccessfulInquiryResponse'
-        merchantId:
-          type: string
-          description: '[This field contains the VAU Merchant ID that was submitted in the associated Acquirer Inquiry Request.]'
-          example: 000000705853
-        subMerchantName:
-          type: string
-          description: '[This field contains the sub merchant name that was submitted in the associated Acquirer Inquiry Request.]'
-          example: SUB-MERCHANT-NAME
-        acquirerSegmentId:
-          type: integer
-          description: '[This field contains the VAU Acquirer Segment ID of the associated Acquirer Inquiry Request.]'
-          format: int32
-          example: 2
-        acquirerOrMerchantProprietaryInfo:
-          type: string
-          description: '[This field contains the Acquirer or merchant Proprietary information that was submitted in the associated Acquirer Inquiry Request.]'
-          example: 180720216995565000113            XXXXAIBR
-      description: '[Acquirer-api response body]'
     Inquiry:
       title: Inquiry
       required:
@@ -209,6 +130,49 @@ components:
           description: '[This field must contain the account number (Visa, Mastercard, American Express, or Discover) that is on file at the merchant for billing purposes.]'
           example: 400000XX00000000
       description: '[Pan inquiry consists of two fields, the cardholder account number and it''s expiration date.]'
+    RejectedInquiryResponse:
+      title: RejectedInquiryResponse
+      required:
+      - cardholderAccountNumber
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: '[This field contains the description of the reject code:
+
+            * 1Account Number does not start with 2, 3, 4, 5 or 6
+
+            * 3Account Number contains non-numeric characters or is blank
+
+            * 4Account Number is not of proper length (must be 13, 15, 16 or 19)
+
+            * 5Expiration Date is invalid (must be YYMM)]
+
+            '
+          example: Account Number does not start with 2, 3, 4, 5 or 6
+        expirationDate:
+          type: string
+          description: '[This field contains the old expiration date in YYMM format, where YY = 00-99 and MM = 0112]'
+          example: '2204'
+        rejectReasonCode:
+          type: string
+          description: '[This field contains one of the following codes:
+
+            * 1Account Number does not start with 2, 3, 4, 5 or 6
+
+            * 3Account Number contains non-numeric characters or is blank
+
+            * 4Account Number is not of proper length (must be 13, 15, 16 or 19)
+
+            * 5Expiration Date is invalid (must be YYMM)]
+
+            '
+          example: '1'
+        cardholderAccountNumber:
+          type: string
+          description: '[This field contains the account number that was submitted in the associated Acquirer Inquiry Request.]'
+          example: 800000XX00000000
+      description: '[Rejected Inquiry Response body]'
     RejectedRequestResponse:
       title: RejectedRequestResponse
       required:
@@ -264,6 +228,59 @@ components:
           description: '[If provided, it contains acquirer or merchant proprietary information such as a customer ID that is carried in the merchants back-end system.]'
           example: 180720216995565000113            XXXXAIBR
       description: '[Reject Request]'
+    SuccessfulInquiryResponse:
+      title: SuccessfulInquiryResponse
+      required:
+      - newCardholderAccountNumber
+      - oldCardholderAccountNumber
+      type: object
+      properties:
+        newExpirationDate:
+          type: string
+          description: "[This field contains one of the following:\n* The expiration date when new information is available, in YYMM format, where:\nYY = 0099\nMM = 0112\nSpaces for messages that indicate one of the following conditions:\n    * Closed Account {C} \n    * Contact Cardholder {Q} \n    * Participating BIN, No Match {P} \n    * Non-participating BIN, No Match {N} ]"
+          example: '2204'
+        oldExpirationDate:
+          type: string
+          description: '[This field contains the old expiration date in YYMM format, where YY = 00-99 and MM = 0112]'
+          example: '2204'
+        serviceIdentifier:
+          type: string
+          description: "[This field contains one of the following:\n* AAccount number change message\n* CClosed account advice\n* EExpiration date change\n* NNon-participating BIN\n* QContact cardholder advice\n* OCardholder Opt-Out\n    Note: \n       When a 'Stop Advice' is placed on a card and the acquirer/merchant is ready to accept \n        the code, they would receive the 'O'. \n       If the acquirer is not ready to accept 'O', then, VAU responds with 'P'. \n       To confirm the ability to receive 'O', please send email to VAU Client Support Team at \n        updater@visa.com (for North America customers), or customersupport@visa.com (for \n        Europe customers).\n* PParticipating BIN, no match\n        Note: UK onlyThis might also mean that the account is currently being switched from one bank to a different bank as part of the UKCASS.\n* VMatch made, account number and expiration date unchanged.]"
+          example: A
+        previouslySentFlag:
+          type: string
+          description: "[This field contains one of the following:\n YYes or NNo\nNote: A Y value indicates that exactly the same account information was requested by the acquirer and sent by VAU during the previous 40 days (the retention period), excluding the current day.]"
+          example: Y
+        newCardholderAccountNumber:
+          type: string
+          description: "[This field contains one of the following:\n* The account number when new information is available.\n* The account number if a validation response is provided.\nSpaces for records with the following service identifiers:\n    * Closed Account {C}\n    * Contact Cardholder {Q}\n    * Participating BIN, No Match {P} \n             Note: UK onlyThis might also mean that the account is currently being switched from one bank to a different bank as part of the UKCASS.\n    * Non-participating BIN, No Match {N} ]"
+          example: 400000XX00000001
+        oldCardholderAccountNumber:
+          type: string
+          description: '[This field contains the account number that was submitted in the associated Acquirer Inquiry Request.]'
+          example: 400000XX00000000
+      description: '[Successful Inquiry Response body]'
+    BadFormattedErrorMessage-1:
+      title: BadFormattedErrorMessage
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Request is badly formatted and/or the required field(s) is (are) missing
+
+            '
+          example: Request is badly formatted and/or the required field(s) is (are) missing
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * B
+
+            '
+          example: B
+      description: '[Inquiry is badly formatted]'
     Request:
       title: Request
       required:
@@ -297,81 +314,64 @@ components:
           description: '[If provided, it contains acquirer or merchant proprietary information such as a customer ID that is carried in the merchants back-end system.]'
           example: 180720216995565000113            XXXXAIBR
       description: '[Acquirer-api request body]'
-    RejectedInquiryResponse:
-      title: RejectedInquiryResponse
+    Response:
+      title: Response
       required:
-      - cardholderAccountNumber
+      - acquirerSegmentId
+      - merchantId
+      - rejects
+      - responses
+      type: object
+      properties:
+        rejects:
+          type: array
+          description: '[List of Rejected Inquiry Response]'
+          items:
+            $ref: '#/components/schemas/RejectedInquiryResponse'
+        responses:
+          type: array
+          description: '[List of Successful Inquiry Responses]'
+          items:
+            $ref: '#/components/schemas/SuccessfulInquiryResponse'
+        merchantId:
+          type: string
+          description: '[This field contains the VAU Merchant ID that was submitted in the associated Acquirer Inquiry Request.]'
+          example: 000000705853
+        subMerchantName:
+          type: string
+          description: '[This field contains the sub merchant name that was submitted in the associated Acquirer Inquiry Request.]'
+          example: SUB-MERCHANT-NAME
+        acquirerSegmentId:
+          type: integer
+          description: '[This field contains the VAU Acquirer Segment ID of the associated Acquirer Inquiry Request.]'
+          format: int32
+          example: 2
+        acquirerOrMerchantProprietaryInfo:
+          type: string
+          description: '[This field contains the Acquirer or merchant Proprietary information that was submitted in the associated Acquirer Inquiry Request.]'
+          example: 180720216995565000113            XXXXAIBR
+      description: '[Acquirer-api response body]'
+    GenericErrorMessage-1:
+      title: GenericErrorMessage
       type: object
       properties:
         rejectReason:
           type: string
-          description: '[This field contains the description of the reject code:
+          description: 'This fields contains following reject reasons
 
-            * 1Account Number does not start with 2, 3, 4, 5 or 6
-
-            * 3Account Number contains non-numeric characters or is blank
-
-            * 4Account Number is not of proper length (must be 13, 15, 16 or 19)
-
-            * 5Expiration Date is invalid (must be YYMM)]
+            * Internal Server Error, please try again after sometime
 
             '
-          example: Account Number does not start with 2, 3, 4, 5 or 6
-        expirationDate:
-          type: string
-          description: '[This field contains the old expiration date in YYMM format, where YY = 00-99 and MM = 0112]'
-          example: '2204'
+          example: Internal Server Error, please try again after sometime
         rejectReasonCode:
           type: string
-          description: '[This field contains one of the following codes:
+          description: 'This Fields contains following Reject reason codes:
 
-            * 1Account Number does not start with 2, 3, 4, 5 or 6
-
-            * 3Account Number contains non-numeric characters or is blank
-
-            * 4Account Number is not of proper length (must be 13, 15, 16 or 19)
-
-            * 5Expiration Date is invalid (must be YYMM)]
+            * E
 
             '
-          example: '1'
-        cardholderAccountNumber:
-          type: string
-          description: '[This field contains the account number that was submitted in the associated Acquirer Inquiry Request.]'
-          example: 800000XX00000000
-      description: '[Rejected Inquiry Response body]'
-    SuccessfulInquiryResponse:
-      title: SuccessfulInquiryResponse
-      required:
-      - newCardholderAccountNumber
-      - oldCardholderAccountNumber
-      type: object
-      properties:
-        newExpirationDate:
-          type: string
-          description: "[This field contains one of the following:\n* The expiration date when new information is available, in YYMM format, where:\nYY = 0099\nMM = 0112\nSpaces for messages that indicate one of the following conditions:\n    * Closed Account {C} \n    * Contact Cardholder {Q} \n    * Participating BIN, No Match {P} \n    * Non-participating BIN, No Match {N} ]"
-          example: '2204'
-        oldExpirationDate:
-          type: string
-          description: '[This field contains the old expiration date in YYMM format, where YY = 00-99 and MM = 0112]'
-          example: '2204'
-        serviceIdentifier:
-          type: string
-          description: "[This field contains one of the following:\n* AAccount number change message\n* CClosed account advice\n* EExpiration date change\n* NNon-participating BIN\n* QContact cardholder advice\n* OCardholder Opt-Out\n    Note: \n       When a 'Stop Advice' is placed on a card and the acquirer/merchant is ready to accept \n        the code, they would receive the 'O'. \n       If the acquirer is not ready to accept 'O', then, VAU responds with 'P'. \n       To confirm the ability to receive 'O', please send email to VAU Client Support Team at \n        updater@visa.com (for North America customers), or customersupport@visa.com (for \n        Europe customers).\n* PParticipating BIN, no match\n        Note: UK onlyThis might also mean that the account is currently being switched from one bank to a different bank as part of the UKCASS.\n* VMatch made, account number and expiration date unchanged.]"
-          example: A
-        previouslySentFlag:
-          type: string
-          description: "[This field contains one of the following:\n YYes or NNo\nNote: A Y value indicates that exactly the same account information was requested by the acquirer and sent by VAU during the previous 40 days (the retention period), excluding the current day.]"
-          example: Y
-        newCardholderAccountNumber:
-          type: string
-          description: "[This field contains one of the following:\n* The account number when new information is available.\n* The account number if a validation response is provided.\nSpaces for records with the following service identifiers:\n    * Closed Account {C}\n    * Contact Cardholder {Q}\n    * Participating BIN, No Match {P} \n             Note: UK onlyThis might also mean that the account is currently being switched from one bank to a different bank as part of the UKCASS.\n    * Non-participating BIN, No Match {N} ]"
-          example: 400000XX00000001
-        oldCardholderAccountNumber:
-          type: string
-          description: '[This field contains the account number that was submitted in the associated Acquirer Inquiry Request.]'
-          example: 400000XX00000000
-      description: '[Successful Inquiry Response body]'
+          example: E
+      description: '[Reject Request]'
 x-tagGroups:
 - name: API Reference
   tags:

@@ -17,7 +17,7 @@ paths:
       - Issuer API
       summary: Files Metadata
       description: Get the metadata for the VBASS files including the count of files, file names, size, checksum and creation date.
-      operationId: VBASS Files metadata lookup using POST
+      operationId: VBASSFilesMetadataLookupUsingPOST
       requestBody:
         description: VBASS Files Metadata request payload
         content:
@@ -73,13 +73,15 @@ paths:
         default: false
       x-codegen-request-body-name: VBASS Files Metadata Request
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: VBASS Files metadata lookup using POST
   /vbass/v1/files/transfers:
     post:
       tags:
       - Issuer API
       summary: File Transfer
       description: The VBASS File Transfer API endpoint allows the download of VBASS File
-      operationId: VBASS File Transfer - POST
+      operationId: VBASSFileTransfer-POST
       requestBody:
         description: VBASS File Transfer request payload
         content:
@@ -125,33 +127,18 @@ paths:
         default: false
       x-codegen-request-body-name: VBASS File Transfer Request
       x-hideTryIt: true
+      x-operation-id-source: normalized
+      x-operation-id-original: VBASS File Transfer - POST
 components:
   schemas:
-    errorCodes:
-      title: ErrorCodes
+    vbassFileTransferRequest:
+      title: vbassFileTransferRequest
       type: object
       properties:
-        CDI001:
-          type: object
-          description: Internal service failure
-        CDI003:
-          type: object
-          description: Missing Required Attributes
-        CDI012:
-          type: object
-          description: Request header length is invalid
-        CDI071:
-          type: object
-          description: Request data invalid
-        CDI092:
-          type: object
-          description: No data
-        CDI098:
-          type: object
-          description: Invalid RequestTS format
-        CDI251:
-          type: object
-          description: Client configuration incomplete, reach out to BINAttributes@visa.com
+        requestData:
+          $ref: '#/components/schemas/requestData-2'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-2'
     requestHeader-2:
       title: requestHeader
       required:
@@ -170,44 +157,6 @@ components:
           minLength: 1
           type: string
           description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-    vbassFilesMetadataResponse:
-      title: VBASSFilesMetadataResponse
-      type: object
-      properties:
-        responseData:
-          $ref: '#/components/schemas/responseData-1'
-        responseHeader:
-          $ref: '#/components/schemas/responseHeader-1'
-        responseStatus:
-          $ref: '#/components/schemas/responseStatus'
-    requestHeader-1:
-      title: requestHeader
-      required:
-      - requestMessageId
-      - requestTS
-      type: object
-      properties:
-        requestTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: 'Date and time at which request is sent (up to milliseconds in UTC). Ex: 2024-01-19T00:00:00.000'
-          format: YYYY-MM-DDThh:mm:ss.sss
-          example: '2024-01-29T22:05:00.000'
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-          example: reqMsgId135
-    vbassFilesMetadataRequest:
-      title: VBASSFilesMetadataRequest
-      type: object
-      properties:
-        requestData:
-          $ref: '#/components/schemas/requestData-1'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader-1'
     responseStatus:
       title: responseStatus
       type: object
@@ -224,6 +173,75 @@ components:
           type: string
           description: A description of the Status Code. A brief description indicating the result of the Service Request
           example: Success
+    responseHeader-1:
+      title: responseHeader
+      type: object
+      properties:
+        responseTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: Date and time at which Response is sent (up to milliseconds in UTC)
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2024-01-17T06:31:31.194'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId135
+        responseMessageId:
+          maxLength: 33
+          minLength: 33
+          type: string
+          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
+          example: 106VDP87035320230217063131177
+    errorCodes-1:
+      title: errorCodes
+      type: object
+      properties:
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI002:
+          type: object
+          description: XML Parsing Failure
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI052:
+          type: object
+          description: Client Authentication failed
+        CDI071:
+          type: object
+          description: Exception in Group level entitlement process
+        CDI249:
+          type: object
+          description: Payment Account Type validation failure
+        CDI250:
+          type: object
+          description: Atleast one of the required/mandatory fields is missing in the request
+    vbassFileTransferResponse:
+      title: vbassFileTransferResponse
+      type: object
+    vbassFilesMetadataResponse:
+      title: VBASSFilesMetadataResponse
+      type: object
+      properties:
+        responseData:
+          $ref: '#/components/schemas/responseData-1'
+        responseHeader:
+          $ref: '#/components/schemas/responseHeader-1'
+        responseStatus:
+          $ref: '#/components/schemas/responseStatus'
+    vbassFilesMetadataRequest:
+      title: VBASSFilesMetadataRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData-1'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-1'
     responseData-1:
       title: responseData
       required:
@@ -256,50 +274,63 @@ components:
           type: integer
           description: Total number of files for a requested payment account type
           example: 1
-    requestData-2:
-      title: requestData
+    requestHeader-1:
+      title: requestHeader
       required:
-      - fileName
+      - requestMessageId
+      - requestTS
       type: object
       properties:
-        fileName:
-          maxLength: 255
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which request is sent (up to milliseconds in UTC). Ex: 2024-01-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2024-01-29T22:05:00.000'
+        requestMessageId:
+          maxLength: 30
           minLength: 1
           type: string
-          description: Name of the file
-    errorCodes-1:
-      title: errorCodes
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId135
+    errorCodes:
+      title: ErrorCodes
       type: object
       properties:
         CDI001:
           type: object
           description: Internal service failure
-        CDI002:
+        CDI003:
           type: object
-          description: XML Parsing Failure
+          description: Missing Required Attributes
         CDI012:
           type: object
           description: Request header length is invalid
-        CDI052:
-          type: object
-          description: Client Authentication failed
         CDI071:
           type: object
-          description: Exception in Group level entitlement process
-        CDI249:
+          description: Request data invalid
+        CDI092:
           type: object
-          description: Payment Account Type validation failure
-        CDI250:
+          description: No data
+        CDI098:
           type: object
-          description: Atleast one of the required/mandatory fields is missing in the request
-    vbassFileTransferRequest:
-      title: vbassFileTransferRequest
+          description: Invalid RequestTS format
+        CDI251:
+          type: object
+          description: Client configuration incomplete, reach out to BINAttributes@visa.com
+    requestData-1:
+      title: requestData
+      required:
+      - fileType
       type: object
       properties:
-        requestData:
-          $ref: '#/components/schemas/requestData-2'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader-2'
+        fileType:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: File Type Identifier
+          example: ACQ
     fileDetails-1:
       title: fileDetails
       required:
@@ -331,44 +362,17 @@ components:
           type: number
           description: Number of records in the file (excludes the column header record at the top of the csv file)
           example: 30000
-    responseHeader-1:
-      title: responseHeader
-      type: object
-      properties:
-        responseTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: Date and time at which Response is sent (up to milliseconds in UTC)
-          format: YYYY-MM-DDThh:mm:ss.sss
-          example: '2024-01-17T06:31:31.194'
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-          example: reqMsgId135
-        responseMessageId:
-          maxLength: 33
-          minLength: 33
-          type: string
-          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
-          example: 106VDP87035320230217063131177
-    requestData-1:
+    requestData-2:
       title: requestData
       required:
-      - fileType
+      - fileName
       type: object
       properties:
-        fileType:
-          maxLength: 100
+        fileName:
+          maxLength: 255
           minLength: 1
           type: string
-          description: File Type Identifier
-          example: ACQ
-    vbassFileTransferResponse:
-      title: vbassFileTransferResponse
-      type: object
+          description: Name of the file
 x-tagGroups:
 - name: API Reference
   tags:

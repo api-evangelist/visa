@@ -131,11 +131,39 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    ErrorResponse:
+    Error:
+      title: Error
       type: object
       properties:
-        errorResponse:
-          $ref: '#/components/schemas/Error'
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
     ValidationErrorResponse:
       type: object
       properties:
@@ -175,39 +203,6 @@ components:
           minLength: 29
           type: string
           description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
-    ValidationError:
-      title: ValidationError
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        details:
-          type: array
-          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
-          items:
-            $ref: '#/components/schemas/ErrorDetails'
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
-    Error:
-      title: Error
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
     ErrorDetails:
       title: ErrorDetails
       type: object
@@ -262,6 +257,11 @@ components:
           enum:
           - V
           - M
+    ErrorResponse:
+      type: object
+      properties:
+        errorResponse:
+          $ref: '#/components/schemas/Error'
 x-tagGroups:
 - name: API Reference
   tags:

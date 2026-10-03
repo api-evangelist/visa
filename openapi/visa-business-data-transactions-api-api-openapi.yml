@@ -779,6 +779,145 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    trxnRequest:
+      type: object
+      properties:
+        issuer:
+          type: object
+          properties:
+            bank:
+              type: array
+              items:
+                type: object
+                properties:
+                  bankId:
+                    type: string
+                    description: Bank Id
+                  company:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        companyId:
+                          type: string
+                          description: Company Id
+                  regionId:
+                    type: string
+                    description: Region Id Code
+                  processorId:
+                    type: string
+                    description: Processor Id Code
+            metadata:
+              type: object
+              properties:
+                endDate:
+                  type: string
+                  description: yyyy/MM/dd
+                endTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startDate:
+                  type: string
+                  description: yyyy/MM/dd
+                startTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startIndex:
+                  type: string
+                  description: Use this value only on subsequent requests. This value should be equal to the next index in the previous respose. Do not use startIndex in the first request in a pagination.
+        accountRequest:
+          type: object
+          properties:
+            bank:
+              type: array
+              items:
+                type: object
+                properties:
+                  bankId:
+                    type: string
+                    description: Bank Id
+                  company:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        acctList:
+                          type: array
+                          description: List of accounts
+                          items:
+                            type: string
+                        companyId:
+                          type: string
+                          description: Company Id
+                  regionId:
+                    type: string
+                    description: Region Id Code
+                  processorId:
+                    type: string
+                    description: Processor Id Code
+            metadata:
+              type: object
+              properties:
+                endDate:
+                  type: string
+                  description: yyyy/MM/dd
+                endTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startDate:
+                  type: string
+                  description: yyyy/MM/dd
+                startTime:
+                  type: string
+                  description: optional start time as hh:mm:ss
+                startIndex:
+                  type: string
+                  description: Use this value only on subsequent requests. This value should be equal to the next index in the previous respose. Do not use startIndex in the first request in a pagination.
+        transactionRecordFields:
+          type: string
+          description: List of comma separated field names
+      description: Json request object. (Either of issuer or accountRequest is required and not both )
+    TransRequest:
+      required:
+      - companyId
+      - filters
+      - issuerId
+      - pagination
+      - processorId
+      - regionId
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        filters:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TransRequestFilters'
+        issuerId:
+          maxLength: 15
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        regionId:
+          maxLength: 5
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        companyId:
+          maxLength: 25
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        processorId:
+          maxLength: 10
+          minLength: 1
+          pattern: ^[0-9]+$
+          type: string
+        rejectedSettlements:
+          type: boolean
     TransactionResponse:
       type: object
       properties:
@@ -1572,145 +1711,6 @@ components:
           type: array
           items:
             type: string
-    trxnRequest:
-      type: object
-      properties:
-        issuer:
-          type: object
-          properties:
-            bank:
-              type: array
-              items:
-                type: object
-                properties:
-                  bankId:
-                    type: string
-                    description: Bank Id
-                  company:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        companyId:
-                          type: string
-                          description: Company Id
-                  regionId:
-                    type: string
-                    description: Region Id Code
-                  processorId:
-                    type: string
-                    description: Processor Id Code
-            metadata:
-              type: object
-              properties:
-                endDate:
-                  type: string
-                  description: yyyy/MM/dd
-                endTime:
-                  type: string
-                  description: optional start time as hh:mm:ss
-                startDate:
-                  type: string
-                  description: yyyy/MM/dd
-                startTime:
-                  type: string
-                  description: optional start time as hh:mm:ss
-                startIndex:
-                  type: string
-                  description: Use this value only on subsequent requests. This value should be equal to the next index in the previous respose. Do not use startIndex in the first request in a pagination.
-        accountRequest:
-          type: object
-          properties:
-            bank:
-              type: array
-              items:
-                type: object
-                properties:
-                  bankId:
-                    type: string
-                    description: Bank Id
-                  company:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        acctList:
-                          type: array
-                          description: List of accounts
-                          items:
-                            type: string
-                        companyId:
-                          type: string
-                          description: Company Id
-                  regionId:
-                    type: string
-                    description: Region Id Code
-                  processorId:
-                    type: string
-                    description: Processor Id Code
-            metadata:
-              type: object
-              properties:
-                endDate:
-                  type: string
-                  description: yyyy/MM/dd
-                endTime:
-                  type: string
-                  description: optional start time as hh:mm:ss
-                startDate:
-                  type: string
-                  description: yyyy/MM/dd
-                startTime:
-                  type: string
-                  description: optional start time as hh:mm:ss
-                startIndex:
-                  type: string
-                  description: Use this value only on subsequent requests. This value should be equal to the next index in the previous respose. Do not use startIndex in the first request in a pagination.
-        transactionRecordFields:
-          type: string
-          description: List of comma separated field names
-      description: Json request object. (Either of issuer or accountRequest is required and not both )
-    TransRequest:
-      required:
-      - companyId
-      - filters
-      - issuerId
-      - pagination
-      - processorId
-      - regionId
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-        filters:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/TransRequestFilters'
-        issuerId:
-          maxLength: 15
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-        regionId:
-          maxLength: 5
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-        companyId:
-          maxLength: 25
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        processorId:
-          maxLength: 10
-          minLength: 1
-          pattern: ^[0-9]+$
-          type: string
-        rejectedSettlements:
-          type: boolean
     Pagination:
       type: object
       properties:

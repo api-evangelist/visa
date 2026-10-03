@@ -49,31 +49,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    AlertHistoryRequest:
-      type: object
-      required:
-      - primaryAccountNumber
-      properties:
-        primaryAccountNumber:
-          type: string
-          description: Primary account number
-        startDate:
-          type: string
-          format: date
-          description: Start date for the history query
-        endDate:
-          type: string
-          format: date
-          description: End date for the history query
     AlertHistoryResponse:
       type: object
       properties:
@@ -109,6 +84,31 @@ components:
                 enum:
                 - ALERT
                 - DECLINE
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    AlertHistoryRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number
+        startDate:
+          type: string
+          format: date
+          description: Start date for the history query
+        endDate:
+          type: string
+          format: date
+          description: End date for the history query
   securitySchemes:
     mutualTLS:
       type: mutualTLS

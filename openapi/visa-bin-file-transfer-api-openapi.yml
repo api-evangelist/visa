@@ -67,6 +67,24 @@ paths:
       x-operation-id-original: Bin File Transfer - POST
 components:
   schemas:
+    requestHeader-5:
+      title: requestHeader
+      required:
+      - requestMessageId
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
     errorCodes-1:
       title: errorCodes
       type: object
@@ -103,24 +121,6 @@ components:
           $ref: '#/components/schemas/requestData-2'
         requestHeader:
           $ref: '#/components/schemas/requestHeader-5'
-    requestHeader-5:
-      title: requestHeader
-      required:
-      - requestMessageId
-      - requestTS
-      type: object
-      properties:
-        requestTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2008-09-19T00:00:00.000'
-          format: YYYY-MM-DDThh:mm:ss.sss
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
     requestData-2:
       title: requestData
       required:

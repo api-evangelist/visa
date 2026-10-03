@@ -76,6 +76,41 @@ paths:
           description: Data token not found
 components:
   schemas:
+    DataTokenRequest:
+      type: object
+      required:
+      - tokenType
+      properties:
+        tokenType:
+          type: string
+          description: Type of data token to generate
+          enum:
+          - SPENDING_SIGNAL
+          - PREDICTIVE_SCORE
+          - HISTORICAL_PATTERN
+          - PERSONALIZATION
+        primaryAccountNumber:
+          type: string
+          description: PAN for account-level insights (anonymized in response)
+        merchantCategoryCode:
+          type: string
+          description: Filter insights by merchant category code
+          pattern: ^\d{4}$
+        dateRange:
+          type: object
+          description: Date range for historical data
+          properties:
+            startDate:
+              type: string
+              format: date
+              description: Start date for the data range
+            endDate:
+              type: string
+              format: date
+              description: End date for the data range
+        geography:
+          type: string
+          description: ISO 3166-1 alpha-2 country code for geographic filtering
     ErrorResponse:
       type: object
       properties:
@@ -139,41 +174,6 @@ components:
           type: string
           format: date-time
           description: Expiration timestamp
-    DataTokenRequest:
-      type: object
-      required:
-      - tokenType
-      properties:
-        tokenType:
-          type: string
-          description: Type of data token to generate
-          enum:
-          - SPENDING_SIGNAL
-          - PREDICTIVE_SCORE
-          - HISTORICAL_PATTERN
-          - PERSONALIZATION
-        primaryAccountNumber:
-          type: string
-          description: PAN for account-level insights (anonymized in response)
-        merchantCategoryCode:
-          type: string
-          description: Filter insights by merchant category code
-          pattern: ^\d{4}$
-        dateRange:
-          type: object
-          description: Date range for historical data
-          properties:
-            startDate:
-              type: string
-              format: date
-              description: Start date for the data range
-            endDate:
-              type: string
-              format: date
-              description: End date for the data range
-        geography:
-          type: string
-          description: ISO 3166-1 alpha-2 country code for geographic filtering
     DataTokenResponse:
       type: object
       properties:

@@ -121,6 +121,20 @@ paths:
           description: Account not found
 components:
   schemas:
+    CustomerRulesResponse:
+      type: object
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number
+        status:
+          type: string
+          description: Registration status
+        controls:
+          type: array
+          description: Active controls on the account
+          items:
+            $ref: '#/components/schemas/TransactionControl'
     ErrorResponse:
       type: object
       properties:
@@ -130,6 +144,19 @@ components:
         message:
           type: string
           description: Human-readable error description
+    CustomerRulesRequest:
+      type: object
+      required:
+      - primaryAccountNumber
+      properties:
+        primaryAccountNumber:
+          type: string
+          description: Primary account number to register or update
+        controls:
+          type: array
+          description: List of transaction controls to apply
+          items:
+            $ref: '#/components/schemas/TransactionControl'
     TransactionControl:
       type: object
       properties:
@@ -172,33 +199,6 @@ components:
             - ECOMMERCE
             - IN_STORE
             - INTERNATIONAL
-    CustomerRulesResponse:
-      type: object
-      properties:
-        primaryAccountNumber:
-          type: string
-          description: Primary account number
-        status:
-          type: string
-          description: Registration status
-        controls:
-          type: array
-          description: Active controls on the account
-          items:
-            $ref: '#/components/schemas/TransactionControl'
-    CustomerRulesRequest:
-      type: object
-      required:
-      - primaryAccountNumber
-      properties:
-        primaryAccountNumber:
-          type: string
-          description: Primary account number to register or update
-        controls:
-          type: array
-          description: List of transaction controls to apply
-          items:
-            $ref: '#/components/schemas/TransactionControl'
   securitySchemes:
     mutualTLS:
       type: mutualTLS

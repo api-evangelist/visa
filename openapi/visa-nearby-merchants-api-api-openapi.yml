@@ -86,29 +86,6 @@ components:
           type: number
           format: double
           description: Confidence score of the match
-    NearbyMerchantsResponse:
-      type: object
-      properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: List of nearby merchants
-              items:
-                $ref: '#/components/schemas/MerchantRecord'
-            totalCount:
-              type: integer
-              description: Total matching merchants
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     NearbyMerchantsRequest:
       type: object
       properties:
@@ -138,6 +115,29 @@ components:
         maxRecords:
           type: integer
           description: Maximum number of records to return
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    NearbyMerchantsResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of nearby merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total matching merchants
   securitySchemes:
     mutualTLS:
       type: mutualTLS

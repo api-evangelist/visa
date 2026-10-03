@@ -95,6 +95,42 @@ paths:
           description: Payment not found
 components:
   schemas:
+    PaymentStatusResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: Unique identifier for the payment
+        status:
+          type: string
+          description: Current payment status
+          enum:
+          - INITIATED
+          - PROCESSING
+          - SETTLED
+          - REJECTED
+          - ACKNOWLEDGED
+        originatorBIC:
+          type: string
+          description: SWIFT BIC of the originator
+        beneficiaryBIC:
+          type: string
+          description: SWIFT BIC of the beneficiary
+        amount:
+          type: number
+          format: double
+          description: Payment amount
+        currency:
+          type: string
+          description: Payment currency
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was created
+        settledAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was settled
     ErrorResponse:
       type: object
       properties:
@@ -166,42 +202,6 @@ components:
           type: string
           format: date-time
           description: Timestamp when the payment was created
-    PaymentStatusResponse:
-      type: object
-      properties:
-        paymentId:
-          type: string
-          description: Unique identifier for the payment
-        status:
-          type: string
-          description: Current payment status
-          enum:
-          - INITIATED
-          - PROCESSING
-          - SETTLED
-          - REJECTED
-          - ACKNOWLEDGED
-        originatorBIC:
-          type: string
-          description: SWIFT BIC of the originator
-        beneficiaryBIC:
-          type: string
-          description: SWIFT BIC of the beneficiary
-        amount:
-          type: number
-          format: double
-          description: Payment amount
-        currency:
-          type: string
-          description: Payment currency
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was created
-        settledAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was settled
   securitySchemes:
     mutualTLS:
       type: mutualTLS

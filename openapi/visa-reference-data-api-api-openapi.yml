@@ -89,21 +89,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    MerchantsResponse:
-      type: object
-      properties:
-        merchants:
-          type: array
-          description: List of merchants with available offers
-          items:
-            type: object
-            properties:
-              merchantId:
-                type: integer
-                description: Unique identifier for the merchant
-              merchantName:
-                type: string
-                description: Name of the merchant
     CountriesResponse:
       type: object
       properties:
@@ -137,6 +122,21 @@ components:
               categoryName:
                 type: string
                 description: Display name of the category
+    MerchantsResponse:
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: List of merchants with available offers
+          items:
+            type: object
+            properties:
+              merchantId:
+                type: integer
+                description: Unique identifier for the merchant
+              merchantName:
+                type: string
+                description: Name of the merchant
   securitySchemes:
     mutualTLS:
       type: mutualTLS

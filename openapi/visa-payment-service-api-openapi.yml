@@ -1521,6 +1521,29 @@ paths:
       x-operation-id-original: Process Payments
 components:
   schemas:
+    AlternateEmailAddr:
+      title: AlternateEmailAddr
+      type: object
+      properties:
+        alternateEmailAddress:
+          type: string
+    ProcessPaymentRequestDTO:
+      title: ProcessPaymentRequestDTO
+      required:
+      - actionType
+      - buyerId
+      - corporate_internal_id
+      - payment
+      type: object
+      properties:
+        buyerId:
+          type: string
+        payment:
+          $ref: '#/components/schemas/Payment-1'
+        actionType:
+          type: string
+        corporate_internal_id:
+          type: string
     Payment-1:
       title: Payment
       required:
@@ -1552,6 +1575,20 @@ components:
           type: string
         cardAccountExpiryDate:
           type: string
+    Invoices-1:
+      title: Invoices
+      type: object
+      properties:
+        invoiceDate:
+          type: string
+        invoiceAmount:
+          type: string
+        invoiceNumber:
+          type: string
+        purchaseOrderDate:
+          type: string
+        purchaseOrderNumber:
+          type: string
     Supplier-1:
       title: Supplier
       required:
@@ -1582,43 +1619,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlternateEmailAddr'
-    Invoices-1:
-      title: Invoices
-      type: object
-      properties:
-        invoiceDate:
-          type: string
-        invoiceAmount:
-          type: string
-        invoiceNumber:
-          type: string
-        purchaseOrderDate:
-          type: string
-        purchaseOrderNumber:
-          type: string
-    AlternateEmailAddr:
-      title: AlternateEmailAddr
-      type: object
-      properties:
-        alternateEmailAddress:
-          type: string
-    ProcessPaymentRequestDTO:
-      title: ProcessPaymentRequestDTO
-      required:
-      - actionType
-      - buyerId
-      - corporate_internal_id
-      - payment
-      type: object
-      properties:
-        buyerId:
-          type: string
-        payment:
-          $ref: '#/components/schemas/Payment-1'
-        actionType:
-          type: string
-        corporate_internal_id:
-          type: string
 x-tagGroups:
 - name: API Reference
   tags:

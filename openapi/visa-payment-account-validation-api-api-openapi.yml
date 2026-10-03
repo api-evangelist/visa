@@ -151,40 +151,6 @@ paths:
       x-operation-id-original: Card Validation
 components:
   schemas:
-    CardHolderNameVerificationResponse:
-      type: object
-      properties:
-        nameResult:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: This field will contain the result of the Account Name Inquiry request. Below are the possible values. <br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI name Result</a>
-          example: string
-        nameMatchDecision:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: This field will contain the decision of the account name matching performed by Account Name Inquiry if value in nameResult field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
-          example: string
-        lastNameAccountMatchDecision:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: This field will contain the decision of the account Last name matching performed by Account Name Inquiry if value in nameResult field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
-          example: string
-        firstNameAccountMatchDecision:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: This field will contain the decision of the account First name matching performed by Account Name Inquiry if value in nameResult field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
-          example: string
-        middleNameAccountMatchDecision:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: This field will contain the decision of the account Middle name matching performed by Account Name Inquiry if value in name Result field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
-          example: string
-      description: Optional Service enabling verification of the cardholder name.API calls have to be MLE enabled to be able to send in this data.
     PointOfServiceCapability:
       type: object
       properties:
@@ -195,65 +161,6 @@ components:
           type: integer
           description: Recommended value for card not present is 5. Default value is 5. <br><br>Note:Valid values if card is present include 0, 3 and 4. If card is not present, valid value is 5.<br><br>
       description: '<b>Note:</b> For a CardPresent Transactions, this field is required. <br><br> If this object is not present API will default following values "pointOfServiceCapability": {"posTerminalType": "5","posTerminalEntryCapability": "1","acceptsPartialAuthorizations":"false"}"'
-    PointOfServiceDataRequest:
-      required:
-      - motoECIIndicator
-      - panEntryMode
-      - posConditionCode
-      type: object
-      properties:
-        panEntryMode:
-          type: integer
-          description: A 2-digit code that identifies the method used to enter the cardholder account number and card expiration date. This code specifies whether the entire magnetic stripe is included in an authorization or financial request. <br><br> Recommended value for card/token verification for Card not present transactions is 01. Default value is 01.<br><br>Refer to <a href="/request_response_codes#pan_entry_mode_codes">PAN Entry Mode Codes</a>
-        posEnvironment:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: <b>Conditional</b><br><br> This field is required to identify whether a transaction is merchant-initiated. <br><br>Refer to <a href="/request_response_codes#pos_env_codes">POS Environment Codes</a>
-        motoECIIndicator:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Identifies the level of security used in an electronic commerce transaction over an open network (for example, the Internet) or the type of mail or telephone order. Acquirers supply indicator values, which V.I.P. forwards in requests and advices to issuers that have successfully tested to receive them. The subfield is dropped if issuers have not successfully completed testing or choose not to receive it. <br><br> Required for Tokens with cryptograms. Recommended values for Tokens are 05(Secure electronic commerce transaction) or 07 (Non-Authenticated security transaction). <br><br> Optional for Card verification without CAVV validation. <br><br>Refer to <a href="/request_response_codes#moto_eci_ind_codes">Moto ECI Codes</a>
-        posConditionCode:
-          type: integer
-          description: Contains a code identifying transaction conditions at the point of sale or point of service. For messages that follow an original request, this code identifies the type of processing being done.<br><br>For Address/cvv2/account verification without authorization is 51. Default value is 51.<br><br>Refer to <a href="/request_response_codes#pos_cond_code_codes">POS Condition Codes</a>
-        specialConditionIndicatorMerchant:
-          maxLength: 1
-          minLength: 1
-          type: string
-          description: Cryptocurrency indicator with the value of 7 can be used to identify the purchase of cryptocurrency, thereby providing greater visibility to the issuers.
-      description: 'Contains a code identifying transaction conditions at the point-of-sale or point of service. For messages that follow an original request, this code identifies the type of processing being done. <br> <b>Note:</b> For a CardPresent or Token Transactions, this field is required. If this Object is not passed in the request then API will default at following values: "pointOfServiceData": { "panEntryMode": "01","posConditionCode": "51"}"'
-    CardHolderNameVerificationRequest:
-      required:
-      - lastName
-      type: object
-      properties:
-        lastName:
-          maxLength: 35
-          minLength: 1
-          type: string
-          description: '<b>Note: Required when CardHolderNameVerificationRequest object is present in the request.</b><br><br>This field identifies last name of account or entity. Must not contain: <br><br> All spaces <br> All zeros <br> All numerics <br> Any question mark'
-          example: string
-        firstName:
-          maxLength: 35
-          minLength: 1
-          type: string
-          description: 'This field identifies first name of account or entity. Must not contain: <br><br> All spaces <br> All zeros <br> All numerics <br> Any question mark'
-          example: string
-        ownerType:
-          maxLength: 2
-          minLength: 2
-          type: string
-          description: This field will contain the account owner type to identify if the name belongs to the primary or secondary account owner. Below are the possible values. <br><br> 01 - Primary account owner <br> 02 - Secondary account owner
-          example: string
-        middleName:
-          maxLength: 35
-          minLength: 1
-          type: string
-          description: 'This field identifies middle name of account or entity. Must not contain: <br><br> All spaces <br> All zeros <br> All numerics <br> Any question mark'
-          example: string
-      description: API calls have to be MLE enabled to be able to send in this data.
     IdentityVerificationResponse:
       type: object
       properties:
@@ -276,94 +183,6 @@ components:
                 description: Validation results. Below are the possible values.<br><br> 1 - Verified<br> 2 - Failed<br> 3 - Not performed<br> 4 - Issuer does not support id verification
                 example: string
       description: Cardholder identity validation results for the primaryAccountNumber in the request.Supported only in the LAC region.
-    CardValidationRequest:
-      required:
-      - acquirerCountryCode
-      - acquiringBin
-      - primaryAccountNumber
-      type: object
-      properties:
-        tavv:
-          maxLength: 40
-          minLength: 40
-          type: string
-          description: The token authentication verification  or token cryptogram value provided by the token provider for the card token in the request. dtvv in cardCvv2Value or tavv is required to be placed when Token is entered in primary account number. This field should be in hexabinary format.
-          example: string
-        accountType:
-          type: string
-          description: This is used to identify the account type of the primaryAccountNumber in the request. Below are the possible values.<br>00-Not applicable<br>10-Savings Account<br> 20-Checking account<br> 30-Credit card account<br>40-Universal account<br>Default is set to 00 if not provided.
-          x-variant: '| Length: 2'
-        acquiringBin:
-          maxLength: 11
-          minLength: 6
-          type: string
-          description: 'This field must contain an acquiring BIN.  This requirement applies to all users of this API.<br><ul><li>Clients who are unsure of their BIN should contact their Visa representative for assistance.</li><li>Visa internal applications submitting the requests in support of Visa services may contact the product office for assistance.</li></ul><br>Requests that do not contain a valid Acquirer BIN will be rejected beginning [1 April 2025] '
-        cardAcceptor:
-          $ref: '#/components/schemas/CardAcceptor'
-        cardCvv2Value:
-          maxLength: 4
-          minLength: 3
-          type: string
-          description: The cvv2Value value provided by the account holder for the primaryAccountNumber in the request.<br><b>Note</b>:dtvv as a token cryptogram can be placed in the request in cardCvv2value.
-          example: string
-        cardExpiryDate:
-          maxLength: 7
-          minLength: 7
-          type: string
-          description: This field must contain tThe expiration date for the primaryAccountNumber in the request.  The date is in yymm numeric format, where yy = year (00-99) and mm = month (01-12).  The date should not be a past date.</br>Required for all Visa branded transactions and when the cvv2Value is present.
-          example: string
-        cardCurrencyCode:
-          maxLength: 3
-          minLength: 3
-          type: string
-          description: 'Use a 3-character alpha or numeric currency code for the currency of the card. <br><br>Refer to <a href="/request_response_codes#iso_country_and_currency_codes">ISO Codes</a> '
-          example: string
-        pointOfServiceData:
-          $ref: '#/components/schemas/PointOfServiceDataRequest'
-        acquirerCountryCode:
-          maxLength: 3
-          minLength: 3
-          type: string
-          description: The clients must provide a 3-digit numeric ISO country code in this field
-          example: string
-        identityVerification:
-          $ref: '#/components/schemas/IdentityVerificationRequest'
-        primaryAccountNumber:
-          maxLength: 19
-          minLength: 13
-          type: string
-          description: The primary account number for which account validations are being performed
-          example: string
-        cardHolderPhoneNumber:
-          maxLength: 16
-          minLength: 1
-          type: string
-          description: Card holder Phone Number verified with the issuer.<br> First 3 numerics will be ISD code followed by up to 12 numerics for the phone number eg. 0013031234567, where 001 is country code and 3031234567 is phone number.
-          example: string
-        cardHolderEmailAddress:
-          maxLength: 99
-          minLength: 1
-          type: string
-          description: Card holder Email Address verified with the issuer.
-          example: string
-        systemsTraceAuditNumber:
-          maxLength: 6
-          minLength: 6
-          type: string
-          description: This is an optional field. It is recommended that the clients of Funds Transfer APIs provide systemsTraceAuditNumber for tie the calls with a single funds transfer transaction.
-          example: string
-        pointOfServiceCapability:
-          $ref: '#/components/schemas/PointOfServiceCapability'
-        retrievalReferenceNumber:
-          maxLength: 12
-          minLength: 12
-          type: string
-          description: 'This is an optional field. It is recommended that the clients of Funds Transfer APIs provide retrievalReferenceNumber for tie the calls with a single funds transfer transaction.</br>Recommended Format: ydddhhnnnnnn</br>The first fours digits must be a valid yddd date in the Julian date format, where the first digit = 0-9 (last digit of current year) and the next three digits = 001-366 (number of the day in the year).</br>hh can be the two digit hour in a 24 hour clock (00-23) during which the transaction is performed.</br>nnnnnn can be the SystemsTraceAuditNumber or any 6 digit number.'
-          example: string
-        addressVerificationResults:
-          $ref: '#/components/schemas/AddressVerificationResults'
-        cardHolderNameVerification:
-          $ref: '#/components/schemas/CardHolderNameVerificationRequest'
     CardAcceptorAddress:
       type: object
       properties:
@@ -491,6 +310,40 @@ components:
           type: string
           description: '<b>Note: Required when addressVerificationResults object is present in the request.</b><br><br>Postal Code provided by the account holder for the primaryAccountNumber in the request.'
       description: Contains the address of the cardholder to be verified with the card issuer.
+    CardHolderNameVerificationResponse:
+      type: object
+      properties:
+        nameResult:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: This field will contain the result of the Account Name Inquiry request. Below are the possible values. <br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI name Result</a>
+          example: string
+        nameMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: This field will contain the decision of the account name matching performed by Account Name Inquiry if value in nameResult field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
+          example: string
+        lastNameAccountMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: This field will contain the decision of the account Last name matching performed by Account Name Inquiry if value in nameResult field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
+          example: string
+        firstNameAccountMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: This field will contain the decision of the account First name matching performed by Account Name Inquiry if value in nameResult field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
+          example: string
+        middleNameAccountMatchDecision:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: This field will contain the decision of the account Middle name matching performed by Account Name Inquiry if value in name Result field contains the value of 00.<br><br>Refer to <a href="/request_response_codes#account-name-inquiry-results">ANI match decision</a>
+          example: string
+      description: Optional Service enabling verification of the cardholder name.API calls have to be MLE enabled to be able to send in this data.
     CardAcceptor:
       required:
       - idCode
@@ -535,6 +388,153 @@ components:
                 type: string
                 description: '<b>Note: Required when IdentityVerificationRequest object is present in the request.</b><br><br>The identification value'
       description: This is an optional field. This is used to validate the cardholder identity of the primaryAccountNumber in the request.Supported only in the LAC region. API calls have to be MLE enabled to be able to send in this data.
+    PointOfServiceDataRequest:
+      required:
+      - motoECIIndicator
+      - panEntryMode
+      - posConditionCode
+      type: object
+      properties:
+        panEntryMode:
+          type: integer
+          description: A 2-digit code that identifies the method used to enter the cardholder account number and card expiration date. This code specifies whether the entire magnetic stripe is included in an authorization or financial request. <br><br> Recommended value for card/token verification for Card not present transactions is 01. Default value is 01.<br><br>Refer to <a href="/request_response_codes#pan_entry_mode_codes">PAN Entry Mode Codes</a>
+        posEnvironment:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: <b>Conditional</b><br><br> This field is required to identify whether a transaction is merchant-initiated. <br><br>Refer to <a href="/request_response_codes#pos_env_codes">POS Environment Codes</a>
+        motoECIIndicator:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Identifies the level of security used in an electronic commerce transaction over an open network (for example, the Internet) or the type of mail or telephone order. Acquirers supply indicator values, which V.I.P. forwards in requests and advices to issuers that have successfully tested to receive them. The subfield is dropped if issuers have not successfully completed testing or choose not to receive it. <br><br> Required for Tokens with cryptograms. Recommended values for Tokens are 05(Secure electronic commerce transaction) or 07 (Non-Authenticated security transaction). <br><br> Optional for Card verification without CAVV validation. <br><br>Refer to <a href="/request_response_codes#moto_eci_ind_codes">Moto ECI Codes</a>
+        posConditionCode:
+          type: integer
+          description: Contains a code identifying transaction conditions at the point of sale or point of service. For messages that follow an original request, this code identifies the type of processing being done.<br><br>For Address/cvv2/account verification without authorization is 51. Default value is 51.<br><br>Refer to <a href="/request_response_codes#pos_cond_code_codes">POS Condition Codes</a>
+        specialConditionIndicatorMerchant:
+          maxLength: 1
+          minLength: 1
+          type: string
+          description: Cryptocurrency indicator with the value of 7 can be used to identify the purchase of cryptocurrency, thereby providing greater visibility to the issuers.
+      description: 'Contains a code identifying transaction conditions at the point-of-sale or point of service. For messages that follow an original request, this code identifies the type of processing being done. <br> <b>Note:</b> For a CardPresent or Token Transactions, this field is required. If this Object is not passed in the request then API will default at following values: "pointOfServiceData": { "panEntryMode": "01","posConditionCode": "51"}"'
+    CardHolderNameVerificationRequest:
+      required:
+      - lastName
+      type: object
+      properties:
+        lastName:
+          maxLength: 35
+          minLength: 1
+          type: string
+          description: '<b>Note: Required when CardHolderNameVerificationRequest object is present in the request.</b><br><br>This field identifies last name of account or entity. Must not contain: <br><br> All spaces <br> All zeros <br> All numerics <br> Any question mark'
+          example: string
+        firstName:
+          maxLength: 35
+          minLength: 1
+          type: string
+          description: 'This field identifies first name of account or entity. Must not contain: <br><br> All spaces <br> All zeros <br> All numerics <br> Any question mark'
+          example: string
+        ownerType:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: This field will contain the account owner type to identify if the name belongs to the primary or secondary account owner. Below are the possible values. <br><br> 01 - Primary account owner <br> 02 - Secondary account owner
+          example: string
+        middleName:
+          maxLength: 35
+          minLength: 1
+          type: string
+          description: 'This field identifies middle name of account or entity. Must not contain: <br><br> All spaces <br> All zeros <br> All numerics <br> Any question mark'
+          example: string
+      description: API calls have to be MLE enabled to be able to send in this data.
+    CardValidationRequest:
+      required:
+      - acquirerCountryCode
+      - acquiringBin
+      - primaryAccountNumber
+      type: object
+      properties:
+        tavv:
+          maxLength: 40
+          minLength: 40
+          type: string
+          description: The token authentication verification  or token cryptogram value provided by the token provider for the card token in the request. dtvv in cardCvv2Value or tavv is required to be placed when Token is entered in primary account number. This field should be in hexabinary format.
+          example: string
+        accountType:
+          type: string
+          description: This is used to identify the account type of the primaryAccountNumber in the request. Below are the possible values.<br>00-Not applicable<br>10-Savings Account<br> 20-Checking account<br> 30-Credit card account<br>40-Universal account<br>Default is set to 00 if not provided.
+          x-variant: '| Length: 2'
+        acquiringBin:
+          maxLength: 11
+          minLength: 6
+          type: string
+          description: 'This field must contain an acquiring BIN.  This requirement applies to all users of this API.<br><ul><li>Clients who are unsure of their BIN should contact their Visa representative for assistance.</li><li>Visa internal applications submitting the requests in support of Visa services may contact the product office for assistance.</li></ul><br>Requests that do not contain a valid Acquirer BIN will be rejected beginning [1 April 2025] '
+        cardAcceptor:
+          $ref: '#/components/schemas/CardAcceptor'
+        cardCvv2Value:
+          maxLength: 4
+          minLength: 3
+          type: string
+          description: The cvv2Value value provided by the account holder for the primaryAccountNumber in the request.<br><b>Note</b>:dtvv as a token cryptogram can be placed in the request in cardCvv2value.
+          example: string
+        cardExpiryDate:
+          maxLength: 7
+          minLength: 7
+          type: string
+          description: This field must contain tThe expiration date for the primaryAccountNumber in the request.  The date is in yymm numeric format, where yy = year (00-99) and mm = month (01-12).  The date should not be a past date.</br>Required for all Visa branded transactions and when the cvv2Value is present.
+          example: string
+        cardCurrencyCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: 'Use a 3-character alpha or numeric currency code for the currency of the card. <br><br>Refer to <a href="/request_response_codes#iso_country_and_currency_codes">ISO Codes</a> '
+          example: string
+        pointOfServiceData:
+          $ref: '#/components/schemas/PointOfServiceDataRequest'
+        acquirerCountryCode:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: The clients must provide a 3-digit numeric ISO country code in this field
+          example: string
+        identityVerification:
+          $ref: '#/components/schemas/IdentityVerificationRequest'
+        primaryAccountNumber:
+          maxLength: 19
+          minLength: 13
+          type: string
+          description: The primary account number for which account validations are being performed
+          example: string
+        cardHolderPhoneNumber:
+          maxLength: 16
+          minLength: 1
+          type: string
+          description: Card holder Phone Number verified with the issuer.<br> First 3 numerics will be ISD code followed by up to 12 numerics for the phone number eg. 0013031234567, where 001 is country code and 3031234567 is phone number.
+          example: string
+        cardHolderEmailAddress:
+          maxLength: 99
+          minLength: 1
+          type: string
+          description: Card holder Email Address verified with the issuer.
+          example: string
+        systemsTraceAuditNumber:
+          maxLength: 6
+          minLength: 6
+          type: string
+          description: This is an optional field. It is recommended that the clients of Funds Transfer APIs provide systemsTraceAuditNumber for tie the calls with a single funds transfer transaction.
+          example: string
+        pointOfServiceCapability:
+          $ref: '#/components/schemas/PointOfServiceCapability'
+        retrievalReferenceNumber:
+          maxLength: 12
+          minLength: 12
+          type: string
+          description: 'This is an optional field. It is recommended that the clients of Funds Transfer APIs provide retrievalReferenceNumber for tie the calls with a single funds transfer transaction.</br>Recommended Format: ydddhhnnnnnn</br>The first fours digits must be a valid yddd date in the Julian date format, where the first digit = 0-9 (last digit of current year) and the next three digits = 001-366 (number of the day in the year).</br>hh can be the two digit hour in a 24 hour clock (00-23) during which the transaction is performed.</br>nnnnnn can be the SystemsTraceAuditNumber or any 6 digit number.'
+          example: string
+        addressVerificationResults:
+          $ref: '#/components/schemas/AddressVerificationResults'
+        cardHolderNameVerification:
+          $ref: '#/components/schemas/CardHolderNameVerificationRequest'
 x-tagGroups:
 - name: API Reference
   tags:

@@ -95,20 +95,6 @@ components:
           type: number
           format: double
           description: Confidence score of the match
-    MerchantSearchResponse:
-      type: object
-      properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: List of matching merchants
-              items:
-                $ref: '#/components/schemas/MerchantRecord'
-            totalCount:
-              type: integer
-              description: Total number of matching records
     MerchantSearchRequest:
       type: object
       required:
@@ -150,6 +136,20 @@ components:
             matchScore:
               type: boolean
               description: Include match confidence score in results
+    MerchantSearchResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: List of matching merchants
+              items:
+                $ref: '#/components/schemas/MerchantRecord'
+            totalCount:
+              type: integer
+              description: Total number of matching records
   securitySchemes:
     mutualTLS:
       type: mutualTLS

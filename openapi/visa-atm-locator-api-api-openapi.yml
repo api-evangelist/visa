@@ -107,31 +107,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    FindNearbyTotalsRequest:
-      type: object
-      required:
-      - wsRequestHeaderV2
-      - requestData
-      properties:
-        wsRequestHeaderV2:
-          $ref: '#/components/schemas/RequestHeader'
-        requestData:
-          type: object
-          properties:
-            location:
-              $ref: '#/components/schemas/Location'
-            options:
-              $ref: '#/components/schemas/SearchOptions'
-            distance:
-              type: number
-              format: double
-              description: Search radius
-            distanceUnit:
-              type: string
-              description: Unit of distance measurement
-              enum:
-              - KM
-              - MI
     FindNearbyTotalsResponse:
       type: object
       properties:
@@ -180,6 +155,57 @@ components:
                   formattedAddress:
                     type: string
                     description: Formatted address string
+    FindNearbyAtmsRequest:
+      type: object
+      required:
+      - wsRequestHeaderV2
+      - requestData
+      properties:
+        wsRequestHeaderV2:
+          $ref: '#/components/schemas/RequestHeader'
+        requestData:
+          type: object
+          properties:
+            location:
+              $ref: '#/components/schemas/Location'
+            options:
+              $ref: '#/components/schemas/SearchOptions'
+            distance:
+              type: number
+              format: double
+              description: Search radius
+            distanceUnit:
+              type: string
+              description: Unit of distance measurement
+              enum:
+              - KM
+              - MI
+            maxRecords:
+              type: integer
+              description: Maximum number of ATM records to return
+              minimum: 1
+              maximum: 500
+            startIndex:
+              type: integer
+              description: Starting index for pagination
+    RequestHeader:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          description: Application identifier
+        requestMessageId:
+          type: string
+          description: Unique message identifier for the request
+    ResponseHeader:
+      type: object
+      properties:
+        responseMessageId:
+          type: string
+          description: Unique message identifier for the response
+        numOfRowsReturned:
+          type: integer
+          description: Number of rows in the response
     FindGeocodesRequest:
       type: object
       required:
@@ -206,6 +232,38 @@ components:
             country:
               type: string
               description: Country name or ISO code
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude coordinate
+        longitude:
+          type: number
+          format: double
+          description: Longitude coordinate
+        placeName:
+          type: string
+          description: Place name or address
+    SearchOptions:
+      type: object
+      properties:
+        operationName:
+          type: string
+          description: Name of the search operation
+        findFilters:
+          type: array
+          description: Search filter criteria
+          items:
+            type: object
+            properties:
+              filterName:
+                type: string
+                description: Name of the filter
+              filterValue:
+                type: string
+                description: Value for the filter
     AtmLocation:
       type: object
       properties:
@@ -265,38 +323,15 @@ components:
         networkAlliance:
           type: string
           description: ATM network alliance
-    SearchOptions:
+    ErrorResponse:
       type: object
       properties:
-        operationName:
+        errorCode:
           type: string
-          description: Name of the search operation
-        findFilters:
-          type: array
-          description: Search filter criteria
-          items:
-            type: object
-            properties:
-              filterName:
-                type: string
-                description: Name of the filter
-              filterValue:
-                type: string
-                description: Value for the filter
-    Location:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          description: Latitude coordinate
-        longitude:
-          type: number
-          format: double
-          description: Longitude coordinate
-        placeName:
+          description: Machine-readable error code
+        message:
           type: string
-          description: Place name or address
+          description: Human-readable error description
     FindNearbyAtmsResponse:
       type: object
       properties:
@@ -313,25 +348,7 @@ components:
               description: List of ATM locations
               items:
                 $ref: '#/components/schemas/AtmLocation'
-    RequestHeader:
-      type: object
-      properties:
-        applicationId:
-          type: string
-          description: Application identifier
-        requestMessageId:
-          type: string
-          description: Unique message identifier for the request
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    FindNearbyAtmsRequest:
+    FindNearbyTotalsRequest:
       type: object
       required:
       - wsRequestHeaderV2
@@ -356,23 +373,6 @@ components:
               enum:
               - KM
               - MI
-            maxRecords:
-              type: integer
-              description: Maximum number of ATM records to return
-              minimum: 1
-              maximum: 500
-            startIndex:
-              type: integer
-              description: Starting index for pagination
-    ResponseHeader:
-      type: object
-      properties:
-        responseMessageId:
-          type: string
-          description: Unique message identifier for the response
-        numOfRowsReturned:
-          type: integer
-          description: Number of rows in the response
   securitySchemes:
     mutualTLS:
       type: mutualTLS

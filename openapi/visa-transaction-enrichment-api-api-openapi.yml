@@ -49,23 +49,17 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    TransactionEnrichmentRequest:
+    TransactionEnrichmentResponse:
       type: object
-      required:
-      - acquirerCardAcceptorId
       properties:
-        acquirerCardAcceptorId:
-          type: string
-          description: Card acceptor ID from the transaction
-        acquiringBin:
-          type: string
-          description: Acquiring bank identification number
-        merchantName:
-          type: string
-          description: Merchant name from the transaction
-        merchantCategoryCode:
-          type: string
-          description: Merchant Category Code from the transaction
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: Enriched merchant information
+              items:
+                $ref: '#/components/schemas/EnrichedMerchant'
     ErrorResponse:
       type: object
       properties:
@@ -116,17 +110,23 @@ components:
         phoneNumber:
           type: string
           description: Merchant phone number
-    TransactionEnrichmentResponse:
+    TransactionEnrichmentRequest:
       type: object
+      required:
+      - acquirerCardAcceptorId
       properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: Enriched merchant information
-              items:
-                $ref: '#/components/schemas/EnrichedMerchant'
+        acquirerCardAcceptorId:
+          type: string
+          description: Card acceptor ID from the transaction
+        acquiringBin:
+          type: string
+          description: Acquiring bank identification number
+        merchantName:
+          type: string
+          description: Merchant name from the transaction
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code from the transaction
   securitySchemes:
     mutualTLS:
       type: mutualTLS

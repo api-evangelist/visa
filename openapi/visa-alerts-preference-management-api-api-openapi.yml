@@ -49,15 +49,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    AlertsPreferenceResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Preference configuration status
-        alertDeliveryChannel:
-          type: string
-          description: Configured delivery channel
     ErrorResponse:
       type: object
       properties:
@@ -67,6 +58,15 @@ components:
         message:
           type: string
           description: Human-readable error description
+    AlertsPreferenceResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Preference configuration status
+        alertDeliveryChannel:
+          type: string
+          description: Configured delivery channel
     AlertsPreferenceRequest:
       type: object
       required:

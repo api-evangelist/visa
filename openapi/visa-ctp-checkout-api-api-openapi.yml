@@ -100,6 +100,26 @@ components:
           type: string
           format: uri
           description: URL to redirect the consumer after checkout completion
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field that caused the error
+              message:
+                type: string
+                description: Detail about the field error
     CheckoutResponse:
       type: object
       properties:
@@ -139,26 +159,6 @@ components:
         paymentToken:
           type: string
           description: Tokenized payment credential used for the transaction
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-                description: Field that caused the error
-              message:
-                type: string
-                description: Detail about the field error
   parameters:
     CheckoutIdParam:
       name: checkoutId

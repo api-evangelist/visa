@@ -165,24 +165,107 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    MultiPushFundsRequest:
+    PushFundsResponse:
+      type: object
+      properties:
+        transactionIdentifier:
+          type: integer
+          description: Unique identifier assigned by Visa to the transaction
+        actionCode:
+          type: string
+          description: Response code indicating the result of the transaction
+        approvalCode:
+          type: string
+          description: Authorization code from the issuer
+        responseCode:
+          type: string
+          description: Response code from the issuer
+        transmissionDateTime:
+          type: string
+          description: Date and time of the transaction transmission
+    ReverseFundsRequest:
       type: object
       required:
+      - systemsTraceAuditNumber
+      - retrievalReferenceNumber
       - acquiringBin
       - acquirerCountryCode
-      - request
+      - transactionIdentifier
+      - amount
+      - transactionCurrencyCode
       properties:
+        systemsTraceAuditNumber:
+          type: string
+          description: A unique six-digit value to identify the reversal
+          maxLength: 6
+        retrievalReferenceNumber:
+          type: string
+          description: A 12-character retrieval reference number
+          maxLength: 12
         acquiringBin:
           type: string
           description: Bank Identification Number of the acquiring institution
         acquirerCountryCode:
           type: string
           description: ISO numeric country code of the acquirer
-        request:
+        transactionIdentifier:
+          type: integer
+          description: Transaction identifier of the original transaction to reverse
+        amount:
+          type: number
+          format: double
+          description: Amount to reverse
+        transactionCurrencyCode:
+          type: string
+          description: ISO 4217 numeric currency code
+        originalDataElements:
+          type: object
+          description: Data elements from the original transaction
+          properties:
+            systemsTraceAuditNumber:
+              type: string
+              description: Original transaction STAN
+            transmissionDateTime:
+              type: string
+              description: Original transaction transmission date-time
+            acquiringBin:
+              type: string
+              description: Original acquiring BIN
+    CardAcceptor:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the card acceptor (merchant)
+        terminalId:
+          type: string
+          description: Terminal identifier
+        idCode:
+          type: string
+          description: Card acceptor identification code
+        address:
+          type: object
+          properties:
+            country:
+              type: string
+              description: Country code
+            state:
+              type: string
+              description: State or province
+            city:
+              type: string
+              description: City name
+            zipCode:
+              type: string
+              description: Postal code
+    MultiPullFundsResponse:
+      type: object
+      properties:
+        response:
           type: array
-          description: Array of individual push funds requests
+          description: Array of individual pull funds responses
           items:
-            $ref: '#/components/schemas/PushFundsRequest'
+            $ref: '#/components/schemas/PullFundsResponse'
     PushFundsRequest:
       type: object
       required:
@@ -261,50 +344,33 @@ components:
           - PS
           - TL
           - WT
-    MultiPushFundsResponse:
-      type: object
-      properties:
-        response:
-          type: array
-          description: Array of individual push funds responses
-          items:
-            $ref: '#/components/schemas/PushFundsResponse'
-    MultiPullFundsRequest:
-      type: object
-      required:
-      - acquiringBin
-      - acquirerCountryCode
-      - request
-      properties:
-        acquiringBin:
-          type: string
-          description: Bank Identification Number of the acquiring institution
-        acquirerCountryCode:
-          type: string
-          description: ISO numeric country code of the acquirer
-        request:
-          type: array
-          description: Array of individual pull funds requests
-          items:
-            $ref: '#/components/schemas/PullFundsRequest'
-    PushFundsResponse:
+    ReverseFundsResponse:
       type: object
       properties:
         transactionIdentifier:
           type: integer
-          description: Unique identifier assigned by Visa to the transaction
+          description: Unique identifier for the reversal transaction
         actionCode:
           type: string
-          description: Response code indicating the result of the transaction
+          description: Response code indicating the result
         approvalCode:
           type: string
-          description: Authorization code from the issuer
+          description: Authorization code
         responseCode:
           type: string
           description: Response code from the issuer
         transmissionDateTime:
           type: string
-          description: Date and time of the transaction transmission
+          description: Date and time of the reversal transmission
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     PullFundsRequest:
       type: object
       required:
@@ -347,41 +413,6 @@ components:
           description: Transaction amount in the specified currency
         cardAcceptor:
           $ref: '#/components/schemas/CardAcceptor'
-    MultiPullFundsResponse:
-      type: object
-      properties:
-        response:
-          type: array
-          description: Array of individual pull funds responses
-          items:
-            $ref: '#/components/schemas/PullFundsResponse'
-    CardAcceptor:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the card acceptor (merchant)
-        terminalId:
-          type: string
-          description: Terminal identifier
-        idCode:
-          type: string
-          description: Card acceptor identification code
-        address:
-          type: object
-          properties:
-            country:
-              type: string
-              description: Country code
-            state:
-              type: string
-              description: State or province
-            city:
-              type: string
-              description: City name
-            zipCode:
-              type: string
-              description: Postal code
     PullFundsResponse:
       type: object
       properties:
@@ -400,81 +431,50 @@ components:
         transmissionDateTime:
           type: string
           description: Date and time of the transaction transmission
-    ErrorResponse:
+    MultiPushFundsResponse:
       type: object
       properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-    ReverseFundsRequest:
+        response:
+          type: array
+          description: Array of individual push funds responses
+          items:
+            $ref: '#/components/schemas/PushFundsResponse'
+    MultiPullFundsRequest:
       type: object
       required:
-      - systemsTraceAuditNumber
-      - retrievalReferenceNumber
       - acquiringBin
       - acquirerCountryCode
-      - transactionIdentifier
-      - amount
-      - transactionCurrencyCode
+      - request
       properties:
-        systemsTraceAuditNumber:
-          type: string
-          description: A unique six-digit value to identify the reversal
-          maxLength: 6
-        retrievalReferenceNumber:
-          type: string
-          description: A 12-character retrieval reference number
-          maxLength: 12
         acquiringBin:
           type: string
           description: Bank Identification Number of the acquiring institution
         acquirerCountryCode:
           type: string
           description: ISO numeric country code of the acquirer
-        transactionIdentifier:
-          type: integer
-          description: Transaction identifier of the original transaction to reverse
-        amount:
-          type: number
-          format: double
-          description: Amount to reverse
-        transactionCurrencyCode:
-          type: string
-          description: ISO 4217 numeric currency code
-        originalDataElements:
-          type: object
-          description: Data elements from the original transaction
-          properties:
-            systemsTraceAuditNumber:
-              type: string
-              description: Original transaction STAN
-            transmissionDateTime:
-              type: string
-              description: Original transaction transmission date-time
-            acquiringBin:
-              type: string
-              description: Original acquiring BIN
-    ReverseFundsResponse:
+        request:
+          type: array
+          description: Array of individual pull funds requests
+          items:
+            $ref: '#/components/schemas/PullFundsRequest'
+    MultiPushFundsRequest:
       type: object
+      required:
+      - acquiringBin
+      - acquirerCountryCode
+      - request
       properties:
-        transactionIdentifier:
-          type: integer
-          description: Unique identifier for the reversal transaction
-        actionCode:
+        acquiringBin:
           type: string
-          description: Response code indicating the result
-        approvalCode:
+          description: Bank Identification Number of the acquiring institution
+        acquirerCountryCode:
           type: string
-          description: Authorization code
-        responseCode:
-          type: string
-          description: Response code from the issuer
-        transmissionDateTime:
-          type: string
-          description: Date and time of the reversal transmission
+          description: ISO numeric country code of the acquirer
+        request:
+          type: array
+          description: Array of individual push funds requests
+          items:
+            $ref: '#/components/schemas/PushFundsRequest'
   securitySchemes:
     mutualTLS:
       type: mutualTLS

@@ -89,24 +89,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    CountriesResponse:
-      type: object
-      properties:
-        countries:
-          type: array
-          description: List of countries with available offers
-          items:
-            type: object
-            properties:
-              countryId:
-                type: integer
-                description: Unique identifier for the country
-              countryName:
-                type: string
-                description: Name of the country
-              countryCode:
-                type: string
-                description: ISO country code
     CategoriesResponse:
       type: object
       properties:
@@ -137,6 +119,24 @@ components:
               merchantName:
                 type: string
                 description: Name of the merchant
+    CountriesResponse:
+      type: object
+      properties:
+        countries:
+          type: array
+          description: List of countries with available offers
+          items:
+            type: object
+            properties:
+              countryId:
+                type: integer
+                description: Unique identifier for the country
+              countryName:
+                type: string
+                description: Name of the country
+              countryCode:
+                type: string
+                description: ISO country code
   securitySchemes:
     mutualTLS:
       type: mutualTLS

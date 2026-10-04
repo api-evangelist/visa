@@ -1521,6 +1521,50 @@ paths:
       x-operation-id-original: Process Payments
 components:
   schemas:
+    Invoices-1:
+      title: Invoices
+      type: object
+      properties:
+        invoiceDate:
+          type: string
+        invoiceAmount:
+          type: string
+        invoiceNumber:
+          type: string
+        purchaseOrderDate:
+          type: string
+        purchaseOrderNumber:
+          type: string
+    Supplier-1:
+      title: Supplier
+      required:
+      - supplierID
+      type: object
+      properties:
+        emailNotes:
+          type: string
+        supplierID:
+          type: string
+        supplierCity:
+          type: string
+        supplierName:
+          type: string
+        supplierState:
+          type: string
+        supplierPostalCode:
+          type: string
+        primaryEmailAddress:
+          type: string
+        supplierCountryCode:
+          type: string
+        supplierAddressLine1:
+          type: string
+        supplierAddressLine2:
+          type: string
+        alternateEmailAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlternateEmailAddr'
     AlternateEmailAddr:
       title: AlternateEmailAddr
       type: object
@@ -1575,50 +1619,6 @@ components:
           type: string
         cardAccountExpiryDate:
           type: string
-    Invoices-1:
-      title: Invoices
-      type: object
-      properties:
-        invoiceDate:
-          type: string
-        invoiceAmount:
-          type: string
-        invoiceNumber:
-          type: string
-        purchaseOrderDate:
-          type: string
-        purchaseOrderNumber:
-          type: string
-    Supplier-1:
-      title: Supplier
-      required:
-      - supplierID
-      type: object
-      properties:
-        emailNotes:
-          type: string
-        supplierID:
-          type: string
-        supplierCity:
-          type: string
-        supplierName:
-          type: string
-        supplierState:
-          type: string
-        supplierPostalCode:
-          type: string
-        primaryEmailAddress:
-          type: string
-        supplierCountryCode:
-          type: string
-        supplierAddressLine1:
-          type: string
-        supplierAddressLine2:
-          type: string
-        alternateEmailAddresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlternateEmailAddr'
 x-tagGroups:
 - name: API Reference
   tags:

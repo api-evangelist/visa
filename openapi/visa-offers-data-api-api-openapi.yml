@@ -159,20 +159,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    OfferDetailResponse:
-      type: object
-      properties:
-        offer:
-          $ref: '#/components/schemas/Offer'
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     OffersResponse:
       type: object
       properties:
@@ -236,6 +222,20 @@ components:
         promotionChannel:
           type: string
           description: Channel through which the offer is promoted
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+    OfferDetailResponse:
+      type: object
+      properties:
+        offer:
+          $ref: '#/components/schemas/Offer'
   securitySchemes:
     mutualTLS:
       type: mutualTLS

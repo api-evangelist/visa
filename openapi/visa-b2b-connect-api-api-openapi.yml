@@ -95,6 +95,33 @@ paths:
           description: Payment not found
 components:
   schemas:
+    PaymentInitiationResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: Unique identifier assigned to the payment
+        status:
+          type: string
+          description: Current payment status
+          enum:
+          - INITIATED
+          - PROCESSING
+          - SETTLED
+          - REJECTED
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the payment was created
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     PaymentStatusResponse:
       type: object
       properties:
@@ -131,15 +158,6 @@ components:
           type: string
           format: date-time
           description: Timestamp when the payment was settled
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     PaymentInitiationRequest:
       type: object
       required:
@@ -184,24 +202,6 @@ components:
           type: string
           format: date
           description: Requested settlement date
-    PaymentInitiationResponse:
-      type: object
-      properties:
-        paymentId:
-          type: string
-          description: Unique identifier assigned to the payment
-        status:
-          type: string
-          description: Current payment status
-          enum:
-          - INITIATED
-          - PROCESSING
-          - SETTLED
-          - REJECTED
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the payment was created
   securitySchemes:
     mutualTLS:
       type: mutualTLS

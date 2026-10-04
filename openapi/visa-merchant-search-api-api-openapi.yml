@@ -58,43 +58,6 @@ components:
         message:
           type: string
           description: Human-readable error description
-    MerchantRecord:
-      type: object
-      properties:
-        visaMerchantId:
-          type: string
-          description: Visa-assigned merchant identifier
-        visaStoreId:
-          type: string
-          description: Visa-assigned store identifier
-        merchantName:
-          type: string
-          description: Name of the merchant
-        merchantCategoryCode:
-          type: string
-          description: Merchant Category Code
-        merchantAddress:
-          type: object
-          properties:
-            street:
-              type: string
-              description: Street address
-            city:
-              type: string
-              description: City
-            state:
-              type: string
-              description: State or province
-            postalCode:
-              type: string
-              description: Postal code
-            country:
-              type: string
-              description: Country code
-        matchScore:
-          type: number
-          format: double
-          description: Confidence score of the match
     MerchantSearchRequest:
       type: object
       required:
@@ -150,6 +113,43 @@ components:
             totalCount:
               type: integer
               description: Total number of matching records
+    MerchantRecord:
+      type: object
+      properties:
+        visaMerchantId:
+          type: string
+          description: Visa-assigned merchant identifier
+        visaStoreId:
+          type: string
+          description: Visa-assigned store identifier
+        merchantName:
+          type: string
+          description: Name of the merchant
+        merchantCategoryCode:
+          type: string
+          description: Merchant Category Code
+        merchantAddress:
+          type: object
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State or province
+            postalCode:
+              type: string
+              description: Postal code
+            country:
+              type: string
+              description: Country code
+        matchScore:
+          type: number
+          format: double
+          description: Confidence score of the match
   securitySchemes:
     mutualTLS:
       type: mutualTLS

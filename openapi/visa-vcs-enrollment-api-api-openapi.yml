@@ -177,88 +177,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ResponsePayload:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Overall registration Status. Either Success or Failure or Partial Success.
-          example: SUCCESS
-        messageId:
-          type: string
-          description: Message Id
-          example: '9854765'
-        correlationId:
-          type: string
-          description: CorrelationId
-          example: a05568c3-e4a1-4634-9190-b2bb3744effd
-        clientCompanyId:
-          type: string
-          description: Client Company Id
-          example: 1n78gbqw56
-        cardInfoResponses:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: Overall registration Status. Either Success or Failure
-                example: SUCCESS
-              messages:
-                type: array
-                items:
-                  type: string
-              serialNo:
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              cardAccNumber:
-                type: string
-                description: Card Number.
-                example: 4XXXXX5773850213
-              cardIdentifier:
-                type: string
-                description: Card Identifier.
-                example: '267625'
-        userInfoResponses:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: Overall registration Status. Either Success or Failure
-                example: SUCCESS
-              messages:
-                type: array
-                items:
-                  type: string
-              serialNo:
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
-              emailAddress:
-                type: string
-                description: Email Address.
-                example: testemail10220270@gmail.com
-        associationResponses:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-                description: Overall registration Status. Either Success or Failure
-                example: SUCCESS
-              messages:
-                type: array
-                items:
-                  type: string
-              serialNo:
-                type: string
-                description: Serial No.
-                example: a05568c3-e4a1-4634-9190-b2bb3744effd
     RequestPutPayload:
       required:
       - clientCompanyId
@@ -543,6 +461,88 @@ components:
           type: integer
           description: Company Phone Number
           example: 99197904935
+    ResponsePayload:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Overall registration Status. Either Success or Failure or Partial Success.
+          example: SUCCESS
+        messageId:
+          type: string
+          description: Message Id
+          example: '9854765'
+        correlationId:
+          type: string
+          description: CorrelationId
+          example: a05568c3-e4a1-4634-9190-b2bb3744effd
+        clientCompanyId:
+          type: string
+          description: Client Company Id
+          example: 1n78gbqw56
+        cardInfoResponses:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Overall registration Status. Either Success or Failure
+                example: SUCCESS
+              messages:
+                type: array
+                items:
+                  type: string
+              serialNo:
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              cardAccNumber:
+                type: string
+                description: Card Number.
+                example: 4XXXXX5773850213
+              cardIdentifier:
+                type: string
+                description: Card Identifier.
+                example: '267625'
+        userInfoResponses:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Overall registration Status. Either Success or Failure
+                example: SUCCESS
+              messages:
+                type: array
+                items:
+                  type: string
+              serialNo:
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
+              emailAddress:
+                type: string
+                description: Email Address.
+                example: testemail10220270@gmail.com
+        associationResponses:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Overall registration Status. Either Success or Failure
+                example: SUCCESS
+              messages:
+                type: array
+                items:
+                  type: string
+              serialNo:
+                type: string
+                description: Serial No.
+                example: a05568c3-e4a1-4634-9190-b2bb3744effd
 x-tagGroups:
 - name: API Reference
   tags:

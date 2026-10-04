@@ -51,6 +51,24 @@ paths:
           description: No card on file data found for the specified account
 components:
   schemas:
+    CardOnFileInquiryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the inquiry
+          enum:
+          - SUCCESS
+          - NO_DATA_FOUND
+          - PARTIAL_DATA
+        merchants:
+          type: array
+          description: List of merchants with the card stored on file
+          items:
+            $ref: '#/components/schemas/MerchantCardOnFile'
+        totalCount:
+          type: integer
+          description: Total number of merchants with the card on file
     MerchantCardOnFile:
       type: object
       properties:
@@ -80,24 +98,15 @@ components:
           - INSTALLMENT
           - UNSCHEDULED
           - SUBSCRIPTION
-    CardOnFileInquiryResponse:
+    ErrorResponse:
       type: object
       properties:
-        status:
+        errorCode:
           type: string
-          description: Status of the inquiry
-          enum:
-          - SUCCESS
-          - NO_DATA_FOUND
-          - PARTIAL_DATA
-        merchants:
-          type: array
-          description: List of merchants with the card stored on file
-          items:
-            $ref: '#/components/schemas/MerchantCardOnFile'
-        totalCount:
-          type: integer
-          description: Total number of merchants with the card on file
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     CardOnFileInquiryRequest:
       type: object
       required:
@@ -115,15 +124,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of the inquiry request in ISO 8601 format
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
   securitySchemes:
     mutualTLS:
       type: mutualTLS

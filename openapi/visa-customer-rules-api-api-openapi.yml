@@ -121,6 +121,15 @@ paths:
           description: Account not found
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     CustomerRulesResponse:
       type: object
       properties:
@@ -135,15 +144,6 @@ components:
           description: Active controls on the account
           items:
             $ref: '#/components/schemas/TransactionControl'
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     CustomerRulesRequest:
       type: object
       required:

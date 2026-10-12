@@ -127,8 +127,8 @@
     property: payment_method_options.card.network
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
-  status: not-a-workflow
-  arazzo: null
+  arazzo: visa-stripe-preconfig.yml
+  status: arazzo
 - slug: visa-total-system-services
   label: total-system-services
   partner: total-system-services
@@ -145,8 +145,8 @@
     property: schemas.CardIssuanceRequest.network
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
-  status: not-a-workflow
-  arazzo: null
+  arazzo: visa-total-system-services-preconfig.yml
+  status: arazzo
 - slug: visa-worldpay
   label: worldpay
   partner: worldpay

@@ -1,0 +1,46 @@
+arazzo: 1.0.1
+info:
+  title: 'visa through stripe: PostCustomersCustomerSubscriptions preconfigured with visa'
+  summary: Calls stripe's PostCustomersCustomerSubscriptions with `visa` preset, the way visa is used inside stripe.
+  description: 'A PRECONFIGURATION, not an orchestration: visa is a network inside stripe, so the integration is
+    stripe''s own operation with visa''s enum value set. Derived from stripe''s contract (stripe-customers-api-openapi.yml);
+    required properties are inputs.'
+  version: 1.0.0
+x-integration:
+  partner: stripe
+  relationship: network
+  preconfig: true
+  edge_evidence: https://github.com/api-evangelist/stripe/blob/main/openapi/stripe-customers-api-openapi.yml
+  edge_type: contract
+  preset:
+    payment_settings.payment_method_options.card.network: visa
+  method: derived
+  generated: '2026-10-12'
+  generator: build-integration-preconfigs.py
+sourceDescriptions:
+- name: stripeCustomersApiOpenapi
+  url: https://raw.githubusercontent.com/api-evangelist/stripe/refs/heads/main/openapi/stripe-customers-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: visa-via-stripe-postcustomerscustomersubscriptions
+  summary: PostCustomersCustomerSubscriptions with visa preset
+  inputs:
+    type: object
+    required: []
+    properties: {}
+  steps:
+  - stepId: call-with-preset
+    operationId: $sourceDescriptions.stripeCustomersApiOpenapi.PostCustomersCustomerSubscriptions
+    requestBody:
+      contentType: application/x-www-form-urlencoded
+      payload:
+        payment_settings:
+          payment_method_options:
+            card:
+              network: visa
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      id: $response.body#/id
+  outputs:
+    id: $steps.call-with-preset.outputs.id

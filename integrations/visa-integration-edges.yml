@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/visa/integrations
 - https://n8n.io/integrations/visa/
@@ -12,5 +12,140 @@ checked:
 - https://zapier.com/apps/visa/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: increase
+  partner: increase
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/increase/blob/main/openapi/increase-transactions-api-openapi.yml
+  contract_reference:
+    repo: increase
+    spec_file: increase-transactions-api-openapi.yml
+    value: visa
+    property: card_settlement.network
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: jp-morgan-chase
+  partner: jp-morgan-chase
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/jp-morgan-chase/blob/main/openapi/jp-morgan-chase-ais-api-openapi.yml
+  contract_reference:
+    repo: jp-morgan-chase
+    spec_file: jp-morgan-chase-ais-api-openapi.yml
+    value: visa
+    property: extra.cardType
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: methodfi
+  partner: methodfi
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/methodfi/blob/main/openapi/methodfi-simulate-entities-api-openapi.yml
+  contract_reference:
+    repo: methodfi
+    spec_file: methodfi-simulate-entities-api-openapi.yml
+    value: visa
+    property: AccountCardBrand.network
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: moov
+  partner: moov
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/moov/blob/main/openapi/moov-openapi.yml
+  contract_reference:
+    repo: moov
+    spec_file: moov-openapi.yml
+    value: visa
+    property: components.schemas.CardIssuingNetwork
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: revolut
+  partner: revolut
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/revolut/blob/main/openapi/revolut-counterparties-api-openapi.yml
+  contract_reference:
+    repo: revolut
+    spec_file: revolut-counterparties-api-openapi.yml
+    value: visa
+    property: schemas.CounterpartyCard.scheme
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: silverflow
+  partner: silverflow
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/silverflow/blob/main/openapi/silverflow-pos-charge-actions-api-openapi.yml
+  contract_reference:
+    repo: silverflow
+    spec_file: silverflow-pos-charge-actions-api-openapi.yml
+    value: visa
+    property: schemas.authorizationIsoFieldsVisaWithDiscriminator.network
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: stripe
+  partner: stripe
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/stripe/blob/main/openapi/stripe-customers-api-openapi.yml
+  contract_reference:
+    repo: stripe
+    spec_file: stripe-customers-api-openapi.yml
+    value: visa
+    property: payment_method_options.card.network
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: total-system-services
+  partner: total-system-services
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/total-system-services/blob/main/openapi/total-system-services-accounts-api-openapi.yml
+  contract_reference:
+    repo: total-system-services
+    spec_file: total-system-services-accounts-api-openapi.yml
+    value: visa
+    property: schemas.CardIssuanceRequest.network
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: worldpay
+  partner: worldpay
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: network
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/worldpay/blob/main/openapi/worldpay-payment-api-openapi.yml
+  contract_reference:
+    repo: worldpay
+    spec_file: worldpay-payment-api-openapi.yml
+    value: visa
+    property: Routing.preferredCardBrand
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
 templates: []

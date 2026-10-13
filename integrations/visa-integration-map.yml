@@ -1,0 +1,55 @@
+# DERIVED by derive-integration-map.py (roadmap#949): each integration workflow, step by step,
+# resolved to spec file -> tag -> business capability (Turbo EA, CC BY 4.0) and the operation's
+# phrasing intent. Read from our own files; an unmapped link says why.
+slug: visa
+workflows:
+- file: visa-stripe-preconfig.yml
+  title: 'visa through stripe: PostCustomersCustomerSubscriptions preconfigured with visa'
+  partner: stripe
+  template: null
+  repos:
+  - stripe
+  steps:
+  - step: call-with-preset
+    repo: stripe
+    spec_file: stripe-customers-api-openapi.yml
+    operationId: PostCustomersCustomerSubscriptions
+    tag: Customers
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Subscribe a customer to a plan
+    effect: write
+    unmapped: no capability edge for this spec file
+  connects:
+    stripe:
+      capabilities: []
+      tags:
+      - Customers
+  intents:
+  - Subscribe a customer to a plan
+- file: visa-total-system-services-preconfig.yml
+  title: 'visa through total-system-services: issueCard preconfigured with visa'
+  partner: total-system-services
+  template: null
+  repos:
+  - total-system-services
+  steps:
+  - step: call-with-preset
+    repo: total-system-services
+    spec_file: total-system-services-accounts-api-openapi.yml
+    operationId: issueCard
+    tag: Accounts
+    capability_id: BC-1340.60
+    capability: Card Issuance Management
+    capability_l1: BC-1340
+    intent: null
+    effect: null
+    unmapped: null
+  connects:
+    total-system-services:
+      capabilities:
+      - BC-1340.60
+      tags:
+      - Accounts
+  intents: []

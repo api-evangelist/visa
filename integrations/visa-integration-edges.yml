@@ -10,6 +10,7 @@ checked:
 - https://monid.ai/tools/visa
 - https://n8n.io/integrations/visa/
 - https://zapier.com/apps/visa/integrations
+- microsoft-sentinel/integrations/microsoft-sentinel-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -148,4 +149,23 @@ edges:
     property: Routing.preferredCardBrand
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
+- partner_name: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
+  mirror_of: microsoft-sentinel/integrations/microsoft-sentinel-integration-edges.yml
+  apps:
+  - Visa Threat Intelligence (VTI)
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Security - Threat Intelligence
+  badges:
+  - support-tier:partner
 templates: []

@@ -165,19 +165,6 @@
     detected: '2026-10-12'
   status: not-a-workflow
   arazzo: null
-- slug: visa-microsoft-sentinel-own
-  label: Microsoft Sentinel (own)
-  partner: microsoft-sentinel
-  partner_name: Microsoft Sentinel (own)
-  category: Security - Threat Intelligence
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: visa-fdx-financial-data-exchange
   label: FDX (Financial Data Exchange)
   partner: fdx
@@ -202,5 +189,18 @@
     matched_by: domain:visa.com
     detected_by: sweep-fdx.py
     detected: '2026-10-14'
+  status: not-a-workflow
+  arazzo: null
+- slug: visa-microsoft-sentinel-own
+  label: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_name: Microsoft Sentinel (own)
+  category: Security - Threat Intelligence
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

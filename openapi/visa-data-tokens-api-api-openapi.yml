@@ -76,15 +76,6 @@ paths:
           description: Data token not found
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
     DataTokenDetailResponse:
       type: object
       properties:
@@ -139,6 +130,35 @@ components:
           type: string
           format: date-time
           description: Expiration timestamp
+    DataTokenResponse:
+      type: object
+      properties:
+        tokenId:
+          type: string
+          description: Unique identifier for the generated data token
+        tokenType:
+          type: string
+          description: Type of data token generated
+        status:
+          type: string
+          description: Token generation status
+          enum:
+          - READY
+          - PROCESSING
+          - EXPIRED
+        expiresAt:
+          type: string
+          format: date-time
+          description: Expiration timestamp for the data token
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
     DataTokenRequest:
       type: object
       required:
@@ -174,26 +194,6 @@ components:
         geography:
           type: string
           description: ISO 3166-1 alpha-2 country code for geographic filtering
-    DataTokenResponse:
-      type: object
-      properties:
-        tokenId:
-          type: string
-          description: Unique identifier for the generated data token
-        tokenType:
-          type: string
-          description: Type of data token generated
-        status:
-          type: string
-          description: Token generation status
-          enum:
-          - READY
-          - PROCESSING
-          - EXPIRED
-        expiresAt:
-          type: string
-          format: date-time
-          description: Expiration timestamp for the data token
   securitySchemes:
     mutualTLS:
       type: mutualTLS

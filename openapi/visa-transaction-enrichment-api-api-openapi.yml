@@ -49,17 +49,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    TransactionEnrichmentResponse:
-      type: object
-      properties:
-        merchantSearchServiceResponse:
-          type: object
-          properties:
-            response:
-              type: array
-              description: Enriched merchant information
-              items:
-                $ref: '#/components/schemas/EnrichedMerchant'
     ErrorResponse:
       type: object
       properties:
@@ -127,6 +116,17 @@ components:
         merchantCategoryCode:
           type: string
           description: Merchant Category Code from the transaction
+    TransactionEnrichmentResponse:
+      type: object
+      properties:
+        merchantSearchServiceResponse:
+          type: object
+          properties:
+            response:
+              type: array
+              description: Enriched merchant information
+              items:
+                $ref: '#/components/schemas/EnrichedMerchant'
   securitySchemes:
     mutualTLS:
       type: mutualTLS

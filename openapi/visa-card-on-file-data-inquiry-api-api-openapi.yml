@@ -51,24 +51,6 @@ paths:
           description: No card on file data found for the specified account
 components:
   schemas:
-    CardOnFileInquiryResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Status of the inquiry
-          enum:
-          - SUCCESS
-          - NO_DATA_FOUND
-          - PARTIAL_DATA
-        merchants:
-          type: array
-          description: List of merchants with the card stored on file
-          items:
-            $ref: '#/components/schemas/MerchantCardOnFile'
-        totalCount:
-          type: integer
-          description: Total number of merchants with the card on file
     MerchantCardOnFile:
       type: object
       properties:
@@ -107,6 +89,24 @@ components:
         message:
           type: string
           description: Human-readable error description
+    CardOnFileInquiryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the inquiry
+          enum:
+          - SUCCESS
+          - NO_DATA_FOUND
+          - PARTIAL_DATA
+        merchants:
+          type: array
+          description: List of merchants with the card stored on file
+          items:
+            $ref: '#/components/schemas/MerchantCardOnFile'
+        totalCount:
+          type: integer
+          description: Total number of merchants with the card on file
     CardOnFileInquiryRequest:
       type: object
       required:

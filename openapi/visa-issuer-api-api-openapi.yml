@@ -131,61 +131,9 @@ paths:
       x-operation-id-original: VBASS File Transfer - POST
 components:
   schemas:
-    errorCodes-1:
-      title: errorCodes
+    vbassFileTransferResponse:
+      title: vbassFileTransferResponse
       type: object
-      properties:
-        CDI001:
-          type: object
-          description: Internal service failure
-        CDI002:
-          type: object
-          description: XML Parsing Failure
-        CDI012:
-          type: object
-          description: Request header length is invalid
-        CDI052:
-          type: object
-          description: Client Authentication failed
-        CDI071:
-          type: object
-          description: Exception in Group level entitlement process
-        CDI249:
-          type: object
-          description: Payment Account Type validation failure
-        CDI250:
-          type: object
-          description: Atleast one of the required/mandatory fields is missing in the request
-    requestData-1:
-      title: requestData
-      required:
-      - fileType
-      type: object
-      properties:
-        fileType:
-          maxLength: 100
-          minLength: 1
-          type: string
-          description: File Type Identifier
-          example: ACQ
-    requestHeader-2:
-      title: requestHeader
-      required:
-      - requestMessageId
-      - requestTS
-      type: object
-      properties:
-        requestTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2024-01-19T00:00:00.000'
-          format: YYYY-MM-DDThh:mm:ss.sss
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
     responseStatus:
       title: responseStatus
       type: object
@@ -213,9 +161,41 @@ components:
           minLength: 1
           type: string
           description: Name of the file
-    vbassFileTransferResponse:
-      title: vbassFileTransferResponse
+    requestData-1:
+      title: requestData
+      required:
+      - fileType
       type: object
+      properties:
+        fileType:
+          maxLength: 100
+          minLength: 1
+          type: string
+          description: File Type Identifier
+          example: ACQ
+    responseHeader-1:
+      title: responseHeader
+      type: object
+      properties:
+        responseTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: Date and time at which Response is sent (up to milliseconds in UTC)
+          format: YYYY-MM-DDThh:mm:ss.sss
+          example: '2024-01-17T06:31:31.194'
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
+          example: reqMsgId135
+        responseMessageId:
+          maxLength: 33
+          minLength: 33
+          type: string
+          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
+          example: 106VDP87035320230217063131177
     responseData-1:
       title: responseData
       required:
@@ -256,6 +236,24 @@ components:
           $ref: '#/components/schemas/requestData-2'
         requestHeader:
           $ref: '#/components/schemas/requestHeader-2'
+    requestHeader-2:
+      title: requestHeader
+      required:
+      - requestMessageId
+      - requestTS
+      type: object
+      properties:
+        requestTS:
+          maxLength: 23
+          minLength: 23
+          type: string
+          description: 'Date and time at which Request is sent (up to milliseconds in GMT). Ex: 2024-01-19T00:00:00.000'
+          format: YYYY-MM-DDThh:mm:ss.sss
+        requestMessageId:
+          maxLength: 30
+          minLength: 1
+          type: string
+          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
     errorCodes:
       title: ErrorCodes
       type: object
@@ -281,14 +279,6 @@ components:
         CDI251:
           type: object
           description: Client configuration incomplete, reach out to BINAttributes@visa.com
-    vbassFilesMetadataRequest:
-      title: VBASSFilesMetadataRequest
-      type: object
-      properties:
-        requestData:
-          $ref: '#/components/schemas/requestData-1'
-        requestHeader:
-          $ref: '#/components/schemas/requestHeader-1'
     vbassFilesMetadataResponse:
       title: VBASSFilesMetadataResponse
       type: object
@@ -330,6 +320,14 @@ components:
           type: number
           description: Number of records in the file (excludes the column header record at the top of the csv file)
           example: 30000
+    vbassFilesMetadataRequest:
+      title: VBASSFilesMetadataRequest
+      type: object
+      properties:
+        requestData:
+          $ref: '#/components/schemas/requestData-1'
+        requestHeader:
+          $ref: '#/components/schemas/requestHeader-1'
     requestHeader-1:
       title: requestHeader
       required:
@@ -350,29 +348,31 @@ components:
           type: string
           description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
           example: reqMsgId135
-    responseHeader-1:
-      title: responseHeader
+    errorCodes-1:
+      title: errorCodes
       type: object
       properties:
-        responseTS:
-          maxLength: 23
-          minLength: 23
-          type: string
-          description: Date and time at which Response is sent (up to milliseconds in UTC)
-          format: YYYY-MM-DDThh:mm:ss.sss
-          example: '2024-01-17T06:31:31.194'
-        requestMessageId:
-          maxLength: 30
-          minLength: 1
-          type: string
-          description: A string which uniquely identifies the service request. Requesting application need to create this unique message Id
-          example: reqMsgId135
-        responseMessageId:
-          maxLength: 33
-          minLength: 33
-          type: string
-          description: A combination of Service Id, Application Id, an Integer and current Timestamp that uniquely identifies the current request-response processing
-          example: 106VDP87035320230217063131177
+        CDI001:
+          type: object
+          description: Internal service failure
+        CDI002:
+          type: object
+          description: XML Parsing Failure
+        CDI012:
+          type: object
+          description: Request header length is invalid
+        CDI052:
+          type: object
+          description: Client Authentication failed
+        CDI071:
+          type: object
+          description: Exception in Group level entitlement process
+        CDI249:
+          type: object
+          description: Payment Account Type validation failure
+        CDI250:
+          type: object
+          description: Atleast one of the required/mandatory fields is missing in the request
 x-tagGroups:
 - name: API Reference
   tags:

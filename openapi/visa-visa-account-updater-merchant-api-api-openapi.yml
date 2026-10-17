@@ -117,26 +117,6 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
-    GenericErrorMessage:
-      type: object
-      properties:
-        rejectReason:
-          type: string
-          description: 'This fields contains following reject reasons
-
-            * Internal Server Error, please try again after sometime
-
-            '
-          example: Internal Server Error, please try again after sometime
-        rejectReasonCode:
-          type: string
-          description: 'This Fields contains following Reject reason codes:
-
-            * E
-
-            '
-          example: E
-      description: '[Reject Request]'
     BadFormattedErrorMessage:
       type: object
       properties:
@@ -157,34 +137,6 @@ components:
             '
           example: B
       description: '[Inquiry is badly formatted]'
-    MerchantResponse:
-      required:
-      - enrollStatus
-      type: object
-      properties:
-        reject:
-          $ref: '#/components/schemas/RejectMerchant'
-        merchantId:
-          type: string
-          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID.]'
-          example: 000000705853
-        enrollStatus:
-          type: string
-          description: '[Merchant enrollment status, This field contains one of the following status:
-
-            * Success  Merchant is enrolled successfully
-
-            * In-Progress  Merchant enrollment is in progress
-
-            * Reject  Merchant is rejected, reject code and reject code and reject message will be returned]
-
-            '
-          example: Reject
-        merchantName:
-          type: string
-          description: '[Name of Merchant]'
-          example: GS PERFORMANCE
-      description: '[Merchant Response]'
     Merchant:
       required:
       - merchantId
@@ -288,7 +240,118 @@ components:
             description: '[Merchant acquiring identifier]'
             example: '["312345","312344"]'
       description: '[Merchant Object]'
-    RejectedMerchantEnrollmentResponse:
+    MerchantResponse:
+      required:
+      - enrollStatus
+      type: object
+      properties:
+        reject:
+          $ref: '#/components/schemas/RejectMerchant'
+        merchantId:
+          type: string
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID.]'
+          example: 000000705853
+        enrollStatus:
+          type: string
+          description: '[Merchant enrollment status, This field contains one of the following status:
+
+            * Success  Merchant is enrolled successfully
+
+            * In-Progress  Merchant enrollment is in progress
+
+            * Reject  Merchant is rejected, reject code and reject code and reject message will be returned]
+
+            '
+          example: Reject
+        merchantName:
+          type: string
+          description: '[Name of Merchant]'
+          example: GS PERFORMANCE
+      description: '[Merchant Response]'
+    GenericErrorMessage:
+      type: object
+      properties:
+        rejectReason:
+          type: string
+          description: 'This fields contains following reject reasons
+
+            * Internal Server Error, please try again after sometime
+
+            '
+          example: Internal Server Error, please try again after sometime
+        rejectReasonCode:
+          type: string
+          description: 'This Fields contains following Reject reason codes:
+
+            * E
+
+            '
+          example: E
+      description: '[Reject Request]'
+    merchantSearchRequest:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          maxItems: 2147483647
+          minItems: 0
+          type: array
+          description: '[List of merchants to search]'
+          items:
+            $ref: '#/components/schemas/MerchantId'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU acquirer segment id]'
+          format: int32
+          example: 2
+      description: merchantSearch
+    merchantEnrolmentRequest:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: '[List of merchant enrolment]'
+          items:
+            $ref: '#/components/schemas/MerchantRequest'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field must contain a valid VAU acquirer segment id]'
+          format: int32
+          example: 2
+      description: merchantEnrolment
+    MerchantSearchResponse:
+      required:
+      - acquirerSegmentId
+      - merchants
+      type: object
+      properties:
+        merchants:
+          type: array
+          description: '[List of merchant search results]'
+          items:
+            $ref: '#/components/schemas/Merchant'
+        acquirerSegmentId:
+          type: integer
+          description: '[This field  must contain a valid VAU acquirer segment Id.]'
+          format: int32
+          example: 2
+      description: '[Merchant Search Response]'
+    MerchantId:
+      required:
+      - merchantId
+      type: object
+      properties:
+        merchantId:
+          type: string
+          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID of 12 characters.]'
+          example: 000000705853
+      description: '[List of merchants to search]'
+    RejectedMerchantSearchResponse:
       required:
       - acquirerSegmentId
       type: object
@@ -327,23 +390,6 @@ components:
           format: int32
           example: 9992
       description: '[Reject Request]'
-    merchantEnrolmentRequest:
-      required:
-      - acquirerSegmentId
-      - merchants
-      type: object
-      properties:
-        merchants:
-          type: array
-          description: '[List of merchant enrolment]'
-          items:
-            $ref: '#/components/schemas/MerchantRequest'
-        acquirerSegmentId:
-          type: integer
-          description: '[This field must contain a valid VAU acquirer segment id]'
-          format: int32
-          example: 2
-      description: merchantEnrolment
     MerchantRequest:
       required:
       - cardAcceptorId
@@ -464,6 +510,45 @@ components:
           format: int32
           example: 2
       description: '[Merchant Enrolment Response]'
+    RejectedMerchantEnrollmentResponse:
+      required:
+      - acquirerSegmentId
+      type: object
+      properties:
+        rejectCode:
+          type: string
+          description: '[This field contains one of the following codes:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: A
+        rejectReason:
+          type: string
+          description: '[This field contains the description of the reject code:
+
+            * AAcquirer segment is not enrolled
+
+            * VNo data found in inquiry field
+
+            * X-Acquirer status is in test mode, please contact client services representative
+
+            * TMax merchants threshold passed for single request, current threshold is:100.]
+
+            '
+          example: Acquirer segment is not enrolled
+        acquirerSegmentId:
+          type: integer
+          description: '[This field  must contain a valid VAU Acquirer Segment ID.]'
+          format: int32
+          example: 9992
+      description: '[Reject Request]'
     RejectMerchant:
       required:
       - rejectCode
@@ -563,91 +648,6 @@ components:
             '
           example: Merchant Id already exists for this Acquirer Segment
       description: '[RejectMerchant]'
-    MerchantId:
-      required:
-      - merchantId
-      type: object
-      properties:
-        merchantId:
-          type: string
-          description: '[Acquirer assigns the merchant ID. This field must contain a valid VAU Merchant ID of 12 characters.]'
-          example: 000000705853
-      description: '[List of merchants to search]'
-    merchantSearchRequest:
-      required:
-      - acquirerSegmentId
-      - merchants
-      type: object
-      properties:
-        merchants:
-          maxItems: 2147483647
-          minItems: 0
-          type: array
-          description: '[List of merchants to search]'
-          items:
-            $ref: '#/components/schemas/MerchantId'
-        acquirerSegmentId:
-          type: integer
-          description: '[This field must contain a valid VAU acquirer segment id]'
-          format: int32
-          example: 2
-      description: merchantSearch
-    RejectedMerchantSearchResponse:
-      required:
-      - acquirerSegmentId
-      type: object
-      properties:
-        rejectCode:
-          type: string
-          description: '[This field contains one of the following codes:
-
-            * AAcquirer segment is not enrolled
-
-            * VNo data found in inquiry field
-
-            * X-Acquirer status is in test mode, please contact client services representative
-
-            * TMax merchants threshold passed for single request, current threshold is:100.]
-
-            '
-          example: A
-        rejectReason:
-          type: string
-          description: '[This field contains the description of the reject code:
-
-            * AAcquirer segment is not enrolled
-
-            * VNo data found in inquiry field
-
-            * X-Acquirer status is in test mode, please contact client services representative
-
-            * TMax merchants threshold passed for single request, current threshold is:100.]
-
-            '
-          example: Acquirer segment is not enrolled
-        acquirerSegmentId:
-          type: integer
-          description: '[This field  must contain a valid VAU Acquirer Segment ID.]'
-          format: int32
-          example: 9992
-      description: '[Reject Request]'
-    MerchantSearchResponse:
-      required:
-      - acquirerSegmentId
-      - merchants
-      type: object
-      properties:
-        merchants:
-          type: array
-          description: '[List of merchant search results]'
-          items:
-            $ref: '#/components/schemas/Merchant'
-        acquirerSegmentId:
-          type: integer
-          description: '[This field  must contain a valid VAU acquirer segment Id.]'
-          format: int32
-          example: 2
-      description: '[Merchant Search Response]'
 x-tagGroups:
 - name: API Reference
   tags:

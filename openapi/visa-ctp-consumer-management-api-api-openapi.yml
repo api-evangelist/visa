@@ -80,24 +80,52 @@ paths:
           description: Consumer not found
 components:
   schemas:
-    AddCredentialRequest:
+    AddCredentialResponse:
       type: object
-      required:
-      - primaryAccountNumber
-      - cardExpiryDate
       properties:
-        primaryAccountNumber:
+        credentialId:
           type: string
-          description: Primary account number of the Visa card
-        cardExpiryDate:
+          description: Unique identifier for the stored credential
+        maskedPan:
           type: string
-          description: Card expiration date in YYYY-MM format
-          pattern: ^\d{4}-\d{2}$
-        cardholderName:
+          description: Masked primary account number showing only last four digits
+        status:
           type: string
-          description: Name as it appears on the card
-        billingAddress:
-          $ref: '#/components/schemas/Address'
+          description: Credential storage status
+          enum:
+          - ACTIVE
+          - PENDING_VERIFICATION
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          description: Street address
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State or province code
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+          pattern: ^[A-Z]{2}$
+    ConsumerEnrollmentResponse:
+      type: object
+      properties:
+        consumerId:
+          type: string
+          description: Unique identifier assigned to the newly enrolled consumer
+        status:
+          type: string
+          description: Enrollment status
+          enum:
+          - ENROLLED
+          - PENDING_VERIFICATION
     ConsumerEnrollmentRequest:
       type: object
       required:
@@ -140,52 +168,24 @@ components:
               message:
                 type: string
                 description: Detail about the field error
-    ConsumerEnrollmentResponse:
+    AddCredentialRequest:
       type: object
+      required:
+      - primaryAccountNumber
+      - cardExpiryDate
       properties:
-        consumerId:
+        primaryAccountNumber:
           type: string
-          description: Unique identifier assigned to the newly enrolled consumer
-        status:
+          description: Primary account number of the Visa card
+        cardExpiryDate:
           type: string
-          description: Enrollment status
-          enum:
-          - ENROLLED
-          - PENDING_VERIFICATION
-    AddCredentialResponse:
-      type: object
-      properties:
-        credentialId:
+          description: Card expiration date in YYYY-MM format
+          pattern: ^\d{4}-\d{2}$
+        cardholderName:
           type: string
-          description: Unique identifier for the stored credential
-        maskedPan:
-          type: string
-          description: Masked primary account number showing only last four digits
-        status:
-          type: string
-          description: Credential storage status
-          enum:
-          - ACTIVE
-          - PENDING_VERIFICATION
-    Address:
-      type: object
-      properties:
-        street:
-          type: string
-          description: Street address
-        city:
-          type: string
-          description: City name
-        state:
-          type: string
-          description: State or province code
-        postalCode:
-          type: string
-          description: Postal or ZIP code
-        country:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-          pattern: ^[A-Z]{2}$
+          description: Name as it appears on the card
+        billingAddress:
+          $ref: '#/components/schemas/Address'
   parameters:
     ConsumerIdParam:
       name: consumerId

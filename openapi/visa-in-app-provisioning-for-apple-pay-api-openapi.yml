@@ -131,6 +131,49 @@ paths:
       x-hideTryIt: true
 components:
   schemas:
+    Error:
+      title: Error
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
+    ErrorDetails:
+      title: ErrorDetails
+      type: object
+      properties:
+        message:
+          type: string
+          description: The specific error for this field.
+        location:
+          type: string
+          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+    ValidationError:
+      title: ValidationError
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
+        status:
+          type: integer
+          description: 3-digit HTTP Status Code
+          format: int32
+        details:
+          type: array
+          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
+          items:
+            $ref: '#/components/schemas/ErrorDetails'
+        message:
+          type: string
+          description: Message describing the error condition with additional information wherever applicable.
     ApplePayProvisioningResponse:
       title: ApplePayProvisioningResponse
       required:
@@ -165,49 +208,11 @@ components:
           minLength: 29
           type: string
           description: Payment Account Reference (PAR) is a unique reference value associated with a specific cardholder PAN.
-    ValidationError:
-      title: ValidationError
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        details:
-          type: array
-          description: Array of fields - Data validation errors should use this field to specify which fields failed the validation using location field.
-          items:
-            $ref: '#/components/schemas/ErrorDetails'
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
     ValidationErrorResponse:
       type: object
       properties:
         errorResponse:
           $ref: '#/components/schemas/ValidationError'
-    Error:
-      title: Error
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Reason Code for the error condition. Error handling business logic should be driven by this field.
-        status:
-          type: integer
-          description: 3-digit HTTP Status Code
-          format: int32
-        message:
-          type: string
-          description: Message describing the error condition with additional information wherever applicable.
-    ErrorResponse:
-      type: object
-      properties:
-        errorResponse:
-          $ref: '#/components/schemas/Error'
     ApplePayProvisioningRequest:
       title: ApplePayProvisioningRequest
       required:
@@ -252,16 +257,11 @@ components:
           enum:
           - V
           - M
-    ErrorDetails:
-      title: ErrorDetails
+    ErrorResponse:
       type: object
       properties:
-        message:
-          type: string
-          description: The specific error for this field.
-        location:
-          type: string
-          description: The value of this field is using XPATH expression to point to the field, which failed validation.
+        errorResponse:
+          $ref: '#/components/schemas/Error'
 x-tagGroups:
 - name: API Reference
   tags:

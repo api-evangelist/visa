@@ -71,6 +71,65 @@ paths:
           description: Checkout session not found
 components:
   schemas:
+    CheckoutStatusResponse:
+      type: object
+      properties:
+        checkoutId:
+          type: string
+          description: Unique identifier for the checkout session
+        status:
+          type: string
+          description: Current status of the checkout session
+          enum:
+          - INITIATED
+          - PENDING
+          - COMPLETED
+          - EXPIRED
+          - CANCELLED
+        transactionId:
+          type: string
+          description: Transaction identifier assigned after successful payment
+        paymentToken:
+          type: string
+          description: Tokenized payment credential used for the transaction
+    CheckoutResponse:
+      type: object
+      properties:
+        checkoutId:
+          type: string
+          description: Unique identifier for the initiated checkout session
+        status:
+          type: string
+          description: Current status of the checkout session
+          enum:
+          - INITIATED
+          - PENDING
+          - COMPLETED
+          - EXPIRED
+        checkoutUrl:
+          type: string
+          format: uri
+          description: URL to redirect the consumer for checkout completion
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable error code
+        message:
+          type: string
+          description: Human-readable error description
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: Field that caused the error
+              message:
+                type: string
+                description: Detail about the field error
     CheckoutRequest:
       type: object
       required:
@@ -100,65 +159,6 @@ components:
           type: string
           format: uri
           description: URL to redirect the consumer after checkout completion
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: Machine-readable error code
-        message:
-          type: string
-          description: Human-readable error description
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-                description: Field that caused the error
-              message:
-                type: string
-                description: Detail about the field error
-    CheckoutResponse:
-      type: object
-      properties:
-        checkoutId:
-          type: string
-          description: Unique identifier for the initiated checkout session
-        status:
-          type: string
-          description: Current status of the checkout session
-          enum:
-          - INITIATED
-          - PENDING
-          - COMPLETED
-          - EXPIRED
-        checkoutUrl:
-          type: string
-          format: uri
-          description: URL to redirect the consumer for checkout completion
-    CheckoutStatusResponse:
-      type: object
-      properties:
-        checkoutId:
-          type: string
-          description: Unique identifier for the checkout session
-        status:
-          type: string
-          description: Current status of the checkout session
-          enum:
-          - INITIATED
-          - PENDING
-          - COMPLETED
-          - EXPIRED
-          - CANCELLED
-        transactionId:
-          type: string
-          description: Transaction identifier assigned after successful payment
-        paymentToken:
-          type: string
-          description: Tokenized payment credential used for the transaction
   parameters:
     CheckoutIdParam:
       name: checkoutId

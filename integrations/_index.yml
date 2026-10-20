@@ -165,6 +165,19 @@
     detected: '2026-10-12'
   status: not-a-workflow
   arazzo: null
+- slug: visa-microsoft-sentinel-own
+  label: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_name: Microsoft Sentinel (own)
+  category: Security - Threat Intelligence
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: visa-fdx-financial-data-exchange
   label: FDX (Financial Data Exchange)
   partner: fdx
@@ -188,19 +201,55 @@
     fdx_version: null
     matched_by: domain:visa.com
     detected_by: sweep-fdx.py
-    detected: '2026-10-14'
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
-- slug: visa-microsoft-sentinel-own
-  label: Microsoft Sentinel (own)
-  partner: microsoft-sentinel
-  partner_name: Microsoft Sentinel (own)
-  category: Security - Threat Intelligence
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
+- slug: visa-pci-security-standards-council-program-listings
+  label: PCI Security Standards Council (program listings)
+  partner_name: PCI Security Standards Council (program listings)
+  category: Payment security validation
+  type: register
+  channel: standard-directory
+  evidence: https://listings.pcisecuritystandards.org/assessors_and_solutions/payment_software
   source: edge
-  relationship: platform-app
+  relationship: standard-participant
+  contract_reference:
+    register: PCI SSC program listings (listings.pcisecuritystandards.org / pcisecuritystandards.org)
+    spec_file: null
+    standard: PCI SSC
+    role: pci-validated-vendor
+    registered_name: Visa Inc.
+    website: null
+    matched_domain: null
+    matched_by: register-name
+    identity_source: register-name
+    certified_products:
+    - product: PCI Secure Software (Validated Secure Software)
+      lapsed: true
+      latest_expiry: '2028-01-10'
+      listed: 1
+    - product: PCI MPoC Solution
+      lapsed: false
+      latest_expiry: '2028-01-23'
+      listed: 1
+    - product: PCI P2PE Solution
+      lapsed: false
+      latest_expiry: '2028-10-08'
+      listed: 1
+    - product: PCI P2PE Component
+      lapsed: false
+      latest_expiry: '2029-03-26'
+      listed: 1
+    - product: PCI Secure SLC Qualified Vendor
+      lapsed: false
+      latest_expiry: '2029-06-05'
+      listed: 1
+    signal_note: one certified_products entry per PCI SSC program (Secure Software, PA-DSS, P2PE solution / component
+      / application, 3DS SDK, SPoC, CPoC, MPoC, PTS device, Secure SLC); lapsed = every listed product in that program
+      is past its expiry / reassessment date or marked expired; `listed` is context only. List Access Agreement
+      accepted on Kin's instruction 2026-10-20
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+    identity_note: register-name 'visa' = visa; wikidata P856 visa.com agrees or unheld
   status: not-a-workflow
   arazzo: null

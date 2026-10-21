@@ -20,6 +20,7 @@ checked:
 - https://skillsmp.com/sitemap.xml
 - https://www.skills.sh/sitemap.xml
 - https://www.emvco.com/approved-products-search/?type=approved-products&sub_type=acceptance_device
+- bigcommerce/integrations/bigcommerce-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -158,25 +159,6 @@ edges:
     property: Routing.preferredCardBrand
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
-- partner_name: Microsoft Sentinel (own)
-  partner: microsoft-sentinel
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
-  mirror_of: microsoft-sentinel/integrations/microsoft-sentinel-integration-edges.yml
-  apps:
-  - Visa Threat Intelligence (VTI)
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Security - Threat Intelligence
-  badges:
-  - support-tier:partner
 - partner_name: FDX (Financial Data Exchange)
   partner: fdx
   type: contract
@@ -312,4 +294,40 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-emv-card-terminals.py
   first_seen: '2026-10-20'
+- partner_name: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
+  mirror_of: microsoft-sentinel/integrations/microsoft-sentinel-integration-edges.yml
+  apps:
+  - Visa Threat Intelligence (VTI)
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Security - Threat Intelligence
+  badges:
+  - support-tier:partner
+- partner_name: BigCommerce (own)
+  partner: bigcommerce
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.bigcommerce.com/apps/order-insight-from-verifi-a-visa-solution/
+  mirror_of: bigcommerce/integrations/bigcommerce-integration-edges.yml
+  apps:
+  - Order Insight from Verifi, A Visa Solution
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Payments & Security, Fraud Prevention & Security
 templates: []

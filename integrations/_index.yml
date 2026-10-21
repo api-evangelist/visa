@@ -165,19 +165,6 @@
     detected: '2026-10-12'
   status: not-a-workflow
   arazzo: null
-- slug: visa-microsoft-sentinel-own
-  label: Microsoft Sentinel (own)
-  partner: microsoft-sentinel
-  partner_name: Microsoft Sentinel (own)
-  category: Security - Threat Intelligence
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: visa-fdx-financial-data-exchange
   label: FDX (Financial Data Exchange)
   partner: fdx
@@ -304,5 +291,31 @@
       is past its valid-to date; approval / product / version counts are never recorded or counted
     detected_by: sweep-emv-card-terminals.py
     detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: visa-microsoft-sentinel-own
+  label: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_name: Microsoft Sentinel (own)
+  category: Security - Threat Intelligence
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Visa%20Threat%20Intelligence%20(VTI)
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: visa-bigcommerce-own
+  label: BigCommerce (own)
+  partner: bigcommerce
+  partner_name: BigCommerce (own)
+  category: Payments & Security, Fraud Prevention & Security
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.bigcommerce.com/apps/order-insight-from-verifi-a-visa-solution/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

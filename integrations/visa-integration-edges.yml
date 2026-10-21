@@ -21,6 +21,16 @@ checked:
 - https://www.skills.sh/sitemap.xml
 - https://www.emvco.com/approved-products-search/?type=approved-products&sub_type=acceptance_device
 - bigcommerce/integrations/bigcommerce-integration-edges.yml
+- https://agentic.market
+- https://api.cdp.coinbase.com/platform/v2/x402/discovery/resources
+- https://app.ampersend.ai/discover
+- https://docs.cdp.coinbase.com/x402/
+- https://docs.x402.org/dev-tools/facilitators
+- https://pay.sh
+- https://www.x402.org/ecosystem
+- https://x402-list.com
+- https://x402.org/members/
+- https://x402scan.com
 summary: null
 marketplace_apps: []
 edges:
@@ -330,4 +340,29 @@ edges:
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
   category: Payments & Security, Fraud Prevention & Security
+- partner_name: x402 Foundation
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://x402.org/members/
+  category: x402 protocol foundation membership
+  partner_tier: premier
+  contract_reference:
+    register: x402 Foundation members (x402.org/members/, Linux Foundation project)
+    standard: x402
+    spec_file: null
+    role: x402-foundation-member
+    registered_name: Visa Inc.
+    register_id: http://visa.com
+    matched_domain: visa.com
+    matched_by: domain
+    signal_note: 'participation only: foundation membership (logo wall linking each member''s website); the membership
+      class is partner_tier; membership is not conformance'
+    detected_by: sweep-x402-micropayments.py
+    detected: '2026-10-21'
+  detected_by: sweep-x402-micropayments.py
+  first_seen: '2026-10-21'
 templates: []

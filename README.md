@@ -1,4 +1,4 @@
-# Visa (visa)
+# Visa
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,1947 +66,278 @@
 
 Visa is a global payment technology company that facilitates electronic funds transfers by providing consumers, businesses, and governments with secure, convenient, and reliable payment solutions. Through its network of financial institutions and partners, Visa enables individuals to make purchases, transfer money, and access other financial services in over 200 countries and territories worldwide. The Visa Developer platform provides APIs for money movement (Visa Direct), merchant intelligence, account validation, transaction controls, foreign exchange, digital wallets, tokenization, and more.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-search/visa/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-search/visa/refs/heads/main/apis.yml)
-
-## Scope
-
-- **Position:** Consuming
-- **Access:** 3rd-Party
-
-## Tags
-
-- Accounts
-- Banking
-- Credit Cards
-- Digital Commerce
-- Digital Wallets
-- Fintech
-- Foreign Exchange
-- Fraud Prevention
-- Merchants
-- Money Movement
-- Payments
-- Tokenization
-
-## Timestamps
-
-- **Created:** 2024-11-15T00:00:00.000Z
-- **Modified:** 2026-05-19
-
-## APIs
-
-### Visa Government Insights Hub
-
-The Visa Government Insights Hub is a platform that provides government agencies with valuable information and resources to help them make informed decisions and improve their operations. Through data-driven analysis and research, the hub offers insights into consumer spending behavior, trends in payment technology, and best practices for implementing digital payments.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-government-insights-hub](https://developer.visa.com/capabilities/visa-government-insights-hub)
-
-#### Tags
-
-- Government
-- Insights
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-government-insights-hub)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Payment Account Reference Inquiry
-
-Visa Payment Account Reference Inquiry is a service that allows financial institutions and merchants to access useful information about a customer's Visa account. This tool provides real-time data on account status, balances, transactions, and more, which enables businesses to efficiently process payments and minimize fraud risk. By utilizing Visa Payment Account Reference Inquiry, companies can securely verify customer information and ensure smooth, hassle-free transactions.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-par-inquiry](https://developer.visa.com/capabilities/visa-par-inquiry)
-
-#### Tags
-
-- Payment Account Reference
-- Primary Account Number
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-par-inquiry/docs)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Pilot Program Enablement
-
-Visa Pilot Program Enablement is a service that allows businesses to easily launch and manage pilot programs for new Visa products or services. This includes providing support and resources for program strategy, implementation, and evaluation. By utilizing Visa Pilot Program Enablement, businesses can quickly and efficiently test out new ideas and innovations in a controlled environment before fully committing to a widespread rollout.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vdp-pilot-program](https://developer.visa.com/capabilities/vdp-pilot-program)
-
-#### Tags
-
-- Pilots
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/vdp-pilot-program/docs-getting-started)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Underwriting Intelligence Solutions
-
-Visa Underwriting Intelligence Solutions is a leading provider of data analytics and risk management solutions for financial institutions. With a focus on using advanced technology and algorithms to assess creditworthiness and streamline the underwriting process, Visa Underwriting Intelligence Solutions helps lenders make more informed decisions quickly and efficiently.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions](https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions)
-
-#### Tags
-
-- Intelligence
-- Underwriting
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-underwriting-intelligence-solutions/docs)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VCA Data Exchange
-
-VCA Data Exchange is a platform that allows businesses to securely exchange data with their partners, customers, and suppliers. Whether it's sharing customer information, product catalogs, or financial data, VCA Data Exchange provides a streamlined solution for securely transferring and managing data. By centralizing data exchange processes, VCA Data Exchange helps organizations improve efficiency, reduce errors, and enhance collaboration with external stakeholders.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vca-data-exchange](https://developer.visa.com/capabilities/vca-data-exchange)
-
-#### Tags
-
-- Data
-- Insights
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/vca-data-exchange/docs)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Payment Account Validation
-
-Payment Account Validation is a process used by financial institutions to verify the accuracy and legitimacy of a customer's payment account information. This validation helps prevent fraudulent transactions and ensure that funds are being transferred to the correct recipient. By verifying key details such as the account number, account holder's name, and bank routing number, Payment Account Validation reduces the risk of errors and unauthorized payments.
-
-- **Human URL:** [https://developer.visa.com/capabilities/pav](https://developer.visa.com/capabilities/pav)
-
-#### Tags
-
-- Accounts
-- Validation
-
-#### Properties
-
-- [OpenAPI](openapi/payment-account-validation.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://developer.visa.com/capabilities/pav/docs)
-- [Authentication](https://developer.visa.com/capabilities/pav/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-
-### Visa Supplier Matching Service
-
-Visa Supplier Matching Service is a platform that allows businesses to easily connect with suppliers that meet their specific needs and requirements. By leveraging Visa's extensive network of suppliers and partners, businesses can access a wide range of goods and services, from office supplies to transportation solutions.
-
-- **Human URL:** [https://developer.visa.com/capabilities/suppliermatchingservice](https://developer.visa.com/capabilities/suppliermatchingservice)
-
-#### Tags
-
-- Matching
-- Suppliers
-
-#### Properties
-
-- [OpenAPI](openapi/visa-supplier-matching-service.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://developer.visa.com/capabilities/suppliermatchingservice/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/suppliermatchingservice/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-- [Terms of Service](https://developer.visa.com/capabilities/suppliermatchingservice/product-terms)
-
-### Visa Consent Management Service
-
-Visa Consent Management Service is a platform that enables consumers to have greater control over the sharing of their personal data with third parties. It allows users to easily manage and monitor their consent preferences, including which companies have permission to access their data and for what purposes. This service helps to enhance transparency and trust between consumers and businesses, ensuring that data is only shared with consent and in compliance with privacy regulations.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vcms](https://developer.visa.com/capabilities/vcms)
-
-#### Tags
-
-- Consent
-
-#### Properties
-
-- [OpenAPI](openapi/visa-consent-management-service.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://developer.visa.com/capabilities/vcms/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/vcms/docs-authentication)
-- [Errors](https://developer.visa.com/capabilities/vcms/error-codes)
-- [Terms of Service](https://developer.visa.com/capabilities/vcms/product-terms)
-
-### Card on File Data Inquiry
-
-Card on File Data Inquiry is a service that allows businesses to securely and efficiently access and manage customer's card information that is stored on file. This service streamlines the process of verifying and updating card data, enabling businesses to easily keep track of payment information for recurring transactions.
-
-- **Human URL:** [https://developer.visa.com/capabilities/card-on-file-data-inquiry](https://developer.visa.com/capabilities/card-on-file-data-inquiry)
-
-#### Tags
+**Areas:** Visa · Account · Banking · Credit Cards · Digital Commerce · Digital Wallet · Fintech · Foreign Exchange · Fraud Prevention · Merchants · Money Movement · Payments
+
+## Visa on APIs.io
+
+Everything profiled for Visa is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/visa/](https://apis.io/providers/visa/)** — or go straight to one of the APIs or properties below.
+
+### APIs (84)
+
+- [Visa Government Insights Hub](https://apis.io/apis/visa/visa-government-insights-hub/) — The Visa Government Insights Hub is a platform that provides government agencies with valuable information and resources to help them make informed…
+- [Visa Payment Account Reference Inquiry](https://apis.io/apis/visa/visa-payment-account-reference-inquiry/) — Visa Payment Account Reference Inquiry is a service that allows financial institutions and merchants to access useful information about a customer's Visa…
+- [Visa Pilot Program Enablement](https://apis.io/apis/visa/visa-pilot-program-enablement/) — Visa Pilot Program Enablement is a service that allows businesses to easily launch and manage pilot programs for new Visa products or services. This…
+- [Visa Underwriting Intelligence Solutions](https://apis.io/apis/visa/visa-underwriting-intelligence-solutions/) — Visa Underwriting Intelligence Solutions is a leading provider of data analytics and risk management solutions for financial institutions. With a focus on…
+- [VCA Data Exchange](https://apis.io/apis/visa/vca-data-exchange/) — VCA Data Exchange is a platform that allows businesses to securely exchange data with their partners, customers, and suppliers. Whether it's sharing…
+- [Visa Practical Money Skills Financial Education Platform](https://apis.io/apis/visa/visa-practical-money-skills-financial-education-platform/) — Visa Practical Money Skills Financial Education Platform is an online resource that provides valuable tools and information to help individuals improve…
+- [Visa Resolve Online](https://apis.io/apis/visa/visa-resolve-online/) — Visa Resolve Online is a platform developed by Visa that enables financial institutions and merchants to streamline the process of resolving disputed…
+- [Visa Europe Payment Stop Service](https://apis.io/apis/visa/visa-europe-payment-stop-service/) — Visa Europe Payment Stop Service is a feature offered by Visa that allows cardholders to temporarily suspend or cancel any recurring or future payments set…
+- [Visa Subscription Manager](https://apis.io/apis/visa/visa-subscription-manager/) — Visa Subscription Manager is a service that allows consumers to easily manage and control their recurring payments and subscriptions. With this platform,…
+- [Order Insight Digital](https://apis.io/apis/visa/order-insight-digital/) — When cardholders are reviewing their card statement, confusion over if a purchase is legitimate is one of the most common occurrances. A cardholders first…
+- [Visa dCVV2 Generate](https://apis.io/apis/visa/visa-dcvv2-generate/) — Visa dCVV2 Generate is a tool designed to help businesses generate dynamic card verification values (dCVV2) for online transactions. This security feature…
+- [Visa Risk Manager](https://apis.io/apis/visa/visa-risk-manager/) — Visa Risk Manager is a web portal that provides a comprehensive suite of fraud and risk management tools that can be accessed through Visa Online 24/7. It…
+- [Visa Token Service](https://apis.io/apis/visa/visa-token-service/) — Visa Token Service is a technology solution that aims to enhance the security and convenience of digital payments. It replaces sensitive card information…
+- [Visa Token Service Provisioning and Credential Management](https://apis.io/apis/visa/visa-token-service-provisioning-and-credential-management/) — Visa Token Service Provisioning and Credential Management is a secure platform that allows consumers to make purchases using a tokenized payment method,…
+- [Visa B2B Connect is built on Visa's capabilities and formidable core payments experience with distributed ledger technology to provide direct settlements of large-value transactions. Visa B2B Connect can help financial institutions and their clients overcome costly processes and geographic barriers, which translates to an improved, seamless end-to-end experience.](https://apis.io/apis/visa/visa-b2b-connect-is-built-on-visa-s-capabilities-and-formidable-core-payments-experience-with-distributed-ledger-technology-to-provide-direct-settlements-of-large-value-transactions-visa-b2b-connect-can-help-financial-institutions-and-their-clients-overcome-costly-processes-and-geographic-barriers-which-translates-to-an-improved-seamless-end-to-end-experience-/) — Visa Card Eligibility Service (VCES) is an account eligibility verification product enabling our issuers, merchants, partners, and developers to check…
+- [Visa Offers Platform](https://apis.io/apis/visa/visa-offers-platform/) — Visas Customers can get access to near real-time transaction data via the Visa Offers Platform to execute and manage their card-linked programs. For…
+- [Installment Transaction Service](https://apis.io/apis/visa/installment-transaction-service/) — The Installments Transaction Service allows you to offer Buy Now Pay Later (BNPL) plans to your customers through a set of APIs or on ISO. The plans can be…
+- [Kernel in the Cloud](https://apis.io/apis/visa/kernel-in-the-cloud/) — Kernel in the Cloud is pioneering innovation via a software-based cloud infrastructure to democratize acceptance. It provides a secure, modular and service…
+- [Visa Direct Request to Pay](https://apis.io/apis/visa/visa-direct-request-to-pay/) — Send and receive payment requests with Visa Direct request to payInnovate and simplify services for you and your clients with our secure, fast and…
+- [Visa Mobile](https://apis.io/apis/visa/visa-mobile/) — Product integrates with a new e-commerce payment methodVisa Mobile is the new UX for cards e-commerce payments, that is mobile, quicker yet safe - builds on…
+- [Receiver Directed Payouts](https://apis.io/apis/visa/receiver-directed-payouts/) — Securely capture, validate, verify and store a receivers payment credentials within the Alias Directory Service, without the burden of being PCI compliant.
+- [Visa Direct Account and Wallet](https://apis.io/apis/visa/visa-direct-account-and-wallet/) — Visa Direct Account and Wallet is built to help businesses deliver money to billions of endpoints worldwide through ACH, and faster payment networks1 via a…
+- [Visa Direct Connect](https://apis.io/apis/visa/visa-direct-connect/) — Visa Direct Connect reduces the effort to integrate with money movement methods, routes and endpoints supported by Visa Direct.
+- [Visa Chip L3 Testing Report Upload](https://apis.io/apis/visa/visa-chip-l3-testing-report-upload/) — Streamline L3 testing through the use of these APIs.
+- [Visa Travel Notification](https://apis.io/apis/visa/visa-travel-notification/) — Visa Travel Notification Service helps you avoid mistaken purchase declines while your cardholders are traveling by incorporating cardholder self-reported…
+- [DPS Card and Account](https://apis.io/apis/visa/dps-card-and-account/) — Enable issuers to manage their cardholders card and account informationDPS Card and Account Services supports a set of debit, credit, and prepaid card and…
+- [DPS Digital Services](https://apis.io/apis/visa/dps-digital-services/) — DPS Digital Services partners with third-party service providers, integrating with their unique offerings to provide comprehensive business solutions and…
+- [DPS Forward](https://apis.io/apis/visa/dps-forward/) — The best of Visa DPS issuer processing capabilities are accessible through a suite of APIs designed for digital banking platforms. Use DPS Forward to create…
+- [Visa Tokenized Asset Platform (VTAP)](https://apis.io/apis/visa/visa-tokenized-asset-platform-vtap-/) — VTAP provides the tools and infrastructure for banks to tokenize fiat currencies on blockchain networks. Clients can access and test VTAP capabilities…
+- [Visa B2B Payment Controls](https://apis.io/apis/visa/visa-b2b-payment-controls/) — Visa B2B Payment Controls offers authorization-based payment controls solutions for B2B market segments such as Government, Corporate, Commercial and Small…
+- [Visa Flexible Credential (VFC)](https://apis.io/apis/visa/visa-flexible-credential-vfc-/) — Visa Flexible Credential (VFC) enables Issuers and Fintechs to broaden the services they can provide to new and existing cardholders by enabling easy access…
+- [Visa Alias Directory](https://apis.io/apis/visa/visa-alias-directory/) — Visa Alias Directory Service is built to help simplify payments, improve the user experience, and protect sensitive payment credential information by using…
+- [Visa Installment Management](https://apis.io/apis/visa/visa-installment-management/) — The Installment Management Service allows you to provide installment offers to all participating merchants at point-of-sale, online or in-store, giving your…
+- [Visa Faster Payments Gateway](https://apis.io/apis/visa/visa-faster-payments-gateway/) — Visa Faster Payments Gateway_supports both send and receive capabilities for credit transfers and request for return of funds. We set up the digital…
+- [VisaNet Connect](https://apis.io/apis/visa/visanet-connect/) — VisaNet Connect APIs enable Visa clients -- such as acquirers, acquirer-processors, and approved technology partners -- to process in-store, in-app, and…
+- [VisaNet Connect - Issuing](https://apis.io/apis/visa/visanet-connect-issuing/) — VisaNet Connect Issuing APIs are a portfolio of VisaNet Connect APIs that provide direct connectivity to VisaNet for issuers to approve and decline payments…
+- [Visa Account Management service API](https://apis.io/apis/visa/visa-account-management-service-api/) — The Account Management web services are used to manage payment controls for existing card accounts and to request virtual accounts while setting controls.…
+- [Visa Alert History API](https://apis.io/apis/visa/visa-alert-history-api-api/) — Retrieve notification history for accounts and manage customer profiles for alert delivery.
+- [Visa Alerts Preference Management API](https://apis.io/apis/visa/visa-alerts-preference-management-api-api/) — Manage cardholder alert delivery preferences including mobile numbers, email addresses, and device identifiers for notification delivery.
+- [Visa ATM Locator API](https://apis.io/apis/visa/visa-atm-locator-api-api/) — Search for Visa and Plus ATM locations by geographic coordinates, address, or other criteria to help cardholders find nearby cash access points.
+- [Visa Authorization Data API](https://apis.io/apis/visa/visa-authorization-data-api-api/) — Data API will provide the APIs to expose the commercial data (i.e. card financial, invoice data) and authorization data through RESTful Services. The idea…
+- [Visa B2B Connect API](https://apis.io/apis/visa/visa-b2b-connect-api-api/) — Initiate, track, and manage large-value cross-border B2B payment transactions with direct settlement capabilities.
+- [Visa BIN File Transfer API](https://apis.io/apis/visa/visa-bin-file-transfer-api/) — Transfer Account/Token Range File
+- [Visa BIN Files Metadata API](https://apis.io/apis/visa/visa-bin-files-metadata-api/) — Get Bin Files Metadata including number of files, file names, sizes, checksum, creation date.
+- [Visa Business Data Corporate Setup API](https://apis.io/apis/visa/visa-business-data-corporate-setup-api-api/) — Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create…
+- [Visa Business Data Transactions API](https://apis.io/apis/visa/visa-business-data-transactions-api-api/) — Commercial Data API will provide the APIs to expose the commercial data i.e. card financial and invoice data through RESTful Services. The idea is to create…
+- [Visa Buyer Management Service API](https://apis.io/apis/visa/visa-buyer-management-service-api/) — The Buyer Service provides self-service capabilities that simplify and reduce the implementation process for new VPA buyers (and other downstream systems).…
+- [Visa Card on File Data Inquiry API](https://apis.io/apis/visa/visa-card-on-file-data-inquiry-api-api/) — Retrieve information about where a cardholder's Visa payment credentials are stored on file with participating merchants.
+- [Visa CTP Checkout API](https://apis.io/apis/visa/visa-ctp-checkout-api-api/) — The Click to Pay Checkout API enables merchants to initiate and complete checkout transactions using stored Visa credentials, providing consumers with a…
+- [Visa CTP Consumer Management API](https://apis.io/apis/visa/visa-ctp-consumer-management-api-api/) — The Consumer Management API allows SRC Initiators to manage consumer profiles, including enrollment, identity verification, and credential management within…
+- [Visa Customer Rules API](https://apis.io/apis/visa/visa-customer-rules-api-api/) — Register consumer accounts and manage payment rules and thresholds that define which transaction types to block or alert on.
+- [Visa Data Tokens API](https://apis.io/apis/visa/visa-data-tokens-api-api/) — Retrieve tokenized data signals and insights from Visa's payment network for use in personalization, risk assessment, and business analytics.
+- [Visa Foreign Exchange Rates API](https://apis.io/apis/visa/visa-foreign-exchange-rates-api-api/) — The Foreign Exchange Rates API provides an easy access to the Visas currency conversion rate for a given currency pair.
+- [Visa Full BIN List API](https://apis.io/apis/visa/visa-full-bin-list-api/) — Access a complete list of all of the Visa BINs and their associated BIN Attributes
+- [Visa Funds Transfer API](https://apis.io/apis/visa/visa-funds-transfer-api-api/) — Push and pull funds to and from Visa accounts for real-time money movement use cases including person-to-person transfers, business disbursements, and…
+- [Visa Funds Transfer Attributes Inquiry API](https://apis.io/apis/visa/visa-funds-transfer-attributes-inquiry-api-api/) — The Funds Transfer Attributes Inquiry API is often used with a funds transfer to/from a Visa payment account to determine key characteristics of a recipient…
+- [Visa In-App Provisioning for Apple Pay API](https://apis.io/apis/visa/visa-in-app-provisioning-for-apple-pay-api/) — In-App Provisioning for Apple Pay
+- [Visa In-App Provisioning for Google Pay API](https://apis.io/apis/visa/visa-in-app-provisioning-for-google-pay-api/) — In-App Provisioning for Google Pay
+- [Visa In-App Provisioning for Samsung Pay API](https://apis.io/apis/visa/visa-in-app-provisioning-for-samsung-pay-api/) — In-App Provisioning for Samsung Pay
+- [Visa Issuer API](https://apis.io/apis/visa/visa-issuer-api-api/) — API that enables issuers to source acquirer BIN data directly from Visa
+- [Visa Issuer Stop Advice API](https://apis.io/apis/visa/visa-issuer-stop-advice-api-api/) — Issuers can place stop advices in VAU to block specific merchants from receiving an automatic VAU credential update (e.g., following reported fraud) while…
+- [Visa Merchant Search API](https://apis.io/apis/visa/visa-merchant-search-api-api/) — Search for merchants by name and location to retrieve Visa merchant identifiers and related details.
+- [Visa Nearby Merchants API](https://apis.io/apis/visa/visa-nearby-merchants-api-api/) — Discover nearby Visa-accepting merchants based on geographic coordinates or address information.
+- [Visa Offers Data API](https://apis.io/apis/visa/visa-offers-data-api-api/) — Retrieve offer data available to the caller, filtered by various offer attributes such as merchant, category, location, and date range.
+- [Visa Payment Account Validation API](https://apis.io/apis/visa/visa-payment-account-validation-api-api/) — The Payment Account Validation API allows applications to run validations of the payment account before processing a transaction ensuring greater…
+- [Visa Payment Service API](https://apis.io/apis/visa/visa-payment-service-api/) — The Payment web service is used for processing payments and sending payment remittance information to the appropriate suppliers.
+- [Visa Push Authorization Data API](https://apis.io/apis/visa/visa-push-authorization-data-api-api/) — PushNotification is a generic data channel to send Commercial Data to the end user over VDP. This API has capability to send Authorization data sets,…
+- [Visa Reference Data API](https://apis.io/apis/visa/visa-reference-data-api-api/) — Retrieve reference data values used for offer filtering criteria including merchant categories, countries, and offer types.
+- [Visa Registered User Details Service API](https://apis.io/apis/visa/visa-registered-user-details-service-api/) — Self Registration web services are used to register the new users.
+- [Visa Single BIN Lookup API](https://apis.io/apis/visa/visa-single-bin-lookup-api/) — Lookup BIN Attributes for a single Payment Account or BIN
+- [Visa Single Use Account Pool Maintenance Service API](https://apis.io/apis/visa/visa-single-use-account-pool-maintenance-service-api/) — The Proxy web service is used for managing a pool of Single-Use Accounts (SUAs) linked to a proxy. With this web service, you can create proxy pool(s) for a…
+- [Visa Supplier Service API](https://apis.io/apis/visa/visa-supplier-service-api/) — The Supplier web service is used for creating and maintaining a supplier.
+- [Visa Termination Inquiry APIs API](https://apis.io/apis/visa/visa-termination-inquiry-apis-api/) — Termination Inquiry API allows Acquirers to identify Merchants and Agents terminated by other Acquirers and pull the termination details directly from the…
+- [Visa Transaction Enrichment API](https://apis.io/apis/visa/visa-transaction-enrichment-api-api/) — Enrich transaction data with additional merchant information including street addresses, URLs, logos, and contact details.
+- [Visa Universal Card Enrollment API](https://apis.io/apis/visa/visa-universal-card-enrollment-api/) — Universal Card Enrollment
+- [Visa URL Generation API](https://apis.io/apis/visa/visa-url-generation-api-api/) — URL Generation API
+- [Visa VCS Enrollment API](https://apis.io/apis/visa/visa-vcs-enrollment-api-api/) — The API is used to onboard and register companies, users and cards in Commercial Space
+- [Visa Account Updater Acquirer API](https://apis.io/apis/visa/visa-visa-account-updater-acquirer-api-api/) — Visa Account Updater Acquirer API
+- [Visa Account Updater Merchant API](https://apis.io/apis/visa/visa-visa-account-updater-merchant-api-api/) — Visa Account Updater Merchant API for merchant enrollment and search.
+- [Visa Card Program Enrollment API](https://apis.io/apis/visa/visa-visa-card-program-enrollment-api/) — VCPE supports issuers that want to offer instant/digital issuance or re-issuance; as well as allow their cardholders to upgrade and downgrade cards in their…
+- [Visa Consent Management API](https://apis.io/apis/visa/visa-visa-consent-management-api-api/) — Visa Consent Management API
+- [Visa Supplier Matching Service API](https://apis.io/apis/visa/visa-visa-supplier-matching-service-api-api/) — Visa Supplier Matching Service
+- [Visa Supplier Matching Service Bulk API](https://apis.io/apis/visa/visa-visa-supplier-matching-service-bulk-api-api/) — VISA Supplier Matching Service
+- [Visa Workflows API](https://apis.io/apis/visa/visa-workflows-api/) — Workflows
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Moved to /providers/visa/](https://apis.io/graphqls/visa/visa-graphql/)
 
-- Credentials
-- Credit Cards
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [OpenAPI](openapi/card-on-file-data-inquiry.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/card-on-file-data-inquiry/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
+- [Visa Agentic Access](https://apis.io/agentic-access/visa/visa-agentic-access/)
 
-### Foreign Exchange
+#### JSON Schema (3)
 
-Foreign Exchange, also known as forex or FX, is the global marketplace where currencies are traded. It is the largest financial market in the world, with an average daily trading volume exceeding $5 trillion. The main purpose of forex trading is to facilitate international trade and investment by enabling businesses and individuals to exchange one currency for another.
+The data models the API reads and writes.
 
-- **Human URL:** [https://developer.visa.com/capabilities/foreign_exchange](https://developer.visa.com/capabilities/foreign_exchange)
+- [Visa Payment Account](https://apis.io/schemas/visa/visa-account/)
+- [Visa Merchant](https://apis.io/schemas/visa/visa-merchant/)
+- [Visa Payment Transaction](https://apis.io/schemas/visa/visa-payment-transaction/)
 
-#### Tags
+#### JSON Structure (2)
 
-- Currency
-- Foreign Exchange
+Data models expressed in JSON Structure.
 
-#### Properties
+- [Visa Merchant Structure](https://apis.io/json-structure/visa/visa-merchant-structure/)
+- [Visa Payment Transaction Structure](https://apis.io/json-structure/visa/visa-payment-transaction-structure/)
 
-- [OpenAPI](openapi/foreign-exchange.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://developer.visa.com/capabilities/foreign_exchange/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/foreign_exchange/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-- [Documentation](https://developer.visa.com/capabilities/foreign_exchange/reference#tag/Foreign-Exchange-Rates-API/operation/ForeignExchangeRates_v2%20-%20Latest)
+#### JSON-LD (1)
 
-### Payment Account Attributes Inquiry
+Linked-data contexts for the provider's vocabulary.
 
-Payment Account Attributes Inquiry is a service that allows users to access and review specific details and information about their payment accounts. This includes information such as account balance, transaction history, available credit, payment due dates, and any associated fees or charges. By utilizing this service, individuals can stay informed about their financial situation and make informed decisions regarding their payment accounts.
+- [Visa Context](https://apis.io/jsonld/visa/visa-context/)
 
-- **Human URL:** [https://developer.visa.com/capabilities/paai](https://developer.visa.com/capabilities/paai)
+#### Vocabulary (1)
 
-#### Tags
+The provider's domain terms, defined.
 
-- Accounts
-- Attributes
+- [Visa Vocabulary](https://apis.io/vocabularies/visa/visa-vocabulary/)
 
-#### Properties
+#### Examples (6)
 
-- [OpenAPI](openapi/payment-account-attributes-inquiry.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://developer.visa.com/capabilities/paai/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/paai/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-- [Terms of Service](https://developer.visa.com/capabilities/paai/product-terms)
-- [Documentation](https://developer.visa.com/capabilities/paai/reference#tag/Funds-Transfer-Attributes-Inquiry-API/operation/Funds%20Transfer%20Inquiry_v5%20-%20Latest)
+Example requests and responses.
 
-### Visa Account Updater
+- [Visa Direct Push Funds Example](https://apis.io/examples/visa/visa-direct-push-funds-example/)
+- [Visa Foreign Exchange Rates Example](https://apis.io/examples/visa/visa-foreign-exchange-rates-example/)
+- [Visa Global Atm Locator Example](https://apis.io/examples/visa/visa-global-atm-locator-example/)
+- [Visa Merchant Search Example](https://apis.io/examples/visa/visa-merchant-search-example/)
+- [Visa Payment Account Validation Example](https://apis.io/examples/visa/visa-payment-account-validation-example/)
+- [Visa Transaction Controls Example](https://apis.io/examples/visa/visa-transaction-controls-example/)
 
-Visa Account Updater is a service that automatically updates cardholder account information, such as expiration dates and card numbers, with participating merchants. This ensures that cardholders do not experience interruptions in recurring payments or subscriptions due to outdated information. By providing merchants with up-to-date account information, Visa Account Updater helps reduce declined transactions, improve customer satisfaction, and increase transaction approval rates.
+#### Collections (69)
 
-- **Human URL:** [https://developer.visa.com/capabilities/vau](https://developer.visa.com/capabilities/vau)
+Postman and Open Collection request collections.
 
-#### Tags
+- [B2B Virtual Account Payment Method](https://apis.io/collections/visa/open-b2b-virtual-account-payment-method/)
+- [Card on File Data Inquiry](https://apis.io/collections/visa/open-card-on-file-data-inquiry/)
+- [API Collection](https://apis.io/collections/visa/open-vca-data-exchange/)
+- [Foreign Exchange Rates Account Management service API](https://apis.io/collections/visa/open-visa-account-management-service-api/)
+- [Foreign Exchange Rates Alert History API API](https://apis.io/collections/visa/open-visa-alert-history-api-api/)
+- [Foreign Exchange Rates Alerts Preference Management API API](https://apis.io/collections/visa/open-visa-alerts-preference-management-api-api/)
+- [Foreign Exchange Rates ATM Locator API API](https://apis.io/collections/visa/open-visa-atm-locator-api-api/)
+- [Foreign Exchange Rates Authorization Data API API](https://apis.io/collections/visa/open-visa-authorization-data-api-api/)
+- [Visa B2B Connect](https://apis.io/collections/visa/open-visa-b2b-connect/)
+- [Foreign Exchange Rates B2B Connect API API](https://apis.io/collections/visa/open-visa-b2b-connect-api-api/)
+- [Visa BIN Attribute Sharing Service](https://apis.io/collections/visa/open-visa-bin-attribute-sharing/)
+- [Foreign Exchange Rates BIN File Transfer API](https://apis.io/collections/visa/open-visa-bin-file-transfer-api/)
+- [Foreign Exchange Rates BIN Files Metadata API](https://apis.io/collections/visa/open-visa-bin-files-metadata-api/)
+- [Foreign Exchange Rates Business Data Corporate Setup API API](https://apis.io/collections/visa/open-visa-business-data-corporate-setup-api-api/)
+- [Visa Business Data Solutions](https://apis.io/collections/visa/open-visa-business-data-solutions/)
+- [Foreign Exchange Rates Business Data Transactions API API](https://apis.io/collections/visa/open-visa-business-data-transactions-api-api/)
+- [Foreign Exchange Rates Buyer Management Service API](https://apis.io/collections/visa/open-visa-buyer-management-service-api/)
+- [Foreign Exchange Rates Card on File Data Inquiry API API](https://apis.io/collections/visa/open-visa-card-on-file-data-inquiry-api-api/)
+- [Visa Click to Pay](https://apis.io/collections/visa/open-visa-click-to-pay/)
+- [Visa Consent Management Service](https://apis.io/collections/visa/open-visa-consent-management-service/)
+- [Foreign Exchange Rates CTP Checkout API API](https://apis.io/collections/visa/open-visa-ctp-checkout-api-api/)
+- [Foreign Exchange Rates CTP Consumer Management API API](https://apis.io/collections/visa/open-visa-ctp-consumer-management-api-api/)
+- [Foreign Exchange Rates Customer Rules API API](https://apis.io/collections/visa/open-visa-customer-rules-api-api/)
+- [Visa Data Tokens](https://apis.io/collections/visa/open-visa-data-tokens/)
+- [Foreign Exchange Rates Data Tokens API API](https://apis.io/collections/visa/open-visa-data-tokens-api-api/)
+- …and 44 more published on APIs.io
 
-- Accounts
-- Updates
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [OpenAPI](openapi/visa-account-updater.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://developer.visa.com/capabilities/vau/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/vau/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-- [F A Q](https://developer.visa.com/capabilities/vau/vau-faq)
-- [Terms of Service](https://developer.visa.com/capabilities/vau/product-terms)
-- [Documentation](https://developer.visa.com/capabilities/vau/reference#tag/Issuer-Stop-Advice-API/operation/stopAdviceUsingPOST_v1%20-%20Latest)
-
-### Visa BIN Attribute Sharing Service
-
-Visa BIN Attribute Sharing Service is a platform that allows financial institutions and merchants to exchange information about Visa card transactions in real-time. This service provides valuable insights into cardholder behavior and transaction patterns, helping businesses make informed decisions about fraud prevention, marketing strategies, and customer targeting.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service](https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service)
-
-#### Tags
-
-- BIN
-- Fraud
-- VBASS
-
-#### Properties
-
-- [OpenAPI](openapi/visa-bin-attribute-sharing.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/docs-authentication)
-- [F A Q](https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/faq)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-- [Terms of Service](https://developer.visa.com/capabilities/visa-bin-attribute-sharing-service/product-terms)
-
-### Visa Business Data Solutions
-
-Visa Business Data Solutions is a cutting-edge technology company that specializes in providing businesses with valuable data insights and analytics to help them make informed decisions. By leveraging Visa's vast network and access to transaction data, Visa Business Data Solutions offers a comprehensive suite of products and services that help businesses understand consumer behavior, identify growth opportunities, and optimize their operations.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vbds](https://developer.visa.com/capabilities/vbds)
-
-#### Tags
-
-- Analytics
-- Data
+- [Visa — jsonschema rules](https://apis.io/rules/visa/visa-jsonschema-spectral-rules/)
+- [Visa API Rules](https://apis.io/rules/visa/visa-rules/)
 
-#### Properties
+#### Security (2)
 
-- [OpenAPI](openapi/visa-business-data-solutions.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://developer.visa.com/capabilities/vbds/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/vbds/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-- [Terms of Service](https://developer.visa.com/capabilities/vbds/product-terms)
-- [Documentation](https://developer.visa.com/capabilities/vbds/reference#tag/Authorization-Data-API/operation/getAuthDataUsingPOST_v1%20-%20Latest)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Visa Data Tokens
+- [Visa Authentication](https://apis.io/security/visa/visa-authentication/)
+- [Visa Domain Security](https://apis.io/security/visa/visa-domain-security/)
 
-Visa Data Tokens is a technology developed by Visa that replaces sensitive payment card information, such as credit card numbers, with a unique digital identifier called a token. These tokens are used in place of actual card data during transactions, adding an extra layer of security for consumers and merchants. By using Visa Data Tokens, businesses can reduce the risk of data breaches and fraud, while still providing a seamless and secure payment experience for their customers.
+#### Plans and pricing (2)
 
-- **Human URL:** [https://developer.visa.com/capabilities/visa-data-tokens](https://developer.visa.com/capabilities/visa-data-tokens)
+Published plans, tiers and prices.
 
-#### Tags
+- [Visa Plans Pricing](https://apis.io/plans/visa/visa-plans-pricing/)
+- [Visa Price Estimates](https://apis.io/plans/visa/visa-price-estimates/)
 
-- Historical
-- Insights
-- Personalization
-- Predictive
-- Signals
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [OpenAPI](openapi/visa-data-tokens.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Visa Rate Limits](https://apis.io/rate-limits/visa/visa-rate-limits/)
 
-### Visa Practical Money Skills Financial Education Platform
+#### FinOps (1)
 
-Visa Practical Money Skills Financial Education Platform is an online resource that provides valuable tools and information to help individuals improve their financial knowledge and skills. The platform offers a wide range of resources, including articles, videos, calculators, and games, to help users learn about budgeting, credit management, savings, investing, and more.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://developer.visa.com/capabilities/practical-money-skills](https://developer.visa.com/capabilities/practical-money-skills)
+- [Visa Finops](https://apis.io/finops/visa/visa-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Getting Started](https://developer.visa.com/capabilities/practical-money-skills/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/practical-money-skills/docs-authentication)
-- [Terms of Service](https://developer.visa.com/capabilities/practical-money-skills/product-terms)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Visa Card Program Management
-
-Visa Card Program Management oversees the development, implementation, and monitoring of Visa's various credit and debit card programs in collaboration with financial institutions, merchants, and other stakeholders. This involves managing relationships with card issuers, ensuring compliance with payment card regulations, and monitoring card program performance to drive growth and profitability.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vcpm](https://developer.visa.com/capabilities/vcpm)
-
-#### Tags
-
-- Cards
-- Programs
-
-#### Properties
-
-- [OpenAPI](openapi/visa-card-program-management.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://developer.visa.com/capabilities/vcpm/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/vcpm/docs-authentication)
-- [Errors](https://developer.visa.com/capabilities/vcpm/docs-error-codes)
-- [Terms of Service](https://developer.visa.com/capabilities/vcpm/product-terms)
-- [Documentation](https://developer.visa.com/capabilities/vcpm/reference#tag/Visa-Card-Program-Enrollment/operation/enrollmentV2UsingPOST_v2%20-%20Latest)
-
-### Visa Click to Pay
-
-Visa Click to Pay is a streamlined and secure online payment service offered by Visa that allows customers to make purchases with just a few clicks. By storing their payment information in one secure location, users can make purchases quickly and easily without having to enter their payment details each time. Visa Click to Pay also provides additional security features such as encryption and tokenization to protect users' sensitive information during transactions.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-secure-remote-commerce](https://developer.visa.com/capabilities/visa-secure-remote-commerce)
-
-#### Tags
-
-- Checkout
-- Payments
-
-#### Properties
-
-- [OpenAPI](openapi/visa-click-to-pay.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs-getting-started)
-- [Glossary](https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs-glossary)
-- [Documentation](https://developer.visa.com/capabilities/visa-secure-remote-commerce/reference#tag/CTP-Checkout-API/operation/CTP%20Checkout%20API_v1%20-%20Latest)
-
-### Visa Digital Enablement Lite App
-
-The Visa Digital Enablement Lite App is a cutting-edge mobile application that revolutionizes the way consumers interact with their Visa credit and debit cards. With this app, users can securely store their card information on their smartphones and use it to make contactless payments at participating merchants. The app also provides real-time notifications for all card transactions, helping users keep track of their spending and secure their financial data.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-digital-enablement-lite](https://developer.visa.com/capabilities/visa-digital-enablement-lite)
-
-#### Tags
-
-- Apple Pay
-- Digital Wallet
-- Google Wallet
-- White-Label
-
-#### Properties
-
-- [OpenAPI](https://developer.visa.com/capabilities/visa-digital-enablement-lite/docs-getting-started) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/visa-digital-enablement.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Terms of Service](https://developer.visa.com/capabilities/visa-digital-enablement-lite/product-terms)
-- [Documentation](https://developer.visa.com/capabilities/visa-digital-enablement-lite/reference#tag/URL-Generation-API_/paths/1inapp1provision1appclip1url/post_v1%20-%20Latest)
-
-### Visa Digital Enablement Lite App
-
-The Visa Digital Enablement Lite App is a cutting-edge mobile application that revolutionizes the way consumers interact with their Visa credit and debit cards. With this app, users can securely store their card information on their smartphones and use it to make contactless payments at participating merchants. The app also provides real-time notifications for all card transactions, helping users keep track of their spending and secure their financial data.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-digital-enablement-lite](https://developer.visa.com/capabilities/visa-digital-enablement-lite)
-
-#### Tags
-
-- Apple Pay
-- Digital Wallet
-- Google Wallet
-- White-Label
-
-#### Properties
-
-- [OpenAPI](openapi/visa-digital-enablement.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Terms of Service](https://developer.visa.com/capabilities/visa-digital-enablement-lite/product-terms)
-- [Documentation](https://developer.visa.com/capabilities/visa-digital-enablement-lite/reference#tag/URL-Generation-API_/paths/1inapp1provision1appclip1url/post_v1%20-%20Latest)
-
-### Visa Merchant Screening Service
-
-Visa Merchant Screening Service is a tool provided by Visa that helps merchants to assess and manage risk associated with potential business partners. This service enables merchants to screen and evaluate the trustworthiness and legitimacy of their prospective merchant partners by conducting thorough background checks and monitoring their activities.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-merchant-screening-service](https://developer.visa.com/capabilities/visa-merchant-screening-service)
-
-#### Tags
-
-- Merchants
-- Screening
-
-#### Properties
-
-- [Getting Started](https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-getting-started)
-- [Authentication](https://developer.visa.com/capabilities/visa-merchant-screening-service/docs-authentication)
-- [Errors](https://developer.visa.com/pages/visa-developer-error-codes)
-- [Documentation](https://developer.visa.com/capabilities/visa-merchant-screening-service/reference#tag/Termination-Inquiry-APIs/operation/RetroActive%20Alert%20of%20Terminated%20Merchants%20or%20Agent_v2%20-%20Latest)
-- [OpenAPI](openapi/visa-merchant-screening.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### B2B Virtual Account Payment Method
-
-B2B Virtual Account Payment Method is a digital payment solution designed for businesses to streamline their payment processes when dealing with suppliers or partners. This method allows businesses to create virtual accounts for each transaction, providing a secure and efficient way to transfer funds without the need for traditional banking methods.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vpa](https://developer.visa.com/capabilities/vpa)
-
-#### Tags
-
-- Accounts
-- B2B
-- Payments
-
-#### Properties
-
-- [OpenAPI](openapi/b2b-virtual-account-payment-method.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://developer.visa.com/capabilities/vpa)
-
-### Visa In-App Provisioning
-
-Visa In-App Provisioning is a technology that allows consumers to securely add their Visa payment cards to various mobile applications for use in making purchases. This innovative solution enables users to easily and conveniently link their cards to participating merchants and payment services within the app ecosystem.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-in-app-provisioning](https://developer.visa.com/capabilities/visa-in-app-provisioning)
-
-#### Tags
-
-- Applications
-- Mobile
-- Payments
-
-#### Properties
-
-- [OpenAPI](openapi/visa-in-app-provisioning.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Documentation](https://developer.visa.com/capabilities/visa-in-app-provisioning)
-
-### Visa Resolve Online
-
-Visa Resolve Online is a platform developed by Visa that enables financial institutions and merchants to streamline the process of resolving disputed transactions. It provides a centralized system for submitting and managing disputes, allowing for efficient communication and collaboration between all parties involved. With Visa Resolve Online, users can track the status of disputes in real-time, access relevant documentation and evidence, and ultimately reach a timely resolution.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-resolve-online](https://developer.visa.com/capabilities/visa-resolve-online)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-resolve-online)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Europe Payment Stop Service
-
-Visa Europe Payment Stop Service is a feature offered by Visa that allows cardholders to temporarily suspend or cancel any recurring or future payments set up with their Visa card. This can be helpful in cases where cardholders have lost their card, suspect fraudulent activity, or simply want to pause payments for a period of time.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-stop-payment-service](https://developer.visa.com/capabilities/visa-stop-payment-service)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-stop-payment-service/docs-getting-started)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Subscription Manager
-
-Visa Subscription Manager is a service that allows consumers to easily manage and control their recurring payments and subscriptions. With this platform, users can view all of their recurring charges in one place, set reminders for upcoming payments, and easily cancel or change subscriptions as needed. This tool provides consumers with greater transparency and control over their spending, helping them to better manage their finances and avoid unexpected charges.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-subscription-manager](https://developer.visa.com/capabilities/visa-subscription-manager)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-subscription-manager)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Order Insight Digital
-
-When cardholders are reviewing their card statement, confusion over if a purchase is legitimate is one of the most common occurrances. A cardholders first reaction when this occurs is typically to pick up the phone to contact the issuing bank, tying up valuable issuer resources in an attempt to identify this purchase and/or pursue a dispute.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry](https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-cardholder-purchase-inquiry)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa dCVV2 Generate
-
-Visa dCVV2 Generate is a tool designed to help businesses generate dynamic card verification values (dCVV2) for online transactions. This security feature adds an extra layer of protection by providing a unique code that is only valid for a short period of time, making it more difficult for fraudsters to use stolen card information for unauthorized purchases.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-dcvv2-generate](https://developer.visa.com/capabilities/visa-dcvv2-generate)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/visa-dcvv2-generate/docs-getting-started)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Risk Manager
-
-Visa Risk Manager is a web portal that provides a comprehensive suite of fraud and risk management tools that can be accessed through Visa Online 24/7. It is specifically designed to help issuers optimize fraud loss prevention and maximize profitability by providing clients with an effective transaction risk management decisioning system.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vrm](https://developer.visa.com/capabilities/vrm)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/vrm)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Token Service
-
-Visa Token Service is a technology solution that aims to enhance the security and convenience of digital payments. It replaces sensitive card information with a unique digital identifier, called a token, which is used for payment transactions. This ensures that actual card details are not shared during the transaction process, reducing the risk of fraud and unauthorized access to payment information.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vts](https://developer.visa.com/capabilities/vts)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/vts/docs)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Token Service Provisioning and Credential Management
-
-Visa Token Service Provisioning and Credential Management is a secure platform that allows consumers to make purchases using a tokenized payment method, which replaces sensitive payment information with a unique token. This platform provisions tokens to mobile devices, wearables, and other connected devices, enabling consumers to make fast and secure payments without exposing their actual payment card details.
-
-- **Human URL:** [https://developer.visa.com/capabilities/token-service-provisioning](https://developer.visa.com/capabilities/token-service-provisioning)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/token-service-provisioning)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Merchant Search
-
-Introducing Merchant Search, a cutting-edge API designed to elevate your transaction experience and enhance data quality. This innovative solution provides you with enriched and precise merchant data, creating a more transparent and effective transaction process. Merchant Search is more than just an API, it's a tool that empowers businesses by improving data accuracy, streamlining operations, and providing insights for better decision-making.
-
-- **Human URL:** [https://developer.visa.com/capabilities/merchant_search](https://developer.visa.com/capabilities/merchant_search)
-
-#### Tags
-
-- Merchants
-- Search
-
-#### Properties
-
-- [OpenAPI](openapi/visa-merchant-search.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://developer.visa.com/capabilities/merchant_search/docs)
-
-### Visa B2B Connect
-
-Visa B2B Connect is built on Visa's capabilities and formidable core payments experience with distributed ledger technology to provide direct settlements of large-value transactions. Visa B2B Connect can help financial institutions and their clients overcome costly processes and geographic barriers, which translates to an improved, seamless end-to-end experience.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vba](https://developer.visa.com/capabilities/vba)
-
-#### Tags
-
-- B2B
-- Payments
-
-#### Properties
-
-- [OpenAPI](openapi/visa-b2b-connect.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://developer.visa.com/capabilities/vba/docs)
-
-### Visa B2B Connect is built on Visa's capabilities and formidable core payments experience with distributed ledger technology to provide direct settlements of large-value transactions. Visa B2B Connect can help financial institutions and their clients overcome costly processes and geographic barriers, which translates to an improved, seamless end-to-end experience.
-
-Visa Card Eligibility Service (VCES) is an account eligibility verification product enabling our issuers, merchants, partners, and developers to check eligibility/access rights to exclusive benefits, offers, and promotions, subject to terms and restrictions, in real-time.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vces](https://developer.visa.com/capabilities/vces)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Merchant Offers
-
-The Visa Merchant Offers Resource Center (VMORC) is a central offer repository that gives an easy way to promote merchant offers to their cardholders._VMORC is a multilingual application used by various teams worldwide to store offers as they are procured. Additionally, VMORC provides an Application Programming Interface (API) for users to extract offers to display on custom applications or pages.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vmorc](https://developer.visa.com/capabilities/vmorc)
-
-#### Tags
-
-- Merchants
-- Offers
-
-#### Properties
-
-- [OpenAPI](openapi/visa-merchant-offers.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://developer.visa.com/capabilities/vmorc/docs)
-
-### Visa Offers Platform
-
-Visas Customers can get access to near real-time transaction data via the Visa Offers Platform to execute and manage their card-linked programs. For cardholders who have consented to take part in the Customers program, VOP can access the VisaNet authorization and settlement stream to qualify transactions and send the relevant notifications to the Customer in near real-time. Using the VOP APIs, Customers can leverage capabilities to enhance their own web and mobile applications.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vop](https://developer.visa.com/capabilities/vop)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/vop)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Installment Transaction Service
-
-The Installments Transaction Service allows you to offer Buy Now Pay Later (BNPL) plans to your customers through a set of APIs or on ISO. The plans can be offered pre-purchase, during, or post-purchase and give consumers the opportunity to pay for qualifying purchases over time. For you, it means attracting and retaining a larger customer base with a seamless user experience that is scalable and cost effective.
-
-- **Human URL:** [https://developer.visa.com/capabilities/installment-transaction-service](https://developer.visa.com/capabilities/installment-transaction-service)
-
-#### Properties
-
-- [Documentation](https://developer.visa.com/capabilities/installment-transaction-service/docs)
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Kernel in the Cloud
-
-Kernel in the Cloud is pioneering innovation via a software-based cloud infrastructure to democratize acceptance. It provides a secure, modular and service architecture-oriented solution to enable acceptance. This solution eliminates traditional hardware constraints and enables faster and easier deployment of value-added services at the point-of-sale.
-
-- **Human URL:** [https://developer.visa.com/capabilities/kernel-in-the-cloud](https://developer.visa.com/capabilities/kernel-in-the-cloud)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Direct Request to Pay
-
-Send and receive payment requests with Visa Direct request to payInnovate and simplify services for you and your clients with our secure, fast and convenient messaging framework.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-direct-request-to-pay](https://developer.visa.com/capabilities/visa-direct-request-to-pay)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Mobile
-
-Product integrates with a new e-commerce payment methodVisa Mobile is the new UX for cards e-commerce payments, that is mobile, quicker yet safe - builds on SRC and regular CNP transactions rails.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-mobile](https://developer.visa.com/capabilities/visa-mobile)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Receiver Directed Payouts
-
-Securely capture, validate, verify and store a receivers payment credentials within the Alias Directory Service, without the burden of being PCI compliant.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-receiver-directed-payouts](https://developer.visa.com/capabilities/visa-receiver-directed-payouts)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Direct
-
-Help drive growth for you and your clients with fast, convenient and secure payments worldwide2.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa_direct](https://developer.visa.com/capabilities/visa_direct)
-
-#### Tags
-
-- Payments
-- Transfers
-
-#### Properties
-
-- [OpenAPI](openapi/visa-direct.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://developer.visa.com/capabilities/visa_direct/docs)
-
-### Visa Direct Account and Wallet
-
-Visa Direct Account and Wallet is built to help businesses deliver money to billions of endpoints worldwide through ACH, and faster payment networks1 via a single integration. Support your clients with a payment solution that can help meet their operational, commercial, and regulatory needs.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-direct-account-and-wallet](https://developer.visa.com/capabilities/visa-direct-account-and-wallet)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Direct Connect
-
-Visa Direct Connect reduces the effort to integrate with money movement methods, routes and endpoints supported by Visa Direct.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-direct-connect](https://developer.visa.com/capabilities/visa-direct-connect)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Chip L3 Testing Report Upload
-
-Streamline L3 testing through the use of these APIs.
-
-- **Human URL:** [https://developer.visa.com/capabilities/l3-chip-compliance](https://developer.visa.com/capabilities/l3-chip-compliance)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Global ATM Locator
-
-Visa Global ATM Locator enables cardholders to search for Visa/Plus ATM locations around the world, via the Web or from their internet-enabled mobile devices.The Visa Global ATM Locator service lets cardholders find a convenient ATM when they need cash from over 1 million ATMs in over 200 countries. The ATM Locator Service is a cost effective way to deliver user friendly, trusted information when users need cash while travelling or in emergencies.
-
-- **Human URL:** [https://developer.visa.com/capabilities/atmlocator](https://developer.visa.com/capabilities/atmlocator)
-
-#### Tags
-
-- ATM
-- Locator
-
-#### Properties
-
-- [OpenAPI](openapi/visa-global-atm-locator.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://developer.visa.com/capabilities/atmlocator/docs)
-
-### Visa Travel Notification
-
-Visa Travel Notification Service helps you avoid mistaken purchase declines while your cardholders are traveling by incorporating cardholder self-reported travel plans into the VisaNet authorization message. With Visa Travel Notification Service, Visa informs you whether your cardholder is transacting during the travel dates and at the travel destination they reported, helping you more confidently approve transactions when your cardholders make purchases while travelling.
-
-- **Human URL:** [https://developer.visa.com/capabilities/tns](https://developer.visa.com/capabilities/tns)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### DPS Card and Account
-
-Enable issuers to manage their cardholders card and account informationDPS Card and Account Services supports a set of debit, credit, and prepaid card and account services. The_DPS Card and Account Services APIs can be used by any developer in the sandbox._.
-
-- **Human URL:** [https://developer.visa.com/capabilities/dps-card-and-account-services](https://developer.visa.com/capabilities/dps-card-and-account-services)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### DPS Digital Services
-
-DPS Digital Services partners with third-party service providers, integrating with their unique offerings to provide comprehensive business solutions and richer service offerings for issuers.
-
-- **Human URL:** [https://developer.visa.com/capabilities/dps-digital-services](https://developer.visa.com/capabilities/dps-digital-services)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### DPS Forward
-
-The best of Visa DPS issuer processing capabilities are accessible through a suite of APIs designed for digital banking platforms. Use DPS Forward to create powerful card products and digital payment solutions._.
-
-- **Human URL:** [https://developer.visa.com/capabilities/dps-forward-services](https://developer.visa.com/capabilities/dps-forward-services)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Tokenized Asset Platform (VTAP)
-
-VTAP provides the tools and infrastructure for banks to tokenize fiat currencies on blockchain networks. Clients can access and test VTAP capabilities through an API layer that connects to blockchain infrastructure and utilizes a Visa-developed standard for issuing fiat-backed tokens. Clients can access VTAP in a nonvalue Sandbox testing phase that can be used for different tokenization use cases._.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-tokenized-asset-platform](https://developer.visa.com/capabilities/visa-tokenized-asset-platform)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa B2B Payment Controls
-
-Visa B2B Payment Controls offers authorization-based payment controls solutions for B2B market segments such as Government, Corporate, Commercial and Small Business. This service allows more security and safety for commercial payments and provides issuers and their third-party providers with spend protection mechanisms.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-b2b-payment-controls](https://developer.visa.com/capabilities/visa-b2b-payment-controls)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Flexible Credential (VFC)
-
-Visa Flexible Credential (VFC) enables Issuers and Fintechs to broaden the services they can provide to new and existing cardholders by enabling easy access to multiple funding sources through a single Visa credential.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-flexible-credential](https://developer.visa.com/capabilities/visa-flexible-credential)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Transaction Controls
-
-VTC control-types let cardholders place_their own rules on_a payment cards use and when to be_notified of_different financial events._Independent alert and decline settings can be_tailored to different_ transaction and merchant types (e.g. ATM,_Ecom, Gasoline, Gambling...)_or_can be applied_to all_payment account activity.
-
-- **Human URL:** [https://developer.visa.com/capabilities/vctc](https://developer.visa.com/capabilities/vctc)
-
-#### Tags
-
-- Alerts
-- Controls
-
-#### Properties
-
-- [OpenAPI](openapi/visa-transaction-controls.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://developer.visa.com/capabilities/vctc/docs)
-
-### Visa Alias Directory
-
-Visa Alias Directory Service is built to help simplify payments, improve the user experience, and protect sensitive payment credential information by using Aliases._Alias Directory offers capabilities for clients to link Aliases, such as mobile numbers or email addresses, to payment credentials such as cards or bank accounts. Clients can manage the lifecycle of an Alias and resolve an Alias to receive the associated payment credential.
-
-- **Human URL:** [https://developer.visa.com/capabilities/alias-directory-service](https://developer.visa.com/capabilities/alias-directory-service)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Installment Management
-
-The Installment Management Service allows you to provide installment offers to all participating merchants at point-of-sale, online or in-store, giving your cardholders access to a new payment method._.
-
-- **Human URL:** [https://developer.visa.com/capabilities/installment-management-service](https://developer.visa.com/capabilities/installment-management-service)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Visa Faster Payments Gateway
-
-Visa Faster Payments Gateway_supports both send and receive capabilities for credit transfers and request for return of funds. We set up the digital infrastructure - your participating account holders send and receive payments any time of day, every day, including holidays and weekends.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visa-faster-payments-gateway](https://developer.visa.com/capabilities/visa-faster-payments-gateway)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VisaNet Connect
-
-VisaNet Connect APIs enable Visa clients -- such as acquirers, acquirer-processors, and approved technology partners -- to process in-store, in-app, and online payments through a direct interface to Visas global payment system. Clients can quickly and securely process these and other payments solutions over a simple internet connection to VisaNet, eliminating the need for installing hardware at the clients site._.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visanet-connect-acceptance](https://developer.visa.com/capabilities/visanet-connect-acceptance)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### VisaNet Connect - Issuing
-
-VisaNet Connect  Issuing APIs are a portfolio of VisaNet Connect APIs that provide direct connectivity to VisaNet for issuers to approve and decline payments requested by their cardholders or process clearing requests submitted by acquirers. The VisaNet Connect  Issuing APIs support a broad range of payment types, including point-of-sale, ecommerce, digital wallets, and ATMs. Connectivity to VisaNet is provided via a lightweight, easy-to-integrate set of RESTful APIs.
-
-- **Human URL:** [https://developer.visa.com/capabilities/visanet-connect-issuing](https://developer.visa.com/capabilities/visanet-connect-issuing)
-
-#### Properties
-
-- [Postman Collection](collections/b2b-virtual-account-payment-method.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/b2b-virtual-account-payment-method.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/card-on-file-data-inquiry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/card-on-file-data-inquiry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-b2b-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-b2b-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-bin-attribute-sharing.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-bin-attribute-sharing.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-business-data-solutions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-business-data-solutions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-click-to-pay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-click-to-pay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-consent-management-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-consent-management-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-data-tokens.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-data-tokens.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-direct.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-direct.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-global-atm-locator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-global-atm-locator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-offers.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-offers.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-screening.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-screening.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-merchant-search.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-merchant-search.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-supplier-matching-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-supplier-matching-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/visa-transaction-controls.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/visa-transaction-controls.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/visa)
-- [LinkedIn](https://www.linkedin.com/company/visa)
-- [Getting Started](https://developer.visa.com/capabilities/vdp-pilot-program/docs)
 - [Website](https://developer.visa.com/)
+- [Getting started](https://developer.visa.com/capabilities/vdp-pilot-program/docs)
+- [Pricing](https://rapidapi.com/hakr/api/visa-list/pricing)
 - [Support](https://developer.visa.com/support)
-- [JSON Schema](json-schema/visa-payment-transaction-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/visa-merchant-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/visa-account-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/visa-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Structure](json-structure/visa-payment-transaction-structure.json)
-- [JSON Structure](json-structure/visa-merchant-structure.json)
-- [Vocabulary](vocabulary/visa-vocabulary.yml)
-- [Spectral Rules](rules/visa-rules.yml)
-- [Features](undefined)
+- [GitHub](https://github.com/visa)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 43.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 53.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 52.6 |
+
+**Agent readiness 45.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | verified |
+| MCP Server | — |
+| Auth Clarity | bound |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | verified |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 22.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/visa/](https://apis.io/providers/visa/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Visa: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/visa/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
